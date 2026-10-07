@@ -1,0 +1,3 @@
+entity.ns:ghoul.name=Ghoul
+item.spawn_egg.entity.ns:ghoul.name=Spawn Ghoul
+subtitles.ns.ghoul.ambient=Ghoul groans

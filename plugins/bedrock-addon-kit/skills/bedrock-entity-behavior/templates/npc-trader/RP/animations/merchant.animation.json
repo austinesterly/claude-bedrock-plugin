@@ -1,0 +1,44 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.ns.merchant.idle": {
+      "loop": true,
+      "bones": {
+        "arms": {
+          "rotation": [
+            "-45 + math.sin(q.life_time * 50) * 2",
+            0,
+            0
+          ]
+        },
+        "nose": {
+          "rotation": [
+            0,
+            0,
+            "math.sin(q.life_time * 20) * 3"
+          ]
+        }
+      }
+    },
+    "animation.ns.merchant.walk": {
+      "loop": true,
+      "anim_time_update": "q.modified_distance_moved",
+      "bones": {
+        "rightleg": {
+          "rotation": [
+            "math.sin(q.anim_time * 38.17) * 30",
+            0,
+            0
+          ]
+        },
+        "leftleg": {
+          "rotation": [
+            "-math.sin(q.anim_time * 38.17) * 30",
+            0,
+            0
+          ]
+        }
+      }
+    }
+  }
+}

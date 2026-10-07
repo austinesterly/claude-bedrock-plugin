@@ -1,0 +1,22 @@
+{
+  "format_version": "1.21.40",
+  "minecraft:scatter_feature": {
+    "description": {
+      "identifier": "ns:skylands_flower_patch_feature"
+    },
+    "places_feature": "ns:skylands_flower_feature",
+    "distribution": {
+      "iterations": 24,
+      "x": {
+        "distribution": "gaussian",
+        "extent": [ -5, 5 ]
+      },
+      "y": 0,
+      "z": {
+        "distribution": "gaussian",
+        "extent": [ -5, 5 ]
+      }
+    },
+    "project_input_to_floor": true
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "ns:dimension_key",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:icon": {
+        "textures": {
+          "default": "ns_dimension_key"
+        }
+      },
+      "minecraft:display_name": {
+        "value": "item.ns:dimension_key.name"
+      },
+      "minecraft:max_stack_size": {
+        "value": 1
+      },
+      "minecraft:glint": true,
+      "minecraft:cooldown": {
+        "category": "ns:dimension_key",
+        "duration": 3.0
+      },
+      "ns:dimension_key": {
+        "target": "ns:skylands"
+      }
+    }
+  }
+}

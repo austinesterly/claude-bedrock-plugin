@@ -1,0 +1,19 @@
+{
+  "entity_sounds": {
+    "entities": {
+      "ns:spitter": {
+        "volume": 1,
+        "pitch": [
+          0.8,
+          1.2
+        ],
+        "events": {
+          "ambient": "mob.ns.spitter.idle",
+          "hurt": "mob.ns.spitter.hurt",
+          "death": "mob.ns.spitter.death",
+          "shoot": "mob.ns.spitter.spit"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,3 @@
+entity.ns:quest_giver.name=Quest Giver
+item.spawn_egg.entity.ns:quest_giver.name=Spawn Quest Giver
+action.interact.ns.talk=Talk	## Touch-control button text on NPCs

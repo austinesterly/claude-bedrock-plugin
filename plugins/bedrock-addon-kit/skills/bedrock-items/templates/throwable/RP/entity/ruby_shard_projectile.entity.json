@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "ns:ruby_shard_projectile",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/items/ruby_shard"
+      },
+      "geometry": {
+        "default": "geometry.ns.ruby_shard_projectile"
+      },
+      "render_controllers": [
+        "controller.render.ns.ruby_shard_projectile"
+      ],
+      "animations": {
+        "flying": "animation.ns.ruby_shard_projectile.billboard"
+      },
+      "scripts": {
+        "animate": [
+          "flying"
+        ]
+      }
+    }
+  }
+}

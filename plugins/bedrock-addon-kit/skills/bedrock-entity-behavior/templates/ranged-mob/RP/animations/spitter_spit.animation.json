@@ -1,0 +1,17 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.ns.spitter_spit.spin": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "rotation": [
+            "q.life_time * 720",
+            "q.life_time * 360",
+            0
+          ]
+        }
+      }
+    }
+  }
+}

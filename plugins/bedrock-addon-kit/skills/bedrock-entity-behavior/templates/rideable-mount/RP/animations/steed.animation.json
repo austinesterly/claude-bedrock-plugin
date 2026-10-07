@@ -1,0 +1,65 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.ns.steed.idle": {
+      "loop": true,
+      "bones": {
+        "tail": {
+          "rotation": [
+            "15 + math.sin(q.life_time * 50) * 5",
+            0,
+            "math.sin(q.life_time * 80) * 6"
+          ]
+        },
+        "head": {
+          "rotation": [
+            "math.sin(q.life_time * 45) * 3",
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "animation.ns.steed.walk": {
+      "loop": true,
+      "anim_time_update": "q.modified_distance_moved",
+      "bones": {
+        "leg0": {
+          "rotation": [
+            "math.sin(q.anim_time * 38.17) * 35",
+            0,
+            0
+          ]
+        },
+        "leg3": {
+          "rotation": [
+            "math.sin(q.anim_time * 38.17) * 35",
+            0,
+            0
+          ]
+        },
+        "leg1": {
+          "rotation": [
+            "-math.sin(q.anim_time * 38.17) * 35",
+            0,
+            0
+          ]
+        },
+        "leg2": {
+          "rotation": [
+            "-math.sin(q.anim_time * 38.17) * 35",
+            0,
+            0
+          ]
+        },
+        "head": {
+          "rotation": [
+            "math.sin(q.anim_time * 38.17) * 4",
+            0,
+            0
+          ]
+        }
+      }
+    }
+  }
+}

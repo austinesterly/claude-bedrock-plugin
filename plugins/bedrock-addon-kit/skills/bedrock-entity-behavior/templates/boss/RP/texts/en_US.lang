@@ -1,0 +1,8 @@
+entity.ns:titan.name=Titan
+item.spawn_egg.entity.ns:titan.name=Spawn Titan
+ns.titan.awake=The Titan awakens.
+ns.titan.phase_2=The Titan grows angry. (Phase 2)
+ns.titan.phase_3=The Titan is enraged! (Phase 3)
+ns.titan.defeated=The Titan has fallen.
+subtitles.ns.titan.ambient=Titan breathes
+subtitles.ns.titan.roar=Titan roars

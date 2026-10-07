@@ -1,0 +1,18 @@
+{
+  "entity_sounds": {
+    "entities": {
+      "ns:wisp": {
+        "volume": 0.7,
+        "pitch": [
+          0.8,
+          1.2
+        ],
+        "events": {
+          "ambient": "mob.ns.wisp.idle",
+          "hurt": "mob.ns.wisp.hurt",
+          "death": "mob.ns.wisp.death"
+        }
+      }
+    }
+  }
+}

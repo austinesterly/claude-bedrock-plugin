@@ -1,0 +1,38 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "ns:townsfolk",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/ns_townsfolk"
+      },
+      "geometry": {
+        "default": "geometry.ns.townsfolk"
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ],
+      "spawn_egg": {
+        "base_color": "#3C5AAA",
+        "overlay_color": "#C8A070"
+      },
+      "scripts": {
+        "animate": [
+          "idle",
+          {
+            "walk": "math.clamp(q.modified_move_speed * 2.5, 0, 1)"
+          },
+          "look_at_target"
+        ]
+      },
+      "animations": {
+        "idle": "animation.ns.townsfolk.idle",
+        "walk": "animation.ns.townsfolk.walk",
+        "look_at_target": "animation.common.look_at_target"
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "format_version": "1.21.60",
+  "minecraft:crafting_items_catalog": {
+    "categories": [
+      {
+        "category_name": "construction",
+        "groups": [
+          {
+            "group_identifier": {
+              "icon": "ns:ruby_block",
+              "name": "ns:itemGroup.name.ruby_blocks"
+            },
+            "items": [
+              "ns:ruby_block",
+              "ns:ruby_block_slab"
+            ]
+          }
+        ]
+      },
+      {
+        "category_name": "equipment",
+        "groups": [
+          {
+            "group_identifier": {
+              "name": "minecraft:itemGroup.name.sword"
+            },
+            "items": [
+              "ns:ruby_sword",
+              "ns:ruby_netherite_sword"
+            ]
+          }
+        ]
+      },
+      {
+        "category_name": "items",
+        "groups": [
+          {
+            "items": [
+              "ns:ruby",
+              "ns:ruby_tonic"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

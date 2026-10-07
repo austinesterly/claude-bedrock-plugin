@@ -1,0 +1,56 @@
+{
+  "format_version": "1.26.50",
+  "sound_definitions": {
+    "ns.ui.chime": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/ns/ui/chime1",
+          "volume": 0.8
+        },
+        {
+          "name": "sounds/ns/ui/chime2",
+          "volume": 0.8
+        }
+      ]
+    },
+    "mob.ns.critter.say": {
+      "category": "neutral",
+      "max_distance": 16.0,
+      "sounds": [
+        {
+          "name": "sounds/ns/critter/say1",
+          "load_on_low_memory": true
+        },
+        "sounds/ns/critter/say2"
+      ],
+      "subtitle": "subtitles.ns.critter.ambient"
+    },
+    "mob.ns.critter.hurt": {
+      "category": "neutral",
+      "sounds": [
+        "sounds/ns/critter/hurt1"
+      ]
+    },
+    "block.ns.ruby_block.place": {
+      "category": "block",
+      "sounds": [
+        {
+          "name": "sounds/ns/ruby_block/place1",
+          "pitch": 1.0
+        }
+      ]
+    },
+    "music.ns.theme": {
+      "category": "music",
+      "sounds": [
+        {
+          "name": "sounds/ns/music/theme",
+          "stream": true,
+          "allow_concurrent_streaming": false,
+          "volume": 0.4
+        }
+      ]
+    }
+  }
+}

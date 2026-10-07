@@ -1,0 +1,74 @@
+{
+  "format_version": "1.26.50",
+  "sound_definitions": {
+    "mob.ns.titan.idle": {
+      "category": "hostile",
+      "subtitle": "subtitles.ns.titan.ambient",
+      "sounds": [
+        {
+          "name": "sounds/mob/ravager/idle1"
+        },
+        {
+          "name": "sounds/mob/ravager/idle2"
+        },
+        {
+          "name": "sounds/mob/ravager/idle3"
+        }
+      ]
+    },
+    "mob.ns.titan.hurt": {
+      "category": "hostile",
+      "sounds": [
+        {
+          "name": "sounds/mob/ravager/hurt1"
+        },
+        {
+          "name": "sounds/mob/ravager/hurt2"
+        },
+        {
+          "name": "sounds/mob/ravager/hurt3"
+        }
+      ]
+    },
+    "mob.ns.titan.death": {
+      "category": "hostile",
+      "sounds": [
+        {
+          "name": "sounds/mob/ravager/death1"
+        },
+        {
+          "name": "sounds/mob/ravager/death2"
+        },
+        {
+          "name": "sounds/mob/ravager/death3"
+        }
+      ]
+    },
+    "mob.ns.titan.step": {
+      "category": "hostile",
+      "sounds": [
+        {
+          "name": "sounds/mob/irongolem/walk1"
+        },
+        {
+          "name": "sounds/mob/irongolem/walk2"
+        },
+        {
+          "name": "sounds/mob/irongolem/walk3"
+        }
+      ]
+    },
+    "mob.ns.titan.roar": {
+      "category": "hostile",
+      "subtitle": "subtitles.ns.titan.roar",
+      "sounds": [
+        {
+          "name": "sounds/mob/ravager/roar1"
+        },
+        {
+          "name": "sounds/mob/ravager/roar2"
+        }
+      ]
+    }
+  }
+}

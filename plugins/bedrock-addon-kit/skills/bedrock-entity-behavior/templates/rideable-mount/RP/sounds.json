@@ -1,0 +1,34 @@
+{
+  "entity_sounds": {
+    "entities": {
+      "ns:steed": {
+        "volume": 0.8,
+        "pitch": [
+          0.8,
+          1.2
+        ],
+        "events": {
+          "ambient": "mob.ns.steed.idle",
+          "hurt": "mob.ns.steed.hurt",
+          "death": "mob.ns.steed.death",
+          "jump": {
+            "sound": "mob.ns.steed.jump",
+            "volume": 0.4,
+            "pitch": 1
+          },
+          "land": {
+            "sound": "mob.ns.steed.land",
+            "volume": 0.4,
+            "pitch": 1
+          },
+          "saddle": {
+            "sound": "mob.ns.steed.saddle",
+            "volume": 0.6,
+            "pitch": 1
+          },
+          "unsaddle": "mob.ns.steed.unsaddle"
+        }
+      }
+    }
+  }
+}

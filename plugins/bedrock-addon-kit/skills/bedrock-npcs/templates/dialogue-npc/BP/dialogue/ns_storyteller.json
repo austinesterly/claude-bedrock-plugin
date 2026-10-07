@@ -1,0 +1,37 @@
+{
+  "format_version": "1.20.80",
+  "minecraft:npc_dialogue": {
+    "scenes": [
+      {
+        "scene_tag": "ns_storyteller_intro",
+        "npc_name": { "rawtext": [ { "translate": "ns.storyteller.name" } ] },
+        "text": { "rawtext": [ { "translate": "ns.storyteller.intro" } ] },
+        "on_open_commands": [ "/playsound mob.villager.idle @initiator" ],
+        "buttons": [
+          { "name": "Tell me a story", "commands": [ "/dialogue open @s @initiator ns_storyteller_lore" ] },
+          { "name": "Goodbye", "commands": [ "/playsound mob.villager.no @initiator" ] }
+        ]
+      },
+      {
+        "scene_tag": "ns_storyteller_lore",
+        "npc_name": { "rawtext": [ { "translate": "ns.storyteller.name" } ] },
+        "text": { "rawtext": [ { "translate": "ns.storyteller.lore" } ] },
+        "on_open_commands": [
+          "/playsound mob.villager.yes @initiator",
+          "/dialogue change @s ns_storyteller_lore @initiator"
+        ],
+        "on_close_commands": [ "/tag @initiator add ns_heard_story" ],
+        "buttons": [
+          {
+            "name": "Start over",
+            "commands": [
+              "/dialogue change @s ns_storyteller_intro @initiator",
+              "/dialogue open @s @initiator ns_storyteller_intro"
+            ]
+          },
+          { "name": "Thank you", "commands": [ "/playsound random.orb @initiator" ] }
+        ]
+      }
+    ]
+  }
+}

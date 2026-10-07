@@ -1,0 +1,27 @@
+{
+  "format_version": "1.21.40",
+  "minecraft:ore_feature": {
+    "description": {
+      "identifier": "ns:ruby_ore_feature"
+    },
+    "count": 6,
+    "replace_rules": [
+      {
+        "places_block": "ns:ruby_ore",
+        "may_replace": [
+          "minecraft:stone",
+          "minecraft:granite",
+          "minecraft:diorite",
+          "minecraft:andesite"
+        ]
+      },
+      {
+        "places_block": "ns:deepslate_ruby_ore",
+        "may_replace": [
+          "minecraft:deepslate",
+          "minecraft:tuff"
+        ]
+      }
+    ]
+  }
+}

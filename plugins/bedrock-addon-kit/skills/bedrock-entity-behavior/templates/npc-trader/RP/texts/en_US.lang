@@ -1,0 +1,3 @@
+entity.ns:merchant.name=Merchant
+item.spawn_egg.entity.ns:merchant.name=Spawn Merchant
+subtitles.ns.merchant.ambient=Merchant mumbles

@@ -1,0 +1,56 @@
+{
+  "format_version": "1.26.0",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "ns:ruby_arrow",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "spawn_category": "misc"
+    },
+    "components": {
+      "minecraft:collision_box": {
+        "width": 0.25,
+        "height": 0.25
+      },
+      "minecraft:dimension_bound": {},
+      "minecraft:physics": {},
+      "minecraft:projectile": {
+        "anchor": 1,
+        "gravity": 0.05,
+        "power": 5.0,
+        "hit_sound": "bow.hit",
+        "offset": [
+          0,
+          -0.1,
+          0
+        ],
+        "should_bounce": true,
+        "uncertainty_base": 1,
+        "uncertainty_multiplier": 0,
+        "isolated_physics": true,
+        "on_hit": {
+          "impact_damage": {
+            "damage": 1,
+            "knockback": true,
+            "power_multiplier": 0.97,
+            "destroy_on_hit": true,
+            "semi_random_diff_damage": true,
+            "max_critical_damage": 10,
+            "min_critical_damage": 9,
+            "apply_knockback_to_blocking_targets": true
+          },
+          "arrow_effect": {},
+          "stick_in_ground": {
+            "shake_time": 0.35
+          }
+        }
+      },
+      "minecraft:damage_sensor": {
+        "triggers": {
+          "cause": "all",
+          "deals_damage": "no"
+        }
+      }
+    }
+  }
+}

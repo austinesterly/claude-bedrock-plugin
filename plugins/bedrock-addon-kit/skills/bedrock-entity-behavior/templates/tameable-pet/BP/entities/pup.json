@@ -1,0 +1,297 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "ns:pup",
+      "is_spawnable": true,
+      "is_summonable": true,
+      "spawn_category": "creature"
+    },
+    "component_groups": {
+      "ns:pup_baby": {
+        "minecraft:is_baby": {},
+        "minecraft:scale": {
+          "value": 0.5
+        },
+        "minecraft:ageable": {
+          "duration": 1200,
+          "feed_items": [
+            "minecraft:beef",
+            "minecraft:cooked_beef",
+            "minecraft:chicken",
+            "minecraft:cooked_chicken",
+            "minecraft:porkchop",
+            "minecraft:cooked_porkchop"
+          ],
+          "grow_up": {
+            "event": "minecraft:ageable_grow_up",
+            "target": "self"
+          }
+        },
+        "minecraft:behavior.follow_parent": {
+          "priority": 6,
+          "speed_multiplier": 1.1
+        }
+      },
+      "ns:pup_adult": {
+        "minecraft:breedable": {
+          "require_tame": true,
+          "require_full_health": true,
+          "allow_sitting": true,
+          "breeds_with": {
+            "ns:pup": {}
+          },
+          "breed_items": [
+            "minecraft:beef",
+            "minecraft:cooked_beef",
+            "minecraft:chicken",
+            "minecraft:cooked_chicken",
+            "minecraft:porkchop",
+            "minecraft:cooked_porkchop"
+          ]
+        },
+        "minecraft:behavior.breed": {
+          "priority": 2,
+          "speed_multiplier": 1
+        },
+        "minecraft:experience_reward": {
+          "on_bred": "Math.Random(1,7)"
+        }
+      },
+      "ns:pup_wild": {
+        "minecraft:health": {
+          "value": 8,
+          "max": 8
+        },
+        "minecraft:tameable": {
+          "probability": 0.33,
+          "tame_items": [
+            "minecraft:bone"
+          ],
+          "tame_event": {
+            "event": "ns:on_tame",
+            "target": "self"
+          }
+        },
+        "minecraft:behavior.tempt": {
+          "priority": 5,
+          "speed_multiplier": 0.8,
+          "within_radius": 10,
+          "items": [
+            "minecraft:bone"
+          ]
+        },
+        "minecraft:behavior.panic": {
+          "priority": 1,
+          "speed_multiplier": 1.25
+        }
+      },
+      "ns:pup_tame": {
+        "minecraft:is_tamed": {},
+        "minecraft:health": {
+          "value": 20,
+          "max": 20
+        },
+        "minecraft:sittable": {},
+        "minecraft:behavior.owner_hurt_by_target": {
+          "priority": 1
+        },
+        "minecraft:behavior.owner_hurt_target": {
+          "priority": 2
+        },
+        "minecraft:behavior.stay_while_sitting": {
+          "priority": 3
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 4,
+          "speed_multiplier": 1.2,
+          "track_target": true
+        },
+        "minecraft:behavior.hurt_by_target": {
+          "priority": 5
+        },
+        "minecraft:behavior.follow_owner": {
+          "priority": 6,
+          "speed_multiplier": 1,
+          "start_distance": 10,
+          "stop_distance": 2,
+          "post_teleport_distance": -1
+        }
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": [
+          "ns_pup",
+          "mob"
+        ]
+      },
+      "minecraft:collision_box": {
+        "width": 0.6,
+        "height": 0.8
+      },
+      "minecraft:movement": {
+        "value": 0.3
+      },
+      "minecraft:movement.basic": {},
+      "minecraft:navigation.walk": {
+        "can_float": true,
+        "avoid_water": true,
+        "avoid_damage_blocks": true
+      },
+      "minecraft:jump.static": {},
+      "minecraft:physics": {},
+      "minecraft:pushable_by_entity": {},
+      "minecraft:pushable_by_block": {},
+      "minecraft:breathable": {
+        "total_supply": 15,
+        "suffocate_time": 0
+      },
+      "minecraft:nameable": {},
+      "minecraft:attack": {
+        "damage": 3
+      },
+      "minecraft:leashable": {
+        "unleash_on_removal": false
+      },
+      "minecraft:healable": {
+        "items": [
+          {
+            "item": "minecraft:beef",
+            "heal_amount": 6
+          },
+          {
+            "item": "minecraft:cooked_beef",
+            "heal_amount": 16
+          },
+          {
+            "item": "minecraft:chicken",
+            "heal_amount": 4
+          },
+          {
+            "item": "minecraft:cooked_chicken",
+            "heal_amount": 12
+          },
+          {
+            "item": "minecraft:porkchop",
+            "heal_amount": 6
+          },
+          {
+            "item": "minecraft:cooked_porkchop",
+            "heal_amount": 16
+          }
+        ]
+      },
+      "minecraft:offspring": {
+        "offspring_pairs": {
+          "ns:pup": "ns:pup"
+        }
+      },
+      "minecraft:loot": {
+        "table": "loot_tables/entities/ns_pup.json"
+      },
+      "minecraft:ambient_sound_interval": {
+        "value": 8,
+        "range": 16,
+        "event_name": "ambient"
+      },
+      "minecraft:behavior.float": {
+        "priority": 0
+      },
+      "minecraft:behavior.random_stroll": {
+        "priority": 8,
+        "speed_multiplier": 1
+      },
+      "minecraft:behavior.look_at_player": {
+        "priority": 9,
+        "look_distance": 6
+      },
+      "minecraft:behavior.random_look_around": {
+        "priority": 10
+      }
+    },
+    "events": {
+      "minecraft:entity_spawned": {
+        "randomize": [
+          {
+            "weight": 9,
+            "add": {
+              "component_groups": [
+                "ns:pup_adult",
+                "ns:pup_wild"
+              ]
+            }
+          },
+          {
+            "weight": 1,
+            "add": {
+              "component_groups": [
+                "ns:pup_baby",
+                "ns:pup_wild"
+              ]
+            }
+          }
+        ]
+      },
+      "minecraft:entity_born": {
+        "sequence": [
+          {
+            "filters": {
+              "test": "is_tamed"
+            },
+            "add": {
+              "component_groups": [
+                "ns:pup_baby",
+                "ns:pup_tame"
+              ]
+            }
+          },
+          {
+            "filters": {
+              "test": "is_tamed",
+              "value": false
+            },
+            "add": {
+              "component_groups": [
+                "ns:pup_baby",
+                "ns:pup_wild"
+              ]
+            }
+          }
+        ]
+      },
+      "minecraft:ageable_grow_up": {
+        "remove": {
+          "component_groups": [
+            "ns:pup_baby"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "ns:pup_adult"
+          ]
+        }
+      },
+      "ns:on_tame": {
+        "remove": {
+          "component_groups": [
+            "ns:pup_wild"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "ns:pup_tame"
+          ]
+        }
+      },
+      "ns:spawn_tame_adult": {
+        "add": {
+          "component_groups": [
+            "ns:pup_adult",
+            "ns:pup_tame"
+          ]
+        }
+      }
+    }
+  }
+}

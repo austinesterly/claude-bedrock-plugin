@@ -1,0 +1,38 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "ns:patrol_guard",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/ns_patrol_guard"
+      },
+      "geometry": {
+        "default": "geometry.ns.patrol_guard"
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ],
+      "spawn_egg": {
+        "base_color": "#828C96",
+        "overlay_color": "#2A3A6A"
+      },
+      "scripts": {
+        "animate": [
+          "idle",
+          {
+            "walk": "math.clamp(q.modified_move_speed * 2.5, 0, 1)"
+          },
+          "look_at_target"
+        ]
+      },
+      "animations": {
+        "idle": "animation.ns.patrol_guard.idle",
+        "walk": "animation.ns.patrol_guard.walk",
+        "look_at_target": "animation.common.look_at_target"
+      }
+    }
+  }
+}

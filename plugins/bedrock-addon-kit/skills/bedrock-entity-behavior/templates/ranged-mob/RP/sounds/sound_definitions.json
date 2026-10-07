@@ -1,0 +1,57 @@
+{
+  "format_version": "1.26.50",
+  "sound_definitions": {
+    "mob.ns.spitter.idle": {
+      "category": "hostile",
+      "subtitle": "subtitles.ns.spitter.ambient",
+      "sounds": [
+        {
+          "name": "sounds/mob/llama/idle1"
+        },
+        {
+          "name": "sounds/mob/llama/idle2"
+        },
+        {
+          "name": "sounds/mob/llama/idle3"
+        }
+      ]
+    },
+    "mob.ns.spitter.hurt": {
+      "category": "hostile",
+      "sounds": [
+        {
+          "name": "sounds/mob/llama/hurt1"
+        },
+        {
+          "name": "sounds/mob/llama/hurt2"
+        },
+        {
+          "name": "sounds/mob/llama/hurt3"
+        }
+      ]
+    },
+    "mob.ns.spitter.death": {
+      "category": "hostile",
+      "sounds": [
+        {
+          "name": "sounds/mob/llama/death1"
+        },
+        {
+          "name": "sounds/mob/llama/death2"
+        }
+      ]
+    },
+    "mob.ns.spitter.spit": {
+      "category": "hostile",
+      "subtitle": "subtitles.ns.spitter.shoot",
+      "sounds": [
+        {
+          "name": "sounds/mob/llama/spit1"
+        },
+        {
+          "name": "sounds/mob/llama/spit2"
+        }
+      ]
+    }
+  }
+}

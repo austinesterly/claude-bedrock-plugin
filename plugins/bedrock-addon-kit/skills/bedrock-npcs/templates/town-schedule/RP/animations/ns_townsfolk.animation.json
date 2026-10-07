@@ -1,0 +1,58 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.ns.townsfolk.idle": {
+      "loop": true,
+      "bones": {
+        "rightArm": {
+          "rotation": [
+            "math.sin(q.life_time * 60) * 2",
+            0,
+            "math.cos(q.life_time * 70) * 2 + 2"
+          ]
+        },
+        "leftArm": {
+          "rotation": [
+            "-math.sin(q.life_time * 60) * 2",
+            0,
+            "-math.cos(q.life_time * 70) * 2 - 2"
+          ]
+        }
+      }
+    },
+    "animation.ns.townsfolk.walk": {
+      "loop": true,
+      "anim_time_update": "q.modified_distance_moved",
+      "bones": {
+        "rightArm": {
+          "rotation": [
+            "-math.sin(q.anim_time * 38.17) * 32",
+            0,
+            0
+          ]
+        },
+        "leftArm": {
+          "rotation": [
+            "math.sin(q.anim_time * 38.17) * 32",
+            0,
+            0
+          ]
+        },
+        "rightLeg": {
+          "rotation": [
+            "math.sin(q.anim_time * 38.17) * 32",
+            0,
+            0
+          ]
+        },
+        "leftLeg": {
+          "rotation": [
+            "-math.sin(q.anim_time * 38.17) * 32",
+            0,
+            0
+          ]
+        }
+      }
+    }
+  }
+}

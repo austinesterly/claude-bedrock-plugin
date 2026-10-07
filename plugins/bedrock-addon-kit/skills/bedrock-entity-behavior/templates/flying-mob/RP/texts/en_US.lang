@@ -1,0 +1,3 @@
+entity.ns:wisp.name=Wisp
+item.spawn_egg.entity.ns:wisp.name=Spawn Wisp
+subtitles.ns.wisp.ambient=Wisp hums

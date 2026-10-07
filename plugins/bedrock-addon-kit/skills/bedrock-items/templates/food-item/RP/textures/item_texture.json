@@ -1,0 +1,12 @@
+{
+  "resource_pack_name": "ns",
+  "texture_name": "atlas.items",
+  "texture_data": {
+    "ns:ruby_apple": {
+      "textures": "textures/items/ruby_apple"
+    },
+    "ns:ruby_tonic": {
+      "textures": "textures/items/ruby_tonic"
+    }
+  }
+}

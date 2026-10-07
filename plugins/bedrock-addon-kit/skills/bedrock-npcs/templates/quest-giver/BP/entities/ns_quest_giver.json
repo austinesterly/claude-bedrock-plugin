@@ -1,0 +1,66 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "ns:quest_giver",
+      "is_spawnable": true,
+      "is_summonable": true
+    },
+    "component_groups": {
+      "ns:wander": {
+        "minecraft:behavior.move_towards_home_restriction": { "priority": 5, "speed_multiplier": 0.6 },
+        "minecraft:behavior.random_stroll": { "priority": 6, "speed_multiplier": 0.6, "xz_dist": 4, "y_dist": 2, "interval": 200 },
+        "minecraft:behavior.look_at_player": { "priority": 7, "look_distance": 8, "look_time": { "min": 2, "max": 4 } },
+        "minecraft:behavior.random_look_around": { "priority": 8 }
+      },
+      "ns:talking": {
+        "minecraft:behavior.look_at_player": { "priority": 1, "look_distance": 6, "probability": 1, "look_time": { "min": 4, "max": 6 } },
+        "minecraft:timer": { "looping": false, "randomInterval": false, "time": { "min": 60, "max": 60 }, "time_down_event": { "event": "ns:stop_talking", "target": "self" } }
+      }
+    },
+    "components": {
+      "minecraft:type_family": { "family": [ "ns_npc", "mob" ] },
+      "minecraft:health": { "value": 20, "max": 20 },
+      "minecraft:collision_box": { "width": 0.6, "height": 1.9 },
+      "minecraft:damage_sensor": { "triggers": { "cause": "all", "deals_damage": "no" } },
+      "minecraft:fire_immune": {},
+      "minecraft:loot": { "table": "loot_tables/empty.json" },
+      "minecraft:persistent": {},
+      "minecraft:physics": {},
+      "minecraft:nameable": { "allow_name_tag_renaming": false, "always_show": true },
+      "minecraft:movement": { "value": 0.25 },
+      "minecraft:movement.basic": {},
+      "minecraft:navigation.walk": { "avoid_water": true, "avoid_damage_blocks": true, "can_pass_doors": true },
+      "minecraft:jump.static": {},
+      "minecraft:home": { "restriction_type": "random_movement", "restriction_radius": 6 },
+      "minecraft:ambient_sound_interval": { "value": 20, "range": 20, "event_name": "ambient" },
+      "minecraft:behavior.float": { "priority": 0 },
+      "minecraft:interact": {
+        "interactions": [
+          {
+            "interact_text": "action.interact.ns.talk",
+            "swing": false,
+            "cooldown": 0.5,
+            "on_interact": {
+              "filters": { "test": "is_family", "subject": "other", "value": "player" },
+              "event": "ns:interacted",
+              "target": "self"
+            }
+          }
+        ]
+      }
+    },
+    "events": {
+      "minecraft:entity_spawned": { "add": { "component_groups": [ "ns:wander" ] } },
+      "ns:interacted": {},
+      "ns:start_talking": {
+        "remove": { "component_groups": [ "ns:wander" ] },
+        "add": { "component_groups": [ "ns:talking" ] }
+      },
+      "ns:stop_talking": {
+        "remove": { "component_groups": [ "ns:talking" ] },
+        "add": { "component_groups": [ "ns:wander" ] }
+      }
+    }
+  }
+}

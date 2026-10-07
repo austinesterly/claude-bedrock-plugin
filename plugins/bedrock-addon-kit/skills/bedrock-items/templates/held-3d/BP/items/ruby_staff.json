@@ -1,0 +1,33 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "ns:ruby_staff",
+      "menu_category": {
+        "category": "equipment"
+      }
+    },
+    "components": {
+      "minecraft:icon": {
+        "textures": {
+          "default": "ns:ruby_staff"
+        }
+      },
+      "minecraft:display_name": {
+        "value": "item.ns:ruby_staff.name"
+      },
+      "minecraft:max_stack_size": {
+        "value": 1
+      },
+      "minecraft:hand_equipped": {
+        "value": true
+      },
+      "minecraft:damage": {
+        "value": 4
+      },
+      "minecraft:durability": {
+        "max_durability": 500
+      }
+    }
+  }
+}

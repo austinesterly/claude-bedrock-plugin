@@ -1,0 +1,38 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "ns:quest_giver",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/ns_quest_giver"
+      },
+      "geometry": {
+        "default": "geometry.ns.quest_giver"
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ],
+      "spawn_egg": {
+        "base_color": "#3C783C",
+        "overlay_color": "#F2D16B"
+      },
+      "scripts": {
+        "animate": [
+          "idle",
+          {
+            "walk": "math.clamp(q.modified_move_speed * 2.5, 0, 1)"
+          },
+          "look_at_target"
+        ]
+      },
+      "animations": {
+        "idle": "animation.ns.quest_giver.idle",
+        "walk": "animation.ns.quest_giver.walk",
+        "look_at_target": "animation.common.look_at_target"
+      }
+    }
+  }
+}

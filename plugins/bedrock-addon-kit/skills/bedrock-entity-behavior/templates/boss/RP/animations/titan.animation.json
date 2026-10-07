@@ -1,0 +1,91 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.ns.titan.idle": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "rotation": [
+            "math.sin(q.life_time * 30) * 1.5",
+            0,
+            0
+          ]
+        },
+        "rightarm": {
+          "rotation": [
+            0,
+            0,
+            "3 + math.sin(q.life_time * 40) * 2"
+          ]
+        },
+        "leftarm": {
+          "rotation": [
+            0,
+            0,
+            "-3 - math.sin(q.life_time * 40) * 2"
+          ]
+        }
+      }
+    },
+    "animation.ns.titan.walk": {
+      "loop": true,
+      "anim_time_update": "q.modified_distance_moved",
+      "bones": {
+        "rightleg": {
+          "rotation": [
+            "math.sin(q.anim_time * 38.17) * 25",
+            0,
+            0
+          ]
+        },
+        "leftleg": {
+          "rotation": [
+            "-math.sin(q.anim_time * 38.17) * 25",
+            0,
+            0
+          ]
+        },
+        "rightarm": {
+          "rotation": [
+            "-math.sin(q.anim_time * 38.17) * 20",
+            0,
+            0
+          ]
+        },
+        "leftarm": {
+          "rotation": [
+            "math.sin(q.anim_time * 38.17) * 20",
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "animation.ns.titan.attack": {
+      "loop": true,
+      "bones": {
+        "rightarm": {
+          "rotation": [
+            "-math.sin(v.attack_time * 180) * 110",
+            0,
+            0
+          ]
+        },
+        "leftarm": {
+          "rotation": [
+            "-math.sin(v.attack_time * 180) * 110",
+            0,
+            0
+          ]
+        },
+        "body": {
+          "rotation": [
+            "math.sin(v.attack_time * 180) * 10",
+            0,
+            0
+          ]
+        }
+      }
+    }
+  }
+}

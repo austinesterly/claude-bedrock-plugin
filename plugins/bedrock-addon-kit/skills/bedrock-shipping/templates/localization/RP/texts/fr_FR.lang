@@ -1,0 +1,10 @@
+pack.name=Ruby Add-On RP
+pack.description=Rubis, créatures et ruines.
+item.ns:ruby.name=Rubis
+tile.ns:ruby_block.name=Bloc de rubis
+entity.ns:critter.name=Créature
+item.spawn_egg.entity.ns:critter.name=Œuf d'apparition de créature
+ns:itemGroup.name.ruby_blocks=Blocs de rubis
+ns.welcome=Ruby Add-On prêt !
+ns.hud.coins=Pièces : %1$s
+ns.found=Vous avez trouvé %1$s !

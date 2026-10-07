@@ -1,0 +1,43 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "ns:vendor",
+      "is_spawnable": true,
+      "is_summonable": true
+    },
+    "components": {
+      "minecraft:type_family": { "family": [ "ns_npc", "mob" ] },
+      "minecraft:health": { "value": 20, "max": 20 },
+      "minecraft:collision_box": { "width": 0.6, "height": 1.9 },
+      "minecraft:damage_sensor": { "triggers": { "cause": "all", "deals_damage": "no" } },
+      "minecraft:fire_immune": {},
+      "minecraft:loot": { "table": "loot_tables/empty.json" },
+      "minecraft:persistent": {},
+      "minecraft:physics": {},
+      "minecraft:knockback_resistance": { "value": 1 },
+      "minecraft:nameable": { "allow_name_tag_renaming": false, "always_show": true },
+      "minecraft:movement": { "value": 0 },
+      "minecraft:ambient_sound_interval": { "value": 30, "range": 30, "event_name": "ambient" },
+      "minecraft:behavior.look_at_player": { "priority": 7, "look_distance": 8, "probability": 0.5, "look_time": { "min": 2, "max": 4 } },
+      "minecraft:behavior.random_look_around": { "priority": 8 },
+      "minecraft:interact": {
+        "interactions": [
+          {
+            "interact_text": "action.interact.ns.shop",
+            "swing": false,
+            "cooldown": 0.5,
+            "on_interact": {
+              "filters": { "test": "is_family", "subject": "other", "value": "player" },
+              "event": "ns:interacted",
+              "target": "self"
+            }
+          }
+        ]
+      }
+    },
+    "events": {
+      "ns:interacted": {}
+    }
+  }
+}

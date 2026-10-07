@@ -1,0 +1,5 @@
+entity.ns:storyteller.name=Storyteller
+item.spawn_egg.entity.ns:storyteller.name=Spawn Storyteller
+ns.storyteller.name=Old Storyteller	## Name on the dialogue box
+ns.storyteller.intro=Sit a while, traveler. These hills have stories older than the oaks.	#
+ns.storyteller.lore=Long ago a lantern-keeper walked the ridge every night, so no one lost the path home. Some say you can still see the light.	#

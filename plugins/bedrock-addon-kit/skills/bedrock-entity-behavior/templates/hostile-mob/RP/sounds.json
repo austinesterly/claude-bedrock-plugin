@@ -1,0 +1,23 @@
+{
+  "entity_sounds": {
+    "entities": {
+      "ns:ghoul": {
+        "volume": 1,
+        "pitch": [
+          0.8,
+          1.2
+        ],
+        "events": {
+          "ambient": "mob.ns.ghoul.say",
+          "hurt": "mob.ns.ghoul.hurt",
+          "death": "mob.ns.ghoul.death",
+          "step": {
+            "sound": "mob.ns.ghoul.step",
+            "volume": 0.45,
+            "pitch": 1
+          }
+        }
+      }
+    }
+  }
+}

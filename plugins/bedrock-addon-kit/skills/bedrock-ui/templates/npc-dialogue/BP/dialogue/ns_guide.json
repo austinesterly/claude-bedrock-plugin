@@ -1,0 +1,27 @@
+{
+  "format_version": "1.17",
+  "minecraft:npc_dialogue": {
+    "scenes": [
+      {
+        "scene_tag": "ns_guide_intro",
+        "npc_name": { "rawtext": [ { "translate": "ns.npc.guide.name" } ] },
+        "text": { "rawtext": [ { "translate": "ns.npc.guide.intro" } ] },
+        "on_open_commands": [ "/playsound random.orb @initiator" ],
+        "buttons": [
+          { "name": "Shop", "commands": [ "/scriptevent ns:npc shop" ] },
+          { "name": "Tell me more", "commands": [ "/dialogue open @s @initiator ns_guide_more" ] },
+          { "name": "Bye", "commands": [ "/say See you!" ] }
+        ]
+      },
+      {
+        "scene_tag": "ns_guide_more",
+        "npc_name": { "rawtext": [ { "translate": "ns.npc.guide.name" } ] },
+        "text": { "rawtext": [ { "translate": "ns.npc.guide.more" } ] },
+        "buttons": [
+          { "name": "Back", "commands": [ "/dialogue open @s @initiator ns_guide_intro" ] },
+          { "name": "Open guide", "commands": [ "/scriptevent ns:menu main" ] }
+        ]
+      }
+    ]
+  }
+}

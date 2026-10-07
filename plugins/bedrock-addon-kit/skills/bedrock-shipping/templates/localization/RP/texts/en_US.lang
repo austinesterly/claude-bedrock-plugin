@@ -1,0 +1,10 @@
+pack.name=Ruby Add-On RP	### Name of the resource pack shown in the pack list. Keep "Ruby Add-On" untranslated: it is the product name.
+pack.description=Rubies, critters and ruins.	### Short pack description, one line.
+item.ns:ruby.name=Ruby	### Item name. A red gemstone, singular noun.
+tile.ns:ruby_block.name=Block of Ruby	### Block name. A solid block made of rubies, like "Block of Diamond".
+entity.ns:critter.name=Critter	### Mob name. A small, friendly animal. Singular, gender-neutral.
+item.spawn_egg.entity.ns:critter.name=Critter Spawn Egg	### Spawn egg item for the Critter mob. Match the vanilla wording for spawn eggs in your language.
+ns:itemGroup.name.ruby_blocks=Ruby Blocks	### Creative inventory group that holds all ruby blocks. Plural.
+ns.welcome=Ruby Add-On ready!	### Chat message on first join. 28 characters or less.
+ns.hud.coins=Coins: %1$s	### Action bar text. %1$s is a whole number of coins.
+ns.found=You found %1$s!	### Chat message. %1$s is an item name, already translated, e.g. "Ruby".

@@ -1,0 +1,3 @@
+entity.ns:pup.name=Pup
+item.spawn_egg.entity.ns:pup.name=Spawn Pup
+subtitles.ns.pup.ambient=Pup barks

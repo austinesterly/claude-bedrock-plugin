@@ -1,0 +1,2 @@
+pack.name=Ruby Add-On BP	### Name of the behavior pack shown in the pack list. "Ruby" is the gem.
+pack.description=Rubies, critters and ruins.	### Short pack description, one line.

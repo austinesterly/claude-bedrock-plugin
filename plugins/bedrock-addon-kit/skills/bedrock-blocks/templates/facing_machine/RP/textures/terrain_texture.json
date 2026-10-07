@@ -1,0 +1,17 @@
+{
+  "resource_pack_name": "ns",
+  "texture_name": "atlas.terrain",
+  "padding": 8,
+  "num_mip_levels": 4,
+  "texture_data": {
+    "ns_machine_side": {
+      "textures": "textures/blocks/ns/machine_side"
+    },
+    "ns_machine_top": {
+      "textures": "textures/blocks/ns/machine_top"
+    },
+    "ns_machine_front": {
+      "textures": "textures/blocks/ns/machine_front"
+    }
+  }
+}

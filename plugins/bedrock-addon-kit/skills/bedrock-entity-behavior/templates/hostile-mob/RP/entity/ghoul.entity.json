@@ -1,0 +1,41 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "ns:ghoul",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/ns_ghoul"
+      },
+      "geometry": {
+        "default": "geometry.ns.ghoul"
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ],
+      "spawn_egg": {
+        "base_color": "#3E5B3A",
+        "overlay_color": "#8FA37E"
+      },
+      "scripts": {
+        "animate": [
+          "idle",
+          {
+            "walk": "math.clamp(q.modified_move_speed * 2.5, 0, 1)"
+          },
+          "look_at_target",
+          "attack_controller"
+        ]
+      },
+      "animations": {
+        "idle": "animation.ns.ghoul.idle",
+        "walk": "animation.ns.ghoul.walk",
+        "attack": "animation.ns.ghoul.attack",
+        "look_at_target": "animation.common.look_at_target",
+        "attack_controller": "controller.animation.ns.ghoul.attack"
+      }
+    }
+  }
+}

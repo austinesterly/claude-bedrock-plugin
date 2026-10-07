@@ -1,0 +1,26 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "ns:ruby_block_slab_from_ruby_block_stonecutting"
+    },
+    "tags": [
+      "stonecutter"
+    ],
+    "ingredients": [
+      {
+        "item": "ns:ruby_block"
+      }
+    ],
+    "unlock": [
+      {
+        "item": "ns:ruby_block"
+      }
+    ],
+    "result": {
+      "item": "ns:ruby_block_slab",
+      "count": 2
+    },
+    "priority": 0
+  }
+}

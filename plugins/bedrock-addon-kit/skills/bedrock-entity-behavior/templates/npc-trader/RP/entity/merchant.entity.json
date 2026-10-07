@@ -1,0 +1,38 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "ns:merchant",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/ns_merchant"
+      },
+      "geometry": {
+        "default": "geometry.ns.merchant"
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ],
+      "spawn_egg": {
+        "base_color": "#2D4F8A",
+        "overlay_color": "#E3B341"
+      },
+      "scripts": {
+        "animate": [
+          "idle",
+          {
+            "walk": "math.clamp(q.modified_move_speed * 2.5, 0, 1)"
+          },
+          "look_at_target"
+        ]
+      },
+      "animations": {
+        "idle": "animation.ns.merchant.idle",
+        "walk": "animation.ns.merchant.walk",
+        "look_at_target": "animation.common.look_at_target"
+      }
+    }
+  }
+}

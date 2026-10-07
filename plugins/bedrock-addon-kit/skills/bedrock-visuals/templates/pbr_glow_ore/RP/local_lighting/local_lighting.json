@@ -1,0 +1,9 @@
+{
+  "format_version": "1.21.120",
+  "minecraft:local_light_settings": {
+    "ns:glow_ore": {
+      "light_color": "#3FE6D8",
+      "light_type": "static_light"
+    }
+  }
+}

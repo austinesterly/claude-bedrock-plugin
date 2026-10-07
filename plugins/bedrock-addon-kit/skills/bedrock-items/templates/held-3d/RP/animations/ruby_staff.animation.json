@@ -1,0 +1,39 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.ns.ruby_staff.hold_first_person": {
+      "loop": true,
+      "bones": {
+        "ruby_staff": {
+          "rotation": [
+            30.0,
+            -10.0,
+            0.0
+          ],
+          "position": [
+            0.0,
+            2.0,
+            -2.0
+          ]
+        }
+      }
+    },
+    "animation.ns.ruby_staff.hold_third_person": {
+      "loop": true,
+      "bones": {
+        "ruby_staff": {
+          "rotation": [
+            90.0,
+            0.0,
+            0.0
+          ],
+          "position": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        }
+      }
+    }
+  }
+}

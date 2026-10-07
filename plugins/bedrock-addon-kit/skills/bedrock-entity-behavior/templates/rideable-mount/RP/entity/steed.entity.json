@@ -1,0 +1,40 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "ns:steed",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/ns_steed"
+      },
+      "geometry": {
+        "default": "geometry.ns.steed"
+      },
+      "render_controllers": [
+        "controller.render.ns.steed"
+      ],
+      "spawn_egg": {
+        "base_color": "#7A5230",
+        "overlay_color": "#E8D7B0"
+      },
+      "scripts": {
+        "animate": [
+          "idle",
+          {
+            "walk": "math.clamp(q.modified_move_speed * 2.5, 0, 1)"
+          },
+          {
+            "look_at_target": "!q.has_rider"
+          }
+        ]
+      },
+      "animations": {
+        "idle": "animation.ns.steed.idle",
+        "walk": "animation.ns.steed.walk",
+        "look_at_target": "animation.common.look_at_target"
+      }
+    }
+  }
+}

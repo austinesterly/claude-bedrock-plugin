@@ -1,0 +1,23 @@
+{
+  "entity_sounds": {
+    "entities": {
+      "ns:pup": {
+        "volume": 1,
+        "pitch": [
+          0.8,
+          1.2
+        ],
+        "events": {
+          "ambient": "mob.ns.pup.bark",
+          "hurt": "mob.ns.pup.hurt",
+          "death": "mob.ns.pup.death",
+          "step": {
+            "sound": "mob.ns.pup.step",
+            "volume": 0.3,
+            "pitch": 1.2
+          }
+        }
+      }
+    }
+  }
+}

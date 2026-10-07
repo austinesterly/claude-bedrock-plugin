@@ -1,0 +1,27 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.ns.titan": {
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Texture.default"
+      ],
+      "part_visibility": [
+        {
+          "crown": "q.property('ns:phase') >= 2"
+        }
+      ],
+      "overlay_color": {
+        "r": "1.0",
+        "g": "0.1",
+        "b": "0.0",
+        "a": "q.property('ns:phase') >= 3 ? 0.25 : 0.0"
+      }
+    }
+  }
+}

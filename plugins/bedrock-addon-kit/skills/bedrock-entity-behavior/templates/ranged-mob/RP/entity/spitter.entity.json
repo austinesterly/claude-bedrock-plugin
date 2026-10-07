@@ -1,0 +1,41 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "ns:spitter",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/ns_spitter"
+      },
+      "geometry": {
+        "default": "geometry.ns.spitter"
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ],
+      "spawn_egg": {
+        "base_color": "#6E8B3D",
+        "overlay_color": "#D8E05A"
+      },
+      "scripts": {
+        "animate": [
+          "idle",
+          {
+            "walk": "math.clamp(q.modified_move_speed * 2.5, 0, 1)"
+          },
+          "look_at_target",
+          "attack_controller"
+        ]
+      },
+      "animations": {
+        "idle": "animation.ns.spitter.idle",
+        "walk": "animation.ns.spitter.walk",
+        "attack": "animation.ns.spitter.attack",
+        "look_at_target": "animation.common.look_at_target",
+        "attack_controller": "controller.animation.ns.spitter.attack"
+      }
+    }
+  }
+}

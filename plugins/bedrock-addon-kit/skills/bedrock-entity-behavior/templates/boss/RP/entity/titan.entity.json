@@ -1,0 +1,41 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "ns:titan",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/ns_titan"
+      },
+      "geometry": {
+        "default": "geometry.ns.titan"
+      },
+      "render_controllers": [
+        "controller.render.ns.titan"
+      ],
+      "spawn_egg": {
+        "base_color": "#4A4A55",
+        "overlay_color": "#C23B22"
+      },
+      "scripts": {
+        "animate": [
+          "idle",
+          {
+            "walk": "math.clamp(q.modified_move_speed * 2.5, 0, 1)"
+          },
+          "look_at_target",
+          "attack_controller"
+        ]
+      },
+      "animations": {
+        "idle": "animation.ns.titan.idle",
+        "walk": "animation.ns.titan.walk",
+        "attack": "animation.ns.titan.attack",
+        "look_at_target": "animation.common.look_at_target",
+        "attack_controller": "controller.animation.ns.titan.attack"
+      }
+    }
+  }
+}

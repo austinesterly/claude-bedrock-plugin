@@ -1,0 +1,40 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "ns:ruby_apple",
+      "menu_category": {
+        "category": "items",
+        "group": "minecraft:itemGroup.name.miscFood"
+      }
+    },
+    "components": {
+      "minecraft:icon": {
+        "textures": {
+          "default": "ns:ruby_apple"
+        }
+      },
+      "minecraft:display_name": {
+        "value": "item.ns:ruby_apple.name"
+      },
+      "minecraft:food": {
+        "nutrition": 4,
+        "saturation_modifier": 0.6,
+        "can_always_eat": true
+      },
+      "minecraft:use_animation": {
+        "value": "eat"
+      },
+      "minecraft:use_modifiers": {
+        "start_using": "always",
+        "use_duration": 1.6,
+        "movement_modifier": 0.35
+      },
+      "minecraft:tags": {
+        "tags": [
+          "minecraft:is_food"
+        ]
+      }
+    }
+  }
+}

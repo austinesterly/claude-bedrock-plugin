@@ -1,0 +1,42 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "ns:pup",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/ns_pup"
+      },
+      "geometry": {
+        "default": "geometry.ns.pup"
+      },
+      "render_controllers": [
+        "controller.render.ns.pup"
+      ],
+      "spawn_egg": {
+        "base_color": "#C9A27E",
+        "overlay_color": "#6B4A2F"
+      },
+      "scripts": {
+        "animate": [
+          "idle",
+          {
+            "walk": "math.clamp(q.modified_move_speed * 2.5, 0, 1)"
+          },
+          "look_at_target",
+          {
+            "sit": "q.is_sitting"
+          }
+        ]
+      },
+      "animations": {
+        "idle": "animation.ns.pup.idle",
+        "walk": "animation.ns.pup.walk",
+        "sit": "animation.ns.pup.sit",
+        "look_at_target": "animation.common.look_at_target"
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "ns:storyteller",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/ns_storyteller"
+      },
+      "geometry": {
+        "default": "geometry.ns.storyteller"
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ],
+      "spawn_egg": {
+        "base_color": "#6E3C96",
+        "overlay_color": "#E8C07A"
+      },
+      "scripts": {
+        "animate": [
+          "idle",
+          {
+            "walk": "math.clamp(q.modified_move_speed * 2.5, 0, 1)"
+          },
+          "look_at_target"
+        ]
+      },
+      "animations": {
+        "idle": "animation.ns.storyteller.idle",
+        "walk": "animation.ns.storyteller.walk",
+        "look_at_target": "animation.common.look_at_target"
+      }
+    }
+  }
+}

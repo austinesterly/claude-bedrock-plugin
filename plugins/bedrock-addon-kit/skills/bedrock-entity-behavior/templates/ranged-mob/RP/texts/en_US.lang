@@ -1,0 +1,5 @@
+entity.ns:spitter.name=Spitter
+item.spawn_egg.entity.ns:spitter.name=Spawn Spitter
+entity.ns:spitter_spit.name=Spit
+subtitles.ns.spitter.ambient=Spitter gurgles
+subtitles.ns.spitter.shoot=Spitter spits

@@ -1,0 +1,38 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "ns:vendor",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/ns_vendor"
+      },
+      "geometry": {
+        "default": "geometry.ns.vendor"
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ],
+      "spawn_egg": {
+        "base_color": "#BE7828",
+        "overlay_color": "#5A3A1E"
+      },
+      "scripts": {
+        "animate": [
+          "idle",
+          {
+            "walk": "math.clamp(q.modified_move_speed * 2.5, 0, 1)"
+          },
+          "look_at_target"
+        ]
+      },
+      "animations": {
+        "idle": "animation.ns.vendor.idle",
+        "walk": "animation.ns.vendor.walk",
+        "look_at_target": "animation.common.look_at_target"
+      }
+    }
+  }
+}

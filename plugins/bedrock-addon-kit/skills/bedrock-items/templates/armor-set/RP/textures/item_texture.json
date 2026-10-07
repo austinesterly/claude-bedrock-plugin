@@ -1,0 +1,18 @@
+{
+  "resource_pack_name": "ns",
+  "texture_name": "atlas.items",
+  "texture_data": {
+    "ns:ruby_helmet": {
+      "textures": "textures/items/ruby_helmet"
+    },
+    "ns:ruby_chestplate": {
+      "textures": "textures/items/ruby_chestplate"
+    },
+    "ns:ruby_leggings": {
+      "textures": "textures/items/ruby_leggings"
+    },
+    "ns:ruby_boots": {
+      "textures": "textures/items/ruby_boots"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "resource_pack_name": "ns",
+  "texture_name": "atlas.items",
+  "texture_data": {
+    "ns:ruby_bow": {
+      "textures": "textures/items/ruby_bow_standby"
+    },
+    "ns:ruby_arrow": {
+      "textures": "textures/items/ruby_arrow"
+    }
+  }
+}

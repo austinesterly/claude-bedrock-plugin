@@ -1,0 +1,28 @@
+{
+  "entity_sounds": {
+    "entities": {
+      "ns:titan": {
+        "volume": 1.5,
+        "pitch": [
+          0.8,
+          1.2
+        ],
+        "events": {
+          "ambient": "mob.ns.titan.idle",
+          "hurt": "mob.ns.titan.hurt",
+          "death": "mob.ns.titan.death",
+          "step": {
+            "sound": "mob.ns.titan.step",
+            "volume": 1,
+            "pitch": 0.8
+          },
+          "roar": {
+            "sound": "mob.ns.titan.roar",
+            "volume": 2,
+            "pitch": 0.8
+          }
+        }
+      }
+    }
+  }
+}

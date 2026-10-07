@@ -1,0 +1,3 @@
+item.ns:guide_book.name=Guide Book	#
+ns.menu.title=Adventure Guide	## Title of the main menu opened by the guide book
+ns.menu.body=Hello, %s!	## %s is the player name

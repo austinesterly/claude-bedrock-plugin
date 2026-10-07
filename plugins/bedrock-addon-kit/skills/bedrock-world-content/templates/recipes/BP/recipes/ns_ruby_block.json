@@ -1,0 +1,29 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "ns:ruby_block"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "###",
+      "###",
+      "###"
+    ],
+    "key": {
+      "#": {
+        "item": "ns:ruby"
+      }
+    },
+    "unlock": [
+      {
+        "item": "ns:ruby"
+      }
+    ],
+    "result": {
+      "item": "ns:ruby_block"
+    }
+  }
+}

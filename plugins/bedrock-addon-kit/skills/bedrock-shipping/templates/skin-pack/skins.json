@@ -1,0 +1,12 @@
+{
+  "serialize_name": "ns_example",
+  "localization_name": "ns_example",
+  "skins": [
+    {
+      "localization_name": "explorer",
+      "geometry": "geometry.humanoid.custom",
+      "texture": "ns_explorer.png",
+      "type": "free"
+    }
+  ]
+}

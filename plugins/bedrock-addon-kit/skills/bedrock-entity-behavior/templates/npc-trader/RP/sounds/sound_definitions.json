@@ -1,0 +1,84 @@
+{
+  "format_version": "1.26.50",
+  "sound_definitions": {
+    "mob.ns.merchant.idle": {
+      "category": "neutral",
+      "subtitle": "subtitles.ns.merchant.ambient",
+      "sounds": [
+        {
+          "name": "sounds/mob/villager/idle1"
+        },
+        {
+          "name": "sounds/mob/villager/idle2"
+        },
+        {
+          "name": "sounds/mob/villager/idle3"
+        }
+      ]
+    },
+    "mob.ns.merchant.hurt": {
+      "category": "neutral",
+      "sounds": [
+        {
+          "name": "sounds/mob/villager/hit1"
+        },
+        {
+          "name": "sounds/mob/villager/hit2"
+        },
+        {
+          "name": "sounds/mob/villager/hit3"
+        }
+      ]
+    },
+    "mob.ns.merchant.death": {
+      "category": "neutral",
+      "sounds": [
+        {
+          "name": "sounds/mob/villager/death"
+        }
+      ]
+    },
+    "mob.ns.merchant.haggle": {
+      "category": "neutral",
+      "sounds": [
+        {
+          "name": "sounds/mob/villager/haggle1"
+        },
+        {
+          "name": "sounds/mob/villager/haggle2"
+        },
+        {
+          "name": "sounds/mob/villager/haggle3"
+        }
+      ]
+    },
+    "mob.ns.merchant.yes": {
+      "category": "neutral",
+      "sounds": [
+        {
+          "name": "sounds/mob/villager/yes1"
+        },
+        {
+          "name": "sounds/mob/villager/yes2"
+        },
+        {
+          "name": "sounds/mob/villager/yes3"
+        }
+      ]
+    },
+    "mob.ns.merchant.no": {
+      "category": "neutral",
+      "sounds": [
+        {
+          "name": "sounds/mob/villager/no1"
+        },
+        {
+          "name": "sounds/mob/villager/no2"
+        },
+        {
+          "name": "sounds/mob/villager/no3"
+        }
+      ]
+    }
+  }
+}

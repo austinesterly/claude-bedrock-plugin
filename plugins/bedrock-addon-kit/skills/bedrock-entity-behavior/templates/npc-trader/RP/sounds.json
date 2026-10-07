@@ -1,0 +1,21 @@
+{
+  "entity_sounds": {
+    "entities": {
+      "ns:merchant": {
+        "volume": 1,
+        "pitch": [
+          0.8,
+          1.2
+        ],
+        "events": {
+          "ambient": "mob.ns.merchant.idle",
+          "hurt": "mob.ns.merchant.hurt",
+          "death": "mob.ns.merchant.death",
+          "haggle": "mob.ns.merchant.haggle",
+          "haggle.yes": "mob.ns.merchant.yes",
+          "haggle.no": "mob.ns.merchant.no"
+        }
+      }
+    }
+  }
+}

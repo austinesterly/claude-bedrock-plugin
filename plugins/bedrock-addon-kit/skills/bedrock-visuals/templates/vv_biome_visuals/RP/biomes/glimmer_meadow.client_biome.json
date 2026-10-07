@@ -1,0 +1,38 @@
+{
+  "format_version": "1.21.120",
+  "minecraft:client_biome": {
+    "description": {
+      "identifier": "ns:glimmer_meadow"
+    },
+    "components": {
+      "minecraft:sky_color": {
+        "sky_color": "#8fc8ff"
+      },
+      "minecraft:fog_appearance": {
+        "fog_identifier": "ns:glimmer_fog"
+      },
+      "minecraft:water_appearance": {
+        "surface_color": "#44aff5",
+        "surface_opacity": 0.65
+      },
+      "minecraft:grass_appearance": {
+        "color": "#8be0a8"
+      },
+      "minecraft:foliage_appearance": {
+        "color": "#6cc48e"
+      },
+      "minecraft:atmosphere_identifier": {
+        "atmosphere_identifier": "ns:glimmer_atmospherics"
+      },
+      "minecraft:color_grading_identifier": {
+        "color_grading_identifier": "ns:glimmer_color_grading"
+      },
+      "minecraft:lighting_identifier": {
+        "lighting_identifier": "ns:glimmer_lighting"
+      },
+      "minecraft:water_identifier": {
+        "water_identifier": "ns:glimmer_water"
+      }
+    }
+  }
+}

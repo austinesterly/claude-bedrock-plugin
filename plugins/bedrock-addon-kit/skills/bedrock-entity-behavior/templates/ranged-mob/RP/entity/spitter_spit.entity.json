@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "ns:spitter_spit",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/ns_spitter_spit"
+      },
+      "geometry": {
+        "default": "geometry.ns.spitter_spit"
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ],
+      "scripts": {
+        "animate": [
+          "spin"
+        ]
+      },
+      "animations": {
+        "spin": "animation.ns.spitter_spit.spin"
+      }
+    }
+  }
+}

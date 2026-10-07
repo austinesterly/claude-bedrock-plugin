@@ -1,0 +1,20 @@
+{
+  "resource_pack_name": "ns",
+  "texture_name": "atlas.terrain",
+  "padding": 8,
+  "num_mip_levels": 4,
+  "texture_data": {
+    "ns_berry_crop_stage_0": {
+      "textures": "textures/blocks/ns/berry_crop_stage_0"
+    },
+    "ns_berry_crop_stage_1": {
+      "textures": "textures/blocks/ns/berry_crop_stage_1"
+    },
+    "ns_berry_crop_stage_2": {
+      "textures": "textures/blocks/ns/berry_crop_stage_2"
+    },
+    "ns_berry_crop_stage_3": {
+      "textures": "textures/blocks/ns/berry_crop_stage_3"
+    }
+  }
+}

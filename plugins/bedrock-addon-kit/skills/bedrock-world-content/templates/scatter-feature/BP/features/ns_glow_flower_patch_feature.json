@@ -1,0 +1,22 @@
+{
+  "format_version": "1.21.40",
+  "minecraft:scatter_feature": {
+    "description": {
+      "identifier": "ns:glow_flower_patch_feature"
+    },
+    "places_feature": "ns:glow_flower_feature",
+    "distribution": {
+      "iterations": 12,
+      "x": {
+        "distribution": "gaussian",
+        "extent": [ -4, 4 ]
+      },
+      "y": 0,
+      "z": {
+        "distribution": "gaussian",
+        "extent": [ -4, 4 ]
+      }
+    },
+    "project_input_to_floor": true
+  }
+}

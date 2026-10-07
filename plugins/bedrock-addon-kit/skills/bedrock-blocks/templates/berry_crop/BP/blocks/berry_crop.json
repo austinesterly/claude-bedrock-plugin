@@ -1,0 +1,116 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:block": {
+    "description": {
+      "identifier": "ns:berry_crop",
+      "menu_category": {
+        "category": "nature"
+      },
+      "states": {
+        "ns:growth": [0, 1, 2, 3]
+      }
+    },
+    "components": {
+      "minecraft:geometry": "minecraft:geometry.cross",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "ns_berry_crop_stage_0",
+          "render_method": "alpha_test_single_sided",
+          "ambient_occlusion": 0.0
+        }
+      },
+      "minecraft:collision_box": false,
+      "minecraft:selection_box": {
+        "origin": [-8, 0, -8],
+        "size": [16, 4, 16]
+      },
+      "minecraft:light_dampening": 0,
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 0
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 0
+      },
+      "minecraft:placement_filter": {
+        "conditions": [
+          {
+            "allowed_faces": ["up"],
+            "block_filter": ["minecraft:farmland"]
+          }
+        ]
+      },
+      "minecraft:liquid_detection": {
+        "detection_rules": [
+          {
+            "liquid_type": "water",
+            "can_contain_liquid": false,
+            "on_liquid_touches": "popped"
+          }
+        ]
+      },
+      "minecraft:movable": {
+        "movement_type": "popped"
+      },
+      "minecraft:loot": "loot_tables/blocks/ns_berry_crop_young.json",
+      "minecraft:map_color": "#3c8c32",
+      "ns:crop_growth": {
+        "state": "ns:growth",
+        "max_stage": 3
+      }
+    },
+    "permutations": [
+      {
+        "condition": "query.block_state('ns:growth') == 1",
+        "components": {
+          "minecraft:geometry": "minecraft:geometry.cross",
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "ns_berry_crop_stage_1",
+              "render_method": "alpha_test_single_sided",
+              "ambient_occlusion": 0.0
+            }
+          },
+          "minecraft:selection_box": {
+            "origin": [-8, 0, -8],
+            "size": [16, 7, 16]
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('ns:growth') == 2",
+        "components": {
+          "minecraft:geometry": "minecraft:geometry.cross",
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "ns_berry_crop_stage_2",
+              "render_method": "alpha_test_single_sided",
+              "ambient_occlusion": 0.0
+            }
+          },
+          "minecraft:selection_box": {
+            "origin": [-8, 0, -8],
+            "size": [16, 10, 16]
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('ns:growth') == 3",
+        "components": {
+          "minecraft:geometry": "minecraft:geometry.cross",
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "ns_berry_crop_stage_3",
+              "render_method": "alpha_test_single_sided",
+              "ambient_occlusion": 0.0
+            }
+          },
+          "minecraft:selection_box": {
+            "origin": [-8, 0, -8],
+            "size": [16, 13, 16]
+          },
+          "minecraft:loot": "loot_tables/blocks/ns_berry_crop_mature.json"
+        }
+      }
+    ]
+  }
+}

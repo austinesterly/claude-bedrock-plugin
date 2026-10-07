@@ -1,0 +1,14 @@
+{
+  "resource_pack_name": "ns",
+  "texture_name": "atlas.terrain",
+  "padding": 8,
+  "num_mip_levels": 4,
+  "texture_data": {
+    "ns_lamp_off": {
+      "textures": "textures/blocks/ns/lamp_off"
+    },
+    "ns_lamp_on": {
+      "textures": "textures/blocks/ns/lamp_on"
+    }
+  }
+}

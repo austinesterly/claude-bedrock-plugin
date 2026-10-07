@@ -1,0 +1,14 @@
+{
+  "name": "bedrock-creator-tools",
+  "owner": { "name": "Austin" },
+  "description": "Claude Code plugins for Minecraft Bedrock add-on creators.",
+  "plugins": [
+    {
+      "name": "bedrock-addon-kit",
+      "source": "./plugins/bedrock-addon-kit",
+      "description": "Blockbench modelling and animation, Script API 2.x, entity JSON, and a dated record of what each Bedrock release lets creators do.",
+      "category": "game-development",
+      "tags": ["minecraft", "bedrock", "blockbench", "script-api", "add-ons"]
+    }
+  ]
+}

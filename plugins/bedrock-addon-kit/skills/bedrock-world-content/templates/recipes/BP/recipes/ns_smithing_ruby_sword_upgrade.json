@@ -1,0 +1,15 @@
+{
+  "format_version": "1.21.110",
+  "minecraft:recipe_smithing_transform": {
+    "description": {
+      "identifier": "ns:smithing_ruby_sword_upgrade"
+    },
+    "tags": [
+      "smithing_table"
+    ],
+    "template": "minecraft:netherite_upgrade_smithing_template",
+    "base": "ns:ruby_sword",
+    "addition": "minecraft:netherite_ingot",
+    "result": "ns:ruby_netherite_sword"
+  }
+}

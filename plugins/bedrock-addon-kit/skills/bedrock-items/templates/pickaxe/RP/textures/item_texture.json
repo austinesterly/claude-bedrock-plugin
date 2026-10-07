@@ -1,0 +1,9 @@
+{
+  "resource_pack_name": "ns",
+  "texture_name": "atlas.items",
+  "texture_data": {
+    "ns:ruby_pickaxe": {
+      "textures": "textures/items/ruby_pickaxe"
+    }
+  }
+}

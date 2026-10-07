@@ -1,0 +1,22 @@
+{
+  "entity_sounds": {
+    "entities": {
+      "ns:critter": {
+        "volume": 1.0,
+        "pitch": [
+          0.8,
+          1.2
+        ],
+        "events": {
+          "ambient": "mob.ns.critter.say",
+          "hurt": "mob.ns.critter.hurt",
+          "death": {
+            "sound": "mob.ns.critter.hurt",
+            "pitch": 0.8,
+            "volume": 1.0
+          }
+        }
+      }
+    }
+  }
+}

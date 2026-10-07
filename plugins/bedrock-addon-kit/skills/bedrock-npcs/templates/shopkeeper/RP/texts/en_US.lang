@@ -1,0 +1,3 @@
+entity.ns:vendor.name=Vendor
+item.spawn_egg.entity.ns:vendor.name=Spawn Vendor
+action.interact.ns.shop=Shop	## Touch-control button text on the vendor

@@ -1,0 +1,19 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_furnace": {
+    "description": {
+      "identifier": "ns:furnace_ruby_ore"
+    },
+    "unlock": [
+      {
+        "item": "ns:ruby_ore"
+      }
+    ],
+    "tags": [
+      "furnace",
+      "blast_furnace"
+    ],
+    "input": "ns:ruby_ore",
+    "output": "ns:ruby"
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "format_version": "1.26.50",
+  "sound_definitions": {
+    "mob.ns.steed.idle": {
+      "category": "neutral",
+      "subtitle": "subtitles.ns.steed.ambient",
+      "sounds": [
+        {
+          "name": "sounds/mob/horse/idle1"
+        },
+        {
+          "name": "sounds/mob/horse/idle2"
+        },
+        {
+          "name": "sounds/mob/horse/idle3"
+        }
+      ]
+    },
+    "mob.ns.steed.hurt": {
+      "category": "neutral",
+      "sounds": [
+        {
+          "name": "sounds/mob/horse/hit1"
+        },
+        {
+          "name": "sounds/mob/horse/hit2"
+        },
+        {
+          "name": "sounds/mob/horse/hit3"
+        }
+      ]
+    },
+    "mob.ns.steed.death": {
+      "category": "neutral",
+      "sounds": [
+        {
+          "name": "sounds/mob/horse/death"
+        }
+      ]
+    },
+    "mob.ns.steed.jump": {
+      "category": "neutral",
+      "sounds": [
+        {
+          "name": "sounds/mob/horse/jump"
+        }
+      ]
+    },
+    "mob.ns.steed.land": {
+      "category": "neutral",
+      "sounds": [
+        {
+          "name": "sounds/mob/horse/land"
+        }
+      ]
+    },
+    "mob.ns.steed.saddle": {
+      "category": "neutral",
+      "sounds": [
+        {
+          "name": "sounds/mob/horse/leather"
+        }
+      ]
+    },
+    "mob.ns.steed.unsaddle": {
+      "category": "neutral",
+      "sounds": [
+        {
+          "name": "sounds/armor/unsaddle"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "bedrock-addon-kit",
+  "displayName": "Bedrock Add-on Kit",
+  "version": "0.4.0",
+  "description": "Everything to build a Minecraft Bedrock add-on from scratch with Claude Code: custom items, tools, armor, blocks, entities, NPCs, UIs, world content, dimensions, biomes and Vibrant Visuals with templates, packaging, world templates and Marketplace rules, an error dictionary and debugging guide, a full JSON component reference, Blockbench and Script API 2.x guidance, an add-on generator, a pack checker, and a dated record of current versions and creator features.",
+  "author": { "name": "Austin" },
+  "keywords": ["minecraft", "bedrock", "blockbench", "molang", "script-api", "add-on"]
+}

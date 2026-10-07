@@ -1,0 +1,3 @@
+entity.ns:steed.name=Steed
+item.spawn_egg.entity.ns:steed.name=Spawn Steed
+subtitles.ns.steed.ambient=Steed neighs
