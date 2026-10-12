@@ -1,6 +1,6 @@
 # Script API surface by channel (generated)
 
-Generated on **2026-10-06** from the official `index.d.ts` typings on npm. "Stable" = the `latest` tag. Use this to check whether an API a tutorial uses is stable before shipping it.
+Generated on **2026-10-12** from the official `index.d.ts` typings on npm. "Stable" = the `latest` tag. Use this to check whether an API a tutorial uses is stable before shipping it.
 
 ## @minecraft/server
 

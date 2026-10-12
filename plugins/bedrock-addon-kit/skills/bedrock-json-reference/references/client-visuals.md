@@ -1,6 +1,6 @@
 # Particles, cameras, visuals, resource files
 
-Generated 2026-10-06 by `scripts/build-json-reference.mjs` from Mojang's official form definitions in the Microsoft Learn docs repo (content/forms/client_particles, camera, visual, resource, client_misc, client_deferred_rendering). Search for the component id. Field types come from the schema; when a type is blank, check the example or the linked sub-object.
+Generated 2026-10-12 by `scripts/build-json-reference.mjs` from Mojang's official form definitions in the Microsoft Learn docs repo (content/forms/client_particles, camera, visual, resource, client_misc, client_deferred_rendering). Search for the component id. Field types come from the schema; when a type is blank, check the example or the linked sub-object.
 
 ## Components (12)
 

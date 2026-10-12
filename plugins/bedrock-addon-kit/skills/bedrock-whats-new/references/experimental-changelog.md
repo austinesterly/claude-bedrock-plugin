@@ -1,6 +1,6 @@
 # Experimental and upcoming features in recent changelogs (generated)
 
-Generated on **2026-10-06** from feedback.minecraft.net (official Zendesk API). Each release lists its "Experimental ..." sections word for word, then other bullets that mention an experiment or beta (often a feature graduating out of an experiment). Newest first. Toggle names are as Mojang writes them in world settings > Experiments.
+Generated on **2026-10-12** from feedback.minecraft.net (official Zendesk API). Each release lists its "Experimental ..." sections word for word, then other bullets that mention an experiment or beta (often a feature graduating out of an experiment). Newest first. Toggle names are as Mojang writes them in world settings > Experiments.
 
 ## Minecraft Beta & Preview - 26.60.29 (2026-09-30)
 
