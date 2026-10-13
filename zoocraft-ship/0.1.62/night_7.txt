@@ -1,0 +1,123 @@
+From the cloud session: the nocturnal house and the Hedgehog (0.1.62, fix batch 7 of 7). Apply this after batches 1 to 6 (all applied, build.cmd stopped at validate: the hedgehog's animations move a "tail" bone the model didn't have). This gives the model its tail bone (the tail cube moves out of the body bone into its own, so the animations can wag it; textures unchanged) and adds a test that every animated bone is in the model. Don't make your own changes for it. Apply everything below inside addon\ exactly. This is the last batch: after the SHA check, run build.cmd. Then post ONE short line in the thread: the version it built and the test count (expect 113), or what failed. Austin needs a FULL Minecraft restart after the build.
+Rules: Copy every file you replace or edit into a new backups\<timestamp>\ folder first (keep its relative path), never delete. Install nothing. Don't touch the manifests (build.cmd bumps the version). Write all files UTF-8 without BOM and with LF line endings, each ending with exactly one newline. FILE blocks: the content is exactly what's between the ``` fences. EDIT blocks: replace each OLD (between the fences, matched as whole lines) with its NEW, in order; each OLD must be found exactly once. If anything doesn't match, or a SHA-256 check fails, stop and say in the thread which file failed.
+
+Before writing anything, these files must have these SHA-256 hashes (after batches 1 to 6). If any differs, write nothing and say so in the thread.
+73d77d6fda0a047a0c22fa9809e4a3cedcb031dc00376f555e8357159002dd48  addon\packs\RP\models\entity\hedgehog.geo.json
+39a8178199661a4edffb7d7fa672ea23fc9e9aafc8a119d7ef530b57a4b40b86  addon\tests\logic.test.mjs
+
+=== FILE addon\packs\RP\models\entity\hedgehog.geo.json (replace the whole file)
+```
+{
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.zoocraft.hedgehog",
+        "texture_width": 64,
+        "texture_height": 64,
+        "visible_bounds_width": 2,
+        "visible_bounds_height": 1,
+        "visible_bounds_offset": [0, 0.25, 0]
+      },
+      "bones": [
+        {
+          "name": "body",
+          "pivot": [0, 3, 0],
+          "cubes": [
+            {"origin": [-3.5, 1.5, -5], "size": [7, 3, 10], "uv": [0, 14]},
+            {"origin": [-4, 3.5, -5.5], "size": [8, 3, 11], "uv": [0, 0]},
+            {"origin": [-3, 6.5, -4.5], "size": [6, 2, 9], "uv": [34, 14]},
+            {"origin": [-1.5, 8.5, -3.5], "size": [3, 1, 7], "uv": [0, 27]},
+            {"origin": [-4.5, 4.5, -1], "size": [1, 2, 1], "uv": [0, 40]},
+            {"origin": [3.5, 4.5, 1], "size": [1, 2, 1], "uv": [4, 40]},
+            {"origin": [-3.5, 6.5, 3], "size": [1, 2, 1], "uv": [8, 40]},
+            {"origin": [2.5, 6.5, -2], "size": [1, 2, 1], "uv": [12, 40]},
+            {"origin": [-1, 8.5, 2], "size": [1, 2, 1], "uv": [16, 40]},
+            {"origin": [-2.5, 7.5, 4.5], "size": [1, 2, 1], "uv": [20, 40]},
+            {"origin": [1.5, 7.5, -4.5], "size": [1, 2, 1], "uv": [24, 40]},
+            {"origin": [-3.5, 5.5, -4.5], "size": [1, 2, 1], "uv": [28, 40]},
+            {"origin": [3, 5.5, 4], "size": [1, 2, 1], "uv": [32, 40]},
+            {"origin": [0.5, 9, -1], "size": [1, 1, 1], "uv": [42, 40]}
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "body",
+          "pivot": [0, 4, -5],
+          "cubes": [
+            {"origin": [-2.5, 2, -8], "size": [5, 4, 3], "uv": [20, 27]},
+            {"origin": [-3, 5.5, -8.5], "size": [6, 2, 3], "uv": [36, 27]},
+            {"origin": [-1.5, 2.5, -11], "size": [3, 2, 3], "uv": [0, 35]},
+            {"origin": [-1, 3.5, -12], "size": [2, 1, 1], "uv": [36, 40]}
+          ]
+        },
+        {
+          "name": "earL",
+          "parent": "head",
+          "pivot": [2.5, 5.5, -6.5],
+          "rotation": [0, 0, 10],
+          "cubes": [{"origin": [1.5, 5.5, -7], "size": [2, 2, 1], "uv": [50, 35]}]
+        },
+        {
+          "name": "earR",
+          "parent": "head",
+          "pivot": [-2.5, 5.5, -6.5],
+          "rotation": [0, 0, -10],
+          "cubes": [{"origin": [-3.5, 5.5, -7], "size": [2, 2, 1], "uv": [56, 35]}]
+        },
+        {
+          "name": "leg0",
+          "parent": "body",
+          "pivot": [1.5, 2, -4],
+          "cubes": [{"origin": [0.5, 0, -5], "size": [2, 2, 2], "uv": [12, 35]}]
+        },
+        {
+          "name": "leg1",
+          "parent": "body",
+          "pivot": [-1.5, 2, -4],
+          "cubes": [{"origin": [-2.5, 0, -5], "size": [2, 2, 2], "uv": [20, 35]}]
+        },
+        {
+          "name": "leg2",
+          "parent": "body",
+          "pivot": [1.5, 2, 3],
+          "cubes": [{"origin": [0.5, 0, 2], "size": [2, 2, 2], "uv": [28, 35]}]
+        },
+        {
+          "name": "leg3",
+          "parent": "body",
+          "pivot": [-1.5, 2, 3],
+          "cubes": [{"origin": [-2.5, 0, 2], "size": [2, 2, 2], "uv": [36, 35]}]
+        },
+        {
+          "name": "tail",
+          "parent": "body",
+          "pivot": [0, 3, 5],
+          "cubes": [{"origin": [-0.5, 2.5, 5], "size": [1, 1, 2], "uv": [44, 35]}]
+        }
+      ]
+    }
+  ]
+}
+```
+
+=== EDIT addon\tests\logic.test.mjs (1 replacements, apply in order)
+--- 1
+OLD:
+```
+  const ctrl = read("../packs/RP/animation_controllers/hedgehog.animation_controllers.json").animation_controllers["controller.animation.zoocraft.hedgehog.move"];
+```
+NEW:
+```
+  // Every bone the hedgehog's animations move is in its model (build.cmd's validate stops on a missing one).
+  const geoBones = new Set(read("../packs/RP/models/entity/hedgehog.geo.json")["minecraft:geometry"][0].bones.map((b) => b.name));
+  for (const [name, anim] of Object.entries(read("../packs/RP/animations/hedgehog.animation.json").animations)) for (const bone of Object.keys(anim.bones)) assert.ok(geoBones.has(bone), `${name} moves ${bone}`);
+  assert.ok(geoBones.has("tail"), "the tail is its own bone, so the animations can wag it");
+  const ctrl = read("../packs/RP/animation_controllers/hedgehog.animation_controllers.json").animation_controllers["controller.animation.zoocraft.hedgehog.move"];
+```
+
+SHA-256 (Get-FileHash) of every file in this batch after writing (LF endings):
+699f1fe80097a8ccde68d1079f3ff3f3ef874aaaaa238a69b5acc19c283d6688  addon\packs\RP\models\entity\hedgehog.geo.json
+14f6a05cc9bead4f5771411521f9c103121a8b7acf380068c0ee59b3e10f82b1  addon\tests\logic.test.mjs
+
+If any check failed, don't build; say which file in the thread.
