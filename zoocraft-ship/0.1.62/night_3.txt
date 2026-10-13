@@ -1,0 +1,609 @@
+From the cloud session: the nocturnal house and the Hedgehog (0.1.62, batch 3 of 6). Apply this on 0.1.61 (after the three mixed-species batches were applied and built). Austin asked for the next slice: the Hedgehog, the first nocturnal animal (asleep by Minecraft day and up at night; an exhibit roofed over is a nocturnal house, where that is turned round so guests see it by day), a Burrow Shelter to sleep in, an Insect Hatchery that grows Insect Rations, and the insect look for feeders (docs\Nocturnal_house_test_plan.md is in this batch set). New entities, blocks and textures: Austin needs a FULL Minecraft restart after the build. Don't make your own changes for it, these batches are it. Apply everything below inside addon\ exactly. Don't build yet: batch 4 follows. When this batch is written and its SHA checks pass, say nothing in the thread; just wait for the next batch.
+Rules: Copy every file you replace or edit into a new backups\<timestamp>\ folder first (keep its relative path), never delete. Install nothing. Don't touch the manifests (build.cmd bumps the version). Write all files UTF-8 without BOM and with LF line endings, each ending with exactly one newline. FILE blocks: the content is exactly what's between the ``` fences (new files: create the folders as needed). HEX blocks: join the lines between the fences, convert the hex to bytes and write them (PNG files). EDIT blocks: replace each OLD (between the fences, matched as whole lines) with its NEW, in order; each OLD must be found exactly once. An "APPEND" part adds its content at the end of the file, after its last line, ending with a newline. If anything doesn't match, or a SHA-256 check fails, stop and say in the thread which file failed.
+
+Before writing anything: check these files from the earlier batches are in place with these SHA-256 hashes. If any is missing or different, write nothing and say in the thread which batch of these fixes is missing.
+5370c196dbf67dc3cd360891e01dab351cf4df79fe2b5ed8c7b88301ba3578c8  addon\packs\BP\blocks\burrow_shelter.json (batch 1)
+9894daf97506243fe7205c8e0a50cb9d2ad38c885586fb8a3d2623934fdcba7a  addon\packs\BP\spawn_rules\wild_hedgehog.json (batch 2)
+
+=== FILE addon\packs\RP\models\blocks\insect_hatchery.geo.json (new)
+```
+{
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.zoocraft.insect_hatchery",
+        "texture_width": 16,
+        "texture_height": 16,
+        "visible_bounds_width": 1,
+        "visible_bounds_height": 1,
+        "visible_bounds_offset": [0, 0.5, 0]
+      },
+      "bones": [
+        {
+          "name": "box",
+          "pivot": [0, 0, 0],
+          "cubes": [
+            {
+              "origin": [-8, 0, -8],
+              "size": [16, 6, 16],
+              "uv": {
+                "north": {"uv": [0, 10], "uv_size": [16, 6], "material_instance": "soil"},
+                "south": {"uv": [0, 10], "uv_size": [16, 6], "material_instance": "soil"},
+                "east": {"uv": [0, 10], "uv_size": [16, 6], "material_instance": "soil"},
+                "west": {"uv": [0, 10], "uv_size": [16, 6], "material_instance": "soil"},
+                "up": {"uv": [0, 0], "uv_size": [16, 16], "material_instance": "soil"},
+                "down": {"uv": [0, 0], "uv_size": [16, 16], "material_instance": "soil"}
+              }
+            },
+            {
+              "origin": [-7, 6, -7],
+              "size": [14, 1, 14],
+              "uv": {
+                "north": {"uv": [1, 9], "uv_size": [14, 1], "material_instance": "grubs"},
+                "south": {"uv": [1, 9], "uv_size": [14, 1], "material_instance": "grubs"},
+                "east": {"uv": [1, 9], "uv_size": [14, 1], "material_instance": "grubs"},
+                "west": {"uv": [1, 9], "uv_size": [14, 1], "material_instance": "grubs"},
+                "up": {"uv": [1, 1], "uv_size": [14, 14], "material_instance": "grubs"},
+                "down": {"uv": [1, 1], "uv_size": [14, 14], "material_instance": "grubs"}
+              }
+            },
+            {
+              "origin": [-8, 6, -8],
+              "size": [16, 6, 1],
+              "uv": {
+                "north": {"uv": [0, 4], "uv_size": [16, 6], "material_instance": "side"},
+                "south": {"uv": [0, 4], "uv_size": [16, 6], "material_instance": "side"},
+                "east": {"uv": [0, 4], "uv_size": [1, 6], "material_instance": "side"},
+                "west": {"uv": [0, 4], "uv_size": [1, 6], "material_instance": "side"},
+                "up": {"uv": [0, 0], "uv_size": [16, 1], "material_instance": "side"},
+                "down": {"uv": [0, 0], "uv_size": [16, 1], "material_instance": "side"}
+              }
+            },
+            {
+              "origin": [-8, 6, 7],
+              "size": [16, 6, 1],
+              "uv": {
+                "north": {"uv": [0, 4], "uv_size": [16, 6], "material_instance": "side"},
+                "south": {"uv": [0, 4], "uv_size": [16, 6], "material_instance": "side"},
+                "east": {"uv": [15, 4], "uv_size": [1, 6], "material_instance": "side"},
+                "west": {"uv": [15, 4], "uv_size": [1, 6], "material_instance": "side"},
+                "up": {"uv": [0, 15], "uv_size": [16, 1], "material_instance": "side"},
+                "down": {"uv": [0, 15], "uv_size": [16, 1], "material_instance": "side"}
+              }
+            },
+            {
+              "origin": [-8, 6, -7],
+              "size": [1, 6, 14],
+              "uv": {
+                "north": {"uv": [0, 4], "uv_size": [1, 6], "material_instance": "side"},
+                "south": {"uv": [0, 4], "uv_size": [1, 6], "material_instance": "side"},
+                "east": {"uv": [1, 4], "uv_size": [14, 6], "material_instance": "side"},
+                "west": {"uv": [1, 4], "uv_size": [14, 6], "material_instance": "side"},
+                "up": {"uv": [0, 1], "uv_size": [1, 14], "material_instance": "side"},
+                "down": {"uv": [0, 1], "uv_size": [1, 14], "material_instance": "side"}
+              }
+            },
+            {
+              "origin": [7, 6, -7],
+              "size": [1, 6, 14],
+              "uv": {
+                "north": {"uv": [15, 4], "uv_size": [1, 6], "material_instance": "side"},
+                "south": {"uv": [15, 4], "uv_size": [1, 6], "material_instance": "side"},
+                "east": {"uv": [1, 4], "uv_size": [14, 6], "material_instance": "side"},
+                "west": {"uv": [1, 4], "uv_size": [14, 6], "material_instance": "side"},
+                "up": {"uv": [15, 1], "uv_size": [1, 14], "material_instance": "side"},
+                "down": {"uv": [15, 1], "uv_size": [1, 14], "material_instance": "side"}
+              }
+            },
+            {
+              "origin": [-8, 12, -8],
+              "size": [16, 1, 1],
+              "uv": {
+                "north": {"uv": [0, 3], "uv_size": [16, 1]},
+                "south": {"uv": [0, 3], "uv_size": [16, 1]},
+                "east": {"uv": [0, 3], "uv_size": [1, 1]},
+                "west": {"uv": [0, 3], "uv_size": [1, 1]},
+                "up": {"uv": [0, 0], "uv_size": [16, 1]},
+                "down": {"uv": [0, 0], "uv_size": [16, 1]}
+              }
+            },
+            {
+              "origin": [-8, 12, 7],
+              "size": [16, 1, 1],
+              "uv": {
+                "north": {"uv": [0, 3], "uv_size": [16, 1]},
+                "south": {"uv": [0, 3], "uv_size": [16, 1]},
+                "east": {"uv": [15, 3], "uv_size": [1, 1]},
+                "west": {"uv": [15, 3], "uv_size": [1, 1]},
+                "up": {"uv": [0, 15], "uv_size": [16, 1]},
+                "down": {"uv": [0, 15], "uv_size": [16, 1]}
+              }
+            },
+            {
+              "origin": [-8, 12, -7],
+              "size": [1, 1, 14],
+              "uv": {
+                "north": {"uv": [0, 3], "uv_size": [1, 1]},
+                "south": {"uv": [0, 3], "uv_size": [1, 1]},
+                "east": {"uv": [1, 3], "uv_size": [14, 1]},
+                "west": {"uv": [1, 3], "uv_size": [14, 1]},
+                "up": {"uv": [0, 1], "uv_size": [1, 14]},
+                "down": {"uv": [0, 1], "uv_size": [1, 14]}
+              }
+            },
+            {
+              "origin": [7, 12, -7],
+              "size": [1, 1, 14],
+              "uv": {
+                "north": {"uv": [15, 3], "uv_size": [1, 1]},
+                "south": {"uv": [15, 3], "uv_size": [1, 1]},
+                "east": {"uv": [1, 3], "uv_size": [14, 1]},
+                "west": {"uv": [1, 3], "uv_size": [14, 1]},
+                "up": {"uv": [15, 1], "uv_size": [1, 14]},
+                "down": {"uv": [15, 1], "uv_size": [1, 14]}
+              }
+            },
+            {
+              "origin": [-7, 12, -7],
+              "size": [14, 1, 14],
+              "uv": {
+                "north": {"uv": [1, 3], "uv_size": [14, 1], "material_instance": "lid"},
+                "south": {"uv": [1, 3], "uv_size": [14, 1], "material_instance": "lid"},
+                "east": {"uv": [1, 3], "uv_size": [14, 1], "material_instance": "lid"},
+                "west": {"uv": [1, 3], "uv_size": [14, 1], "material_instance": "lid"},
+                "up": {"uv": [1, 1], "uv_size": [14, 14], "material_instance": "lid"},
+                "down": {"uv": [1, 1], "uv_size": [14, 14], "material_instance": "lid"}
+              }
+            },
+            {
+              "origin": [-8, 5, -8],
+              "size": [1, 8, 1],
+              "uv": {
+                "north": {"uv": [0, 3], "uv_size": [1, 8]},
+                "south": {"uv": [0, 3], "uv_size": [1, 8]},
+                "east": {"uv": [0, 3], "uv_size": [1, 8]},
+                "west": {"uv": [0, 3], "uv_size": [1, 8]},
+                "up": {"uv": [0, 0], "uv_size": [1, 1]},
+                "down": {"uv": [0, 0], "uv_size": [1, 1]}
+              }
+            },
+            {
+              "origin": [7, 5, -8],
+              "size": [1, 8, 1],
+              "uv": {
+                "north": {"uv": [15, 3], "uv_size": [1, 8]},
+                "south": {"uv": [15, 3], "uv_size": [1, 8]},
+                "east": {"uv": [0, 3], "uv_size": [1, 8]},
+                "west": {"uv": [0, 3], "uv_size": [1, 8]},
+                "up": {"uv": [15, 0], "uv_size": [1, 1]},
+                "down": {"uv": [15, 0], "uv_size": [1, 1]}
+              }
+            },
+            {
+              "origin": [-8, 5, 7],
+              "size": [1, 8, 1],
+              "uv": {
+                "north": {"uv": [0, 3], "uv_size": [1, 8]},
+                "south": {"uv": [0, 3], "uv_size": [1, 8]},
+                "east": {"uv": [15, 3], "uv_size": [1, 8]},
+                "west": {"uv": [15, 3], "uv_size": [1, 8]},
+                "up": {"uv": [0, 15], "uv_size": [1, 1]},
+                "down": {"uv": [0, 15], "uv_size": [1, 1]}
+              }
+            },
+            {
+              "origin": [7, 5, 7],
+              "size": [1, 8, 1],
+              "uv": {
+                "north": {"uv": [15, 3], "uv_size": [1, 8]},
+                "south": {"uv": [15, 3], "uv_size": [1, 8]},
+                "east": {"uv": [15, 3], "uv_size": [1, 8]},
+                "west": {"uv": [15, 3], "uv_size": [1, 8]},
+                "up": {"uv": [15, 15], "uv_size": [1, 1]},
+                "down": {"uv": [15, 15], "uv_size": [1, 1]}
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+=== FILE addon\packs\RP\models\entity\hedgehog.geo.json (new)
+```
+{
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.zoocraft.hedgehog",
+        "texture_width": 64,
+        "texture_height": 64,
+        "visible_bounds_width": 2,
+        "visible_bounds_height": 1,
+        "visible_bounds_offset": [0, 0.25, 0]
+      },
+      "bones": [
+        {
+          "name": "body",
+          "pivot": [0, 3, 0],
+          "cubes": [
+            {"origin": [-3.5, 1.5, -5], "size": [7, 3, 10], "uv": [0, 14]},
+            {"origin": [-4, 3.5, -5.5], "size": [8, 3, 11], "uv": [0, 0]},
+            {"origin": [-3, 6.5, -4.5], "size": [6, 2, 9], "uv": [34, 14]},
+            {"origin": [-1.5, 8.5, -3.5], "size": [3, 1, 7], "uv": [0, 27]},
+            {"origin": [-4.5, 4.5, -1], "size": [1, 2, 1], "uv": [0, 40]},
+            {"origin": [3.5, 4.5, 1], "size": [1, 2, 1], "uv": [4, 40]},
+            {"origin": [-3.5, 6.5, 3], "size": [1, 2, 1], "uv": [8, 40]},
+            {"origin": [2.5, 6.5, -2], "size": [1, 2, 1], "uv": [12, 40]},
+            {"origin": [-1, 8.5, 2], "size": [1, 2, 1], "uv": [16, 40]},
+            {"origin": [-2.5, 7.5, 4.5], "size": [1, 2, 1], "uv": [20, 40]},
+            {"origin": [1.5, 7.5, -4.5], "size": [1, 2, 1], "uv": [24, 40]},
+            {"origin": [-3.5, 5.5, -4.5], "size": [1, 2, 1], "uv": [28, 40]},
+            {"origin": [3, 5.5, 4], "size": [1, 2, 1], "uv": [32, 40]},
+            {"origin": [0.5, 9, -1], "size": [1, 1, 1], "uv": [42, 40]},
+            {"origin": [-0.5, 2.5, 5], "size": [1, 1, 2], "uv": [44, 35]}
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "body",
+          "pivot": [0, 4, -5],
+          "cubes": [
+            {"origin": [-2.5, 2, -8], "size": [5, 4, 3], "uv": [20, 27]},
+            {"origin": [-3, 5.5, -8.5], "size": [6, 2, 3], "uv": [36, 27]},
+            {"origin": [-1.5, 2.5, -11], "size": [3, 2, 3], "uv": [0, 35]},
+            {"origin": [-1, 3.5, -12], "size": [2, 1, 1], "uv": [36, 40]}
+          ]
+        },
+        {
+          "name": "earL",
+          "parent": "head",
+          "pivot": [2.5, 5.5, -6.5],
+          "rotation": [0, 0, 10],
+          "cubes": [{"origin": [1.5, 5.5, -7], "size": [2, 2, 1], "uv": [50, 35]}]
+        },
+        {
+          "name": "earR",
+          "parent": "head",
+          "pivot": [-2.5, 5.5, -6.5],
+          "rotation": [0, 0, -10],
+          "cubes": [{"origin": [-3.5, 5.5, -7], "size": [2, 2, 1], "uv": [56, 35]}]
+        },
+        {
+          "name": "leg0",
+          "parent": "body",
+          "pivot": [1.5, 2, -4],
+          "cubes": [{"origin": [0.5, 0, -5], "size": [2, 2, 2], "uv": [12, 35]}]
+        },
+        {
+          "name": "leg1",
+          "parent": "body",
+          "pivot": [-1.5, 2, -4],
+          "cubes": [{"origin": [-2.5, 0, -5], "size": [2, 2, 2], "uv": [20, 35]}]
+        },
+        {
+          "name": "leg2",
+          "parent": "body",
+          "pivot": [1.5, 2, 3],
+          "cubes": [{"origin": [0.5, 0, 2], "size": [2, 2, 2], "uv": [28, 35]}]
+        },
+        {
+          "name": "leg3",
+          "parent": "body",
+          "pivot": [-1.5, 2, 3],
+          "cubes": [{"origin": [-2.5, 0, 2], "size": [2, 2, 2], "uv": [36, 35]}]
+        }
+      ]
+    }
+  ]
+}
+```
+
+=== FILE addon\packs\RP\render_controllers\hedgehog.render_controllers.json (new)
+```
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.zoocraft.hedgehog": {
+      "geometry": "Geometry.default",
+      "materials": [{"*": "Material.default"}],
+      "textures": ["query.variant == 1 ? Texture.blonde : Texture.default"]
+    }
+  }
+}
+```
+
+=== HEX addon\packs\RP\textures\blocks\zoocraft\basket_food_insect.png (779 bytes)
+```
+89504e470d0a1a0a0000000d49484452000000100000001008060000001ff3ff
+61000002d24944415478da5593cb4f135118c5cf9d3ba54ba32b135151a3d88a
+253e62223e96880f3026243ee31650432b086a4c7c4582efad2ba82dd408536a
+89fe0b522110a82d3431ae686da17f0165e6ce715167d46f7593bbf8cef99df3
+e1c6693f8b990867937d5c591c61b0ad9185749833895e16d26176b5f858ca46
+399bec63291b6547733d0be930bf8e75b39889501cdbb7952461db3648424a09
+92504a41d7750000499084a669000021042ccbaafe4f8d07b9ba34caeed600cb
+b918a7c6832ce762bc79661f4bd928bfc56fb3900ef3c89ecd6cf2d7b2c95fcb
+1ba7fdec68ae67291ba538deb08db66d43d3340821609a268410104200002ccb
+82100224e1f57aa194427c6c0097ae3e0249a0bb35c06226c2b9c97e57c9cae2
+08534688c54c84b7ce36b0948d326584b8b238c2ae161f67937d9c9ee8a92a38
+b26733a594ee16dbb6a1eb3a9452d0340d524a542a150080c7e3816559f89c7c
+8d0bedf7609a263093e8657e61d8a53d93e875692fcf0f716eb29ff98561769e
+dacb423acc9411e2ead2283b4fed657e61b89a82699a48188368bff800524a97
+bc520a353535b02c0b524a28a5dcb49cd10eeddc884ff1e7f8f53383e4c40b68
+9a06dbb65d4b07ea36203e3680374fda9130067178d7267c997c8377afaee373
+f235c489fddb4912096310e7cef7424a0987c9bf9b755d876559f8147f8eb60b
+7d6e4770d4b7852703759c9bec67291be5f4440f579746d9d15ccf6226c29411
+62391763b0add165e4a451cec5aa3d504ac1f8f80c17af3c74dbe8d8d034edbf
+6e8c7d788acbd71e637d7dbdcaebd6d9061633114e8d0759cc44d8dd1a607e61
+982923c45fdfdfb3abc5c7e5f921b707c1b6469673314e4ff470797e88a2c95f
+4ba5143c1e0f00c079afadadb977e17021e9c2ad542a55552923c4dadd01bc78
+f01677077a90ff91469def2006eebec4fdc13bc8ff486387ff900bce810b005e
+aff76f0a4a29d7b3439d64b56d7f46d775978f7395bf01a0dbeb286fc4d4cd00
+00000049454e44ae426082
+```
+
+=== HEX addon\packs\RP\textures\blocks\zoocraft\burrow_dark.png (325 bytes)
+```
+89504e470d0a1a0a0000000d49484452000000100000001008060000001ff3ff
+610000010c4944415478da5d92416ec3300c04796b62c7896bc748d1a068ffff
+4915236084850f84288a5aee92ac75beb4fd3eb7635dda63fa689fb76b23c63d
+e37f5ffbb8bff77bdb96a9dfebf9b8f50b499c00602472e7149053b350f18001
+84018411230910e2f8bef919bf44e702258d24010151aa32042f022491c00701
+ed41565606beb9a55e254899531f20817dd32f2b64454e1baa341b2763e5944d
+b151996cc7cd91ba057a13ad94556d9e9a7d274eec7b5b865f2c889aa4661373
+37044d867d0a494dba3fc73a3e1897a13d18534809e77d4846f8bfaf6d5476f4
+e56e5b1d4363265a2dd7de65aad4ea83a7b33e6f676e64393e19d820d9d0e4f3
+18adde01a48a3e5964d74dcc89e426fe033c0a28b97d359d8e0000000049454e
+44ae426082
+```
+
+=== HEX addon\packs\RP\textures\blocks\zoocraft\burrow_leaves.png (606 bytes)
+```
+89504e470d0a1a0a0000000d49484452000000100000001008060000001ff3ff
+61000002254944415478da4d52eb4e536110fc5e4205b19e864ba82d6d3987a2
+10c19492a8a5450c62a194d6a6208a1a1015a425624c68c004343c8317bc0181
+8444216a02f25c23b3cd9ef4c7e6bbecceeceeec9a7cd48bf1de061462f5e88b
+d4a2ffca057c9e6dc1a7a7017c9cf1e3867d16f1b61a4cc62cac8f05b19669c1
+f5d633f277d3390793683f2f0f82e9a0d1c1bf5b1d1e242fd7a13cd484955433
+36f2b6fcf7df6e94b89107fe0a018d9914cc934056c33bfdd567fa6100d92761
+c1186666269a96cb3b4f9214ef34e0eb8b30be3c0fa19cf3e3f7ca55f92719e3
+0c336aef24a0937f0ca00e1fa62f89fd7b17c3c9fb5efc7ddb2d5568ac10f052
+5d098d6f06691bac289ef4ca9d825217fa0c834a438df26056de59ee44d48384
+53836cb7079c547ec6c1bd691b85d90856877d6e52f36dae5500dfe76dec94da
+311ab5b09809e355d616e573d72ebae434edff759f17bf1e856128ccd15a54fa
+6660693484f9941f3a5ed58840564bdb9f0cc87b6fdc077358eec4c172879b65
+61b05e9cec5527a3c292482bc9f47871bcde53d140e74f921f2f1d0130fbdc80
+85ed624432914c052fa68358ca39150d3498248b779be493ba6c2db489914093
+e864142353a078dc7d9e0472f6743098fae89aebb6d2746fd8aed97c1614c6ea
+be75cb08feb3da5569316109886bac4452c152dcc26ea159669cbaef13870a45
+6310f79e7b30f638e492538f37c9d30a384b12a43b6bdd156689d483fb41025d
+1add03dacfa990e0fe031e4fc8e2060b4f770000000049454e44ae426082
+```
+
+=== HEX addon\packs\RP\textures\blocks\zoocraft\burrow_log.png (485 bytes)
+```
+89504e470d0a1a0a0000000d49484452000000100000001008060000001ff3ff
+61000001ac4944415478da4d93c74e03411044e70b4002916d8248ce36482487
+5d7b6dc29de04cb87125a73fe0a71bbd4685388ca767baa7aab6ba1d86c9b635
+f2f3366a678cb8969db5a7cb033fdf9e16ec6b1cdbb893f5f35bbfe6318bb817
+6f58a0e8eeac688f17fb767d9cf3e4fba0ee3b80cf57877edf6f6eda6baf6a83
+d6962f48a2c28205310b801856ee6f4ef25e080139ce7171d173b02795b40502
+12b0b273461e8c3cea46ebce04ab1e910314b040002b8f28228902c0da3bcb5e
+f83f16b07c0a62e040a2b3bbe2e6f1a89a997150fc00002200582fdd23af0b2a
+6407849842c024bdb43a65dff789e55213f670bee7758002e226c28a12905be5
+94c74804289f9eb4f2dab4ef906036ccd47c0c1bbf6d6c9696fc82c523a1c3fe
+398adc60ea6424cae445504be8b7a4ab751a18cd07772cfc80cc0190053a43a2
+e1d14ca8234c2a39ea681d3b67fc0a14b290092a494048c2c61d8cd4a014bf78
+8c627241df055b3d37f7f7adf822b3c48a1a998d8110057e982e7d1f0f25177f
+305113a9162aa6debb0080860715149164472a8ac8e1138fc901ec938802fd41
+f4d7d5ff811d764ce55e6dc61f3e83bb1ffc5fc6c1716e2cac0000000049454e
+44ae426082
+```
+
+=== HEX addon\packs\RP\textures\blocks\zoocraft\feeder_insect_1.png (383 bytes)
+```
+89504e470d0a1a0a0000000d49484452000000100000001008060000001ff3ff
+61000001464944415478da635c5166f79f8181814142848fe1c59b4f0cc80026
+864f8e092680ae00590c465fb9f70a45f3957baf18186b4234feeb2889314cde
+748d811490eba7c5c0c0c0c0c0826cb2bea21843435f35c3dd2ba71914348d18
+42428a701a00d3c3080b037c2e30569562387bfb198a586b92056a18e003a5cd
+0558c34742848f38031eddbc8055fcc59b4f0c2c30bfe0032aba660c0c0ccbb0
+86018b8e921803030303c3fe2b6f18181818180c94c419ea7bab18ee5d3dc320
+aba6cf101656c2101484e905983e1674890bf75e320406e643798bf1ba4c4284
+0f628084081f416f18ab4a31d47495333cbe75914146558f61ff82599068ac09
+d1f88fec0518305291643877e7394e031d75441818181818985ccc54e0fe4106
+e5ad45785d04d3c3842d0f303030303cb97d89a0b77494c41029113d8a7494c4
+b0e642f440848701b9000007537c275a557f3a0000000049454e44ae426082
+```
+
+=== HEX addon\packs\RP\textures\blocks\zoocraft\feeder_insect_2.png (633 bytes)
+```
+89504e470d0a1a0a0000000d49484452000000100000001008060000001ff3ff
+61000002404944415478daa593d14b145118c57f7766ee800a1626661aa84bc5
+b2aca115e4537f8159d85a44502004bd489152991626b9e2aa58fae07b908e6d
+16ed1f103d1796c1b2e6cb6a3ed4364992621833ceedc166dd9508a2f3723fce
+bdf7e370bef309ebc60905505e5a4c6679955cf8dcdfee349fd8f92097f3cf64
+dacefb9c4cdb88ee48508503658c2552fc0bda9a42005b0afcce470f56108f0f
+3312bd8465c5a80becc5b2628c0eb4323939c0b143954c4f8f64d524d336c2f7
+602c9102bd005dd7d9d8d8c0344d5cd7454a89520ad775011042a0a99ff4b536
+90595ec5c895357c2f42e5815afa3b87e8ecef20b390a22a584fdfcd18b7a2ed
+2ccebda52a584f4b4b7bd6dc3c05c228c4711c745d472985aeeb789e871022cb
+6f6e6e223537eb811edc57d063afacb368ffa0aeba8487e35d1caf2de1f2950b
+ccbf7ec3e878370d87f7f0fdd3572a4a0ad85f5ac4e76f6b144985bdb29eafc0
+55124ddb9aaca6694c4df472e6ec6d8410249e0fd278aa9d17cf624422d7f3a7
+e063347a9ea9895ea494842b0b599a9f05a0be7a171f3fbc637cf0220ba999bc
+30197e0170b5cbc2f33c00ee0ef5a094428838ef97d628af091139d745dcba0f
+3cce3631fc7902d45515d3fbe00e0ba91996e667997cf492a7537d7c599c434a
+c9919add1886919f8357b14695595e652c91429345b8ae8baeeb4c3f8972f274
+07a669a294c2711c4cd3c4711c0ce1d0d6142299b6317277c073d6d100e54273
+f335a406ea7780fcda10db9e850365db41f25df5e58503657fdcc29d1b29ba23
+41c57fe017b26a09d8c2aee3ec0000000049454e44ae426082
+```
+
+=== HEX addon\packs\RP\textures\blocks\zoocraft\hatchery_grubs_0.png (436 bytes)
+```
+89504e470d0a1a0a0000000d49484452000000100000001008060000001ff3ff
+610000017b4944415478da5d934952c3400c45fb06cc84ccc9824c76c28a8421
+09d30980623801ec58c28eab37f554f55c2e162eb7a5ffbfbea476ba9a75f2c5
+a4956fce8679393ac97eafcb5e5e8d9b719e750f22bf1836f275d18d072cf9c4
+e1fcb41100c880217106b899f72b32d8cb693b8870420030c0d7bb32bfddcfa3
+32c0517327c8086e17830083e3fbe5b60801f2e180c4f7c732de085011022e78
+0324870bc48ade619c43004b04053faec721028118675c52889c82f0882502f6
+46026b90214dda7b95d8f3761a6f70bf5fdbc05220a9840bfa7370081143c8b3
+22baa2d54400170479a69dfd18a8db7165cecad62c94dc356037822bc4febb00
+eb7d810c265a80e420c7addd4a8c6f89d887f0b49944dcb64380804364d2f3c1
+7105a6a277c3cab653f68f7232e96078dc8c5717711d391b5b4cef0f8b6a6d04
+18220441907e3e57d5b9de2a37327165216bdf9eddbf3f1544ed83e10d2f59c9
+bb4e75faae5bf7cf73adb4e6c612d37513fe957507b4e8ad23e7af8d00aefe00
+c61380c07a196cb00000000049454e44ae426082
+```
+
+=== HEX addon\packs\RP\textures\blocks\zoocraft\hatchery_grubs_1.png (497 bytes)
+```
+89504e470d0a1a0a0000000d49484452000000100000001008060000001ff3ff
+61000001b84944415478da4d93474e43411044e706e464636c1660e3f0bdc224
+93d98004128878019000918460c35d4862058863006245121720894b0c7a6dd5
+c88bafe999a9aaeeaee9ef4addadbe9ceff0c385a4ada3c54e5f4835fbdeae16
+3f986df7033d718bf9c0b207abd841d226eaac0057260abe3f1333c1a15c22dc
+b3924082c48e8bcde9acff7e3df70f37fbfeebe5ccc07de9363f12a52c5e1ccd
+1a0141564495d8f5b4d7dbe1f1469f1150e572be9cb6589570974f36f974ac36
+885b05043a5818ce8452d9ab859dd9c8c89c238837f800c6014080153224bc40
+1d00e0cfe7538bf9a8f668bd6478be60a2fa2356050821f074771892500177c4
+54e194454f4666c0f282f8f7fdd2ee97c672468628531dd95627a3909d0c1200
+8869903055f3a267b51632f13a5397f2d64cceff7d5cf9c7db037b5a955ddd1e
+7819ef2071c00525ea15206a0ef464249391f0ac02e6406d00d6a82a830c26de
+9d2b5a75f7d77bfee7eda262a232ae4d154326262fd7d118bc38d92e071148d9
+4483cd05953b4d182210aac798de35309a17fd749069c569a3d211d374ea87e1
+9c99e86eab09934815a1059e4a60992513f564c4cbe3f960228683fd07958e97
+96a4e866540000000049454e44ae426082
+```
+
+=== HEX addon\packs\RP\textures\blocks\zoocraft\hatchery_grubs_2.png (515 bytes)
+```
+89504e470d0a1a0a0000000d49484452000000100000001008060000001ff3ff
+61000001ca4944415478da5593374e03401045f706648c6d9c0a9c4345303890
+0a10a220c3118c8c81022424380a513484020e412840447100a238c5a237d22c
+50ac66f64ffa3b336b3a3b3cb63be6b53d719f4d875aec5429618b9990052f65
+c3220be9a0cd27fc4eef8ab6892ce722d67051803337989184bdc976c1d13501
+f7c5d1a4ed4b05c44e018302f876bf636fcfd7edebddb69d28c4c469ba9c9440
+982161f9f57c200c611af5d65933598c0bb051c90b2502953a41d808c446b1cb
+e365c194b5c109235495ae3a64c2ad8255c7d2cef6f9b42f09b3118f4883f34c
+7f4a2ae380230c6ae35971e07cbf1cda98af5e7c60b6592d888f242020156c96
+8a180131d20b240c2f8e6a2e3192a289f6c6df291088a4020ee857272b6e6c34
+4e7b900c34b9e9208d8e4cab5311ece371cf2e0ce7dcbce787b2c2943b856021
+0c00698882348c465d9faeca3348ae4f2480d182a153cccc0ea4ffbd4f7518e9
+c29058c7c95d59bb2900e80e68903e055da7531949c8c2dd9cad495fb019a5c6
+36be3fec0a759ec0a65101265b4b45c78cee8353d82d52dcdf201571201949b5
+a1ec030d652a2426e8efa6ca5fd0add2f7a2d31ba47e329d8432d669183e0e41
+baf7fa1770422a1b0e3665c661223fdaeeae0d61d29f760000000049454e44ae
+426082
+```
+
+=== HEX addon\packs\RP\textures\blocks\zoocraft\hatchery_grubs_3.png (522 bytes)
+```
+89504e470d0a1a0a0000000d49484452000000100000001008060000001ff3ff
+61000001d14944415478da4d93d92e44411086fb0dacb1ce0c73c131cb397365
+99c110c48d2511044f2084191224bc0b21b8b02478084b8210827b42f012255f
+499dcc45a7fbf45ff5d75f7fd7715d6d0dc2ca2523d2eb37e9be3ceacbd7f39e
+dc5f6ce8ee35944b7b4bad623de95818df9d8a8ae3a3d3ab977cd02c1dad750a
+66138d4a46123b4904732e8e676466c0d733790ea6f9614f3e9f76e5e67455be
+5ff69504b2b6c60a3dcf0d65744fc5aa358e02a6d8c10cd3d6624efa3271ad46
+65d6448fa7188b7bf0cba3826216e712914afd80cda453999648e0bb30162846
+dccfeb81deb350e160f79b6b2488ff9b042bf231921d226483134bcce64236c4
+1ca6703067add2c7e34ed812af516ab0bd9c9ac833590b5ce2092a6ecfd6c2de
+910d6e1845a7fb5332994f88bb3a2e866e97bacb6b9060aa688956eeced7551d
+18e4eefd615b0705c72181fdf7ed50ae4f5604cc06866a3668144509f13a487c
+20d77cc013aa726749d633bbcd02be388c0298ea4bea0ec0ab582241c490b834
+92d6d6f00795aac058e911901e014986148c21b39e6d88685b2791838daa0d52
+e9cf65c48c399e406471fc132e19add2e0d9c12074dcaad93432ad5619c5fc13
+60aaa0d4349cb669b3216aad2fd33b23459df9c6fa034b40c194c613382f0000
+000049454e44ae426082
+```
+
+=== HEX addon\packs\RP\textures\blocks\zoocraft\hatchery_lid.png (223 bytes)
+```
+89504e470d0a1a0a0000000d49484452000000100000001008060000001ff3ff
+61000000a64944415478daa5934b0e83300c4473ff0342296cfa015a2a755775
+e9ea4de5280b9088b1e4602599c1f1d8e93c3eed749badbb3f8cb8b98cf2617e
+69cf63dccf3de69b00a7157b7fbeabfbe5593f2df65f02608c0c132945c03903
+b104c0987eee4fa80563ed75322d117026289f505b4c1148cba08c6a01b10465
+14f6b08c6523d5169376cead1c5142f53b22e36611f73e491950444860f3b1c6
+a94d19fb081373cf47fb07b3ac463916b9982d0000000049454e44ae426082
+```
+
+=== HEX addon\packs\RP\textures\blocks\zoocraft\hatchery_side.png (438 bytes)
+```
+89504e470d0a1a0a0000000d49484452000000100000001008060000001ff3ff
+610000017d4944415478da7d93574e04410c447d1d82083f6490481b44380119
+248236904e40860390e11464f824ef920f6478465ecdb41023b5dc3d6d97cb65
+b7ac8d34e9e678ab2e0fd6ebea70a372cef7d7ea64a2ccd654b2dc56b6b75a33
+3d55ba3450a75b136d66f1172e70046065a8c12ed86f8cb5187014fc6821a5bb
+b94eddceb4db7e7fb65b858bbd7c977e16ae557ebeb7c70bb35fc51bb3af0fe7
+66df9f2ecdba1f4c492664e2c0cf8fe7ab1848f1ee34f6df4100278e2533e94a
+2b21cce0c185db9318a8fb1dce27ad1ca1eef5d1e618ed90be337050ee5d2f39
+984be84eb6a3a481db28dd28d8cbfd9959c49f4e55fc32a03d7f057bc6500b40
+d08d760a2d62e3c8a1f5a0b01c5a48ac1c2fa67ffbf94f5028204c5d7cf18109
+83420ddc3a182550be2084518968e04ee15c784bd104e169a530859410667230
+2f2b0485b9bd05681895087dcfe465844c38bbf8a57ee6fa6aecc5311c3ee700
+e3c4a0a113672c13c8fcd000c1c105e18257466d94861396d747cdee0b751800
+fc0d64c6dbbf0c9e3ce30000000049454e44ae426082
+```
+
+=== HEX addon\packs\RP\textures\blocks\zoocraft\hatchery_soil.png (440 bytes)
+```
+89504e470d0a1a0a0000000d49484452000000100000001008060000001ff3ff
+610000017f4944415478da5593494e03410c457d036642e664417aeeac420874
+12a60b30c30910127b84c4dd0b3da35f4a1656b5cbf6f7ff76b59d4d4ec2b21a
+8645d60d97453facea919f58530ec23c697b0c5b4fc76eca3b4f3bc148a8c72d
+4f066c76daf293fb7278e489c4684201460e3e7906daf355118ac1a1175de43d
+4f2248578ae55324ffedb6f6b809f1e77311a94fda3bce8a7b2803ca376c2487
+6f1a9a684bb34092ce6ed44c1c8614490ab9dc1b095c800aa20ad491eeb0a150
+12bf3fe671d8267a20de37896bddd42caa8000aeb910c3374d5d132659c3dadc
+8c24be5c975bcc5c02fa04a4fd4a061db5d6d79b2a328a43d4d03407d19611cb
+fb074e570f0e033cedeefdaf910ee8d7a321595d307c7278589a973666ef77d3
+ad7581feb8ca1c009f06f868a740dbd24c8c0e4febdc2fa14ae06199c64132a8
+dfaf26ee5ddd8967bdfd607ce8e7107d698736774c9c4113d30f4633ff17b457
+ba56a3e3f85800d1f0441d63709c484396696d2451c80908e818a07a23f848e2
+5b1bf903762c811676cea3b20000000049454e44ae426082
+```
+
+=== HEX addon\packs\RP\textures\blocks\zoocraft\hatchery_wood.png (438 bytes)
+```
+89504e470d0a1a0a0000000d49484452000000100000001008060000001ff3ff
+610000017d4944415478da4dd3574e5e410c05e0d90e259417028420d16bb282
+402891426f6105b40416102004b63ae81be9fcba0f47e36b7bec73ecb9e5cfce
+54bddffd5c6fbf4fd4eb8d8ff56e6bb2ee2f0fd4bda5fe7ab436d410fbe4cb48
+7df831ddf07bfb5375b79c7e1dad87ab1fead5b7b106456e36c75b82c2ec9c4f
+2773f5e57cb1fe3b5ba8cfa7f30d45678eb7cb9516e4fc7b34d3f33d1ecf3676
+90261868c457500ea5480913df072b834dc2cfc5be066c491487264192005b30
+125254033e9ad91a60895d11807426e3f5d7729300bea3db2545e56636856695
+d0e90e2e5b015df949c0d036b066b72132d087241daf0f375966048a62983991
+d386a8830087c46e4794d1b70d763614b421febf586afba59b2d59e56c47e10c
+d5998698da4ee94e18d04f307248a3bb5ba02741a26e3a380553305a5dc28c84
+6ca6f712f3da82481294a818968a6536dd0d95e80badd812b3b2fc545617e4a5
+96bc42892e748ba493c4bc13f10cdc5924d22ec0492309d9889314be3cefcc4c
+d177e7651cf98f38a9510000000049454e44ae426082
+```
+
+SHA-256 (Get-FileHash) of every file in this batch after writing (LF endings):
+b93da64ddbc80d789f9bef863756c032e0f6dfbd1d3d23cf41df50faa00f8b9c  addon\packs\RP\models\blocks\insect_hatchery.geo.json
+73d77d6fda0a047a0c22fa9809e4a3cedcb031dc00376f555e8357159002dd48  addon\packs\RP\models\entity\hedgehog.geo.json
+13ef8e5c51f6e4bc33d0051277f32c7630ca4470649fd2d8218509293e8ef35f  addon\packs\RP\render_controllers\hedgehog.render_controllers.json
+51446dcf8558a563d32f0385301a254544bcbb19cb8182510f6cc566cb4d3ce4  addon\packs\RP\textures\blocks\zoocraft\basket_food_insect.png
+c0dd4581a3c3e6636acf826e9d1c57bee4974475362ee016aae47985366a8b8b  addon\packs\RP\textures\blocks\zoocraft\burrow_dark.png
+d5ca7f30efc41e72795056a0634955056bf68f5eb29abdc985147f9b4dd6efee  addon\packs\RP\textures\blocks\zoocraft\burrow_leaves.png
+972cfa4657623b01e1b41629c494d49d411dcf4d589bb45c83f73057b89e0e91  addon\packs\RP\textures\blocks\zoocraft\burrow_log.png
+2f1ff81dee793f1506ee5beeb863bf4b0d69cd7f03f320684ddfab6ed0926011  addon\packs\RP\textures\blocks\zoocraft\feeder_insect_1.png
+9622a28ae4734d060383d88d940078771cef061780f673eb11c8042aed6a5416  addon\packs\RP\textures\blocks\zoocraft\feeder_insect_2.png
+6d695d2d34a3dc605e1dfa418f6d6c87e5483c759cba015b47f1cc900dca8119  addon\packs\RP\textures\blocks\zoocraft\hatchery_grubs_0.png
+838650216852838a7a63be30cbc6bd49b55e1a19abb1c7f3430fb65be572601a  addon\packs\RP\textures\blocks\zoocraft\hatchery_grubs_1.png
+259764a8e0abc97ff3584daadfed4decf16c48fe80a3e39f74f53a31b31f5f22  addon\packs\RP\textures\blocks\zoocraft\hatchery_grubs_2.png
+8c4e151227c39d8ee18b413514f10e984e6ae934af1cb9aeee7df871b16bedb2  addon\packs\RP\textures\blocks\zoocraft\hatchery_grubs_3.png
+647002203855b3ded50ebdb85326c26b00a35693024bf0f420c7033dd837b036  addon\packs\RP\textures\blocks\zoocraft\hatchery_lid.png
+f3c48bd1345beda0d4947cff80f18572e4e82e83142616ea4f2938727d6b2749  addon\packs\RP\textures\blocks\zoocraft\hatchery_side.png
+5f53ce66b9d871a61573a6eef45f50e13dcb57141dd7cec15956d1a623e3dd3f  addon\packs\RP\textures\blocks\zoocraft\hatchery_soil.png
+2c104a123f005d2054d0473ba60d4151427ef6f82166cd7a161056333c1ca347  addon\packs\RP\textures\blocks\zoocraft\hatchery_wood.png

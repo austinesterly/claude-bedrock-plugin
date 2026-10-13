@@ -1,0 +1,445 @@
+From the cloud session: the nocturnal house and the Hedgehog (0.1.62, batch 2 of 6). Apply this on 0.1.61 (after the three mixed-species batches were applied and built). Austin asked for the next slice: the Hedgehog, the first nocturnal animal (asleep by Minecraft day and up at night; an exhibit roofed over is a nocturnal house, where that is turned round so guests see it by day), a Burrow Shelter to sleep in, an Insect Hatchery that grows Insect Rations, and the insect look for feeders (docs\Nocturnal_house_test_plan.md is in this batch set). New entities, blocks and textures: Austin needs a FULL Minecraft restart after the build. Don't make your own changes for it, these batches are it. Apply everything below inside addon\ exactly. Don't build yet: batch 3 follows. When this batch is written and its SHA checks pass, say nothing in the thread; just wait for the next batch.
+Rules: Copy every file you replace or edit into a new backups\<timestamp>\ folder first (keep its relative path), never delete. Install nothing. Don't touch the manifests (build.cmd bumps the version). Write all files UTF-8 without BOM and with LF line endings, each ending with exactly one newline. FILE blocks: the content is exactly what's between the ``` fences (new files: create the folders as needed). HEX blocks: join the lines between the fences, convert the hex to bytes and write them (PNG files). EDIT blocks: replace each OLD (between the fences, matched as whole lines) with its NEW, in order; each OLD must be found exactly once. An "APPEND" part adds its content at the end of the file, after its last line, ending with a newline. If anything doesn't match, or a SHA-256 check fails, stop and say in the thread which file failed.
+
+Before writing anything: check these files from the earlier batches are in place with these SHA-256 hashes. If any is missing or different, write nothing and say in the thread which batch of these fixes is missing.
+5370c196dbf67dc3cd360891e01dab351cf4df79fe2b5ed8c7b88301ba3578c8  addon\packs\BP\blocks\burrow_shelter.json (batch 1)
+
+=== FILE addon\packs\BP\spawn_rules\wild_hedgehog.json (new)
+```
+{
+  "format_version": "1.8.0",
+  "minecraft:spawn_rules": {
+    "description": {"identifier": "zoocraft:wild_hedgehog", "population_control": "animal"},
+    "conditions": [
+      {
+        "minecraft:spawns_on_surface": {},
+        "minecraft:spawns_on_block_filter": [
+          "minecraft:grass_block",
+          "minecraft:podzol",
+          "minecraft:moss_block",
+          "minecraft:coarse_dirt"
+        ],
+        "minecraft:brightness_filter": {"min": 0, "max": 7, "adjust_for_weather": false},
+        "minecraft:weight": {"default": 8},
+        "minecraft:herd": {"min_size": 1, "max_size": 1},
+        "minecraft:density_limit": {"surface": 3},
+        "minecraft:biome_filter": {
+          "any_of": [
+            {"test": "has_biome_tag", "value": "forest"},
+            {"test": "has_biome_tag", "value": "plains"},
+            {"test": "has_biome_tag", "value": "meadow"}
+          ]
+        }
+      }
+    ]
+  }
+}
+```
+
+=== FILE addon\packs\RP\animation_controllers\hedgehog.animation_controllers.json (new)
+```
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.zoocraft.hedgehog.move": {
+      "initial_state": "idle",
+      "states": {
+        "idle": {
+          "animations": ["idle"],
+          "transitions": [
+            {"sleep": "query.property('zoocraft:asleep')"},
+            {"curl": "query.property('zoocraft:curled')"},
+            {"walking": "query.modified_move_speed > 0.05"}
+          ],
+          "blend_transition": 0.4
+        },
+        "walking": {
+          "animations": ["walk", "look_at_target"],
+          "transitions": [
+            {"sleep": "query.property('zoocraft:asleep')"},
+            {"curl": "query.property('zoocraft:curled')"},
+            {"idle": "query.modified_move_speed <= 0.05"}
+          ],
+          "blend_transition": 0.3
+        },
+        "curl": {
+          "animations": ["curl"],
+          "transitions": [
+            {"sleep": "query.property('zoocraft:asleep')"},
+            {"idle": "!query.property('zoocraft:curled')"}
+          ],
+          "blend_transition": 0.35
+        },
+        "sleep": {
+          "animations": ["sleep"],
+          "transitions": [
+            {"curl": "!query.property('zoocraft:asleep') && query.property('zoocraft:curled')"},
+            {"idle": "!query.property('zoocraft:asleep')"}
+          ],
+          "blend_transition": 0.8
+        }
+      }
+    }
+  }
+}
+```
+
+=== FILE addon\packs\RP\animations\hedgehog.animation.json (new)
+```
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.zoocraft.hedgehog.walk": {
+      "loop": true,
+      "bones": {
+        "leg0": {"rotation": ["math.cos(query.anim_time * 620) * 38", 0, 0]},
+        "leg3": {"rotation": ["math.cos(query.anim_time * 620) * 38", 0, 0]},
+        "leg1": {"rotation": ["math.cos(query.anim_time * 620 + 180) * 38", 0, 0]},
+        "leg2": {"rotation": ["math.cos(query.anim_time * 620 + 180) * 38", 0, 0]},
+        "body": {
+          "position": [0, "math.abs(math.sin(query.anim_time * 620)) * 0.5", 0],
+          "rotation": [0, 0, "math.sin(query.anim_time * 620) * 2.5"]
+        },
+        "head": {
+          "rotation": ["math.sin(query.anim_time * 620 * 2) * 2", "math.sin(query.anim_time * 620) * 4", 0]
+        },
+        "tail": {"rotation": ["math.sin(query.anim_time * 620 * 2) * 8", 0, 0]}
+      }
+    },
+    "animation.zoocraft.hedgehog.idle": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "rotation": [
+            "(math.clamp((math.mod(query.life_time + variable.offset, 24) - 2) / 0.7, 0, 1) * math.clamp((7 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * 3 - (math.clamp((math.mod(query.life_time + variable.offset, 24) - 15) / 0.5, 0, 1) * math.clamp((18 - math.mod(query.life_time + variable.offset, 24)) / 0.5, 0, 1)) * 4",
+            0,
+            "(math.clamp((math.mod(query.life_time + variable.offset, 24) - 15) / 0.5, 0, 1) * math.clamp((18 - math.mod(query.life_time + variable.offset, 24)) / 0.5, 0, 1)) * 9"
+          ],
+          "scale": ["1", "1 + math.sin(query.life_time * 120) * 0.012", "1"]
+        },
+        "head": {
+          "rotation": [
+            "(math.clamp((math.mod(query.life_time + variable.offset, 24) - 2) / 0.7, 0, 1) * math.clamp((7 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * (24 + math.sin(query.life_time * 900) * 3) - (math.clamp((math.mod(query.life_time + variable.offset, 24) - 9) / 0.7, 0, 1) * math.clamp((13 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * 6",
+            "(math.clamp((math.mod(query.life_time + variable.offset, 24) - 9) / 0.7, 0, 1) * math.clamp((13 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * math.sin(query.life_time * 30) * 30 + (math.clamp((math.mod(query.life_time + variable.offset, 24) - 2) / 0.7, 0, 1) * math.clamp((7 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * math.sin(query.life_time * 200) * 6",
+            "(math.clamp((math.mod(query.life_time + variable.offset, 24) - 15) / 0.5, 0, 1) * math.clamp((18 - math.mod(query.life_time + variable.offset, 24)) / 0.5, 0, 1)) * 6"
+          ]
+        },
+        "earL": {
+          "rotation": [
+            "-(math.clamp((math.mod(query.life_time + variable.offset, 24) - 9) / 0.7, 0, 1) * math.clamp((13 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * 8",
+            0,
+            "math.max(0, math.sin(query.life_time * 70 + variable.offset * 20) - 0.9) * 80 - (math.clamp((math.mod(query.life_time + variable.offset, 24) - 2) / 0.7, 0, 1) * math.clamp((7 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * 8"
+          ]
+        },
+        "earR": {
+          "rotation": [
+            "-(math.clamp((math.mod(query.life_time + variable.offset, 24) - 9) / 0.7, 0, 1) * math.clamp((13 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * 8",
+            0,
+            "math.max(0, math.sin(query.life_time * 60 + variable.offset * 30) - 0.9) * -80 + (math.clamp((math.mod(query.life_time + variable.offset, 24) - 2) / 0.7, 0, 1) * math.clamp((7 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * 8"
+          ]
+        },
+        "leg2": {
+          "rotation": [
+            "(math.clamp((math.mod(query.life_time + variable.offset, 24) - 15) / 0.5, 0, 1) * math.clamp((18 - math.mod(query.life_time + variable.offset, 24)) / 0.5, 0, 1)) * (math.sin(query.life_time * 1400) * 35 - 20)",
+            0,
+            "(math.clamp((math.mod(query.life_time + variable.offset, 24) - 15) / 0.5, 0, 1) * math.clamp((18 - math.mod(query.life_time + variable.offset, 24)) / 0.5, 0, 1)) * -30"
+          ]
+        },
+        "leg0": {
+          "rotation": [
+            "(math.clamp((math.mod(query.life_time + variable.offset, 24) - 2) / 0.7, 0, 1) * math.clamp((7 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * -8",
+            0,
+            0
+          ]
+        },
+        "leg1": {
+          "rotation": [
+            "(math.clamp((math.mod(query.life_time + variable.offset, 24) - 2) / 0.7, 0, 1) * math.clamp((7 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * -8",
+            0,
+            0
+          ]
+        },
+        "tail": {
+          "rotation": [
+            0,
+            "((1 - (math.clamp((math.mod(query.life_time + variable.offset, 24) - 2) / 0.7, 0, 1) * math.clamp((7 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1))) * (1 - (math.clamp((math.mod(query.life_time + variable.offset, 24) - 9) / 0.7, 0, 1) * math.clamp((13 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1))) * (1 - (math.clamp((math.mod(query.life_time + variable.offset, 24) - 15) / 0.5, 0, 1) * math.clamp((18 - math.mod(query.life_time + variable.offset, 24)) / 0.5, 0, 1)))) * math.sin(query.life_time * 40) * 10",
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.hedgehog.curl": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "position": [0, -1, 0],
+          "scale": ["1.06", "1.18", "0.9"],
+          "rotation": [0, 0, "math.sin(query.life_time * 1800) * 1.2"]
+        },
+        "head": {"rotation": [86, 0, 0], "position": [0, -1.5, 2.5], "scale": ["0.35", "0.35", "0.35"]},
+        "leg0": {"rotation": [90, 0, 0], "scale": ["0.15", "0.15", "0.15"]},
+        "leg1": {"rotation": [90, 0, 0], "scale": ["0.15", "0.15", "0.15"]},
+        "leg2": {"rotation": [-90, 0, 0], "scale": ["0.15", "0.15", "0.15"]},
+        "leg3": {"rotation": [-90, 0, 0], "scale": ["0.15", "0.15", "0.15"]},
+        "tail": {"scale": ["0.3", "0.3", "0.3"]}
+      }
+    },
+    "animation.zoocraft.hedgehog.sleep": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "position": [0, -0.8, 0],
+          "scale": ["1.04", "1.12 + math.sin(query.life_time * 70) * 0.03", "0.92"]
+        },
+        "head": {
+          "rotation": [62, "math.sin(query.life_time * 70) * 2", 0],
+          "position": [0, -1, 1.5],
+          "scale": ["0.5", "0.5", "0.5"]
+        },
+        "leg0": {"rotation": [80, 0, 0], "scale": ["0.2", "0.2", "0.2"]},
+        "leg1": {"rotation": [80, 0, 0], "scale": ["0.2", "0.2", "0.2"]},
+        "leg2": {"rotation": [-80, 0, 0], "scale": ["0.2", "0.2", "0.2"]},
+        "leg3": {"rotation": [-80, 0, 0], "scale": ["0.2", "0.2", "0.2"]},
+        "tail": {"scale": ["0.4", "0.4", "0.4"]}
+      }
+    },
+    "animation.zoocraft.hedgehog.look_at_target": {
+      "loop": true,
+      "bones": {
+        "head": {
+          "relative_to": {"rotation": "entity"},
+          "rotation": [
+            "math.clamp(query.target_x_rotation, -20, 20)",
+            "math.clamp(query.target_y_rotation, -40, 40)",
+            0
+          ]
+        }
+      }
+    }
+  }
+}
+```
+
+=== FILE addon\packs\RP\entity\hedgehog.entity.json (new)
+```
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:hedgehog",
+      "materials": {"default": "entity_alphatest"},
+      "textures": {
+        "default": "textures/entity/zoocraft/hedgehog",
+        "blonde": "textures/entity/zoocraft/hedgehog_blonde"
+      },
+      "geometry": {"default": "geometry.zoocraft.hedgehog"},
+      "animations": {
+        "walk": "animation.zoocraft.hedgehog.walk",
+        "idle": "animation.zoocraft.hedgehog.idle",
+        "curl": "animation.zoocraft.hedgehog.curl",
+        "sleep": "animation.zoocraft.hedgehog.sleep",
+        "look_at_target": "animation.zoocraft.hedgehog.look_at_target",
+        "move": "controller.animation.zoocraft.hedgehog.move"
+      },
+      "render_controllers": ["controller.render.zoocraft.hedgehog"],
+      "scripts": {"scale": "query.is_baby ? 0.25 : 0.5", "initialize": ["variable.offset = math.random(0, 24);"], "animate": ["move"]}
+    }
+  }
+}
+```
+
+=== FILE addon\packs\RP\entity\wild_hedgehog.entity.json (new)
+```
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:wild_hedgehog",
+      "materials": {"default": "entity_alphatest"},
+      "textures": {
+        "default": "textures/entity/zoocraft/hedgehog",
+        "blonde": "textures/entity/zoocraft/hedgehog_blonde"
+      },
+      "geometry": {"default": "geometry.zoocraft.hedgehog"},
+      "animations": {
+        "walk": "animation.zoocraft.hedgehog.walk",
+        "idle": "animation.zoocraft.hedgehog.idle",
+        "curl": "animation.zoocraft.hedgehog.curl",
+        "sleep": "animation.zoocraft.hedgehog.sleep",
+        "look_at_target": "animation.zoocraft.hedgehog.look_at_target",
+        "move": "controller.animation.zoocraft.hedgehog.move"
+      },
+      "render_controllers": ["controller.render.zoocraft.hedgehog"],
+      "scripts": {"scale": "0.5", "initialize": ["variable.offset = math.random(0, 24);"], "animate": ["move"]},
+      "spawn_egg": {"base_color": "#6d4f36", "overlay_color": "#d9c7a2"}
+    }
+  }
+}
+```
+
+=== FILE addon\packs\RP\models\blocks\burrow_shelter.geo.json (new)
+```
+{
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.zoocraft.burrow_shelter",
+        "texture_width": 16,
+        "texture_height": 16,
+        "visible_bounds_width": 2,
+        "visible_bounds_height": 1,
+        "visible_bounds_offset": [0, 0.25, 0]
+      },
+      "bones": [
+        {
+          "name": "burrow",
+          "pivot": [0, 0, 0],
+          "cubes": [
+            {
+              "origin": [-7, 0, -5],
+              "size": [14, 3, 12],
+              "uv": {
+                "north": {"uv": [1, 13], "uv_size": [14, 3]},
+                "south": {"uv": [1, 13], "uv_size": [14, 3]},
+                "east": {"uv": [3, 13], "uv_size": [12, 3]},
+                "west": {"uv": [3, 13], "uv_size": [12, 3]},
+                "up": {"uv": [1, 3], "uv_size": [14, 12]},
+                "down": {"uv": [1, 3], "uv_size": [14, 12]}
+              }
+            },
+            {
+              "origin": [-5, 3, -3],
+              "size": [10, 2, 9],
+              "uv": {
+                "north": {"uv": [3, 11], "uv_size": [10, 2]},
+                "south": {"uv": [3, 11], "uv_size": [10, 2]},
+                "east": {"uv": [5, 11], "uv_size": [9, 2]},
+                "west": {"uv": [5, 11], "uv_size": [9, 2]},
+                "up": {"uv": [3, 5], "uv_size": [10, 9]},
+                "down": {"uv": [3, 5], "uv_size": [10, 9]}
+              }
+            },
+            {
+              "origin": [-3, 5, -1],
+              "size": [6, 1, 6],
+              "uv": {
+                "north": {"uv": [5, 10], "uv_size": [6, 1]},
+                "south": {"uv": [5, 10], "uv_size": [6, 1]},
+                "east": {"uv": [7, 10], "uv_size": [6, 1]},
+                "west": {"uv": [7, 10], "uv_size": [6, 1]},
+                "up": {"uv": [5, 7], "uv_size": [6, 6]},
+                "down": {"uv": [5, 7], "uv_size": [6, 6]}
+              }
+            },
+            {
+              "origin": [-8, 0, -8],
+              "size": [5, 3, 3],
+              "uv": {
+                "north": {"uv": [0, 13], "uv_size": [5, 3], "material_instance": "log"},
+                "south": {"uv": [0, 13], "uv_size": [5, 3], "material_instance": "log"},
+                "east": {"uv": [0, 13], "uv_size": [3, 3], "material_instance": "log"},
+                "west": {"uv": [0, 13], "uv_size": [3, 3], "material_instance": "log"},
+                "up": {"uv": [0, 0], "uv_size": [5, 3], "material_instance": "log"},
+                "down": {"uv": [0, 0], "uv_size": [5, 3], "material_instance": "log"}
+              }
+            },
+            {
+              "origin": [3, 0, -8],
+              "size": [5, 3, 3],
+              "uv": {
+                "north": {"uv": [11, 13], "uv_size": [5, 3], "material_instance": "log"},
+                "south": {"uv": [11, 13], "uv_size": [5, 3], "material_instance": "log"},
+                "east": {"uv": [0, 13], "uv_size": [3, 3], "material_instance": "log"},
+                "west": {"uv": [0, 13], "uv_size": [3, 3], "material_instance": "log"},
+                "up": {"uv": [11, 0], "uv_size": [5, 3], "material_instance": "log"},
+                "down": {"uv": [11, 0], "uv_size": [5, 3], "material_instance": "log"}
+              }
+            },
+            {
+              "origin": [-3, 3, -8],
+              "size": [6, 1, 3],
+              "uv": {
+                "north": {"uv": [5, 12], "uv_size": [6, 1], "material_instance": "log"},
+                "south": {"uv": [5, 12], "uv_size": [6, 1], "material_instance": "log"},
+                "east": {"uv": [0, 12], "uv_size": [3, 1], "material_instance": "log"},
+                "west": {"uv": [0, 12], "uv_size": [3, 1], "material_instance": "log"},
+                "up": {"uv": [5, 0], "uv_size": [6, 3], "material_instance": "log"},
+                "down": {"uv": [5, 0], "uv_size": [6, 3], "material_instance": "log"}
+              }
+            },
+            {
+              "origin": [-3, 0, -6],
+              "size": [6, 3, 1],
+              "uv": {
+                "north": {"uv": [5, 13], "uv_size": [6, 3], "material_instance": "dark"},
+                "south": {"uv": [5, 13], "uv_size": [6, 3], "material_instance": "dark"},
+                "east": {"uv": [2, 13], "uv_size": [1, 3], "material_instance": "dark"},
+                "west": {"uv": [2, 13], "uv_size": [1, 3], "material_instance": "dark"},
+                "up": {"uv": [5, 2], "uv_size": [6, 1], "material_instance": "dark"},
+                "down": {"uv": [5, 2], "uv_size": [6, 1], "material_instance": "dark"}
+              }
+            },
+            {
+              "origin": [-8, 0, 1],
+              "size": [2, 1, 5],
+              "uv": {
+                "north": {"uv": [0, 15], "uv_size": [2, 1], "material_instance": "log"},
+                "south": {"uv": [0, 15], "uv_size": [2, 1], "material_instance": "log"},
+                "east": {"uv": [9, 15], "uv_size": [5, 1], "material_instance": "log"},
+                "west": {"uv": [9, 15], "uv_size": [5, 1], "material_instance": "log"},
+                "up": {"uv": [0, 9], "uv_size": [2, 5], "material_instance": "log"},
+                "down": {"uv": [0, 9], "uv_size": [2, 5], "material_instance": "log"}
+              }
+            },
+            {
+              "origin": [6, 0, -4],
+              "size": [2, 1, 6],
+              "uv": {
+                "north": {"uv": [14, 15], "uv_size": [2, 1], "material_instance": "log"},
+                "south": {"uv": [14, 15], "uv_size": [2, 1], "material_instance": "log"},
+                "east": {"uv": [4, 15], "uv_size": [6, 1], "material_instance": "log"},
+                "west": {"uv": [4, 15], "uv_size": [6, 1], "material_instance": "log"},
+                "up": {"uv": [14, 4], "uv_size": [2, 6], "material_instance": "log"},
+                "down": {"uv": [14, 4], "uv_size": [2, 6], "material_instance": "log"}
+              }
+            },
+            {
+              "origin": [5, 0, 3],
+              "size": [3, 2, 4],
+              "uv": {
+                "north": {"uv": [13, 14], "uv_size": [3, 2]},
+                "south": {"uv": [13, 14], "uv_size": [3, 2]},
+                "east": {"uv": [11, 14], "uv_size": [4, 2]},
+                "west": {"uv": [11, 14], "uv_size": [4, 2]},
+                "up": {"uv": [13, 11], "uv_size": [3, 4]},
+                "down": {"uv": [13, 11], "uv_size": [3, 4]}
+              }
+            },
+            {
+              "origin": [-7, 0, 6],
+              "size": [4, 1, 2],
+              "uv": {
+                "north": {"uv": [1, 15], "uv_size": [4, 1]},
+                "south": {"uv": [1, 15], "uv_size": [4, 1]},
+                "east": {"uv": [14, 15], "uv_size": [2, 1]},
+                "west": {"uv": [14, 15], "uv_size": [2, 1]},
+                "up": {"uv": [1, 14], "uv_size": [4, 2]},
+                "down": {"uv": [1, 14], "uv_size": [4, 2]}
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+SHA-256 (Get-FileHash) of every file in this batch after writing (LF endings):
+9894daf97506243fe7205c8e0a50cb9d2ad38c885586fb8a3d2623934fdcba7a  addon\packs\BP\spawn_rules\wild_hedgehog.json
+b1c24de0d0ee8f79e3334f7ebdac2b03ffc94037ce52e8fd2704390b88d0d78f  addon\packs\RP\animation_controllers\hedgehog.animation_controllers.json
+78794a5f3520b811b56621e2be94723e3e5325033ae80b77441b16076446e1c0  addon\packs\RP\animations\hedgehog.animation.json
+e738209049d61f050d85ca4a078d8eef045a351ebeb3e6634b6cfcee76b8e609  addon\packs\RP\entity\hedgehog.entity.json
+9dc8518acbe818fc591cd249ed132ade8a9af2eeb9acd2ea7792301f5644a6e7  addon\packs\RP\entity\wild_hedgehog.entity.json
+af69544d7ee6158d2ddabe0a65342241d5d29f84cc0425f2a91b3f79b4145050  addon\packs\RP\models\blocks\burrow_shelter.geo.json

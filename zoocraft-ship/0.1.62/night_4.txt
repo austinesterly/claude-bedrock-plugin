@@ -1,0 +1,484 @@
+From the cloud session: the nocturnal house and the Hedgehog (0.1.62, batch 4 of 6). Apply this on 0.1.61 (after the three mixed-species batches were applied and built). Austin asked for the next slice: the Hedgehog, the first nocturnal animal (asleep by Minecraft day and up at night; an exhibit roofed over is a nocturnal house, where that is turned round so guests see it by day), a Burrow Shelter to sleep in, an Insect Hatchery that grows Insect Rations, and the insect look for feeders (docs\Nocturnal_house_test_plan.md is in this batch set). New entities, blocks and textures: Austin needs a FULL Minecraft restart after the build. Don't make your own changes for it, these batches are it. Apply everything below inside addon\ exactly. Don't build yet: batch 5 follows. When this batch is written and its SHA checks pass, say nothing in the thread; just wait for the next batch.
+Rules: Copy every file you replace or edit into a new backups\<timestamp>\ folder first (keep its relative path), never delete. Install nothing. Don't touch the manifests (build.cmd bumps the version). Write all files UTF-8 without BOM and with LF line endings, each ending with exactly one newline. FILE blocks: the content is exactly what's between the ``` fences (new files: create the folders as needed). HEX blocks: join the lines between the fences, convert the hex to bytes and write them (PNG files). EDIT blocks: replace each OLD (between the fences, matched as whole lines) with its NEW, in order; each OLD must be found exactly once. An "APPEND" part adds its content at the end of the file, after its last line, ending with a newline. If anything doesn't match, or a SHA-256 check fails, stop and say in the thread which file failed.
+
+Before writing anything: check these files from the earlier batches are in place with these SHA-256 hashes. If any is missing or different, write nothing and say in the thread which batch of these fixes is missing.
+5370c196dbf67dc3cd360891e01dab351cf4df79fe2b5ed8c7b88301ba3578c8  addon\packs\BP\blocks\burrow_shelter.json (batch 1)
+9894daf97506243fe7205c8e0a50cb9d2ad38c885586fb8a3d2623934fdcba7a  addon\packs\BP\spawn_rules\wild_hedgehog.json (batch 2)
+b93da64ddbc80d789f9bef863756c032e0f6dfbd1d3d23cf41df50faa00f8b9c  addon\packs\RP\models\blocks\insect_hatchery.geo.json (batch 3)
+
+=== HEX addon\packs\RP\textures\entity\zoocraft\hedgehog.png (2161 bytes)
+```
+89504e470d0a1a0a0000000d4948445200000040000000400806000000aa6971
+de000008384944415478daedda578f95451807f0bd375850ac080828558c0d69
+62ecbd1bbb5e580105952f6041454dec0a562c582fec2db1244ab7dc8914db57
+19f737c97f73d82c274bf282bbe49d643233efb4e7f93f6d66cee9e9d985b475
+fd9be5944947947b2e9f55c61f3ca26c5ef37a9979cce165cbba37cac9471f56
+d67efa5c5974f5e965f17567951f3f7abadc73c339e5a78f9f29eb3e7bbed67b
+867b5a74d189e59f5fdfab8cabffb17655f973d3eacafc5f3fbf53d67ffe4259
+72fdd99559e5bd379e5b015097873d000b2f3ca10270da71132af3daa4bfe4b2
+53aa26dc77d37995d1bbaf3db36a004d587af3f91510df863d00f75e31bbcc9d
+36b62cb8e0f8cab036e601c23c0080e9bbae39a3666068c724863d001825f139
+53c754c6e74d1f57dbd108d2a6f61bbe78b1cf0430afcd3f0c7b00b66d78ab32
+2e73867cc1a9c71e55ed1f186b3e79b6aa3ba6630afc02e9ef153e60e95573ab
+d39345029919dc77e59c6a1ab177a68079928f43dc2b00c0e4dfbfbc5b4d4049
+ea1ce1ec2947d652088cc3e3fd0182f1bd260c4e3864df72d7c527f539406781
+59934797bb2f39b982826120d000f6cf112aa30dc31e80a9634695f933c6d728
+20d302ccab2fbe7466b5fd4d5fadac760f080090bc6fdac31e8069630fae1a40
+f531ef0024fcd1028e31a10fb3d41e201c63c018924c61e8dfdfdeaf4cb0639e
+9d878fba6312c3a4ecbb6fc60a7b19e354080021d158eb890ec6034ae9bb4394
+f5b4451425530a907c8cb5e53d0a808d11229e630608c0f07df2e8036b993b80
+bab057bd7e6f54e00fa68f3ba4d64583648e91791c7dd8feb50d2020aae70e61
+4f6b1aabcffef6d3de63009016e66cbe7de3db3b30834999b410ccfe11479ac6
+c6fbb37ff598074d2051734817a8a46a1febc671aa2bcdb77f9ca9b5879ca950
+69ea0c1c92a305a446add9793cfdc62f57d410e8f0d3f4e9cf7e342617308073
+ccda00d407648003bf5100488574a3a20987a4c6eb737ab23a1080222c364903
+d0730ec1644c271a080834d1bec6b5c8c2ec58ecb7018da0094a12277de18ed4
+319f536093344c3c74bf3e33524e3a626475c6a18569615c3f736dfc184c0378
+7eea06791b0305a3517952573a00d18426699872e441d5e7507b02617ee82079
+b4e58ec207ed1613806acefe36660636c430d5a709ea348139347d05063e872c
+a38100a8bfa842fa71c068a2198d02c0c66c6c13cec6e6892018950140eaea8e
+c380689206cce6ac1241a08b60d006203e49e462a68dbf05585c460402a8993a
+7ba701b17f261187b83b1e64489746e6a0c531d3809c4a0906bd3d4d7b600e10
+0041df2634a253ed6901106841d31a805934a02560d046be0118fa98a63e65a3
+0050338e500904d2cf111ae3989599404261d31a20f4d993066098d3630e396c
+a12fa7cdc68fd316648336e285a9604e8f097f7901a2057188835d9ff4f2de08
+609ac5ae011ea78b06123fe6f003aa03ce798019d20a390ed1b81ce3d1081c7b
+a81b9f5b6c4f4e4d26e77123ef7c3630d0822f3d785b79f9a1dbeb6defd587ef
+2cab962faa0cbfb2ec8e9253a2056d88b848c67a6c1323c69ae376682d6bca7c
+06c2c4796bb93fe4789ee3323aad8f291a00207da1d97c63d08e5175a6109f05
+10e3014173a2c93d6c15615496245f7b644155698c6a7370fa11bae2fe5baa77
+570690950fdc5ae76803256b29f5f107ead67afdd185552bc2b83383b9ffeb63
+09021181780c91ae438c6feae9c700c611eb3b6680a4cf3c19a3c6e8c7bc35bd
+0344dafaace31be001a5cfb821f956406d620ef1acda839def6669ae931a75cb
+b199e469196d50763bfa26a67b8cc9b59d23cca38c6fd4bdf1b097c38f9c0790
+849ac1ce8fa70e80888da9e5f8dc0d004e30cf7039e0d4a377af6072c58e13dc
+15c10c3a919cf3b64d1060f35d79ac20258ce7d0622d007084b931cadde6d302
+719ed4f3fb435e97ac996b391a1b0780ea097dd04500a4a95db7397c025f40bd
+b7fffc6165361163f3ba77aad4f908e1921fe11bb4f902634839ea0df0309d87
+d83cbae41d926747232dd1076cb7c44600108e125b73fbd3ee36274fe240d8b2
+e1bd3272c43eb5aedcb6e9835ae70300001820f80600e06102d042a87d3196b3
+7f7e8cc97d3f6dd2a70d8050a2bb312748221644481c62b739980100dbfe63fd
+bb356c92328da001098b4c80e4451220682b875414a05e549f2fc80b2e50bacd
+c1a4bc75e3fb350382a4854f1a0114dfd585459a206426e4ee7126a95bbc6d9e
+b6a34e1c5f6e814c20bf0833036368459ec898473d590de72434e5d75d0e2c92
+1af039bdf73043ad4f9d3ebecc9b765419c81788f9f38f9d30603f3321fd3953
+c6d63506a2c51a73a78e1b703e1afb3fb9e51b1fd3f91a95f7095ad8f5071ab6
+c90e6500705af2808f13bd9b6102f198e8df9f9fc3103f503f8f8f989d01c074
+ac6f3e100602a8f3baadfddd538f95ef9f7ebcee9b976a8c7ffdf8b2f2ed93cb
+6b5bdee92fd56c11f3bc716cb9bf06e407d0dcf62ce81b40d4c3787e12cf2fc4
+984194b2ffafc6e62234d2cb85293fb0e67bfe73909fda324636e69b271eae20
+840e63acebdb0fcf3cd137c77e3b483d9e390b290191f8cc8beb07cc693326f6
+494dd6564655674f1e53bfc9daf9967e26216b67ae523bd9faca9897f119d7b8
+dd537192fe7dedea3ecf4dfd93f39df756efd91b93e366e73bba93146fdff91c
+ddf9ccec62220aecac5fbbf35152a4104a3bfb3bdb1e333b4f98a3f61f513a73
+e73a8dff6e88705918cbe5c743482e41f94d30fd807138ea9c637c72c6cac666
+8c39fa7d039ef9be279ce697e1fecc27bb8cc9ee008dfeea83881083c0308728
+0485f8302387d18c35cef7fc00da09a079012e6b06f4cc0d088dff9ad3a636b5
+a94d6d6a539bdad4a636b5a94d6d6a539bdad4a636b5a94d6dda31fd07295c4d
+67ce64db3e0000000049454e44ae426082
+```
+
+=== HEX addon\packs\RP\textures\entity\zoocraft\hedgehog_blonde.png (2145 bytes)
+```
+89504e470d0a1a0a0000000d4948445200000040000000400806000000aa6971
+de000008284944415478daedda578f56451807f0bd3724c6c45bfb853db10b58
+127befe51350b7a07e0295be548d74f0deae51e9bd7367d70ba58348b3de1ff3
+1bf3dfbc6c96cd921c70979c49263373a63dcfff6933f3be6d6d67904eecdb5c
+4d1dff40b57a494735eac99baaa3bb375453c6dd5f1ddfbba99a3cf6be6adfb7
+abaa79af8fae164e1c57edfe6a79b578727bb5e7eb15d5feef56977adb504f5f
+ce1f53fdfdebcec2b8fab13d1bab3f0e6e2bccff79687b75e0fb35d5a249e30b
+b3ca25533a0a00eaf29007e08b79a30b00735e7ba230af4dfaab16b7174d583a
+b5b330bae0cdb1450368c2b2695d0510df863c006b96765633ba1ea93e7f6754
+61581bf300611e00c0f4fc37c6940c0ced98c4900700a324deddf970617ce684
+474b3b1a41dad4fee00f6b7b4c00f3dafcc39007e0e4fe2d85719933e40b66bd
+f258b17f60ecfd666551774cc714f805d23f2f7cc0ba772714a7278b04323358
+bbacab9846ec9d29609ee4e310cf0b0030f9d7e11dc50494a4ce114eef78a894
+42601c1eef0f108c9f376170f4533757cb178ced7180ce02d3da1fac562c1c57
+40c130106800fbe70895d186210f40e78bc3abd9af3e5ea2804c0b30afbe72d1
+7f1efff04feb8bdd03020024ef9bf69007a0eba5114503a83ee61d80843f5ac0
+3126f46196da0384630c188392290cfd73645761821df3ec3c7cd41d93182665
+df7d3356d8cb18a742000889c65a4f74301e504adf1da2aca72da228995280e4
+63ac2d9f53006c8c10f11c33400086efedcfdf51cadc01d4853da5a8c01f4c78
+7964a98b06c91c23f318fbccada50d2020aae70e614f6b1aabcffef6d33e6700
+9016e66cfefb81ada730834999b410ccfe11479ac6c6fbb37ff598074d205173
+4817a8a46a1febc671aa2bcdb77f9ca9b5079da95069ea0c1c92a305a446add9
+793cfda11fd79510e8f053f7e9cf7e342617308073ccda00d407648003bf5600
+488574a3a20987a4c6eb737ab23a1080222cd64903d0730ec1644c271a080834
+d1bedab5c8c2ec58ecb7018da0094a12277de18ed4319f53609d348c79fa961e
+33528e7feef6e28c430bd3c2b87ee65afb319806f0fcd40df236060a46a3f2a4
+ae7400a20975d2d0f1c29dc5e7507b02617ee82079b4e58ec2079d1513806ace
+fe36660636c430d5a709ea348139d47d05063e872ca38100a8bfa842fa71c068
+a219b502c0c66c6c13cec6e6892018950140eaea8ec380a89306cce6ac1241a0
+8b60d006203e49e462a6b5bf05585c460402a8993a7ba701b17f26118778361e
+64489746e6a0c531d3809c4a0906bd6d757b600e100041df2634a255ed690110
+6841dd1a805934a02560d046be0118fa98a63e65ad0050338e500904d2cf111a
+e3989599404261dd1a20f4d993066098d3630e396ca12fa7cdda8fd316648336
+e285a9604e8f097f7901a2057188035d9ff4f2de08609ac5ae011ea78b06121f
+f7ec6dc501e73cc00c69851c87685c8ef168048e3dd48dcf2db62da72693f3b8
+91773e1b1868c18d1fccac367d38abdcf6b67c3ca7dafed9db85e1cd1fcdae72
+4ab4a00d1117c9588f6d62c45873dc0ead654d99cf4098386f2df7871ccf735c
+46a7f531450300a42f349b6f0cda31aace14e2b300623c20684e34b98dad228c
+ca92e4d64fe61695c6a83607a71fa1ebdfeb2ede5d194036bc3fa3ccd1064ad6
+52eae30fd4adb5edd3b78a568471670673ffd7c712042202f118225d8718dfd4
+d38f018c23d677cc00499f7932468dd18f796b7a0788b4f559c737c0034a9f71
+83f2ad80dac41ce259b5073adfcdd25c2735ea966333c9d332daa0ecefe89b98
+ee3126d7768e308f32be51f7dac35e0e3f721e40126a063a3f9e3a002236a696
+e3737f0070827986cb01c77a04932b769ce0990866c089e49cb76d82009b9fc9
+630529613c87166b018023cc8d51ee6f3e2d10e7493dbf3fe475c99ab996a3b1
+7600a89ed0075d04409adaf537874fe00ba8f7c9fdbb0ab38918bffdb2b5489d
+8f102ef911be419b2f308694a3de000fd37988cda34bde21797634d2127dc076
+4bac0500e128b135b73fedfee6e4491c08c7f66caf2e1a7641a92b4fecdb59ea
+7c0000000304df00003c4c005a08b52fc672f6cf8f31b9efa74dfab401104a74
+d7e60449c482088943ec6f0e6600c0b68feede56c22629d3081a90b0c804485e
+240182b672504501ea45f5f982bce002a5bf3998948fefdd513220485af8a411
+40f15d5d58a409426642ee396792bac5dbe6693beac4f1e516c804f28b303330
+8656e4898c799493d5504e42537edde5c022a9bec63acc50ebbbafbfa2baebba
+cbabbe7c81987fcf0d57f6d9cf4c487fc435979635faa2c51a23afbdaccff968
+ecfde4966f7c4ceb6b54de276861bf3fd0b04d76280380d392fb1a6b334c201e
+13bdfbf37318e2fbeae7f111733a00988ef5cd07425f00b55eb7b5d7cc9e56ad
+9d33bdec9b976a8c2f9f3eb15a3d6b6a69cba7fda59a2d629e378e2df7d680fc
+009adb9e057d03887a18cf4fe2f98518338852f6fed5d85c84467ab930e507d6
+7ccf7f0ef2535bc6c8c6ace89e5440081dc658d7b77573bb7be6d8ef14a9c733
+67212520129f7971fd80b9f7c6ab7aa4266b2ba3aac3afbea47c93b5f32dfd4c
+42d6ce5ca576b2f595312fe333ee2c1c767616491ff9794b8fe7a6fec9f9ce7b
+abb79d8fc971b3f51ddd498ab76f7d8e6e7d66763111054ed7afddfa28295208
+a5adfdad6d8f99ad27cc8b2f1c56b5e6d6756affdd10e1b23096cb8f87905c82
+f29b60fa01e370d43ac7f8e48c958dcd1873f4fb063cf37d4f38cd2fc3bd994f
+761993dd016afdd50711210681610e51080af161460ea3196b9ceff901b41540
+f3025cd60ce8991b106aff35a7494d6a52939ad4a42635a9494d6a52939ad4a4
+2635a9494d6a52939a746afa1785deddf84a7bf7280000000049454e44ae4260
+82
+```
+
+=== HEX addon\packs\RP\textures\items\zoocraft\insect_ration.png (241 bytes)
+```
+89504e470d0a1a0a0000000d49484452000000100000001008060000001ff3ff
+61000000b84944415478da6360a015d05512ff4fb6664d39e1fffa2a92ffbdac
+b4c086e8288a116f184823c800189f24cdc81af37cf5fe3fbbbc106cd8f32b8b
+fe532d6c32dc35300dcbf2d422da8697d79660aa7d757d295e0340de01693cbb
+b1ecffb155f9986a8faf2ef88fec9a2717e7ff3fba32ef3f36dbb0bae0c5d5c5
+ff19e801323d34ffe3f5e7e30bf3fe83bc83d599e4b834c75b079c064eae2d02
+a709ac0188ee0a508c805cf1f4d282ffe8510d320c6408ddc28c280000a9d677
+589dbf4b250000000049454e44ae426082
+```
+
+=== EDIT addon\docs\status.md (1 replacements, apply in order)
+--- 1
+OLD:
+```
+- 0.1.60 (2026-10-13, Austin: "allow NPCs to travel up stairs and across bridges to different far away exhibits"): guest journeys. visitors/routes.js (pure): nearestNode (the network column within 2 blocks of a spot, feet one above the path block), routeBetween (breadth-first over the walked path network, so stairs, slabs and bridges are routes like flat paths), waypoints (turns and every step up or down), feetAt (half a block lower on a bottom slab), walkStep (a straight ramp between waypoints, facing the way), pickDestination (far spots favoured, unwatched ones first), routeTicks. visitors/guests.js: a strolling guest sets off every 6-20 s (balance.guests.tripAfterSeconds) to a Viewing Point that sees animals, a Snack Stand or a bench more than 6 blocks away on the network, within 160 route blocks (tripRange), walking 0.11 blocks a tick (walkSpeed) by teleport each tick (loop "journeys" in main.js, every tick) with patience of twice the walk; on arrival the vanilla goals take over again (watching at the point); leaving guests walk the network back to the entrance. New mode "travel" with the entity's zoocraft:travelling group (no move goals fight the script), the zoocraft:travel event, and a client-synced bool property zoocraft:walking that swings the legs and arms in guest.animation.json. network.js exports currentNetwork. Talking to a guest on the way says where it's going. Entity and animation files changed: full Minecraft restart. 109 tests. Test plan: docs/Guest_journeys_test_plan.md.
+- 0.1.61 (2026-10-13, Austin: "Next slice", M6 part 3a): mixed-species exhibits. exhibits/mixing.js (pure): COMMUNITIES (Meadow: rabbit, deer, capybara; Wetland: otter, capybara; Savanna: giraffe, elephant; Basalt flats: basalt tortoise, ember fox; End meadow: chorus deer, rift ferret), communitiesOf, companions, canShare, companyText (the journal's line), mixProblem (why a release is refused), widestProfile, spaceFactor (balance.mixing.spaceFactor 1.25: "a quarter more room"). exhibits.js: ex.speciesIds (lead first; addResident/removeResident keep it), speciesIn/leadSpecies, profileOf(ex, extra) = the widest resident profile, capacity × spaceFactor with cap.mixed, fitFor checks mixProblem first, the measurement counts whatever any resident wants (cover/mud/magma/ash/end stone), a habitat check per species, "Crowded: ... of mixed species (a quarter more room)". animals.js: the care loop runs per species group (speciesGroups; own troughs, food, cover, heat...; shared fixtures and thermal failure once per exhibit; comfortCausesBy per species, causesFor); feederDaysLeft = the species that runs out first. staff.js: jobs per species group, one per target; the keeper feeds the species eating what the feeder holds. nursery.js: breeding follows the lead species; growth and births by each animal's own species. room.js noRoomReason(…, shares). carriers.js: sharing check before the release and for the catch. visitors.js/services.js/expeditionSteps.js count every species on show. clipboard: species line "Deer + Rabbit (shared: a quarter more room)", "(mixed)", breeding "(Deer, the first species here)", per-species advice, sharing advice on an empty exhibit. Field Journal: company line. 110 tests. Test plan: docs/Mixed_species_test_plan.md.
+```
+NEW:
+```
+- 0.1.60 (2026-10-13, Austin: "allow NPCs to travel up stairs and across bridges to different far away exhibits"): guest journeys. visitors/routes.js (pure): nearestNode (the network column within 2 blocks of a spot, feet one above the path block), routeBetween (breadth-first over the walked path network, so stairs, slabs and bridges are routes like flat paths), waypoints (turns and every step up or down), feetAt (half a block lower on a bottom slab), walkStep (a straight ramp between waypoints, facing the way), pickDestination (far spots favoured, unwatched ones first), routeTicks. visitors/guests.js: a strolling guest sets off every 6-20 s (balance.guests.tripAfterSeconds) to a Viewing Point that sees animals, a Snack Stand or a bench more than 6 blocks away on the network, within 160 route blocks (tripRange), walking 0.11 blocks a tick (walkSpeed) by teleport each tick (loop "journeys" in main.js, every tick) with patience of twice the walk; on arrival the vanilla goals take over again (watching at the point); leaving guests walk the network back to the entrance. New mode "travel" with the entity's zoocraft:travelling group (no move goals fight the script), the zoocraft:travel event, and a client-synced bool property zoocraft:walking that swings the legs and arms in guest.animation.json. network.js exports currentNetwork. Talking to a guest on the way says where it's going. Entity and animation files changed: full Minecraft restart. 109 tests. Test plan: docs/Guest_journeys_test_plan.md.
+- 0.1.62 (2026-10-13, M6 part 3b): the nocturnal house and the Hedgehog. gen/hedgehog.py: an original Blockbench-style hedgehog (a dome of banded spines on short legs, a pale pointed face) in two coats (Brown, Blonde; minecraft:variant), walk, idle (sniffing, looking about, scratching), curl and sleep animations driven by the entity properties asleep and curled; zoo and wild entities (held still by the zoocraft:still event while asleep or curled); wild ones spawn in forests, plains and meadows in the dark. animals/nightRules.js (pure): sleepNow (asleep by Minecraft day, up at night; a nocturnal house turns that round), roofNeeded, isNocturnalHouse (balance.nocturnal.roofFraction of the usable floor under a solid roof, not leaves), nocturnalLine and stateText for the clipboard. animals/night.js: the loop (every 10 ticks, hedgehogs near players) sets the properties, holds them still, and curls an awake one for balance.nocturnal.startleTicks when someone who isn't sneaking comes within startleRange. exhibits/geometry.js roofedCells (opts.roofScan) and exhibits.js ex.roofedCells for nocturnal residents; platform/mc.js isNight. Burrow Shelter (blocks/burrow_shelter.json: a leaf-litter mound over a log with a dark way in, no collision; fixture type "burrow"; species.den "burrow" and equipment/rules.js denType/hasDen; care warnings, advice and the journal name the right den). Insect Hatchery (blocks/insect_hatchery.json: zoocraft:grown 0..3 raised by the block's own tick every 1200 to 1800 ticks; equipment/hatchery.js takes the batches out as Insect Rations) and the Insect Ration (RATIONS insect, FOOD_LOOK 7 with feeder and basket looks, sold in the shop too). A Viewing Point doesn't count an animal that is asleep (visitors/points.js entityAsleep), so the house is what puts hedgehogs on show. Discovery tasks forage and curl (discovery.js nightSight). Field Journal nocturnal, den and hatchery lines; clipboard nocturnal-house line, roofed count, burrow count, "Now:" on a nocturnal animal's page and hedgehog advice; mixing.js Hedgerow community (rabbits and hedgehogs). 113 tests. docs/Nocturnal_house_test_plan.md. Full Minecraft restart (new entities, blocks, textures).
+- 0.1.61 (2026-10-13, Austin: "Next slice", M6 part 3a): mixed-species exhibits. exhibits/mixing.js (pure): COMMUNITIES (Meadow: rabbit, deer, capybara; Wetland: otter, capybara; Savanna: giraffe, elephant; Basalt flats: basalt tortoise, ember fox; End meadow: chorus deer, rift ferret), communitiesOf, companions, canShare, companyText (the journal's line), mixProblem (why a release is refused), widestProfile, spaceFactor (balance.mixing.spaceFactor 1.25: "a quarter more room"). exhibits.js: ex.speciesIds (lead first; addResident/removeResident keep it), speciesIn/leadSpecies, profileOf(ex, extra) = the widest resident profile, capacity × spaceFactor with cap.mixed, fitFor checks mixProblem first, the measurement counts whatever any resident wants (cover/mud/magma/ash/end stone), a habitat check per species, "Crowded: ... of mixed species (a quarter more room)". animals.js: the care loop runs per species group (speciesGroups; own troughs, food, cover, heat...; shared fixtures and thermal failure once per exhibit; comfortCausesBy per species, causesFor); feederDaysLeft = the species that runs out first. staff.js: jobs per species group, one per target; the keeper feeds the species eating what the feeder holds. nursery.js: breeding follows the lead species; growth and births by each animal's own species. room.js noRoomReason(…, shares). carriers.js: sharing check before the release and for the catch. visitors.js/services.js/expeditionSteps.js count every species on show. clipboard: species line "Deer + Rabbit (shared: a quarter more room)", "(mixed)", breeding "(Deer, the first species here)", per-species advice, sharing advice on an empty exhibit. Field Journal: company line. 110 tests. Test plan: docs/Mixed_species_test_plan.md.
+```
+
+=== EDIT addon\packs\BP\blocks\basic_feeder.json (2 replacements, apply in order)
+--- 1
+OLD:
+```
+          5,
+          6
+        ]
+```
+NEW:
+```
+          5,
+          6,
+          7
+        ]
+```
+--- 2
+OLD:
+```
+          }
+        }
+      }
+    ]
+```
+NEW:
+```
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:fill') == 1 && query.block_state('zoocraft:food') == 7",
+        "components": {
+          "minecraft:geometry": "minecraft:geometry.full_block",
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "zoocraft_feeder_side",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "zoocraft_feeder_insect_1",
+              "render_method": "opaque"
+            },
+            "down": {
+              "texture": "zoocraft_planks",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:fill') == 2 && query.block_state('zoocraft:food') == 7",
+        "components": {
+          "minecraft:geometry": "minecraft:geometry.full_block",
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "zoocraft_feeder_side",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "zoocraft_feeder_insect_2",
+              "render_method": "opaque"
+            },
+            "down": {
+              "texture": "zoocraft_planks",
+              "render_method": "opaque"
+            }
+          }
+        }
+      }
+    ]
+```
+
+=== EDIT addon\packs\BP\blocks\hanging_food_basket.json (2 replacements, apply in order)
+--- 1
+OLD:
+```
+      "menu_category": {"category": "items"},
+      "states": {"zoocraft:fill": [0, 1], "zoocraft:food": [0, 1, 2, 3, 4, 5, 6]}
+    },
+```
+NEW:
+```
+      "menu_category": {"category": "items"},
+      "states": {"zoocraft:fill": [0, 1], "zoocraft:food": [0, 1, 2, 3, 4, 5, 6, 7]}
+    },
+```
+--- 2
+OLD:
+```
+          }
+        }
+      }
+    ]
+```
+NEW:
+```
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:food') == 7",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {"texture": "zoocraft_basket", "render_method": "opaque"},
+            "rope": {"texture": "zoocraft_basket_rope", "render_method": "opaque"},
+            "food": {"texture": "zoocraft_basket_food_insect", "render_method": "opaque"}
+          }
+        }
+      }
+    ]
+```
+
+=== EDIT addon\packs\BP\scripts\animals\animals.js (1 replacements, apply in order)
+--- 1
+OLD:
+```
+  if (!gear.ash) out.push({ severity: 2, text: `${pluralOf(species)} need a warm ash bed to dig in: at least ${species.ash.minCells} Warm Ash blocks in the exhibit floor (${ex.ashCells} now). Craft Warm Ash from gravel or soul soil with charcoal.` });
+  if (!gear.den) out.push({ severity: 2, text: `${pluralOf(species)} need a den to curl up in: place an Ember Den on the exhibit floor.` });
+  // Containment (spec AC-11): without a charged anchor the ferrets stop blinking and are unsettled.
+```
+NEW:
+```
+  if (!gear.ash) out.push({ severity: 2, text: `${pluralOf(species)} need a warm ash bed to dig in: at least ${species.ash.minCells} Warm Ash blocks in the exhibit floor (${ex.ashCells} now). Craft Warm Ash from gravel or soul soil with charcoal.` });
+  if (!gear.den && species.den === "burrow") out.push({ severity: 2, text: `${pluralOf(species)} need a burrow to sleep in: place a Burrow Shelter on the exhibit floor.` });
+  else if (!gear.den) out.push({ severity: 2, text: `${pluralOf(species)} need a den to curl up in: place an Ember Den on the exhibit floor.` });
+  // Containment (spec AC-11): without a charged anchor the ferrets stop blinking and are unsettled.
+```
+
+=== EDIT addon\packs\BP\scripts\animals\welfare.js (1 replacements, apply in order)
+--- 1
+OLD:
+```
+  ash: () => "a Warm Ash bed to dig in",
+  den: () => "an Ember Den",
+  end: () => "end stone in the floor",
+```
+NEW:
+```
+  ash: () => "a Warm Ash bed to dig in",
+  den: (s) => (s?.den === "burrow" ? "a Burrow Shelter" : "an Ember Den"),
+  end: () => "end stone in the floor",
+```
+
+=== EDIT addon\packs\BP\scripts\data\balance.js (2 replacements, apply in order)
+--- 1
+OLD:
+```
+  },
+  guests: {
+```
+NEW:
+```
+  },
+  // Nocturnal animals (0.1.62, animals/nightRules.js): a nocturnal house is an exhibit with a solid
+  // roof (not leaves) over this share of its usable ground; there its animals are up by day and
+  // sleep at night, instead of the other way round.
+  nocturnal: {
+    roofFraction: 0.9, // of the usable floor under a solid roof ("roofed over" on the clipboard)
+    roofScan: 24, // blocks above the floor to look for the roof
+    startleRange: 2.5, // blocks: someone this close who isn't sneaking makes an awake hedgehog curl up
+    startleTicks: 80, // how long it stays curled (4 seconds)
+  },
+  // Insect Hatchery (0.1.62, equipment/hatchery.js): grows Insect Rations on its own, a batch every
+  // minute or two (the block's own tick), up to this many batches; use it to take them out.
+  hatchery: {
+    batches: 3,
+    rationsPerBatch: 2,
+  },
+  guests: {
+```
+--- 2
+OLD:
+```
+    "zoocraft:chorus_browse": { price: 4, bundle: 8, sell: 1 },
+    "zoocraft:stabilized_carrier": { price: 240, bundle: 1 },
+```
+NEW:
+```
+    "zoocraft:chorus_browse": { price: 4, bundle: 8, sell: 1 },
+    "zoocraft:insect_ration": { price: 4, bundle: 8, sell: 1 }, // for hedgehogs; an Insect Hatchery grows them for free
+    "zoocraft:stabilized_carrier": { price: 240, bundle: 1 },
+```
+
+=== EDIT addon\packs\BP\scripts\data\blocks.js (1 replacements, apply in order)
+--- 1
+OLD:
+```
+  /^zoocraft:rift_tunnel$/, // no collision: a Rift Ferret trots in and hides, so its cell is still floor
+  /^minecraft:(short_grass|tall_grass|fern|large_fern|deadbush|dead_bush|short_dry_grass|tall_dry_grass|bush|leaf_litter|wildflowers|firefly_bush)$/,
+```
+NEW:
+```
+  /^zoocraft:rift_tunnel$/, // no collision: a Rift Ferret trots in and hides, so its cell is still floor
+  /^zoocraft:burrow_shelter$/, // no collision: a hedgehog trots in and sleeps, so its cell is still floor
+  /^minecraft:(short_grass|tall_grass|fern|large_fern|deadbush|dead_bush|short_dry_grass|tall_dry_grass|bush|leaf_litter|wildflowers|firefly_bush)$/,
+```
+
+=== EDIT addon\packs\BP\scripts\data\items.js (4 replacements, apply in order)
+--- 1
+OLD:
+```
+  clearLavaBucket: "zoocraft:clear_lava_bucket",
+};
+```
+NEW:
+```
+  clearLavaBucket: "zoocraft:clear_lava_bucket",
+  insectRation: "zoocraft:insect_ration",
+};
+```
+--- 2
+OLD:
+```
+  endFenceTop: "zoocraft:end_fence_top",
+};
+```
+NEW:
+```
+  endFenceTop: "zoocraft:end_fence_top",
+  burrow: "zoocraft:burrow_shelter",
+  hatchery: "zoocraft:insect_hatchery",
+};
+```
+--- 3
+OLD:
+```
+  "zoocraft:chorus_browse": { diet: "chorus", units: 1, label: "Chorus Browse", plural: "Chorus Browse" },
+};
+```
+NEW:
+```
+  "zoocraft:chorus_browse": { diet: "chorus", units: 1, label: "Chorus Browse", plural: "Chorus Browse" },
+  // Insect eaters (hedgehogs; items list: "Made by the Insect Hatchery"): no recipe, the hatchery grows them.
+  "zoocraft:insect_ration": { diet: "insect", units: 1, label: "Insect Ration" },
+};
+```
+--- 4
+OLD:
+```
+// fish, mineral pellets, seared ember chunks, glowing plankton (baskets only: the Thermal Feeder
+// has its own look), warped fungus or chorus browse. Empty blocks show the leafy look, which is hidden anyway.
+export const FOOD_LOOK = { leafy: 0, fish: 1, mineral: 2, ember: 3, plankton: 4, fungus: 5, chorus: 6 };
+export function foodLook(item) {
+```
+NEW:
+```
+// fish, mineral pellets, seared ember chunks, glowing plankton (baskets only: the Thermal Feeder
+// has its own look), warped fungus, chorus browse or mealworms (insect rations). Empty blocks show the leafy look, which is hidden anyway.
+export const FOOD_LOOK = { leafy: 0, fish: 1, mineral: 2, ember: 3, plankton: 4, fungus: 5, chorus: 6, insect: 7 };
+export function foodLook(item) {
+```
+
+=== EDIT addon\packs\BP\scripts\data\species.js (1 replacements, apply in order)
+--- 1
+OLD:
+```
+    names: ["Tembo", "Nandi", "Pebbles", "Jumbo", "Kibo", "Amara", "Dumbo", "Ruby", "Mosi", "Thandi", "Boulder", "Nala", "Juma", "Olive", "Rumble", "Ellie"],
+  },
+```
+NEW:
+```
+    names: ["Tembo", "Nandi", "Pebbles", "Jumbo", "Kibo", "Amara", "Dumbo", "Ruby", "Mosi", "Thandi", "Boulder", "Nala", "Juma", "Olive", "Rumble", "Ellie"],
+  },
+  "zoocraft:hedgehog": {
+    id: "zoocraft:hedgehog",
+    displayName: "Hedgehog",
+    origin: "custom_overworld",
+    homeDimension: "minecraft:overworld",
+    wildSource: "zoocraft:wild_hedgehog",
+    entityType: "zoocraft:hedgehog",
+    family: "hedgehog",
+    movementProfile: "terrestrial",
+    habitatProfile: "small_terrestrial",
+    dietTags: ["insect"],
+    carrierProfile: "small",
+    baitItem: "zoocraft:insect_ration",
+    observe: ["spot", "forage", "curl"],
+    where: "Forests, plains and meadows at night, nosing through the grass alone. By day they sleep curled up, so look after dark",
+    social: { minGroup: 1, recommendedMax: 3, prefersCompany: false },
+    // Spec 5: "Night foraging and curling | Small tunnels and nocturnal viewing". Asleep by Minecraft
+    // day and up at night (animals/night.js); an exhibit roofed over is a nocturnal house, where that
+    // is turned round so guests see them by day (animals/nightRules.js).
+    nocturnal: true,
+    // Its den is a Burrow Shelter (a leaf-litter mound over a log), not an Ember Den.
+    den: "burrow",
+    rationUnitsPerParkDay: 1,
+    enrichmentTags: ["forage", "dig"],
+    // Coat comes from minecraft:variant: 0 Brown (the common coat), 1 Blonde (pale spines, rarer).
+    coats: ["Brown", "Blonde"],
+    breeding: { litter: 3, gestationDays: 2, matureDays: 3, cooldownDays: 4, juvenileScale: 0.5, young: "hoglet", youngPlural: "hoglets" },
+    names: ["Prickles", "Bramble", "Sonic", "Mrs Tiggy", "Conker", "Quill", "Hazel", "Nutkin", "Pudding", "Twiggy", "Hedwig", "Thistle", "Acorn", "Moss", "Pip", "Dusk"],
+  },
+```
+
+SHA-256 (Get-FileHash) of every file in this batch after writing (LF endings):
+ef6b60649a8a7eb41878b70944d6435ef2a156dd5f359b66412df12767d43cc4  addon\packs\RP\textures\entity\zoocraft\hedgehog.png
+98e2f923bd50c412275dcce7570efa62ff10eecab27417dd0413b3b1de591a6a  addon\packs\RP\textures\entity\zoocraft\hedgehog_blonde.png
+fe030b86b7b8830b113989abfde076a1c41d81c9a753ae522271f6e554ef5f44  addon\packs\RP\textures\items\zoocraft\insect_ration.png
+dd2cee8b0836a310b5b3a4e4f89a208b5c6b09d56f6b030395342c21b8d68745  addon\docs\status.md
+99420e51977e198892762037922c994d7eb40edcbe8d18d902f23753cbf5172d  addon\packs\BP\blocks\basic_feeder.json
+8e52861fc66cc0e8e7b3ba264ecc331bbe9088bf056db13ca06356825682b66b  addon\packs\BP\blocks\hanging_food_basket.json
+32bc2c9961aa3ddbf9d5354c8014babc9e4d874d6f2732743db6207d00f4c99a  addon\packs\BP\scripts\animals\animals.js
+16fb181b84ab9fc57cb818f3b157ee23c0ea692b78b887e12fa6dbb624c05d26  addon\packs\BP\scripts\animals\welfare.js
+734073599128f67d9343d9ab332658e8d779deead4f9a58dc4c85edc0d070058  addon\packs\BP\scripts\data\balance.js
+2a92cd09fbd3cbc95b6f10391b49d3f54436defd7a6dd801a39ad34bf9dae09f  addon\packs\BP\scripts\data\blocks.js
+71f1c3de83d8dd22d8789bbc137d1bd1b84f34f2f65f702d37042ba55ff5cd1f  addon\packs\BP\scripts\data\items.js
+d0fc52874f721a1fbd872e8353c778592539b108372f9166d73e278cdefb362c  addon\packs\BP\scripts\data\species.js

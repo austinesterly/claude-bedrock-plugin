@@ -1,0 +1,337 @@
+From the cloud session: the nocturnal house and the Hedgehog (0.1.62, batch 6 of 6). Apply this on 0.1.61 (after the three mixed-species batches were applied and built). Austin asked for the next slice: the Hedgehog, the first nocturnal animal (asleep by Minecraft day and up at night; an exhibit roofed over is a nocturnal house, where that is turned round so guests see it by day), a Burrow Shelter to sleep in, an Insect Hatchery that grows Insect Rations, and the insect look for feeders (docs\Nocturnal_house_test_plan.md is in this batch set). New entities, blocks and textures: Austin needs a FULL Minecraft restart after the build. Don't make your own changes for it, these batches are it. Apply everything below inside addon\ exactly. This is the last batch: after the SHA check, run build.cmd. Then post ONE short line in the thread: the version it built and the test count (expect 113), or what failed.
+Rules: Copy every file you replace or edit into a new backups\<timestamp>\ folder first (keep its relative path), never delete. Install nothing. Don't touch the manifests (build.cmd bumps the version). Write all files UTF-8 without BOM and with LF line endings, each ending with exactly one newline. FILE blocks: the content is exactly what's between the ``` fences (new files: create the folders as needed). HEX blocks: join the lines between the fences, convert the hex to bytes and write them (PNG files). EDIT blocks: replace each OLD (between the fences, matched as whole lines) with its NEW, in order; each OLD must be found exactly once. An "APPEND" part adds its content at the end of the file, after its last line, ending with a newline. If anything doesn't match, or a SHA-256 check fails, stop and say in the thread which file failed.
+
+Before writing anything: check these files from the earlier batches are in place with these SHA-256 hashes. If any is missing or different, write nothing and say in the thread which batch of these fixes is missing.
+5370c196dbf67dc3cd360891e01dab351cf4df79fe2b5ed8c7b88301ba3578c8  addon\packs\BP\blocks\burrow_shelter.json (batch 1)
+9894daf97506243fe7205c8e0a50cb9d2ad38c885586fb8a3d2623934fdcba7a  addon\packs\BP\spawn_rules\wild_hedgehog.json (batch 2)
+b93da64ddbc80d789f9bef863756c032e0f6dfbd1d3d23cf41df50faa00f8b9c  addon\packs\RP\models\blocks\insect_hatchery.geo.json (batch 3)
+99420e51977e198892762037922c994d7eb40edcbe8d18d902f23753cbf5172d  addon\packs\BP\blocks\basic_feeder.json (batch 4)
+224b05f154498c20c06688aec33d7a7a09981f3299bab489482c9307a6708128  addon\packs\BP\scripts\discovery\discovery.js (batch 5)
+
+=== EDIT addon\packs\BP\scripts\ui\parkMenu.js (1 replacements, apply in order)
+--- 1
+OLD:
+```
+
+const ITEM_LABEL = { "zoocraft:leafy_ration": "Leafy Rations", "zoocraft:fish_ration": "Fish Rations", "zoocraft:small_carrier": "Small Carrier", "zoocraft:livestock_crate": "Livestock Crate", "zoocraft:reinforced_crate": "Reinforced Crate", "minecraft:packed_ice": "Packed Ice", "zoocraft:mineral_pellets": "Mineral Pellets", "zoocraft:thermal_carrier": "Thermal Carrier", "minecraft:charcoal": "Charcoal", "zoocraft:ember_ration": "Ember Rations", "zoocraft:molten_plankton": "Molten Plankton Feed", "minecraft:warped_fungus": "Warped Fungi", "zoocraft:chorus_browse": "Chorus Browse", "zoocraft:stabilized_carrier": "Stabilized Carrier" };
+```
+NEW:
+```
+
+const ITEM_LABEL = { "zoocraft:leafy_ration": "Leafy Rations", "zoocraft:fish_ration": "Fish Rations", "zoocraft:small_carrier": "Small Carrier", "zoocraft:livestock_crate": "Livestock Crate", "zoocraft:reinforced_crate": "Reinforced Crate", "minecraft:packed_ice": "Packed Ice", "zoocraft:mineral_pellets": "Mineral Pellets", "zoocraft:thermal_carrier": "Thermal Carrier", "minecraft:charcoal": "Charcoal", "zoocraft:ember_ration": "Ember Rations", "zoocraft:molten_plankton": "Molten Plankton Feed", "minecraft:warped_fungus": "Warped Fungi", "zoocraft:chorus_browse": "Chorus Browse", "zoocraft:stabilized_carrier": "Stabilized Carrier", "zoocraft:insect_ration": "Insect Rations" };
+```
+
+=== EDIT addon\packs\BP\scripts\visitors\points.js (2 replacements, apply in order)
+--- 1
+OLD:
+```
+import { liveEntity } from "../animals/animals.js";
+import { viewStatus, chooseViewed } from "./demand.js";
+```
+NEW:
+```
+import { liveEntity } from "../animals/animals.js";
+import { entityAsleep } from "../animals/night.js";
+import { viewStatus, chooseViewed } from "./demand.js";
+```
+--- 2
+OLD:
+```
+            total++;
+            const at = { x: e.location.x, y: e.location.y + 0.3, z: e.location.z };
+```
+NEW:
+```
+            total++;
+            if (entityAsleep(e)) continue; // a nocturnal animal asleep in its ball isn't on show (0.1.62)
+            const at = { x: e.location.x, y: e.location.y + 0.3, z: e.location.z };
+```
+
+=== EDIT addon\packs\RP\texts\en_US.lang (1 replacements, apply in order)
+--- 1
+OLD:
+```
+tile.zoocraft:end_fence_top.name=End Fence
+```
+NEW:
+```
+tile.zoocraft:end_fence_top.name=End Fence
+entity.zoocraft:hedgehog.name=Hedgehog
+entity.zoocraft:wild_hedgehog.name=Wild Hedgehog
+item.spawn_egg.entity.zoocraft:wild_hedgehog.name=Wild Hedgehog Spawn Egg
+item.zoocraft:insect_ration.name=Insect Ration
+tile.zoocraft:burrow_shelter.name=Burrow Shelter
+tile.zoocraft:insect_hatchery.name=Insect Hatchery
+```
+
+=== EDIT addon\packs\RP\textures\item_texture.json (1 replacements, apply in order)
+--- 1
+OLD:
+```
+      "textures": "textures/items/zoocraft/stabilized_carrier_occupied"
+    }
+```
+NEW:
+```
+      "textures": "textures/items/zoocraft/stabilized_carrier_occupied"
+    },
+    "zoocraft:insect_ration": {
+      "textures": "textures/items/zoocraft/insect_ration"
+    }
+```
+
+=== EDIT addon\packs\RP\textures\terrain_texture.json (1 replacements, apply in order)
+--- 1
+OLD:
+```
+      "textures": "textures/blocks/zoocraft/tunnel_crystal"
+    }
+```
+NEW:
+```
+      "textures": "textures/blocks/zoocraft/tunnel_crystal"
+    },
+    "zoocraft_burrow_leaves": {
+      "textures": "textures/blocks/zoocraft/burrow_leaves"
+    },
+    "zoocraft_burrow_log": {
+      "textures": "textures/blocks/zoocraft/burrow_log"
+    },
+    "zoocraft_burrow_dark": {
+      "textures": "textures/blocks/zoocraft/burrow_dark"
+    },
+    "zoocraft_hatchery_soil": {
+      "textures": "textures/blocks/zoocraft/hatchery_soil"
+    },
+    "zoocraft_hatchery_grubs_0": {
+      "textures": "textures/blocks/zoocraft/hatchery_grubs_0"
+    },
+    "zoocraft_hatchery_grubs_1": {
+      "textures": "textures/blocks/zoocraft/hatchery_grubs_1"
+    },
+    "zoocraft_hatchery_grubs_2": {
+      "textures": "textures/blocks/zoocraft/hatchery_grubs_2"
+    },
+    "zoocraft_hatchery_grubs_3": {
+      "textures": "textures/blocks/zoocraft/hatchery_grubs_3"
+    },
+    "zoocraft_hatchery_wood": {
+      "textures": "textures/blocks/zoocraft/hatchery_wood"
+    },
+    "zoocraft_hatchery_side": {
+      "textures": "textures/blocks/zoocraft/hatchery_side"
+    },
+    "zoocraft_hatchery_lid": {
+      "textures": "textures/blocks/zoocraft/hatchery_lid"
+    },
+    "zoocraft_feeder_insect_1": {
+      "textures": "textures/blocks/zoocraft/feeder_insect_1"
+    },
+    "zoocraft_feeder_insect_2": {
+      "textures": "textures/blocks/zoocraft/feeder_insect_2"
+    },
+    "zoocraft_basket_food_insect": {
+      "textures": "textures/blocks/zoocraft/basket_food_insect"
+    }
+```
+
+=== EDIT addon\tests\logic.test.mjs (2 replacements, apply in order)
+--- 1
+OLD:
+```
+  const feeder = read("../packs/BP/blocks/basic_feeder.json")["minecraft:block"];
+  assert.deepEqual(feeder.description.states["zoocraft:food"], [0, 1, 2, 3, 5, 6], "5: warped fungus for Striders (0.1.48), 6: Chorus Browse for Chorus Deer (0.1.50)");
+  for (const fill of [1, 2]) assert.ok(feeder.permutations.some((p) => p.condition.includes(`fill') == ${fill}`) && p.condition.includes("food') == 3") && terrain[p.components["minecraft:material_instances"].up.texture]));
+```
+NEW:
+```
+  const feeder = read("../packs/BP/blocks/basic_feeder.json")["minecraft:block"];
+  assert.deepEqual(feeder.description.states["zoocraft:food"], [0, 1, 2, 3, 5, 6, 7], "5: warped fungus for Striders (0.1.48), 6: Chorus Browse for Chorus Deer (0.1.50), 7: Insect Rations for Hedgehogs (0.1.62)");
+  for (const fill of [1, 2]) assert.ok(feeder.permutations.some((p) => p.condition.includes(`fill') == ${fill}`) && p.condition.includes("food') == 3") && terrain[p.components["minecraft:material_instances"].up.texture]));
+```
+--- 2
+OLD:
+```
+  assert.match(read("../packs/BP/scripts/ui/fieldJournal.js"), /companyText\(sp, SPECIES\)/);
+});
+```
+NEW:
+```
+  assert.match(read("../packs/BP/scripts/ui/fieldJournal.js"), /companyText\(sp, SPECIES\)/);
+});
+
+// ---------- 0.1.62: the nocturnal house and the Hedgehog ----------
+
+test("Nocturnal house rules: a roofed exhibit turns a hedgehog's clock round, and the measurement counts the roof", async () => {
+  const N = await import("../packs/BP/scripts/animals/nightRules.js");
+  assert.equal(N.sleepNow(false, false), true, "by day, outside a nocturnal house: asleep");
+  assert.equal(N.sleepNow(true, false), false, "at night: up");
+  assert.equal(N.sleepNow(false, true), false, "in a nocturnal house by day: up");
+  assert.equal(N.sleepNow(true, true), true, "in a nocturnal house at night: asleep");
+  assert.equal(N.roofNeeded(100, BALANCE), 90);
+  assert.equal(N.isNocturnalHouse({ usableArea: 100, roofedCells: 90 }, BALANCE), true);
+  assert.equal(N.isNocturnalHouse({ usableArea: 100, roofedCells: 89 }, BALANCE), false);
+  assert.equal(N.isNocturnalHouse({ usableArea: 100 }, BALANCE), false, "not measured for a roof yet");
+  assert.match(N.nocturnalLine({ usableArea: 100, roofedCells: 95 }, "Hedgehogs", BALANCE), /yes.*95 of 100 blocks roofed.*hedgehogs are up by day/);
+  assert.match(N.nocturnalLine({ usableArea: 100, roofedCells: 40 }, "Hedgehogs", BALANCE), /no \(40 of 90 blocks roofed.*sleep by day/);
+  assert.match(N.stateText(true, false, false), /asleep for the day/);
+  assert.match(N.stateText(true, false, true), /asleep for the night/);
+  assert.match(N.stateText(false, true, false), /curled into a ball/);
+  assert.match(N.stateText(false, false, false), /awake and foraging/);
+  // The measurement: a 9 x 9 pen walled with barriers, a stone roof 5 up over all but the east row,
+  // which only has leaves over it.
+  const grid = (roofAll) => (x, y, z) => {
+    if (x < -5 || x > 5 || z < -5 || z > 5) return "air";
+    if (x === -5 || x === 5 || z === -5 || z === 5) return y >= 0 && y <= 4 ? "barrier" : y < 0 ? "solid" : "air";
+    if (y < 0) return "solid";
+    if (y === 5 && (roofAll || x < 4)) return "solid";
+    if (y === 7 && x === 4) return "leaves";
+    return "air";
+  };
+  const run = (g, roofScan) => {
+    const r = newResult({ x: 0, y: 0, z: 0 });
+    const it = floodTerrestrial(g, { x: 0, y: 0, z: 0 }, { halfWidth: 32, halfHeight: 16, maxDrop: 3, minHeight: 3, cellsPerYield: 1e9, roofScan }, r);
+    while (!it.next().done);
+    return r;
+  };
+  const part = run(grid(false), 24);
+  assert.equal(part.usableArea, 81);
+  assert.equal(part.roofedCells, 72, "the east row is under leaves, which are not a roof");
+  assert.equal(N.isNocturnalHouse(part, BALANCE), false, "72 of 81: not quite roofed over");
+  const all = run(grid(true), 24);
+  assert.equal(all.roofedCells, 81);
+  assert.equal(N.isNocturnalHouse(all, BALANCE), true);
+  assert.equal(run(grid(true), 0).roofedCells, 0, "only counted when asked");
+});
+
+test("Hedgehog: nocturnal, a Burrow Shelter for a den, Insect Rations from the hatchery, and every module follows", async () => {
+  const { speciesForWild, pluralOf } = await import("../packs/BP/scripts/data/species.js");
+  const { RATIONS, BLOCKS, FOOD_LOOK, ITEMS } = await import("../packs/BP/scripts/data/items.js");
+  const { hasDen, denType, serves } = await import("../packs/BP/scripts/equipment/rules.js");
+  const { adviceFor, comfortCauses } = await import("../packs/BP/scripts/animals/welfare.js");
+  const { levelOf, tasksSeen } = await import("../packs/BP/scripts/discovery/rules.js");
+  const { PASSABLE_PATTERNS } = await import("../packs/BP/scripts/data/blocks.js");
+  const { canShare, companyText } = await import("../packs/BP/scripts/exhibits/mixing.js");
+  const hog = SPECIES["zoocraft:hedgehog"];
+  assert.equal(speciesForWild("zoocraft:wild_hedgehog"), hog);
+  assert.equal(hog.origin, "custom_overworld");
+  assert.equal(hog.homeDimension, "minecraft:overworld");
+  assert.equal(pluralOf(hog), "Hedgehogs");
+  assert.equal(hog.habitatProfile, "small_terrestrial");
+  assert.equal(hog.carrierProfile, "small");
+  assert.equal(RATIONS[hog.baitItem].diet, "insect");
+  assert.equal(hog.baitItem, ITEMS.insectRation);
+  assert.equal(FOOD_LOOK.insect, 7);
+  assert.ok(hog.nocturnal === true && hog.den === "burrow");
+  assert.deepEqual(hog.coats, ["Brown", "Blonde"]);
+  // The den: a Burrow Shelter, not an Ember Den (and the other way round for Ember Foxes).
+  assert.equal(denType(hog), "burrow");
+  assert.equal(denType(SPECIES["zoocraft:ember_fox"]), "den");
+  assert.equal(hasDen(hog, [{ type: "den" }]), false);
+  assert.equal(hasDen(hog, [{ type: "burrow" }]), true);
+  assert.equal(hasDen(SPECIES["zoocraft:ember_fox"], [{ type: "burrow" }]), false);
+  assert.equal(hasDen(SPECIES["zoocraft:zoo_rabbit"], []), true, "no den needed");
+  assert.ok(PASSABLE_PATTERNS.some((r) => r.test(BLOCKS.burrow)), "no collision: its cell is still floor");
+  const cells = new Map([["0,0,0", "land"]]);
+  assert.equal(serves("burrow", cells, { x: 0, y: 0, z: 0 }), true, "a burrow stands on the floor");
+  assert.equal(serves("burrow", cells, { x: 0, y: 1, z: 0 }), false);
+  assert.equal(adviceFor("comfort", hog, ["den"]), "Give the animals a Burrow Shelter");
+  assert.equal(adviceFor("comfort", SPECIES["zoocraft:ember_fox"], ["den"]), "Give the animals an Ember Den");
+  assert.deepEqual(comfortCauses({ spaceRatio: 2, den: false }, BALANCE), ["den"]);
+  // Field Journal: spot, forage (awake and about), curl (startled into a ball).
+  assert.deepEqual(hog.observe, ["spot", "forage", "curl"]);
+  assert.deepEqual(tasksSeen(hog, ["spot"], { awake: true, onGround: true, inWater: false, still: false, curled: false }), ["forage"]);
+  assert.deepEqual(tasksSeen(hog, ["spot"], { awake: false, onGround: true, inWater: false, still: true, curled: false }), [], "asleep: nothing to watch");
+  assert.deepEqual(tasksSeen(hog, ["spot", "forage"], { awake: true, onGround: true, inWater: false, still: true, curled: true }), ["curl"]);
+  assert.equal(levelOf(hog, ["spot", "forage", "curl"]), 3);
+  // Sharing: hedgehogs and rabbits share a hedgerow; nothing else.
+  assert.ok(canShare("zoocraft:zoo_rabbit", "zoocraft:hedgehog") && !canShare("zoocraft:hedgehog", "zoocraft:deer"));
+  assert.equal(companyText(hog, SPECIES), "Shares an exhibit with: Rabbits (Hedgerow)");
+  const N = BALANCE.nocturnal;
+  assert.ok(N.roofFraction > 0.5 && N.roofFraction <= 1 && N.roofScan >= 8 && N.startleRange > 0 && N.startleTicks > 0);
+  assert.ok(BALANCE.hatchery.batches >= 1 && BALANCE.hatchery.rationsPerBatch >= 1);
+  assert.ok(BALANCE.shop["zoocraft:insect_ration"], "the park shop sells them too");
+  // Wiring: the night loop, the hatchery component, the roof measurement, discovery, fixtures, text.
+  const read = (p) => readFileSync(new URL(p, import.meta.url), "utf8");
+  assert.match(read("../packs/BP/scripts/main.js"), /loop\("night", 10, \d+, \(\) => tickNight\(system\.currentTick\)\)/);
+  assert.match(read("../packs/BP/scripts/main.js"), /blocks\.registerCustomComponent\("zoocraft:hatchery", hatcheryComponent\(\)\)/);
+  assert.match(read("../packs/BP/scripts/platform/mc.js"), /export function isNight/);
+  const night = read("../packs/BP/scripts/animals/night.js");
+  assert.match(night, /families: \["hedgehog"\]/);
+  assert.match(night, /setProp\(hog, "zoocraft:asleep", asleep\)/);
+  assert.match(night, /hog\.triggerEvent\(still \? "zoocraft:still" : "zoocraft:move"\)/);
+  assert.match(read("../packs/BP/scripts/exhibits/exhibits.js"), /roofScan: wants\("nocturnal"\) \? BALANCE\.nocturnal\.roofScan : 0/);
+  assert.match(read("../packs/BP/scripts/exhibits/exhibits.js"), /ex\.roofedCells = anyWants\(ex, "nocturnal"\) \? r\.roofedCells : undefined/);
+  assert.match(read("../packs/BP/scripts/discovery/discovery.js"), /\.\.\.nightSight\(species, hit\)/);
+  assert.match(read("../packs/BP/scripts/equipment/fixtures.js"), /\[BLOCKS\.burrow\]: "burrow"/);
+  assert.match(read("../packs/BP/scripts/equipment/hatchery.js"), /onTick\(e\)/);
+  assert.match(read("../packs/BP/scripts/animals/animals.js"), /place a Burrow Shelter on the exhibit floor/);
+  assert.match(read("../packs/BP/scripts/ui/fieldJournal.js"), /Nocturnal: asleep by day and up at night/);
+  assert.match(read("../packs/BP/scripts/visitors/points.js"), /if \(entityAsleep\(e\)\) continue;/, "a sleeping animal isn't on show");
+  assert.match(read("../packs/BP/scripts/ui/clipboard.js"), /nocturnalLine\(ex, pluralOf\(nocturnal\), BALANCE\)/);
+  assert.match(read("../packs/BP/scripts/ui/clipboard.js"), /Hedgehogs travel in a Small Carrier/);
+});
+
+test("Hedgehog, Burrow Shelter and Insect Hatchery files: a hedgehog in two coats with curl and sleep poses, a walk-in burrow, a hatchery that grows rations, the insect feeder look and names", () => {
+  const read = (p) => JSON.parse(readFileSync(new URL(p, import.meta.url), "utf8"));
+  const lang = readFileSync(new URL("../packs/RP/texts/en_US.lang", import.meta.url), "utf8");
+  for (const name of ["hedgehog", "wild_hedgehog"]) {
+    const e = read(`../packs/BP/entities/${name}.json`)["minecraft:entity"];
+    assert.equal(e.description.identifier, `zoocraft:${name}`);
+    for (const k of ["asleep", "curled"]) assert.deepEqual(e.description.properties[`zoocraft:${k}`], { type: "bool", default: false, client_sync: true }, k);
+    assert.deepEqual(e.components["minecraft:behavior.tempt"].items, ["zoocraft:insect_ration"]);
+    assert.ok(e.components["minecraft:type_family"].family.includes("hedgehog"));
+    assert.deepEqual(e.component_groups["zoocraft:still"], { "minecraft:movement": { value: 0 } }, "held still asleep or curled");
+    assert.ok(e.events["zoocraft:still"] && e.events["zoocraft:move"]);
+    assert.deepEqual(e.components["minecraft:collision_box"], { width: 0.45, height: 0.3 });
+    const d = read(`../packs/RP/entity/${name}.entity.json`)["minecraft:client_entity"].description;
+    assert.equal(d.textures.blonde, "textures/entity/zoocraft/hedgehog_blonde");
+    for (const a of ["walk", "idle", "curl", "sleep", "look_at_target", "move"]) assert.ok(d.animations[a], a);
+    assert.match(d.scripts.scale, /0\.5/);
+    assert.match(lang, new RegExp(`^entity\\.zoocraft:${name}\\.name=`, "m"));
+  }
+  const zoo = read("../packs/BP/entities/hedgehog.json")["minecraft:entity"];
+  assert.deepEqual(zoo.components["minecraft:behavior.move_to_block"].target_blocks, ["zoocraft:burrow_shelter"]);
+  assert.ok(zoo.components["minecraft:persistent"] && zoo.component_groups["zoocraft:juvenile"]);
+  const wild = read("../packs/BP/entities/wild_hedgehog.json")["minecraft:entity"];
+  assert.ok(wild.components["minecraft:despawn"]);
+  assert.deepEqual(wild.events["minecraft:entity_spawned"].randomize.map((r) => r.weight), [3, 1], "three Brown to one Blonde");
+  const ctrl = read("../packs/RP/animation_controllers/hedgehog.animation_controllers.json").animation_controllers["controller.animation.zoocraft.hedgehog.move"];
+  assert.ok(ctrl.states.sleep && ctrl.states.curl && JSON.stringify(ctrl).includes("query.property('zoocraft:asleep')"));
+  const spawn = read("../packs/BP/spawn_rules/wild_hedgehog.json")["minecraft:spawn_rules"].conditions[0];
+  assert.deepEqual(spawn["minecraft:brightness_filter"], { min: 0, max: 7, adjust_for_weather: false }, "in the dark: at night");
+  assert.deepEqual(spawn["minecraft:biome_filter"].any_of.map((t) => t.value), ["forest", "plains", "meadow"]);
+  const terrain = read("../packs/RP/textures/terrain_texture.json").texture_data;
+  const burrow = read("../packs/BP/blocks/burrow_shelter.json")["minecraft:block"];
+  assert.equal(burrow.components["minecraft:collision_box"], false);
+  assert.ok(burrow.components["zoocraft:fixture"]);
+  for (const m of Object.values(burrow.components["minecraft:material_instances"])) assert.ok(terrain[m.texture], m.texture);
+  const hatch = read("../packs/BP/blocks/insect_hatchery.json")["minecraft:block"];
+  assert.deepEqual(hatch.description.states["zoocraft:grown"], [0, 1, 2, 3]);
+  assert.ok(hatch.components["zoocraft:hatchery"] && hatch.components["minecraft:tick"].looping);
+  assert.equal(hatch.permutations.length, 3, "a look per grown batch");
+  for (const p of hatch.permutations) for (const m of Object.values(p.components["minecraft:material_instances"])) assert.ok(terrain[m.texture], m.texture);
+  // Every block uses one render method for all its material instances (a content log error otherwise).
+  for (const b of [burrow, hatch]) assert.equal(new Set(Object.values(b.components["minecraft:material_instances"]).map((m) => m.render_method)).size, 1);
+  for (const r of ["zoocraft_burrow_shelter", "zoocraft_insect_hatchery"]) assert.ok(read(`../packs/BP/recipes/${r}.json`), r);
+  assert.equal(read("../packs/BP/items/insect_ration.json")["minecraft:item"].description.identifier, "zoocraft:insect_ration");
+  assert.ok(read("../packs/RP/textures/item_texture.json").texture_data["zoocraft:insect_ration"]);
+  for (const k of ["item.zoocraft:insect_ration", "tile.zoocraft:burrow_shelter", "tile.zoocraft:insect_hatchery", "item.spawn_egg.entity.zoocraft:wild_hedgehog"]) assert.match(lang, new RegExp(`^${k.replace(/\./g, "\\.")}\\.name=`, "m"));
+  // Feeders and baskets have an insect look (zoocraft:food 7).
+  const feeder = read("../packs/BP/blocks/basic_feeder.json")["minecraft:block"];
+  for (const fill of [1, 2]) assert.ok(feeder.permutations.some((p) => p.condition.includes(`fill') == ${fill}`) && p.condition.includes("food') == 7") && terrain[p.components["minecraft:material_instances"].up.texture]));
+  const basket = read("../packs/BP/blocks/hanging_food_basket.json")["minecraft:block"];
+  assert.ok(basket.description.states["zoocraft:food"].includes(7));
+  assert.ok(basket.permutations.some((p) => p.condition.includes("== 7") && p.components["minecraft:material_instances"].food.texture === "zoocraft_basket_food_insect"));
+});
+```
+
+SHA-256 (Get-FileHash) of every file in this batch after writing (LF endings):
+9150ab4c6d22474f22e74e6ea92559f9a8453047c6c6222f89a20691824b302d  addon\packs\BP\scripts\ui\parkMenu.js
+aea8ad7d8d3f7aa03bfd12f36aa5a7318be47eb33cb02e0c62d8bd51e341fb78  addon\packs\BP\scripts\visitors\points.js
+57f998ac1e6db8f40a94e3caa7853fbcc45b54c3b383766527931d3bed86006b  addon\packs\RP\texts\en_US.lang
+fab117e6792787551ba94454f2b96dd809c1221c3767c5fc6a44d2aca089324f  addon\packs\RP\textures\item_texture.json
+3462a21cd9a1b4c8f9dcb5a88abf4b565c073c41aa593c6ed14149bd805ca1bc  addon\packs\RP\textures\terrain_texture.json
+39a8178199661a4edffb7d7fa672ea23fc9e9aafc8a119d7ef530b57a4b40b86  addon\tests\logic.test.mjs
+
+If any check here or in the earlier batches failed, don't build; say which file in the thread.

@@ -1,0 +1,507 @@
+From the cloud session: the nocturnal house and the Hedgehog (0.1.62, batch 5 of 6). Apply this on 0.1.61 (after the three mixed-species batches were applied and built). Austin asked for the next slice: the Hedgehog, the first nocturnal animal (asleep by Minecraft day and up at night; an exhibit roofed over is a nocturnal house, where that is turned round so guests see it by day), a Burrow Shelter to sleep in, an Insect Hatchery that grows Insect Rations, and the insect look for feeders (docs\Nocturnal_house_test_plan.md is in this batch set). New entities, blocks and textures: Austin needs a FULL Minecraft restart after the build. Don't make your own changes for it, these batches are it. Apply everything below inside addon\ exactly. Don't build yet: batch 6 follows. When this batch is written and its SHA checks pass, say nothing in the thread; just wait for the next batch.
+Rules: Copy every file you replace or edit into a new backups\<timestamp>\ folder first (keep its relative path), never delete. Install nothing. Don't touch the manifests (build.cmd bumps the version). Write all files UTF-8 without BOM and with LF line endings, each ending with exactly one newline. FILE blocks: the content is exactly what's between the ``` fences (new files: create the folders as needed). HEX blocks: join the lines between the fences, convert the hex to bytes and write them (PNG files). EDIT blocks: replace each OLD (between the fences, matched as whole lines) with its NEW, in order; each OLD must be found exactly once. An "APPEND" part adds its content at the end of the file, after its last line, ending with a newline. If anything doesn't match, or a SHA-256 check fails, stop and say in the thread which file failed.
+
+Before writing anything: check these files from the earlier batches are in place with these SHA-256 hashes. If any is missing or different, write nothing and say in the thread which batch of these fixes is missing.
+5370c196dbf67dc3cd360891e01dab351cf4df79fe2b5ed8c7b88301ba3578c8  addon\packs\BP\blocks\burrow_shelter.json (batch 1)
+9894daf97506243fe7205c8e0a50cb9d2ad38c885586fb8a3d2623934fdcba7a  addon\packs\BP\spawn_rules\wild_hedgehog.json (batch 2)
+b93da64ddbc80d789f9bef863756c032e0f6dfbd1d3d23cf41df50faa00f8b9c  addon\packs\RP\models\blocks\insect_hatchery.geo.json (batch 3)
+99420e51977e198892762037922c994d7eb40edcbe8d18d902f23753cbf5172d  addon\packs\BP\blocks\basic_feeder.json (batch 4)
+
+=== EDIT addon\packs\BP\scripts\discovery\discovery.js (2 replacements, apply in order)
+--- 1
+OLD:
+```
+
+function groundSight(species, hit) {
+```
+NEW:
+```
+
+// Nocturnal animals (hedgehogs): asleep or curled into a ball, as animals/night.js tells the client
+// through the entity's properties.
+function nightSight(species, hit) {
+  if (!species.nocturnal) return {};
+  try {
+    const asleep = hit.getProperty("zoocraft:asleep") === true;
+    return { awake: !asleep, curled: hit.getProperty("zoocraft:curled") === true };
+  } catch {
+    return {};
+  }
+}
+
+function groundSight(species, hit) {
+```
+--- 2
+OLD:
+```
+    if (!species) continue;
+    const sight = { inWater: hit.isInWater, onGround: hit.isOnGround, still: isStill(hit), herd: species.family ? hasHerd(hit, species.family) : false, ...groundSight(species, hit), ...flightSight(species, hit), ...riftSight(species, hit) };
+    for (const t of tasksSeen(species, recordOf(species.id).done, sight)) seen.add(`${player.id}|${species.id}|${t}`);
+```
+NEW:
+```
+    if (!species) continue;
+    const sight = { inWater: hit.isInWater, onGround: hit.isOnGround, still: isStill(hit), herd: species.family ? hasHerd(hit, species.family) : false, ...groundSight(species, hit), ...flightSight(species, hit), ...riftSight(species, hit), ...nightSight(species, hit) };
+    for (const t of tasksSeen(species, recordOf(species.id).done, sight)) seen.add(`${player.id}|${species.id}|${t}`);
+```
+
+=== EDIT addon\packs\BP\scripts\discovery\rules.js (1 replacements, apply in order)
+--- 1
+OLD:
+```
+  peer: { text: "Watch one stand up on its hind legs to look about", done: "watched one stand up to look about", seconds: 2, when: (e) => e.peering },
+};
+```
+NEW:
+```
+  peer: { text: "Watch one stand up on its hind legs to look about", done: "watched one stand up to look about", seconds: 2, when: (e) => e.peering },
+  // Nocturnal animals (0.1.62): awake and about (at night, or by day in a nocturnal house), and the ball they curl into.
+  forage: { text: "Watch one awake and foraging (at night, or by day in a nocturnal house)", done: "watched one foraging", seconds: 3, when: (e) => e.awake && e.onGround && !e.inWater && !e.curled },
+  curl: { text: "Watch one curl up into a ball (walk up to one that's awake)", done: "watched one curl up into a ball", seconds: 2, when: (e) => e.curled },
+};
+```
+
+=== EDIT addon\packs\BP\scripts\equipment\fixtures.js (5 replacements, apply in order)
+--- 1
+OLD:
+```
+// Nether toys (Blaze Bone, Wither Skull Ball), the Void Perch (0.1.51) Void Rays rest on, and the Containment
+// Anchor and Rift Tunnel (0.1.52) Rift Ferrets blink with. Each piece is an
+// "equipment" record keyed by its block position (a toy or ball by its own id), so it works while its chunk is unloaded. The
+```
+NEW:
+```
+// Nether toys (Blaze Bone, Wither Skull Ball), the Void Perch (0.1.51) Void Rays rest on, and the Containment
+// Anchor and Rift Tunnel (0.1.52) Rift Ferrets blink with, and the Burrow Shelter (0.1.62) hedgehogs sleep in. Each piece is an
+// "equipment" record keyed by its block position (a toy or ball by its own id), so it works while its chunk is unloaded. The
+```
+--- 2
+OLD:
+```
+
+const TYPE_OF_BLOCK = { [BLOCKS.trough]: "trough", [BLOCKS.lavaTrough]: "trough", [BLOCKS.basket]: "basket", [BLOCKS.filter]: "filter", [BLOCKS.station]: "station", [BLOCKS.cooler]: "cooler", [BLOCKS.heater]: "heater", [BLOCKS.emberDen]: "den", [BLOCKS.perch]: "perch", [BLOCKS.anchor]: "anchor", [BLOCKS.tunnel]: "tunnel" };
+const FIXTURE_TYPES = new Set(["trough", "basket", "filter", "station", "toy", "ball", "bone", "skull", "cooler", "heater", "den", "perch", "anchor", "tunnel"]);
+const LOOSE = new Set(["toy", "ball", "bone", "skull"]);
+```
+NEW:
+```
+
+const TYPE_OF_BLOCK = { [BLOCKS.trough]: "trough", [BLOCKS.lavaTrough]: "trough", [BLOCKS.basket]: "basket", [BLOCKS.filter]: "filter", [BLOCKS.station]: "station", [BLOCKS.cooler]: "cooler", [BLOCKS.heater]: "heater", [BLOCKS.emberDen]: "den", [BLOCKS.perch]: "perch", [BLOCKS.anchor]: "anchor", [BLOCKS.tunnel]: "tunnel", [BLOCKS.burrow]: "burrow" };
+const FIXTURE_TYPES = new Set(["trough", "basket", "filter", "station", "toy", "ball", "bone", "skull", "cooler", "heater", "den", "perch", "anchor", "tunnel", "burrow"]);
+const LOOSE = new Set(["toy", "ball", "bone", "skull"]);
+```
+--- 3
+OLD:
+```
+export function refreshLook(rec) {
+  if (LOOSE.has(rec.type) || rec.type === "station" || rec.type === "den" || rec.type === "perch" || rec.type === "tunnel") return;
+  try {
+```
+NEW:
+```
+export function refreshLook(rec) {
+  if (LOOSE.has(rec.type) || rec.type === "station" || rec.type === "den" || rec.type === "perch" || rec.type === "tunnel" || rec.type === "burrow") return;
+  try {
+```
+--- 4
+OLD:
+```
+    return message(player, rec.exhibitId ? "§6Ember Den: §fin this exhibit. §7Ember Foxes curl up in it to sleep; keep the Thermal Regulator fuelled so it stays warm." : "§6Ember Den: §fnot in an exhibit. §7Place it on an exhibit's floor (foxes walk into it), then measure the exhibit with the Habitat Marker.");
+  }
+```
+NEW:
+```
+    return message(player, rec.exhibitId ? "§6Ember Den: §fin this exhibit. §7Ember Foxes curl up in it to sleep; keep the Thermal Regulator fuelled so it stays warm." : "§6Ember Den: §fnot in an exhibit. §7Place it on an exhibit's floor (foxes walk into it), then measure the exhibit with the Habitat Marker.");
+  }
+  if (rec.type === "burrow") {
+    return message(player, rec.exhibitId ? "§6Burrow Shelter: §fin this exhibit. §7Hedgehogs trot in and sleep in it: by day, or at night in a nocturnal house (an exhibit roofed over)." : "§6Burrow Shelter: §fnot in an exhibit. §7Place it on an exhibit's floor (hedgehogs walk into it), then measure the exhibit with the Habitat Marker.");
+  }
+```
+--- 5
+OLD:
+```
+
+// Custom component for the trough, basket, filter, station, regulator, den, perch, anchor and tunnel blocks.
+export function fixtureComponent() {
+```
+NEW:
+```
+
+// Custom component for the trough, basket, filter, station, regulator, den, perch, anchor, tunnel and burrow blocks.
+export function fixtureComponent() {
+```
+
+=== EDIT addon\packs\BP\scripts\equipment\rules.js (3 replacements, apply in order)
+--- 1
+OLD:
+```
+  if (type === "cooler" || type === "heater") return near(cells, pos, ["land", "water"], -1, 1);
+  if (type === "den") return near(cells, pos, ["land"], 0, 0);
+  return false;
+```
+NEW:
+```
+  if (type === "cooler" || type === "heater") return near(cells, pos, ["land", "water"], -1, 1);
+  if (type === "den" || type === "burrow") return near(cells, pos, ["land"], 0, 0);
+  return false;
+```
+--- 2
+OLD:
+```
+
+// Ember Foxes (species.den) are comfortable only with an Ember Den in the exhibit.
+export function hasDen(species, fixtures) {
+```
+NEW:
+```
+
+// Which fixture is a species' den: an Ember Den (species.den true, Ember Foxes) or a Burrow
+// Shelter (species.den "burrow", hedgehogs).
+export function denType(species) {
+  return species.den === true ? "den" : species.den;
+}
+
+// A species with a den (species.den) is comfortable only with that den in the exhibit.
+export function hasDen(species, fixtures) {
+```
+--- 3
+OLD:
+```
+  return !species.den || fixtures.some((f) => f.type === "den");
+}
+```
+NEW:
+```
+  return !species.den || fixtures.some((f) => f.type === denType(species));
+}
+```
+
+=== EDIT addon\packs\BP\scripts\exhibits\exhibits.js (2 replacements, apply in order)
+--- 1
+OLD:
+```
+  const read = blockReader(dim(ex.dimension), { leaves: true, mud: wants("mud"), hot: wants("bask"), ash: wants("ash"), end: wants("endGround"), perch: true });
+  const opts = { ...EXHIBIT_LIMITS, minHeight: profile.minHeight, coverHeight: wants("cover") || wantsShelter(ex) ? BALANCE.cover.height : 0, countMud: wants("mud"), countHot: wants("bask"), countAsh: wants("ash"), countEnd: wants("endGround"), swimLava: !species || speciesIn(ex).some(livesOnLava) };
+  // The air is cheap to read, so the flight flood takes bigger slices.
+```
+NEW:
+```
+  const read = blockReader(dim(ex.dimension), { leaves: true, mud: wants("mud"), hot: wants("bask"), ash: wants("ash"), end: wants("endGround"), perch: true });
+  const opts = { ...EXHIBIT_LIMITS, minHeight: profile.minHeight, coverHeight: wants("cover") || wantsShelter(ex) ? BALANCE.cover.height : 0, countMud: wants("mud"), countHot: wants("bask"), countAsh: wants("ash"), countEnd: wants("endGround"), roofScan: wants("nocturnal") ? BALANCE.nocturnal.roofScan : 0, swimLava: !species || speciesIn(ex).some(livesOnLava) };
+  // The air is cheap to read, so the flight flood takes bigger slices.
+```
+--- 2
+OLD:
+```
+  ex.endCells = anyWants(ex, "endGround") ? r.endCells : undefined;
+  const flying = Boolean(profileOf(ex).aerial);
+```
+NEW:
+```
+  ex.endCells = anyWants(ex, "endGround") ? r.endCells : undefined;
+  ex.roofedCells = anyWants(ex, "nocturnal") ? r.roofedCells : undefined; // a nocturnal house (hedgehogs): a solid roof over nearly all the floor
+  const flying = Boolean(profileOf(ex).aerial);
+```
+
+=== EDIT addon\packs\BP\scripts\exhibits\geometry.js (5 replacements, apply in order)
+--- 1
+OLD:
+```
+    endCells: 0, // usable land cells standing on end stone (only counted when opts.countEnd)
+    flightCells: 0, // flight only: air cells above the floor, the room to glide in (perch cells included)
+```
+NEW:
+```
+    endCells: 0, // usable land cells standing on end stone (only counted when opts.countEnd)
+    roofedCells: 0, // usable land cells under a solid roof, not leaves (only counted when opts.roofScan)
+    flightCells: 0, // flight only: air cells above the floor, the room to glide in (perch cells included)
+```
+--- 2
+OLD:
+```
+ * @param {{x: number, y: number, z: number}} seed
+ * @param {{ halfWidth: number, halfHeight: number, maxDrop: number, minHeight: number, cellsPerYield: number, coverHeight?: number, countMud?: boolean, countHot?: boolean, countAsh?: boolean, countEnd?: boolean, swimLava?: boolean }} opts
+ *   coverHeight: how far above the animals' headroom to look for cover (leaves or a roof); 0 or
+```
+NEW:
+```
+ * @param {{x: number, y: number, z: number}} seed
+ * @param {{ halfWidth: number, halfHeight: number, maxDrop: number, minHeight: number, cellsPerYield: number, coverHeight?: number, countMud?: boolean, countHot?: boolean, countAsh?: boolean, countEnd?: boolean, swimLava?: boolean, roofScan?: number }} opts
+ *   coverHeight: how far above the animals' headroom to look for cover (leaves or a roof); 0 or
+```
+--- 3
+OLD:
+```
+ *   cells standing on Warm Ash (an ash bed). countEnd: count usable cells standing on end stone
+ *   (End ground). swimLava: lava is swimmable (Lava Rays), not a hazard
+ * @param {ReturnType<typeof newResult>} out
+```
+NEW:
+```
+ *   cells standing on Warm Ash (an ash bed). countEnd: count usable cells standing on end stone
+ *   (End ground). swimLava: lava is swimmable (Lava Rays), not a hazard. roofScan: count usable
+ *   cells under a solid roof (not leaves) up to this many blocks above the floor (a nocturnal house)
+ * @param {ReturnType<typeof newResult>} out
+```
+--- 4
+OLD:
+```
+      if (opts.countAsh && read(x, y - 1, z) === "ash") out.ashCells++;
+      if (opts.countEnd && read(x, y - 1, z) === "end") out.endCells++;
+    } else out.lowCeilingCells++;
+  }
+```
+NEW:
+```
+      if (opts.countAsh && read(x, y - 1, z) === "ash") out.ashCells++;
+      if (opts.countEnd && read(x, y - 1, z) === "end") out.endCells++;
+      if (opts.roofScan && roofed(read, x, y, z, opts)) out.roofedCells++;
+    } else out.lowCeilingCells++;
+  }
+```
+--- 5
+OLD:
+```
+    if (c === "solid" || c === "leaves" || c === "mud" || c === "hot" || c === "ash" || c === "end" || c === "perch") return true;
+    if (c === "unloaded") return false;
+```
+NEW:
+```
+    if (c === "solid" || c === "leaves" || c === "mud" || c === "hot" || c === "ash" || c === "end" || c === "perch") return true;
+    if (c === "unloaded") return false;
+  }
+  return false;
+}
+
+// A nocturnal house (hedgehogs, 0.1.62): a solid roof, not leaves, anywhere over the cell up to
+// roofScan blocks above the floor. Only usable cells are asked, so the roof is above the headroom.
+function roofed(read, x, y, z, opts) {
+  for (let h = 2; h <= opts.roofScan; h++) {
+    const c = read(x, y + h, z);
+    if (c === "solid" || c === "mud" || c === "hot" || c === "ash" || c === "end" || c === "perch") return true;
+    if (c === "unloaded") return false;
+```
+
+=== EDIT addon\packs\BP\scripts\exhibits\mixing.js (1 replacements, apply in order)
+--- 1
+OLD:
+```
+  meadow: { label: "Meadow", members: ["zoocraft:zoo_rabbit", "zoocraft:deer", "zoocraft:capybara"] },
+  wetland: { label: "Wetland", members: ["zoocraft:otter", "zoocraft:capybara"] },
+```
+NEW:
+```
+  meadow: { label: "Meadow", members: ["zoocraft:zoo_rabbit", "zoocraft:deer", "zoocraft:capybara"] },
+  hedgerow: { label: "Hedgerow", members: ["zoocraft:zoo_rabbit", "zoocraft:hedgehog"] },
+  wetland: { label: "Wetland", members: ["zoocraft:otter", "zoocraft:capybara"] },
+```
+
+=== EDIT addon\packs\BP\scripts\main.js (3 replacements, apply in order)
+--- 1
+OLD:
+```
+import { tickRift } from "./animals/rift.js";
+import { initClearLavaFlow, flowAround, clearLavaFlowComponent, tickClearLavaFlow } from "./equipment/clearLavaFlow.js";
+```
+NEW:
+```
+import { tickRift } from "./animals/rift.js";
+import { tickNight } from "./animals/night.js";
+import { hatcheryComponent } from "./equipment/hatchery.js";
+import { initClearLavaFlow, flowAround, clearLavaFlowComponent, tickClearLavaFlow } from "./equipment/clearLavaFlow.js";
+```
+--- 2
+OLD:
+```
+  blocks.registerCustomComponent("zoocraft:fixture", fixtureComponent());
+  blocks.registerCustomComponent("zoocraft:lava_filter", lavaFilterComponent());
+```
+NEW:
+```
+  blocks.registerCustomComponent("zoocraft:fixture", fixtureComponent());
+  blocks.registerCustomComponent("zoocraft:hatchery", hatcheryComponent());
+  blocks.registerCustomComponent("zoocraft:lava_filter", lavaFilterComponent());
+```
+--- 3
+OLD:
+```
+  loop("rift", 10, 33, () => tickRift(system.currentTick));
+  loop("lavaburn", 5, 37, tickClearLavaBurn);
+```
+NEW:
+```
+  loop("rift", 10, 33, () => tickRift(system.currentTick));
+  loop("night", 10, 39, () => tickNight(system.currentTick));
+  loop("lavaburn", 5, 37, tickClearLavaBurn);
+```
+
+=== EDIT addon\packs\BP\scripts\platform\mc.js (1 replacements, apply in order)
+--- 1
+OLD:
+```
+
+export function message(player, text) {
+```
+NEW:
+```
+
+// Minecraft's own clock (nocturnal animals follow it, not the park clock): night is from 13000 to
+// 23000 of the 24000-tick day.
+export function isNight() {
+  const t = world.getTimeOfDay() % 24000;
+  return t >= 13000 && t < 23000;
+}
+
+export function message(player, text) {
+```
+
+=== EDIT addon\packs\BP\scripts\ui\clipboard.js (8 replacements, apply in order)
+--- 1
+OLD:
+```
+import { BALANCE } from "../data/balance.js";
+import { SPECIES } from "../data/species.js";
+import { band, NEED_KEYS, adviceFor, lowestNeed } from "../animals/welfare.js";
+```
+NEW:
+```
+import { BALANCE } from "../data/balance.js";
+import { SPECIES, pluralOf } from "../data/species.js";
+import { band, NEED_KEYS, adviceFor, lowestNeed } from "../animals/welfare.js";
+```
+--- 2
+OLD:
+```
+import { COMMUNITIES } from "../exhibits/mixing.js";
+import { AERIAL_HEIGHT } from "../data/profiles.js";
+```
+NEW:
+```
+import { COMMUNITIES } from "../exhibits/mixing.js";
+import { nocturnalLine, isNocturnalHouse, stateText } from "../animals/nightRules.js";
+import { nightState } from "../animals/night.js";
+import { AERIAL_HEIGHT } from "../data/profiles.js";
+```
+--- 3
+OLD:
+```
+  if (ex.careWarnings.length) return ex.careWarnings[0].text;
+  if (!ex.animalIds.length) return `Catch an animal with a Small Carrier and release it here. Otters need a pool: about a third water, 2 blocks deep, with dry bank. Capybaras travel in a Livestock Crate and want mostly grassy bank with a shallow pool. Deer travel in a Livestock Crate too and want room (100 blocks for one) with trees or a roof (at least 4 blocks up) over part of it. Penguins live in colonies of 3 or more and need a deep pool, a dry bank and a Cooling Unit with ice. Giraffes travel in a Reinforced Crate, need 7 blocks of headroom and eat from an Elevated Browse Feeder. Elephants travel in a Reinforced Crate too, need lots of room (256 blocks for one) and a mud wallow: 6 or more blocks of mud in the floor. Basalt Tortoises come from the Nether in a Thermal Carrier and need a fuelled Thermal Regulator beside the floor, 4 or more magma blocks in it to bask on, and a Lava Trough filled with lava buckets to drink from. Ember Foxes come from the Nether in a Thermal Carrier too: a fuelled Thermal Regulator, a Lava Trough, 4 or more Warm Ash blocks in the floor and an Ember Den. Lava Rays come in a Thermal Carrier and swim in a lava pool: mostly lava, 2 blocks deep in 8 or more spots, with a bank to stand on and a Thermal Feeder at the pool's edge. Fill it with Clear Lava (a lava bucket used on a Lava Filter) to see them under the surface. Striders come in a Thermal Carrier too and walk across a lava pool: at least 40% lava with a bank, 4 or more magma blocks on the bank to rest on, and warped fungus in a Basic Feeder. Lava sets wooden fences on fire, so fence a lava pool with walls, nether brick fence or glass. Chorus Deer come from the End in a Stabilized Carrier (Dimensional Preparation research) and want room with 8 or more end stone blocks in the floor, trees, chorus plants or a roof over part of it, and Chorus Browse (crafted from chorus fruit) in a Basic Feeder. Void Rays come in a Stabilized Carrier too and fly: a roofed exhibit with 10 blocks of air over 144 blocks of floor (16 or more end stone), 2 or more Void Perches floating up in the air to rest on (place them, then measure), and Chorus Browse in a Basic Feeder on the floor. Rift Ferrets come in a Stabilized Carrier too and blink about: a Containment Anchor beside the floor charged with ender pearls, 2 or more Rift Tunnels on the floor to blink between and hide in, 6 or more end stone blocks, and Chorus Browse in a Basic Feeder. Some species share an exhibit (${sharingText()}); a shared exhibit needs a quarter more room, and every species in it gets its own food, drink and care.`;
+  return "Everything looks good.";
+```
+NEW:
+```
+  if (ex.careWarnings.length) return ex.careWarnings[0].text;
+  if (!ex.animalIds.length) return `Catch an animal with a Small Carrier and release it here. Otters need a pool: about a third water, 2 blocks deep, with dry bank. Capybaras travel in a Livestock Crate and want mostly grassy bank with a shallow pool. Deer travel in a Livestock Crate too and want room (100 blocks for one) with trees or a roof (at least 4 blocks up) over part of it. Penguins live in colonies of 3 or more and need a deep pool, a dry bank and a Cooling Unit with ice. Giraffes travel in a Reinforced Crate, need 7 blocks of headroom and eat from an Elevated Browse Feeder. Elephants travel in a Reinforced Crate too, need lots of room (256 blocks for one) and a mud wallow: 6 or more blocks of mud in the floor. Basalt Tortoises come from the Nether in a Thermal Carrier and need a fuelled Thermal Regulator beside the floor, 4 or more magma blocks in it to bask on, and a Lava Trough filled with lava buckets to drink from. Ember Foxes come from the Nether in a Thermal Carrier too: a fuelled Thermal Regulator, a Lava Trough, 4 or more Warm Ash blocks in the floor and an Ember Den. Lava Rays come in a Thermal Carrier and swim in a lava pool: mostly lava, 2 blocks deep in 8 or more spots, with a bank to stand on and a Thermal Feeder at the pool's edge. Fill it with Clear Lava (a lava bucket used on a Lava Filter) to see them under the surface. Striders come in a Thermal Carrier too and walk across a lava pool: at least 40% lava with a bank, 4 or more magma blocks on the bank to rest on, and warped fungus in a Basic Feeder. Lava sets wooden fences on fire, so fence a lava pool with walls, nether brick fence or glass. Chorus Deer come from the End in a Stabilized Carrier (Dimensional Preparation research) and want room with 8 or more end stone blocks in the floor, trees, chorus plants or a roof over part of it, and Chorus Browse (crafted from chorus fruit) in a Basic Feeder. Void Rays come in a Stabilized Carrier too and fly: a roofed exhibit with 10 blocks of air over 144 blocks of floor (16 or more end stone), 2 or more Void Perches floating up in the air to rest on (place them, then measure), and Chorus Browse in a Basic Feeder on the floor. Rift Ferrets come in a Stabilized Carrier too and blink about: a Containment Anchor beside the floor charged with ender pearls, 2 or more Rift Tunnels on the floor to blink between and hide in, 6 or more end stone blocks, and Chorus Browse in a Basic Feeder. Hedgehogs travel in a Small Carrier, eat Insect Rations (an Insect Hatchery grows them), want a Burrow Shelter on the floor, and sleep by day: roof the whole exhibit over (a solid roof, not leaves) to make a nocturnal house, where they are up by day for the guests. Some species share an exhibit (${sharingText()}); a shared exhibit needs a quarter more room, and every species in it gets its own food, drink and care.`;
+  return "Everything looks good.";
+```
+--- 4
+OLD:
+```
+  const days = feederDaysLeft(ex);
+  // The flight room (Void Rays): measured with the exhibit's own headroom once they live there, else the tallest flyer's.
+```
+NEW:
+```
+  const days = feederDaysLeft(ex);
+  const nocturnal = living.find((sp) => sp.nocturnal); // a nocturnal house, or not (animals/nightRules.js)
+  // The flight room (Void Rays): measured with the exhibit's own headroom once they live there, else the tallest flyer's.
+```
+--- 5
+OLD:
+```
+    `§fAnimals: §7${cap.population} · needs ${cap.required} usable blocks${cap.mixed ? " (mixed)" : ""}, has ${cap.usable}`,
+    `§fGround: §7${ex.usableArea} dry, ${ex.waterCells ?? 0} water (${ex.deepWaterCells ?? 0} deep)${ex.lavaCells ? `, ${ex.lavaCells} lava (${ex.deepLavaCells ?? 0} deep)` : ""}${ex.coveredCells !== undefined ? `, ${ex.coveredCells} under cover` : ""}${ex.mudCells !== undefined ? `, ${ex.mudCells} mud` : ""}${ex.hotCells !== undefined ? `, ${ex.hotCells} magma` : ""}${ex.ashCells !== undefined ? `, ${ex.ashCells} warm ash` : ""}${ex.endCells !== undefined ? `, ${ex.endCells} end stone` : ""}${ex.lowCells ? `, §e${ex.lowCells} too low to use§7` : ""}${ex.aerial ? `; flight room: ${ex.aerial.enclosed ? `${ex.aerial.usableArea} floor with ${airHeight} blocks of air, ${ex.flightCells} air blocks` : "open to the sky"}, ${ex.perchCount ?? 0} Void Perch${ex.perchCount === 1 ? "" : "es"}` : ""}`,
+    `§fCleanliness: ${BAND_COLOR[band(ex.cleanliness ?? 100, BALANCE.needs.bands)]}${Math.round(ex.cleanliness ?? 100)}`,
+```
+NEW:
+```
+    `§fAnimals: §7${cap.population} · needs ${cap.required} usable blocks${cap.mixed ? " (mixed)" : ""}, has ${cap.usable}`,
+    `§fGround: §7${ex.usableArea} dry, ${ex.waterCells ?? 0} water (${ex.deepWaterCells ?? 0} deep)${ex.lavaCells ? `, ${ex.lavaCells} lava (${ex.deepLavaCells ?? 0} deep)` : ""}${ex.coveredCells !== undefined ? `, ${ex.coveredCells} under cover` : ""}${ex.mudCells !== undefined ? `, ${ex.mudCells} mud` : ""}${ex.hotCells !== undefined ? `, ${ex.hotCells} magma` : ""}${ex.ashCells !== undefined ? `, ${ex.ashCells} warm ash` : ""}${ex.endCells !== undefined ? `, ${ex.endCells} end stone` : ""}${ex.roofedCells !== undefined ? `, ${ex.roofedCells} roofed` : ""}${ex.lowCells ? `, §e${ex.lowCells} too low to use§7` : ""}${ex.aerial ? `; flight room: ${ex.aerial.enclosed ? `${ex.aerial.usableArea} floor with ${airHeight} blocks of air, ${ex.flightCells} air blocks` : "open to the sky"}, ${ex.perchCount ?? 0} Void Perch${ex.perchCount === 1 ? "" : "es"}` : ""}`,
+    ...(nocturnal ? [nocturnalLine(ex, pluralOf(nocturnal), BALANCE)] : []),
+    `§fCleanliness: ${BAND_COLOR[band(ex.cleanliness ?? 100, BALANCE.needs.bands)]}${Math.round(ex.cleanliness ?? 100)}`,
+```
+--- 6
+OLD:
+```
+  if (dens.length) parts.push(`${dens.length} ember den${dens.length === 1 ? "" : "s"}`);
+  const anchors = count("anchor");
+```
+NEW:
+```
+  if (dens.length) parts.push(`${dens.length} ember den${dens.length === 1 ? "" : "s"}`);
+  const burrows = count("burrow");
+  if (burrows.length) parts.push(`${burrows.length} burrow shelter${burrows.length === 1 ? "" : "s"}`);
+  const anchors = count("anchor");
+```
+--- 7
+OLD:
+```
+    `§fWelfare: ${BAND_COLOR[band(w, BALANCE.needs.bands)]}${w}${a.ill ? " §c(unwell)" : ""}`,
+    "",
+```
+NEW:
+```
+    `§fWelfare: ${BAND_COLOR[band(w, BALANCE.needs.bands)]}${w}${a.ill ? " §c(unwell)" : ""}`,
+    ...(species.nocturnal ? [nowLine(a, ex)] : []),
+    "",
+```
+--- 8
+OLD:
+```
+  else if (release && r?.selection === 1) await releaseForm(player, a, release);
+}
+```
+NEW:
+```
+  else if (release && r?.selection === 1) await releaseForm(player, a, release);
+}
+
+// A nocturnal animal's page says what it is doing now (asleep, curled up, or up and about).
+function nowLine(a, ex) {
+  const s = nightState(a);
+  return `§fNow: §7${s ? stateText(s.asleep, s.curled, isNocturnalHouse(ex, BALANCE)) : "not loaded (go nearer)"}`;
+}
+```
+
+=== EDIT addon\packs\BP\scripts\ui\fieldJournal.js (2 replacements, apply in order)
+--- 1
+OLD:
+```
+    lines.push(`§7Eats: ${food.join(", ")}, ${sp.rationUnitsPerParkDay} a day each`);
+    lines.push(`§7Space: ${prof.baseArea} blocks for the first, ${prof.extraArea} for each more; ${prof.minHeight} blocks of headroom`);
+```
+NEW:
+```
+    lines.push(`§7Eats: ${food.join(", ")}, ${sp.rationUnitsPerParkDay} a day each`);
+    if (sp.dietTags.includes("insect")) lines.push("§7Insect Rations grow in an Insect Hatchery (glass, rotten flesh, dirt and planks): a batch every minute or two, use it to take them out. The park shop sells them too");
+    lines.push(`§7Space: ${prof.baseArea} blocks for the first, ${prof.extraArea} for each more; ${prof.minHeight} blocks of headroom`);
+```
+--- 2
+OLD:
+```
+    if (sp.endGround) lines.push(`§7End ground: at least ${sp.endGround.minCells} end stone blocks in the floor (bring it back from the End)`);
+    if (sp.den) lines.push("§7Den: an Ember Den on the floor to curl up in");
+    if (sp.anchor) lines.push("§7Containment: a Containment Anchor beside the floor, charged with ender pearls (eyes of ender and popped chorus fruit work too). Their blinks land only inside the exhibit; without charge they stop blinking and are unsettled");
+```
+NEW:
+```
+    if (sp.endGround) lines.push(`§7End ground: at least ${sp.endGround.minCells} end stone blocks in the floor (bring it back from the End)`);
+    if (sp.den === "burrow") lines.push("§7Den: a Burrow Shelter on the floor to sleep in (sticks, hay and logs at the Zoo Workshop)");
+    else if (sp.den) lines.push("§7Den: an Ember Den on the floor to curl up in");
+    if (sp.nocturnal) lines.push(`§7Nocturnal: asleep by day and up at night, and a Viewing Point doesn't count one that's asleep, so by day they aren't on show. A nocturnal house turns that round: a solid roof (not leaves) over ${Math.round(BALANCE.nocturnal.roofFraction * 100)}% of the ground, and they are up by day and sleep at night. An awake one curls into a ball when you walk right up to it; sneak to get close`);
+    if (sp.anchor) lines.push("§7Containment: a Containment Anchor beside the floor, charged with ender pearls (eyes of ender and popped chorus fruit work too). Their blinks land only inside the exhibit; without charge they stop blinking and are unsettled");
+```
+
+SHA-256 (Get-FileHash) of every file in this batch after writing (LF endings):
+224b05f154498c20c06688aec33d7a7a09981f3299bab489482c9307a6708128  addon\packs\BP\scripts\discovery\discovery.js
+f77c7e2e1ca0ad9fae23a2d0960e186d21a8e31792e36944fa0ab73bcb62fddd  addon\packs\BP\scripts\discovery\rules.js
+fe0aa1dc1adf1c6cef0b98270e87d087348cb65b50a0e4d20e83f92cff6fd13e  addon\packs\BP\scripts\equipment\fixtures.js
+e107664454e8821f94805f36398c21bc5310657089842e57543907a94e3ed57e  addon\packs\BP\scripts\equipment\rules.js
+659db6e9d8fa34f718a28fd675cb98040c282cb930156b8643abf91a823873e7  addon\packs\BP\scripts\exhibits\exhibits.js
+693e7ae05b1192caac5d95d17a584d30391604eccf5a0f116cdf134e6c28c75b  addon\packs\BP\scripts\exhibits\geometry.js
+7cd23e091da0528c9ee1c873184b21574b77a58bc7d2eae0bd9b4b1c440b7afa  addon\packs\BP\scripts\exhibits\mixing.js
+addf08d79648834f4a9e2a0bbab79634aee9cd0b5b0713593d273ca0686841ec  addon\packs\BP\scripts\main.js
+33b38568f2468e2b73c36935787554db374b1d78dfd3f477d4d6dabc59c0f6d6  addon\packs\BP\scripts\platform\mc.js
+10bad19ba6294d6cd41f008eea0b0b64c4d0a346a68e25f18855e7ad31d95395  addon\packs\BP\scripts\ui\clipboard.js
+bf8200d6c2cec83d7aa5553ee0e93142dd8f2ebc2a585ca34a71cf7a0ef2c0c1  addon\packs\BP\scripts\ui\fieldJournal.js
