@@ -1,0 +1,27 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.zoocraft.lion": {
+      "arrays": {
+        "textures": {"Array.coats": ["Texture.default", "Texture.lion", "Texture.lion_dark", "Texture.cub"]}
+      },
+      "geometry": "Geometry.default",
+      "materials": [{"*": "Material.default"}],
+      "textures": ["Array.coats[q.is_baby ? 3 : (q.variant == 1 ? (q.mark_variant == 1 ? 2 : 1) : 0)]"],
+      "part_visibility": [
+        {"*": true},
+        {"ruff": "(!q.is_baby && q.variant == 1)"},
+        {"mane": "(!q.is_baby && q.variant == 1)"},
+        {"bib": "(!q.is_baby && q.variant == 1)"},
+        {"tuft": "!q.is_baby"},
+        {
+          "clawsL": "q.property('zoocraft:act') == 3 || q.property('zoocraft:act') == 25 || q.property('zoocraft:act') == 15"
+        },
+        {"clawsR": "q.property('zoocraft:act') == 25 || q.property('zoocraft:act') == 15"},
+        {
+          "lids": "q.property('zoocraft:act') == 6 || q.property('zoocraft:act') == 7 || q.property('zoocraft:act') == 11 || q.property('zoocraft:act') == 8 || q.property('zoocraft:act') == 24 || v.lids || math.mod(q.life_time + v.offset * 0.37, 5.1) < 0.15"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shapeless": {
+    "description": {"identifier": "zoocraft:meat_ration_chicken"},
+    "tags": ["crafting_table", "zoocraft_workshop"],
+    "ingredients": [{"item": "minecraft:chicken"}],
+    "unlock": [{"item": "minecraft:chicken"}],
+    "result": {"item": "zoocraft:meat_ration", "count": 1}
+  }
+}

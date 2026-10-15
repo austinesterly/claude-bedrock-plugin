@@ -1,0 +1,15 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {"identifier": "zoocraft:scent_post"},
+    "tags": ["zoocraft_workshop"],
+    "pattern": [" F ", "SLS", " L "],
+    "key": {
+      "F": {"item": "minecraft:fern"},
+      "S": {"item": "minecraft:string"},
+      "L": {"tag": "minecraft:logs"}
+    },
+    "unlock": [{"item": "zoocraft:zoo_workshop"}],
+    "result": {"item": "zoocraft:scent_post", "count": 1}
+  }
+}

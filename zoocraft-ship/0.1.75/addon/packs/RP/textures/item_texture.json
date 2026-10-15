@@ -1,0 +1,99 @@
+{
+  "resource_pack_name": "zoocraft",
+  "texture_name": "atlas.items",
+  "texture_data": {
+    "zoocraft:park_deed": {
+      "textures": "textures/items/zoocraft/park_deed"
+    },
+    "zoocraft:habitat_marker": {
+      "textures": "textures/items/zoocraft/habitat_marker"
+    },
+    "zoocraft:exhibit_clipboard": {
+      "textures": "textures/items/zoocraft/exhibit_clipboard"
+    },
+    "zoocraft:cleaning_rake": {
+      "textures": "textures/items/zoocraft/cleaning_rake"
+    },
+    "zoocraft:leafy_ration": {
+      "textures": "textures/items/zoocraft/leafy_ration"
+    },
+    "zoocraft:small_carrier": {
+      "textures": "textures/items/zoocraft/small_carrier"
+    },
+    "zoocraft:small_carrier_occupied": {
+      "textures": "textures/items/zoocraft/small_carrier_occupied"
+    },
+    "zoocraft:livestock_crate": {
+      "textures": "textures/items/zoocraft/livestock_crate"
+    },
+    "zoocraft:livestock_crate_occupied": {
+      "textures": "textures/items/zoocraft/livestock_crate_occupied"
+    },
+    "zoocraft:fish_ration": {
+      "textures": "textures/items/zoocraft/fish_ration"
+    },
+    "zoocraft:floating_toy": {
+      "textures": "textures/items/zoocraft/floating_toy"
+    },
+    "zoocraft:reinforced_crate": {
+      "textures": "textures/items/zoocraft/reinforced_crate"
+    },
+    "zoocraft:reinforced_crate_occupied": {
+      "textures": "textures/items/zoocraft/reinforced_crate_occupied"
+    },
+    "zoocraft:enrichment_ball": {
+      "textures": "textures/items/zoocraft/enrichment_ball"
+    },
+    "zoocraft:mineral_pellets": {
+      "textures": "textures/items/zoocraft/mineral_pellets"
+    },
+    "zoocraft:thermal_carrier": {
+      "textures": "textures/items/zoocraft/thermal_carrier"
+    },
+    "zoocraft:thermal_carrier_occupied": {
+      "textures": "textures/items/zoocraft/thermal_carrier_occupied"
+    },
+    "zoocraft:ember_ration": {
+      "textures": "textures/items/zoocraft/ember_ration"
+    },
+    "zoocraft:molten_plankton": {
+      "textures": "textures/items/zoocraft/molten_plankton"
+    },
+    "zoocraft:blaze_bone": {
+      "textures": "textures/items/zoocraft/blaze_bone"
+    },
+    "zoocraft:wither_skull_ball": {
+      "textures": "textures/items/zoocraft/wither_skull_ball"
+    },
+    "zoocraft:clear_lava_bucket": {
+      "textures": "textures/items/zoocraft/clear_lava_bucket"
+    },
+    "zoocraft:chorus_browse": {
+      "textures": "textures/items/zoocraft/chorus_browse"
+    },
+    "zoocraft:stabilized_carrier": {
+      "textures": "textures/items/zoocraft/stabilized_carrier"
+    },
+    "zoocraft:stabilized_carrier_occupied": {
+      "textures": "textures/items/zoocraft/stabilized_carrier_occupied"
+    },
+    "zoocraft:insect_ration": {
+      "textures": "textures/items/zoocraft/insect_ration"
+    },
+    "zoocraft:fruit_ration": {
+      "textures": "textures/items/zoocraft/fruit_ration"
+    },
+    "zoocraft:bin_latch": {
+      "textures": "textures/items/zoocraft/bin_latch"
+    },
+    "zoocraft:flamingo_pellets": {
+      "textures": "textures/items/zoocraft/flamingo_pellets"
+    },
+    "zoocraft:grain_ration": {
+      "textures": "textures/items/zoocraft/grain_ration"
+    },
+    "zoocraft:meat_ration": {
+      "textures": "textures/items/zoocraft/meat_ration"
+    }
+  }
+}

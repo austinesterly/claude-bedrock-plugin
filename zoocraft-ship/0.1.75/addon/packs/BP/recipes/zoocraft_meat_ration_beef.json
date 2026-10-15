@@ -1,0 +1,10 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shapeless": {
+    "description": {"identifier": "zoocraft:meat_ration_beef"},
+    "tags": ["crafting_table", "zoocraft_workshop"],
+    "ingredients": [{"item": "minecraft:beef"}],
+    "unlock": [{"item": "minecraft:beef"}],
+    "result": {"item": "zoocraft:meat_ration", "count": 1}
+  }
+}

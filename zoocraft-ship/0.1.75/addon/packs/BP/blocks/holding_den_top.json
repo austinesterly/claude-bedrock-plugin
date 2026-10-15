@@ -1,0 +1,58 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:block": {
+    "description": {
+      "identifier": "zoocraft:holding_den_top",
+      "menu_category": {"category": "none", "is_hidden_in_commands": true},
+      "states": {"zoocraft:door": [0, 1], "zoocraft:inside": [0, 1]},
+      "traits": {
+        "minecraft:placement_direction": {"enabled_states": ["minecraft:cardinal_direction"], "y_rotation_offset": 0.0}
+      }
+    },
+    "components": {
+      "minecraft:geometry": {
+        "identifier": "geometry.zoocraft.holding_den_top",
+        "bone_visibility": {
+          "door": "query.block_state('zoocraft:door') == 1",
+          "open": "query.block_state('zoocraft:door') == 0",
+          "inside": "query.block_state('zoocraft:inside') == 1 && query.block_state('zoocraft:door') == 1",
+          "empty": "query.block_state('zoocraft:inside') == 0 && query.block_state('zoocraft:door') == 1"
+        }
+      },
+      "minecraft:material_instances": {
+        "*": {"texture": "zoocraft_den_blocks", "render_method": "alpha_test"},
+        "steel": {"texture": "zoocraft_den_steel", "render_method": "alpha_test"},
+        "door": {"texture": "zoocraft_den_door", "render_method": "alpha_test"},
+        "mesh": {"texture": "zoocraft_den_mesh", "render_method": "alpha_test"},
+        "dark": {"texture": "zoocraft_den_dark", "render_method": "alpha_test"},
+        "eyes": {"texture": "zoocraft_den_eyes", "render_method": "alpha_test"},
+        "straw": {"texture": "zoocraft_den_straw", "render_method": "alpha_test"},
+        "roof": {"texture": "zoocraft_den_roof", "render_method": "alpha_test"},
+        "hazard": {"texture": "zoocraft_den_hazard", "render_method": "alpha_test"}
+      },
+      "minecraft:collision_box": {"origin": [-8, 0, -8], "size": [16, 16, 16]},
+      "minecraft:selection_box": {"origin": [-8, 0, -8], "size": [16, 16, 16]},
+      "minecraft:light_dampening": 0,
+      "minecraft:movable": {"movement_type": "immovable"},
+      "minecraft:destructible_by_mining": {"seconds_to_destroy": 4.0},
+      "minecraft:destructible_by_explosion": {"explosion_resistance": 12},
+      "minecraft:map_color": "#a9a59c",
+      "minecraft:loot": "loot_tables/empty.json",
+      "zoocraft:holding_den": {}
+    },
+    "permutations": [
+      {
+        "condition": "query.block_state('minecraft:cardinal_direction') == 'south'",
+        "components": {"minecraft:transformation": {"rotation": [0, 180, 0]}}
+      },
+      {
+        "condition": "query.block_state('minecraft:cardinal_direction') == 'west'",
+        "components": {"minecraft:transformation": {"rotation": [0, 90, 0]}}
+      },
+      {
+        "condition": "query.block_state('minecraft:cardinal_direction') == 'east'",
+        "components": {"minecraft:transformation": {"rotation": [0, 270, 0]}}
+      }
+    ]
+  }
+}

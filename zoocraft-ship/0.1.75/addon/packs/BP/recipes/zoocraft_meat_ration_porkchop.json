@@ -1,0 +1,10 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shapeless": {
+    "description": {"identifier": "zoocraft:meat_ration_porkchop"},
+    "tags": ["crafting_table", "zoocraft_workshop"],
+    "ingredients": [{"item": "minecraft:porkchop"}],
+    "unlock": [{"item": "minecraft:porkchop"}],
+    "result": {"item": "zoocraft:meat_ration", "count": 1}
+  }
+}

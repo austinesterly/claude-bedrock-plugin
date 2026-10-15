@@ -1,0 +1,499 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:block": {
+    "description": {
+      "identifier": "zoocraft:basic_feeder",
+      "menu_category": {
+        "category": "items"
+      },
+      "states": {
+        "zoocraft:fill": [
+          0,
+          1,
+          2
+        ],
+        "zoocraft:food": [
+          0,
+          1,
+          2,
+          3,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ]
+      }
+    },
+    "components": {
+      "minecraft:geometry": "minecraft:geometry.full_block",
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 1.0
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 3
+      },
+      "minecraft:map_color": "#9c6b3a",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "zoocraft_feeder_side",
+          "render_method": "opaque"
+        },
+        "up": {
+          "texture": "zoocraft_feeder_top_0",
+          "render_method": "opaque"
+        },
+        "down": {
+          "texture": "zoocraft_planks",
+          "render_method": "opaque"
+        }
+      },
+      "zoocraft:feeder": {},
+      "minecraft:loot": "loot_tables/blocks/zoocraft_basic_feeder.json"
+    },
+    "permutations": [
+      {
+        "condition": "query.block_state('zoocraft:fill') == 1 && query.block_state('zoocraft:food') == 0",
+        "components": {
+          "minecraft:geometry": "minecraft:geometry.full_block",
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "zoocraft_feeder_side",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "zoocraft_feeder_top_1",
+              "render_method": "opaque"
+            },
+            "down": {
+              "texture": "zoocraft_planks",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:fill') == 2 && query.block_state('zoocraft:food') == 0",
+        "components": {
+          "minecraft:geometry": "minecraft:geometry.full_block",
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "zoocraft_feeder_side",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "zoocraft_feeder_top_2",
+              "render_method": "opaque"
+            },
+            "down": {
+              "texture": "zoocraft_planks",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:fill') == 1 && query.block_state('zoocraft:food') == 1",
+        "components": {
+          "minecraft:geometry": "minecraft:geometry.full_block",
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "zoocraft_feeder_side",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "zoocraft_feeder_fish_1",
+              "render_method": "opaque"
+            },
+            "down": {
+              "texture": "zoocraft_planks",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:fill') == 2 && query.block_state('zoocraft:food') == 1",
+        "components": {
+          "minecraft:geometry": "minecraft:geometry.full_block",
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "zoocraft_feeder_side",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "zoocraft_feeder_fish_2",
+              "render_method": "opaque"
+            },
+            "down": {
+              "texture": "zoocraft_planks",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:fill') == 1 && query.block_state('zoocraft:food') == 2",
+        "components": {
+          "minecraft:geometry": "minecraft:geometry.full_block",
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "zoocraft_feeder_side",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "zoocraft_feeder_mineral_1",
+              "render_method": "opaque"
+            },
+            "down": {
+              "texture": "zoocraft_planks",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:fill') == 2 && query.block_state('zoocraft:food') == 2",
+        "components": {
+          "minecraft:geometry": "minecraft:geometry.full_block",
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "zoocraft_feeder_side",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "zoocraft_feeder_mineral_2",
+              "render_method": "opaque"
+            },
+            "down": {
+              "texture": "zoocraft_planks",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:fill') == 1 && query.block_state('zoocraft:food') == 3",
+        "components": {
+          "minecraft:geometry": "minecraft:geometry.full_block",
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "zoocraft_feeder_side",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "zoocraft_feeder_ember_1",
+              "render_method": "opaque"
+            },
+            "down": {
+              "texture": "zoocraft_planks",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:fill') == 2 && query.block_state('zoocraft:food') == 3",
+        "components": {
+          "minecraft:geometry": "minecraft:geometry.full_block",
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "zoocraft_feeder_side",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "zoocraft_feeder_ember_2",
+              "render_method": "opaque"
+            },
+            "down": {
+              "texture": "zoocraft_planks",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:fill') == 1 && query.block_state('zoocraft:food') == 5",
+        "components": {
+          "minecraft:geometry": "minecraft:geometry.full_block",
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "zoocraft_feeder_side",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "zoocraft_feeder_fungus_1",
+              "render_method": "opaque"
+            },
+            "down": {
+              "texture": "zoocraft_planks",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:fill') == 2 && query.block_state('zoocraft:food') == 5",
+        "components": {
+          "minecraft:geometry": "minecraft:geometry.full_block",
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "zoocraft_feeder_side",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "zoocraft_feeder_fungus_2",
+              "render_method": "opaque"
+            },
+            "down": {
+              "texture": "zoocraft_planks",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:fill') == 1 && query.block_state('zoocraft:food') == 6",
+        "components": {
+          "minecraft:geometry": "minecraft:geometry.full_block",
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "zoocraft_feeder_side",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "zoocraft_feeder_chorus_1",
+              "render_method": "opaque"
+            },
+            "down": {
+              "texture": "zoocraft_planks",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:fill') == 2 && query.block_state('zoocraft:food') == 6",
+        "components": {
+          "minecraft:geometry": "minecraft:geometry.full_block",
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "zoocraft_feeder_side",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "zoocraft_feeder_chorus_2",
+              "render_method": "opaque"
+            },
+            "down": {
+              "texture": "zoocraft_planks",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:fill') == 1 && query.block_state('zoocraft:food') == 7",
+        "components": {
+          "minecraft:geometry": "minecraft:geometry.full_block",
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "zoocraft_feeder_side",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "zoocraft_feeder_insect_1",
+              "render_method": "opaque"
+            },
+            "down": {
+              "texture": "zoocraft_planks",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:fill') == 2 && query.block_state('zoocraft:food') == 7",
+        "components": {
+          "minecraft:geometry": "minecraft:geometry.full_block",
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "zoocraft_feeder_side",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "zoocraft_feeder_insect_2",
+              "render_method": "opaque"
+            },
+            "down": {
+              "texture": "zoocraft_planks",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:fill') == 1 && query.block_state('zoocraft:food') == 8",
+        "components": {
+          "minecraft:geometry": "minecraft:geometry.full_block",
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "zoocraft_feeder_side",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "zoocraft_feeder_fruit_1",
+              "render_method": "opaque"
+            },
+            "down": {
+              "texture": "zoocraft_planks",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:fill') == 2 && query.block_state('zoocraft:food') == 8",
+        "components": {
+          "minecraft:geometry": "minecraft:geometry.full_block",
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "zoocraft_feeder_side",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "zoocraft_feeder_fruit_2",
+              "render_method": "opaque"
+            },
+            "down": {
+              "texture": "zoocraft_planks",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:fill') == 1 && query.block_state('zoocraft:food') == 9",
+        "components": {
+          "minecraft:geometry": "minecraft:geometry.full_block",
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "zoocraft_feeder_side",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "zoocraft_feeder_pellet_1",
+              "render_method": "opaque"
+            },
+            "down": {
+              "texture": "zoocraft_planks",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:fill') == 2 && query.block_state('zoocraft:food') == 9",
+        "components": {
+          "minecraft:geometry": "minecraft:geometry.full_block",
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "zoocraft_feeder_side",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "zoocraft_feeder_pellet_2",
+              "render_method": "opaque"
+            },
+            "down": {
+              "texture": "zoocraft_planks",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:fill') == 1 && query.block_state('zoocraft:food') == 10",
+        "components": {
+          "minecraft:geometry": "minecraft:geometry.full_block",
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "zoocraft_feeder_side",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "zoocraft_feeder_grain_1",
+              "render_method": "opaque"
+            },
+            "down": {
+              "texture": "zoocraft_planks",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:fill') == 2 && query.block_state('zoocraft:food') == 10",
+        "components": {
+          "minecraft:geometry": "minecraft:geometry.full_block",
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "zoocraft_feeder_side",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "zoocraft_feeder_grain_2",
+              "render_method": "opaque"
+            },
+            "down": {
+              "texture": "zoocraft_planks",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:fill') == 1 && query.block_state('zoocraft:food') == 11",
+        "components": {
+          "minecraft:geometry": "minecraft:geometry.full_block",
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "zoocraft_feeder_side",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "zoocraft_feeder_meat_1",
+              "render_method": "opaque"
+            },
+            "down": {
+              "texture": "zoocraft_planks",
+              "render_method": "opaque"
+            }
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:fill') == 2 && query.block_state('zoocraft:food') == 11",
+        "components": {
+          "minecraft:geometry": "minecraft:geometry.full_block",
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "zoocraft_feeder_side",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "zoocraft_feeder_meat_2",
+              "render_method": "opaque"
+            },
+            "down": {
+              "texture": "zoocraft_planks",
+              "render_method": "opaque"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

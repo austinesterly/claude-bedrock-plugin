@@ -1,0 +1,15 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {"identifier": "zoocraft:holding_den"},
+    "tags": ["zoocraft_workshop"],
+    "pattern": ["BIB", "BHB", "BIB"],
+    "key": {
+      "B": {"item": "minecraft:stone_bricks"},
+      "I": {"item": "minecraft:iron_ingot"},
+      "H": {"item": "minecraft:tripwire_hook"}
+    },
+    "unlock": [{"item": "zoocraft:zoo_workshop"}],
+    "result": {"item": "zoocraft:holding_den", "count": 1}
+  }
+}
