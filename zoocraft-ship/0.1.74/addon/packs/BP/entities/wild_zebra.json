@@ -1,0 +1,109 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "zoocraft:wild_zebra",
+      "spawn_category": "creature",
+      "is_spawnable": true,
+      "is_summonable": true,
+      "properties": {"zoocraft:act": {"type": "int", "range": [0, 26], "default": 0, "client_sync": true}}
+    },
+    "component_groups": {
+      "zoocraft:moving": {
+        "minecraft:movement": {"value": 0.22},
+        "minecraft:physics": {},
+        "minecraft:pushable_by_entity": {},
+        "minecraft:behavior.look_at_player": {"priority": 9, "look_distance": 8, "probability": 0.03},
+        "minecraft:behavior.look_at_entity": {
+          "priority": 9,
+          "look_distance": 8,
+          "probability": 0.04,
+          "filters": {"test": "is_family", "subject": "other", "value": "zebra"}
+        },
+        "minecraft:behavior.random_look_around": {"priority": 10}
+      },
+      "zoocraft:still": {"minecraft:movement": {"value": 0.0}, "minecraft:physics": {}},
+      "zoocraft:coat_0": {"minecraft:variant": {"value": 0}},
+      "zoocraft:coat_1": {"minecraft:variant": {"value": 1}}
+    },
+    "components": {
+      "minecraft:type_family": {"family": ["wild_zebra", "zebra", "mob"]},
+      "minecraft:nameable": {},
+      "minecraft:health": {"value": 24, "max": 24},
+      "minecraft:damage_sensor": {"triggers": [{"cause": "fall", "deals_damage": "no"}]},
+      "minecraft:despawn": {"despawn_from_distance": {}},
+      "minecraft:behavior.panic": {"priority": 0, "speed_multiplier": 1.6},
+      "minecraft:behavior.tempt": {
+        "priority": 1,
+        "speed_multiplier": 1.1,
+        "within_radius": 10,
+        "items": ["zoocraft:grain_ration", "wheat", "hay_block"]
+      },
+      "minecraft:behavior.avoid_mob_type": {
+        "priority": 2,
+        "entity_types": [
+          {
+            "filters": {
+              "all_of": [
+                {"test": "is_family", "subject": "other", "value": "player"},
+                {"test": "is_sneaking", "subject": "other", "value": false}
+              ]
+            },
+            "max_dist": 8,
+            "walk_speed_multiplier": 1.2,
+            "sprint_speed_multiplier": 1.5
+          }
+        ]
+      },
+      "minecraft:behavior.follow_mob": {
+        "priority": 6,
+        "search_range": 12,
+        "speed_multiplier": 1.0,
+        "stop_distance": 6,
+        "filters": {
+          "all_of": [
+            {"test": "is_family", "subject": "other", "value": "zebra"},
+            {"test": "is_family", "subject": "other", "value": "wild_zebra"}
+          ]
+        }
+      },
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:breathable": {"total_supply": 15, "suffocate_time": 0},
+      "minecraft:collision_box": {"width": 0.9, "height": 1.7},
+      "minecraft:navigation.walk": {"can_path_over_water": true, "avoid_water": true, "avoid_damage_blocks": true},
+      "minecraft:movement.basic": {},
+      "minecraft:movement": {"value": 0.22},
+      "minecraft:jump.static": {},
+      "minecraft:physics": {},
+      "minecraft:pushable_by_block": {},
+      "minecraft:conditional_bandwidth_optimization": {},
+      "minecraft:behavior.float": {"priority": 0},
+      "minecraft:behavior.follow_parent": {"priority": 5, "speed_multiplier": 1.1},
+      "minecraft:behavior.random_stroll": {"priority": 7, "interval": 100, "speed_multiplier": 0.8, "xz_dist": 6, "y_dist": 1}
+    },
+    "events": {
+      "zoocraft:move": {
+        "remove": {"component_groups": ["zoocraft:still"]},
+        "add": {"component_groups": ["zoocraft:moving"]}
+      },
+      "zoocraft:still": {
+        "remove": {"component_groups": ["zoocraft:moving"]},
+        "add": {"component_groups": ["zoocraft:still"]}
+      },
+      "zoocraft:coat_0": {
+        "remove": {"component_groups": ["zoocraft:coat_1"]},
+        "add": {"component_groups": ["zoocraft:coat_0"]}
+      },
+      "zoocraft:coat_1": {
+        "remove": {"component_groups": ["zoocraft:coat_0"]},
+        "add": {"component_groups": ["zoocraft:coat_1"]}
+      },
+      "minecraft:entity_spawned": {
+        "randomize": [
+          {"weight": 1, "add": {"component_groups": ["zoocraft:coat_0", "zoocraft:moving"]}},
+          {"weight": 1, "add": {"component_groups": ["zoocraft:coat_1", "zoocraft:moving"]}}
+        ]
+      }
+    }
+  }
+}

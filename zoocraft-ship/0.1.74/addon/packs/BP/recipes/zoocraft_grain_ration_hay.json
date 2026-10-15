@@ -1,0 +1,10 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shapeless": {
+    "description": {"identifier": "zoocraft:grain_ration_hay"},
+    "tags": ["crafting_table", "zoocraft_workshop"],
+    "ingredients": [{"item": "minecraft:hay_block"}],
+    "unlock": [{"item": "minecraft:hay_block"}],
+    "result": {"item": "zoocraft:grain_ration", "count": 9}
+  }
+}

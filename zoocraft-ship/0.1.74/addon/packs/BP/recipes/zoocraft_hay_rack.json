@@ -1,0 +1,15 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {"identifier": "zoocraft:hay_rack"},
+    "tags": ["zoocraft_workshop"],
+    "pattern": ["S S", "SHS", "PPP"],
+    "key": {
+      "S": {"item": "minecraft:stick"},
+      "H": {"item": "minecraft:hay_block"},
+      "P": {"tag": "minecraft:planks"}
+    },
+    "unlock": [{"item": "zoocraft:zoo_workshop"}],
+    "result": {"item": "zoocraft:hay_rack", "count": 1}
+  }
+}

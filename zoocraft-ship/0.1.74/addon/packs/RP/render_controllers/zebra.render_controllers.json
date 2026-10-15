@@ -1,0 +1,17 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.zoocraft.zebra": {
+      "arrays": {"textures": {"Array.coats": ["Texture.default", "Texture.grant", "Texture.foal"]}},
+      "geometry": "Geometry.default",
+      "materials": [{"*": "Material.default"}],
+      "textures": ["Array.coats[q.is_baby ? 2 : q.variant]"],
+      "part_visibility": [
+        {"*": true},
+        {
+          "lids": "q.property('zoocraft:act') == 4 || q.property('zoocraft:act') == 6 || q.property('zoocraft:act') == 8 || math.mod(q.life_time + v.offset * 0.37, 4.3) < 0.16"
+        }
+      ]
+    }
+  }
+}

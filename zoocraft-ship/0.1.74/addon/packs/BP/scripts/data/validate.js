@@ -1,0 +1,92 @@
+// Checks the data tables against each other at startup and in the unit tests, so a typo in a
+// species entry fails loudly instead of producing an animal nobody can feed (spec section 5.5).
+
+import { SPECIES } from "./species.js";
+import { HABITAT_PROFILES } from "./profiles.js";
+import { RATIONS, CARRIERS } from "./items.js";
+import { BALANCE } from "./balance.js";
+import { PROJECTS } from "./research.js";
+
+export function validateData() {
+  const errors = [];
+  const diets = new Set(Object.values(RATIONS).map((r) => r.diet));
+  for (const [key, s] of Object.entries(SPECIES)) {
+    if (s.id !== key) errors.push(`${key}: id field is ${s.id}`);
+    if (!s.id.startsWith("zoocraft:")) errors.push(`${key}: id must use the zoocraft namespace`);
+    if (!HABITAT_PROFILES[s.habitatProfile]) errors.push(`${key}: unknown habitat profile ${s.habitatProfile}`);
+    if (!CARRIERS[s.carrierProfile]) errors.push(`${key}: unknown carrier ${s.carrierProfile}`);
+    for (const d of s.dietTags) if (!diets.has(d)) errors.push(`${key}: no ration feeds diet "${d}"`);
+    if (s.baitItem && !RATIONS[s.baitItem]) errors.push(`${key}: bait ${s.baitItem} is not a ration`);
+    if (!(s.rationUnitsPerParkDay > 0)) errors.push(`${key}: rationUnitsPerParkDay must be positive`);
+    if (!s.names?.length) errors.push(`${key}: needs at least one default name`);
+    const b = s.breeding;
+    if (b && !(b.litter >= 1 && b.gestationDays >= 1 && b.matureDays >= 1 && b.cooldownDays >= 0 && b.juvenileScale > 0 && b.juvenileScale < 1 && b.young)) errors.push(`${key}: breeding entry is incomplete`);
+    if (s.sexByCoat && s.sexByCoat.length !== s.coats.length) errors.push(`${key}: sexByCoat needs one entry per coat`);
+    for (const t of s.toys ?? []) {
+      const kind = BALANCE.enrichment.fromEquipment[t];
+      if (!kind || !s.enrichmentTags.includes(kind)) errors.push(`${key}: toy ${t} gives no enrichment it enjoys`);
+    }
+    if (s.lavaSwimmer && !HABITAT_PROFILES[s.habitatProfile]?.lava) errors.push(`${key}: a lava swimmer needs a lava habitat profile`);
+    if (s.lavaWalker && !HABITAT_PROFILES[s.habitatProfile]?.onLava) errors.push(`${key}: a lava walker needs a lava shore habitat profile`);
+    if (Boolean(s.flies) !== Boolean(HABITAT_PROFILES[s.habitatProfile]?.aerial)) errors.push(`${key}: a flyer needs an aerial habitat profile, and only a flyer can have one`);
+    // Nesting birds (flamingos, 0.1.72): a flock, nest sites and mirrors, a wetland, and a park day building
+    // before the egg (gestationDays 2 or more).
+    const n = s.nest;
+    if (n && !(n.flock >= 2 && n.sites >= 1 && n.mirrorBirds >= 0 && b?.gestationDays >= 2 && HABITAT_PROFILES[s.habitatProfile]?.amphibious)) errors.push(`${key}: a nesting species needs a flock, nest sites, a wetland profile and 2 or more days expecting`);
+    if (s.pink && !Object.values(RATIONS).some((r) => r.pink && s.dietTags.includes(r.diet))) errors.push(`${key}: a pink species needs a pink ration it eats`);
+    if (s.wades && !(HABITAT_PROFILES[s.habitatProfile]?.minShallowWater > 0)) errors.push(`${key}: a wader needs shallows in its habitat profile`);
+    // Grazers, Hay Racks and harems (zebras, 0.1.74).
+    if (s.graze && !(s.graze.perAnimal > 0 && s.graze.share > 0 && s.graze.share < 1)) errors.push(`${key}: a grazer needs grass for each animal and a share of its food from grazing below 1`);
+    if (s.rack && !s.dietTags.some((d) => d === "grain" || d === "leafy")) errors.push(`${key}: a Hay Rack holds only Grain or Leafy Rations, and this species eats neither`);
+    if (s.harem && s.sexByCoat) errors.push(`${key}: a harem species has stallions and mares in every coat`);
+  }
+  const fl = BALANCE.flamingo;
+  if (!(fl.rosyAt > fl.fadingAt && fl.fadingAt > 0 && fl.rosyAt <= 100 && fl.pinkUp > 0 && fl.pinkDown > 0 && fl.pelletShare > 0 && fl.pelletShare <= 1)) errors.push("flamingo pink: rosy above fading, and a park day's gain and loss");
+  if (!fl.bait.every((item) => RATIONS[item])) errors.push("flamingo bait must be rations");
+  const zb = BALANCE.zebra;
+  if (!zb.bait.every((item) => RATIONS[item])) errors.push("zebra bait must be rations");
+  if (!(zb.places.feeder > 0 && zb.places.puzzle > 0 && zb.places.rack > 0 && zb.places.trough > 0)) errors.push("zebra feeding places: room for one or more at every feeder and trough");
+  if (!(zb.pushedSatiety > 0 && zb.pushedSatiety < 100 && zb.rivalComfortCap > 0 && zb.rivalComfortCap < 100 && BALANCE.graze.comfortCap > 0)) errors.push("zebra caps: between 0 and 100");
+  if (!(zb.easeTrot > zb.easeWalk && zb.easeWalk > 0)) errors.push("zebra runs ease down to a trot before a walk");
+  const w = BALANCE.needs.weights;
+  const sum = w.satiety + w.comfort + w.cleanliness + w.enrichment + w.social;
+  if (Math.abs(sum - 1) > 1e-9) errors.push(`welfare weights sum to ${sum}, not 1`);
+  const r = BALANCE.rating.weights;
+  const rsum = r.welfare + r.satisfaction + r.variety + r.operations;
+  if (Math.abs(rsum - 1) > 1e-9) errors.push(`rating weights sum to ${rsum}, not 1`);
+  for (const item of Object.keys(BALANCE.shop)) {
+    if (!RATIONS[item] && !Object.values(CARRIERS).some((c) => c.empty === item) && !BALANCE.cooler.ice[item] && !BALANCE.heater.fuel[item]) errors.push(`shop sells unknown item ${item}`);
+  }
+  const a = BALANCE.admission;
+  if (!(a.min <= BALANCE.economy.admissionPrice && BALANCE.economy.admissionPrice <= a.max)) errors.push("default admission price is outside the Ticket Booth range");
+  const sn = BALANCE.snacks;
+  if (!(sn.min <= sn.defaultPrice && sn.defaultPrice <= sn.max)) errors.push("default snack price is outside the Snack Stand range");
+  for (const [item, units] of Object.entries(BALANCE.snackFoods)) if (!(Number.isInteger(units) && units > 0)) errors.push(`snack food ${item} must give a whole number of snacks`);
+  const tr = BALANCE.tours;
+  if (!(tr.min <= tr.defaultPrice && tr.defaultPrice <= tr.max)) errors.push("default tour ticket price is outside the Tour Desk range");
+  if (!(tr.stopsBase > 0 && tr.stopsPer > 0 && tr.stopsBase + tr.stopsPer * tr.maxStops >= 1)) errors.push("a full tour walk must sell every ticket its share allows");
+  if (!(Number.isInteger(tr.groupSize) && tr.groupSize >= 1 && Number.isInteger(tr.toursPerGuide) && tr.toursPerGuide >= 1 && tr.followers <= tr.groupSize)) errors.push("tour groups: whole sizes, and no more shown than a group holds");
+  const rd = BALANCE.ride;
+  if (!(rd.min <= rd.defaultPrice && rd.defaultPrice <= rd.max)) errors.push("default ride price is outside the Expedition Platform range");
+  if (!(Number.isInteger(rd.seats) && rd.seats >= 1 && Number.isInteger(rd.ridesPerDay) && rd.ridesPerDay >= 1 && Number.isInteger(rd.maxRays) && rd.maxRays >= 1)) errors.push("rides: whole seats, rides a day and rays per platform");
+  if (!(rd.clearance > 0 && rd.minCruise > 0 && rd.skyClear >= rd.minCruise && rd.loopSpeed > 0 && rd.climbSpeed > 0)) errors.push("rides: the loop needs clearance, a cruise height within the open sky, and speeds");
+  const rm = BALANCE.rays.mount;
+  if (!(rm.speed > 0 && rm.rise > 0 && rm.turn > 0 && rm.tameChance > 0 && rm.tameChance <= 1)) errors.push("ray mounts: speed, rise, turn and a tame chance up to 1");
+  const rc = BALANCE.rays.cities;
+  if (!(rc.over[0] >= 1 && rc.over[1] >= rc.over[0] && rc.group[0] >= 1 && rc.group[1] >= rc.group[0] && rc.perCity >= rc.group[1] && rc.maxNear >= 1)) errors.push("End City rays: sensible heights, groups and caps");
+  const sw = BALANCE.services.weights;
+  if (Math.abs(sw.food + sw.seating + sw.litter - 1) > 1e-9) errors.push("services weights don't sum to 1");
+  for (const p of PROJECTS) {
+    if (!(p.cost > 0) || !Object.keys(p.items).length || !p.text) errors.push(`research ${p.id}: needs parts, a cost and a text`);
+    for (const id of [].concat(p.needs.after ?? [])) if (!PROJECTS.some((q) => q.id === id)) errors.push(`research ${p.id}: opens after unknown project ${id}`);
+    for (const [id, level] of Object.entries(p.needs.species ?? {})) {
+      if (!SPECIES[id]) errors.push(`research ${p.id}: needs unknown species ${id}`);
+      if (!(level >= 1 && level <= 3)) errors.push(`research ${p.id}: a species level is 1 to 3`);
+    }
+    if (p.needs.releases !== undefined && !(Number.isInteger(p.needs.releases) && p.needs.releases >= 1)) errors.push(`research ${p.id}: releases needed must be a whole number, 1 or more`);
+  }
+  const c = BALANCE.conservation;
+  if (!(c.minDistance > BALANCE.park.radius)) errors.push("conservation.minDistance must reach past the park boundary");
+  if (!(c.guestsPerRelease >= 0 && c.guestsCap >= c.guestsPerRelease)) errors.push("conservation guest boost: the cap must hold at least one release");
+  return errors;
+}

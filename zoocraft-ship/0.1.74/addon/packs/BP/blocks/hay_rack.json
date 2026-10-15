@@ -1,0 +1,61 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:block": {
+    "description": {
+      "identifier": "zoocraft:hay_rack",
+      "menu_category": {"category": "items"},
+      "states": {"zoocraft:fill": [0, 1, 2], "zoocraft:food": [0, 10]},
+      "traits": {
+        "minecraft:placement_direction": {"enabled_states": ["minecraft:cardinal_direction"], "y_rotation_offset": 180.0}
+      }
+    },
+    "components": {
+      "minecraft:geometry": {
+        "identifier": "geometry.zoocraft.hay_rack",
+        "bone_visibility": {
+          "hay_low": "query.block_state('zoocraft:fill') >= 1",
+          "hay_high": "query.block_state('zoocraft:fill') == 2"
+        }
+      },
+      "minecraft:material_instances": {
+        "*": {"texture": "zoocraft_rack_wood", "render_method": "alpha_test"},
+        "slat": {"texture": "zoocraft_rack_slat", "render_method": "alpha_test"},
+        "iron": {"texture": "zoocraft_rack_iron", "render_method": "alpha_test"},
+        "hay": {"texture": "zoocraft_rack_hay_leafy", "render_method": "alpha_test"}
+      },
+      "minecraft:collision_box": {"origin": [-8, 0, -8], "size": [16, 16, 16]},
+      "minecraft:selection_box": {"origin": [-8, 0, -8], "size": [16, 16, 16]},
+      "minecraft:light_dampening": 0,
+      "minecraft:destructible_by_mining": {"seconds_to_destroy": 1.0},
+      "minecraft:destructible_by_explosion": {"explosion_resistance": 3},
+      "minecraft:map_color": "#9a7247",
+      "minecraft:loot": "loot_tables/blocks/zoocraft_hay_rack.json",
+      "zoocraft:feeder": {}
+    },
+    "permutations": [
+      {
+        "condition": "query.block_state('minecraft:cardinal_direction') == 'south'",
+        "components": {"minecraft:transformation": {"rotation": [0, 180, 0]}}
+      },
+      {
+        "condition": "query.block_state('minecraft:cardinal_direction') == 'west'",
+        "components": {"minecraft:transformation": {"rotation": [0, 90, 0]}}
+      },
+      {
+        "condition": "query.block_state('minecraft:cardinal_direction') == 'east'",
+        "components": {"minecraft:transformation": {"rotation": [0, 270, 0]}}
+      },
+      {
+        "condition": "query.block_state('zoocraft:food') == 10",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {"texture": "zoocraft_rack_wood", "render_method": "alpha_test"},
+            "slat": {"texture": "zoocraft_rack_slat", "render_method": "alpha_test"},
+            "iron": {"texture": "zoocraft_rack_iron", "render_method": "alpha_test"},
+            "hay": {"texture": "zoocraft_rack_hay_grain", "render_method": "alpha_test"}
+          }
+        }
+      }
+    ]
+  }
+}
