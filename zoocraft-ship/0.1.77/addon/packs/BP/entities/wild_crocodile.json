@@ -1,0 +1,209 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "zoocraft:wild_crocodile",
+      "spawn_category": "creature",
+      "is_spawnable": true,
+      "is_summonable": true,
+      "properties": {
+        "zoocraft:act": {"type": "int", "range": [0, 31], "default": 0, "client_sync": true},
+        "zoocraft:size": {"type": "int", "range": [0, 4], "default": 2, "client_sync": true},
+        "zoocraft:grow": {"type": "int", "range": [0, 4], "default": 0, "client_sync": true}
+      }
+    },
+    "component_groups": {
+      "zoocraft:moving": {
+        "minecraft:movement": {"value": 0.12},
+        "minecraft:underwater_movement": {"value": 0.06},
+        "minecraft:physics": {},
+        "minecraft:pushable_by_entity": {},
+        "minecraft:behavior.look_at_player": {"priority": 9, "look_distance": 8, "probability": 0.02}
+      },
+      "zoocraft:still": {
+        "minecraft:movement": {"value": 0.0},
+        "minecraft:underwater_movement": {"value": 0.0},
+        "minecraft:physics": {}
+      },
+      "zoocraft:afloat": {
+        "minecraft:movement": {"value": 0.0},
+        "minecraft:underwater_movement": {"value": 0.0},
+        "minecraft:physics": {"has_gravity": false}
+      },
+      "zoocraft:denned": {
+        "minecraft:movement": {"value": 0.0},
+        "minecraft:underwater_movement": {"value": 0.0},
+        "minecraft:physics": {"has_gravity": false, "has_collision": false}
+      },
+      "zoocraft:sex_0": {
+        "minecraft:mark_variant": {"value": 0},
+        "minecraft:collision_box": {"width": 1.2, "height": 0.6},
+        "minecraft:health": {"value": 50, "max": 50}
+      },
+      "zoocraft:sex_1": {
+        "minecraft:mark_variant": {"value": 1},
+        "minecraft:collision_box": {"width": 1.5, "height": 0.8},
+        "minecraft:health": {"value": 70, "max": 70}
+      },
+      "zoocraft:pattern_0": {"minecraft:skin_id": {"value": 0}},
+      "zoocraft:pattern_1": {"minecraft:skin_id": {"value": 1}},
+      "zoocraft:pattern_2": {"minecraft:skin_id": {"value": 2}},
+      "zoocraft:hunting": {
+        "minecraft:behavior.look_at_player": {"priority": 8, "look_distance": 18, "probability": 0.2}
+      },
+      "zoocraft:calm": {
+        "minecraft:behavior.tempt": {
+          "priority": 2,
+          "speed_multiplier": 1.0,
+          "within_radius": 10,
+          "items": [
+            "zoocraft:meat_ration",
+            "beef",
+            "mutton",
+            "porkchop",
+            "chicken",
+            "rabbit",
+            "cod",
+            "salmon"
+          ]
+        }
+      }
+    },
+    "components": {
+      "minecraft:type_family": {"family": ["wild_crocodile", "crocodile", "mob"]},
+      "minecraft:nameable": {},
+      "minecraft:health": {"value": 50, "max": 50},
+      "minecraft:damage_sensor": {
+        "triggers": [{"cause": "fall", "deals_damage": "no"}, {"cause": "drowning", "deals_damage": "no"}]
+      },
+      "minecraft:despawn": {"despawn_from_distance": {}},
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:breathable": {
+        "total_supply": 15,
+        "suffocate_time": 0,
+        "breathes_water": true,
+        "breathes_air": true,
+        "generates_bubbles": false
+      },
+      "minecraft:collision_box": {"width": 1.2, "height": 0.6},
+      "minecraft:navigation.generic": {
+        "can_path_over_water": false,
+        "can_swim": true,
+        "can_walk": true,
+        "can_sink": true,
+        "avoid_damage_blocks": true,
+        "can_breach": false
+      },
+      "minecraft:movement.amphibious": {"max_turn": 8},
+      "minecraft:movement": {"value": 0.12},
+      "minecraft:underwater_movement": {"value": 0.06},
+      "minecraft:jump.static": {},
+      "minecraft:physics": {},
+      "minecraft:pushable_by_block": {},
+      "minecraft:conditional_bandwidth_optimization": {},
+      "minecraft:behavior.follow_parent": {"priority": 5, "speed_multiplier": 1.1},
+      "minecraft:behavior.random_stroll": {"priority": 7, "interval": 240, "speed_multiplier": 0.8, "xz_dist": 5, "y_dist": 2}
+    },
+    "events": {
+      "zoocraft:move": {
+        "remove": {"component_groups": ["zoocraft:still", "zoocraft:afloat", "zoocraft:denned"]},
+        "add": {"component_groups": ["zoocraft:moving"]}
+      },
+      "zoocraft:still": {
+        "remove": {"component_groups": ["zoocraft:moving", "zoocraft:afloat", "zoocraft:denned"]},
+        "add": {"component_groups": ["zoocraft:still"]}
+      },
+      "zoocraft:afloat": {
+        "remove": {"component_groups": ["zoocraft:moving", "zoocraft:still", "zoocraft:denned"]},
+        "add": {"component_groups": ["zoocraft:afloat"]}
+      },
+      "zoocraft:den_in": {
+        "remove": {"component_groups": ["zoocraft:moving", "zoocraft:still", "zoocraft:afloat"]},
+        "add": {"component_groups": ["zoocraft:denned"]}
+      },
+      "zoocraft:den_out": {
+        "remove": {"component_groups": ["zoocraft:still", "zoocraft:afloat", "zoocraft:denned"]},
+        "add": {"component_groups": ["zoocraft:moving"]}
+      },
+      "zoocraft:sex_0": {
+        "remove": {"component_groups": ["zoocraft:sex_1"]},
+        "add": {"component_groups": ["zoocraft:sex_0"]}
+      },
+      "zoocraft:sex_1": {
+        "remove": {"component_groups": ["zoocraft:sex_0"]},
+        "add": {"component_groups": ["zoocraft:sex_1"]}
+      },
+      "zoocraft:pattern_0": {
+        "remove": {"component_groups": ["zoocraft:pattern_1", "zoocraft:pattern_2"]},
+        "add": {"component_groups": ["zoocraft:pattern_0"]}
+      },
+      "zoocraft:pattern_1": {
+        "remove": {"component_groups": ["zoocraft:pattern_0", "zoocraft:pattern_2"]},
+        "add": {"component_groups": ["zoocraft:pattern_1"]}
+      },
+      "zoocraft:pattern_2": {
+        "remove": {"component_groups": ["zoocraft:pattern_0", "zoocraft:pattern_1"]},
+        "add": {"component_groups": ["zoocraft:pattern_2"]}
+      },
+      "zoocraft:hunt": {
+        "remove": {"component_groups": ["zoocraft:calm"]},
+        "add": {"component_groups": ["zoocraft:hunting"]}
+      },
+      "zoocraft:calm": {
+        "remove": {"component_groups": ["zoocraft:hunting"]},
+        "add": {"component_groups": ["zoocraft:calm"]}
+      },
+      "zoocraft:size_0": {"set_property": {"zoocraft:size": 0}},
+      "zoocraft:size_1": {"set_property": {"zoocraft:size": 1}},
+      "zoocraft:size_2": {"set_property": {"zoocraft:size": 2}},
+      "zoocraft:size_3": {"set_property": {"zoocraft:size": 3}},
+      "zoocraft:size_4": {"set_property": {"zoocraft:size": 4}},
+      "minecraft:entity_spawned": {
+        "randomize": [
+          {
+            "weight": 1,
+            "add": {
+              "component_groups": ["zoocraft:sex_0", "zoocraft:pattern_0", "zoocraft:moving", "zoocraft:hunting"]
+            },
+            "set_property": {"zoocraft:size": "math.random_integer(0, 4)"}
+          },
+          {
+            "weight": 1,
+            "add": {
+              "component_groups": ["zoocraft:sex_0", "zoocraft:pattern_1", "zoocraft:moving", "zoocraft:hunting"]
+            },
+            "set_property": {"zoocraft:size": "math.random_integer(0, 4)"}
+          },
+          {
+            "weight": 1,
+            "add": {
+              "component_groups": ["zoocraft:sex_0", "zoocraft:pattern_2", "zoocraft:moving", "zoocraft:hunting"]
+            },
+            "set_property": {"zoocraft:size": "math.random_integer(0, 4)"}
+          },
+          {
+            "weight": 1,
+            "add": {
+              "component_groups": ["zoocraft:sex_1", "zoocraft:pattern_0", "zoocraft:moving", "zoocraft:hunting"]
+            },
+            "set_property": {"zoocraft:size": "math.random_integer(0, 4)"}
+          },
+          {
+            "weight": 1,
+            "add": {
+              "component_groups": ["zoocraft:sex_1", "zoocraft:pattern_1", "zoocraft:moving", "zoocraft:hunting"]
+            },
+            "set_property": {"zoocraft:size": "math.random_integer(0, 4)"}
+          },
+          {
+            "weight": 1,
+            "add": {
+              "component_groups": ["zoocraft:sex_1", "zoocraft:pattern_2", "zoocraft:moving", "zoocraft:hunting"]
+            },
+            "set_property": {"zoocraft:size": "math.random_integer(0, 4)"}
+          }
+        ]
+      }
+    }
+  }
+}

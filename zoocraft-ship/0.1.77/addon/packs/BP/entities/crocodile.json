@@ -1,0 +1,198 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "zoocraft:crocodile",
+      "spawn_category": "creature",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "properties": {
+        "zoocraft:act": {"type": "int", "range": [0, 31], "default": 0, "client_sync": true},
+        "zoocraft:size": {"type": "int", "range": [0, 4], "default": 2, "client_sync": true},
+        "zoocraft:grow": {"type": "int", "range": [0, 4], "default": 0, "client_sync": true}
+      }
+    },
+    "component_groups": {
+      "zoocraft:moving": {
+        "minecraft:movement": {"value": 0.12},
+        "minecraft:underwater_movement": {"value": 0.06},
+        "minecraft:physics": {},
+        "minecraft:pushable_by_entity": {},
+        "minecraft:behavior.look_at_player": {"priority": 9, "look_distance": 8, "probability": 0.02}
+      },
+      "zoocraft:still": {
+        "minecraft:movement": {"value": 0.0},
+        "minecraft:underwater_movement": {"value": 0.0},
+        "minecraft:physics": {}
+      },
+      "zoocraft:afloat": {
+        "minecraft:movement": {"value": 0.0},
+        "minecraft:underwater_movement": {"value": 0.0},
+        "minecraft:physics": {"has_gravity": false}
+      },
+      "zoocraft:denned": {
+        "minecraft:movement": {"value": 0.0},
+        "minecraft:underwater_movement": {"value": 0.0},
+        "minecraft:physics": {"has_gravity": false, "has_collision": false}
+      },
+      "zoocraft:sex_0": {
+        "minecraft:mark_variant": {"value": 0},
+        "minecraft:collision_box": {"width": 1.2, "height": 0.6}
+      },
+      "zoocraft:sex_1": {
+        "minecraft:mark_variant": {"value": 1},
+        "minecraft:collision_box": {"width": 1.5, "height": 0.8}
+      },
+      "zoocraft:pattern_0": {"minecraft:skin_id": {"value": 0}},
+      "zoocraft:pattern_1": {"minecraft:skin_id": {"value": 1}},
+      "zoocraft:pattern_2": {"minecraft:skin_id": {"value": 2}},
+      "zoocraft:grow_0": {"minecraft:is_baby": {}, "minecraft:collision_box": {"width": 0.3, "height": 0.15}},
+      "zoocraft:grow_1": {"minecraft:is_baby": {}, "minecraft:collision_box": {"width": 0.4, "height": 0.2}},
+      "zoocraft:grow_2": {"minecraft:is_baby": {}, "minecraft:collision_box": {"width": 0.55, "height": 0.25}},
+      "zoocraft:grow_3": {"minecraft:is_baby": {}, "minecraft:collision_box": {"width": 0.7, "height": 0.3}},
+      "zoocraft:grow_4": {"minecraft:is_baby": {}, "minecraft:collision_box": {"width": 0.9, "height": 0.4}},
+      "zoocraft:home_4": {"minecraft:home": {"restriction_type": "random_movement", "restriction_radius": 4}},
+      "zoocraft:home_8": {"minecraft:home": {"restriction_type": "random_movement", "restriction_radius": 8}},
+      "zoocraft:home_16": {"minecraft:home": {"restriction_type": "random_movement", "restriction_radius": 16}},
+      "zoocraft:home_32": {"minecraft:home": {"restriction_type": "random_movement", "restriction_radius": 32}}
+    },
+    "components": {
+      "minecraft:type_family": {"family": ["zoocraft_animal", "crocodile", "mob"]},
+      "minecraft:nameable": {"always_show": false, "allow_name_tag_renaming": true},
+      "minecraft:health": {"value": 40, "max": 40},
+      "minecraft:damage_sensor": {"triggers": [{"cause": "all", "deals_damage": "no"}]},
+      "minecraft:persistent": {},
+      "minecraft:behavior.move_towards_home_restriction": {"priority": 2, "speed_multiplier": 1.0},
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:breathable": {
+        "total_supply": 15,
+        "suffocate_time": 0,
+        "breathes_water": true,
+        "breathes_air": true,
+        "generates_bubbles": false
+      },
+      "minecraft:collision_box": {"width": 1.2, "height": 0.6},
+      "minecraft:navigation.generic": {
+        "can_path_over_water": false,
+        "can_swim": true,
+        "can_walk": true,
+        "can_sink": true,
+        "avoid_damage_blocks": true,
+        "can_breach": false
+      },
+      "minecraft:movement.amphibious": {"max_turn": 8},
+      "minecraft:movement": {"value": 0.12},
+      "minecraft:underwater_movement": {"value": 0.06},
+      "minecraft:jump.static": {},
+      "minecraft:physics": {},
+      "minecraft:pushable_by_block": {},
+      "minecraft:conditional_bandwidth_optimization": {},
+      "minecraft:behavior.follow_parent": {"priority": 5, "speed_multiplier": 1.1},
+      "minecraft:behavior.random_stroll": {"priority": 7, "interval": 240, "speed_multiplier": 0.8, "xz_dist": 5, "y_dist": 2}
+    },
+    "events": {
+      "zoocraft:move": {
+        "remove": {"component_groups": ["zoocraft:still", "zoocraft:afloat", "zoocraft:denned"]},
+        "add": {"component_groups": ["zoocraft:moving"]}
+      },
+      "zoocraft:still": {
+        "remove": {"component_groups": ["zoocraft:moving", "zoocraft:afloat", "zoocraft:denned"]},
+        "add": {"component_groups": ["zoocraft:still"]}
+      },
+      "zoocraft:afloat": {
+        "remove": {"component_groups": ["zoocraft:moving", "zoocraft:still", "zoocraft:denned"]},
+        "add": {"component_groups": ["zoocraft:afloat"]}
+      },
+      "zoocraft:den_in": {
+        "remove": {"component_groups": ["zoocraft:moving", "zoocraft:still", "zoocraft:afloat"]},
+        "add": {"component_groups": ["zoocraft:denned"]}
+      },
+      "zoocraft:den_out": {
+        "remove": {"component_groups": ["zoocraft:still", "zoocraft:afloat", "zoocraft:denned"]},
+        "add": {"component_groups": ["zoocraft:moving"]}
+      },
+      "zoocraft:sex_0": {
+        "remove": {"component_groups": ["zoocraft:sex_1"]},
+        "add": {"component_groups": ["zoocraft:sex_0"]}
+      },
+      "zoocraft:sex_1": {
+        "remove": {"component_groups": ["zoocraft:sex_0"]},
+        "add": {"component_groups": ["zoocraft:sex_1"]}
+      },
+      "zoocraft:pattern_0": {
+        "remove": {"component_groups": ["zoocraft:pattern_1", "zoocraft:pattern_2"]},
+        "add": {"component_groups": ["zoocraft:pattern_0"]}
+      },
+      "zoocraft:pattern_1": {
+        "remove": {"component_groups": ["zoocraft:pattern_0", "zoocraft:pattern_2"]},
+        "add": {"component_groups": ["zoocraft:pattern_1"]}
+      },
+      "zoocraft:pattern_2": {
+        "remove": {"component_groups": ["zoocraft:pattern_0", "zoocraft:pattern_1"]},
+        "add": {"component_groups": ["zoocraft:pattern_2"]}
+      },
+      "zoocraft:grow_0": {
+        "remove": {
+          "component_groups": ["zoocraft:grow_1", "zoocraft:grow_2", "zoocraft:grow_3", "zoocraft:grow_4"]
+        },
+        "add": {"component_groups": ["zoocraft:grow_0"]},
+        "set_property": {"zoocraft:grow": 0}
+      },
+      "zoocraft:grow_1": {
+        "remove": {
+          "component_groups": ["zoocraft:grow_0", "zoocraft:grow_2", "zoocraft:grow_3", "zoocraft:grow_4"]
+        },
+        "add": {"component_groups": ["zoocraft:grow_1"]},
+        "set_property": {"zoocraft:grow": 1}
+      },
+      "zoocraft:grow_2": {
+        "remove": {
+          "component_groups": ["zoocraft:grow_0", "zoocraft:grow_1", "zoocraft:grow_3", "zoocraft:grow_4"]
+        },
+        "add": {"component_groups": ["zoocraft:grow_2"]},
+        "set_property": {"zoocraft:grow": 2}
+      },
+      "zoocraft:grow_3": {
+        "remove": {
+          "component_groups": ["zoocraft:grow_0", "zoocraft:grow_1", "zoocraft:grow_2", "zoocraft:grow_4"]
+        },
+        "add": {"component_groups": ["zoocraft:grow_3"]},
+        "set_property": {"zoocraft:grow": 3}
+      },
+      "zoocraft:grow_4": {
+        "remove": {
+          "component_groups": ["zoocraft:grow_0", "zoocraft:grow_1", "zoocraft:grow_2", "zoocraft:grow_3"]
+        },
+        "add": {"component_groups": ["zoocraft:grow_4"]},
+        "set_property": {"zoocraft:grow": 4}
+      },
+      "zoocraft:size_0": {"set_property": {"zoocraft:size": 0}},
+      "zoocraft:size_1": {"set_property": {"zoocraft:size": 1}},
+      "zoocraft:size_2": {"set_property": {"zoocraft:size": 2}},
+      "zoocraft:size_3": {"set_property": {"zoocraft:size": 3}},
+      "zoocraft:size_4": {"set_property": {"zoocraft:size": 4}},
+      "zoocraft:juvenile": {"add": {"component_groups": ["zoocraft:grow_0"]}, "set_property": {"zoocraft:grow": 0}},
+      "zoocraft:home_4": {
+        "remove": {"component_groups": ["zoocraft:home_8", "zoocraft:home_16", "zoocraft:home_32"]},
+        "add": {"component_groups": ["zoocraft:home_4"]}
+      },
+      "zoocraft:home_8": {
+        "remove": {"component_groups": ["zoocraft:home_4", "zoocraft:home_16", "zoocraft:home_32"]},
+        "add": {"component_groups": ["zoocraft:home_8"]}
+      },
+      "zoocraft:home_16": {
+        "remove": {"component_groups": ["zoocraft:home_4", "zoocraft:home_8", "zoocraft:home_32"]},
+        "add": {"component_groups": ["zoocraft:home_16"]}
+      },
+      "zoocraft:home_32": {
+        "remove": {"component_groups": ["zoocraft:home_4", "zoocraft:home_8", "zoocraft:home_16"]},
+        "add": {"component_groups": ["zoocraft:home_32"]}
+      },
+      "minecraft:entity_spawned": {
+        "add": {
+          "component_groups": ["zoocraft:sex_0", "zoocraft:pattern_0", "zoocraft:home_8", "zoocraft:moving"]
+        }
+      }
+    }
+  }
+}

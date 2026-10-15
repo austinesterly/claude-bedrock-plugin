@@ -1,0 +1,79 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:wild_crocodile",
+      "materials": {"default": "entity_alphatest"},
+      "textures": {
+        "adult_0": "textures/entity/zoocraft/crocodile_adult_0",
+        "adult_1": "textures/entity/zoocraft/crocodile_adult_1",
+        "adult_2": "textures/entity/zoocraft/crocodile_adult_2",
+        "young_0": "textures/entity/zoocraft/crocodile_young_0",
+        "young_1": "textures/entity/zoocraft/crocodile_young_1",
+        "young_2": "textures/entity/zoocraft/crocodile_young_2"
+      },
+      "geometry": {"default": "geometry.zoocraft.crocodile"},
+      "animations": {
+        "walk": "animation.zoocraft.crocodile.walk",
+        "walk_t": "animation.zoocraft.crocodile.walk_t",
+        "drag": "animation.zoocraft.crocodile.drag",
+        "carry": "animation.zoocraft.crocodile.carry",
+        "belly": "animation.zoocraft.crocodile.belly",
+        "gallop": "animation.zoocraft.crocodile.gallop",
+        "swim": "animation.zoocraft.crocodile.swim",
+        "swim_fast": "animation.zoocraft.crocodile.swim_fast",
+        "float": "animation.zoocraft.crocodile.float",
+        "doze": "animation.zoocraft.crocodile.doze",
+        "sink": "animation.zoocraft.crocodile.sink",
+        "rise": "animation.zoocraft.crocodile.rise",
+        "roll": "animation.zoocraft.crocodile.roll",
+        "display": "animation.zoocraft.crocodile.display",
+        "snout_lift": "animation.zoocraft.crocodile.snout_lift",
+        "rub": "animation.zoocraft.crocodile.rub",
+        "swallow": "animation.zoocraft.crocodile.swallow",
+        "lunge": "animation.zoocraft.crocodile.lunge",
+        "idle": "animation.zoocraft.crocodile.idle",
+        "alert": "animation.zoocraft.crocodile.alert",
+        "warn": "animation.zoocraft.crocodile.warn",
+        "snap": "animation.zoocraft.crocodile.snap",
+        "feed": "animation.zoocraft.crocodile.feed",
+        "chirp": "animation.zoocraft.crocodile.chirp",
+        "carried": "animation.zoocraft.crocodile.carried",
+        "look_at_target": "animation.zoocraft.crocodile.look_at_target",
+        "lie_down": "animation.zoocraft.crocodile.lie_down",
+        "get_up": "animation.zoocraft.crocodile.get_up",
+        "rear": "animation.zoocraft.crocodile.rear",
+        "drop": "animation.zoocraft.crocodile.drop",
+        "lie": "animation.zoocraft.crocodile.lie",
+        "bask": "animation.zoocraft.crocodile.bask",
+        "halfout": "animation.zoocraft.crocodile.halfout",
+        "guard": "animation.zoocraft.crocodile.guard",
+        "sleep": "animation.zoocraft.crocodile.sleep",
+        "dig": "animation.zoocraft.crocodile.dig",
+        "slide": "animation.zoocraft.crocodile.slide",
+        "young": "animation.zoocraft.crocodile.young",
+        "male": "animation.zoocraft.crocodile.male",
+        "move": "controller.animation.zoocraft.crocodile.move"
+      },
+      "render_controllers": ["controller.render.zoocraft.crocodile"],
+      "scripts": {
+        "scale": "(q.is_baby ? 0.05 * (1 + q.property('zoocraft:grow')) : (q.mark_variant == 1 ? 0.655 : 0.5) * (1 + 0.04 * (q.property('zoocraft:size') - 2)))",
+        "initialize": [
+          "v.offset = math.random(0, 24);",
+          "v.st = 0;",
+          "v.gait = 0;",
+          "v.posture = 0;",
+          "v.leg_rate = 1;"
+        ],
+        "pre_animation": [
+          "v.act = q.property('zoocraft:act');",
+          "v.posture = (v.act == 5 || v.act == 6 || v.act == 7 || v.act == 13 || v.act == 19 || v.act == 20 || v.act == 26 || v.act == 9) ? 1 : (((v.act == 4 || v.act == 8 || v.act == 10 || v.act == 16 || v.act == 17 || v.act == 18 || v.act == 23 || v.act == 27 || v.act == 29 || v.act == 30 || v.act == 31) || (v.act == 0 && q.is_in_water && !q.is_on_ground)) ? 2 : 0);",
+          "v.gait = q.modified_move_speed <= 0.02 ? 0 : 1;",
+          "v.leg_rate = math.sqrt(0.5 / (q.is_baby ? 0.05 * (1 + q.property('zoocraft:grow')) : (q.mark_variant == 1 ? 0.655 : 0.5) * (1 + 0.04 * (q.property('zoocraft:size') - 2))));"
+        ],
+        "animate": ["move", {"young": "q.is_baby"}, {"male": "!q.is_baby && q.mark_variant == 1"}]
+      },
+      "spawn_egg": {"base_color": "#4b4930", "overlay_color": "#a29b5f"}
+    }
+  }
+}
