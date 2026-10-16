@@ -416,6 +416,13 @@ for (const [aid, a] of anims) {
       if (ch === undefined) continue;
       if (chan === "scale" && typeof ch === "number") warn(a.file, `${aid}: ${bone}.scale is a bare number; write [x, y, z]`);
       const ts = timesOf(ch);
+      // The game precomputes catmullrom curves, so their keys must be plain numbers; Molang there fails the whole
+      // animation ("Precomputed cubic interpolation requires keyframes have constant data").
+      if (ts.length) for (const [k, v] of Object.entries(ch)) {
+        if (v?.lerp_mode !== "catmullrom") continue;
+        const vals = ["pre", "post"].flatMap((p) => (v[p] === undefined ? [] : Array.isArray(v[p]) ? v[p] : [v[p]]));
+        if (vals.some((x) => typeof x !== "number")) err(a.file, `${aid}: ${bone}.${chan} key ${k} is catmullrom but holds Molang (catmullrom keys must be numbers; make it linear or fold the value in)`);
+      }
       if (ts.length && chan === "scale") for (const k of Object.keys(ch)) { const v = ch[k]; const val = v?.post ?? v; if (typeof val === "number") warn(a.file, `${aid}: ${bone}.scale key ${k} is a bare number; write [x, y, z]`); }
       if (A.loop === true && ts.length > 1 && typeof A.animation_length === "number") {
         const last = Math.max(...ts), first = Math.min(...ts);
