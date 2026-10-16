@@ -1,0 +1,16 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.zoocraft.red_panda": {
+      "arrays": {
+        "textures": {"Array.skins": ["Texture.default", "Texture.sleep", "Texture.cub", "Texture.cub_sleep"]}
+      },
+      "geometry": "Geometry.default",
+      "materials": [{"*": "Material.default"}],
+      "textures": [
+        "Array.skins[(query.is_baby ? 2 : 0) + ((query.property('zoocraft:act') == 6 || query.property('zoocraft:act') == 8) ? 1 : 0)]"
+      ],
+      "part_visibility": [{"*": true}, {"bamboo": "query.property('zoocraft:act') == 3"}]
+    }
+  }
+}

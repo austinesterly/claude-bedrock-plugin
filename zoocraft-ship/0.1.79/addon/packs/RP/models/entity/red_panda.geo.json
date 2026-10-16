@@ -1,0 +1,94 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.zoocraft.red_panda",
+        "texture_width": 64,
+        "texture_height": 64,
+        "visible_bounds_width": 2,
+        "visible_bounds_height": 2,
+        "visible_bounds_offset": [0, 0.5, 0]
+      },
+      "bones": [
+        {"name": "climb", "pivot": [0, 10.525, -2.025]},
+        {"name": "descend", "parent": "climb", "pivot": [0, 13.025, -0.475]},
+        {
+          "name": "body",
+          "parent": "descend",
+          "pivot": [0, 4, 5],
+          "cubes": [{"origin": [-3.5, 4, -5.5], "size": [7, 6, 11], "uv": [0, 0]}]
+        },
+        {
+          "name": "head",
+          "parent": "body",
+          "pivot": [0, 8.5, -5.5],
+          "cubes": [
+            {"origin": [-3.5, 7, -10.5], "size": [7, 6, 5], "uv": [0, 17]},
+            {"origin": [-1.5, 7, -12.5], "size": [3, 2, 2], "uv": [24, 17]}
+          ]
+        },
+        {
+          "name": "earL",
+          "parent": "head",
+          "pivot": [2.5, 13, -8],
+          "cubes": [{"origin": [1.5, 13, -8.5], "size": [2, 3, 1], "uv": [34, 17]}]
+        },
+        {
+          "name": "earR",
+          "parent": "head",
+          "pivot": [-2.5, 13, -8],
+          "cubes": [{"origin": [-3.5, 13, -8.5], "size": [2, 3, 1], "uv": [40, 17]}]
+        },
+        {
+          "name": "tail",
+          "parent": "body",
+          "pivot": [0, 8, 5.5],
+          "cubes": [{"origin": [-2, 6, 5.5], "size": [4, 4, 4], "uv": [0, 28]}]
+        },
+        {
+          "name": "tail2",
+          "parent": "tail",
+          "pivot": [0, 8, 9.5],
+          "cubes": [{"origin": [-2, 6, 9.5], "size": [4, 4, 4], "uv": [16, 28]}]
+        },
+        {
+          "name": "tail3",
+          "parent": "tail2",
+          "pivot": [0, 8, 13.5],
+          "cubes": [{"origin": [-2, 6, 13.5], "size": [4, 4, 5], "uv": [32, 28]}]
+        },
+        {
+          "name": "leg0",
+          "parent": "body",
+          "pivot": [2, 4.5, -3.5],
+          "cubes": [{"origin": [0.5, 0, -5.0], "size": [3, 4, 3], "uv": [0, 40]}]
+        },
+        {
+          "name": "leg1",
+          "parent": "body",
+          "pivot": [-2, 4.5, -3.5],
+          "cubes": [{"origin": [-3.5, 0, -5.0], "size": [3, 4, 3], "uv": [12, 40]}]
+        },
+        {
+          "name": "leg2",
+          "parent": "body",
+          "pivot": [2, 4.5, 3.5],
+          "cubes": [{"origin": [0.5, 0, 2.0], "size": [3, 4, 3], "uv": [24, 40]}]
+        },
+        {
+          "name": "leg3",
+          "parent": "body",
+          "pivot": [-2, 4.5, 3.5],
+          "cubes": [{"origin": [-3.5, 0, 2.0], "size": [3, 4, 3], "uv": [36, 40]}]
+        },
+        {
+          "name": "bamboo",
+          "parent": "leg0",
+          "pivot": [2, 0.5, -3.5],
+          "cubes": [{"origin": [-0.5, -0.5, -4], "size": [6, 1, 1], "uv": [46, 17]}]
+        }
+      ]
+    }
+  ]
+}

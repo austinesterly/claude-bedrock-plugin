@@ -1,0 +1,40 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:red_panda",
+      "materials": {"default": "entity_alphatest"},
+      "textures": {
+        "default": "textures/entity/zoocraft/red_panda",
+        "sleep": "textures/entity/zoocraft/red_panda_sleep",
+        "cub": "textures/entity/zoocraft/red_panda_cub",
+        "cub_sleep": "textures/entity/zoocraft/red_panda_cub_sleep"
+      },
+      "geometry": {"default": "geometry.zoocraft.red_panda"},
+      "animations": {
+        "walk": "animation.zoocraft.red_panda.walk",
+        "along": "animation.zoocraft.red_panda.along",
+        "idle": "animation.zoocraft.red_panda.idle",
+        "climb": "animation.zoocraft.red_panda.climb",
+        "cling": "animation.zoocraft.red_panda.cling",
+        "down": "animation.zoocraft.red_panda.down",
+        "eat": "animation.zoocraft.red_panda.eat",
+        "groom": "animation.zoocraft.red_panda.groom",
+        "stand": "animation.zoocraft.red_panda.stand",
+        "curl": "animation.zoocraft.red_panda.curl",
+        "drape": "animation.zoocraft.red_panda.drape",
+        "nest": "animation.zoocraft.red_panda.nest",
+        "pant": "animation.zoocraft.red_panda.pant",
+        "play": "animation.zoocraft.red_panda.play",
+        "look_at_target": "animation.zoocraft.red_panda.look_at_target",
+        "move": "controller.animation.zoocraft.red_panda.move"
+      },
+      "render_controllers": ["controller.render.zoocraft.red_panda"],
+      "scripts": {
+        "scale": "query.is_baby ? 0.182 : 0.52",
+        "initialize": ["variable.offset = math.random(0, 20);"],
+        "animate": ["move"]
+      }
+    }
+  }
+}
