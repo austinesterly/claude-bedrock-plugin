@@ -1,0 +1,29 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.zoocraft.gorilla": {
+      "arrays": {
+        "textures": {
+          "Array.skins": [
+            "Texture.silverback",
+            "Texture.silverback_sleep",
+            "Texture.female",
+            "Texture.female_sleep",
+            "Texture.young",
+            "Texture.young_sleep"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [{"*": "Material.default"}],
+      "textures": [
+        "Array.skins[(query.is_baby ? 4 : (query.mark_variant == 1 ? 0 : 2)) + ((query.property('zoocraft:act') == 9) ? 1 : 0)]"
+      ],
+      "part_visibility": [
+        {"*": true},
+        {"crest": "!query.is_baby && query.mark_variant == 1"},
+        {"food": "query.property('zoocraft:act') == 4 || query.property('zoocraft:act') == 5"}
+      ]
+    }
+  }
+}

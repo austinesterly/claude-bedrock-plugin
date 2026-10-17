@@ -1,0 +1,47 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:wild_gorilla",
+      "materials": {"default": "entity_alphatest"},
+      "textures": {
+        "silverback": "textures/entity/zoocraft/gorilla_silverback",
+        "silverback_sleep": "textures/entity/zoocraft/gorilla_silverback_sleep",
+        "female": "textures/entity/zoocraft/gorilla_female",
+        "female_sleep": "textures/entity/zoocraft/gorilla_female_sleep",
+        "young": "textures/entity/zoocraft/gorilla_young",
+        "young_sleep": "textures/entity/zoocraft/gorilla_young_sleep"
+      },
+      "geometry": {"default": "geometry.zoocraft.gorilla"},
+      "animations": {
+        "walk": "animation.zoocraft.gorilla.walk",
+        "run": "animation.zoocraft.gorilla.run",
+        "idle": "animation.zoocraft.gorilla.idle",
+        "sit": "animation.zoocraft.gorilla.sit",
+        "eat": "animation.zoocraft.gorilla.eat",
+        "browse": "animation.zoocraft.gorilla.browse",
+        "puzzle": "animation.zoocraft.gorilla.puzzle",
+        "groom": "animation.zoocraft.gorilla.groom",
+        "nest": "animation.zoocraft.gorilla.nest",
+        "sleep": "animation.zoocraft.gorilla.sleep",
+        "rest": "animation.zoocraft.gorilla.rest",
+        "display": "animation.zoocraft.gorilla.display",
+        "warn": "animation.zoocraft.gorilla.warn",
+        "shove": "animation.zoocraft.gorilla.shove",
+        "play": "animation.zoocraft.gorilla.play",
+        "climb": "animation.zoocraft.gorilla.climb",
+        "down": "animation.zoocraft.gorilla.down",
+        "ride": "animation.zoocraft.gorilla.ride",
+        "look_at_target": "animation.zoocraft.gorilla.look_at_target",
+        "move": "controller.animation.zoocraft.gorilla.move"
+      },
+      "render_controllers": ["controller.render.zoocraft.gorilla"],
+      "scripts": {
+        "scale": "q.is_baby ? 0.32 : (q.mark_variant == 1 ? 1 : 0.8)",
+        "initialize": ["variable.offset = math.random(0, 20);"],
+        "animate": ["move"]
+      },
+      "spawn_egg": {"base_color": "#29292c", "overlay_color": "#9a9ca1"}
+    }
+  }
+}
