@@ -1,0 +1,38 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:block": {
+    "description": {
+      "identifier": "zoocraft:perch",
+      "menu_category": {"category": "items"},
+      "traits": {
+        "minecraft:placement_direction": {"enabled_states": ["minecraft:cardinal_direction"], "y_rotation_offset": 180.0}
+      }
+    },
+    "components": {
+      "minecraft:geometry": "geometry.zoocraft.perch",
+      "minecraft:material_instances": {
+        "*": {"texture": "zoocraft_perch_bark", "render_method": "opaque"},
+        "end": {"texture": "zoocraft_perch_end", "render_method": "opaque"}
+      },
+      "minecraft:collision_box": {"origin": [-7, 13, -1.5], "size": [14, 3, 3]},
+      "minecraft:selection_box": {"origin": [-7, 0, -4], "size": [14, 16, 8]},
+      "minecraft:light_dampening": 0,
+      "minecraft:destructible_by_mining": {"seconds_to_destroy": 0.8},
+      "minecraft:destructible_by_explosion": {"explosion_resistance": 2},
+      "minecraft:flammable": {"catch_chance_modifier": 5, "destroy_chance_modifier": 20},
+      "minecraft:map_color": "#6a4b2f",
+      "minecraft:loot": "loot_tables/blocks/zoocraft_perch.json",
+      "zoocraft:fixture": {}
+    },
+    "permutations": [
+      {
+        "condition": "query.block_state('minecraft:cardinal_direction') == 'west' || query.block_state('minecraft:cardinal_direction') == 'east'",
+        "components": {
+          "minecraft:transformation": {"rotation": [0, 90, 0]},
+          "minecraft:collision_box": {"origin": [-1.5, 13, -7], "size": [3, 3, 14]},
+          "minecraft:selection_box": {"origin": [-4, 0, -7], "size": [8, 16, 14]}
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.zoocraft.owl": {
+      "arrays": {
+        "textures": {"Array.skins": ["Texture.owl", "Texture.owl_doze", "Texture.owlet", "Texture.owlet_doze"]}
+      },
+      "geometry": "Geometry.default",
+      "materials": [{"*": "Material.default"}],
+      "textures": ["Array.skins[(query.is_baby ? 2 : 0) + ((query.property('zoocraft:act') == 5) ? 1 : 0)]"],
+      "part_visibility": [
+        {"*": true},
+        {"throat": "query.property('zoocraft:act') == 6"},
+        {"food": "query.property('zoocraft:act') == 7"}
+      ]
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {"identifier": "zoocraft:perch"},
+    "tags": ["zoocraft_workshop"],
+    "pattern": ["LLL", " S ", " S "],
+    "key": {"L": {"tag": "minecraft:logs"}, "S": {"item": "minecraft:stick"}},
+    "unlock": [{"item": "zoocraft:zoo_workshop"}],
+    "result": {"item": "zoocraft:perch", "count": 2}
+  }
+}

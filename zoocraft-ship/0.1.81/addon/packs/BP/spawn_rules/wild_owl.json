@@ -1,0 +1,30 @@
+{
+  "format_version": "1.8.0",
+  "minecraft:spawn_rules": {
+    "description": {"identifier": "zoocraft:wild_owl", "population_control": "animal"},
+    "conditions": [
+      {
+        "minecraft:spawns_on_surface": {},
+        "minecraft:spawns_on_block_filter": [
+          "minecraft:grass_block",
+          "minecraft:podzol",
+          "minecraft:dirt",
+          "minecraft:coarse_dirt",
+          "minecraft:stone",
+          "minecraft:snow_layer",
+          "minecraft:moss_block"
+        ],
+        "minecraft:weight": {"default": 2},
+        "minecraft:herd": {"min_size": 1, "max_size": 2, "event": "zoocraft:sex_1", "event_skip_count": 1},
+        "minecraft:density_limit": {"surface": 2},
+        "minecraft:biome_filter": {
+          "any_of": [
+            {"test": "has_biome_tag", "value": "taiga"},
+            {"test": "has_biome_tag", "value": "roofed"},
+            {"test": "has_biome_tag", "value": "extreme_hills"}
+          ]
+        }
+      }
+    ]
+  }
+}

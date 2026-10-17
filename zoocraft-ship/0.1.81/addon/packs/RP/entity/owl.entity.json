@@ -1,0 +1,39 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:owl",
+      "materials": {"default": "entity_alphatest"},
+      "textures": {
+        "owl": "textures/entity/zoocraft/owl",
+        "owl_doze": "textures/entity/zoocraft/owl_doze",
+        "owlet": "textures/entity/zoocraft/owlet",
+        "owlet_doze": "textures/entity/zoocraft/owlet_doze"
+      },
+      "geometry": {"default": "geometry.zoocraft.owl"},
+      "animations": {
+        "idle": "animation.zoocraft.owl.idle",
+        "fly": "animation.zoocraft.owl.fly",
+        "glide": "animation.zoocraft.owl.glide",
+        "land": "animation.zoocraft.owl.land",
+        "watch": "animation.zoocraft.owl.watch",
+        "roost": "animation.zoocraft.owl.roost",
+        "hoot": "animation.zoocraft.owl.hoot",
+        "eat": "animation.zoocraft.owl.eat",
+        "pellet": "animation.zoocraft.owl.pellet",
+        "preen": "animation.zoocraft.owl.preen",
+        "display": "animation.zoocraft.owl.display",
+        "nestbox": "animation.zoocraft.owl.nestbox",
+        "beg": "animation.zoocraft.owl.beg",
+        "look_at_target": "animation.zoocraft.owl.look_at_target",
+        "move": "controller.animation.zoocraft.owl.move"
+      },
+      "render_controllers": ["controller.render.zoocraft.owl"],
+      "scripts": {
+        "scale": "q.is_baby ? 0.6 : (q.mark_variant == 1 ? 0.88 : 1)",
+        "initialize": ["variable.offset = math.random(0, 20);"],
+        "animate": ["move"]
+      }
+    }
+  }
+}
