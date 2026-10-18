@@ -1,0 +1,35 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:wild_crimson_grazer",
+      "materials": {"default": "entity_alphatest"},
+      "textures": {
+        "default": "textures/entity/zoocraft/crimson_grazer",
+        "sleep": "textures/entity/zoocraft/crimson_grazer_sleep",
+        "calf": "textures/entity/zoocraft/crimson_grazer_calf",
+        "calf_sleep": "textures/entity/zoocraft/crimson_grazer_calf_sleep"
+      },
+      "geometry": {"default": "geometry.zoocraft.crimson_grazer"},
+      "animations": {
+        "walk": "animation.zoocraft.crimson_grazer.walk",
+        "rush": "animation.zoocraft.crimson_grazer.rush",
+        "idle": "animation.zoocraft.crimson_grazer.idle",
+        "graze": "animation.zoocraft.crimson_grazer.graze",
+        "rub": "animation.zoocraft.crimson_grazer.rub",
+        "rest": "animation.zoocraft.crimson_grazer.rest",
+        "chew": "animation.zoocraft.crimson_grazer.chew",
+        "ring": "animation.zoocraft.crimson_grazer.ring",
+        "look_at_target": "animation.zoocraft.crimson_grazer.look_at_target",
+        "move": "controller.animation.zoocraft.crimson_grazer.move"
+      },
+      "render_controllers": ["controller.render.zoocraft.crimson_grazer"],
+      "scripts": {
+        "scale": "q.is_baby ? 0.34 : (q.mark_variant == 1 ? 1 : 0.85)",
+        "initialize": ["variable.offset = math.random(0, 20);"],
+        "animate": ["move"]
+      },
+      "spawn_egg": {"base_color": "#7a1f2b", "overlay_color": "#e3b76a"}
+    }
+  }
+}

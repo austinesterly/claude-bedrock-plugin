@@ -1,0 +1,14 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shapeless": {
+    "description": {"identifier": "zoocraft:fungal_ration"},
+    "tags": ["crafting_table", "zoocraft_workshop"],
+    "ingredients": [
+      {"item": "minecraft:crimson_fungus"},
+      {"item": "minecraft:warped_fungus"},
+      {"item": "minecraft:nether_wart"}
+    ],
+    "unlock": [{"item": "minecraft:crimson_fungus"}],
+    "result": {"item": "zoocraft:fungal_ration", "count": 2}
+  }
+}
