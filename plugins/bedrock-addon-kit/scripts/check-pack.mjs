@@ -187,6 +187,11 @@ for (const bp of bps) {
     const j = readJson(f);
     const id = j?.["minecraft:entity"]?.description?.identifier;
     if (id) { if (bpEntities.has(id)) err(f, `duplicate BP entity ${id}`); bpEntities.set(id, f); }
+    // 1.26.10 split minecraft:pushable into pushable_by_entity / pushable_by_block and stopped parsing it:
+    // the whole entity then fails to load ("not present in the Schema").
+    const ent = j?.["minecraft:entity"];
+    if (ent) for (const [where, comps] of [["components", ent.components], ...Object.entries(ent.component_groups ?? {}).map(([g, c]) => [`component_groups.${g}`, c])])
+      if (comps?.["minecraft:pushable"] !== undefined) err(f, `${id}: ${where} has minecraft:pushable, which the game stopped parsing in 1.26.10 and the entity fails to load; use minecraft:pushable_by_entity (was is_pushable) and minecraft:pushable_by_block (was is_pushable_by_piston)`);
   }
 }
 

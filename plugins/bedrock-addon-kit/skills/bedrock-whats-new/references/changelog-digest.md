@@ -49,12 +49,13 @@ Script API: `@minecraft/server` 2.10.0 stable.
 - `@minecraft/server-ui` 2.1.0: **Data-Driven UI** (`CustomForm`, `MessageBox`, `ObservableBoolean/Number/String`) stable.
 - **Custom dimensions** stable (`dimensionRegistry.registerCustomDimension`), with `world.tickingAreaManager` for preloading.
 - Custom projectiles without `runtime_identifier`; `isolated_physics` defaults true for format 1.26.30+.
-- Physics: `bounciness`, `air_drag_modifier`, `uses_uniform_air_drag`, `pushable_by_entity` presets; `minecraft:pushable` removed (use `pushable_by_entity` / `pushable_by_block`). Items need at least one component.
+- Physics: `bounciness`, `air_drag_modifier`, `uses_uniform_air_drag`, `pushable_by_entity` presets (graduated from experimental). Items need at least one component.
 - `apply_knockback_rules` still in progress; avoid.
 
 ## 26.20 and 26.10 (from official creator videos)
 
 - 26.20: `minecraft:on_equipment_changed`; `friction_modifier` fixed (`uses_legacy_friction` to opt out); `damage_sensor.deals_damage` is a string (`yes` / `no` / `no_but_entity_effects_apply`).
+- 26.10 (official update notes, learn.microsoft.com/minecraft/creator/documents/update1.26.10): `minecraft:pushable` split into `pushable_by_block` (was `is_pushable_by_piston`) and `pushable_by_entity` (was `is_pushable`); the old component is no longer parsed and the entity fails to load. Stricter AI goal schemas (ram_attack, celebrate, lay_egg, play_dead and more); `buoyant.simulate_waves` replaced by `movement_type`.
 - 26.10: cancellable `world.beforeEvents.entityHurt`; `entityHeal` before/after; `entityItemPickup` before/after and `entityItemDrop` after; `world.tickingAreaManager`; `world.seed`, `containsBiomes`, `BiomeFilter`; camera spline animations (`CatmullRomSpline`, `camera.playAnimation`).
 
 ## Earlier milestones still relevant

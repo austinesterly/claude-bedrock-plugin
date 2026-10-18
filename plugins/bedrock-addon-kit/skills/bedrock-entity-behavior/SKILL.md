@@ -71,7 +71,8 @@ The `format_version` above is the target; if a component fails at it, see the fo
 
 ## Format-version notes (stricter parsing; full list in `../bedrock-whats-new/references/changelog-digest.md`)
 
-- 1.26.30: `minecraft:pushable` removed (use `pushable_by_entity` / `pushable_by_block`). Items need at least one component.
+- 1.26.10: `minecraft:pushable` split into `pushable_by_entity` (was `is_pushable`) and `pushable_by_block` (was `is_pushable_by_piston`); the old component is no longer parsed and the entity fails to load. check-pack flags it.
+- 1.26.30: items need at least one component.
 - 1.26.50: stricter collision_box, home, flocking, physics, interact (`interactions`, `spawn_entities`, `play_sounds` arrays only), projectile (`anchor` is a string, `impact_damage.damage` is `{min,max}`), tamemount, timer (`time` is `{min,max}`), follow_mob, ranged_attack (`attack_range` float range). `multiple_targets` on projectiles defaults to false.
 - 1.26.60 (in preview): stricter movement.* components, tempt, float_tempt, panic, send_event, attack (`damage` scalar or `{min,max}`), inventory, healable (`items` entries must be objects), buoyant, transformation, rideable (`seats` array only), shareables (`items` array only), trail, scale_by_age, strength, teleport.
 - `damage_sensor.deals_damage` is a string: `yes` / `no` / `no_but_entity_effects_apply`.
