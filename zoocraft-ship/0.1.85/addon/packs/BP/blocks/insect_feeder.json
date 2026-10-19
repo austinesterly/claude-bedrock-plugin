@@ -1,0 +1,32 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:block": {
+    "description": {
+      "identifier": "zoocraft:insect_feeder",
+      "menu_category": {"category": "items"},
+      "states": {"zoocraft:fill": [0, 1, 2]}
+    },
+    "components": {
+      "minecraft:geometry": {
+        "identifier": "geometry.zoocraft.insect_feeder",
+        "bone_visibility": {
+          "grubs_low": "query.block_state('zoocraft:fill') == 1",
+          "grubs_high": "query.block_state('zoocraft:fill') == 2"
+        }
+      },
+      "minecraft:material_instances": {
+        "*": {"texture": "zoocraft_insect_feeder_wood", "render_method": "alpha_test"},
+        "mesh": {"texture": "zoocraft_insect_feeder_mesh", "render_method": "alpha_test"},
+        "grubs": {"texture": "zoocraft_insect_feeder_grubs", "render_method": "alpha_test"}
+      },
+      "minecraft:collision_box": {"origin": [-6, 0, -6], "size": [12, 10, 12]},
+      "minecraft:selection_box": {"origin": [-6, 0, -6], "size": [12, 10, 12]},
+      "minecraft:light_dampening": 0,
+      "minecraft:destructible_by_mining": {"seconds_to_destroy": 0.8},
+      "minecraft:destructible_by_explosion": {"explosion_resistance": 2},
+      "minecraft:map_color": "#8a6a44",
+      "minecraft:loot": "loot_tables/blocks/zoocraft_insect_feeder.json",
+      "zoocraft:feeder": {}
+    }
+  }
+}

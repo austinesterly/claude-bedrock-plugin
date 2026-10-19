@@ -1,0 +1,45 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:wild_warped_gecko",
+      "materials": {"default": "entity_emissive_alpha"},
+      "textures": {
+        "default": "textures/entity/zoocraft/warped_gecko",
+        "slit": "textures/entity/zoocraft/warped_gecko_slit",
+        "female": "textures/entity/zoocraft/warped_gecko_female",
+        "female_slit": "textures/entity/zoocraft/warped_gecko_female_slit",
+        "hatchling": "textures/entity/zoocraft/warped_gecko_hatchling",
+        "hatchling_slit": "textures/entity/zoocraft/warped_gecko_hatchling_slit"
+      },
+      "geometry": {"default": "geometry.zoocraft.warped_gecko"},
+      "animations": {
+        "walk": "animation.zoocraft.warped_gecko.walk",
+        "run": "animation.zoocraft.warped_gecko.run",
+        "idle": "animation.zoocraft.warped_gecko.idle",
+        "still": "animation.zoocraft.warped_gecko.still",
+        "stalk": "animation.zoocraft.warped_gecko.stalk",
+        "snap": "animation.zoocraft.warped_gecko.snap",
+        "call": "animation.zoocraft.warped_gecko.call",
+        "lick": "animation.zoocraft.warped_gecko.lick",
+        "bob": "animation.zoocraft.warped_gecko.bob",
+        "threat": "animation.zoocraft.warped_gecko.threat",
+        "hide": "animation.zoocraft.warped_gecko.hide",
+        "sleep": "animation.zoocraft.warped_gecko.sleep",
+        "pose_up": "animation.zoocraft.warped_gecko.pose_up",
+        "pose_down": "animation.zoocraft.warped_gecko.pose_down",
+        "pose_sideL": "animation.zoocraft.warped_gecko.pose_sideL",
+        "pose_sideR": "animation.zoocraft.warped_gecko.pose_sideR",
+        "pose": "controller.animation.zoocraft.warped_gecko.pose",
+        "act": "controller.animation.zoocraft.warped_gecko.act"
+      },
+      "render_controllers": ["controller.render.zoocraft.warped_gecko"],
+      "scripts": {
+        "scale": "q.is_baby ? 0.175 : 0.5",
+        "initialize": ["variable.offset = math.random(0, 20);"],
+        "animate": ["pose", "act"]
+      },
+      "spawn_egg": {"base_color": "#1d6b66", "overlay_color": "#62f2e3"}
+    }
+  }
+}

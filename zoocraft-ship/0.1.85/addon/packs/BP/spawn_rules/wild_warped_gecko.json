@@ -1,0 +1,17 @@
+{
+  "format_version": "1.8.0",
+  "minecraft:spawn_rules": {
+    "description": {"identifier": "zoocraft:wild_warped_gecko", "population_control": "animal"},
+    "conditions": [
+      {
+        "minecraft:spawns_on_surface": {},
+        "minecraft:spawns_underground": {},
+        "minecraft:spawns_on_block_filter": ["minecraft:warped_nylium"],
+        "minecraft:weight": {"default": 5},
+        "minecraft:herd": {"min_size": 1, "max_size": 2, "event": "zoocraft:sex_0", "event_skip_count": 1},
+        "minecraft:density_limit": {"surface": 4, "underground": 4},
+        "minecraft:biome_filter": {"test": "has_biome_tag", "operator": "==", "value": "warped_forest"}
+      }
+    ]
+  }
+}

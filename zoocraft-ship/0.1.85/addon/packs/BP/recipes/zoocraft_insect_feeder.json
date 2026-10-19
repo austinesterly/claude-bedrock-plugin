@@ -1,0 +1,15 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {"identifier": "zoocraft:insect_feeder"},
+    "tags": ["zoocraft_workshop"],
+    "pattern": [" S ", "PGP"],
+    "key": {
+      "S": {"item": "minecraft:string"},
+      "G": {"item": "minecraft:glass_pane"},
+      "P": {"tag": "minecraft:planks"}
+    },
+    "unlock": [{"item": "zoocraft:zoo_workshop"}],
+    "result": {"item": "zoocraft:insect_feeder", "count": 1}
+  }
+}
