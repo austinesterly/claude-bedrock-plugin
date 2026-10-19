@@ -1,0 +1,1321 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.zoocraft.flamingo.walk": {
+      "loop": true,
+      "bones": {
+        "legL": {
+          "rotation": [
+            "math.cos(query.anim_time * 540) * 20",
+            0,
+            0
+          ]
+        },
+        "shinL": {
+          "rotation": [
+            "-math.max(0, math.sin(query.anim_time * 540 + 20)) * (55 + 25 * query.is_in_water)",
+            0,
+            0
+          ]
+        },
+        "footL": {
+          "rotation": [
+            "math.max(0, math.sin(query.anim_time * 540 + 20)) * ((55 + 25 * query.is_in_water) + 45) - math.cos(query.anim_time * 540) * 20",
+            0,
+            0
+          ]
+        },
+        "legR": {
+          "rotation": [
+            "math.cos(query.anim_time * 540 + 180) * 20",
+            0,
+            0
+          ]
+        },
+        "shinR": {
+          "rotation": [
+            "-math.max(0, math.sin(query.anim_time * 540 + 180 + 20)) * (55 + 25 * query.is_in_water)",
+            0,
+            0
+          ]
+        },
+        "footR": {
+          "rotation": [
+            "math.max(0, math.sin(query.anim_time * 540 + 180 + 20)) * ((55 + 25 * query.is_in_water) + 45) - math.cos(query.anim_time * 540 + 180) * 20",
+            0,
+            0
+          ]
+        },
+        "body": {
+          "position": [
+            0,
+            "-(25 - query.is_baby * 5) * (1 - math.cos(math.cos(query.anim_time * 540) * 20))",
+            0
+          ],
+          "rotation": [
+            0,
+            0,
+            "-(math.sin(query.anim_time * 540) * 2)"
+          ]
+        },
+        "neck1": {
+          "rotation": [
+            "math.sin(query.anim_time * 540 * 2) * 4",
+            0,
+            0
+          ]
+        },
+        "head": {
+          "rotation": [
+            "math.sin(query.anim_time * 540 * 2) * -4",
+            0,
+            0
+          ]
+        },
+        "tail": {
+          "rotation": [
+            "math.sin(query.anim_time * 540 * 2) * 3",
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.flamingo.march": {
+      "loop": true,
+      "bones": {
+        "legL": {
+          "rotation": [
+            "(math.cos(query.anim_time * 680) * 18) + 6",
+            0,
+            0
+          ]
+        },
+        "shinL": {
+          "rotation": [
+            "-math.max(0, math.sin(query.anim_time * 680 + 20)) * (80 + 20 * query.is_in_water)",
+            0,
+            0
+          ]
+        },
+        "footL": {
+          "rotation": [
+            "math.max(0, math.sin(query.anim_time * 680 + 20)) * ((80 + 20 * query.is_in_water) + 50) - math.cos(query.anim_time * 680) * 18",
+            0,
+            0
+          ]
+        },
+        "legR": {
+          "rotation": [
+            "(math.cos(query.anim_time * 680 + 180) * 18) + 6",
+            0,
+            0
+          ]
+        },
+        "shinR": {
+          "rotation": [
+            "-math.max(0, math.sin(query.anim_time * 680 + 180 + 20)) * (80 + 20 * query.is_in_water)",
+            0,
+            0
+          ]
+        },
+        "footR": {
+          "rotation": [
+            "math.max(0, math.sin(query.anim_time * 680 + 180 + 20)) * ((80 + 20 * query.is_in_water) + 50) - math.cos(query.anim_time * 680 + 180) * 18",
+            0,
+            0
+          ]
+        },
+        "body": {
+          "position": [
+            0,
+            "-(25 - query.is_baby * 5) * (1 - math.cos(math.cos(query.anim_time * 680) * 18))",
+            0
+          ],
+          "rotation": [
+            "-5.9984 + (math.sin(query.anim_time * 680) * 2) * 0.0001",
+            "(math.sin(query.anim_time * 680) * 2) * -0.1045",
+            "(math.sin(query.anim_time * 680) * 2) * -0.9945"
+          ]
+        },
+        "neck1": {
+          "rotation": [
+            -52,
+            0,
+            0
+          ]
+        },
+        "neck2": {
+          "rotation": [
+            84,
+            0,
+            0
+          ]
+        },
+        "neck3": {
+          "rotation": [
+            34,
+            0,
+            0
+          ]
+        },
+        "neck4": {
+          "rotation": [
+            -104,
+            0,
+            0
+          ]
+        },
+        "head": {
+          "rotation": [
+            35,
+            0,
+            0
+          ]
+        },
+        "look": {
+          "rotation": [
+            0,
+            "math.clamp(math.sin(query.anim_time * 300) * 3, -1, 1) * 45",
+            0
+          ]
+        },
+        "tail": {
+          "rotation": [
+            12,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.flamingo.swim": {
+      "loop": true,
+      "bones": {
+        "neck1": {
+          "rotation": [
+            -15,
+            0,
+            0
+          ]
+        },
+        "neck2": {
+          "rotation": [
+            25,
+            0,
+            0
+          ]
+        },
+        "neck3": {
+          "rotation": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neck4": {
+          "rotation": [
+            -15,
+            0,
+            0
+          ]
+        },
+        "head": {
+          "rotation": [
+            5,
+            0,
+            0
+          ]
+        },
+        "body": {
+          "position": [
+            0,
+            "-14 + math.sin(query.life_time * 90) * 0.3",
+            0
+          ],
+          "rotation": [
+            -4,
+            0,
+            0
+          ]
+        },
+        "tail": {
+          "rotation": [
+            14,
+            0,
+            0
+          ]
+        },
+        "legL": {
+          "rotation": [
+            "80 + math.sin(query.anim_time * 300) * 20",
+            0,
+            0
+          ]
+        },
+        "shinL": {
+          "rotation": [
+            "-120 + math.sin(query.anim_time * 300 + 90) * 30",
+            0,
+            0
+          ]
+        },
+        "legR": {
+          "rotation": [
+            "80 - math.sin(query.anim_time * 300) * 20",
+            0,
+            0
+          ]
+        },
+        "shinR": {
+          "rotation": [
+            "-120 - math.sin(query.anim_time * 300 + 90) * 30",
+            0,
+            0
+          ]
+        },
+        "footL": {
+          "rotation": [
+            "math.max(0, math.sin(query.anim_time * 300)) * 50",
+            0,
+            0
+          ]
+        },
+        "footR": {
+          "rotation": [
+            "math.max(0, -math.sin(query.anim_time * 300)) * 50",
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.flamingo.idle": {
+      "loop": true,
+      "bones": {
+        "neck1": {
+          "rotation": [
+            "(60 - ((math.clamp((math.mod(query.life_time + variable.offset, 48) - 8.5) / 0.5, 0, 1) * math.clamp((10.5 - math.mod(query.life_time + variable.offset, 48)) / 0.5, 0, 1)) + (math.clamp((math.mod(query.life_time + variable.offset, 48) - 32.5) / 0.5, 0, 1) * math.clamp((34.5 - math.mod(query.life_time + variable.offset, 48)) / 0.5, 0, 1))) * 40) - 0 - 60",
+            0,
+            0
+          ]
+        },
+        "neck2": {
+          "rotation": [
+            "(-30 + ((math.clamp((math.mod(query.life_time + variable.offset, 48) - 8.5) / 0.5, 0, 1) * math.clamp((10.5 - math.mod(query.life_time + variable.offset, 48)) / 0.5, 0, 1)) + (math.clamp((math.mod(query.life_time + variable.offset, 48) - 32.5) / 0.5, 0, 1) * math.clamp((34.5 - math.mod(query.life_time + variable.offset, 48)) / 0.5, 0, 1))) * 25) - (60 - ((math.clamp((math.mod(query.life_time + variable.offset, 48) - 8.5) / 0.5, 0, 1) * math.clamp((10.5 - math.mod(query.life_time + variable.offset, 48)) / 0.5, 0, 1)) + (math.clamp((math.mod(query.life_time + variable.offset, 48) - 32.5) / 0.5, 0, 1) * math.clamp((34.5 - math.mod(query.life_time + variable.offset, 48)) / 0.5, 0, 1))) * 40) - -90",
+            0,
+            0
+          ]
+        },
+        "neck3": {
+          "rotation": [
+            "(-70 + ((math.clamp((math.mod(query.life_time + variable.offset, 48) - 8.5) / 0.5, 0, 1) * math.clamp((10.5 - math.mod(query.life_time + variable.offset, 48)) / 0.5, 0, 1)) + (math.clamp((math.mod(query.life_time + variable.offset, 48) - 32.5) / 0.5, 0, 1) * math.clamp((34.5 - math.mod(query.life_time + variable.offset, 48)) / 0.5, 0, 1))) * 55) - (-30 + ((math.clamp((math.mod(query.life_time + variable.offset, 48) - 8.5) / 0.5, 0, 1) * math.clamp((10.5 - math.mod(query.life_time + variable.offset, 48)) / 0.5, 0, 1)) + (math.clamp((math.mod(query.life_time + variable.offset, 48) - 32.5) / 0.5, 0, 1) * math.clamp((34.5 - math.mod(query.life_time + variable.offset, 48)) / 0.5, 0, 1))) * 25) - -40",
+            0,
+            0
+          ]
+        },
+        "neck4": {
+          "rotation": [
+            "(40 - ((math.clamp((math.mod(query.life_time + variable.offset, 48) - 8.5) / 0.5, 0, 1) * math.clamp((10.5 - math.mod(query.life_time + variable.offset, 48)) / 0.5, 0, 1)) + (math.clamp((math.mod(query.life_time + variable.offset, 48) - 32.5) / 0.5, 0, 1) * math.clamp((34.5 - math.mod(query.life_time + variable.offset, 48)) / 0.5, 0, 1))) * 30) - (-70 + ((math.clamp((math.mod(query.life_time + variable.offset, 48) - 8.5) / 0.5, 0, 1) * math.clamp((10.5 - math.mod(query.life_time + variable.offset, 48)) / 0.5, 0, 1)) + (math.clamp((math.mod(query.life_time + variable.offset, 48) - 32.5) / 0.5, 0, 1) * math.clamp((34.5 - math.mod(query.life_time + variable.offset, 48)) / 0.5, 0, 1))) * 55) - 110",
+            0,
+            0
+          ]
+        },
+        "head": {
+          "rotation": [
+            "15 - (40 - ((math.clamp((math.mod(query.life_time + variable.offset, 48) - 8.5) / 0.5, 0, 1) * math.clamp((10.5 - math.mod(query.life_time + variable.offset, 48)) / 0.5, 0, 1)) + (math.clamp((math.mod(query.life_time + variable.offset, 48) - 32.5) / 0.5, 0, 1) * math.clamp((34.5 - math.mod(query.life_time + variable.offset, 48)) / 0.5, 0, 1))) * 30) - -25",
+            0,
+            0
+          ]
+        },
+        "body": {
+          "scale": [
+            "1",
+            "1 + math.sin(query.life_time * 90) * 0.012",
+            "1"
+          ]
+        },
+        "look": {
+          "rotation": [
+            0,
+            "(math.clamp((math.mod(query.life_time + variable.offset, 48) - 2) / 0.7, 0, 1) * math.clamp((7 - math.mod(query.life_time + variable.offset, 48)) / 0.7, 0, 1)) * math.sin(query.life_time * 30) * 50 + (math.clamp((math.mod(query.life_time + variable.offset, 48) - 12) / 0.7, 0, 1) * math.clamp((16 - math.mod(query.life_time + variable.offset, 48)) / 0.7, 0, 1)) * math.sin(query.life_time * 22 + 90) * 45 + (math.clamp((math.mod(query.life_time + variable.offset, 48) - 26) / 0.7, 0, 1) * math.clamp((31 - math.mod(query.life_time + variable.offset, 48)) / 0.7, 0, 1)) * math.sin(query.life_time * 26 + 40) * 48 + (math.clamp((math.mod(query.life_time + variable.offset, 48) - 36) / 0.7, 0, 1) * math.clamp((40 - math.mod(query.life_time + variable.offset, 48)) / 0.7, 0, 1)) * math.sin(query.life_time * 20 + 130) * 42 + ((math.clamp((math.mod(query.life_time + variable.offset, 48) - 18.5) / 0.25, 0, 1) * math.clamp((19.4 - math.mod(query.life_time + variable.offset, 48)) / 0.25, 0, 1)) + (math.clamp((math.mod(query.life_time + variable.offset, 48) - 42.5) / 0.25, 0, 1) * math.clamp((43.4 - math.mod(query.life_time + variable.offset, 48)) / 0.25, 0, 1))) * math.sin(query.life_time * 1500) * 25",
+            0
+          ]
+        },
+        "foldL": {
+          "rotation": [
+            0,
+            0,
+            "-(math.clamp((query.anim_time - 1.8) / 0.8, 0, 1) * (math.clamp((math.mod(query.life_time + variable.offset, 48) - 8.5) / 0.5, 0, 1) * math.clamp((10.5 - math.mod(query.life_time + variable.offset, 48)) / 0.5, 0, 1)) * 35)"
+          ]
+        },
+        "foldR": {
+          "rotation": [
+            0,
+            0,
+            "-(math.clamp((query.anim_time - 1.8) / 0.8, 0, 1) * (math.clamp((math.mod(query.life_time + variable.offset, 48) - 32.5) / 0.5, 0, 1) * math.clamp((34.5 - math.mod(query.life_time + variable.offset, 48)) / 0.5, 0, 1)) * -35)"
+          ]
+        },
+        "tail": {
+          "rotation": [
+            "math.clamp((query.anim_time - 1.8) / 0.8, 0, 1) * ((math.clamp((math.mod(query.life_time + variable.offset, 48) - 8.5) / 0.5, 0, 1) * math.clamp((10.5 - math.mod(query.life_time + variable.offset, 48)) / 0.5, 0, 1)) + (math.clamp((math.mod(query.life_time + variable.offset, 48) - 32.5) / 0.5, 0, 1) * math.clamp((34.5 - math.mod(query.life_time + variable.offset, 48)) / 0.5, 0, 1))) * 10 + ((math.clamp((math.mod(query.life_time + variable.offset, 48) - 18.5) / 0.25, 0, 1) * math.clamp((19.4 - math.mod(query.life_time + variable.offset, 48)) / 0.25, 0, 1)) + (math.clamp((math.mod(query.life_time + variable.offset, 48) - 42.5) / 0.25, 0, 1) * math.clamp((43.4 - math.mod(query.life_time + variable.offset, 48)) / 0.25, 0, 1))) * math.sin(query.life_time * 1500) * 6",
+            0,
+            0
+          ]
+        },
+        "legL": {
+          "rotation": [
+            "(math.clamp((query.anim_time - 1.8) / 0.8, 0, 1) * (math.clamp((math.mod(query.life_time + variable.offset, 48) - 1.5) / 0.9, 0, 1) * math.clamp((23.2 - math.mod(query.life_time + variable.offset, 48)) / 0.9, 0, 1)) * (1 - (math.clamp((math.mod(query.life_time + variable.offset, 48) - 8.5) / 0.5, 0, 1) * math.clamp((10.5 - math.mod(query.life_time + variable.offset, 48)) / 0.5, 0, 1))) * 100 + math.clamp((query.anim_time - 1.8) / 0.8, 0, 1) * (math.clamp((math.mod(query.life_time + variable.offset, 48) - 8.5) / 0.5, 0, 1) * math.clamp((10.5 - math.mod(query.life_time + variable.offset, 48)) / 0.5, 0, 1)) * 60)",
+            0,
+            "-(math.clamp((query.anim_time - 1.8) / 0.8, 0, 1) * (math.clamp((math.mod(query.life_time + variable.offset, 48) - 25.5) / 0.9, 0, 1) * math.clamp((47.2 - math.mod(query.life_time + variable.offset, 48)) / 0.9, 0, 1)) * (1 - (math.clamp((math.mod(query.life_time + variable.offset, 48) - 32.5) / 0.5, 0, 1) * math.clamp((34.5 - math.mod(query.life_time + variable.offset, 48)) / 0.5, 0, 1))) * -3.4)"
+          ],
+          "position": [
+            0,
+            "math.clamp((query.anim_time - 1.8) / 0.8, 0, 1) * (math.clamp((math.mod(query.life_time + variable.offset, 48) - 1.5) / 0.9, 0, 1) * math.clamp((23.2 - math.mod(query.life_time + variable.offset, 48)) / 0.9, 0, 1)) * (1 - (math.clamp((math.mod(query.life_time + variable.offset, 48) - 8.5) / 0.5, 0, 1) * math.clamp((10.5 - math.mod(query.life_time + variable.offset, 48)) / 0.5, 0, 1))) * 2",
+            "math.clamp((query.anim_time - 1.8) / 0.8, 0, 1) * (math.clamp((math.mod(query.life_time + variable.offset, 48) - 1.5) / 0.9, 0, 1) * math.clamp((23.2 - math.mod(query.life_time + variable.offset, 48)) / 0.9, 0, 1)) * (1 - (math.clamp((math.mod(query.life_time + variable.offset, 48) - 8.5) / 0.5, 0, 1) * math.clamp((10.5 - math.mod(query.life_time + variable.offset, 48)) / 0.5, 0, 1))) * -5.5"
+          ]
+        },
+        "shinL": {
+          "rotation": [
+            "math.clamp((query.anim_time - 1.8) / 0.8, 0, 1) * (math.clamp((math.mod(query.life_time + variable.offset, 48) - 1.5) / 0.9, 0, 1) * math.clamp((23.2 - math.mod(query.life_time + variable.offset, 48)) / 0.9, 0, 1)) * (1 - (math.clamp((math.mod(query.life_time + variable.offset, 48) - 8.5) / 0.5, 0, 1) * math.clamp((10.5 - math.mod(query.life_time + variable.offset, 48)) / 0.5, 0, 1))) * -165 - math.clamp((query.anim_time - 1.8) / 0.8, 0, 1) * (math.clamp((math.mod(query.life_time + variable.offset, 48) - 8.5) / 0.5, 0, 1) * math.clamp((10.5 - math.mod(query.life_time + variable.offset, 48)) / 0.5, 0, 1)) * 10",
+            0,
+            0
+          ]
+        },
+        "footL": {
+          "rotation": [
+            "math.clamp((query.anim_time - 1.8) / 0.8, 0, 1) * (math.clamp((math.mod(query.life_time + variable.offset, 48) - 8.5) / 0.5, 0, 1) * math.clamp((10.5 - math.mod(query.life_time + variable.offset, 48)) / 0.5, 0, 1)) * 90",
+            0,
+            0
+          ]
+        },
+        "legR": {
+          "rotation": [
+            "(math.clamp((query.anim_time - 1.8) / 0.8, 0, 1) * (math.clamp((math.mod(query.life_time + variable.offset, 48) - 25.5) / 0.9, 0, 1) * math.clamp((47.2 - math.mod(query.life_time + variable.offset, 48)) / 0.9, 0, 1)) * (1 - (math.clamp((math.mod(query.life_time + variable.offset, 48) - 32.5) / 0.5, 0, 1) * math.clamp((34.5 - math.mod(query.life_time + variable.offset, 48)) / 0.5, 0, 1))) * 100 + math.clamp((query.anim_time - 1.8) / 0.8, 0, 1) * (math.clamp((math.mod(query.life_time + variable.offset, 48) - 32.5) / 0.5, 0, 1) * math.clamp((34.5 - math.mod(query.life_time + variable.offset, 48)) / 0.5, 0, 1)) * 60)",
+            0,
+            "-(math.clamp((query.anim_time - 1.8) / 0.8, 0, 1) * (math.clamp((math.mod(query.life_time + variable.offset, 48) - 1.5) / 0.9, 0, 1) * math.clamp((23.2 - math.mod(query.life_time + variable.offset, 48)) / 0.9, 0, 1)) * (1 - (math.clamp((math.mod(query.life_time + variable.offset, 48) - 8.5) / 0.5, 0, 1) * math.clamp((10.5 - math.mod(query.life_time + variable.offset, 48)) / 0.5, 0, 1))) * 3.4)"
+          ],
+          "position": [
+            0,
+            "math.clamp((query.anim_time - 1.8) / 0.8, 0, 1) * (math.clamp((math.mod(query.life_time + variable.offset, 48) - 25.5) / 0.9, 0, 1) * math.clamp((47.2 - math.mod(query.life_time + variable.offset, 48)) / 0.9, 0, 1)) * (1 - (math.clamp((math.mod(query.life_time + variable.offset, 48) - 32.5) / 0.5, 0, 1) * math.clamp((34.5 - math.mod(query.life_time + variable.offset, 48)) / 0.5, 0, 1))) * 2",
+            "math.clamp((query.anim_time - 1.8) / 0.8, 0, 1) * (math.clamp((math.mod(query.life_time + variable.offset, 48) - 25.5) / 0.9, 0, 1) * math.clamp((47.2 - math.mod(query.life_time + variable.offset, 48)) / 0.9, 0, 1)) * (1 - (math.clamp((math.mod(query.life_time + variable.offset, 48) - 32.5) / 0.5, 0, 1) * math.clamp((34.5 - math.mod(query.life_time + variable.offset, 48)) / 0.5, 0, 1))) * -5.5"
+          ]
+        },
+        "shinR": {
+          "rotation": [
+            "math.clamp((query.anim_time - 1.8) / 0.8, 0, 1) * (math.clamp((math.mod(query.life_time + variable.offset, 48) - 25.5) / 0.9, 0, 1) * math.clamp((47.2 - math.mod(query.life_time + variable.offset, 48)) / 0.9, 0, 1)) * (1 - (math.clamp((math.mod(query.life_time + variable.offset, 48) - 32.5) / 0.5, 0, 1) * math.clamp((34.5 - math.mod(query.life_time + variable.offset, 48)) / 0.5, 0, 1))) * -165 - math.clamp((query.anim_time - 1.8) / 0.8, 0, 1) * (math.clamp((math.mod(query.life_time + variable.offset, 48) - 32.5) / 0.5, 0, 1) * math.clamp((34.5 - math.mod(query.life_time + variable.offset, 48)) / 0.5, 0, 1)) * 10",
+            0,
+            0
+          ]
+        },
+        "footR": {
+          "rotation": [
+            "math.clamp((query.anim_time - 1.8) / 0.8, 0, 1) * (math.clamp((math.mod(query.life_time + variable.offset, 48) - 32.5) / 0.5, 0, 1) * math.clamp((34.5 - math.mod(query.life_time + variable.offset, 48)) / 0.5, 0, 1)) * 90",
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.flamingo.feed": {
+      "loop": true,
+      "bones": {
+        "neck1": {
+          "rotation": [
+            40,
+            0,
+            0
+          ]
+        },
+        "neck2": {
+          "rotation": [
+            140,
+            0,
+            0
+          ]
+        },
+        "neck3": {
+          "rotation": [
+            65,
+            0,
+            0
+          ]
+        },
+        "neck4": {
+          "rotation": [
+            "(200 + math.sin(query.life_time * 400) * 5) - 175 - 110",
+            0,
+            0
+          ]
+        },
+        "head": {
+          "rotation": [
+            "185 - (200 + math.sin(query.life_time * 400) * 5) - -25",
+            0,
+            0
+          ]
+        },
+        "body": {
+          "rotation": [
+            12,
+            0,
+            0
+          ],
+          "scale": [
+            "1",
+            "1 + math.sin(query.life_time * 90) * 0.012",
+            "1"
+          ]
+        },
+        "look": {
+          "rotation": [
+            0,
+            "math.sin(query.life_time * 260) * 28",
+            0
+          ]
+        },
+        "tail": {
+          "rotation": [
+            8,
+            0,
+            0
+          ]
+        },
+        "legL": {
+          "rotation": [
+            -12,
+            0,
+            0
+          ]
+        },
+        "legR": {
+          "rotation": [
+            -12,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.flamingo.stamp": {
+      "loop": true,
+      "bones": {
+        "neck1": {
+          "rotation": [
+            35,
+            0,
+            0
+          ]
+        },
+        "neck2": {
+          "rotation": [
+            135,
+            0,
+            0
+          ]
+        },
+        "neck3": {
+          "rotation": [
+            65,
+            0,
+            0
+          ]
+        },
+        "neck4": {
+          "rotation": [
+            -100,
+            0,
+            0
+          ]
+        },
+        "head": {
+          "rotation": [
+            "(150 + math.sin(query.life_time * 200) * 8) - 175 - -25",
+            0,
+            0
+          ]
+        },
+        "body": {
+          "rotation": [
+            10,
+            0,
+            0
+          ],
+          "position": [
+            0,
+            "math.abs(math.sin(query.life_time * 400)) * 0.5",
+            0
+          ]
+        },
+        "look": {
+          "rotation": [
+            0,
+            "math.sin(query.life_time * 120) * 15",
+            0
+          ]
+        },
+        "legL": {
+          "rotation": [
+            "-10 - math.max(0, math.sin(query.life_time * 400)) * 12",
+            0,
+            0
+          ]
+        },
+        "shinL": {
+          "rotation": [
+            "-math.max(0, math.sin(query.life_time * 400)) * 34",
+            0,
+            0
+          ]
+        },
+        "footL": {
+          "rotation": [
+            "math.max(0, math.sin(query.life_time * 400)) * 66",
+            0,
+            0
+          ]
+        },
+        "legR": {
+          "rotation": [
+            "-10 - math.max(0, -math.sin(query.life_time * 400)) * 12",
+            0,
+            0
+          ]
+        },
+        "shinR": {
+          "rotation": [
+            "-math.max(0, -math.sin(query.life_time * 400)) * 34",
+            0,
+            0
+          ]
+        },
+        "footR": {
+          "rotation": [
+            "math.max(0, -math.sin(query.life_time * 400)) * 66",
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.flamingo.preen": {
+      "loop": true,
+      "bones": {
+        "neck1": {
+          "rotation": [
+            -40,
+            0,
+            0
+          ]
+        },
+        "neck2": {
+          "rotation": [
+            30,
+            0,
+            0
+          ]
+        },
+        "neck3": {
+          "rotation": [
+            -20,
+            0,
+            0
+          ]
+        },
+        "neck4": {
+          "rotation": [
+            -160,
+            0,
+            0
+          ]
+        },
+        "head": {
+          "rotation": [
+            "(90 + math.sin(query.life_time * 900) * 6 * math.clamp(math.sin(query.life_time * 50) * 4, 0, 1)) - -150 - -25",
+            0,
+            0
+          ]
+        },
+        "body": {
+          "scale": [
+            "1",
+            "1 + math.sin(query.life_time * 90) * 0.012",
+            "1"
+          ]
+        },
+        "look": {
+          "rotation": [
+            0,
+            "math.sin(query.life_time * 15 + variable.offset * 10) * 70",
+            0
+          ]
+        },
+        "foldL": {
+          "rotation": [
+            0,
+            0,
+            "-(math.max(0, math.sin(query.life_time * 15 + variable.offset * 10)) * 12)"
+          ]
+        },
+        "foldR": {
+          "rotation": [
+            0,
+            0,
+            "-(math.min(0, math.sin(query.life_time * 15 + variable.offset * 10)) * 12)"
+          ]
+        },
+        "legL": {
+          "rotation": [
+            "((math.clamp((math.mod(query.life_time + variable.offset, 48) - 1.5) / 0.9, 0, 1) * math.clamp((23.2 - math.mod(query.life_time + variable.offset, 48)) / 0.9, 0, 1)) * 100)",
+            0,
+            "-((math.clamp((math.mod(query.life_time + variable.offset, 48) - 25.5) / 0.9, 0, 1) * math.clamp((47.2 - math.mod(query.life_time + variable.offset, 48)) / 0.9, 0, 1)) * -3.4)"
+          ],
+          "position": [
+            0,
+            "(math.clamp((math.mod(query.life_time + variable.offset, 48) - 1.5) / 0.9, 0, 1) * math.clamp((23.2 - math.mod(query.life_time + variable.offset, 48)) / 0.9, 0, 1)) * 2",
+            "(math.clamp((math.mod(query.life_time + variable.offset, 48) - 1.5) / 0.9, 0, 1) * math.clamp((23.2 - math.mod(query.life_time + variable.offset, 48)) / 0.9, 0, 1)) * -5.5"
+          ]
+        },
+        "shinL": {
+          "rotation": [
+            "(math.clamp((math.mod(query.life_time + variable.offset, 48) - 1.5) / 0.9, 0, 1) * math.clamp((23.2 - math.mod(query.life_time + variable.offset, 48)) / 0.9, 0, 1)) * -165",
+            0,
+            0
+          ]
+        },
+        "footL": {
+          "rotation": [
+            0,
+            0,
+            0
+          ]
+        },
+        "legR": {
+          "rotation": [
+            "((math.clamp((math.mod(query.life_time + variable.offset, 48) - 25.5) / 0.9, 0, 1) * math.clamp((47.2 - math.mod(query.life_time + variable.offset, 48)) / 0.9, 0, 1)) * 100)",
+            0,
+            "-((math.clamp((math.mod(query.life_time + variable.offset, 48) - 1.5) / 0.9, 0, 1) * math.clamp((23.2 - math.mod(query.life_time + variable.offset, 48)) / 0.9, 0, 1)) * 3.4)"
+          ],
+          "position": [
+            0,
+            "(math.clamp((math.mod(query.life_time + variable.offset, 48) - 25.5) / 0.9, 0, 1) * math.clamp((47.2 - math.mod(query.life_time + variable.offset, 48)) / 0.9, 0, 1)) * 2",
+            "(math.clamp((math.mod(query.life_time + variable.offset, 48) - 25.5) / 0.9, 0, 1) * math.clamp((47.2 - math.mod(query.life_time + variable.offset, 48)) / 0.9, 0, 1)) * -5.5"
+          ]
+        },
+        "shinR": {
+          "rotation": [
+            "(math.clamp((math.mod(query.life_time + variable.offset, 48) - 25.5) / 0.9, 0, 1) * math.clamp((47.2 - math.mod(query.life_time + variable.offset, 48)) / 0.9, 0, 1)) * -165",
+            0,
+            0
+          ]
+        },
+        "footR": {
+          "rotation": [
+            0,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.flamingo.rest": {
+      "loop": true,
+      "bones": {
+        "neck1": {
+          "rotation": [
+            -80,
+            0,
+            0
+          ]
+        },
+        "neck2": {
+          "rotation": [
+            20,
+            0,
+            0
+          ]
+        },
+        "neck3": {
+          "rotation": [
+            30,
+            0,
+            0
+          ]
+        },
+        "neck4": {
+          "rotation": [
+            -105,
+            0,
+            0
+          ]
+        },
+        "head": {
+          "rotation": [
+            -60,
+            0,
+            0
+          ]
+        },
+        "body": {
+          "scale": [
+            "1.02",
+            "1 + math.sin(query.life_time * 60) * 0.015",
+            "1.02"
+          ]
+        },
+        "look": {
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        },
+        "legL": {
+          "rotation": [
+            "((math.clamp((math.mod(query.life_time + variable.offset, 60) - 1.5) / 1, 0, 1) * math.clamp((28.5 - math.mod(query.life_time + variable.offset, 60)) / 1, 0, 1)) * 100)",
+            0,
+            "-((math.clamp((math.mod(query.life_time + variable.offset, 60) - 31.5) / 1, 0, 1) * math.clamp((58.5 - math.mod(query.life_time + variable.offset, 60)) / 1, 0, 1)) * -3.4)"
+          ],
+          "position": [
+            0,
+            "(math.clamp((math.mod(query.life_time + variable.offset, 60) - 1.5) / 1, 0, 1) * math.clamp((28.5 - math.mod(query.life_time + variable.offset, 60)) / 1, 0, 1)) * 2",
+            "(math.clamp((math.mod(query.life_time + variable.offset, 60) - 1.5) / 1, 0, 1) * math.clamp((28.5 - math.mod(query.life_time + variable.offset, 60)) / 1, 0, 1)) * -5.5"
+          ]
+        },
+        "shinL": {
+          "rotation": [
+            "(math.clamp((math.mod(query.life_time + variable.offset, 60) - 1.5) / 1, 0, 1) * math.clamp((28.5 - math.mod(query.life_time + variable.offset, 60)) / 1, 0, 1)) * -165",
+            0,
+            0
+          ]
+        },
+        "footL": {
+          "rotation": [
+            0,
+            0,
+            0
+          ]
+        },
+        "legR": {
+          "rotation": [
+            "((math.clamp((math.mod(query.life_time + variable.offset, 60) - 31.5) / 1, 0, 1) * math.clamp((58.5 - math.mod(query.life_time + variable.offset, 60)) / 1, 0, 1)) * 100)",
+            0,
+            "-((math.clamp((math.mod(query.life_time + variable.offset, 60) - 1.5) / 1, 0, 1) * math.clamp((28.5 - math.mod(query.life_time + variable.offset, 60)) / 1, 0, 1)) * 3.4)"
+          ],
+          "position": [
+            0,
+            "(math.clamp((math.mod(query.life_time + variable.offset, 60) - 31.5) / 1, 0, 1) * math.clamp((58.5 - math.mod(query.life_time + variable.offset, 60)) / 1, 0, 1)) * 2",
+            "(math.clamp((math.mod(query.life_time + variable.offset, 60) - 31.5) / 1, 0, 1) * math.clamp((58.5 - math.mod(query.life_time + variable.offset, 60)) / 1, 0, 1)) * -5.5"
+          ]
+        },
+        "shinR": {
+          "rotation": [
+            "(math.clamp((math.mod(query.life_time + variable.offset, 60) - 31.5) / 1, 0, 1) * math.clamp((58.5 - math.mod(query.life_time + variable.offset, 60)) / 1, 0, 1)) * -165",
+            0,
+            0
+          ]
+        },
+        "footR": {
+          "rotation": [
+            0,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.flamingo.flag": {
+      "loop": true,
+      "bones": {
+        "neck1": {
+          "rotation": [
+            -52,
+            0,
+            0
+          ]
+        },
+        "neck2": {
+          "rotation": [
+            84,
+            0,
+            0
+          ]
+        },
+        "neck3": {
+          "rotation": [
+            34,
+            0,
+            0
+          ]
+        },
+        "neck4": {
+          "rotation": [
+            -104,
+            0,
+            0
+          ]
+        },
+        "head": {
+          "rotation": [
+            "35 + (math.sin(query.life_time * 660) * 4)",
+            0,
+            0
+          ]
+        },
+        "body": {
+          "rotation": [
+            -5,
+            0,
+            0
+          ]
+        },
+        "look": {
+          "rotation": [
+            0,
+            "math.clamp(math.sin(query.life_time * 330 + variable.offset * 40) * 3, -1, 1) * 55",
+            0
+          ]
+        },
+        "tail": {
+          "rotation": [
+            8,
+            0,
+            0
+          ]
+        },
+        "legL": {
+          "rotation": [
+            5,
+            0,
+            0
+          ]
+        },
+        "legR": {
+          "rotation": [
+            5,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.flamingo.salute": {
+      "loop": true,
+      "bones": {
+        "neck1": {
+          "rotation": [
+            -38,
+            0,
+            0
+          ]
+        },
+        "neck2": {
+          "rotation": [
+            80,
+            0,
+            0
+          ]
+        },
+        "neck3": {
+          "rotation": [
+            30,
+            0,
+            0
+          ]
+        },
+        "neck4": {
+          "rotation": [
+            -116,
+            0,
+            0
+          ]
+        },
+        "head": {
+          "rotation": [
+            41,
+            0,
+            0
+          ]
+        },
+        "body": {
+          "rotation": [
+            -4,
+            0,
+            0
+          ]
+        },
+        "wingL": {
+          "rotation": [
+            0,
+            0,
+            "-(95 * math.clamp(query.anim_time / 0.3, 0, 1) + math.sin(query.anim_time * 500) * 3)"
+          ]
+        },
+        "wingR": {
+          "rotation": [
+            0,
+            0,
+            "-(-95 * math.clamp(query.anim_time / 0.3, 0, 1) - math.sin(query.anim_time * 500) * 3)"
+          ]
+        },
+        "tail": {
+          "rotation": [
+            20,
+            0,
+            0
+          ]
+        },
+        "legL": {
+          "rotation": [
+            4,
+            0,
+            0
+          ]
+        },
+        "legR": {
+          "rotation": [
+            4,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.flamingo.build": {
+      "loop": true,
+      "bones": {
+        "neck1": {
+          "rotation": [
+            35,
+            0,
+            0
+          ]
+        },
+        "neck2": {
+          "rotation": [
+            130,
+            0,
+            0
+          ]
+        },
+        "neck3": {
+          "rotation": [
+            60,
+            0,
+            0
+          ]
+        },
+        "neck4": {
+          "rotation": [
+            "(155 + math.sin(query.life_time * 300) * 10) - 155 - 110",
+            0,
+            0
+          ]
+        },
+        "head": {
+          "rotation": [
+            "(50 - math.sin(query.life_time * 300) * 15) - (155 + math.sin(query.life_time * 300) * 10) - -25",
+            0,
+            0
+          ]
+        },
+        "body": {
+          "rotation": [
+            30,
+            0,
+            0
+          ]
+        },
+        "look": {
+          "rotation": [
+            0,
+            "math.sin(query.life_time * 37) * 30",
+            0
+          ]
+        },
+        "legL": {
+          "rotation": [
+            "-30 + math.max(0, math.sin(query.life_time * 90)) * -8",
+            0,
+            0
+          ]
+        },
+        "shinL": {
+          "rotation": [
+            "-math.max(0, math.sin(query.life_time * 90)) * 20",
+            0,
+            0
+          ]
+        },
+        "footL": {
+          "rotation": [
+            "math.max(0, math.sin(query.life_time * 90)) * 38",
+            0,
+            0
+          ]
+        },
+        "legR": {
+          "rotation": [
+            "-30 + math.max(0, -math.sin(query.life_time * 90)) * -8",
+            0,
+            0
+          ]
+        },
+        "shinR": {
+          "rotation": [
+            "-math.max(0, -math.sin(query.life_time * 90)) * 20",
+            0,
+            0
+          ]
+        },
+        "footR": {
+          "rotation": [
+            "math.max(0, -math.sin(query.life_time * 90)) * 38",
+            0,
+            0
+          ]
+        },
+        "tail": {
+          "rotation": [
+            10,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.flamingo.sit": {
+      "loop": true,
+      "bones": {
+        "neck1": {
+          "rotation": [
+            -10,
+            0,
+            0
+          ]
+        },
+        "neck2": {
+          "rotation": [
+            20,
+            0,
+            0
+          ]
+        },
+        "neck3": {
+          "rotation": [
+            -20,
+            0,
+            0
+          ]
+        },
+        "neck4": {
+          "rotation": [
+            20,
+            0,
+            0
+          ]
+        },
+        "head": {
+          "rotation": [
+            -5,
+            0,
+            0
+          ]
+        },
+        "body": {
+          "position": [
+            0,
+            "-15.5 - query.is_baby * 2.5",
+            0
+          ],
+          "scale": [
+            "1.03",
+            "1 + math.sin(query.life_time * 70) * 0.012",
+            "1.03"
+          ]
+        },
+        "look": {
+          "rotation": [
+            0,
+            "math.sin(query.life_time * 12 + variable.offset * 20) * 35",
+            0
+          ]
+        },
+        "legL": {
+          "rotation": [
+            "39 + query.is_baby * 39",
+            0,
+            0
+          ]
+        },
+        "shinL": {
+          "rotation": [
+            "-129 - query.is_baby * 39",
+            0,
+            0
+          ]
+        },
+        "footL": {
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        },
+        "legR": {
+          "rotation": [
+            "39 + query.is_baby * 39",
+            0,
+            0
+          ]
+        },
+        "shinR": {
+          "rotation": [
+            "-129 - query.is_baby * 39",
+            0,
+            0
+          ]
+        },
+        "footR": {
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.flamingo.crop": {
+      "loop": true,
+      "bones": {
+        "neck1": {
+          "rotation": [
+            "(query.is_baby * -5 + (1 - query.is_baby) * 90) - 0 - 60",
+            0,
+            0
+          ]
+        },
+        "neck2": {
+          "rotation": [
+            "(query.is_baby * -15 + (1 - query.is_baby) * 110) - (query.is_baby * -5 + (1 - query.is_baby) * 90) - -90",
+            0,
+            0
+          ]
+        },
+        "neck3": {
+          "rotation": [
+            "(query.is_baby * -25 + (1 - query.is_baby) * 140) - (query.is_baby * -15 + (1 - query.is_baby) * 110) - -40",
+            0,
+            0
+          ]
+        },
+        "neck4": {
+          "rotation": [
+            "(query.is_baby * -10 + (1 - query.is_baby) * 160) - (query.is_baby * -25 + (1 - query.is_baby) * 140) - 110",
+            0,
+            0
+          ]
+        },
+        "head": {
+          "rotation": [
+            "(query.is_baby * (-45 + math.sin(query.life_time * 700) * 6) + (1 - query.is_baby) * (65 + math.sin(query.life_time * 200) * 5)) - (query.is_baby * -10 + (1 - query.is_baby) * 160) - -25",
+            0,
+            0
+          ]
+        },
+        "body": {
+          "position": [
+            0,
+            0,
+            "(1 - query.is_baby) * -6"
+          ],
+          "rotation": [
+            "(1 - query.is_baby) * 10",
+            0,
+            0
+          ]
+        },
+        "look": {
+          "rotation": [
+            0,
+            "query.is_baby * math.sin(query.life_time * 500) * 6",
+            0
+          ]
+        },
+        "legL": {
+          "rotation": [
+            "-((1 - query.is_baby) * 10)",
+            0,
+            0
+          ]
+        },
+        "legR": {
+          "rotation": [
+            "-((1 - query.is_baby) * 10)",
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.flamingo.chick": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "position": [
+            0,
+            -5,
+            0
+          ]
+        },
+        "neck1": {
+          "scale": [
+            0.8,
+            0.8,
+            0.8
+          ]
+        },
+        "head": {
+          "scale": [
+            1.35,
+            1.35,
+            1.35
+          ]
+        },
+        "legL": {
+          "scale": [
+            1.3,
+            0.8,
+            1.3
+          ]
+        },
+        "legR": {
+          "scale": [
+            1.3,
+            0.8,
+            1.3
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.flamingo.look_at_target": {
+      "loop": true,
+      "bones": {
+        "look": {
+          "rotation": [
+            0,
+            "math.clamp(query.target_y_rotation, -50, 50)",
+            0
+          ]
+        },
+        "head": {
+          "rotation": [
+            "math.clamp(query.target_x_rotation, -20, 20)",
+            0,
+            0
+          ]
+        }
+      }
+    }
+  }
+}

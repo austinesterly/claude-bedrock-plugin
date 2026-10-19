@@ -1,0 +1,1101 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.zoocraft.raccoon.walk": {
+      "loop": true,
+      "bones": {
+        "leg0": {
+          "rotation": [
+            "math.cos(query.anim_time * 480) * 30",
+            0,
+            0
+          ]
+        },
+        "hand0": {
+          "rotation": [
+            "-math.cos(query.anim_time * 480) * 18 + math.max(0, math.sin(query.anim_time * 480)) * 25",
+            0,
+            0
+          ]
+        },
+        "leg3": {
+          "rotation": [
+            "math.cos(query.anim_time * 480) * 28",
+            0,
+            0
+          ]
+        },
+        "foot3": {
+          "rotation": [
+            "-math.cos(query.anim_time * 480) * 18 + math.max(0, math.sin(query.anim_time * 480)) * 20",
+            0,
+            0
+          ]
+        },
+        "leg1": {
+          "rotation": [
+            "math.cos(query.anim_time * 480 + 180) * 30",
+            0,
+            0
+          ]
+        },
+        "hand1": {
+          "rotation": [
+            "-math.cos(query.anim_time * 480 + 180) * 18 + math.max(0, math.sin(query.anim_time * 480 + 180)) * 25",
+            0,
+            0
+          ]
+        },
+        "leg2": {
+          "rotation": [
+            "math.cos(query.anim_time * 480 + 180) * 28",
+            0,
+            0
+          ]
+        },
+        "foot2": {
+          "rotation": [
+            "-math.cos(query.anim_time * 480 + 180) * 18 + math.max(0, math.sin(query.anim_time * 480 + 180)) * 20",
+            0,
+            0
+          ]
+        },
+        "body": {
+          "position": [
+            0,
+            "math.abs(math.sin(query.anim_time * 480)) * 0.4",
+            0
+          ],
+          "rotation": [
+            "-0.049 + (math.sin(query.anim_time * 480) * 2) * -0.0014 + (math.sin(query.anim_time * 480) * 3) * -0.0021",
+            "(math.sin(query.anim_time * 480) * 2) * 0.3074 + (math.sin(query.anim_time * 480) * 3) * 0.461",
+            "(math.sin(query.anim_time * 480) * 2) * -0.4618 + (math.sin(query.anim_time * 480) * 3) * -0.6926"
+          ]
+        },
+        "head": {
+          "rotation": [
+            "(math.sin(query.anim_time * 480 * 2) * 2) * 1.0007",
+            "(math.sin(query.anim_time * 480) * -3) * 0.9998",
+            "0.0062 + (math.sin(query.anim_time * 480 * 2) * 2) * -0.004 + (math.sin(query.anim_time * 480) * -3) * 0.0021"
+          ]
+        },
+        "tail": {
+          "rotation": [
+            "-0.0004 + (math.sin(query.anim_time * 480 * 2) * 3) * 1.0074",
+            "0.0003 + (math.sin(query.anim_time * 480) * 10) * 0.9995",
+            "-0.031 + (math.sin(query.anim_time * 480 * 2) * 3) * 0.0133 + (math.sin(query.anim_time * 480) * 10) * 0.0031"
+          ]
+        },
+        "tail2": {
+          "rotation": [
+            0,
+            "(math.sin(query.anim_time * 480 - 40) * 12)",
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.raccoon.scramble": {
+      "loop": true,
+      "bones": {
+        "leg0": {
+          "rotation": [
+            "math.cos(query.anim_time * 820) * 40",
+            0,
+            0
+          ]
+        },
+        "hand0": {
+          "rotation": [
+            "-math.cos(query.anim_time * 820) * 24 + math.max(0, math.sin(query.anim_time * 820)) * 25",
+            0,
+            0
+          ]
+        },
+        "leg3": {
+          "rotation": [
+            "math.cos(query.anim_time * 820) * 38",
+            0,
+            0
+          ]
+        },
+        "foot3": {
+          "rotation": [
+            "-math.cos(query.anim_time * 820) * 24 + math.max(0, math.sin(query.anim_time * 820)) * 20",
+            0,
+            0
+          ]
+        },
+        "leg1": {
+          "rotation": [
+            "math.cos(query.anim_time * 820 + 180) * 40",
+            0,
+            0
+          ]
+        },
+        "hand1": {
+          "rotation": [
+            "-math.cos(query.anim_time * 820 + 180) * 24 + math.max(0, math.sin(query.anim_time * 820 + 180)) * 25",
+            0,
+            0
+          ]
+        },
+        "leg2": {
+          "rotation": [
+            "math.cos(query.anim_time * 820 + 180) * 38",
+            0,
+            0
+          ]
+        },
+        "foot2": {
+          "rotation": [
+            "-math.cos(query.anim_time * 820 + 180) * 24 + math.max(0, math.sin(query.anim_time * 820 + 180)) * 20",
+            0,
+            0
+          ]
+        },
+        "body": {
+          "position": [
+            0,
+            "math.abs(math.sin(query.anim_time * 820)) * 0.8",
+            0
+          ],
+          "rotation": [
+            "-0.0642 + (math.sin(query.anim_time * 820) * 2) * 0.0006 + (math.sin(query.anim_time * 820) * 4) * 0.0011",
+            "0.0001 + (math.sin(query.anim_time * 820) * 2) * 0.1996 + (math.sin(query.anim_time * 820) * 4) * 0.3993",
+            "(math.sin(query.anim_time * 820) * 2) * -0.4002 + (math.sin(query.anim_time * 820) * 4) * -0.8004"
+          ]
+        },
+        "head": {
+          "rotation": [
+            "(math.sin(query.anim_time * 820 * 2) * 2) * 1.0007",
+            "(math.sin(query.anim_time * 820) * -3) * 0.9997",
+            "-0.0002 + (math.sin(query.anim_time * 820 * 2) * 2) * -0.0011 + (math.sin(query.anim_time * 820) * -3) * -0.0012"
+          ]
+        },
+        "tail": {
+          "rotation": [
+            "0.0008 + (math.sin(query.anim_time * 820 * 2) * 3) * 1.0076 + (math.sin(query.anim_time * 820) * 10) * 0.0001",
+            "-0.0001 + (math.sin(query.anim_time * 820) * 10) * 0.9993",
+            "0.0011 + (math.sin(query.anim_time * 820 * 2) * 3) * 0.0035 + (math.sin(query.anim_time * 820) * 10) * -0.0018"
+          ]
+        },
+        "tail2": {
+          "rotation": [
+            0,
+            "(math.sin(query.anim_time * 820 - 40) * 12)",
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.raccoon.idle": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "rotation": [
+            "(math.clamp((math.mod(query.life_time + variable.offset, 24) - 2) / 0.7, 0, 1) * math.clamp((7 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * 4 - (math.clamp((math.mod(query.life_time + variable.offset, 24) - 15) / 0.7, 0, 1) * math.clamp((19 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * 14 + (math.clamp((math.mod(query.life_time + variable.offset, 24) - 20.5) / 0.6, 0, 1) * math.clamp((22.8 - math.mod(query.life_time + variable.offset, 24)) / 0.6, 0, 1)) * 12",
+            0,
+            0
+          ],
+          "position": [
+            0,
+            "(math.clamp((math.mod(query.life_time + variable.offset, 24) - 20.5) / 0.6, 0, 1) * math.clamp((22.8 - math.mod(query.life_time + variable.offset, 24)) / 0.6, 0, 1)) * -0.5",
+            0
+          ],
+          "scale": [
+            "1",
+            "1 + math.sin(query.life_time * 90) * 0.015",
+            "1"
+          ]
+        },
+        "head": {
+          "rotation": [
+            "-0.0138 + ((math.clamp((math.mod(query.life_time + variable.offset, 24) - 2) / 0.7, 0, 1) * math.clamp((7 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * (24 + math.sin(query.life_time * 900) * 3) - (math.clamp((math.mod(query.life_time + variable.offset, 24) - 9) / 0.7, 0, 1) * math.clamp((13 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * 12 + (math.clamp((math.mod(query.life_time + variable.offset, 24) - 15) / 0.7, 0, 1) * math.clamp((19 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * 22 - (math.clamp((math.mod(query.life_time + variable.offset, 24) - 20.5) / 0.6, 0, 1) * math.clamp((22.8 - math.mod(query.life_time + variable.offset, 24)) / 0.6, 0, 1)) * 34) * 1.0033 + ((math.clamp((math.mod(query.life_time + variable.offset, 24) - 9) / 0.7, 0, 1) * math.clamp((13 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * math.sin(query.life_time * 30) * 35 + (math.clamp((math.mod(query.life_time + variable.offset, 24) - 2) / 0.7, 0, 1) * math.clamp((7 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * math.sin(query.life_time * 160) * 8) * -0.0626",
+            "0.0136 + ((math.clamp((math.mod(query.life_time + variable.offset, 24) - 2) / 0.7, 0, 1) * math.clamp((7 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * (24 + math.sin(query.life_time * 900) * 3) - (math.clamp((math.mod(query.life_time + variable.offset, 24) - 9) / 0.7, 0, 1) * math.clamp((13 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * 12 + (math.clamp((math.mod(query.life_time + variable.offset, 24) - 15) / 0.7, 0, 1) * math.clamp((19 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * 22 - (math.clamp((math.mod(query.life_time + variable.offset, 24) - 20.5) / 0.6, 0, 1) * math.clamp((22.8 - math.mod(query.life_time + variable.offset, 24)) / 0.6, 0, 1)) * 34) * -0.0009 + ((math.clamp((math.mod(query.life_time + variable.offset, 24) - 9) / 0.7, 0, 1) * math.clamp((13 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * math.sin(query.life_time * 30) * 35 + (math.clamp((math.mod(query.life_time + variable.offset, 24) - 2) / 0.7, 0, 1) * math.clamp((7 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * math.sin(query.life_time * 160) * 8) * 0.9664",
+            "-0.1398 + ((math.clamp((math.mod(query.life_time + variable.offset, 24) - 2) / 0.7, 0, 1) * math.clamp((7 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * (24 + math.sin(query.life_time * 900) * 3) - (math.clamp((math.mod(query.life_time + variable.offset, 24) - 9) / 0.7, 0, 1) * math.clamp((13 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * 12 + (math.clamp((math.mod(query.life_time + variable.offset, 24) - 15) / 0.7, 0, 1) * math.clamp((19 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * 22 - (math.clamp((math.mod(query.life_time + variable.offset, 24) - 20.5) / 0.6, 0, 1) * math.clamp((22.8 - math.mod(query.life_time + variable.offset, 24)) / 0.6, 0, 1)) * 34) * 0.0083 + ((math.clamp((math.mod(query.life_time + variable.offset, 24) - 9) / 0.7, 0, 1) * math.clamp((13 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * math.sin(query.life_time * 30) * 35 + (math.clamp((math.mod(query.life_time + variable.offset, 24) - 2) / 0.7, 0, 1) * math.clamp((7 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * math.sin(query.life_time * 160) * 8) * -0.1566"
+          ]
+        },
+        "jaw": {
+          "rotation": [
+            "(math.clamp((math.mod(query.life_time + variable.offset, 24) - 2) / 0.7, 0, 1) * math.clamp((7 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * math.max(0, math.sin(query.life_time * 900)) * 6 + (math.clamp((math.mod(query.life_time + variable.offset, 24) - 20.5) / 0.6, 0, 1) * math.clamp((22.8 - math.mod(query.life_time + variable.offset, 24)) / 0.6, 0, 1)) * 28",
+            0,
+            0
+          ]
+        },
+        "earL": {
+          "rotation": [
+            "math.max(0, math.sin(query.life_time * 70 + variable.offset * 20) - 0.92) * -120 - (math.clamp((math.mod(query.life_time + variable.offset, 24) - 9) / 0.7, 0, 1) * math.clamp((13 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * 10 + (math.clamp((math.mod(query.life_time + variable.offset, 24) - 20.5) / 0.6, 0, 1) * math.clamp((22.8 - math.mod(query.life_time + variable.offset, 24)) / 0.6, 0, 1)) * 20",
+            0,
+            0
+          ]
+        },
+        "earR": {
+          "rotation": [
+            "math.max(0, math.sin(query.life_time * 60 + variable.offset * 30) - 0.92) * -120 - (math.clamp((math.mod(query.life_time + variable.offset, 24) - 9) / 0.7, 0, 1) * math.clamp((13 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * 10 + (math.clamp((math.mod(query.life_time + variable.offset, 24) - 20.5) / 0.6, 0, 1) * math.clamp((22.8 - math.mod(query.life_time + variable.offset, 24)) / 0.6, 0, 1)) * 20",
+            0,
+            0
+          ]
+        },
+        "leg0": {
+          "rotation": [
+            "(math.clamp((math.mod(query.life_time + variable.offset, 24) - 2) / 0.7, 0, 1) * math.clamp((7 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * -6 + (math.clamp((math.mod(query.life_time + variable.offset, 24) - 15) / 0.7, 0, 1) * math.clamp((19 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * (-30 + math.sin(query.life_time * 700) * 6) - (math.clamp((math.mod(query.life_time + variable.offset, 24) - 20.5) / 0.6, 0, 1) * math.clamp((22.8 - math.mod(query.life_time + variable.offset, 24)) / 0.6, 0, 1)) * 50",
+            0,
+            0
+          ]
+        },
+        "leg1": {
+          "rotation": [
+            "(math.clamp((math.mod(query.life_time + variable.offset, 24) - 2) / 0.7, 0, 1) * math.clamp((7 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * -6 + (math.clamp((math.mod(query.life_time + variable.offset, 24) - 15) / 0.7, 0, 1) * math.clamp((19 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * (-30 - math.sin(query.life_time * 700) * 6) - (math.clamp((math.mod(query.life_time + variable.offset, 24) - 20.5) / 0.6, 0, 1) * math.clamp((22.8 - math.mod(query.life_time + variable.offset, 24)) / 0.6, 0, 1)) * 50",
+            0,
+            0
+          ]
+        },
+        "hand0": {
+          "rotation": [
+            "0.0073 + ((math.clamp((math.mod(query.life_time + variable.offset, 24) - 15) / 0.7, 0, 1) * math.clamp((19 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * 35 + (math.clamp((math.mod(query.life_time + variable.offset, 24) - 20.5) / 0.6, 0, 1) * math.clamp((22.8 - math.mod(query.life_time + variable.offset, 24)) / 0.6, 0, 1)) * 38) * 0.986 + ((math.clamp((math.mod(query.life_time + variable.offset, 24) - 15) / 0.7, 0, 1) * math.clamp((19 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * math.sin(query.life_time * 700) * 20) * 0.0038",
+            "0.0294 + ((math.clamp((math.mod(query.life_time + variable.offset, 24) - 15) / 0.7, 0, 1) * math.clamp((19 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * 35 + (math.clamp((math.mod(query.life_time + variable.offset, 24) - 20.5) / 0.6, 0, 1) * math.clamp((22.8 - math.mod(query.life_time + variable.offset, 24)) / 0.6, 0, 1)) * 38) * 0.0028 + ((math.clamp((math.mod(query.life_time + variable.offset, 24) - 15) / 0.7, 0, 1) * math.clamp((19 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * math.sin(query.life_time * 700) * 20) * 0.5412",
+            "0.0118 + ((math.clamp((math.mod(query.life_time + variable.offset, 24) - 15) / 0.7, 0, 1) * math.clamp((19 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * 35 + (math.clamp((math.mod(query.life_time + variable.offset, 24) - 20.5) / 0.6, 0, 1) * math.clamp((22.8 - math.mod(query.life_time + variable.offset, 24)) / 0.6, 0, 1)) * 38) * 0.0015 + ((math.clamp((math.mod(query.life_time + variable.offset, 24) - 15) / 0.7, 0, 1) * math.clamp((19 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * math.sin(query.life_time * 700) * 20) * -0.8433"
+          ]
+        },
+        "hand1": {
+          "rotation": [
+            "0.0073 + ((math.clamp((math.mod(query.life_time + variable.offset, 24) - 15) / 0.7, 0, 1) * math.clamp((19 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * 35 + (math.clamp((math.mod(query.life_time + variable.offset, 24) - 20.5) / 0.6, 0, 1) * math.clamp((22.8 - math.mod(query.life_time + variable.offset, 24)) / 0.6, 0, 1)) * 38) * 0.986 + ((math.clamp((math.mod(query.life_time + variable.offset, 24) - 15) / 0.7, 0, 1) * math.clamp((19 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * math.sin(query.life_time * 700) * -20) * -0.0038",
+            "-0.0294 + ((math.clamp((math.mod(query.life_time + variable.offset, 24) - 15) / 0.7, 0, 1) * math.clamp((19 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * 35 + (math.clamp((math.mod(query.life_time + variable.offset, 24) - 20.5) / 0.6, 0, 1) * math.clamp((22.8 - math.mod(query.life_time + variable.offset, 24)) / 0.6, 0, 1)) * 38) * -0.0028 + ((math.clamp((math.mod(query.life_time + variable.offset, 24) - 15) / 0.7, 0, 1) * math.clamp((19 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * math.sin(query.life_time * 700) * -20) * 0.5412",
+            "-0.0118 + ((math.clamp((math.mod(query.life_time + variable.offset, 24) - 15) / 0.7, 0, 1) * math.clamp((19 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * 35 + (math.clamp((math.mod(query.life_time + variable.offset, 24) - 20.5) / 0.6, 0, 1) * math.clamp((22.8 - math.mod(query.life_time + variable.offset, 24)) / 0.6, 0, 1)) * 38) * -0.0015 + ((math.clamp((math.mod(query.life_time + variable.offset, 24) - 15) / 0.7, 0, 1) * math.clamp((19 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * math.sin(query.life_time * 700) * -20) * -0.8433"
+          ]
+        },
+        "leg2": {
+          "rotation": [
+            "(math.clamp((math.mod(query.life_time + variable.offset, 24) - 15) / 0.7, 0, 1) * math.clamp((19 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * 14 - (math.clamp((math.mod(query.life_time + variable.offset, 24) - 20.5) / 0.6, 0, 1) * math.clamp((22.8 - math.mod(query.life_time + variable.offset, 24)) / 0.6, 0, 1)) * 12",
+            0,
+            0
+          ]
+        },
+        "leg3": {
+          "rotation": [
+            "(math.clamp((math.mod(query.life_time + variable.offset, 24) - 15) / 0.7, 0, 1) * math.clamp((19 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * 14 - (math.clamp((math.mod(query.life_time + variable.offset, 24) - 20.5) / 0.6, 0, 1) * math.clamp((22.8 - math.mod(query.life_time + variable.offset, 24)) / 0.6, 0, 1)) * 12",
+            0,
+            0
+          ]
+        },
+        "tail": {
+          "rotation": [
+            "0.0027 + ((math.clamp((math.mod(query.life_time + variable.offset, 24) - 15) / 0.7, 0, 1) * math.clamp((19 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * 14 + (math.clamp((math.mod(query.life_time + variable.offset, 24) - 20.5) / 0.6, 0, 1) * math.clamp((22.8 - math.mod(query.life_time + variable.offset, 24)) / 0.6, 0, 1)) * 22) * 1.0003 + (((1 - (math.clamp((math.mod(query.life_time + variable.offset, 24) - 2) / 0.7, 0, 1) * math.clamp((7 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1))) * (1 - (math.clamp((math.mod(query.life_time + variable.offset, 24) - 9) / 0.7, 0, 1) * math.clamp((13 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1))) * (1 - (math.clamp((math.mod(query.life_time + variable.offset, 24) - 15) / 0.7, 0, 1) * math.clamp((19 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1))) * (1 - (math.clamp((math.mod(query.life_time + variable.offset, 24) - 20.5) / 0.6, 0, 1) * math.clamp((22.8 - math.mod(query.life_time + variable.offset, 24)) / 0.6, 0, 1)))) * math.sin(query.life_time * 40 + variable.offset * 15) * 14) * 0.0007",
+            "-0.0002 + ((math.clamp((math.mod(query.life_time + variable.offset, 24) - 15) / 0.7, 0, 1) * math.clamp((19 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * 14 + (math.clamp((math.mod(query.life_time + variable.offset, 24) - 20.5) / 0.6, 0, 1) * math.clamp((22.8 - math.mod(query.life_time + variable.offset, 24)) / 0.6, 0, 1)) * 22) * -0.0008 + (((1 - (math.clamp((math.mod(query.life_time + variable.offset, 24) - 2) / 0.7, 0, 1) * math.clamp((7 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1))) * (1 - (math.clamp((math.mod(query.life_time + variable.offset, 24) - 9) / 0.7, 0, 1) * math.clamp((13 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1))) * (1 - (math.clamp((math.mod(query.life_time + variable.offset, 24) - 15) / 0.7, 0, 1) * math.clamp((19 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1))) * (1 - (math.clamp((math.mod(query.life_time + variable.offset, 24) - 20.5) / 0.6, 0, 1) * math.clamp((22.8 - math.mod(query.life_time + variable.offset, 24)) / 0.6, 0, 1)))) * math.sin(query.life_time * 40 + variable.offset * 15) * 14) * 0.9993",
+            "0.0129 + ((math.clamp((math.mod(query.life_time + variable.offset, 24) - 15) / 0.7, 0, 1) * math.clamp((19 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1)) * 14 + (math.clamp((math.mod(query.life_time + variable.offset, 24) - 20.5) / 0.6, 0, 1) * math.clamp((22.8 - math.mod(query.life_time + variable.offset, 24)) / 0.6, 0, 1)) * 22) * 0.0045 + (((1 - (math.clamp((math.mod(query.life_time + variable.offset, 24) - 2) / 0.7, 0, 1) * math.clamp((7 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1))) * (1 - (math.clamp((math.mod(query.life_time + variable.offset, 24) - 9) / 0.7, 0, 1) * math.clamp((13 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1))) * (1 - (math.clamp((math.mod(query.life_time + variable.offset, 24) - 15) / 0.7, 0, 1) * math.clamp((19 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1))) * (1 - (math.clamp((math.mod(query.life_time + variable.offset, 24) - 20.5) / 0.6, 0, 1) * math.clamp((22.8 - math.mod(query.life_time + variable.offset, 24)) / 0.6, 0, 1)))) * math.sin(query.life_time * 40 + variable.offset * 15) * 14) * 0.0115"
+          ]
+        },
+        "tail2": {
+          "rotation": [
+            0,
+            "(((1 - (math.clamp((math.mod(query.life_time + variable.offset, 24) - 2) / 0.7, 0, 1) * math.clamp((7 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1))) * (1 - (math.clamp((math.mod(query.life_time + variable.offset, 24) - 9) / 0.7, 0, 1) * math.clamp((13 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1))) * (1 - (math.clamp((math.mod(query.life_time + variable.offset, 24) - 15) / 0.7, 0, 1) * math.clamp((19 - math.mod(query.life_time + variable.offset, 24)) / 0.7, 0, 1))) * (1 - (math.clamp((math.mod(query.life_time + variable.offset, 24) - 20.5) / 0.6, 0, 1) * math.clamp((22.8 - math.mod(query.life_time + variable.offset, 24)) / 0.6, 0, 1)))) * math.sin(query.life_time * 40 + variable.offset * 15 - 50) * 10)",
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.raccoon.climb": {
+      "loop": true,
+      "bones": {
+        "climb": {
+          "rotation": [
+            -90,
+            0,
+            0
+          ]
+        },
+        "body": {
+          "rotation": [
+            0,
+            0,
+            "-(math.sin(query.anim_time * 900) * 4)"
+          ]
+        },
+        "head": {
+          "rotation": [
+            -15.0163,
+            "(math.sin(query.anim_time * 900) * 4) * 0.9659",
+            "(math.sin(query.anim_time * 900) * 4) * -0.2591"
+          ]
+        },
+        "leg0": {
+          "rotation": [
+            "-50 + math.sin(query.anim_time * 900) * 30",
+            0,
+            0
+          ]
+        },
+        "hand0": {
+          "rotation": [
+            "20 + math.sin(query.anim_time * 900) * 15",
+            0,
+            0
+          ]
+        },
+        "leg1": {
+          "rotation": [
+            "-50 - math.sin(query.anim_time * 900) * 30",
+            0,
+            0
+          ]
+        },
+        "hand1": {
+          "rotation": [
+            "20 - math.sin(query.anim_time * 900) * 15",
+            0,
+            0
+          ]
+        },
+        "leg2": {
+          "rotation": [
+            "-40 - math.sin(query.anim_time * 900) * 25",
+            0,
+            0
+          ]
+        },
+        "foot2": {
+          "rotation": [
+            "40 + math.sin(query.anim_time * 900) * 25",
+            0,
+            0
+          ]
+        },
+        "leg3": {
+          "rotation": [
+            "-40 + math.sin(query.anim_time * 900) * 25",
+            0,
+            0
+          ]
+        },
+        "foot3": {
+          "rotation": [
+            "40 - math.sin(query.anim_time * 900) * 25",
+            0,
+            0
+          ]
+        },
+        "tail": {
+          "rotation": [
+            "45.1462 + (math.sin(query.anim_time * 900 * 0.5) * 8) * 0.0054",
+            "-0.0004 + (math.sin(query.anim_time * 900 * 0.5) * 8) * 0.7062",
+            "0.0007 + (math.sin(query.anim_time * 900 * 0.5) * 8) * 0.7089"
+          ]
+        },
+        "tail2": {
+          "rotation": [
+            "10.0458 + (math.sin(query.anim_time * 900 * 0.5 - 40) * 8) * 0.0008",
+            "(math.sin(query.anim_time * 900 * 0.5 - 40) * 8) * 0.9847",
+            "(math.sin(query.anim_time * 900 * 0.5 - 40) * 8) * 0.1744"
+          ]
+        },
+        "earL": {
+          "rotation": [
+            "math.max(0, math.sin(query.life_time * 70 + variable.offset * 20) - 0.92) * -120",
+            0,
+            0
+          ]
+        },
+        "earR": {
+          "rotation": [
+            "math.max(0, math.sin(query.life_time * 60 + variable.offset * 30) - 0.92) * -120",
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.raccoon.cling": {
+      "loop": true,
+      "bones": {
+        "climb": {
+          "rotation": [
+            -90,
+            0,
+            0
+          ]
+        },
+        "body": {
+          "scale": [
+            "1",
+            "1 + math.sin(query.life_time * 90) * 0.015",
+            "1"
+          ]
+        },
+        "head": {
+          "rotation": [
+            "0.27 + (-10 + math.sin(query.life_time * 40) * 8) * 1.1242 + (math.sin(query.life_time * 25 + variable.offset * 15) * 35) * -0.0046",
+            "0.4936 + (-10 + math.sin(query.life_time * 40) * 8) * 0.0281 + (math.sin(query.life_time * 25 + variable.offset * 15) * 35) * 0.9699",
+            "3.1192 + (-10 + math.sin(query.life_time * 40) * 8) * 0.1897 + (math.sin(query.life_time * 25 + variable.offset * 15) * 35) * -0.2401"
+          ]
+        },
+        "leg0": {
+          "rotation": [
+            -55,
+            0,
+            0
+          ]
+        },
+        "hand0": {
+          "rotation": [
+            25,
+            0,
+            0
+          ]
+        },
+        "leg1": {
+          "rotation": [
+            -40,
+            0,
+            0
+          ]
+        },
+        "hand1": {
+          "rotation": [
+            20,
+            0,
+            0
+          ]
+        },
+        "leg2": {
+          "rotation": [
+            -35,
+            0,
+            0
+          ]
+        },
+        "foot2": {
+          "rotation": [
+            35,
+            0,
+            0
+          ]
+        },
+        "leg3": {
+          "rotation": [
+            -45,
+            0,
+            0
+          ]
+        },
+        "foot3": {
+          "rotation": [
+            45,
+            0,
+            0
+          ]
+        },
+        "tail": {
+          "rotation": [
+            "30.1891 + (math.sin(query.life_time * 30 + variable.offset * 10) * 10) * 0.0009",
+            "0.0002 + (math.sin(query.life_time * 30 + variable.offset * 10) * 10) * 0.8652",
+            "-0.0007 + (math.sin(query.life_time * 30 + variable.offset * 10) * 10) * 0.5027"
+          ]
+        },
+        "tail2": {
+          "rotation": [
+            "8.0561 + (math.sin(query.life_time * 30 + variable.offset * 10 - 40) * 10) * 0.0006",
+            "(math.sin(query.life_time * 30 + variable.offset * 10 - 40) * 10) * 0.9902",
+            "-0.0004 + (math.sin(query.life_time * 30 + variable.offset * 10 - 40) * 10) * 0.1403"
+          ]
+        },
+        "earL": {
+          "rotation": [
+            "math.max(0, math.sin(query.life_time * 70 + variable.offset * 20) - 0.92) * -120",
+            0,
+            0
+          ]
+        },
+        "earR": {
+          "rotation": [
+            "math.max(0, math.sin(query.life_time * 60 + variable.offset * 30) - 0.92) * -120",
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.raccoon.down": {
+      "loop": true,
+      "bones": {
+        "descend": {
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        },
+        "body": {
+          "rotation": [
+            0,
+            0,
+            "-(math.sin(query.anim_time * 1000) * 4)"
+          ]
+        },
+        "head": {
+          "rotation": [
+            "-30.0732 + (math.sin(query.anim_time * 1000 * 0.5) * 6) * -0.0021",
+            "-0.0001 + (math.sin(query.anim_time * 1000 * 0.5) * 6) * 0.8657",
+            "-0.0003 + (math.sin(query.anim_time * 1000 * 0.5) * 6) * -0.5011"
+          ]
+        },
+        "leg0": {
+          "rotation": [
+            "-45 + math.sin(query.anim_time * 1000) * 25",
+            0,
+            0
+          ]
+        },
+        "hand0": {
+          "rotation": [
+            "25 + math.sin(query.anim_time * 1000) * 10",
+            0,
+            0
+          ]
+        },
+        "leg1": {
+          "rotation": [
+            "-45 - math.sin(query.anim_time * 1000) * 25",
+            0,
+            0
+          ]
+        },
+        "hand1": {
+          "rotation": [
+            "25 - math.sin(query.anim_time * 1000) * 10",
+            0,
+            0
+          ]
+        },
+        "leg2": {
+          "rotation": [
+            "35 - math.sin(query.anim_time * 1000) * 20",
+            0,
+            0
+          ]
+        },
+        "foot2": {
+          "rotation": [
+            "-75 + math.sin(query.anim_time * 1000) * 10",
+            0,
+            0
+          ]
+        },
+        "leg3": {
+          "rotation": [
+            "35 + math.sin(query.anim_time * 1000) * 20",
+            0,
+            0
+          ]
+        },
+        "foot3": {
+          "rotation": [
+            "-75 - math.sin(query.anim_time * 1000) * 10",
+            0,
+            0
+          ]
+        },
+        "tail": {
+          "rotation": [
+            "5.0262 + (math.sin(query.anim_time * 1000 * 0.5) * 8) * 0.0006",
+            "(math.sin(query.anim_time * 1000 * 0.5) * 8) * 0.9962",
+            "0.0002 + (math.sin(query.anim_time * 1000 * 0.5) * 8) * 0.0876"
+          ]
+        },
+        "tail2": {
+          "rotation": [
+            "5.0196 + (math.sin(query.anim_time * 1000 * 0.5 - 40) * 8) * 0.0004",
+            "(math.sin(query.anim_time * 1000 * 0.5 - 40) * 8) * 0.9962",
+            "(math.sin(query.anim_time * 1000 * 0.5 - 40) * 8) * 0.0875"
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.raccoon.lookout": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "rotation": [
+            -40,
+            0,
+            0
+          ],
+          "scale": [
+            "1",
+            "1 + math.sin(query.life_time * 90) * 0.015",
+            "1"
+          ]
+        },
+        "head": {
+          "rotation": [
+            "3.3971 + (30 + math.sin(query.life_time * 23) * 6) * 1.0865 + (math.sin(query.life_time * 18 + variable.offset * 10) * 50) * -0.0182",
+            "-2.4146 + (30 + math.sin(query.life_time * 23) * 6) * 0.0663 + (math.sin(query.life_time * 18 + variable.offset * 10) * 50) * 0.8295",
+            "3.1442 + (30 + math.sin(query.life_time * 23) * 6) * -0.0862 + (math.sin(query.life_time * 18 + variable.offset * 10) * 50) * 0.5957"
+          ]
+        },
+        "leg0": {
+          "rotation": [
+            25,
+            0,
+            0
+          ]
+        },
+        "hand0": {
+          "rotation": [
+            25,
+            0,
+            0
+          ]
+        },
+        "leg1": {
+          "rotation": [
+            25,
+            0,
+            0
+          ]
+        },
+        "hand1": {
+          "rotation": [
+            25,
+            0,
+            0
+          ]
+        },
+        "leg2": {
+          "rotation": [
+            40,
+            0,
+            0
+          ]
+        },
+        "leg3": {
+          "rotation": [
+            40,
+            0,
+            0
+          ]
+        },
+        "tail": {
+          "rotation": [
+            "50.3022 + (math.sin(query.life_time * 35 + variable.offset * 10) * 12) * -0.0009",
+            "-0.0005 + (math.sin(query.life_time * 35 + variable.offset * 10) * 12) * 0.6406",
+            "0.0009 + (math.sin(query.life_time * 35 + variable.offset * 10) * 12) * 0.7697"
+          ]
+        },
+        "tail2": {
+          "rotation": [
+            0,
+            "(math.sin(query.life_time * 35 + variable.offset * 10 - 40) * 10)",
+            0
+          ]
+        },
+        "earL": {
+          "rotation": [
+            "math.max(0, math.sin(query.life_time * 70 + variable.offset * 20) - 0.92) * -120",
+            0,
+            0
+          ]
+        },
+        "earR": {
+          "rotation": [
+            "math.max(0, math.sin(query.life_time * 60 + variable.offset * 30) - 0.92) * -120",
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.raccoon.sleep": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "position": [
+            0,
+            -2,
+            0
+          ],
+          "scale": [
+            "1.04",
+            "0.94 + math.sin(query.life_time * 60) * 0.03",
+            "0.96"
+          ]
+        },
+        "head": {
+          "rotation": [
+            43.6584,
+            49.5009,
+            29.5676
+          ],
+          "position": [
+            0,
+            -1,
+            1
+          ]
+        },
+        "earL": {
+          "rotation": [
+            25,
+            0,
+            0
+          ]
+        },
+        "earR": {
+          "rotation": [
+            25,
+            0,
+            0
+          ]
+        },
+        "leg0": {
+          "rotation": [
+            80,
+            0,
+            0
+          ],
+          "scale": [
+            "0.6",
+            "0.6",
+            "0.6"
+          ]
+        },
+        "leg1": {
+          "rotation": [
+            80,
+            0,
+            0
+          ],
+          "scale": [
+            "0.6",
+            "0.6",
+            "0.6"
+          ]
+        },
+        "leg2": {
+          "rotation": [
+            -70,
+            0,
+            0
+          ],
+          "scale": [
+            "0.6",
+            "0.6",
+            "0.6"
+          ]
+        },
+        "leg3": {
+          "rotation": [
+            -70,
+            0,
+            0
+          ],
+          "scale": [
+            "0.6",
+            "0.6",
+            "0.6"
+          ]
+        },
+        "tail": {
+          "rotation": [
+            38.0763,
+            65.1858,
+            35.4166
+          ]
+        },
+        "tail2": {
+          "rotation": [
+            9.925,
+            59.6245,
+            8.5844
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.raccoon.wash": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "rotation": [
+            12,
+            0,
+            0
+          ],
+          "position": [
+            0,
+            -0.5,
+            0
+          ]
+        },
+        "head": {
+          "rotation": [
+            "-0.0576 + (20 + math.sin(query.life_time * 200) * 3) * 1.0079 + (math.sin(query.life_time * 45) * 8) * 0.0016",
+            "0.0829 + (20 + math.sin(query.life_time * 200) * 3) * -0.0039 + (math.sin(query.life_time * 45) * 8) * 0.9346",
+            "-0.2255 + (20 + math.sin(query.life_time * 200) * 3) * 0.0107 + (math.sin(query.life_time * 45) * 8) * 0.3543"
+          ]
+        },
+        "leg0": {
+          "rotation": [
+            "-35 + math.sin(query.life_time * 700) * 10",
+            0,
+            0
+          ]
+        },
+        "hand0": {
+          "rotation": [
+            "0.0328 + (30 + math.sin(query.life_time * 700) * 25) * 0.9873 + (math.sin(query.life_time * 700) * 15) * 0.0026",
+            "-0.0114 + (30 + math.sin(query.life_time * 700) * 25) * 0.1042 + (math.sin(query.life_time * 700) * 15) * 0.2673",
+            "0.0526 + (30 + math.sin(query.life_time * 700) * 25) * 0.0572 + (math.sin(query.life_time * 700) * 15) * -0.9129"
+          ]
+        },
+        "leg1": {
+          "rotation": [
+            "-35 - math.sin(query.life_time * 700) * 10",
+            0,
+            0
+          ]
+        },
+        "hand1": {
+          "rotation": [
+            "0.033 + (30 - math.sin(query.life_time * 700) * 25) * 0.9873 + (math.sin(query.life_time * 700) * -15) * -0.001",
+            "-0.0137 + (30 - math.sin(query.life_time * 700) * 25) * 0.1041 + (math.sin(query.life_time * 700) * -15) * 0.3084",
+            "0.0514 + (30 - math.sin(query.life_time * 700) * 25) * 0.0574 + (math.sin(query.life_time * 700) * -15) * -0.8901"
+          ]
+        },
+        "leg2": {
+          "rotation": [
+            10,
+            0,
+            0
+          ]
+        },
+        "foot2": {
+          "rotation": [
+            -10,
+            0,
+            0
+          ]
+        },
+        "leg3": {
+          "rotation": [
+            10,
+            0,
+            0
+          ]
+        },
+        "foot3": {
+          "rotation": [
+            -10,
+            0,
+            0
+          ]
+        },
+        "tail": {
+          "rotation": [
+            0,
+            "(math.sin(query.life_time * 40) * 10)",
+            0
+          ]
+        },
+        "earL": {
+          "rotation": [
+            "math.max(0, math.sin(query.life_time * 70 + variable.offset * 20) - 0.92) * -120",
+            0,
+            0
+          ]
+        },
+        "earR": {
+          "rotation": [
+            "math.max(0, math.sin(query.life_time * 60 + variable.offset * 30) - 0.92) * -120",
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.raccoon.puzzle": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "rotation": [
+            -25,
+            0,
+            0
+          ]
+        },
+        "head": {
+          "rotation": [
+            "0.1827 + (25 + math.sin(query.life_time * 120) * 4) * 0.9852 + (math.sin(query.life_time * 30) * 10) * -0.0032",
+            "-0.5473 + (25 + math.sin(query.life_time * 120) * 4) * 0.0215 + (math.sin(query.life_time * 30) * 10) * 0.4111",
+            "-0.2535 + (25 + math.sin(query.life_time * 120) * 4) * 0.01 + (math.sin(query.life_time * 30) * 10) * -0.9109"
+          ]
+        },
+        "jaw": {
+          "rotation": [
+            "math.max(0, math.sin(query.life_time * 500)) * 12 * math.clamp(math.sin(query.life_time * 25) * 3, 0, 1)",
+            0,
+            0
+          ]
+        },
+        "leg0": {
+          "rotation": [
+            "-55 + math.sin(query.life_time * 520) * 14",
+            0,
+            0
+          ]
+        },
+        "hand0": {
+          "rotation": [
+            "10 + math.sin(query.life_time * 520 + 90) * 20",
+            0,
+            0
+          ]
+        },
+        "leg1": {
+          "rotation": [
+            "-55 - math.sin(query.life_time * 520) * 14",
+            0,
+            0
+          ]
+        },
+        "hand1": {
+          "rotation": [
+            "10 - math.sin(query.life_time * 520 + 90) * 20",
+            0,
+            0
+          ]
+        },
+        "leg2": {
+          "rotation": [
+            25,
+            0,
+            0
+          ]
+        },
+        "leg3": {
+          "rotation": [
+            25,
+            0,
+            0
+          ]
+        },
+        "tail": {
+          "rotation": [
+            "30.148 + (math.sin(query.life_time * 50) * 8) * -0.0005",
+            "(math.sin(query.life_time * 50) * 8) * 0.8655",
+            "-0.0001 + (math.sin(query.life_time * 50) * 8) * 0.5019"
+          ]
+        },
+        "earL": {
+          "rotation": [
+            "math.max(0, math.sin(query.life_time * 70 + variable.offset * 20) - 0.92) * -120",
+            0,
+            0
+          ]
+        },
+        "earR": {
+          "rotation": [
+            "math.max(0, math.sin(query.life_time * 60 + variable.offset * 30) - 0.92) * -120",
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.raccoon.rummage": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "rotation": [
+            -64.9855,
+            "(math.sin(query.life_time * 300) * 3) * -0.9062",
+            "(math.sin(query.life_time * 300) * 3) * -0.4229"
+          ]
+        },
+        "head": {
+          "rotation": [
+            "0.4937 + (45 + math.sin(query.life_time * 400) * 4) * 0.9947 + (math.sin(query.life_time * 90) * 10) * 0.0007",
+            "-0.7226 + (45 + math.sin(query.life_time * 400) * 4) * 0.0137 + (math.sin(query.life_time * 90) * 10) * 0.7001",
+            "0.7617 + (45 + math.sin(query.life_time * 400) * 4) * -0.0146 + (math.sin(query.life_time * 90) * 10) * 0.7138"
+          ]
+        },
+        "leg0": {
+          "rotation": [
+            "-40 + math.sin(query.life_time * 800) * 20",
+            0,
+            0
+          ]
+        },
+        "hand0": {
+          "rotation": [
+            -30,
+            0,
+            0
+          ]
+        },
+        "leg1": {
+          "rotation": [
+            "-40 - math.sin(query.life_time * 800) * 20",
+            0,
+            0
+          ]
+        },
+        "hand1": {
+          "rotation": [
+            -30,
+            0,
+            0
+          ]
+        },
+        "leg2": {
+          "rotation": [
+            65,
+            0,
+            0
+          ]
+        },
+        "leg3": {
+          "rotation": [
+            65,
+            0,
+            0
+          ]
+        },
+        "tail": {
+          "rotation": [
+            "60.4272 + (math.sin(query.life_time * 80) * 15) * 0.001",
+            "0.0004 + (math.sin(query.life_time * 80) * 15) * 0.4967",
+            "-0.0004 + (math.sin(query.life_time * 80) * 15) * 0.8698"
+          ]
+        },
+        "earL": {
+          "rotation": [
+            "math.max(0, math.sin(query.life_time * 70 + variable.offset * 20) - 0.92) * -120",
+            0,
+            0
+          ]
+        },
+        "earR": {
+          "rotation": [
+            "math.max(0, math.sin(query.life_time * 60 + variable.offset * 30) - 0.92) * -120",
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.raccoon.look_at_target": {
+      "loop": true,
+      "bones": {
+        "head": {
+          "relative_to": {
+            "rotation": "entity"
+          },
+          "rotation": [
+            "0.1503 + (math.clamp(query.target_x_rotation, -20, 20)) * 1.0502 + (math.clamp(query.target_y_rotation, -45, 45)) * -0.0081",
+            "0.0803 + (math.clamp(query.target_x_rotation, -20, 20)) * 0.0036 + (math.clamp(query.target_y_rotation, -45, 45)) * 0.9673",
+            "-0.6987 + (math.clamp(query.target_x_rotation, -20, 20)) * -0.0611 + (math.clamp(query.target_y_rotation, -45, 45)) * 0.0298"
+          ]
+        }
+      }
+    }
+  }
+}

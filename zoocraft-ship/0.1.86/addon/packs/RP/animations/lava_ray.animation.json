@@ -1,0 +1,214 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.zoocraft.lava_ray.swim": {
+      "loop": true,
+      "bones": {
+        "wingL1": {
+          "rotation": [
+            0,
+            0,
+            "-(math.sin(query.anim_time * 300) * 14)"
+          ]
+        },
+        "wingL2": {
+          "rotation": [
+            0,
+            0,
+            "-(math.sin(query.anim_time * 300 - 45) * 18)"
+          ]
+        },
+        "wingL3": {
+          "rotation": [
+            0,
+            0,
+            "-(math.sin(query.anim_time * 300 - 90) * 24)"
+          ]
+        },
+        "wingR1": {
+          "rotation": [
+            0,
+            0,
+            "-(-(math.sin(query.anim_time * 300) * 14))"
+          ]
+        },
+        "wingR2": {
+          "rotation": [
+            0,
+            0,
+            "-(-math.sin(query.anim_time * 300 - 45) * 18)"
+          ]
+        },
+        "wingR3": {
+          "rotation": [
+            0,
+            0,
+            "-(-math.sin(query.anim_time * 300 - 90) * 24)"
+          ]
+        },
+        "body": {
+          "position": [
+            0,
+            "math.sin(query.anim_time * 300) * 0.4",
+            0
+          ]
+        },
+        "tail": {
+          "rotation": [
+            "0.0054 + (math.sin(query.anim_time * 300 - 90) * 4) * 1.0027",
+            "0.0001 + (math.sin(query.anim_time * 300 * 0.5) * 6) * 0.9988",
+            "-0.0261 + (math.sin(query.anim_time * 300 - 90) * 4) * 0.0121 + (math.sin(query.anim_time * 300 * 0.5) * 6) * 0.0297"
+          ]
+        },
+        "tail_tip": {
+          "rotation": [
+            "0.0054 + (math.sin(query.anim_time * 300 - 150) * 5) * 1.0043",
+            "0.0009 + (math.sin(query.anim_time * 300 - 150) * 5) * -0.0005 + (math.sin(query.anim_time * 300 * 0.5 - 60) * 8) * 0.9981",
+            "0.0871 + (math.sin(query.anim_time * 300 - 150) * 5) * 0.0054 + (math.sin(query.anim_time * 300 * 0.5 - 60) * 8) * -0.0123"
+          ]
+        },
+        "finL": {
+          "rotation": [
+            "math.sin(query.anim_time * 300) * 6",
+            0,
+            0
+          ]
+        },
+        "finR": {
+          "rotation": [
+            "math.sin(query.anim_time * 300) * 6",
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.lava_ray.idle": {
+      "loop": true,
+      "bones": {
+        "wingL1": {
+          "rotation": [
+            0,
+            0,
+            "-(math.sin(query.life_time * 110) * 5)"
+          ]
+        },
+        "wingL2": {
+          "rotation": [
+            0,
+            0,
+            "-(math.sin(query.life_time * 110 - 45) * 7)"
+          ]
+        },
+        "wingL3": {
+          "rotation": [
+            0,
+            0,
+            "-(math.sin(query.life_time * 110 - 90) * 9)"
+          ]
+        },
+        "wingR1": {
+          "rotation": [
+            0,
+            0,
+            "-(-(math.sin(query.life_time * 110) * 5))"
+          ]
+        },
+        "wingR2": {
+          "rotation": [
+            0,
+            0,
+            "-(-math.sin(query.life_time * 110 - 45) * 7)"
+          ]
+        },
+        "wingR3": {
+          "rotation": [
+            0,
+            0,
+            "-(-math.sin(query.life_time * 110 - 90) * 9)"
+          ]
+        },
+        "body": {
+          "position": [
+            0,
+            "math.sin(query.life_time * 110 * 0.5) * 0.3",
+            0
+          ]
+        },
+        "tail": {
+          "rotation": [
+            0,
+            "math.sin(query.life_time * 110 * 0.4) * 8",
+            0
+          ]
+        },
+        "tail_tip": {
+          "rotation": [
+            0,
+            "math.sin(query.life_time * 110 * 0.4 - 60) * 10",
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.lava_ray.arc": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "position": [
+            0,
+            "math.sin(math.clamp((math.mod(query.life_time + variable.offset, 11) - 7) / 3, 0, 1) * 180) * 6",
+            0
+          ],
+          "rotation": [
+            "-math.sin(math.clamp((math.mod(query.life_time + variable.offset, 11) - 7) / 3, 0, 1) * 360) * 16",
+            0,
+            0
+          ]
+        },
+        "wingL1": {
+          "rotation": [
+            0,
+            0,
+            "-(math.sin(math.clamp((math.mod(query.life_time + variable.offset, 11) - 7) / 3, 0, 1) * 180) * 18)"
+          ]
+        },
+        "wingL2": {
+          "rotation": [
+            0,
+            0,
+            "-(math.sin(math.clamp((math.mod(query.life_time + variable.offset, 11) - 7) / 3, 0, 1) * 180) * 10)"
+          ]
+        },
+        "wingR1": {
+          "rotation": [
+            0,
+            0,
+            "-(math.sin(math.clamp((math.mod(query.life_time + variable.offset, 11) - 7) / 3, 0, 1) * 180) * -18)"
+          ]
+        },
+        "wingR2": {
+          "rotation": [
+            0,
+            0,
+            "-(math.sin(math.clamp((math.mod(query.life_time + variable.offset, 11) - 7) / 3, 0, 1) * 180) * -10)"
+          ]
+        },
+        "tail": {
+          "rotation": [
+            "math.sin(math.clamp((math.mod(query.life_time + variable.offset, 11) - 7) / 3, 0, 1) * 360) * 12",
+            0,
+            0
+          ]
+        },
+        "tail_tip": {
+          "rotation": [
+            "math.sin(math.clamp((math.mod(query.life_time + variable.offset, 11) - 7) / 3, 0, 1) * 360) * 10",
+            0,
+            0
+          ]
+        }
+      }
+    }
+  }
+}
