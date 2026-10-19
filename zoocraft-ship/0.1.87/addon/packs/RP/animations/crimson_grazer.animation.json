@@ -1,0 +1,162 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.zoocraft.crimson_grazer.walk": {
+      "loop": true,
+      "bones": {
+        "leg0": {"rotation": ["math.cos(query.anim_time * 360) * 22", 0, 0]},
+        "leg3": {"rotation": ["math.cos(query.anim_time * 360) * 22", 0, 0]},
+        "leg4": {"rotation": ["math.cos(query.anim_time * 360) * 22", 0, 0]},
+        "leg1": {"rotation": ["math.cos(query.anim_time * 360 + 180) * 22", 0, 0]},
+        "leg2": {"rotation": ["math.cos(query.anim_time * 360 + 180) * 22", 0, 0]},
+        "leg5": {"rotation": ["math.cos(query.anim_time * 360 + 180) * 22", 0, 0]},
+        "body": {
+          "position": [0, "math.abs(math.sin(query.anim_time * 360)) * 0.5 - 0.0", 0],
+          "rotation": [0, 0, "math.sin(query.anim_time * 360) * 1.5"]
+        },
+        "head": {"rotation": ["6 + math.sin(query.anim_time * 360 * 2) * 2", 0, 0]},
+        "tail": {"rotation": ["math.sin(query.anim_time * 360 * 2) * 6", 0, 0]},
+        "skirt": {"rotation": ["math.sin(query.anim_time * 360 * 2) * 1.5", 0, 0]}
+      }
+    },
+    "animation.zoocraft.crimson_grazer.rush": {
+      "loop": true,
+      "bones": {
+        "leg0": {"rotation": ["math.cos(query.anim_time * 720) * 34", 0, 0]},
+        "leg3": {"rotation": ["math.cos(query.anim_time * 720) * 34", 0, 0]},
+        "leg4": {"rotation": ["math.cos(query.anim_time * 720) * 34", 0, 0]},
+        "leg1": {"rotation": ["math.cos(query.anim_time * 720 + 180) * 34", 0, 0]},
+        "leg2": {"rotation": ["math.cos(query.anim_time * 720 + 180) * 34", 0, 0]},
+        "leg5": {"rotation": ["math.cos(query.anim_time * 720 + 180) * 34", 0, 0]},
+        "body": {
+          "position": [0, "math.abs(math.sin(query.anim_time * 720)) * 1.2 - 0.5", 0],
+          "rotation": [0, 0, "math.sin(query.anim_time * 720) * 1.5"]
+        },
+        "head": {"rotation": ["28 + math.sin(query.anim_time * 720 * 2) * 2", 0, 0]},
+        "tail": {"rotation": ["math.sin(query.anim_time * 720 * 2) * 6", 0, 0]},
+        "skirt": {"rotation": ["math.sin(query.anim_time * 720 * 2) * 1.5", 0, 0]}
+      }
+    },
+    "animation.zoocraft.crimson_grazer.idle": {
+      "loop": true,
+      "bones": {
+        "body": {"scale": ["1", "1 + math.sin(query.life_time * 50) * 0.012", "1"]},
+        "head": {
+          "rotation": [
+            "6 + math.sin(query.life_time * 20 + variable.offset * 10) * 4",
+            "math.sin(query.life_time * 12 + variable.offset * 20) * 18",
+            0
+          ]
+        },
+        "tail": {
+          "rotation": ["math.max(0, math.sin(query.life_time * 90 + variable.offset * 30) - 0.8) * 60", 0, 0]
+        }
+      }
+    },
+    "animation.zoocraft.crimson_grazer.graze": {
+      "loop": true,
+      "bones": {
+        "head": {
+          "rotation": [
+            "38 + math.sin(query.life_time * 700) * 3",
+            "math.sin(query.life_time * 15 + variable.offset * 10) * 12",
+            0
+          ]
+        },
+        "body": {"rotation": [3, 0, 0]},
+        "leg0": {
+          "rotation": ["math.max(0, math.sin(query.life_time * 30 + variable.offset * 7) - 0.85) * -120", 0, 0]
+        },
+        "tail": {
+          "rotation": ["math.max(0, math.sin(query.life_time * 80 + variable.offset * 30) - 0.8) * 60", 0, 0]
+        }
+      }
+    },
+    "animation.zoocraft.crimson_grazer.rub": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "rotation": [0, "math.sin(query.life_time * 160) * 3", "9 + math.sin(query.life_time * 160) * 4"],
+          "position": [0, 0, "math.sin(query.life_time * 160) * 1.5"]
+        },
+        "head": {
+          "rotation": ["10 + math.sin(query.life_time * 160) * 3", -15, "math.sin(query.life_time * 160) * 6"]
+        },
+        "tail": {"rotation": ["math.sin(query.life_time * 300) * 15", 0, 0]}
+      }
+    },
+    "animation.zoocraft.crimson_grazer.rest": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "position": [0, -6.5, 0],
+          "scale": ["1", "1 + math.sin(query.life_time * 40 + variable.offset * 5) * 0.015", "1"]
+        },
+        "skirt": {"position": [0, 1.5, 0]},
+        "leg0": {"rotation": [90, 0, 0], "scale": ["1", "0.7", "1"]},
+        "leg1": {"rotation": [90, 0, 0], "scale": ["1", "0.7", "1"]},
+        "leg2": {"rotation": [90, 0, 0], "scale": ["1", "0.7", "1"]},
+        "leg3": {"rotation": [90, 0, 0], "scale": ["1", "0.7", "1"]},
+        "leg4": {"rotation": [-90, 0, 0], "scale": ["1", "0.7", "1"]},
+        "leg5": {"rotation": [-90, 0, 0], "scale": ["1", "0.7", "1"]},
+        "head": {"rotation": [6, "math.sin(variable.offset * 30) * 25", 0]}
+      }
+    },
+    "animation.zoocraft.crimson_grazer.chew": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "position": [0, -6.5, 0],
+          "scale": ["1", "1 + math.sin(query.life_time * 40 + variable.offset * 5) * 0.015", "1"]
+        },
+        "skirt": {"position": [0, 1.5, 0]},
+        "leg0": {"rotation": [90, 0, 0], "scale": ["1", "0.7", "1"]},
+        "leg1": {"rotation": [90, 0, 0], "scale": ["1", "0.7", "1"]},
+        "leg2": {"rotation": [90, 0, 0], "scale": ["1", "0.7", "1"]},
+        "leg3": {"rotation": [90, 0, 0], "scale": ["1", "0.7", "1"]},
+        "leg4": {"rotation": [-90, 0, 0], "scale": ["1", "0.7", "1"]},
+        "leg5": {"rotation": [-90, 0, 0], "scale": ["1", "0.7", "1"]},
+        "head": {
+          "rotation": [
+            "4 + math.sin(query.life_time * 700) * 3",
+            "math.sin(query.life_time * 10 + variable.offset * 20) * 25",
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.crimson_grazer.ring": {
+      "loop": true,
+      "bones": {
+        "body": {"position": [0, -0.5, 0], "rotation": [4, 0, 0]},
+        "head": {
+          "rotation": [
+            "24 + math.max(0, math.sin(query.life_time * 60 + variable.offset * 10) - 0.7) * 30",
+            "math.sin(query.life_time * 25 + variable.offset * 10) * 6",
+            0
+          ]
+        },
+        "leg0": {
+          "rotation": ["math.max(0, math.sin(query.life_time * 200 + variable.offset * 10)) * -30", 0, 0]
+        },
+        "leg1": {"rotation": [6, 0, 0]},
+        "leg4": {"rotation": [-6, 0, 0]},
+        "leg5": {"rotation": [-6, 0, 0]},
+        "tail": {"rotation": [25, 0, 0]}
+      }
+    },
+    "animation.zoocraft.crimson_grazer.look_at_target": {
+      "loop": true,
+      "bones": {
+        "head": {
+          "relative_to": {"rotation": "entity"},
+          "rotation": [
+            "math.clamp(query.target_x_rotation, -15, 15)",
+            "math.clamp(query.target_y_rotation, -35, 35)",
+            0
+          ]
+        }
+      }
+    }
+  }
+}

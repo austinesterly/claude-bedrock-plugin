@@ -1,0 +1,41 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:wild_cinder_boar",
+      "materials": {"default": "entity_alphatest"},
+      "textures": {
+        "default": "textures/entity/zoocraft/cinder_boar",
+        "sleep": "textures/entity/zoocraft/cinder_boar_sleep",
+        "mud": "textures/entity/zoocraft/cinder_boar_mud",
+        "mud_sleep": "textures/entity/zoocraft/cinder_boar_mud_sleep",
+        "piglet": "textures/entity/zoocraft/cinder_boar_piglet",
+        "piglet_sleep": "textures/entity/zoocraft/cinder_boar_piglet_sleep",
+        "piglet_mud": "textures/entity/zoocraft/cinder_boar_piglet_mud",
+        "piglet_mud_sleep": "textures/entity/zoocraft/cinder_boar_piglet_mud_sleep"
+      },
+      "geometry": {"default": "geometry.zoocraft.cinder_boar"},
+      "animations": {
+        "walk": "animation.zoocraft.cinder_boar.walk",
+        "trot": "animation.zoocraft.cinder_boar.trot",
+        "charge": "animation.zoocraft.cinder_boar.charge",
+        "idle": "animation.zoocraft.cinder_boar.idle",
+        "root": "animation.zoocraft.cinder_boar.root",
+        "wallow": "animation.zoocraft.cinder_boar.wallow",
+        "rub": "animation.zoocraft.cinder_boar.rub",
+        "rest": "animation.zoocraft.cinder_boar.rest",
+        "sleep": "animation.zoocraft.cinder_boar.sleep",
+        "alert": "animation.zoocraft.cinder_boar.alert",
+        "look_at_target": "animation.zoocraft.cinder_boar.look_at_target",
+        "move": "controller.animation.zoocraft.cinder_boar.move"
+      },
+      "render_controllers": ["controller.render.zoocraft.cinder_boar"],
+      "scripts": {
+        "scale": "q.is_baby ? 0.315 : (q.mark_variant == 1 ? 1 : 0.9)",
+        "initialize": ["variable.offset = math.random(0, 20);"],
+        "animate": ["move"]
+      },
+      "spawn_egg": {"base_color": "#6e6862", "overlay_color": "#e0662a"}
+    }
+  }
+}

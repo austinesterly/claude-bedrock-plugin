@@ -1,0 +1,14 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:block": {
+    "description": {"identifier": "zoocraft:thermal_mud", "menu_category": {"category": "nature"}},
+    "components": {
+      "minecraft:geometry": "minecraft:geometry.full_block",
+      "minecraft:material_instances": {"*": {"texture": "zoocraft_thermal_mud", "render_method": "opaque"}},
+      "minecraft:destructible_by_mining": {"seconds_to_destroy": 0.5},
+      "minecraft:destructible_by_explosion": {"explosion_resistance": 0.5},
+      "minecraft:map_color": "#4b535c",
+      "minecraft:loot": "loot_tables/blocks/zoocraft_thermal_mud.json"
+    }
+  }
+}

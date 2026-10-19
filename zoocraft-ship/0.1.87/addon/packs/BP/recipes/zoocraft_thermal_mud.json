@@ -1,0 +1,17 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shapeless": {
+    "description": {"identifier": "zoocraft:thermal_mud"},
+    "tags": ["crafting_table", "zoocraft_workshop"],
+    "ingredients": [
+      {"item": "minecraft:mud"},
+      {"item": "minecraft:mud"},
+      {"item": "minecraft:mud"},
+      {"item": "minecraft:mud"},
+      {"item": "minecraft:soul_soil"},
+      {"item": "minecraft:snowball"}
+    ],
+    "unlock": [{"item": "minecraft:mud"}],
+    "result": {"item": "zoocraft:thermal_mud", "count": 4}
+  }
+}
