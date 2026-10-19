@@ -1,0 +1,405 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.zoocraft.quartz_beetle.walk": {
+      "loop": true,
+      "bones": {
+        "L1": {
+          "rotation": [
+            "math.cos(query.anim_time * 500 + 0) * 16",
+            0,
+            "-1 * math.max(0, math.sin(query.anim_time * 500 + 0)) * 14"
+          ]
+        },
+        "R2": {
+          "rotation": [
+            "math.cos(query.anim_time * 500 + 0) * 16",
+            0,
+            "1 * math.max(0, math.sin(query.anim_time * 500 + 0)) * 14"
+          ]
+        },
+        "L3": {
+          "rotation": [
+            "math.cos(query.anim_time * 500 + 0) * 16",
+            0,
+            "-1 * math.max(0, math.sin(query.anim_time * 500 + 0)) * 14"
+          ]
+        },
+        "R1": {
+          "rotation": [
+            "math.cos(query.anim_time * 500 + 180) * 16",
+            0,
+            "1 * math.max(0, math.sin(query.anim_time * 500 + 180)) * 14"
+          ]
+        },
+        "L2": {
+          "rotation": [
+            "math.cos(query.anim_time * 500 + 180) * 16",
+            0,
+            "-1 * math.max(0, math.sin(query.anim_time * 500 + 180)) * 14"
+          ]
+        },
+        "R3": {
+          "rotation": [
+            "math.cos(query.anim_time * 500 + 180) * 16",
+            0,
+            "1 * math.max(0, math.sin(query.anim_time * 500 + 180)) * 14"
+          ]
+        },
+        "body": {
+          "position": [0, "math.abs(math.sin(query.anim_time * 500)) * 0.15", 0],
+          "rotation": [0, "math.sin(query.anim_time * 500) * 2", 0]
+        }
+      }
+    },
+    "animation.zoocraft.quartz_beetle.scurry": {
+      "loop": true,
+      "bones": {
+        "L1": {
+          "rotation": [
+            "math.cos(query.anim_time * 900 + 0) * 20",
+            0,
+            "-1 * math.max(0, math.sin(query.anim_time * 900 + 0)) * 16"
+          ]
+        },
+        "R2": {
+          "rotation": [
+            "math.cos(query.anim_time * 900 + 0) * 20",
+            0,
+            "1 * math.max(0, math.sin(query.anim_time * 900 + 0)) * 16"
+          ]
+        },
+        "L3": {
+          "rotation": [
+            "math.cos(query.anim_time * 900 + 0) * 20",
+            0,
+            "-1 * math.max(0, math.sin(query.anim_time * 900 + 0)) * 16"
+          ]
+        },
+        "R1": {
+          "rotation": [
+            "math.cos(query.anim_time * 900 + 180) * 20",
+            0,
+            "1 * math.max(0, math.sin(query.anim_time * 900 + 180)) * 16"
+          ]
+        },
+        "L2": {
+          "rotation": [
+            "math.cos(query.anim_time * 900 + 180) * 20",
+            0,
+            "-1 * math.max(0, math.sin(query.anim_time * 900 + 180)) * 16"
+          ]
+        },
+        "R3": {
+          "rotation": [
+            "math.cos(query.anim_time * 900 + 180) * 20",
+            0,
+            "1 * math.max(0, math.sin(query.anim_time * 900 + 180)) * 16"
+          ]
+        },
+        "body": {
+          "position": [0, "math.abs(math.sin(query.anim_time * 900)) * 0.2", 0],
+          "rotation": [0, "math.sin(query.anim_time * 900) * 2", 0]
+        }
+      }
+    },
+    "animation.zoocraft.quartz_beetle.idle": {
+      "loop": true,
+      "bones": {
+        "head": {"rotation": [0, "math.sin(query.life_time * 15 + variable.offset * 10) * 12", 0]},
+        "elytra": {
+          "rotation": ["math.max(0, math.sin(query.life_time * 40 + variable.offset * 7)) * 1.5", 0, 0]
+        }
+      }
+    },
+    "animation.zoocraft.quartz_beetle.buried": {
+      "loop": true,
+      "bones": {
+        "beetle": {"position": [0, -4, 0]},
+        "elytra": {
+          "rotation": ["math.max(0, math.sin(query.life_time * 30 + variable.offset * 7)) * 1.2", 0, 0]
+        }
+      }
+    },
+    "animation.zoocraft.quartz_beetle.tunnel": {
+      "loop": true,
+      "bones": {
+        "beetle": {
+          "position": [0, "-4 - 0.25 + math.sin(query.life_time * 300) * 0.15", 0],
+          "rotation": [0, 0, "math.sin(query.life_time * 220) * 3"]
+        }
+      }
+    },
+    "animation.zoocraft.quartz_beetle.dig": {
+      "loop": true,
+      "bones": {
+        "L1": {"rotation": ["-10 + math.sin(query.life_time * 1400) * 30", 0, 0]},
+        "R2": {
+          "rotation": [
+            "math.cos(query.anim_time * 1100 + 0) * 24",
+            0,
+            "1 * math.max(0, math.sin(query.anim_time * 1100 + 0)) * 10"
+          ]
+        },
+        "L3": {
+          "rotation": [
+            "math.cos(query.anim_time * 1100 + 0) * 24",
+            0,
+            "-1 * math.max(0, math.sin(query.anim_time * 1100 + 0)) * 10"
+          ]
+        },
+        "R1": {"rotation": ["-10 + math.sin(query.life_time * 1400 + 180) * 30", 0, 0]},
+        "L2": {
+          "rotation": [
+            "math.cos(query.anim_time * 1100 + 180) * 24",
+            0,
+            "-1 * math.max(0, math.sin(query.anim_time * 1100 + 180)) * 10"
+          ]
+        },
+        "R3": {
+          "rotation": [
+            "math.cos(query.anim_time * 1100 + 180) * 24",
+            0,
+            "1 * math.max(0, math.sin(query.anim_time * 1100 + 180)) * 10"
+          ]
+        },
+        "body": {
+          "position": [0, "math.abs(math.sin(query.anim_time * 1100)) * 0.15", 0],
+          "rotation": [10, 0, 0]
+        },
+        "beetle": {
+          "position": [0, "-math.min(query.anim_time * 2.2, 4)", 0],
+          "rotation": [0, 0, "math.sin(query.life_time * 700) * 3"]
+        }
+      }
+    },
+    "animation.zoocraft.quartz_beetle.emerge": {
+      "loop": true,
+      "bones": {
+        "L1": {
+          "rotation": [
+            "math.cos(query.anim_time * 900 + 0) * 18",
+            0,
+            "-1 * math.max(0, math.sin(query.anim_time * 900 + 0)) * 12"
+          ]
+        },
+        "R2": {
+          "rotation": [
+            "math.cos(query.anim_time * 900 + 0) * 18",
+            0,
+            "1 * math.max(0, math.sin(query.anim_time * 900 + 0)) * 12"
+          ]
+        },
+        "L3": {
+          "rotation": [
+            "math.cos(query.anim_time * 900 + 0) * 18",
+            0,
+            "-1 * math.max(0, math.sin(query.anim_time * 900 + 0)) * 12"
+          ]
+        },
+        "R1": {
+          "rotation": [
+            "math.cos(query.anim_time * 900 + 180) * 18",
+            0,
+            "1 * math.max(0, math.sin(query.anim_time * 900 + 180)) * 12"
+          ]
+        },
+        "L2": {
+          "rotation": [
+            "math.cos(query.anim_time * 900 + 180) * 18",
+            0,
+            "-1 * math.max(0, math.sin(query.anim_time * 900 + 180)) * 12"
+          ]
+        },
+        "R3": {
+          "rotation": [
+            "math.cos(query.anim_time * 900 + 180) * 18",
+            0,
+            "1 * math.max(0, math.sin(query.anim_time * 900 + 180)) * 12"
+          ]
+        },
+        "body": {
+          "position": [0, "math.abs(math.sin(query.anim_time * 900)) * 0.15", 0],
+          "rotation": ["-12 * math.max(0, 1 - query.anim_time / 1.5)", 0, 0]
+        },
+        "beetle": {
+          "position": [0, "math.min(0, -4 + query.anim_time * 2.8)", 0],
+          "rotation": [0, 0, "(query.anim_time > 1.5) * math.sin(query.life_time * 1300) * 5"]
+        },
+        "elytra": {"rotation": ["(query.anim_time > 1.5) * (3 + math.sin(query.life_time * 1600) * 3)", 0, 0]}
+      }
+    },
+    "animation.zoocraft.quartz_beetle.eat": {
+      "loop": true,
+      "bones": {
+        "body": {"rotation": [5, 0, 0]},
+        "head": {
+          "rotation": [
+            "18 + math.sin(query.life_time * 700) * 5",
+            "math.sin(query.life_time * 90 + variable.offset) * 6",
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.quartz_beetle.hiss": {
+      "loop": true,
+      "bones": {
+        "body": {"rotation": [-14, 0, 0]},
+        "elytra": {"rotation": ["10 + math.sin(query.life_time * 1500) * 4", 0, 0]},
+        "abdomen": {"scale": [1, "1 + math.sin(query.life_time * 1500) * 0.06", 1]},
+        "head": {"rotation": [-10, 0, 0]},
+        "L1": {"rotation": [-25, 0, -10]},
+        "R1": {"rotation": [-25, 0, 10]}
+      }
+    },
+    "animation.zoocraft.quartz_beetle.face": {
+      "loop": true,
+      "bones": {
+        "head": {"rotation": ["math.sin(query.life_time * 420 + variable.offset * 9) * 10", 0, 0]},
+        "pronotum": {"rotation": ["math.sin(query.life_time * 420 + variable.offset * 9 + 60) * 4", 0, 0]},
+        "body": {"position": [0, 0, "math.sin(query.life_time * 140 + variable.offset) * -0.3"]}
+      }
+    },
+    "animation.zoocraft.quartz_beetle.shove": {
+      "loop": true,
+      "bones": {
+        "L1": {
+          "rotation": [
+            "math.cos(query.anim_time * 700 + 0) * 12",
+            0,
+            "-1 * math.max(0, math.sin(query.anim_time * 700 + 0)) * 6"
+          ]
+        },
+        "R2": {
+          "rotation": [
+            "math.cos(query.anim_time * 700 + 0) * 12",
+            0,
+            "1 * math.max(0, math.sin(query.anim_time * 700 + 0)) * 6"
+          ]
+        },
+        "L3": {
+          "rotation": [
+            "math.cos(query.anim_time * 700 + 0) * 12",
+            0,
+            "-1 * math.max(0, math.sin(query.anim_time * 700 + 0)) * 6"
+          ]
+        },
+        "R1": {
+          "rotation": [
+            "math.cos(query.anim_time * 700 + 180) * 12",
+            0,
+            "1 * math.max(0, math.sin(query.anim_time * 700 + 180)) * 6"
+          ]
+        },
+        "L2": {
+          "rotation": [
+            "math.cos(query.anim_time * 700 + 180) * 12",
+            0,
+            "-1 * math.max(0, math.sin(query.anim_time * 700 + 180)) * 6"
+          ]
+        },
+        "R3": {
+          "rotation": [
+            "math.cos(query.anim_time * 700 + 180) * 12",
+            0,
+            "1 * math.max(0, math.sin(query.anim_time * 700 + 180)) * 6"
+          ]
+        },
+        "body": {"position": [0, 0, "-0.4 - math.sin(query.life_time * 260) * 0.35"], "rotation": [6, 0, 0]},
+        "head": {"rotation": [14, 0, 0]}
+      }
+    },
+    "animation.zoocraft.quartz_beetle.pry": {
+      "loop": true,
+      "bones": {
+        "body": {"rotation": ["-22 - math.sin(query.life_time * 300) * 4", 0, 0]},
+        "head": {"rotation": ["-18 - math.sin(query.life_time * 300) * 6", 0, 0]},
+        "L3": {"rotation": [20, 0, 0]},
+        "R3": {"rotation": [20, 0, 0]}
+      }
+    },
+    "animation.zoocraft.quartz_beetle.flipped": {
+      "loop": true,
+      "bones": {
+        "beetle": {"rotation": [0, 0, "180 + math.sin(query.life_time * 160) * 8"], "position": [0, -1, 0]},
+        "L1": {"rotation": ["math.sin(query.life_time * 900 + 70) * 26", 0, 0]},
+        "L2": {"rotation": ["math.sin(query.life_time * 900 + 140) * 26", 0, 0]},
+        "L3": {"rotation": ["math.sin(query.life_time * 900 + 210) * 26", 0, 0]},
+        "R1": {"rotation": ["math.sin(query.life_time * 900 + 105) * 26", 0, 0]},
+        "R2": {"rotation": ["math.sin(query.life_time * 900 + 175) * 26", 0, 0]},
+        "R3": {"rotation": ["math.sin(query.life_time * 900 + 245) * 26", 0, 0]}
+      }
+    },
+    "animation.zoocraft.quartz_beetle.righting": {
+      "loop": true,
+      "bones": {
+        "beetle": {
+          "rotation": [0, 0, "180 * (1 - math.min(1, query.anim_time / 0.9))"],
+          "position": [0, "-1 + math.min(1, query.anim_time / 0.9)", 0]
+        },
+        "L1": {"rotation": ["math.sin(query.life_time * 1200 + 70) * 20", 0, 0]},
+        "L2": {"rotation": ["math.sin(query.life_time * 1200 + 140) * 20", 0, 0]},
+        "L3": {"rotation": ["math.sin(query.life_time * 1200 + 210) * 20", 0, 0]},
+        "R1": {"rotation": ["math.sin(query.life_time * 1200 + 70) * 20", 0, 0]},
+        "R2": {"rotation": ["math.sin(query.life_time * 1200 + 140) * 20", 0, 0]},
+        "R3": {"rotation": ["math.sin(query.life_time * 1200 + 210) * 20", 0, 0]}
+      }
+    },
+    "animation.zoocraft.quartz_beetle.grub": {
+      "loop": true,
+      "bones": {
+        "grub": {
+          "position": [0, -4.4, 0],
+          "rotation": [
+            0,
+            "math.max(0, math.sin(query.life_time * 30 + variable.offset * 11) - 0.8) * 60 * math.sin(query.life_time * 500)",
+            0
+          ]
+        },
+        "gbody": {"scale": ["1 + math.sin(query.life_time * 50 + variable.offset * 9) * 0.03", 1, 1]}
+      }
+    },
+    "animation.zoocraft.quartz_beetle.peek": {
+      "loop": true,
+      "bones": {
+        "grub": {"position": [0, "math.min(0, -4.4 + query.anim_time * 5)", 0]},
+        "gfront": {
+          "rotation": [
+            "math.sin(query.life_time * 160 + variable.offset * 9) * 12",
+            "math.sin(query.life_time * 70) * 10",
+            0
+          ]
+        },
+        "gtail": {"rotation": ["math.sin(query.life_time * 160 + 90) * 6", 0, 0]}
+      }
+    },
+    "animation.zoocraft.quartz_beetle.crawl": {
+      "loop": true,
+      "bones": {
+        "gbody": {"scale": [1, 1, "1 + math.sin(query.life_time * 300) * 0.08"]},
+        "gfront": {"rotation": ["math.sin(query.life_time * 300) * 10", 0, 0]},
+        "gtail": {"rotation": ["math.sin(query.life_time * 300 + 120) * 10", 0, 0]}
+      }
+    },
+    "animation.zoocraft.quartz_beetle.horn": {
+      "loop": true,
+      "bones": {
+        "hornP": {
+          "scale": [
+            1,
+            1,
+            "query.property('zoocraft:horn') == 0 ? 1 : 0.5 + query.property('zoocraft:horn') * 0.25"
+          ]
+        },
+        "hornH": {
+          "scale": [
+            1,
+            1,
+            "query.property('zoocraft:horn') == 0 ? 1 : 0.5 + query.property('zoocraft:horn') * 0.25"
+          ]
+        }
+      }
+    }
+  }
+}

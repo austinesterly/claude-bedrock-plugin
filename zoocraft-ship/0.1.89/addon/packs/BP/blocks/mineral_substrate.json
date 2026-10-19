@@ -1,0 +1,14 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:block": {
+    "description": {"identifier": "zoocraft:mineral_substrate", "menu_category": {"category": "nature"}},
+    "components": {
+      "minecraft:geometry": "minecraft:geometry.full_block",
+      "minecraft:material_instances": {"*": {"texture": "zoocraft_mineral_substrate", "render_method": "opaque"}},
+      "minecraft:destructible_by_mining": {"seconds_to_destroy": 0.6},
+      "minecraft:destructible_by_explosion": {"explosion_resistance": 0.6},
+      "minecraft:map_color": "#7f7a78",
+      "minecraft:loot": "loot_tables/blocks/zoocraft_mineral_substrate.json"
+    }
+  }
+}

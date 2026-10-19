@@ -1,0 +1,39 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:wild_quartz_beetle",
+      "materials": {"default": "entity_alphatest"},
+      "textures": {"default": "textures/entity/zoocraft/quartz_beetle"},
+      "geometry": {"default": "geometry.zoocraft.quartz_beetle"},
+      "animations": {
+        "walk": "animation.zoocraft.quartz_beetle.walk",
+        "scurry": "animation.zoocraft.quartz_beetle.scurry",
+        "idle": "animation.zoocraft.quartz_beetle.idle",
+        "buried": "animation.zoocraft.quartz_beetle.buried",
+        "tunnel": "animation.zoocraft.quartz_beetle.tunnel",
+        "dig": "animation.zoocraft.quartz_beetle.dig",
+        "emerge": "animation.zoocraft.quartz_beetle.emerge",
+        "eat": "animation.zoocraft.quartz_beetle.eat",
+        "hiss": "animation.zoocraft.quartz_beetle.hiss",
+        "face": "animation.zoocraft.quartz_beetle.face",
+        "shove": "animation.zoocraft.quartz_beetle.shove",
+        "pry": "animation.zoocraft.quartz_beetle.pry",
+        "flipped": "animation.zoocraft.quartz_beetle.flipped",
+        "righting": "animation.zoocraft.quartz_beetle.righting",
+        "grub": "animation.zoocraft.quartz_beetle.grub",
+        "peek": "animation.zoocraft.quartz_beetle.peek",
+        "crawl": "animation.zoocraft.quartz_beetle.crawl",
+        "horn": "animation.zoocraft.quartz_beetle.horn",
+        "move": "controller.animation.zoocraft.quartz_beetle.move"
+      },
+      "render_controllers": ["controller.render.zoocraft.quartz_beetle"],
+      "scripts": {
+        "scale": "q.is_baby ? 1 : (q.mark_variant == 1 ? 1 : 0.85)",
+        "initialize": ["variable.offset = math.random(0, 20);"],
+        "animate": ["move", "horn"]
+      },
+      "spawn_egg": {"base_color": "#1e1b1d", "overlay_color": "#e9e3dd"}
+    }
+  }
+}

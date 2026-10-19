@@ -1,0 +1,31 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.zoocraft.quartz_beetle": {
+      "geometry": "Geometry.default",
+      "materials": [{"*": "Material.default"}],
+      "textures": ["Texture.default"],
+      "part_visibility": [
+        {"*": true},
+        {"beetle": "!query.is_baby"},
+        {"body": "!query.is_baby"},
+        {"abdomen": "!query.is_baby"},
+        {"elytra": "!query.is_baby"},
+        {"pronotum": "!query.is_baby"},
+        {"head": "!query.is_baby"},
+        {"L1": "!query.is_baby"},
+        {"L2": "!query.is_baby"},
+        {"L3": "!query.is_baby"},
+        {"R1": "!query.is_baby"},
+        {"R2": "!query.is_baby"},
+        {"R3": "!query.is_baby"},
+        {"grub": "query.is_baby && query.property('zoocraft:act') != 16"},
+        {"gbody": "query.is_baby && query.property('zoocraft:act') != 16"},
+        {"gtail": "query.is_baby && query.property('zoocraft:act') != 16"},
+        {"gfront": "query.is_baby && query.property('zoocraft:act') != 16"},
+        {"hornP": "!query.is_baby && query.mark_variant == 1"},
+        {"hornH": "!query.is_baby && query.mark_variant == 1"}
+      ]
+    }
+  }
+}
