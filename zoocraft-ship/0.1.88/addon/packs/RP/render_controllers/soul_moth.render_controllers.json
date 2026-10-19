@@ -1,0 +1,49 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.zoocraft.soul_moth": {
+      "geometry": "Geometry.default",
+      "materials": [
+        {"*": "Material.default"},
+        {"fore*": "Material.wing"},
+        {"hind*": "Material.wing"},
+        {"ant*": "Material.wing"},
+        {"legs": "Material.wing"}
+      ],
+      "textures": ["Texture.default"],
+      "part_visibility": [
+        {"*": true},
+        {"moth": "!query.is_baby"},
+        {"thorax": "!query.is_baby"},
+        {"head": "!query.is_baby"},
+        {"abdomen": "!query.is_baby"},
+        {"foreL": "!query.is_baby"},
+        {"foreR": "!query.is_baby"},
+        {"hindL": "!query.is_baby"},
+        {"hindR": "!query.is_baby"},
+        {"antL": "!query.is_baby"},
+        {"antR": "!query.is_baby"},
+        {"antLm": "!query.is_baby"},
+        {"antRm": "!query.is_baby"},
+        {"tongue": "!query.is_baby"},
+        {"legs": "!query.is_baby"},
+        {"larva": "query.is_baby && query.property('zoocraft:act') != 13"},
+        {"lbody": "query.is_baby && query.property('zoocraft:act') != 13"},
+        {"lhead": "query.is_baby && query.property('zoocraft:act') != 13"},
+        {"horn": "query.is_baby && query.property('zoocraft:act') != 13"},
+        {
+          "hindL": "!query.is_baby && !(query.property('zoocraft:act') == 2 || query.property('zoocraft:act') == 0)"
+        },
+        {
+          "hindR": "!query.is_baby && !(query.property('zoocraft:act') == 2 || query.property('zoocraft:act') == 0)"
+        },
+        {"pupa": "query.is_baby && query.property('zoocraft:act') == 13"},
+        {"tongue": "!query.is_baby && query.property('zoocraft:act') == 8"},
+        {"antL": "!query.is_baby && !(query.mark_variant == 1)"},
+        {"antR": "!query.is_baby && !(query.mark_variant == 1)"},
+        {"antLm": "!query.is_baby && query.mark_variant == 1"},
+        {"antRm": "!query.is_baby && query.mark_variant == 1"}
+      ]
+    }
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:block": {
+    "description": {
+      "identifier": "zoocraft:hanging_food_basket",
+      "menu_category": {"category": "items"},
+      "states": {"zoocraft:fill": [0, 1], "zoocraft:food": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]}
+    },
+    "components": {
+      "minecraft:geometry": {
+        "identifier": "geometry.zoocraft.hanging_food_basket",
+        "bone_visibility": {"food": "query.block_state('zoocraft:fill') == 1"}
+      },
+      "minecraft:material_instances": {
+        "*": {"texture": "zoocraft_basket", "render_method": "opaque"},
+        "rope": {"texture": "zoocraft_basket_rope", "render_method": "opaque"},
+        "food": {"texture": "zoocraft_basket_food", "render_method": "opaque"}
+      },
+      "minecraft:collision_box": [{"origin": [-4, 3, -4], "size": [8, 5, 8]}],
+      "minecraft:selection_box": {"origin": [-4, 3, -4], "size": [8, 13, 8]},
+      "minecraft:light_dampening": 0,
+      "minecraft:destructible_by_mining": {"seconds_to_destroy": 0.5},
+      "minecraft:destructible_by_explosion": {"explosion_resistance": 1},
+      "minecraft:flammable": {"catch_chance_modifier": 5, "destroy_chance_modifier": 20},
+      "minecraft:map_color": "#b08a52",
+      "minecraft:loot": "loot_tables/blocks/zoocraft_hanging_food_basket.json",
+      "zoocraft:fixture": {}
+    },
+    "permutations": [
+      {
+        "condition": "query.block_state('zoocraft:food') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {"texture": "zoocraft_basket", "render_method": "opaque"},
+            "rope": {"texture": "zoocraft_basket_rope", "render_method": "opaque"},
+            "food": {"texture": "zoocraft_basket_food_fish", "render_method": "opaque"}
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:food') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {"texture": "zoocraft_basket", "render_method": "opaque"},
+            "rope": {"texture": "zoocraft_basket_rope", "render_method": "opaque"},
+            "food": {"texture": "zoocraft_basket_food_mineral", "render_method": "opaque"}
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:food') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {"texture": "zoocraft_basket", "render_method": "opaque"},
+            "rope": {"texture": "zoocraft_basket_rope", "render_method": "opaque"},
+            "food": {"texture": "zoocraft_basket_food_ember", "render_method": "opaque"}
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:food') == 4",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {"texture": "zoocraft_basket", "render_method": "opaque"},
+            "rope": {"texture": "zoocraft_basket_rope", "render_method": "opaque"},
+            "food": {"texture": "zoocraft_basket_food_plankton", "render_method": "opaque"}
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:food') == 5",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {"texture": "zoocraft_basket", "render_method": "opaque"},
+            "rope": {"texture": "zoocraft_basket_rope", "render_method": "opaque"},
+            "food": {"texture": "zoocraft_basket_food_fungus", "render_method": "opaque"}
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:food') == 6",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {"texture": "zoocraft_basket", "render_method": "opaque"},
+            "rope": {"texture": "zoocraft_basket_rope", "render_method": "opaque"},
+            "food": {"texture": "zoocraft_basket_food_chorus", "render_method": "opaque"}
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:food') == 7",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {"texture": "zoocraft_basket", "render_method": "opaque"},
+            "rope": {"texture": "zoocraft_basket_rope", "render_method": "opaque"},
+            "food": {"texture": "zoocraft_basket_food_insect", "render_method": "opaque"}
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:food') == 8",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {"texture": "zoocraft_basket", "render_method": "opaque"},
+            "rope": {"texture": "zoocraft_basket_rope", "render_method": "opaque"},
+            "food": {"texture": "zoocraft_basket_food_fruit", "render_method": "opaque"}
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:food') == 9",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {"texture": "zoocraft_basket", "render_method": "opaque"},
+            "rope": {"texture": "zoocraft_basket_rope", "render_method": "opaque"},
+            "food": {"texture": "zoocraft_basket_food_pellet", "render_method": "opaque"}
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:food') == 10",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {"texture": "zoocraft_basket", "render_method": "opaque"},
+            "rope": {"texture": "zoocraft_basket_rope", "render_method": "opaque"},
+            "food": {"texture": "zoocraft_basket_food_grain", "render_method": "opaque"}
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:food') == 11",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {"texture": "zoocraft_basket", "render_method": "opaque"},
+            "rope": {"texture": "zoocraft_basket_rope", "render_method": "opaque"},
+            "food": {"texture": "zoocraft_basket_food_meat", "render_method": "opaque"}
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:food') == 12",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {"texture": "zoocraft_basket", "render_method": "opaque"},
+            "rope": {"texture": "zoocraft_basket_rope", "render_method": "opaque"},
+            "food": {"texture": "zoocraft_basket_food_nectar", "render_method": "opaque"}
+          }
+        }
+      }
+    ]
+  }
+}

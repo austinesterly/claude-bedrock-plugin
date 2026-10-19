@@ -1,0 +1,36 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:wild_soul_moth",
+      "materials": {"default": "entity_emissive_alpha", "wing": "entity_alphatest"},
+      "textures": {"default": "textures/entity/zoocraft/soul_moth"},
+      "geometry": {"default": "geometry.zoocraft.soul_moth"},
+      "animations": {
+        "fly": "animation.zoocraft.soul_moth.fly",
+        "orbit_l": "animation.zoocraft.soul_moth.orbit_l",
+        "orbit_r": "animation.zoocraft.soul_moth.orbit_r",
+        "stall": "animation.zoocraft.soul_moth.stall",
+        "invert": "animation.zoocraft.soul_moth.invert",
+        "sip": "animation.zoocraft.soul_moth.sip",
+        "rest": "animation.zoocraft.soul_moth.rest",
+        "flash": "animation.zoocraft.soul_moth.flash",
+        "settled": "animation.zoocraft.soul_moth.settled",
+        "emerge": "animation.zoocraft.soul_moth.emerge",
+        "crawl": "animation.zoocraft.soul_moth.crawl",
+        "munch": "animation.zoocraft.soul_moth.munch",
+        "burrow": "animation.zoocraft.soul_moth.burrow",
+        "larva_still": "animation.zoocraft.soul_moth.larva_still",
+        "pupa": "animation.zoocraft.soul_moth.pupa",
+        "move": "controller.animation.zoocraft.soul_moth.move"
+      },
+      "render_controllers": ["controller.render.zoocraft.soul_moth"],
+      "scripts": {
+        "scale": "q.is_baby ? 1 : (q.mark_variant == 1 ? 0.92 : 1)",
+        "initialize": ["variable.offset = math.random(0, 20);"],
+        "animate": ["move"]
+      },
+      "spawn_egg": {"base_color": "#a9cfe8", "overlay_color": "#5ef0ff"}
+    }
+  }
+}

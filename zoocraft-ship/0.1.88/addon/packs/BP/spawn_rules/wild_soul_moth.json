@@ -1,0 +1,17 @@
+{
+  "format_version": "1.8.0",
+  "minecraft:spawn_rules": {
+    "description": {"identifier": "zoocraft:wild_soul_moth", "population_control": "animal"},
+    "conditions": [
+      {
+        "minecraft:spawns_on_surface": {},
+        "minecraft:spawns_underground": {},
+        "minecraft:spawns_on_block_filter": ["minecraft:soul_soil", "minecraft:soul_sand"],
+        "minecraft:weight": {"default": 6},
+        "minecraft:herd": {"min_size": 2, "max_size": 4, "event": "zoocraft:sex_1", "event_skip_count": 1},
+        "minecraft:density_limit": {"surface": 6, "underground": 6},
+        "minecraft:biome_filter": {"test": "has_biome_tag", "operator": "==", "value": "soulsand_valley"}
+      }
+    ]
+  }
+}
