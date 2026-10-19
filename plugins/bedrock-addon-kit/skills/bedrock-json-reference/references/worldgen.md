@@ -1,6 +1,6 @@
 # Features, biomes, jigsaw, structures, dimensions
 
-Generated 2026-10-12 by `scripts/build-json-reference.mjs` from Mojang's official form definitions in the Microsoft Learn docs repo (content/forms/features, biome, client_biome, jigsaw, structure, dimension, world). Search for the component id. Field types come from the schema; when a type is blank, check the example or the linked sub-object.
+Generated 2026-10-19 by `scripts/build-json-reference.mjs` from Mojang's official form definitions in the Microsoft Learn docs repo (content/forms/features, biome, client_biome, jigsaw, structure, dimension, world). Search for the component id. Field types come from the schema; when a type is blank, check the example or the linked sub-object.
 
 ## Components (70)
 
@@ -434,7 +434,7 @@ Sets the color grass and foliage will be tinted by in this biome on the map.
 | Field | Type | Default | Notes |
 |---|---|---|---|
 | `foliage` | string |  | Sets the color foliage will be tinted by in this biome on the map. |
-| `grass` | object |  | **required**. Controls whether the grass will use a custom tint color or a noise based tint color. |
+| `grass` | object |  | Controls whether the grass will use a custom tint color or a noise based tint color. |
 
 ### minecraft:mesa
 
@@ -1318,7 +1318,7 @@ Example (Selecting and placing a variant of a flower):
 }
 ```
 
-## Documents and sub-objects (143)
+## Documents and sub-objects (144)
 
 ### features (features)
 
@@ -2145,8 +2145,14 @@ Defines the minimum and maximum vertical bounds for a dimension.
 
 | Field | Type | Default | Notes |
 |---|---|---|---|
-| `max` | int |  | **required**. Max |
-| `min` | int |  | **required**. Min |
+| `max` | int |  | **required**. The maximum Y coordinate of the custom dimension. Defaults to 0 if this component is omitted. |
+| `min` | int |  | **required**. The minimum Y coordinate of the custom dimension. Defaults to 0 if this component is omitted. |
+
+### Clouds (clouds)
+
+| Field | Type | Default | Notes |
+|---|---|---|---|
+| `height` | int |  | **required**. The Y coordinate at which clouds are rendered in the custom dimension. Defaults to 128 if this component is omitted. |
 
 ### Components (components)
 
@@ -2154,15 +2160,16 @@ Specifies the components that define dimension properties such as bounds and gen
 
 | Field | Type | Default | Notes |
 |---|---|---|---|
-| `minecraft:default_biome` | object |  | Minecraft Default Biome See `dimension/defaultbiome`. |
-| `minecraft:dimension_height` | object |  | Minecraft Dimension Height See `dimension/dimensionheight`. |
-| `minecraft:generation` | object |  | **required**. Minecraft Generation See `dimension/generation`. |
+| `minecraft:clouds` | object |  | Defines the cloud height in the custom dimension. See `dimension/clouds`. |
+| `minecraft:default_biome` | object |  | Defines the biome used throughout the custom dimension. See `dimension/defaultbiome`. |
+| `minecraft:dimension_height` | object |  | Defines the vertical bounds of the custom dimension. See `dimension/dimensionheight`. |
+| `minecraft:generation` | object |  | **required**. Defines how terrain is generated in the custom dimension. Only allows void generator. See `dimension/generation`. |
 
 ### DefaultBiome (defaultbiome)
 
 | Field | Type | Default | Notes |
 |---|---|---|---|
-| `biome` | string |  | **required**. Biome |
+| `biome` | string |  | **required**. The namespaced identifier of the biome used throughout the custom dimension. Defaults to minecraft:ocean if this component is omitted. |
 
 ### Description (description)
 
@@ -2170,7 +2177,7 @@ Declares the unique identifier for a custom dimension that players can travel to
 
 | Field | Type | Default | Notes |
 |---|---|---|---|
-| `identifier` | string |  | **required**. Identifier |
+| `identifier` | string |  | **required**. The namespaced identifier for the custom dimension. |
 
 ### Dimension (dimension)
 
@@ -2178,8 +2185,8 @@ Defines a custom dimension with its description and components.
 
 | Field | Type | Default | Notes |
 |---|---|---|---|
-| `components` | object |  | **required**. Components See `dimension/components`. |
-| `description` | object |  | **required**. Description See `dimension/description`. |
+| `components` | object |  | **required**. Contains the components that configure the custom dimension. See `dimension/components`. |
+| `description` | object |  | **required**. Contains identifying information for the custom dimension. See `dimension/description`. |
 
 ### dimension_document (dimension_document)
 
@@ -2196,14 +2203,15 @@ Represents the root document for a custom dimension definition.
 
 | Field | Type | Default | Notes |
 |---|---|---|---|
-| `minecraft:dimension` | object |  | **required**. Minecraft Dimension See `dimension/dimension`. |
+| `format_version` | string |  | **required**. Version of the JSON schema for this file. |
+| `minecraft:dimension` | object |  | **required**. Defines a custom dimension. See `dimension/dimension`. |
 
 ### DimensionHeight (dimensionheight)
 
 | Field | Type | Default | Notes |
 |---|---|---|---|
-| `height_range` | int |  | **required**. Height Range |
-| `min_y` | int |  | **required**. Min Y |
+| `height_range` | int |  | **required**. The total vertical height of the custom dimension. Defaults to 384 if this component is omitted. |
+| `min_y` | int |  | **required**. The minimum Y coordinate of the custom dimension. Defaults to -64 if this component is omitted. |
 
 ### Generation (generation)
 
@@ -2211,7 +2219,7 @@ Specifies the generator type used for world generation in the dimension.
 
 | Field | Type | Default | Notes |
 |---|---|---|---|
-| `generator_type` | string |  | **required**. Generator Type |
+| `generator_type` | string |  | **required**. The world generator type used by the custom dimension. |
 
 ### Rules used by Jigsaw Structures to determine which blocks to modify or replace when placing a Structure Template in the world. ()
 
@@ -2486,6 +2494,7 @@ A Jigsaw Structure is a group of Structure Templates that make up a larger struc
 | `liquid_settings` | stringEnum | `"apply_waterlogging"` | How to handle waterloggable blocks overlapping with existing liquid. Values: `apply_waterlogging`, `ignore_waterlogging`. |
 | `max_depth` | int |  | **required**. The maximum recursion depth for Jigsaw Structure Generation. For example, a Jigsaw Structure that builds a road with a max_depth of 5 will only have paths that are a maximum of 5 structures templates in length in any given direction from the origin. |
 | `max_distance_from_center` | int | `{"horizontal":80,"vertical":2147483647}` | The max distances on the horizontal plane and optionally the vertical axis from the jigsaw pieces to the structure start. |
+| `on_placed` | string | `""` | Name of callback used after this structure is placed in the world |
 | `pool_aliases` | stringArray | `[]` | Pool Aliases are used to determine which template pool can be a substitute. |
 | `start_height` | object |  | **required**. Height at which the Jigsaw Structure's start pool should begin. |
 | `start_jigsaw_name` | string | `""` | The start jigsaw name is the name of the jigsaw block from the start pool to be placed first. |

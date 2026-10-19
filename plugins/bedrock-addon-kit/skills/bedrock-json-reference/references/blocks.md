@@ -1,6 +1,6 @@
 # Block components
 
-Generated 2026-10-12 by `scripts/build-json-reference.mjs` from Mojang's official form definitions in the Microsoft Learn docs repo (content/forms/block). Search for the component id. Field types come from the schema; when a type is blank, check the example or the linked sub-object.
+Generated 2026-10-19 by `scripts/build-json-reference.mjs` from Mojang's official form definitions in the Microsoft Learn docs repo (content/forms/block). Search for the component id. Field types come from the schema; when a type is blank, check the example or the linked sub-object.
 
 ## Components (37)
 
@@ -44,8 +44,8 @@ Defines the area of the block that collides with entities. If set to true, defau
 
 | Field | Type | Default | Notes |
 |---|---|---|---|
-| `origin` | point3 | `[-8,0,-8]` | Minimal position of the bounds of the collision box. "origin" is specified as [x, y, z] and must be in the range (-8, 0, -8) to (8, 24, 8), inclusive. |
-| `size` | point3 | `[16,24,16]` | Size of each side of the collision box. Size is specified as [x, y, z]. "origin" + "size" must be in the range (-8, 0, -8) to (8, 24, 8), inclusive. |
+| `max` | point3 | `[16,24,16]` | Maximum position of the bounds of the collision box. "max" is specified as [x, y, z] and must be in the range (0, 0, 0) to (16, 24, 16), inclusive. |
+| `min` | point3 | `[0,0,0]` | Minimal position of the bounds of the collision box. "min" is specified as [x, y, z] and must be in the range (0, 0, 0) to (16, 24, 16), inclusive. |
 
 Example (JSON (object)):
 ```json
@@ -509,7 +509,7 @@ _**deprecated**_
 
 Specifies that a unit cube is to be used with tessellation.
 
-## Documents and sub-objects (55)
+## Documents and sub-objects (56)
 
 ### block_behavior_document (block_behavior_document)
 
@@ -669,6 +669,7 @@ Container for all components that define custom block behavior and properties. C
 | `minecraft:tick` | object |  | Minecraft Tick See `block/minecraft_tick`. |
 | `minecraft:transformation` | object |  | Minecraft Transformation See `block/minecraft_transformation`. |
 | `minecraft:unit_cube` | object |  | deprecated. Minecraft Unit Cube |
+| `minecraft:vibration_properties` | object |  | Minecraft Vibration Properties See `block/vibration_properties`. |
 
 ### Connection (connection)
 
@@ -721,7 +722,7 @@ References custom block geometry with advanced rendering options. Specify the ge
 
 | Field | Type | Default | Notes |
 |---|---|---|---|
-| `bone_visibility` | keyedStringCollection | `{}` | A JSON object that contains a list of key/value pairs that map from bone name in the specified geometry file (key) to a Molang expression that tells whether the bone should be visible or not (value). The expression is limited to using the "query.block_state()… |
+| `bone_visibility` | object | `{}` | A JSON object that contains a list of key/value pairs that map from bone name in the specified geometry file (key) to a Molang expression that tells whether the bone should be visible or not (value). The expression is limited to using the "query.block_state()… |
 | `culling` | string | `""` | Which block_culling .json file to use when rendering this block. |
 | `culling_layer` | string |  | A string that allows culling rule to group multiple blocks together when comparing them. When using the minecraft namespace, the only allowed culling layer identifiers are : "minecraft:culling_layer.undefined" or "minecraft:culling_layer.leaves". When using n… |
 | `culling_shape` | string | `""` | Currently only available with the VoxelShape experiment on. The voxel shape used for culling adjacent block faces. Voxel shapes work together with culling rules and will not function if there is no culling rule defined for the block. Only adjacent blocks with… |
@@ -1146,3 +1147,10 @@ Must be assigned an array or a "range"
 | Field | Type | Default | Notes |
 |---|---|---|---|
 | `values` | object |  | **required**. Values |
+
+### Vibration Properties (vibration_properties)
+
+| Field | Type | Default | Notes |
+|---|---|---|---|
+| `damper_vibrations` | boolean | `false` | Damper Vibrations |
+| `occlude_vibrations` | boolean | `false` | Occlude Vibrations |

@@ -145,7 +145,7 @@ cv.push("## Game");
 cv.push("");
 cv.push(`- Latest stable changelog: ${latestRelease ? `[${latestRelease.title}](${latestRelease.url}) (${latestRelease.date})` : "n/a"}`);
 cv.push(`- Latest beta/preview: ${latestPreview ? `[${latestPreview.title}](${latestPreview.url}) (${latestPreview.date})` : "n/a"}`);
-if (gameFromRc) cv.push(`- Next release in preview: ${gameFromRc} (from the \`@minecraft/server\` rc tag). Its rc modules become \`latest\` when it ships.`);
+if (gameFromRc) cv.push(`- Preview is building ${gameFromRc} (from the \`@minecraft/server\` rc tag). Its rc modules become \`latest\` when it ships. If a release between the stable changelog above and ${gameFromRc} hasn't shipped yet, it ships first with its own, lower rc version (check \`changelog-digest.md\`).`);
 cv.push("");
 cv.push("## Script modules (npm dist-tags)");
 cv.push("");

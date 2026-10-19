@@ -26,8 +26,8 @@ Curated 2026-10-06. "Stable" = works in a world with no experiments. Check `api-
 | Feature | Toggle | Status |
 |---|---|---|
 | `world.beforeEvents.chatSend` (chat parsing) | Beta APIs | Beta only. Use slash commands |
-| Block containers (`block_entity.container`, up to 54 slots) and `entity_storage` | Upcoming Creator Features | Experimental in 26.50/26.60 |
-| Points of interest, `/locate poi` | Upcoming Creator Features | Experimental |
+| Block containers (`block_entity.container`, up to 54 slots, `show_ui_on_interaction`) and `entity_storage` | Upcoming Creator Features | Experimental through Preview 26.70 |
+| Points of interest, `/locate poi` | Upcoming Creator Features | Experimental in stable; released in Preview 26.70.20, so stable when 26.70 ships |
 | `collision_box` min/max form | Upcoming Creator Features | Experimental in 26.60 |
 | Debugger live diagnostics API, `server-admin`, `server-net`, `server-gametest` | Beta APIs | Beta / dedicated server only |
 | Biome `environment_attributes` | Beta biome schema only | Experimental (custom biomes themselves are stable via `minecraft:replace_biomes` and dimension `minecraft:default_biome`; see `bedrock-dimensions-biomes`) |
@@ -41,6 +41,6 @@ Curated 2026-10-06. "Stable" = works in a world with no experiments. Check `api-
 | Client-side scripting | None planned. Everything runs on the server; render state goes through entity properties and Molang |
 | Change one item stack's icon | Swap to a different item type |
 | Fully custom screens beyond forms | DDUI forms; JSON UI only as optional restyle (Marketplace rules and Ore UI migration) |
-| Change the rider's pose | `rotate_rider_by`, lower seat, or hide the rider and draw a posed stand-in |
+| Change the rider's pose | `rotate_rider_by`, lower seat, or hide the rider and draw a posed stand-in. Beta API (Preview 26.70.20): `Entity.startPassengerOfBlock` with a Riding or Laying pose for sitting or lying on blocks |
 | Set an entity's home position from script (2.10.0) | Spawn the mob where its home should be |
 | Override vanilla mobs safely alongside other add-ons | Copy the mob under your namespace |

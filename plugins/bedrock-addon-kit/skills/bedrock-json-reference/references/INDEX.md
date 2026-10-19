@@ -1,17 +1,17 @@
 # JSON reference index
 
-Generated 2026-10-12.
+Generated 2026-10-19.
 
 | File | Covers | Size |
 |---|---|---|
 | [items.md](items.md) | Item components | 51 components, 31 sub-objects |
-| [blocks.md](blocks.md) | Block components | 37 components, 55 sub-objects |
-| [entity-components.md](entity-components.md) | Entity components (non-AI) | 210 components, 78 sub-objects |
+| [blocks.md](blocks.md) | Block components | 37 components, 56 sub-objects |
+| [entity-components.md](entity-components.md) | Entity components (non-AI) | 212 components, 89 sub-objects |
 | [entity-ai-goals.md](entity-ai-goals.md) | Entity AI goals (minecraft:behavior.*) | 194 components, 0 sub-objects |
 | [entity-filters-and-events.md](entity-filters-and-events.md) | Entity filters, events and actions | 0 components, 145 sub-objects |
-| [worldgen.md](worldgen.md) | Features, biomes, jigsaw, structures, dimensions | 70 components, 143 sub-objects |
+| [worldgen.md](worldgen.md) | Features, biomes, jigsaw, structures, dimensions | 70 components, 144 sub-objects |
 | [recipes-spawn-trade.md](recipes-spawn-trade.md) | Recipes, spawn rules, trades | 0 components, 41 sub-objects |
-| [client-visuals.md](client-visuals.md) | Particles, cameras, visuals, resource files | 12 components, 99 sub-objects |
+| [client-visuals.md](client-visuals.md) | Particles, cameras, visuals, resource files | 12 components, 100 sub-objects |
 | [manifest.md](manifest.md) | Pack manifest | 0 components, 15 sub-objects |
 | [molang.md](molang.md) | Molang queries and functions | 0 components, 380 sub-objects |
 | [commands.md](commands.md) | Commands | 0 components, 139 sub-objects |

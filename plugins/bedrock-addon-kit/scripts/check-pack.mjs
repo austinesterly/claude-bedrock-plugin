@@ -181,12 +181,14 @@ for (const rp of rps) {
     if (j.particle_effect?.description?.identifier) particleIds.add(j.particle_effect.description.identifier);
   }
 }
+const entityChecks = [];
 for (const bp of bps) {
   for (const f of walk(bp.dir)) {
     if (extname(f) !== ".json") continue;
     const j = readJson(f);
     const id = j?.["minecraft:entity"]?.description?.identifier;
     if (id) { if (bpEntities.has(id)) err(f, `duplicate BP entity ${id}`); bpEntities.set(id, f); }
+    if (id) entityChecks.push([f, id, j]);
   }
 }
 
@@ -313,6 +315,7 @@ const EXPERIMENTAL = {
   "minecraft:neighbor_change": "Upcoming Creator Features (format 1.26.60)",
   "minecraft:storage_item": "an experiment (marked [EXPERIMENTAL] in Mojang's definitions)",
   "minecraft:bundle_interaction": "an experiment (marked [EXPERIMENTAL] in Mojang's definitions)",
+  "minecraft:time_marker_sensor": "Upcoming Creator Features and the beta entity format version (Preview 26.70.20)",
 };
 function experimentCheck(file, id, comps) {
   for (const [k, toggle] of Object.entries(EXPERIMENTAL)) if (comps?.[k] !== undefined) warn(file, `${id}: ${k} needs ${toggle}; keep it out of release builds`);
@@ -365,6 +368,13 @@ for (const bp of bps) for (const f of walk(bp.dir)) {
     }
     const dn = bl.components?.["minecraft:display_name"];
     if (typeof dn === "string" && /\./.test(dn) && !/\s/.test(dn) && langKeys.size && !langKeys.has(dn)) warn(f, `${id}: display_name key "${dn}" is not in RP texts/en_US.lang`);
+  }
+}
+for (const [f, id, j] of entityChecks) {
+  const e = j["minecraft:entity"], fv = j.format_version;
+  for (const comps of [e.components, ...Object.values(e.component_groups ?? {})]) {
+    experimentCheck(f, id, comps);
+    if (Array.isArray(comps?.["minecraft:attack"]?.damage) && vnum(fv) >= vnum("1.26.60")) err(f, `${id}: at format ${fv} minecraft:attack damage must be a number or a min/max range object, not an array`);
   }
 }
 for (const ce of clientEntities) {

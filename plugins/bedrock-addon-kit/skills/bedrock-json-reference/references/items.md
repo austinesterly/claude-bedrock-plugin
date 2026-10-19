@@ -1,6 +1,6 @@
 # Item components
 
-Generated 2026-10-12 by `scripts/build-json-reference.mjs` from Mojang's official form definitions in the Microsoft Learn docs repo (content/forms/item). Search for the component id. Field types come from the schema; when a type is blank, check the example or the linked sub-object.
+Generated 2026-10-19 by `scripts/build-json-reference.mjs` from Mojang's official form definitions in the Microsoft Learn docs repo (content/forms/item). Search for the component id. Field types come from the schema; when a type is blank, check the example or the linked sub-object.
 
 ## Components (51)
 
@@ -255,7 +255,7 @@ Defines both the durability threshold, and the effects emitted when that thresho
 |---|---|---|---|
 | `durability` | int | `0` | The effects are emitted when the item durability value is less than or equal to this value. |
 | `particle_type` | stringEnum | `"none"` | Particle effect to emit when the threshold is met. Values: `balloongas`, `bleach`, `blockforcefield`, `blueflame`, `breezewindexplosion`, `bubble`, `bubblecolumndown`, `bubblecolumnup`, `bubblemanual`, `campfiresmoke`, `campfiresmoketall`, `candleflame`, `carrotboost`, `coloredflame`, `conduit`, `creakingcrumble`, `crit`, `dragonbreath`, `dragonbreathfire`, `dragonbreathtrail`, `dragondestroyblock`, `driphoney`, `driplava`, `dripwater`, …. |
-| `sound_event` | string | `"undefined"` | Sound effect to emit when the threshold is met. Values: `absorb_block`, `activate`, `add.chest`, `admire`, `agitated`, `ambient`, `ambient.aggressive`, `ambient.baby`, `ambient.basalt_deltas.additions`, `ambient.basalt_deltas.loop`, `ambient.basalt_deltas.mood`, `ambient.candle`, `ambient.cave`, `ambient.crimson_forest.additions`, `ambient.crimson_forest.loop`, `ambient.crimson_forest.mood`, `ambient.in.air`, `ambient.in.raid`, `ambient.in.water`, `ambient.nether_wastes.additions`, `ambient.nether_wastes.loop`, `ambient.nether_wastes.mood`, `ambient.pollinate`, `ambient.screamer`, …. |
+| `sound_event` | string | `""` | Sound effect to emit when the threshold is met. |
 
 ### minecraft:dyeable
 
@@ -738,13 +738,13 @@ Duration, in seconds, of the item's swing animation played when mining or attack
 
 _since 1.21.130_
 
-Overrides the swing sounds emitted by the user.
+Overrides the swing sounds emitted by the user. Each field accepts the name of any sound event defined in `sound_definitions.json`, including the built-in vanilla sound events.
 
 | Field | Type | Default | Notes |
 |---|---|---|---|
-| `attack_critical_hit` | stringEnum |  | Sound played when an attack hits and deals critical damage. Values: `absorb_block`, `activate`, `add.chest`, `admire`, `agitated`, `ambient`, `ambient.aggressive`, `ambient.baby`, `ambient.basalt_deltas.additions`, `ambient.basalt_deltas.loop`, `ambient.basalt_deltas.mood`, `ambient.candle`, `ambient.cave`, `ambient.crimson_forest.additions`, `ambient.crimson_forest.loop`, `ambient.crimson_forest.mood`, `ambient.in.air`, `ambient.in.raid`, `ambient.in.water`, `ambient.nether_wastes.additions`, `ambient.nether_wastes.loop`, `ambient.nether_wastes.mood`, `ambient.pollinate`, `ambient.screamer`, …. |
-| `attack_hit` | stringEnum |  | Sound played when an attack hits. Values: `absorb_block`, `activate`, `add.chest`, `admire`, `agitated`, `ambient`, `ambient.aggressive`, `ambient.baby`, `ambient.basalt_deltas.additions`, `ambient.basalt_deltas.loop`, `ambient.basalt_deltas.mood`, `ambient.candle`, `ambient.cave`, `ambient.crimson_forest.additions`, `ambient.crimson_forest.loop`, `ambient.crimson_forest.mood`, `ambient.in.air`, `ambient.in.raid`, `ambient.in.water`, `ambient.nether_wastes.additions`, `ambient.nether_wastes.loop`, `ambient.nether_wastes.mood`, `ambient.pollinate`, `ambient.screamer`, …. |
-| `attack_miss` | stringEnum |  | Sound played when an attack misses or deals no damage due to invulnerability. Values: `absorb_block`, `activate`, `add.chest`, `admire`, `agitated`, `ambient`, `ambient.aggressive`, `ambient.baby`, `ambient.basalt_deltas.additions`, `ambient.basalt_deltas.loop`, `ambient.basalt_deltas.mood`, `ambient.candle`, `ambient.cave`, `ambient.crimson_forest.additions`, `ambient.crimson_forest.loop`, `ambient.crimson_forest.mood`, `ambient.in.air`, `ambient.in.raid`, `ambient.in.water`, `ambient.nether_wastes.additions`, `ambient.nether_wastes.loop`, `ambient.nether_wastes.mood`, `ambient.pollinate`, `ambient.screamer`, …. |
+| `attack_critical_hit` | string |  | Sound played when an attack hits and deals critical damage. |
+| `attack_hit` | string |  | Sound played when an attack hits. |
+| `attack_miss` | string |  | Sound played when an attack misses or deals no damage due to invulnerability. |
 
 ### minecraft:tags
 
@@ -821,7 +821,7 @@ Determines how long an item takes to use in combination with components such as 
 |---|---|---|---|
 | `emit_vibrations` | boolean | `true` | Whether vibrations are emitted when the item starts or stops being used. |
 | `movement_modifier` | float |  | Multiplier applied to the player's movement speed while the item is in use. |
-| `start_sound` | stringEnum |  | Sound played when the item starts being used. Values: `absorb_block`, `activate`, `add.chest`, `admire`, `agitated`, `ambient`, `ambient.aggressive`, `ambient.baby`, `ambient.basalt_deltas.additions`, `ambient.basalt_deltas.loop`, `ambient.basalt_deltas.mood`, `ambient.candle`, `ambient.cave`, `ambient.crimson_forest.additions`, `ambient.crimson_forest.loop`, `ambient.crimson_forest.mood`, `ambient.in.air`, `ambient.in.raid`, `ambient.in.water`, `ambient.nether_wastes.additions`, `ambient.nether_wastes.loop`, `ambient.nether_wastes.mood`, `ambient.pollinate`, `ambient.screamer`, …. |
+| `start_sound` | string |  | Sound played when the item starts being used. Accepts the name of any sound event defined in `sound_definitions.json`, including the built-in vanilla sound events. |
 | `start_using` | string | `"always"` | since 1.26.30. When the player begins using the item. Use `always` to start as soon as the use action is triggered (default), or `on_attack` to start using only when an attack input is received while the item is selected. Values: `always`, `if_first`. |
 | `use_duration` | float | `0` | Time, in seconds, that the item takes to use. |
 
@@ -1136,7 +1136,7 @@ List of all components used in this item.
 | `minecraft:storage_weight_limit` | object |  | Specifies the maximum weight limit that a storage item can hold See `item/minecraft_storage_weight_limit`. |
 | `minecraft:storage_weight_modifier` | object |  | Specifies the maximum weight limit that a storage item can hold See `item/minecraft_storage_weight_modifier`. |
 | `minecraft:swing_duration` | object |  | Duration, in seconds, of the item's swing animation played when mining or attacking. Affects visuals only and does not impact attack frequency or other gameplay mechanics. See `item/minecraft_swing_duration`. |
-| `minecraft:swing_sounds` | object |  | Overrides the swing sounds emitted by the user. See `item/minecraft_swing_sounds`. |
+| `minecraft:swing_sounds` | object |  | Overrides the swing sounds emitted by the user. Each field accepts the name of any sound event defined in `sound_definitions.json`, including the built-in vanilla sound events. See `item/minecraft_swing_sounds`. |
 | `minecraft:tags` | object |  | The tags component specifies which tags an item has on it. See `item/minecraft_tags`. |
 | `minecraft:throwable` | object |  | Throwable items can be thrown by the player, such as a snowball. See `item/minecraft_throwable`. |
 | `minecraft:use_animation` | string |  | Use_animation specifies which animation is played when the player uses the item. |

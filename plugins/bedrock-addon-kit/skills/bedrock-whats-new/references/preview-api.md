@@ -1,10 +1,10 @@
 # Upcoming and beta Script APIs (generated)
 
-Generated on **2026-10-12** from the official `index.d.ts` typings on npm. Labels: **[next stable]** is in the `rc` build (ships in the next game release, works without experiments once it does); **[beta]** needs the Beta APIs experiment and a `-beta` module version in the manifest; **[beta module]** has no stable release at all. Search for `Type.member`.
+Generated on **2026-10-19** from the official `index.d.ts` typings on npm. Labels: **[next stable]** is in the `rc` build (ships in the next game release, works without experiments once it does); **[beta]** needs the Beta APIs experiment and a `-beta` module version in the manifest; **[beta module]** has no stable release at all. Search for `Type.member`.
 
 ## @minecraft/server
 
-Stable 2.10.0, rc 2.11.0-rc.1.26.60-preview.30, beta 2.12.0-beta.1.26.60-preview.30. 85 names coming in the next stable, 247 beta-only.
+Stable 2.10.0, rc 2.12.0-rc.1.26.70-preview.20, beta 2.13.0-beta.1.26.70-preview.20. 85 names coming in the next stable, 269 beta-only.
 
 ### Dimension [next stable]
 
@@ -193,10 +193,12 @@ Contains additional options for a playSound occurrence.
 Represents a block in a dimension.
 
 - `canPlace(blockToPlace: BlockPermutation | BlockType | string, faceToPlaceOn?: Direction): boolean`
+- `getAllScheduledNamedTicks(): ScheduledNamedTick[]`
 - `getMapColor(): RGBA`
+- `getScheduledNamedTickCount(): number`
 - `hasScheduledNamedTick(eventName: string): boolean`
 - `readonly isSolid: boolean`
-- `removeScheduledNamedTick(eventName: string): void`
+- `removeScheduledNamedTicks(eventName: string): void`
 - `scheduleNamedTick(eventName: string, tickDelay: number): void`
 - `trySetPermutation(permutation: BlockPermutation): boolean`
 
@@ -216,7 +218,8 @@ Represents a block in a dimension.
 
 ### BlockComponentNamedTickEvent [beta] (new type)
 
-- `isName(eventName: string): boolean` Checks whether this named tick event has the specified name.
+- `isMine(): boolean` Checks whether this named tick event was scheduled by this pack.
+- `readonly name: string` Name of the named tick event.
 
 ### BlockComponentNeighborChangedAfterEvent [beta] (new type)
 
@@ -301,6 +304,7 @@ Contains methods relating to the active camera for the specified player.
 ### CarryOverBlockEntityDataFunction [beta] (new type)
 
 - `readonly dynamicProperties: boolean` If true, and if the block entity had dynamic_properties, the function will copy the dynamic properties from the block entity to the dropped item.
+- `readonly entityStorage: boolean` If true, and if the block entity supports entity storage, the function will copy the stored entities from the block entity to the dropped item without releasing them.
 
 ### ChatSendAfterEvent [beta] (new type)
 
@@ -357,6 +361,9 @@ A class that represents a particular dimension (e.g., The End) within a world.
 
 Represents the state of an entity (a mob, the player, or other moving objects like minecarts) in the world.
 
+- `readonly isPassengerOfBlock: boolean`
+- `startPassengerOfBlock(blockPosition: Vector3, offset: Vector3, rotation: number, rotationLimit: number, emote: PassengerOfBlockEmoteType): void`
+- `stopPassengerOfBlock(): void`
 - `readonly target?: Entity`
 
 ### EntityBreathableComponent [beta]
@@ -401,6 +408,21 @@ Represents the game rules for a world experience.
 
 - `readonly recipeId: string` The identifier of the invalid recipe.
 
+### ItemBlockEntityStorageComponent [beta] (new type)
+
+- `static readonly componentId = 'minecraft:block_entity_storage'`
+- `getEntities(): BlockEntityStorageInfo[]` Inspects the serialized entities in the calling pack's manifest UUID bucket without loading or spawning them.
+- `release(entityId: string, location: DimensionLocation): Entity` Releases a stored mob at the supplied dimension and world position.
+- `size(): number` Returns the number of serialized entities in the calling pack's manifest UUID bucket.
+- `store(entity: Entity): string` Serializes and despawns a non-player mob into the calling pack's item storage.
+- `transfer(entityId: string, targetBlock: Block): void` Moves serialized ownership from the calling pack's item bucket into the same bucket of a block's entity-storage without loading or spawning the entity.
+
+### ItemComponentTypes [beta]
+
+The types of item components that are accessible via function ItemStack.getComponent.
+
+- `BlockEntityStorage = 'minecraft:block_entity_storage'`
+
 ### MessageReceiveAfterEvent [beta] (new type)
 
 - `readonly id: string` The message identifier.
@@ -422,6 +444,12 @@ Represents the game rules for a world experience.
 
 - `subscribe(callback: (arg0: PackSettingChangeAfterEvent) => void): (arg0: PackSettingChangeAfterEvent) => void`
 - `unsubscribe(callback: (arg0: PackSettingChangeAfterEvent) => void): void`
+
+### PassengerOfBlockEmoteType [beta] (new type)
+
+- `Laying = 'Laying'` The entity will be laying on the block.
+- `Riding = 'Riding'` The entity will be sitting on the block.
+- `Standing = 'Standing'` The entity will be standing on the block.
 
 ### Player [beta]
 
@@ -584,6 +612,11 @@ The base class for a text primitive.
 - `setSelectedRecipe(recipeId: string): void` Selects a recipe for the current crafting operation.
 - `readonly validRecipes: string[]` The identifiers of the recipes that are valid for the current input items.
 
+### ScheduledNamedTick [beta] (new type)
+
+- `eventName: string`
+- `tickDelay: number`
+
 ### ServerMessageAfterEventSignal [beta] (new type)
 
 - `subscribe(callback: (arg0: MessageReceiveAfterEvent) => void): (arg0: MessageReceiveAfterEvent) => void` Adds a callback that will be called when an internal message is passed.
@@ -646,7 +679,7 @@ A set of events that fire before an actual action occurs.
 
 ## @minecraft/server-ui
 
-Stable 2.2.0, rc 2.3.0-rc.1.26.60-preview.30, beta 2.4.0-beta.1.26.60-preview.30. 14 names coming in the next stable, 13 beta-only.
+Stable 2.2.0, rc 2.3.0-rc.1.26.70-preview.20, beta 2.4.0-beta.1.26.70-preview.20. 14 names coming in the next stable, 14 beta-only.
 
 ### ButtonOptions [next stable]
 
@@ -715,6 +748,8 @@ A customizable data driven (DDUI) form that lets you add buttons, labels, toggle
 
 ### CustomFormOptions [beta] (new type)
 
+- `topCloseButtonVisible?: boolean | ObservableBoolean` Controls whether the form's top-right close button is visible.
+
 ### MessageBox [beta]
 
 A simple message form with two buttons and a text body.
@@ -739,11 +774,11 @@ Options for configuring a slider component.
 
 ## @minecraft/server-graphics
 
-Stable 1.0.0, rc 1.0.0-rc.1.26.60-preview.23, beta 1.1.0-beta.1.26.60-preview.30. 0 names coming in the next stable, 0 beta-only.
+Stable 1.0.0, rc 1.0.0-rc.1.26.60-preview.23, beta 1.1.0-beta.1.26.70-preview.20. 0 names coming in the next stable, 0 beta-only.
 
 ## @minecraft/server-gametest
 
-No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.60-preview.30). For automated tests in test worlds.
+No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.70-preview.20). For automated tests in test worlds.
 
 ### FenceConnectivity [beta module] (new type)
 
@@ -1054,7 +1089,7 @@ Main class for GameTest functions, with helpers and data for manipulating the re
 
 ## @minecraft/server-admin
 
-No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.60-preview.30). Bedrock Dedicated Server only.
+No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.70-preview.20). Bedrock Dedicated Server only.
 
 ### AdminBeforeEvents [beta module] (new type)
 
@@ -1223,7 +1258,7 @@ A globally available object that returns a list of dedicated-server configured v
 
 ## @minecraft/server-net
 
-No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.60-preview.30). Bedrock Dedicated Server only.
+No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.70-preview.20). Bedrock Dedicated Server only.
 
 ### beforeEvents [beta module] (new type)
 
@@ -1401,7 +1436,6 @@ Represents the unique type of network packet.
 - `AddItemActorPacket = 'AddItemActorPacket'`
 - `AddPaintingPacket = 'AddPaintingPacket'`
 - `AddPlayerPacket = 'AddPlayerPacket'`
-- `AddVolumeEntityPacket = 'AddVolumeEntityPacket'`
 - `AgentActionEventPacket = 'AgentActionEventPacket'`
 - `AgentAnimationPacket = 'AgentAnimationPacket'`
 - `AnimateEntityPacket = 'AnimateEntityPacket'`
@@ -1427,6 +1461,7 @@ Represents the unique type of network packet.
 - `CameraSplinePacket = 'CameraSplinePacket'`
 - `ChangeDimensionPacket = 'ChangeDimensionPacket'`
 - `ChangeMobPropertyPacket = 'ChangeMobPropertyPacket'`
+- `ChatPacket = 'ChatPacket'`
 - `ChunkRadiusUpdatedPacket = 'ChunkRadiusUpdatedPacket'`
 - `ClientCacheBlobStatusPacket = 'ClientCacheBlobStatusPacket'`
 - `ClientCacheMissResponsePacket = 'ClientCacheMissResponsePacket'`
@@ -1543,7 +1578,6 @@ Represents the unique type of network packet.
 - `RefreshEntitlementsPacket = 'RefreshEntitlementsPacket'`
 - `RemoveActorPacket = 'RemoveActorPacket'`
 - `RemoveObjectivePacket = 'RemoveObjectivePacket'`
-- `RemoveVolumeEntityPacket = 'RemoveVolumeEntityPacket'`
 - `RequestAbilityPacket = 'RequestAbilityPacket'`
 - `RequestChunkRadiusPacket = 'RequestChunkRadiusPacket'`
 - `RequestNetworkSettingsPacket = 'RequestNetworkSettingsPacket'`
@@ -1739,7 +1773,7 @@ An error thrown when attempting to use a WebSocket while the socket is not conne
 
 ## @minecraft/debug-utilities
 
-No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.60-preview.30). 
+No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.70-preview.20). 
 
 ### collectPluginStats [beta module] (new type)
 

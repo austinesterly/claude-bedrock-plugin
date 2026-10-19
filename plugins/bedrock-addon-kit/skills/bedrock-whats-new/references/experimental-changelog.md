@@ -1,6 +1,88 @@
 # Experimental and upcoming features in recent changelogs (generated)
 
-Generated on **2026-10-12** from feedback.minecraft.net (official Zendesk API). Each release lists its "Experimental ..." sections word for word, then other bullets that mention an experiment or beta (often a feature graduating out of an experiment). Newest first. Toggle names are as Mojang writes them in world settings > Experiments.
+Generated on **2026-10-19** from feedback.minecraft.net (official Zendesk API). Each release lists its "Experimental ..." sections word for word, then other bullets that mention an experiment or beta (often a feature graduating out of an experiment). Newest first. Toggle names are as Mojang writes them in world settings > Experiments.
+
+## Minecraft Beta & Preview - 26.70.20 (2026-10-13)
+
+Source: https://feedback.minecraft.net/hc/en-us/articles/49576818675597-Minecraft-Beta-Preview-26-70-20
+
+### Experimental Features
+
+#### Nether Spawning Rebalancing
+
+- Added a Nether Spawning Rebalancing experiment that reduces mob density and adjusts fortress spawning to more closely resemble Java Edition (MCPE-65762)
+
+### Experimental Technical Updates
+
+#### Entity
+
+- Added beta Script API support for positioning entities as passengers of blocks
+  - Entity.startPassengerOfBlock(blockPosition, offset, rotation, rotationLimit, emote) positions an entity as a passenger of a block, with a position offset, rotation, rotation limit, and PassengerOfBlockEmoteType (Standing, Riding, or Laying)
+  - Entity.stopPassengerOfBlock() stops an entity from being a passenger of a block
+  - The read-only Entity.isPassengerOfBlock property reports whether an entity is a passenger of a block
+  - Destroying or changing a block does not automatically stop an entity from being its passenger; scripts must call Entity.stopPassengerOfBlock() because blocks are agnostic of their passengers
+  - The existing query.is_riding returns true when an entity is riding a vehicle or is a passenger of a block in the Riding pose; the new query.is_laying returns true when an entity is a passenger of a block in the Laying pose. When isPassengerOfBlock is true and both queries are false, the entity is in the Standing pose for animation
+
+#### API
+
+- Updated the ScriptPlayer.playMusic method in beta for playing music tracks for an individual player
+  - Now returns a SoundInstance when the MusicOptions.fade value is zero or not given
+  - Returns undefined when the MusicOptions.fade value is greater than zero
+  - Can now pass a SoundDefinition into the trackId field
+- Updated the ScriptWorld.playMusic method in beta for playing music tracks for all players in the world
+  - Now returns a SoundInstance when the MusicOptions.fade value is zero or not given
+  - Returns undefined when the MusicOptions.fade value is greater than zero
+  - Can now pass a SoundDefinition into the trackId field
+- Added support for the minecraft:chiseled_bookshelf block to BlockInventoryComponent in beta
+- Added ItemBlockEntityStorageComponent item component behind beta
+  - It may be accessed on any item-stack
+  - It has the following methods, store, release, transfer, getEntities and size which work like their BlockEntityStorageComponent counterparts
+    - release however takes an extra position parameter to decide where the entity is being released
+  - The component will be pre-populated if the item-stack results from a successful carry_over_block_entity_data loot function
+  - Stored entities will be carried over the corresponding placed block if it supports entity-storage
+
+##### CarryOverBlockEntityDataFunction
+
+- Added the read-only beta property entityStorage to expose whether the loot function carries stored entities from the block entity to the dropped item
+
+#### Blocks
+
+- Added the optional Boolean field entity_storage to the carry_over_block_entity_data loot function, defaulting to false and requiring the Upcoming Creator Features experiment
+- When entity_storage is true, stored entities are copied from the block entity to the dropped item without being released, independently of the dynamic_properties option
+- Placing the dropped item restores its stored entities when the placed block supports entity storage, without releasing them
+- Split BlockComponentNamedTickEvent's isName into name and isMine
+  - name is a string property matching the name used when ScriptBlock.scheduleNamedTick was used
+  - isMine is a method that returns true if the event was scheduled by your pack
+- Added two new methods to the Block API and renamed one
+  - getScheduledNamedTickCount which returns the amount of named events scheduled at a position, agnostic of pack origin
+  - getAllScheduledNamedTicks which returns the vector of named events scheduled at a position by that pack
+  - removeScheduledNamedTick renamed to removeScheduledNamedTicks
+
+##### minecraft:block_entity
+
+- Added the optional show_ui_on_interaction boolean to container for block format versions 1.26.20 and later with Upcoming Creator Features enabled; it defaults to true
+- Setting show_ui_on_interaction to false disables the built-in container UI and allows normal block interaction events, including registered onPlayerInteract callbacks, to run instead; omitting the field or setting it to true preserves container opening without those callbacks
+- Custom containers now follow chest interaction permissions, preventing container opening and interaction callbacks for players without permission to open containers, even when the UI is disabled
+- Custom containers are now recognized as interactive container blocks, preventing duplicate client-side use of held items during interaction
+- The HUD now shows the "Open" interaction hint for custom containers only when their UI is enabled
+
+#### Entity Components
+
+- Added a new experimental minecraft:time_marker_sensor entity component, available to entity definitions using the beta format version, which runs an entity event every time a named time marker fires on a named world clock
+
+#### Features
+
+- POI type definitions now respect behavior pack stacking order, allowing higher-priority packs to override definitions from lower-priority packs
+
+#### Graphical
+
+- Under the RenderDragon Features for Creators Experiment
+  - Ice crystals now emit a light blue light color
+
+### Other experiment and beta mentions
+
+- Added @minecraft/server version 2.13.0-beta
+- Added topCloseButtonVisible property to CustomFormOptions in @minecraft/server-ui beta.
 
 ## Minecraft Beta & Preview - 26.60.29 (2026-09-30)
 

@@ -1,6 +1,6 @@
 # Particles, cameras, visuals, resource files
 
-Generated 2026-10-12 by `scripts/build-json-reference.mjs` from Mojang's official form definitions in the Microsoft Learn docs repo (content/forms/client_particles, camera, visual, resource, client_misc, client_deferred_rendering). Search for the component id. Field types come from the schema; when a type is blank, check the example or the linked sub-object.
+Generated 2026-10-19 by `scripts/build-json-reference.mjs` from Mojang's official form definitions in the Microsoft Learn docs repo (content/forms/client_particles, camera, visual, resource, client_misc, client_deferred_rendering). Search for the component id. Field types come from the schema; when a type is blank, check the example or the linked sub-object.
 
 ## Components (12)
 
@@ -113,7 +113,7 @@ Struct WaterConfig WaterConfigSettingsV1 Client Deferred Rendering
 | `format_version` | string |  | [editor(readonly:true)] |
 | `minecraft:water_settings` |  |  | minecraft:water_settings |
 
-## Documents and sub-objects (99)
+## Documents and sub-objects (100)
 
 ### Color Proxy (color_proxy)
 
@@ -768,6 +768,14 @@ Defines a geometry document (bones, cubes, and UV mappings) with format_version 
 ### geometry (geometry.v1.21.0)
 
 Defines a geometry document (bones, cubes, and UV mappings) with format_version 1.21.0.
+
+| Field | Type | Default | Notes |
+|---|---|---|---|
+| `format_version` | version |  | **required**. Format Version |
+| `debug` | boolean |  | Debug |
+| `minecraft:geometry` | objectArray |  |  |
+
+### geometry (geometry.v1.26.40)
 
 | Field | Type | Default | Notes |
 |---|---|---|---|

@@ -2,9 +2,22 @@
 
 Curated from the official changelogs on feedback.minecraft.net (links in `current-versions.md`). Newest first. Each entry keeps only what changes how add-ons are built: new stable APIs and components, things that left experiments, and stricter parsing that can break existing files. The refresh routine appends new releases here.
 
-Last curated: 2026-10-06 (through Preview 26.60.30).
+Last curated: 2026-10-19 (through Preview 26.70.20).
 
-## 26.60 (in Preview since 2026-09-02; stable expected late October 2026)
+## 26.70 (in Preview since 2026-10-13, Preview 26.70.20)
+
+Script API: `@minecraft/server` 2.12.0 released in Preview (stable when 26.70 ships); 2.13.0-beta added. 26.60 has not shipped as stable yet, so stable is still 2.10.0 and the next stable is 2.11.0.
+- **Points of interest leave experiments:** POI types with hierarchical tags in behavior packs and `/locate poi`. POI definitions follow behavior pack stacking order.
+- New block component `minecraft:jukebox_playlist_source` (a container above a jukebox feeds it music discs; needs a compatible single container). New entity component `minecraft:can_stand_on_brittle_ice: {}`.
+- `Container.setItem` and `ContainerSlot.setItem` clamp stack sizes to the item's max stack size. Script strings keep embedded NUL characters. Exceptions inside event callbacks carry more context.
+- Vanilla block states: the upper half of a door now reports the real `open_bit`; repeaters expose `locked`, scaffolding exposes `bottom`, and both trigger neighbor updates in worlds with base game version 1.26.60+.
+- Block permutations can now override `destruction_particles` and `precipitation_interactions`. `minecraft:transformation` with `preserve_equipment` keeps empty slots. `damage_absorption` items absorb damage when Unbreaking skips durability loss.
+- Packs: system packs can no longer be overridden by development packs with the same identity; Marketplace downloads no longer delete development packs with matching UUIDs; malformed JSON UI (unknown controls, bad anchors, binding loops) is reported in the content log. Structure blocks get a Keep Structure Void option.
+- `minecraft:crevasse_feature` appears in the notes but is internal only; creators can't use it.
+- Experimental (beta API or Upcoming Creator Features): `Entity.startPassengerOfBlock` / `stopPassengerOfBlock` / `isPassengerOfBlock` with Standing, Riding or Laying poses and `query.is_laying`; `ItemBlockEntityStorageComponent`; `carry_over_block_entity_data` `entity_storage`; `block_entity.container.show_ui_on_interaction`; entity `minecraft:time_marker_sensor`; `playMusic` returns a `SoundInstance`; `CustomFormOptions.topCloseButtonVisible`. **Breaking for beta users:** `removeScheduledNamedTick` renamed to `removeScheduledNamedTicks` and the named-tick event's `isName` split into `name` and `isMine()`.
+- Gameplay (Drop 4 toggle): brittle ice, crevasses in Ice Caves, jukebox playlists, new sound events `convert_to_frostbite` / `convert_to_zombie`. New "Nether Spawning Rebalancing" experiment.
+
+## 26.60 (in Preview since 2026-09-02; stable expected late October 2026; not shipped as of 2026-10-19)
 
 Script API: `@minecraft/server` 2.11.0 and `@minecraft/server-ui` 2.3.0 become stable; 2.12.0-beta / 2.4.0-beta added.
 - **World clocks leave experiments**: `StartupEvent.worldClockRegistry.registerClock`, `World.getClock`, `WorldClock` (time, isPaused, set, skipTo, rewindTo, add/removeTimeMarker), `TimeMarker`, clock after-events and `worldClockOnRestart` before-event. Commands `/time of <clock> ...`, `/time pause|resume|query time`, `/time set <TimeMarker> next|previous|stay` no longer need the Creator World Clocks experiment (26.60.29).

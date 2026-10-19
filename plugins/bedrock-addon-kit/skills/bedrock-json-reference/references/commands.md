@@ -1,6 +1,6 @@
 # Commands
 
-Generated 2026-10-12 by `scripts/build-json-reference.mjs` from Mojang's official form definitions in the Microsoft Learn docs repo (content/forms/command). Search for the component id. Field types come from the schema; when a type is blank, check the example or the linked sub-object.
+Generated 2026-10-19 by `scripts/build-json-reference.mjs` from Mojang's official form definitions in the Microsoft Learn docs repo (content/forms/command). Search for the component id. Field types come from the schema; when a type is blank, check the example or the linked sub-object.
 
 ## Documents and sub-objects (139)
 

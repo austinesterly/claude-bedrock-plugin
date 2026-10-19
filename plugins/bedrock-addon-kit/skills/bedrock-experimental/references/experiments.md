@@ -12,24 +12,28 @@ Curated 2026-10-06 against official changelogs through Minecraft Preview 26.60.3
 
 ## Beta APIs
 
-Unlocks beta versions of the script modules. What's in beta now (as of `@minecraft/server` 2.12.0-beta and `server-ui` 2.4.0-beta):
+Unlocks beta versions of the script modules. What's in beta now (as of `@minecraft/server` 2.13.0-beta and `server-ui` 2.4.0-beta, Preview 26.70.20):
 
-- **Blocks:** named ticks (`Block.scheduleNamedTick`, `hasScheduledNamedTick`, `removeScheduledNamedTick`, the `onNamedTick` custom component event; up to 4 per block, names up to 31 characters); `onNeighborChanged` with `BlockComponentNeighborChangedAfterEvent.getChanges` (needs the `minecraft:neighbor_change` component for direction filtering); `Block.canPlace`, `isSolid`, `getMapColor`, `trySetPermutation`; `BlockBoundingBoxUtils`.
-- **Block storage and crafting:** `BlockEntityStorageComponent` (`store`, `transfer`, `release`, `getEntities`, `size`; up to 4 entities per block); `BlockRecipeCraftingComponent` (stonecutter), `BlockRecipeProcessingComponent` (crafter), `BlockVibrationPropertiesComponent`.
+- **Blocks:** named ticks (`Block.scheduleNamedTick`, `hasScheduledNamedTick`, `removeScheduledNamedTicks`, `getScheduledNamedTickCount`, `getAllScheduledNamedTicks`, the `onNamedTick` custom component event; up to 4 per block, names up to 31 characters). **26.70.20 broke this beta API:** `removeScheduledNamedTick` became `removeScheduledNamedTicks`, and the event's `isName` was split into a `name` string and an `isMine()` method; `onNeighborChanged` with `BlockComponentNeighborChangedAfterEvent.getChanges` (needs the `minecraft:neighbor_change` component for direction filtering); `Block.canPlace`, `isSolid`, `getMapColor`, `trySetPermutation`; `BlockBoundingBoxUtils`.
+- **Block storage and crafting:** `BlockEntityStorageComponent` (`store`, `transfer`, `release`, `getEntities`, `size`; up to 4 entities per block); `ItemBlockEntityStorageComponent` on item stacks (same methods, `release` takes a position; filled by the `carry_over_block_entity_data` loot function with `entity_storage: true`); `BlockInventoryComponent` now covers the vanilla chiseled bookshelf; `BlockRecipeCraftingComponent` (stonecutter), `BlockRecipeProcessingComponent` (crafter), `BlockVibrationPropertiesComponent`.
 - **Events:** `world.beforeEvents.chatSend` / `afterEvents.chatSend`, `playerPlaceBlock` (before, cancellable), `playerItemAttackEntity` (before, cancellable), `playerCraftRecipe`, `playerCursorItemGrab` / `Release`, `playerUseNameTag`, `packSettingChange`, `system.beforeEvents.watchdogTerminate`.
 - **Points of interest:** `PoiManager`, `PoiBlockManager`, `PoiBlockType` (`hasTag`), filters by name, tag and occupancy.
+- **Entities:** `Entity.startPassengerOfBlock(blockPosition, offset, rotation, rotationLimit, emote)` with `PassengerOfBlockEmoteType` Standing, Riding or Laying, `stopPassengerOfBlock()`, `isPassengerOfBlock` (26.70.20; sit or lie an entity on a block, with `query.is_laying` for animation; scripts must stop it when the block changes).
+- **Music:** `Player.playMusic` / `World.playMusic` return a `SoundInstance` when there is no fade, and accept a sound definition as `trackId` (26.70.20).
 - **Other:** `EntityNpcComponent`, `PlayerWaypointsMode`, debug and primitive shape visibility (`hiddenFrom`, `defaultVisibleToAll`).
-- **Forms (`server-ui` beta):** `CustomForm.multiButtonRow` (up to 3 buttons per row, `ButtonData`), `MessageBox` options (`showHorizontalButtons`, `button3WithOptions`), `MessageBoxBodyOptions`, `CustomFormOptions`.
+- **Forms (`server-ui` beta):** `CustomForm.multiButtonRow` (up to 3 buttons per row, `ButtonData`), `MessageBox` options (`showHorizontalButtons`, `button3WithOptions`), `MessageBoxBodyOptions`, `CustomFormOptions` (with `topCloseButtonVisible` from 26.70.20).
 - **Beta modules:** `@minecraft/server-gametest` (automated tests, simulated players), `@minecraft/server-admin` and `@minecraft/server-net` (Bedrock Dedicated Server: secrets, server variables, HTTP requests, level storage), `@minecraft/debug-utilities` (debug shapes and diagnostics).
 
 ## Upcoming Creator Features
 
 The main toggle for new JSON. Current contents (format version 1.26.60 unless noted):
 
-- `minecraft:block_entity` `container` (block inventories, up to 54 slots) with an optional `title`, and `entity_storage: true` (entities stored inside a block).
+- `minecraft:block_entity` `container` (block inventories, up to 54 slots) with an optional `title` and, from 26.70.20, `show_ui_on_interaction: false` (no built-in UI, so `onPlayerInteract` runs instead), and `entity_storage: true` (entities stored inside a block). Custom containers follow chest open permissions.
+- `carry_over_block_entity_data` loot function `entity_storage: true` (26.70.20): stored entities travel with the dropped item and come back when it is placed.
+- Entity `minecraft:time_marker_sensor` (26.70.20, beta entity format version): runs an entity event each time a named time marker fires on a named world clock.
 - `minecraft:collision_box` `min`/`max` corner form. The `origin`/`size` form works without the toggle. From 1.26.60 the component must be an **array** of boxes in every case (a breaking change, not experimental).
-- `minecraft:enchantment_power_transmitter`, `minecraft:vibration_properties` (`dampen_vibrations`, `occlude_vibrations`), `minecraft:neighbor_change` (`neighbor_directions`).
-- Point-of-interest types and hierarchical tags in behavior packs, plus `/locate poi`.
+- `minecraft:enchantment_power_transmitter`, `minecraft:vibration_properties` (`dampen_vibrations`, `occlude_vibrations`; the Preview changelog spells it `dampen_vibrations` but Mojang's docs schema from 2026-10-19 says `damper_vibrations`, so check the content log for whichever one the game rejects), `minecraft:neighbor_change` (`neighbor_directions`).
+- Point-of-interest types and hierarchical tags in behavior packs, plus `/locate poi`. **Released in Preview 26.70.20**, so they leave the toggle when 26.70 ships; still experimental in stable 26.52 and 26.60.
 - Item `minecraft:storage_item` and `minecraft:bundle_interaction`, and block `destructible_by_mining.item_specific_speeds`, which Mojang's definitions still mark experimental.
 
 ## RenderDragon Features for Creators
@@ -42,7 +46,7 @@ Unlocks `culling_shape` and voxel-shape culling for custom blocks. Since 26.50, 
 
 ## Game drop previews
 
-Each upcoming game drop has its own toggle. "Drop 4 of 2026" (Preview 26.60.29 onward) adds the Ice Cave biome, ice crystals, icicles, the Freezing effect, the Frostbite zombie variant and the ice ball. Vanilla ids from a drop preview may change before release, so don't reference them from shipped packs. "Villager Trade Rebalancing" changes villager trades.
+Each upcoming game drop has its own toggle. "Drop 4 of 2026" (Preview 26.60.29 onward) adds the Ice Cave biome, ice crystals, icicles, the Freezing effect, the Frostbite zombie variant and the ice ball. Vanilla ids from a drop preview may change before release, so don't reference them from shipped packs. "Villager Trade Rebalancing" changes villager trades. Preview 26.70.20 adds brittle ice and crevasses to Drop 4, plus a "Nether Spawning Rebalancing" toggle (lower Nether mob density, fortress spawning closer to Java Edition) that changes gameplay, not creator content.
 
 ## Custom dimensions and biomes
 
@@ -53,6 +57,7 @@ Each upcoming game drop has its own toggle. "Drop 4 of 2026" (Preview 26.60.29 o
 
 ## Recently graduated (now stable or next stable)
 
+- **26.70 (in Preview, `@minecraft/server` 2.12.0 released in 26.70.20):** point-of-interest types with hierarchical tags and `/locate poi`; new stable block component `minecraft:jukebox_playlist_source`; entity component `minecraft:can_stand_on_brittle_ice`.
 - **26.60 (next stable, `@minecraft/server` 2.11.0):** world clocks (`WorldClockRegistry`, `World.getClock`, time markers, `/time` overloads; the Creator World Clocks Features toggle was removed), `SoundInstance` controls, `loopCount`, `Dimension.spawnXp`, `EntityIsTamedComponent.tamedToPlayer`, `TextPrimitive.lineGapHeight`, server sound definitions at format 1.26.60; `server-ui` 2.3.0 (`MessageBox`, `ImageDetails`, option objects).
 - **26.50 (stable, 2.10.0):** `cloneBlocks`, `BlockQueryOptions`, camera shake, `entityTamed` events, sneaking events, `Player.fogSettings`, block dynamic properties, `server-graphics` 1.0.0, horizontal multi-blocks, `minecraft:sound` block component, custom `sound_event` names (format 1.26.50).
 - **Earlier:** `minecraft:block_entity` without the toggle from format 1.26.20, the `minecraft:multi_block` trait, `minecraft:instrument_sound`.

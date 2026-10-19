@@ -1,6 +1,6 @@
 # Entity AI goals (minecraft:behavior.*)
 
-Generated 2026-10-12 by `scripts/build-json-reference.mjs` from Mojang's official form definitions in the Microsoft Learn docs repo (content/forms/entity). Search for the component id. Field types come from the schema; when a type is blank, check the example or the linked sub-object.
+Generated 2026-10-19 by `scripts/build-json-reference.mjs` from Mojang's official form definitions in the Microsoft Learn docs repo (content/forms/entity). Search for the component id. Field types come from the schema; when a type is blank, check the example or the linked sub-object.
 
 ## Components (194)
 
@@ -1033,13 +1033,16 @@ Allows a mob to be tempted by a player holding a specific item. Uses point-to-po
 | `can_get_scared` | boolean | `false` | If true, the mob can stop being tempted if the player moves too fast while close to this mob. |
 | `can_tempt_vertically` | boolean | `false` | If true, vertical distance to the player will be considered when tempting. |
 | `can_tempt_while_ridden` | boolean | `false` | If true, the mob can be tempted even if it has a passenger (i.e. if being ridden). |
-| `items` | stringArray | `"[]"` | List of items that can tempt the mob. |
-| `sound_interval` | intRange |  | Range of random ticks to wait between tempt sounds. |
+| `control_flags` | stringArray | `[]` | Control Flags Values: `jump`, `look`, `move`. |
+| `items` | string | `[]` | List of items that can tempt the mob. |
+| `on_tempt_end` | object | `{"event":"","filters":{"AND":null,"NOT":null,"OR":null,"all…` | Event to trigger when this mob stops being tempted. See `entity/actordefinitiontrigger`. |
+| `on_tempt_start` | object | `{"event":"","filters":{"AND":null,"NOT":null,"OR":null,"all…` | Event to trigger when this mob starts being tempted. See `entity/actordefinitiontrigger`. |
+| `priority` | int | `0` | Priority |
+| `sound_interval` | object | `{"max":0,"min":0}` | Range of random ticks to wait between tempt sounds. See `legacy/floatrange`. |
 | `speed_multiplier` | float | `1` | Movement speed multiplier of the mob when using this AI Goal |
-| `stop_distance` | float | `1.5` | The distance at which the mob will stop following the player. |
-| `tempt_sound` | string |  | Sound to play while the mob is being tempted. |
+| `stop_distance` | float |  | The distance at which the mob will stop following the player. |
+| `tempt_sound` | stringEnum | `"undefined"` | Sound to play while the mob is being tempted. Values: `absorb_block`, `activate`, `add.chest`, `admire`, `agitated`, `ambient`, `ambient.aggressive`, `ambient.baby`, `ambient.basalt_deltas.additions`, `ambient.basalt_deltas.loop`, `ambient.basalt_deltas.mood`, `ambient.candle`, `ambient.cave`, `ambient.crimson_forest.additions`, `ambient.crimson_forest.loop`, `ambient.crimson_forest.mood`, `ambient.in.air`, `ambient.in.raid`, `ambient.in.water`, `ambient.nether_wastes.additions`, `ambient.nether_wastes.loop`, `ambient.nether_wastes.mood`, `ambient.pollinate`, `ambient.screamer`, …. |
 | `within_radius` | float | `0` | Distance in blocks this mob can get tempted by a player holding an item they like. |
-| `priority` | int |  | As priority approaches 0, the priority is increased. The higher the priority, the sooner this behavior will be executed as a goal. |
 
 ### minecraft:behavior.float_wander
 
@@ -2435,16 +2438,19 @@ Allows the mob to target a mob that is hurt by their owner.
 
 ### minecraft:behavior.panic
 
-Allows the mob to enter the panic state, which makes it run around and away from the damage source that made it enter this state.
+Allows a mob to panic when receiving damage, making it run around and away from the damage source that made it enter this state.
 
 | Field | Type | Default | Notes |
 |---|---|---|---|
-| `damage_sources` | stringArray | `"[campfire, fire, fire_tick, freezing, lava, lightning, mag…` | The list of Entity Damage Sources that will cause this mob to panic |
-| `force` | boolean | `false` | If true, this mob will not stop panicking until it can't move anymore or the goal is removed from it |
-| `ignore_mob_damage` | boolean | `false` | If true, the mob will not panic in response to damage from other mobs. This overrides the damage types in "damage_sources" |
-| `prefer_water` | boolean | `false` | If true, the mob will prefer water over land |
-| `speed_multiplier` | float | `1` | Movement speed multiplier of the mob when using this AI Goal |
-| `priority` | int |  | As priority approaches 0, the priority is increased. The higher the priority, the sooner this behavior will be executed as a goal. |
+| `control_flags` | stringArray | `[]` | Control Flags Values: `jump`, `look`, `move`. |
+| `damage_sources` | stringArray | `[]` | The list of damage sources that will cause this mob to panic. Values: `all`, `anvil`, `block_explosion`, `campfire`, `charging`, `contact`, `drowning`, `entity_attack`, `entity_explosion`, `fall`, `falling_block`, `fire`, `fire_tick`, `fireworks`, `fly_into_wall`, `freezing`, `lava`, `lightning`, `mace_smash`, `magic`, `magma`, `none`, `override`, `piston`, …. |
+| `force` | boolean | `false` | If true, the mob will stop panicking only when it can no longer find positions to run away to, or when the goal is removed. |
+| `ignore_mob_damage` | boolean | `false` | If true, the mob will not panic in response to damage from other mobs. This overrides the damage types in "damage_sources". |
+| `panic_sound` | stringEnum | `"undefined"` | Sound to play while the mob is panicking. Values: `absorb_block`, `activate`, `add.chest`, `admire`, `agitated`, `ambient`, `ambient.aggressive`, `ambient.baby`, `ambient.basalt_deltas.additions`, `ambient.basalt_deltas.loop`, `ambient.basalt_deltas.mood`, `ambient.candle`, `ambient.cave`, `ambient.crimson_forest.additions`, `ambient.crimson_forest.loop`, `ambient.crimson_forest.mood`, `ambient.in.air`, `ambient.in.raid`, `ambient.in.water`, `ambient.nether_wastes.additions`, `ambient.nether_wastes.loop`, `ambient.nether_wastes.mood`, `ambient.pollinate`, `ambient.screamer`, …. |
+| `prefer_water` | boolean | `false` | If true, the mob will prefer water over land. |
+| `priority` | int | `0` | Priority |
+| `sound_interval` | object | `{"max":0,"min":0}` | Range of random ticks to wait between playing the panic sound. See `legacy/floatrange`. |
+| `speed_multiplier` | float | `1` | Movement speed multiplier when using this goal. |
 
 Example (/minecraft:entity/components/minecraft:behavior.panic/):
 ```json
@@ -3048,11 +3054,9 @@ Allows the mob to send an event to another mob.
 
 | Field | Type | Default | Notes |
 |---|---|---|---|
-| `cast_duration` | float |  | Time in seconds for the entire event sending process |
-| `look_at_target` | boolean | `true` | If true, the mob will face the entity it sends an event to |
-| `sequence` | objectArray |  | List of events to send |
-| `priority` | int |  | As priority approaches 0, the priority is increased. The higher the priority, the sooner this behavior will be executed as a goal. |
-| `event_choices` | objectArray |  | List of possible events to send with conditions, weights, and targeting parameters. |
+| `control_flags` | stringArray | `[]` | Control Flags Values: `jump`, `look`, `move`. |
+| `event_choices` | objectArray | `[]` | List of possible events to send with conditions, weights, and targeting parameters. See `entity/sendeventchoice`. |
+| `priority` | int | `0` | Priority |
 
 ### minecraft:behavior.share_items
 
@@ -3766,13 +3770,16 @@ Allows a mob to be tempted by a player holding a specific item. Uses pathfinding
 | `can_get_scared` | boolean | `false` | If true, the mob can stop being tempted if the player moves too fast while close to this mob. |
 | `can_tempt_vertically` | boolean | `false` | If true, vertical distance to the player will be considered when tempting. |
 | `can_tempt_while_ridden` | boolean | `false` | If true, the mob can be tempted even if it has a passenger (i.e. if being ridden). |
-| `items` | stringArray | `"[]"` | List of items that can tempt the mob. |
-| `sound_interval` | int |  | Range of random ticks to wait between tempt sounds. Can be a number, an array [min, max], or an object with range_min/range_max or min/max. |
+| `control_flags` | stringArray | `[]` | Control Flags Values: `jump`, `look`, `move`. |
+| `items` | string | `[]` | List of items that can tempt the mob. |
+| `on_tempt_end` | object | `{"event":"","filters":{"AND":null,"NOT":null,"OR":null,"all…` | Event to trigger when this mob stops being tempted. See `entity/actordefinitiontrigger`. |
+| `on_tempt_start` | object | `{"event":"","filters":{"AND":null,"NOT":null,"OR":null,"all…` | Event to trigger when this mob starts being tempted. See `entity/actordefinitiontrigger`. |
+| `priority` | int | `0` | Priority |
+| `sound_interval` | int | `{"max":0,"min":0}` | Range of random ticks to wait between tempt sounds. Can be a number, an array [min, max], or an object with range_min/range_max or min/max. See `legacy/floatrange`. |
 | `speed_multiplier` | float | `1` | Movement speed multiplier of the mob when using this AI Goal |
-| `stop_distance` | float | `1.5` | The distance at which the mob will stop following the player. |
-| `tempt_sound` | string |  | Sound to play while the mob is being tempted. |
+| `stop_distance` | float |  | The distance at which the mob will stop following the player. |
+| `tempt_sound` | stringEnum | `"undefined"` | Sound to play while the mob is being tempted. Values: `absorb_block`, `activate`, `add.chest`, `admire`, `agitated`, `ambient`, `ambient.aggressive`, `ambient.baby`, `ambient.basalt_deltas.additions`, `ambient.basalt_deltas.loop`, `ambient.basalt_deltas.mood`, `ambient.candle`, `ambient.cave`, `ambient.crimson_forest.additions`, `ambient.crimson_forest.loop`, `ambient.crimson_forest.mood`, `ambient.in.air`, `ambient.in.raid`, `ambient.in.water`, `ambient.nether_wastes.additions`, `ambient.nether_wastes.loop`, `ambient.nether_wastes.mood`, `ambient.pollinate`, `ambient.screamer`, …. |
 | `within_radius` | float | `0` | Distance in blocks this mob can get tempted by a player holding an item they like. |
-| `priority` | int |  | As priority approaches 0, the priority is increased. The higher the priority, the sooner this behavior will be executed as a goal. |
 
 Example (/minecraft:entity/components/minecraft:behavior.tempt/):
 ```json
