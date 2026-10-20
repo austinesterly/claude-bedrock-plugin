@@ -406,6 +406,8 @@ for (const [cid, c] of controllers) {
   for (const [sn, s] of Object.entries(states)) {
     for (const t of s.transitions ?? []) for (const target of Object.keys(t)) if (!(target in states)) err(c.file, `${cid}: state "${sn}" transitions to unknown state "${target}"`);
     if (Object.keys(states).length > 1 && s.blend_transition === undefined) warn(c.file, `${cid}: state "${sn}" has no blend_transition, so it will snap`);
+    // The game rejects an empty list ("states | <state> | animations | Required child  not found" in the content log).
+    if (Array.isArray(s.animations) && s.animations.length === 0) err(c.file, `${cid}: state "${sn}" has an empty animations list; the game rejects it, so give it an animation`);
     for (const user of usedControllerBy.get(cid) ?? [])
       for (const an of s.animations ?? []) { const n = typeof an === "string" ? an : Object.keys(an)[0]; if (!user.animKeys.has(n)) err(c.file, `${cid}: state "${sn}" plays "${n}", which is not a key of ${user.entity}'s animations`); }
   }
