@@ -1,0 +1,36 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:chorus_moth",
+      "materials": {"default": "entity_alphatest"},
+      "textures": {
+        "default": "textures/entity/zoocraft/chorus_moth",
+        "popped": "textures/entity/zoocraft/chorus_moth_popped"
+      },
+      "geometry": {"default": "geometry.zoocraft.chorus_moth"},
+      "animations": {
+        "fly": "animation.zoocraft.chorus_moth.fly",
+        "hover": "animation.zoocraft.chorus_moth.hover",
+        "rest": "animation.zoocraft.chorus_moth.rest",
+        "warm": "animation.zoocraft.chorus_moth.warm",
+        "warm_flat": "animation.zoocraft.chorus_moth.warm_flat",
+        "settled": "animation.zoocraft.chorus_moth.settled",
+        "emerge": "animation.zoocraft.chorus_moth.emerge",
+        "crawl": "animation.zoocraft.chorus_moth.crawl",
+        "munch": "animation.zoocraft.chorus_moth.munch",
+        "burrow": "animation.zoocraft.chorus_moth.burrow",
+        "larva_still": "animation.zoocraft.chorus_moth.larva_still",
+        "rear": "animation.zoocraft.chorus_moth.rear",
+        "pupa": "animation.zoocraft.chorus_moth.pupa",
+        "move": "controller.animation.zoocraft.chorus_moth.move"
+      },
+      "render_controllers": ["controller.render.zoocraft.chorus_moth"],
+      "scripts": {
+        "scale": "q.is_baby ? 1 : 1",
+        "initialize": ["variable.offset = math.random(0, 20);"],
+        "animate": ["move"]
+      }
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "zoocraft:chorus_moth",
+      "spawn_category": "creature",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "properties": {"zoocraft:act": {"type": "int", "range": [0, 12], "default": 0, "client_sync": true}}
+    },
+    "component_groups": {
+      "zoocraft:coat_0": {"minecraft:variant": {"value": 0}},
+      "zoocraft:coat_1": {"minecraft:variant": {"value": 1}},
+      "zoocraft:juvenile": {"minecraft:is_baby": {}, "minecraft:collision_box": {"width": 0.25, "height": 0.15}},
+      "zoocraft:home_4": {"minecraft:home": {"restriction_type": "random_movement", "restriction_radius": 4}},
+      "zoocraft:home_8": {"minecraft:home": {"restriction_type": "random_movement", "restriction_radius": 8}},
+      "zoocraft:home_16": {"minecraft:home": {"restriction_type": "random_movement", "restriction_radius": 16}},
+      "zoocraft:home_32": {"minecraft:home": {"restriction_type": "random_movement", "restriction_radius": 32}}
+    },
+    "components": {
+      "minecraft:type_family": {"family": ["zoocraft_animal", "chorus_moth", "mob"]},
+      "minecraft:nameable": {"always_show": false, "allow_name_tag_renaming": true},
+      "minecraft:health": {"value": 4, "max": 4},
+      "minecraft:damage_sensor": {"triggers": [{"cause": "all", "deals_damage": "no"}]},
+      "minecraft:persistent": {},
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:breathable": {"total_supply": 15, "suffocate_time": 0},
+      "minecraft:collision_box": {"width": 0.32, "height": 0.25},
+      "minecraft:physics": {"has_gravity": false, "has_collision": true},
+      "minecraft:navigation.hover": {
+        "can_path_over_water": true,
+        "can_sink": false,
+        "can_pass_doors": false,
+        "can_path_from_air": true,
+        "avoid_water": true,
+        "avoid_damage_blocks": true
+      },
+      "minecraft:movement.hover": {},
+      "minecraft:movement": {"value": 0.0},
+      "minecraft:pushable_by_block": {},
+      "minecraft:conditional_bandwidth_optimization": {}
+    },
+    "events": {
+      "zoocraft:coat_0": {
+        "remove": {"component_groups": ["zoocraft:coat_1"]},
+        "add": {"component_groups": ["zoocraft:coat_0"]}
+      },
+      "zoocraft:coat_1": {
+        "remove": {"component_groups": ["zoocraft:coat_0"]},
+        "add": {"component_groups": ["zoocraft:coat_1"]}
+      },
+      "zoocraft:juvenile": {"add": {"component_groups": ["zoocraft:juvenile"]}},
+      "zoocraft:home_4": {
+        "remove": {"component_groups": ["zoocraft:home_8", "zoocraft:home_16", "zoocraft:home_32"]},
+        "add": {"component_groups": ["zoocraft:home_4"]}
+      },
+      "zoocraft:home_8": {
+        "remove": {"component_groups": ["zoocraft:home_4", "zoocraft:home_16", "zoocraft:home_32"]},
+        "add": {"component_groups": ["zoocraft:home_8"]}
+      },
+      "zoocraft:home_16": {
+        "remove": {"component_groups": ["zoocraft:home_4", "zoocraft:home_8", "zoocraft:home_32"]},
+        "add": {"component_groups": ["zoocraft:home_16"]}
+      },
+      "zoocraft:home_32": {
+        "remove": {"component_groups": ["zoocraft:home_4", "zoocraft:home_8", "zoocraft:home_16"]},
+        "add": {"component_groups": ["zoocraft:home_32"]}
+      },
+      "minecraft:entity_spawned": {"add": {"component_groups": ["zoocraft:coat_0", "zoocraft:home_8"]}}
+    }
+  }
+}

@@ -1,0 +1,276 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.zoocraft.chorus_moth.move": {
+      "initial_state": "settled",
+      "states": {
+        "settled": {
+          "animations": ["settled"],
+          "transitions": [
+            {"larva_still": "query.property('zoocraft:act') == 0 && query.is_baby"},
+            {"fly": "query.property('zoocraft:act') == 1"},
+            {"rest": "query.property('zoocraft:act') == 2"},
+            {"warm": "query.property('zoocraft:act') == 3"},
+            {"hover": "query.property('zoocraft:act') == 4"},
+            {"sip": "query.property('zoocraft:act') == 5"},
+            {"emerge": "query.property('zoocraft:act') == 6"},
+            {"crawl": "query.property('zoocraft:act') == 7"},
+            {"munch": "query.property('zoocraft:act') == 8"},
+            {"burrow": "query.property('zoocraft:act') == 9"},
+            {"pupa": "query.property('zoocraft:act') == 10"},
+            {"rear": "query.property('zoocraft:act') == 11"},
+            {"warm_flat": "query.property('zoocraft:act') == 12"}
+          ],
+          "blend_transition": 0.3
+        },
+        "larva_still": {
+          "animations": ["larva_still"],
+          "transitions": [
+            {"settled": "query.property('zoocraft:act') == 0 && !query.is_baby"},
+            {"fly": "query.property('zoocraft:act') == 1"},
+            {"rest": "query.property('zoocraft:act') == 2"},
+            {"warm": "query.property('zoocraft:act') == 3"},
+            {"hover": "query.property('zoocraft:act') == 4"},
+            {"sip": "query.property('zoocraft:act') == 5"},
+            {"emerge": "query.property('zoocraft:act') == 6"},
+            {"crawl": "query.property('zoocraft:act') == 7"},
+            {"munch": "query.property('zoocraft:act') == 8"},
+            {"burrow": "query.property('zoocraft:act') == 9"},
+            {"pupa": "query.property('zoocraft:act') == 10"},
+            {"rear": "query.property('zoocraft:act') == 11"},
+            {"warm_flat": "query.property('zoocraft:act') == 12"}
+          ],
+          "blend_transition": 0.3
+        },
+        "fly": {
+          "animations": ["fly"],
+          "transitions": [
+            {"settled": "query.property('zoocraft:act') == 0 && !query.is_baby"},
+            {"larva_still": "query.property('zoocraft:act') == 0 && query.is_baby"},
+            {"rest": "query.property('zoocraft:act') == 2"},
+            {"warm": "query.property('zoocraft:act') == 3"},
+            {"hover": "query.property('zoocraft:act') == 4"},
+            {"sip": "query.property('zoocraft:act') == 5"},
+            {"emerge": "query.property('zoocraft:act') == 6"},
+            {"crawl": "query.property('zoocraft:act') == 7"},
+            {"munch": "query.property('zoocraft:act') == 8"},
+            {"burrow": "query.property('zoocraft:act') == 9"},
+            {"pupa": "query.property('zoocraft:act') == 10"},
+            {"rear": "query.property('zoocraft:act') == 11"},
+            {"warm_flat": "query.property('zoocraft:act') == 12"}
+          ],
+          "blend_transition": 0.15
+        },
+        "rest": {
+          "animations": ["rest"],
+          "transitions": [
+            {"settled": "query.property('zoocraft:act') == 0 && !query.is_baby"},
+            {"larva_still": "query.property('zoocraft:act') == 0 && query.is_baby"},
+            {"fly": "query.property('zoocraft:act') == 1"},
+            {"warm": "query.property('zoocraft:act') == 3"},
+            {"hover": "query.property('zoocraft:act') == 4"},
+            {"sip": "query.property('zoocraft:act') == 5"},
+            {"emerge": "query.property('zoocraft:act') == 6"},
+            {"crawl": "query.property('zoocraft:act') == 7"},
+            {"munch": "query.property('zoocraft:act') == 8"},
+            {"burrow": "query.property('zoocraft:act') == 9"},
+            {"pupa": "query.property('zoocraft:act') == 10"},
+            {"rear": "query.property('zoocraft:act') == 11"},
+            {"warm_flat": "query.property('zoocraft:act') == 12"}
+          ],
+          "blend_transition": 0.35
+        },
+        "warm": {
+          "animations": ["warm"],
+          "transitions": [
+            {"settled": "query.property('zoocraft:act') == 0 && !query.is_baby"},
+            {"larva_still": "query.property('zoocraft:act') == 0 && query.is_baby"},
+            {"fly": "query.property('zoocraft:act') == 1"},
+            {"rest": "query.property('zoocraft:act') == 2"},
+            {"hover": "query.property('zoocraft:act') == 4"},
+            {"sip": "query.property('zoocraft:act') == 5"},
+            {"emerge": "query.property('zoocraft:act') == 6"},
+            {"crawl": "query.property('zoocraft:act') == 7"},
+            {"munch": "query.property('zoocraft:act') == 8"},
+            {"burrow": "query.property('zoocraft:act') == 9"},
+            {"pupa": "query.property('zoocraft:act') == 10"},
+            {"rear": "query.property('zoocraft:act') == 11"},
+            {"warm_flat": "query.property('zoocraft:act') == 12"}
+          ],
+          "blend_transition": 0.2
+        },
+        "hover": {
+          "animations": ["hover"],
+          "transitions": [
+            {"settled": "query.property('zoocraft:act') == 0 && !query.is_baby"},
+            {"larva_still": "query.property('zoocraft:act') == 0 && query.is_baby"},
+            {"fly": "query.property('zoocraft:act') == 1"},
+            {"rest": "query.property('zoocraft:act') == 2"},
+            {"warm": "query.property('zoocraft:act') == 3"},
+            {"sip": "query.property('zoocraft:act') == 5"},
+            {"emerge": "query.property('zoocraft:act') == 6"},
+            {"crawl": "query.property('zoocraft:act') == 7"},
+            {"munch": "query.property('zoocraft:act') == 8"},
+            {"burrow": "query.property('zoocraft:act') == 9"},
+            {"pupa": "query.property('zoocraft:act') == 10"},
+            {"rear": "query.property('zoocraft:act') == 11"},
+            {"warm_flat": "query.property('zoocraft:act') == 12"}
+          ],
+          "blend_transition": 0.2
+        },
+        "sip": {
+          "animations": ["hover"],
+          "transitions": [
+            {"settled": "query.property('zoocraft:act') == 0 && !query.is_baby"},
+            {"larva_still": "query.property('zoocraft:act') == 0 && query.is_baby"},
+            {"fly": "query.property('zoocraft:act') == 1"},
+            {"rest": "query.property('zoocraft:act') == 2"},
+            {"warm": "query.property('zoocraft:act') == 3"},
+            {"hover": "query.property('zoocraft:act') == 4"},
+            {"emerge": "query.property('zoocraft:act') == 6"},
+            {"crawl": "query.property('zoocraft:act') == 7"},
+            {"munch": "query.property('zoocraft:act') == 8"},
+            {"burrow": "query.property('zoocraft:act') == 9"},
+            {"pupa": "query.property('zoocraft:act') == 10"},
+            {"rear": "query.property('zoocraft:act') == 11"},
+            {"warm_flat": "query.property('zoocraft:act') == 12"}
+          ],
+          "blend_transition": 0.2
+        },
+        "emerge": {
+          "animations": ["emerge"],
+          "transitions": [
+            {"settled": "query.property('zoocraft:act') == 0 && !query.is_baby"},
+            {"larva_still": "query.property('zoocraft:act') == 0 && query.is_baby"},
+            {"fly": "query.property('zoocraft:act') == 1"},
+            {"rest": "query.property('zoocraft:act') == 2"},
+            {"warm": "query.property('zoocraft:act') == 3"},
+            {"hover": "query.property('zoocraft:act') == 4"},
+            {"sip": "query.property('zoocraft:act') == 5"},
+            {"crawl": "query.property('zoocraft:act') == 7"},
+            {"munch": "query.property('zoocraft:act') == 8"},
+            {"burrow": "query.property('zoocraft:act') == 9"},
+            {"pupa": "query.property('zoocraft:act') == 10"},
+            {"rear": "query.property('zoocraft:act') == 11"},
+            {"warm_flat": "query.property('zoocraft:act') == 12"}
+          ],
+          "blend_transition": 0.3
+        },
+        "crawl": {
+          "animations": ["crawl"],
+          "transitions": [
+            {"settled": "query.property('zoocraft:act') == 0 && !query.is_baby"},
+            {"larva_still": "query.property('zoocraft:act') == 0 && query.is_baby"},
+            {"fly": "query.property('zoocraft:act') == 1"},
+            {"rest": "query.property('zoocraft:act') == 2"},
+            {"warm": "query.property('zoocraft:act') == 3"},
+            {"hover": "query.property('zoocraft:act') == 4"},
+            {"sip": "query.property('zoocraft:act') == 5"},
+            {"emerge": "query.property('zoocraft:act') == 6"},
+            {"munch": "query.property('zoocraft:act') == 8"},
+            {"burrow": "query.property('zoocraft:act') == 9"},
+            {"pupa": "query.property('zoocraft:act') == 10"},
+            {"rear": "query.property('zoocraft:act') == 11"},
+            {"warm_flat": "query.property('zoocraft:act') == 12"}
+          ],
+          "blend_transition": 0.2
+        },
+        "munch": {
+          "animations": ["munch"],
+          "transitions": [
+            {"settled": "query.property('zoocraft:act') == 0 && !query.is_baby"},
+            {"larva_still": "query.property('zoocraft:act') == 0 && query.is_baby"},
+            {"fly": "query.property('zoocraft:act') == 1"},
+            {"rest": "query.property('zoocraft:act') == 2"},
+            {"warm": "query.property('zoocraft:act') == 3"},
+            {"hover": "query.property('zoocraft:act') == 4"},
+            {"sip": "query.property('zoocraft:act') == 5"},
+            {"emerge": "query.property('zoocraft:act') == 6"},
+            {"crawl": "query.property('zoocraft:act') == 7"},
+            {"burrow": "query.property('zoocraft:act') == 9"},
+            {"pupa": "query.property('zoocraft:act') == 10"},
+            {"rear": "query.property('zoocraft:act') == 11"},
+            {"warm_flat": "query.property('zoocraft:act') == 12"}
+          ],
+          "blend_transition": 0.2
+        },
+        "burrow": {
+          "animations": ["burrow"],
+          "transitions": [
+            {"settled": "query.property('zoocraft:act') == 0 && !query.is_baby"},
+            {"larva_still": "query.property('zoocraft:act') == 0 && query.is_baby"},
+            {"fly": "query.property('zoocraft:act') == 1"},
+            {"rest": "query.property('zoocraft:act') == 2"},
+            {"warm": "query.property('zoocraft:act') == 3"},
+            {"hover": "query.property('zoocraft:act') == 4"},
+            {"sip": "query.property('zoocraft:act') == 5"},
+            {"emerge": "query.property('zoocraft:act') == 6"},
+            {"crawl": "query.property('zoocraft:act') == 7"},
+            {"munch": "query.property('zoocraft:act') == 8"},
+            {"pupa": "query.property('zoocraft:act') == 10"},
+            {"rear": "query.property('zoocraft:act') == 11"},
+            {"warm_flat": "query.property('zoocraft:act') == 12"}
+          ],
+          "blend_transition": 0.2
+        },
+        "pupa": {
+          "animations": ["pupa"],
+          "transitions": [
+            {"settled": "query.property('zoocraft:act') == 0 && !query.is_baby"},
+            {"larva_still": "query.property('zoocraft:act') == 0 && query.is_baby"},
+            {"fly": "query.property('zoocraft:act') == 1"},
+            {"rest": "query.property('zoocraft:act') == 2"},
+            {"warm": "query.property('zoocraft:act') == 3"},
+            {"hover": "query.property('zoocraft:act') == 4"},
+            {"sip": "query.property('zoocraft:act') == 5"},
+            {"emerge": "query.property('zoocraft:act') == 6"},
+            {"crawl": "query.property('zoocraft:act') == 7"},
+            {"munch": "query.property('zoocraft:act') == 8"},
+            {"burrow": "query.property('zoocraft:act') == 9"},
+            {"rear": "query.property('zoocraft:act') == 11"},
+            {"warm_flat": "query.property('zoocraft:act') == 12"}
+          ],
+          "blend_transition": 0.3
+        },
+        "rear": {
+          "animations": ["rear"],
+          "transitions": [
+            {"settled": "query.property('zoocraft:act') == 0 && !query.is_baby"},
+            {"larva_still": "query.property('zoocraft:act') == 0 && query.is_baby"},
+            {"fly": "query.property('zoocraft:act') == 1"},
+            {"rest": "query.property('zoocraft:act') == 2"},
+            {"warm": "query.property('zoocraft:act') == 3"},
+            {"hover": "query.property('zoocraft:act') == 4"},
+            {"sip": "query.property('zoocraft:act') == 5"},
+            {"emerge": "query.property('zoocraft:act') == 6"},
+            {"crawl": "query.property('zoocraft:act') == 7"},
+            {"munch": "query.property('zoocraft:act') == 8"},
+            {"burrow": "query.property('zoocraft:act') == 9"},
+            {"pupa": "query.property('zoocraft:act') == 10"},
+            {"warm_flat": "query.property('zoocraft:act') == 12"}
+          ],
+          "blend_transition": 0.15
+        },
+        "warm_flat": {
+          "animations": ["warm_flat"],
+          "transitions": [
+            {"settled": "query.property('zoocraft:act') == 0 && !query.is_baby"},
+            {"larva_still": "query.property('zoocraft:act') == 0 && query.is_baby"},
+            {"fly": "query.property('zoocraft:act') == 1"},
+            {"rest": "query.property('zoocraft:act') == 2"},
+            {"warm": "query.property('zoocraft:act') == 3"},
+            {"hover": "query.property('zoocraft:act') == 4"},
+            {"sip": "query.property('zoocraft:act') == 5"},
+            {"emerge": "query.property('zoocraft:act') == 6"},
+            {"crawl": "query.property('zoocraft:act') == 7"},
+            {"munch": "query.property('zoocraft:act') == 8"},
+            {"burrow": "query.property('zoocraft:act') == 9"},
+            {"pupa": "query.property('zoocraft:act') == 10"},
+            {"rear": "query.property('zoocraft:act') == 11"}
+          ],
+          "blend_transition": 0.2
+        }
+      }
+    }
+  }
+}
