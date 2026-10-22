@@ -1,0 +1,126 @@
+{
+  "format_version": "1.21.40",
+  "zoocraft:exhibit_controller": {
+    "sound": "wood"
+  },
+  "zoocraft:basic_feeder": {
+    "sound": "wood"
+  },
+  "zoocraft:park_entrance_gate": {
+    "sound": "stone"
+  },
+  "zoocraft:park_entrance_gate_part": {
+    "sound": "stone"
+  },
+  "zoocraft:water_trough": {
+    "sound": "wood"
+  },
+  "zoocraft:hanging_food_basket": {
+    "sound": "wood"
+  },
+  "zoocraft:water_filter": {
+    "sound": "metal"
+  },
+  "zoocraft:keeper_gate": {
+    "sound": "wood"
+  },
+  "zoocraft:keeper_gate_top": {
+    "sound": "wood"
+  },
+  "zoocraft:recovery_station": {
+    "sound": "wood"
+  },
+  "zoocraft:ticket_booth": {
+    "sound": "wood"
+  },
+  "zoocraft:viewing_point": {
+    "sound": "wood"
+  },
+  "zoocraft:snack_stand": {
+    "sound": "wood"
+  },
+  "zoocraft:snack_stand_part": {
+    "sound": "wood"
+  },
+  "zoocraft:bench": {
+    "sound": "wood"
+  },
+  "zoocraft:bench_part": {
+    "sound": "wood"
+  },
+  "zoocraft:litter_bin": {
+    "sound": "metal"
+  },
+  "zoocraft:donation_box": {
+    "sound": "wood"
+  },
+  "zoocraft:staff_room": {
+    "sound": "wood"
+  },
+  "zoocraft:research_desk": {
+    "sound": "wood"
+  },
+  "zoocraft:gift_shop": {
+    "sound": "wood"
+  },
+  "zoocraft:clear_lava": {
+    "sound": "stone"
+  },
+  "zoocraft:lava_filter": {
+    "sound": "stone"
+  },
+  "zoocraft:clear_lava_flowing_1": {
+    "sound": "stone"
+  },
+  "zoocraft:clear_lava_flowing_2": {
+    "sound": "stone"
+  },
+  "zoocraft:clear_lava_flowing_3": {
+    "sound": "stone"
+  },
+  "zoocraft:clear_lava_flowing_4": {
+    "sound": "stone"
+  },
+  "zoocraft:clear_lava_flowing_5": {
+    "sound": "stone"
+  },
+  "zoocraft:clear_lava_flowing_6": {
+    "sound": "stone"
+  },
+  "zoocraft:clear_lava_flowing_7": {
+    "sound": "stone"
+  },
+  "zoocraft:tour_desk": {
+    "sound": "wood"
+  },
+  "zoocraft:expedition_platform": {
+    "sound": "stone"
+  },
+  "zoocraft:holding_den": {
+    "sound": "stone"
+  },
+  "zoocraft:holding_den_top": {
+    "sound": "stone"
+  },
+  "zoocraft:scent_post": {
+    "sound": "wood"
+  },
+  "zoocraft:nest_box": {
+    "sound": "wood"
+  },
+  "zoocraft:perch": {
+    "sound": "wood"
+  },
+  "zoocraft:thermal_mud": {
+    "sound": "mud"
+  },
+  "zoocraft:mineral_substrate": {
+    "sound": "gravel"
+  },
+  "zoocraft:landing_pad": {
+    "sound": "cloth"
+  },
+  "zoocraft:mineral_feeder": {
+    "sound": "stone"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:obsidian_crab",
+      "materials": {"default": "entity_emissive_alpha"},
+      "textures": {
+        "default": "textures/entity/zoocraft/obsidian_crab",
+        "crying": "textures/entity/zoocraft/obsidian_crab_crying"
+      },
+      "geometry": {"default": "geometry.zoocraft.obsidian_crab"},
+      "animations": {
+        "idle": "animation.zoocraft.obsidian_crab.idle",
+        "walk": "animation.zoocraft.obsidian_crab.walk",
+        "scuttle": "animation.zoocraft.obsidian_crab.scuttle",
+        "scrape": "animation.zoocraft.obsidian_crab.scrape",
+        "eat": "animation.zoocraft.obsidian_crab.eat",
+        "sift": "animation.zoocraft.obsidian_crab.sift",
+        "dig": "animation.zoocraft.obsidian_crab.dig",
+        "burrowed": "animation.zoocraft.obsidian_crab.burrowed",
+        "emerge": "animation.zoocraft.obsidian_crab.emerge",
+        "display": "animation.zoocraft.obsidian_crab.display",
+        "look": "animation.zoocraft.obsidian_crab.look",
+        "reach": "animation.zoocraft.obsidian_crab.reach",
+        "flat": "animation.zoocraft.obsidian_crab.flat",
+        "forward": "animation.zoocraft.obsidian_crab.forward",
+        "young": "animation.zoocraft.obsidian_crab.young",
+        "move": "controller.animation.zoocraft.obsidian_crab.move"
+      },
+      "render_controllers": ["controller.render.zoocraft.obsidian_crab"],
+      "scripts": {
+        "scale": "q.is_baby ? 0.35 : (q.mark_variant == 1 ? 1 : 0.7)",
+        "initialize": ["variable.offset = math.random(0, 20);"],
+        "animate": ["move", "young"]
+      }
+    }
+  }
+}

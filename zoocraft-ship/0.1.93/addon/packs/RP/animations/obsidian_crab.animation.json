@@ -1,0 +1,485 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.zoocraft.obsidian_crab.idle": {
+      "loop": true,
+      "bones": {
+        "body": {"position": [0, "math.sin(query.life_time * 40 + variable.offset) * 0.05", 0]},
+        "fingerL": {
+          "rotation": ["math.max(0, math.sin(query.life_time * 30 + variable.offset * 3)) * 10", 0, 0]
+        },
+        "antL": {
+          "rotation": [
+            "math.max(0, math.sin(query.life_time * 60 + variable.offset * 9)) * math.sin(query.life_time * 900) * 10",
+            0,
+            0
+          ]
+        },
+        "antR": {
+          "rotation": [
+            "math.max(0, math.sin(query.life_time * 55 + variable.offset * 3)) * math.sin(query.life_time * 840) * 10",
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.obsidian_crab.walk": {
+      "loop": true,
+      "bones": {
+        "legL1": {
+          "rotation": [
+            0,
+            "1 * math.cos(query.anim_time * 900 + 0) * 6",
+            "1 * (0 - math.max(0, math.sin(query.anim_time * 900 + 0)) * 16)"
+          ]
+        },
+        "legR1": {
+          "rotation": [
+            0,
+            "-1 * math.cos(query.anim_time * 900 + 180) * 6",
+            "-1 * (0 - math.max(0, math.sin(query.anim_time * 900 + 180)) * 16)"
+          ]
+        },
+        "legL2": {
+          "rotation": [
+            0,
+            "1 * math.cos(query.anim_time * 900 + 180) * 6",
+            "1 * (0 - math.max(0, math.sin(query.anim_time * 900 + 180)) * 16)"
+          ]
+        },
+        "legR2": {
+          "rotation": [
+            0,
+            "-1 * math.cos(query.anim_time * 900 + 0) * 6",
+            "-1 * (0 - math.max(0, math.sin(query.anim_time * 900 + 0)) * 16)"
+          ]
+        },
+        "legL3": {
+          "rotation": [
+            0,
+            "1 * math.cos(query.anim_time * 900 + 0) * 6",
+            "1 * (0 - math.max(0, math.sin(query.anim_time * 900 + 0)) * 16)"
+          ]
+        },
+        "legR3": {
+          "rotation": [
+            0,
+            "-1 * math.cos(query.anim_time * 900 + 180) * 6",
+            "-1 * (0 - math.max(0, math.sin(query.anim_time * 900 + 180)) * 16)"
+          ]
+        },
+        "legL4": {
+          "rotation": [
+            0,
+            "1 * math.cos(query.anim_time * 900 + 180) * 6",
+            "1 * (0 - math.max(0, math.sin(query.anim_time * 900 + 180)) * 16)"
+          ]
+        },
+        "legR4": {
+          "rotation": [
+            0,
+            "-1 * math.cos(query.anim_time * 900 + 0) * 6",
+            "-1 * (0 - math.max(0, math.sin(query.anim_time * 900 + 0)) * 16)"
+          ]
+        },
+        "body": {
+          "position": [0, "math.abs(math.sin(query.anim_time * 900)) * 0.15", 0],
+          "rotation": [0, 0, "math.sin(query.anim_time * 900) * 2"]
+        },
+        "antL": {"rotation": ["math.sin(query.life_time * 900 + variable.offset * 7) * 12", 0, 0]},
+        "antR": {"rotation": ["math.sin(query.life_time * 820 + variable.offset * 5 + 70) * 12", 0, 0]}
+      }
+    },
+    "animation.zoocraft.obsidian_crab.scuttle": {
+      "loop": true,
+      "bones": {
+        "legL1": {
+          "rotation": [
+            0,
+            "1 * math.cos(query.anim_time * 1800 + 0) * 5",
+            "1 * (0 - math.max(0, math.sin(query.anim_time * 1800 + 0)) * 18)"
+          ]
+        },
+        "legR1": {
+          "rotation": [
+            0,
+            "-1 * math.cos(query.anim_time * 1800 + 180) * 5",
+            "-1 * (0 - math.max(0, math.sin(query.anim_time * 1800 + 180)) * 18)"
+          ]
+        },
+        "legL2": {
+          "rotation": [
+            0,
+            "1 * math.cos(query.anim_time * 1800 + 180) * 5",
+            "1 * (0 - math.max(0, math.sin(query.anim_time * 1800 + 180)) * 18)"
+          ]
+        },
+        "legR2": {
+          "rotation": [
+            0,
+            "-1 * math.cos(query.anim_time * 1800 + 0) * 5",
+            "-1 * (0 - math.max(0, math.sin(query.anim_time * 1800 + 0)) * 18)"
+          ]
+        },
+        "legL3": {
+          "rotation": [
+            0,
+            "1 * math.cos(query.anim_time * 1800 + 0) * 5",
+            "1 * (0 - math.max(0, math.sin(query.anim_time * 1800 + 0)) * 18)"
+          ]
+        },
+        "legR3": {
+          "rotation": [
+            0,
+            "-1 * math.cos(query.anim_time * 1800 + 180) * 5",
+            "-1 * (0 - math.max(0, math.sin(query.anim_time * 1800 + 180)) * 18)"
+          ]
+        },
+        "legL4": {
+          "rotation": [
+            0,
+            "1 * math.cos(query.anim_time * 1800 + 180) * 5",
+            "1 * (0 - math.max(0, math.sin(query.anim_time * 1800 + 180)) * 18)"
+          ]
+        },
+        "legR4": {
+          "rotation": [
+            0,
+            "-1 * math.cos(query.anim_time * 1800 + 0) * 5",
+            "-1 * (0 - math.max(0, math.sin(query.anim_time * 1800 + 0)) * 18)"
+          ]
+        },
+        "body": {"position": [0, "math.abs(math.sin(query.anim_time * 1800)) * 0.2", 0]},
+        "clawL": {"rotation": [10, -10, 0]},
+        "clawR": {"rotation": [10, 10, 0]}
+      }
+    },
+    "animation.zoocraft.obsidian_crab.scrape": {
+      "loop": true,
+      "bones": {
+        "body": {"rotation": ["4 * math.min(1, query.anim_time * 3)", 0, 0]},
+        "clawL": {
+          "rotation": [
+            "(-25 + math.sin(query.life_time * 500) * 14) * math.min(1, query.anim_time * 3)",
+            "-10 * math.min(1, query.anim_time * 3) + math.max(0, math.sin(query.life_time * 90)) * 30",
+            0
+          ]
+        },
+        "clawR": {
+          "rotation": [
+            "(-20 - math.sin(query.life_time * 500) * 14) * math.min(1, query.anim_time * 3)",
+            "10 * math.min(1, query.anim_time * 3) - math.max(0, math.sin(query.life_time * 90 + 180)) * 30",
+            0
+          ]
+        },
+        "fingerL": {"rotation": ["math.max(0, math.sin(query.life_time * 500)) * 20", 0, 0]},
+        "fingerR": {"rotation": ["math.max(0, math.sin(query.life_time * 500 + 180)) * 20", 0, 0]},
+        "antL": {"rotation": ["math.sin(query.life_time * 900 + variable.offset * 7) * 12", 0, 0]},
+        "antR": {"rotation": ["math.sin(query.life_time * 820 + variable.offset * 5 + 70) * 12", 0, 0]}
+      }
+    },
+    "animation.zoocraft.obsidian_crab.eat": {
+      "loop": true,
+      "bones": {
+        "clawL": {
+          "rotation": [
+            "-12 + math.sin(query.life_time * 220) * 22",
+            "math.max(0, math.sin(query.life_time * 220 + 90)) * 25",
+            0
+          ]
+        },
+        "clawR": {
+          "rotation": [
+            "-12 - math.sin(query.life_time * 220) * 22",
+            "-math.max(0, math.sin(query.life_time * 220 + 270)) * 25",
+            0
+          ]
+        },
+        "fingerL": {"rotation": ["math.max(0, math.sin(query.life_time * 440)) * 18", 0, 0]},
+        "antL": {
+          "rotation": [
+            "math.max(0, math.sin(query.life_time * 60 + variable.offset * 9)) * math.sin(query.life_time * 900) * 10",
+            0,
+            0
+          ]
+        },
+        "antR": {
+          "rotation": [
+            "math.max(0, math.sin(query.life_time * 55 + variable.offset * 3)) * math.sin(query.life_time * 840) * 10",
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.obsidian_crab.sift": {
+      "loop": true,
+      "bones": {
+        "legL1": {"rotation": [0, "0", "1 * (-8 - math.max(0, math.sin(query.anim_time * 1200 + 0)) * 8)"]},
+        "legR1": {
+          "rotation": [0, "0", "-1 * (-8 - math.max(0, math.sin(query.anim_time * 1200 + 180)) * 8)"]
+        },
+        "legL2": {"rotation": [0, "0", "1 * (-8 - math.max(0, math.sin(query.anim_time * 1200 + 180)) * 8)"]},
+        "legR2": {"rotation": [0, "0", "-1 * (-8 - math.max(0, math.sin(query.anim_time * 1200 + 0)) * 8)"]},
+        "legL3": {"rotation": [0, "0", "1 * (-8 - math.max(0, math.sin(query.anim_time * 1200 + 0)) * 8)"]},
+        "legR3": {
+          "rotation": [0, "0", "-1 * (-8 - math.max(0, math.sin(query.anim_time * 1200 + 180)) * 8)"]
+        },
+        "legL4": {"rotation": [0, "0", "1 * (-8 - math.max(0, math.sin(query.anim_time * 1200 + 180)) * 8)"]},
+        "legR4": {"rotation": [0, "0", "-1 * (-8 - math.max(0, math.sin(query.anim_time * 1200 + 0)) * 8)"]},
+        "crab": {"position": [0, "-1.5 * math.min(1, query.anim_time * 3)", 0]},
+        "clawL": {"rotation": ["10 + math.sin(query.life_time * 300) * 25", 0, 0]},
+        "clawR": {"rotation": ["10 - math.sin(query.life_time * 300) * 25", 0, 0]},
+        "antL": {
+          "rotation": [
+            "math.max(0, math.sin(query.life_time * 60 + variable.offset * 9)) * math.sin(query.life_time * 900) * 10",
+            0,
+            0
+          ]
+        },
+        "antR": {
+          "rotation": [
+            "math.max(0, math.sin(query.life_time * 55 + variable.offset * 3)) * math.sin(query.life_time * 840) * 10",
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.obsidian_crab.dig": {
+      "loop": true,
+      "bones": {
+        "legL1": {"rotation": [0, "0", "1 * (0 - math.max(0, math.sin(query.anim_time * 1600 + 0)) * 14)"]},
+        "legR1": {
+          "rotation": [0, "0", "-1 * (0 - math.max(0, math.sin(query.anim_time * 1600 + 180)) * 14)"]
+        },
+        "legL2": {"rotation": [0, "0", "1 * (0 - math.max(0, math.sin(query.anim_time * 1600 + 180)) * 14)"]},
+        "legR2": {"rotation": [0, "0", "-1 * (0 - math.max(0, math.sin(query.anim_time * 1600 + 0)) * 14)"]},
+        "legL3": {"rotation": [0, "0", "1 * (0 - math.max(0, math.sin(query.anim_time * 1600 + 0)) * 14)"]},
+        "legR3": {
+          "rotation": [0, "0", "-1 * (0 - math.max(0, math.sin(query.anim_time * 1600 + 180)) * 14)"]
+        },
+        "legL4": {"rotation": [0, "0", "1 * (0 - math.max(0, math.sin(query.anim_time * 1600 + 180)) * 14)"]},
+        "legR4": {"rotation": [0, "0", "-1 * (0 - math.max(0, math.sin(query.anim_time * 1600 + 0)) * 14)"]},
+        "crab": {"position": [0, "-3.2 * math.clamp(query.anim_time / 3, 0, 1)", 0]},
+        "body": {"rotation": ["-14 * math.sin(math.clamp(query.anim_time / 3, 0, 1) * 180)", 0, 0]},
+        "clawL": {
+          "rotation": [
+            "-55 * math.clamp((query.anim_time - 2) / 1, 0, 1)",
+            "20 * math.clamp((query.anim_time - 2) / 1, 0, 1)",
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.obsidian_crab.burrowed": {
+      "loop": true,
+      "bones": {
+        "crab": {"position": [0, -3.2, 0]},
+        "clawL": {"rotation": [-55, 20, 0]},
+        "fingerL": {
+          "rotation": ["math.max(0, math.sin(query.life_time * 25 + variable.offset * 5)) * 8", 0, 0]
+        },
+        "antL": {
+          "rotation": [
+            "math.max(0, math.sin(query.life_time * 60 + variable.offset * 9)) * math.sin(query.life_time * 900) * 10",
+            0,
+            0
+          ]
+        },
+        "antR": {
+          "rotation": [
+            "math.max(0, math.sin(query.life_time * 55 + variable.offset * 3)) * math.sin(query.life_time * 840) * 10",
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.obsidian_crab.emerge": {
+      "loop": true,
+      "bones": {
+        "legL1": {"rotation": [0, "0", "1 * (0 - math.max(0, math.sin(query.anim_time * 1600 + 0)) * 12)"]},
+        "legR1": {
+          "rotation": [0, "0", "-1 * (0 - math.max(0, math.sin(query.anim_time * 1600 + 180)) * 12)"]
+        },
+        "legL2": {"rotation": [0, "0", "1 * (0 - math.max(0, math.sin(query.anim_time * 1600 + 180)) * 12)"]},
+        "legR2": {"rotation": [0, "0", "-1 * (0 - math.max(0, math.sin(query.anim_time * 1600 + 0)) * 12)"]},
+        "legL3": {"rotation": [0, "0", "1 * (0 - math.max(0, math.sin(query.anim_time * 1600 + 0)) * 12)"]},
+        "legR3": {
+          "rotation": [0, "0", "-1 * (0 - math.max(0, math.sin(query.anim_time * 1600 + 180)) * 12)"]
+        },
+        "legL4": {"rotation": [0, "0", "1 * (0 - math.max(0, math.sin(query.anim_time * 1600 + 180)) * 12)"]},
+        "legR4": {"rotation": [0, "0", "-1 * (0 - math.max(0, math.sin(query.anim_time * 1600 + 0)) * 12)"]},
+        "crab": {"position": [0, "-3.2 * math.clamp(1 - query.anim_time / 1.5, 0, 1)", 0]},
+        "body": {
+          "rotation": [
+            "8 * math.sin(math.clamp(query.anim_time / 1.5, 0, 1) * 180)",
+            0,
+            "math.sin(query.anim_time * 1400) * 3"
+          ]
+        },
+        "clawL": {
+          "rotation": [
+            "-55 * math.clamp(1 - query.anim_time / 0.6, 0, 1)",
+            "20 * math.clamp(1 - query.anim_time / 0.6, 0, 1)",
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.obsidian_crab.display": {
+      "loop": true,
+      "bones": {
+        "legL1": {"rotation": [0, "0", "11.2"]},
+        "legR1": {"rotation": [0, "0", "-11.2"]},
+        "legL2": {"rotation": [0, "0", "11.2"]},
+        "legR2": {"rotation": [0, "0", "-11.2"]},
+        "legL3": {"rotation": [0, "0", "11.2"]},
+        "legR3": {"rotation": [0, "0", "-11.2"]},
+        "legL4": {"rotation": [0, "0", "11.2"]},
+        "legR4": {"rotation": [0, "0", "-11.2"]},
+        "crab": {"position": [0, "0.8 * math.min(1, query.anim_time * 3)", 0]},
+        "body": {"rotation": ["-8 * math.min(1, query.anim_time * 3)", 0, 0]},
+        "clawL": {
+          "rotation": ["-70 * math.min(1, query.anim_time * 3)", "-30 * math.min(1, query.anim_time * 3)", 0]
+        },
+        "clawR": {
+          "rotation": ["-60 * math.min(1, query.anim_time * 3)", "30 * math.min(1, query.anim_time * 3)", 0]
+        },
+        "fingerL": {"rotation": ["25 + math.sin(query.life_time * 700) * 15", 0, 0]},
+        "fingerR": {"rotation": ["20 + math.sin(query.life_time * 700 + 90) * 12", 0, 0]},
+        "eyeL": {"scale": [1, 1.2, 1]},
+        "eyeR": {"scale": [1, 1.2, 1]}
+      }
+    },
+    "animation.zoocraft.obsidian_crab.look": {
+      "loop": true,
+      "bones": {
+        "legL1": {"rotation": [0, "0", "6.9"]},
+        "legR1": {"rotation": [0, "0", "-6.9"]},
+        "legL2": {"rotation": [0, "0", "6.9"]},
+        "legR2": {"rotation": [0, "0", "-6.9"]},
+        "legL3": {"rotation": [0, "0", "6.9"]},
+        "legR3": {"rotation": [0, "0", "-6.9"]},
+        "legL4": {"rotation": [0, "0", "6.9"]},
+        "legR4": {"rotation": [0, "0", "-6.9"]},
+        "crab": {"position": [0, "0.5 * math.min(1, query.anim_time * 3)", 0]},
+        "body": {"rotation": [0, "math.sin(query.life_time * 40 + variable.offset * 5) * 12", 0]},
+        "eyeL": {"scale": [1, 1.3, 1]},
+        "eyeR": {"scale": [1, 1.3, 1]},
+        "antL": {"rotation": ["math.sin(query.life_time * 900 + variable.offset * 7) * 12", 0, 0]},
+        "antR": {"rotation": ["math.sin(query.life_time * 820 + variable.offset * 5 + 70) * 12", 0, 0]}
+      }
+    },
+    "animation.zoocraft.obsidian_crab.reach": {
+      "loop": true,
+      "bones": {
+        "legL1": {"rotation": [0, "0", "6.9"]},
+        "legR1": {"rotation": [0, "0", "-6.9"]},
+        "legL2": {"rotation": [0, "0", "6.9"]},
+        "legR2": {"rotation": [0, "0", "-6.9"]},
+        "legL3": {"rotation": [0, "0", "6.9"]},
+        "legR3": {"rotation": [0, "0", "-6.9"]},
+        "legL4": {"rotation": [0, "0", "6.9"]},
+        "legR4": {"rotation": [0, "0", "-6.9"]},
+        "crab": {"position": [0, "0.5 * math.min(1, query.anim_time * 3)", 0]},
+        "clawL": {"rotation": ["-45 * math.min(1, query.anim_time * 3)", 0, 0]},
+        "clawR": {"rotation": ["-40 * math.min(1, query.anim_time * 3)", 0, 0]},
+        "fingerL": {"rotation": ["math.max(0, math.sin(query.life_time * 200)) * 25", 0, 0]},
+        "fingerR": {"rotation": ["math.max(0, math.sin(query.life_time * 200 + 120)) * 20", 0, 0]},
+        "antL": {"rotation": ["math.sin(query.life_time * 900 + variable.offset * 7) * 12", 0, 0]},
+        "antR": {"rotation": ["math.sin(query.life_time * 820 + variable.offset * 5 + 70) * 12", 0, 0]}
+      }
+    },
+    "animation.zoocraft.obsidian_crab.flat": {
+      "loop": true,
+      "bones": {
+        "legL1": {"rotation": [0, "0", "-12.9"]},
+        "legR1": {"rotation": [0, "0", "12.9"]},
+        "legL2": {"rotation": [0, "0", "-12.9"]},
+        "legR2": {"rotation": [0, "0", "12.9"]},
+        "legL3": {"rotation": [0, "0", "-12.9"]},
+        "legR3": {"rotation": [0, "0", "12.9"]},
+        "legL4": {"rotation": [0, "0", "-12.9"]},
+        "legR4": {"rotation": [0, "0", "12.9"]},
+        "crab": {"position": [0, "-1.0 * math.min(1, query.anim_time * 3)", 0]},
+        "eyeL": {"scale": [1, 0.2, 1]},
+        "eyeR": {"scale": [1, 0.2, 1]},
+        "clawL": {"rotation": [8, -8, 0]},
+        "clawR": {"rotation": [8, 8, 0]}
+      }
+    },
+    "animation.zoocraft.obsidian_crab.forward": {
+      "loop": true,
+      "bones": {
+        "legL1": {
+          "rotation": [
+            0,
+            "1 * math.cos(query.anim_time * 700 + 0) * 14",
+            "1 * (0 - math.max(0, math.sin(query.anim_time * 700 + 0)) * 10)"
+          ]
+        },
+        "legR1": {
+          "rotation": [
+            0,
+            "-1 * math.cos(query.anim_time * 700 + 180) * 14",
+            "-1 * (0 - math.max(0, math.sin(query.anim_time * 700 + 180)) * 10)"
+          ]
+        },
+        "legL2": {
+          "rotation": [
+            0,
+            "1 * math.cos(query.anim_time * 700 + 180) * 14",
+            "1 * (0 - math.max(0, math.sin(query.anim_time * 700 + 180)) * 10)"
+          ]
+        },
+        "legR2": {
+          "rotation": [
+            0,
+            "-1 * math.cos(query.anim_time * 700 + 0) * 14",
+            "-1 * (0 - math.max(0, math.sin(query.anim_time * 700 + 0)) * 10)"
+          ]
+        },
+        "legL3": {
+          "rotation": [
+            0,
+            "1 * math.cos(query.anim_time * 700 + 0) * 14",
+            "1 * (0 - math.max(0, math.sin(query.anim_time * 700 + 0)) * 10)"
+          ]
+        },
+        "legR3": {
+          "rotation": [
+            0,
+            "-1 * math.cos(query.anim_time * 700 + 180) * 14",
+            "-1 * (0 - math.max(0, math.sin(query.anim_time * 700 + 180)) * 10)"
+          ]
+        },
+        "legL4": {
+          "rotation": [
+            0,
+            "1 * math.cos(query.anim_time * 700 + 180) * 14",
+            "1 * (0 - math.max(0, math.sin(query.anim_time * 700 + 180)) * 10)"
+          ]
+        },
+        "legR4": {
+          "rotation": [
+            0,
+            "-1 * math.cos(query.anim_time * 700 + 0) * 14",
+            "-1 * (0 - math.max(0, math.sin(query.anim_time * 700 + 0)) * 10)"
+          ]
+        },
+        "body": {"position": [0, "math.abs(math.sin(query.anim_time * 700)) * 0.12", 0]},
+        "antL": {"rotation": ["math.sin(query.life_time * 900 + variable.offset * 7) * 12", 0, 0]},
+        "antR": {"rotation": ["math.sin(query.life_time * 820 + variable.offset * 5 + 70) * 12", 0, 0]}
+      }
+    },
+    "animation.zoocraft.obsidian_crab.young": {
+      "loop": true,
+      "bones": {
+        "home": {"scale": ["query.is_baby ? 1 : 0", "query.is_baby ? 1 : 0", "query.is_baby ? 1 : 0"]}
+      }
+    }
+  }
+}
