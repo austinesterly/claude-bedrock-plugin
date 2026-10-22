@@ -1,0 +1,186 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.zoocraft.starback_tortoise.move": {
+      "initial_state": "none",
+      "states": {
+        "none": {
+          "animations": ["none"],
+          "transitions": [
+            {"walk": "query.property('zoocraft:act') == 1"},
+            {"rest": "query.property('zoocraft:act') == 2"},
+            {"bask": "query.property('zoocraft:act') == 3"},
+            {"browse": "query.property('zoocraft:act') == 4"},
+            {"eat": "query.property('zoocraft:act') == 5"},
+            {"withdraw": "query.property('zoocraft:act') == 6"},
+            {"peek": "query.property('zoocraft:act') == 7"},
+            {"nest": "query.property('zoocraft:act') == 8"},
+            {"pat": "query.property('zoocraft:act') == 9"},
+            {"look": "query.property('zoocraft:act') == 10"}
+          ],
+          "blend_transition": 0.3
+        },
+        "walk": {
+          "animations": ["walk"],
+          "transitions": [
+            {"none": "query.property('zoocraft:act') == 0"},
+            {"rest": "query.property('zoocraft:act') == 2"},
+            {"bask": "query.property('zoocraft:act') == 3"},
+            {"browse": "query.property('zoocraft:act') == 4"},
+            {"eat": "query.property('zoocraft:act') == 5"},
+            {"withdraw": "query.property('zoocraft:act') == 6"},
+            {"peek": "query.property('zoocraft:act') == 7"},
+            {"nest": "query.property('zoocraft:act') == 8"},
+            {"pat": "query.property('zoocraft:act') == 9"},
+            {"look": "query.property('zoocraft:act') == 10"}
+          ],
+          "blend_transition": 0.3
+        },
+        "rest": {
+          "animations": ["rest"],
+          "transitions": [
+            {"none": "query.property('zoocraft:act') == 0"},
+            {"walk": "query.property('zoocraft:act') == 1"},
+            {"bask": "query.property('zoocraft:act') == 3"},
+            {"browse": "query.property('zoocraft:act') == 4"},
+            {"eat": "query.property('zoocraft:act') == 5"},
+            {"withdraw": "query.property('zoocraft:act') == 6"},
+            {"peek": "query.property('zoocraft:act') == 7"},
+            {"nest": "query.property('zoocraft:act') == 8"},
+            {"pat": "query.property('zoocraft:act') == 9"},
+            {"look": "query.property('zoocraft:act') == 10"}
+          ],
+          "blend_transition": 0.6
+        },
+        "bask": {
+          "animations": ["bask"],
+          "transitions": [
+            {"none": "query.property('zoocraft:act') == 0"},
+            {"walk": "query.property('zoocraft:act') == 1"},
+            {"rest": "query.property('zoocraft:act') == 2"},
+            {"browse": "query.property('zoocraft:act') == 4"},
+            {"eat": "query.property('zoocraft:act') == 5"},
+            {"withdraw": "query.property('zoocraft:act') == 6"},
+            {"peek": "query.property('zoocraft:act') == 7"},
+            {"nest": "query.property('zoocraft:act') == 8"},
+            {"pat": "query.property('zoocraft:act') == 9"},
+            {"look": "query.property('zoocraft:act') == 10"}
+          ],
+          "blend_transition": 0.6
+        },
+        "browse": {
+          "animations": ["browse"],
+          "transitions": [
+            {"none": "query.property('zoocraft:act') == 0"},
+            {"walk": "query.property('zoocraft:act') == 1"},
+            {"rest": "query.property('zoocraft:act') == 2"},
+            {"bask": "query.property('zoocraft:act') == 3"},
+            {"eat": "query.property('zoocraft:act') == 5"},
+            {"withdraw": "query.property('zoocraft:act') == 6"},
+            {"peek": "query.property('zoocraft:act') == 7"},
+            {"nest": "query.property('zoocraft:act') == 8"},
+            {"pat": "query.property('zoocraft:act') == 9"},
+            {"look": "query.property('zoocraft:act') == 10"}
+          ],
+          "blend_transition": 0.3
+        },
+        "eat": {
+          "animations": ["eat"],
+          "transitions": [
+            {"none": "query.property('zoocraft:act') == 0"},
+            {"walk": "query.property('zoocraft:act') == 1"},
+            {"rest": "query.property('zoocraft:act') == 2"},
+            {"bask": "query.property('zoocraft:act') == 3"},
+            {"browse": "query.property('zoocraft:act') == 4"},
+            {"withdraw": "query.property('zoocraft:act') == 6"},
+            {"peek": "query.property('zoocraft:act') == 7"},
+            {"nest": "query.property('zoocraft:act') == 8"},
+            {"pat": "query.property('zoocraft:act') == 9"},
+            {"look": "query.property('zoocraft:act') == 10"}
+          ],
+          "blend_transition": 0.3
+        },
+        "withdraw": {
+          "animations": ["withdraw"],
+          "transitions": [
+            {"none": "query.property('zoocraft:act') == 0"},
+            {"walk": "query.property('zoocraft:act') == 1"},
+            {"rest": "query.property('zoocraft:act') == 2"},
+            {"bask": "query.property('zoocraft:act') == 3"},
+            {"browse": "query.property('zoocraft:act') == 4"},
+            {"eat": "query.property('zoocraft:act') == 5"},
+            {"peek": "query.property('zoocraft:act') == 7"},
+            {"nest": "query.property('zoocraft:act') == 8"},
+            {"pat": "query.property('zoocraft:act') == 9"},
+            {"look": "query.property('zoocraft:act') == 10"}
+          ],
+          "blend_transition": 0.05
+        },
+        "peek": {
+          "animations": ["peek"],
+          "transitions": [
+            {"none": "query.property('zoocraft:act') == 0"},
+            {"walk": "query.property('zoocraft:act') == 1"},
+            {"rest": "query.property('zoocraft:act') == 2"},
+            {"bask": "query.property('zoocraft:act') == 3"},
+            {"browse": "query.property('zoocraft:act') == 4"},
+            {"eat": "query.property('zoocraft:act') == 5"},
+            {"withdraw": "query.property('zoocraft:act') == 6"},
+            {"nest": "query.property('zoocraft:act') == 8"},
+            {"pat": "query.property('zoocraft:act') == 9"},
+            {"look": "query.property('zoocraft:act') == 10"}
+          ],
+          "blend_transition": 0.1
+        },
+        "nest": {
+          "animations": ["nest"],
+          "transitions": [
+            {"none": "query.property('zoocraft:act') == 0"},
+            {"walk": "query.property('zoocraft:act') == 1"},
+            {"rest": "query.property('zoocraft:act') == 2"},
+            {"bask": "query.property('zoocraft:act') == 3"},
+            {"browse": "query.property('zoocraft:act') == 4"},
+            {"eat": "query.property('zoocraft:act') == 5"},
+            {"withdraw": "query.property('zoocraft:act') == 6"},
+            {"peek": "query.property('zoocraft:act') == 7"},
+            {"pat": "query.property('zoocraft:act') == 9"},
+            {"look": "query.property('zoocraft:act') == 10"}
+          ],
+          "blend_transition": 0.4
+        },
+        "pat": {
+          "animations": ["pat"],
+          "transitions": [
+            {"none": "query.property('zoocraft:act') == 0"},
+            {"walk": "query.property('zoocraft:act') == 1"},
+            {"rest": "query.property('zoocraft:act') == 2"},
+            {"bask": "query.property('zoocraft:act') == 3"},
+            {"browse": "query.property('zoocraft:act') == 4"},
+            {"eat": "query.property('zoocraft:act') == 5"},
+            {"withdraw": "query.property('zoocraft:act') == 6"},
+            {"peek": "query.property('zoocraft:act') == 7"},
+            {"nest": "query.property('zoocraft:act') == 8"},
+            {"look": "query.property('zoocraft:act') == 10"}
+          ],
+          "blend_transition": 0.3
+        },
+        "look": {
+          "animations": ["look"],
+          "transitions": [
+            {"none": "query.property('zoocraft:act') == 0"},
+            {"walk": "query.property('zoocraft:act') == 1"},
+            {"rest": "query.property('zoocraft:act') == 2"},
+            {"bask": "query.property('zoocraft:act') == 3"},
+            {"browse": "query.property('zoocraft:act') == 4"},
+            {"eat": "query.property('zoocraft:act') == 5"},
+            {"withdraw": "query.property('zoocraft:act') == 6"},
+            {"peek": "query.property('zoocraft:act') == 7"},
+            {"nest": "query.property('zoocraft:act') == 8"},
+            {"pat": "query.property('zoocraft:act') == 9"}
+          ],
+          "blend_transition": 0.3
+        }
+      }
+    }
+  }
+}

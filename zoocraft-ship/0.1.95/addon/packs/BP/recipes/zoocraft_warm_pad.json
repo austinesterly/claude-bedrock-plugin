@@ -1,0 +1,11 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {"identifier": "zoocraft:warm_pad"},
+    "tags": ["zoocraft_workshop"],
+    "pattern": ["BBB", " M "],
+    "key": {"B": {"item": "minecraft:end_bricks"}, "M": {"item": "minecraft:magma"}},
+    "unlock": [{"item": "zoocraft:zoo_workshop"}],
+    "result": {"item": "zoocraft:warm_pad", "count": 1}
+  }
+}

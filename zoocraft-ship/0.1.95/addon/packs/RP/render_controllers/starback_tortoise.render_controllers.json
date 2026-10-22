@@ -1,0 +1,11 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.zoocraft.starback_tortoise": {
+      "geometry": "Geometry.default",
+      "materials": [{"*": "Material.default"}],
+      "textures": ["query.is_baby ? Texture.young : Texture.default"],
+      "part_visibility": [{"*": true}, {"tail": "query.mark_variant != 1"}, {"tailM": "query.mark_variant == 1"}]
+    }
+  }
+}

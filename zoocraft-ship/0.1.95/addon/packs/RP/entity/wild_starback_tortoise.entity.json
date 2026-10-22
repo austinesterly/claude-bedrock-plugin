@@ -1,0 +1,35 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:wild_starback_tortoise",
+      "materials": {"default": "entity_emissive_alpha"},
+      "textures": {
+        "default": "textures/entity/zoocraft/starback_tortoise",
+        "young": "textures/entity/zoocraft/starback_tortoise_young"
+      },
+      "geometry": {"default": "geometry.zoocraft.starback_tortoise"},
+      "animations": {
+        "none": "animation.zoocraft.starback_tortoise.none",
+        "walk": "animation.zoocraft.starback_tortoise.walk",
+        "rest": "animation.zoocraft.starback_tortoise.rest",
+        "bask": "animation.zoocraft.starback_tortoise.bask",
+        "browse": "animation.zoocraft.starback_tortoise.browse",
+        "eat": "animation.zoocraft.starback_tortoise.eat",
+        "withdraw": "animation.zoocraft.starback_tortoise.withdraw",
+        "peek": "animation.zoocraft.starback_tortoise.peek",
+        "nest": "animation.zoocraft.starback_tortoise.nest",
+        "pat": "animation.zoocraft.starback_tortoise.pat",
+        "look": "animation.zoocraft.starback_tortoise.look",
+        "move": "controller.animation.zoocraft.starback_tortoise.move"
+      },
+      "render_controllers": ["controller.render.zoocraft.starback_tortoise"],
+      "scripts": {
+        "scale": "q.is_baby ? 0.3 : (q.mark_variant == 1 ? 0.64 : 1)",
+        "initialize": ["variable.offset = math.random(0, 20);"],
+        "animate": ["move"]
+      },
+      "spawn_egg": {"base_color": "#17151a", "overlay_color": "#e2bc3a"}
+    }
+  }
+}
