@@ -1,0 +1,33 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:shimmer_snail",
+      "materials": {"default": "entity_emissive_alpha"},
+      "textures": {
+        "default": "textures/entity/zoocraft/shimmer_snail",
+        "opal": "textures/entity/zoocraft/shimmer_snail_opal"
+      },
+      "geometry": {"default": "geometry.zoocraft.shimmer_snail"},
+      "animations": {
+        "idle": "animation.zoocraft.shimmer_snail.idle",
+        "crawl": "animation.zoocraft.shimmer_snail.crawl",
+        "graze": "animation.zoocraft.shimmer_snail.graze",
+        "look": "animation.zoocraft.shimmer_snail.look",
+        "withdraw": "animation.zoocraft.shimmer_snail.withdraw",
+        "emerge": "animation.zoocraft.shimmer_snail.emerge",
+        "sealed": "animation.zoocraft.shimmer_snail.sealed",
+        "follow": "animation.zoocraft.shimmer_snail.follow",
+        "reach": "animation.zoocraft.shimmer_snail.reach",
+        "touch": "animation.zoocraft.shimmer_snail.touch",
+        "move": "controller.animation.zoocraft.shimmer_snail.move"
+      },
+      "render_controllers": ["controller.render.zoocraft.shimmer_snail"],
+      "scripts": {
+        "scale": "query.is_baby ? 0.35 : 1",
+        "initialize": ["variable.offset = math.random(0, 20);"],
+        "animate": ["move"]
+      }
+    }
+  }
+}

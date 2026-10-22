@@ -1,0 +1,213 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.zoocraft.shimmer_snail.idle": {
+      "loop": true,
+      "bones": {
+        "neck": {
+          "rotation": [
+            "math.sin(query.life_time * 30 + variable.offset) * 3",
+            "math.sin(query.life_time * 14 + variable.offset * 7) * 12",
+            0
+          ]
+        },
+        "eyeL": {
+          "rotation": [
+            "math.sin(query.life_time * 50 + variable.offset * 9) * 8",
+            "math.sin(query.life_time * 33 + variable.offset) * 10",
+            0
+          ]
+        },
+        "eyeR": {
+          "rotation": [
+            "math.sin(query.life_time * 50 + variable.offset * 9) * 8",
+            "math.sin(query.life_time * 31 + variable.offset + 90) * 10",
+            0
+          ]
+        },
+        "plug": {"scale": [0, 0, 0]}
+      }
+    },
+    "animation.zoocraft.shimmer_snail.crawl": {
+      "loop": true,
+      "bones": {
+        "foot": {"scale": [1, 1, "1 + math.sin(query.anim_time * 400) * 0.035"]},
+        "neck": {
+          "rotation": [
+            "-4 + math.sin(query.anim_time * 200) * 2",
+            "math.sin(query.life_time * 20 + variable.offset * 7) * 8",
+            0
+          ],
+          "position": [0, 0, "-0.25 - math.sin(query.anim_time * 400) * 0.2"]
+        },
+        "shell": {
+          "rotation": ["math.sin(query.anim_time * 200 + 40) * 1.5", 0, "math.sin(query.anim_time * 100) * 1"]
+        },
+        "tail": {"rotation": [0, "math.sin(query.anim_time * 100) * 6", 0]},
+        "eyeL": {"rotation": ["10 + math.sin(query.life_time * 50 + variable.offset * 9) * 8 * 0.6", 0, 0]},
+        "eyeR": {"rotation": ["10 + math.sin(query.life_time * 50 + variable.offset * 9) * 8 * 0.6", 0, 0]},
+        "plug": {"scale": [0, 0, 0]}
+      }
+    },
+    "animation.zoocraft.shimmer_snail.graze": {
+      "loop": true,
+      "bones": {
+        "neck": {
+          "rotation": [
+            "12 * math.min(1, query.anim_time * 3) + math.max(0, math.sin(query.life_time * 400)) * 2",
+            "math.sin(query.life_time * 25 + variable.offset) * 6",
+            0
+          ],
+          "position": [0, "0.55 * math.min(1, query.anim_time * 3)", 0]
+        },
+        "feelerL": {"rotation": ["4 * math.min(1, query.anim_time * 3)", 0, 0]},
+        "feelerR": {"rotation": ["4 * math.min(1, query.anim_time * 3)", 0, 0]},
+        "eyeL": {
+          "rotation": ["10 * math.min(1, query.anim_time * 3)", 0, 0],
+          "scale": [1, "1 - 0.35 * math.min(1, query.anim_time * 3)", 1]
+        },
+        "eyeR": {
+          "rotation": ["10 * math.min(1, query.anim_time * 3)", 0, 0],
+          "scale": [1, "1 - 0.35 * math.min(1, query.anim_time * 3)", 1]
+        },
+        "plug": {"scale": [0, 0, 0]}
+      }
+    },
+    "animation.zoocraft.shimmer_snail.look": {
+      "loop": true,
+      "bones": {
+        "neck": {
+          "rotation": [
+            "-24 * math.min(1, query.anim_time * 3)",
+            "math.sin(query.life_time * 40 + variable.offset * 5) * 25",
+            0
+          ]
+        },
+        "eyeL": {
+          "rotation": [
+            "-10 * math.min(1, query.anim_time * 3) + math.sin(query.life_time * 50 + variable.offset * 9) * 8",
+            "math.sin(query.life_time * 60 + variable.offset) * 20",
+            0
+          ],
+          "scale": [1, "1 + 0.15 * math.min(1, query.anim_time * 3)", 1]
+        },
+        "eyeR": {
+          "rotation": [
+            "-10 * math.min(1, query.anim_time * 3) + math.sin(query.life_time * 50 + variable.offset * 9) * 8",
+            "math.sin(query.life_time * 55 + variable.offset + 120) * 20",
+            0
+          ],
+          "scale": [1, "1 + 0.15 * math.min(1, query.anim_time * 3)", 1]
+        },
+        "plug": {"scale": [0, 0, 0]}
+      }
+    },
+    "animation.zoocraft.shimmer_snail.withdraw": {
+      "loop": true,
+      "bones": {
+        "foot": {
+          "scale": [
+            "(1 - 0.88 * math.min(1, query.anim_time * 6))",
+            "(1 - 0.88 * math.min(1, query.anim_time * 6))",
+            "(1 - 0.88 * math.min(1, query.anim_time * 6))"
+          ],
+          "position": [0, "-0.88 * math.min(1, query.anim_time * 6)", 0]
+        },
+        "shell": {"position": [0, "-1.5 * math.min(1, query.anim_time * 6)", 0]},
+        "plug": {"scale": [0, 0, 0]}
+      }
+    },
+    "animation.zoocraft.shimmer_snail.emerge": {
+      "loop": true,
+      "bones": {
+        "foot": {
+          "scale": [
+            "(1 - 0.88 * math.clamp(1 - query.anim_time / 1.0, 0, 1))",
+            "(1 - 0.88 * math.clamp(1 - query.anim_time / 1.0, 0, 1))",
+            "(1 - 0.88 * math.clamp(1 - query.anim_time / 1.0, 0, 1))"
+          ],
+          "position": [0, "-0.88 * math.clamp(1 - query.anim_time / 1.0, 0, 1)", 0]
+        },
+        "shell": {"position": [0, "-1.5 * math.clamp(1 - query.anim_time / 1.0, 0, 1)", 0]},
+        "eyeL": {
+          "rotation": [0, 0, 0],
+          "scale": [1, "math.clamp((query.anim_time - 0.6) / 0.9, 0.05, 1)", 1]
+        },
+        "eyeR": {
+          "rotation": [0, 0, 0],
+          "scale": [1, "math.clamp((query.anim_time - 0.6) / 0.9, 0.05, 1)", 1]
+        },
+        "plug": {"scale": [0, 0, 0]}
+      }
+    },
+    "animation.zoocraft.shimmer_snail.sealed": {
+      "loop": true,
+      "bones": {
+        "foot": {
+          "scale": [
+            "(1 - 0.88 * math.min(1, query.anim_time * 2.5))",
+            "(1 - 0.88 * math.min(1, query.anim_time * 2.5))",
+            "(1 - 0.88 * math.min(1, query.anim_time * 2.5))"
+          ],
+          "position": [0, "-0.88 * math.min(1, query.anim_time * 2.5)", 0]
+        },
+        "shell": {"position": [0, "-1.5 * math.min(1, query.anim_time * 2.5)", 0]},
+        "plug": {
+          "scale": [
+            "math.clamp((query.anim_time - 0.45) * 5, 0, 1)",
+            "math.clamp((query.anim_time - 0.45) * 5, 0, 1)",
+            "math.clamp((query.anim_time - 0.45) * 5, 0, 1)"
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.shimmer_snail.follow": {
+      "loop": true,
+      "bones": {
+        "foot": {"scale": [1, 1, "1 + math.sin(query.anim_time * 400) * 0.035"]},
+        "neck": {
+          "rotation": [
+            "10 + math.sin(query.anim_time * 200) * 2",
+            "math.sin(query.life_time * 30 + variable.offset * 7) * 10",
+            0
+          ],
+          "position": [0, 0.5, "-0.25 - math.sin(query.anim_time * 400) * 0.2"]
+        },
+        "feelerL": {"rotation": [6, 0, 0]},
+        "feelerR": {"rotation": [6, 0, 0]},
+        "tail": {"rotation": [0, "math.sin(query.anim_time * 100) * 6", 0]},
+        "eyeL": {"rotation": [20, 0, 0]},
+        "eyeR": {"rotation": [20, 0, 0]},
+        "plug": {"scale": [0, 0, 0]}
+      }
+    },
+    "animation.zoocraft.shimmer_snail.reach": {
+      "loop": true,
+      "bones": {
+        "neck": {
+          "rotation": [
+            "-38 * math.min(1, query.anim_time * 3) + math.sin(query.life_time * 300) * 2",
+            "math.sin(query.life_time * 22 + variable.offset) * 8",
+            0
+          ]
+        },
+        "feelerL": {"rotation": [-25, 0, 0]},
+        "feelerR": {"rotation": [-25, 0, 0]},
+        "eyeL": {"rotation": ["30 * math.min(1, query.anim_time * 3)", 0, 0], "scale": [1, 1.1, 1]},
+        "eyeR": {"rotation": ["30 * math.min(1, query.anim_time * 3)", 0, 0], "scale": [1, 1.1, 1]},
+        "plug": {"scale": [0, 0, 0]}
+      }
+    },
+    "animation.zoocraft.shimmer_snail.touch": {
+      "loop": true,
+      "bones": {
+        "neck": {"rotation": ["-12 * math.min(1, query.anim_time * 3)", 0, 0]},
+        "feelerL": {"rotation": ["-30 + math.sin(query.life_time * 500) * 6", 0, 0]},
+        "feelerR": {"rotation": ["-30 + math.sin(query.life_time * 520) * 6", 0, 0]},
+        "eyeL": {"rotation": ["35 + math.sin(query.life_time * 200) * 5", 0, 0]},
+        "eyeR": {"rotation": ["35 + math.sin(query.life_time * 200) * 5", 0, 0]},
+        "plug": {"scale": [0, 0, 0]}
+      }
+    }
+  }
+}

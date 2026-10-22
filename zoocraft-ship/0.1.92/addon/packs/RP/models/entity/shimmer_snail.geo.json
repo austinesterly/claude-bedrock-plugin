@@ -1,0 +1,74 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.zoocraft.shimmer_snail",
+        "texture_width": 64,
+        "texture_height": 64,
+        "visible_bounds_width": 1.5,
+        "visible_bounds_height": 1.0,
+        "visible_bounds_offset": [0, 0.4, 0]
+      },
+      "bones": [
+        {"name": "snail", "pivot": [0, 0, 1]},
+        {
+          "name": "foot",
+          "parent": "snail",
+          "pivot": [0, 1, 2],
+          "cubes": [{"origin": [-2, 0, -3], "size": [4, 2, 8], "uv": [24, 0]}]
+        },
+        {
+          "name": "tail",
+          "parent": "foot",
+          "pivot": [0, 0.5, 5],
+          "cubes": [{"origin": [-1, 0, 5], "size": [2, 1, 1], "uv": [10, 14]}]
+        },
+        {
+          "name": "neck",
+          "parent": "foot",
+          "pivot": [0, 1, -2.5],
+          "cubes": [{"origin": [-1.5, 0, -5.5], "size": [3, 3, 3], "uv": [48, 0]}]
+        },
+        {
+          "name": "eyeL",
+          "parent": "neck",
+          "pivot": [0.8, 3, -4.7],
+          "rotation": [15, 0, 12],
+          "cubes": [{"origin": [0.3, 3, -5.2], "size": [1, 5, 1], "uv": [16, 14]}]
+        },
+        {
+          "name": "eyeR",
+          "parent": "neck",
+          "pivot": [-0.8, 3, -4.7],
+          "rotation": [15, 0, -12],
+          "cubes": [{"origin": [-1.3, 3, -5.2], "size": [1, 5, 1], "uv": [20, 14]}]
+        },
+        {
+          "name": "feelerL",
+          "parent": "neck",
+          "pivot": [1, 0.8, -5.5],
+          "cubes": [{"origin": [0.5, 0.3, -6.5], "size": [1, 1, 1], "uv": [24, 14]}]
+        },
+        {
+          "name": "feelerR",
+          "parent": "neck",
+          "pivot": [-1, 0.8, -5.5],
+          "cubes": [{"origin": [-1.5, 0.3, -6.5], "size": [1, 1, 1], "uv": [28, 14]}]
+        },
+        {
+          "name": "shell",
+          "parent": "snail",
+          "pivot": [0, 1.5, 2],
+          "cubes": [{"origin": [-2.5, 1.5, -1.5], "size": [5, 7, 7], "uv": [0, 0]}]
+        },
+        {
+          "name": "plug",
+          "parent": "shell",
+          "pivot": [0, 3, -1.5],
+          "cubes": [{"origin": [-2, 1.5, -1.75], "size": [4, 3, 1], "uv": [0, 14]}]
+        }
+      ]
+    }
+  ]
+}
