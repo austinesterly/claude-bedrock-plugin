@@ -1,0 +1,19 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:block": {
+    "description": {"identifier": "zoocraft:landing_pad", "menu_category": {"category": "items"}},
+    "components": {
+      "minecraft:geometry": "minecraft:geometry.full_block",
+      "minecraft:material_instances": {
+        "*": {"texture": "zoocraft_landing_pad_side", "render_method": "opaque"},
+        "up": {"texture": "zoocraft_landing_pad_top", "render_method": "opaque"},
+        "down": {"texture": "zoocraft_landing_pad_bottom", "render_method": "opaque"}
+      },
+      "minecraft:destructible_by_mining": {"seconds_to_destroy": 1.2},
+      "minecraft:destructible_by_explosion": {"explosion_resistance": 4},
+      "minecraft:map_color": "#7d3fa8",
+      "minecraft:loot": "loot_tables/blocks/zoocraft_landing_pad.json",
+      "zoocraft:fixture": {}
+    }
+  }
+}

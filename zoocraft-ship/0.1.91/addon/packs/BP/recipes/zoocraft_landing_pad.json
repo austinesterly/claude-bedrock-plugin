@@ -1,0 +1,11 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {"identifier": "zoocraft:landing_pad"},
+    "tags": ["zoocraft_workshop"],
+    "pattern": ["WWW", "EEE"],
+    "key": {"W": {"item": "minecraft:purple_wool"}, "E": {"item": "minecraft:end_stone"}},
+    "unlock": [{"item": "zoocraft:zoo_workshop"}],
+    "result": {"item": "zoocraft:landing_pad", "count": 3}
+  }
+}
