@@ -1,0 +1,30 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:guest",
+      "materials": {"default": "entity_alphatest"},
+      "textures": {
+        "look0": "textures/entity/zoocraft/guest_0",
+        "look1": "textures/entity/zoocraft/guest_1",
+        "look2": "textures/entity/zoocraft/guest_2",
+        "look3": "textures/entity/zoocraft/guest_3",
+        "look4": "textures/entity/zoocraft/guest_4",
+        "look5": "textures/entity/zoocraft/guest_5",
+        "look6": "textures/entity/zoocraft/guest_6",
+        "look7": "textures/entity/zoocraft/guest_7",
+        "look8": "textures/entity/zoocraft/guest_8",
+        "look9": "textures/entity/zoocraft/guest_9",
+        "look10": "textures/entity/zoocraft/guest_10",
+        "look11": "textures/entity/zoocraft/guest_11"
+      },
+      "geometry": {"default": "geometry.zoocraft.guest"},
+      "animations": {
+        "walk": "animation.zoocraft.guest.walk",
+        "look_at_target": "animation.zoocraft.guest.look_at_target"
+      },
+      "scripts": {"animate": ["walk", "look_at_target"]},
+      "render_controllers": ["controller.render.zoocraft.guest"]
+    }
+  }
+}

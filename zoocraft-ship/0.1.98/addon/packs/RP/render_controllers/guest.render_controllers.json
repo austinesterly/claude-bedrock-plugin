@@ -1,0 +1,28 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.zoocraft.guest": {
+      "arrays": {
+        "textures": {
+          "Array.looks": [
+            "Texture.look0",
+            "Texture.look1",
+            "Texture.look2",
+            "Texture.look3",
+            "Texture.look4",
+            "Texture.look5",
+            "Texture.look6",
+            "Texture.look7",
+            "Texture.look8",
+            "Texture.look9",
+            "Texture.look10",
+            "Texture.look11"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [{"*": "Material.default"}],
+      "textures": ["Array.looks[query.property('zoocraft:look')]"]
+    }
+  }
+}
