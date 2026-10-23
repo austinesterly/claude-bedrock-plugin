@@ -1,0 +1,16 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {"identifier": "zoocraft:path_lamp"},
+    "tags": ["zoocraft_workshop"],
+    "pattern": [" G ", "NTN", " F "],
+    "key": {
+      "G": {"item": "minecraft:glass_pane"},
+      "N": {"item": "minecraft:iron_nugget"},
+      "T": {"item": "minecraft:torch"},
+      "F": {"item": "minecraft:oak_fence"}
+    },
+    "unlock": [{"item": "zoocraft:zoo_workshop"}],
+    "result": {"item": "zoocraft:path_lamp", "count": 2}
+  }
+}

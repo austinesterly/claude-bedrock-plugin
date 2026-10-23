@@ -1,0 +1,24 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:block": {
+    "description": {"identifier": "zoocraft:water_fountain", "menu_category": {"category": "items"}},
+    "components": {
+      "minecraft:geometry": "geometry.zoocraft.water_fountain",
+      "minecraft:material_instances": {
+        "*": {"texture": "zoocraft_fountain_stone", "render_method": "opaque"},
+        "stone": {"texture": "zoocraft_fountain_stone", "render_method": "opaque"},
+        "basin": {"texture": "zoocraft_fountain_basin", "render_method": "opaque"},
+        "spout": {"texture": "zoocraft_fountain_spout", "render_method": "opaque"}
+      },
+      "minecraft:collision_box": [{"origin": [-6, 0, -6], "size": [12, 14, 12]}],
+      "minecraft:selection_box": {"origin": [-6, 0, -6], "size": [12, 16, 12]},
+      "minecraft:movable": {"movement_type": "immovable"},
+      "minecraft:destructible_by_mining": {"seconds_to_destroy": 1.5},
+      "minecraft:destructible_by_explosion": {"explosion_resistance": 4},
+      "minecraft:map_color": "#b8b6ae",
+      "minecraft:loot": "loot_tables/blocks/zoocraft_water_fountain.json",
+      "minecraft:light_dampening": 0,
+      "zoocraft:guest_service": {}
+    }
+  }
+}

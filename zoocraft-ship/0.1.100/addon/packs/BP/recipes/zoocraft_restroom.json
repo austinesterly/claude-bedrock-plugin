@@ -1,0 +1,15 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {"identifier": "zoocraft:restroom"},
+    "tags": ["zoocraft_workshop"],
+    "pattern": ["PDP", "PBP", "PPP"],
+    "key": {
+      "P": {"tag": "minecraft:planks"},
+      "D": {"item": "minecraft:blue_dye"},
+      "B": {"item": "minecraft:bucket"}
+    },
+    "unlock": [{"item": "zoocraft:zoo_workshop"}],
+    "result": {"item": "zoocraft:restroom", "count": 1}
+  }
+}

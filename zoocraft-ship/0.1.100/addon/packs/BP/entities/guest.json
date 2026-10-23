@@ -1,0 +1,186 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "zoocraft:guest",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "properties": {
+        "zoocraft:look": {"type": "int", "range": [0, 11], "default": 0, "client_sync": true},
+        "zoocraft:walking": {"type": "bool", "default": false, "client_sync": true}
+      }
+    },
+    "component_groups": {
+      "zoocraft:strolling": {
+        "minecraft:behavior.move_to_block": {
+          "priority": 4,
+          "speed_multiplier": 0.7,
+          "tick_interval": 40,
+          "start_chance": 0.5,
+          "search_range": 24,
+          "search_height": 4,
+          "goal_radius": 2,
+          "target_selection_method": "random",
+          "target_blocks": [
+            "zoocraft:viewing_point",
+            "zoocraft:snack_stand",
+            "zoocraft:bench",
+            "zoocraft:bench_part",
+            "zoocraft:donation_box",
+            "zoocraft:restroom",
+            "zoocraft:water_fountain",
+            "zoocraft:planter"
+          ],
+          "stay_duration": 160
+        },
+        "minecraft:behavior.look_at_entity": {
+          "priority": 5,
+          "look_distance": 12,
+          "probability": 0.3,
+          "look_time": {"min": 4, "max": 10},
+          "filters": {"test": "is_family", "subject": "other", "value": "zoocraft_animal"}
+        }
+      },
+      "zoocraft:watching": {
+        "minecraft:behavior.look_at_entity": {
+          "priority": 2,
+          "look_distance": 24,
+          "probability": 1.0,
+          "look_time": {"min": 6, "max": 12},
+          "filters": {"test": "is_family", "subject": "other", "value": "zoocraft_animal"}
+        }
+      },
+      "zoocraft:travelling": {
+        "minecraft:behavior.look_at_entity": {
+          "priority": 5,
+          "look_distance": 8,
+          "probability": 0.2,
+          "look_time": {"min": 2, "max": 4},
+          "filters": {"test": "is_family", "subject": "other", "value": "zoocraft_animal"}
+        }
+      },
+      "zoocraft:leaving": {
+        "minecraft:behavior.move_to_block": {
+          "priority": 4,
+          "speed_multiplier": 0.8,
+          "tick_interval": 40,
+          "start_chance": 1,
+          "search_range": 32,
+          "search_height": 6,
+          "goal_radius": 1.5,
+          "target_selection_method": "nearest",
+          "target_blocks": ["zoocraft:park_entrance_gate"]
+        }
+      }
+    },
+    "components": {
+      "minecraft:type_family": {"family": ["zoocraft_guest"]},
+      "minecraft:collision_box": {"width": 0.6, "height": 1.8},
+      "minecraft:health": {"value": 20, "max": 20},
+      "minecraft:damage_sensor": {"triggers": [{"cause": "all", "deals_damage": "no"}]},
+      "minecraft:physics": {},
+      "minecraft:pushable_by_entity": {},
+      "minecraft:pushable_by_block": {},
+      "minecraft:knockback_resistance": {"value": 1.0},
+      "minecraft:fire_immune": {},
+      "minecraft:breathable": {"total_supply": 15, "suffocate_time": 0},
+      "minecraft:movement": {"value": 0.35},
+      "minecraft:movement.basic": {},
+      "minecraft:jump.static": {},
+      "minecraft:navigation.walk": {
+        "can_path_over_water": false,
+        "avoid_water": true,
+        "avoid_damage_blocks": true,
+        "can_open_doors": false,
+        "can_pass_doors": false,
+        "can_walk": true
+      },
+      "minecraft:preferred_path": {
+        "default_block_cost": 6,
+        "jump_cost": 10,
+        "max_fall_blocks": 1,
+        "preferred_path_blocks": [
+          {
+            "blocks": [
+              "grass_path",
+              "gravel",
+              "cobblestone",
+              "mossy_cobblestone",
+              "stone_bricks",
+              "mossy_stone_bricks",
+              "cracked_stone_bricks",
+              "brick_block",
+              "mud_bricks",
+              "deepslate_bricks",
+              "deepslate_tiles",
+              "polished_deepslate",
+              "smooth_stone",
+              "polished_andesite",
+              "polished_diorite",
+              "polished_granite",
+              "packed_mud",
+              "oak_planks",
+              "spruce_planks",
+              "birch_planks",
+              "jungle_planks",
+              "acacia_planks",
+              "dark_oak_planks",
+              "mangrove_planks",
+              "cherry_planks",
+              "bamboo_planks",
+              "smooth_stone_slab",
+              "stone_brick_slab",
+              "cobblestone_slab",
+              "oak_slab",
+              "spruce_slab",
+              "brick_slab",
+              "white_concrete",
+              "light_gray_concrete",
+              "gray_concrete",
+              "end_bricks",
+              "brick_stairs",
+              "stone_brick_stairs",
+              "stone_stairs",
+              "end_brick_stairs",
+              "oak_stairs",
+              "spruce_stairs"
+            ],
+            "cost": 0
+          }
+        ]
+      },
+      "minecraft:follow_range": {"value": 32, "max": 32},
+      "minecraft:behavior.look_at_player": {"priority": 7, "look_distance": 6, "probability": 0.02},
+      "minecraft:behavior.random_look_around": {"priority": 8},
+      "minecraft:despawn": {"despawn_from_distance": {"min_distance": 64, "max_distance": 96}},
+      "minecraft:conditional_bandwidth_optimization": {},
+      "minecraft:interact": {
+        "interactions": [
+          {
+            "on_interact": {"filters": {"test": "is_family", "subject": "other", "value": "player"}},
+            "interact_text": "action.interact.zoocraft.talk"
+          }
+        ]
+      }
+    },
+    "events": {
+      "minecraft:entity_spawned": {"add": {"component_groups": ["zoocraft:strolling"]}},
+      "zoocraft:stroll": {
+        "remove": {"component_groups": ["zoocraft:watching", "zoocraft:leaving", "zoocraft:travelling"]},
+        "add": {"component_groups": ["zoocraft:strolling"]}
+      },
+      "zoocraft:watch": {
+        "remove": {"component_groups": ["zoocraft:strolling", "zoocraft:leaving", "zoocraft:travelling"]},
+        "add": {"component_groups": ["zoocraft:watching"]}
+      },
+      "zoocraft:leave": {
+        "remove": {"component_groups": ["zoocraft:strolling", "zoocraft:watching", "zoocraft:travelling"]},
+        "add": {"component_groups": ["zoocraft:leaving"]}
+      },
+      "zoocraft:travel": {
+        "remove": {"component_groups": ["zoocraft:strolling", "zoocraft:watching", "zoocraft:leaving"]},
+        "add": {"component_groups": ["zoocraft:travelling"]}
+      }
+    }
+  }
+}

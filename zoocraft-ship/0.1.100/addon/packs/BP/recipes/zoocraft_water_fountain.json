@@ -1,0 +1,15 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {"identifier": "zoocraft:water_fountain"},
+    "tags": ["zoocraft_workshop"],
+    "pattern": [" N ", "SBS", " S "],
+    "key": {
+      "N": {"item": "minecraft:iron_nugget"},
+      "S": {"item": "minecraft:stone_bricks"},
+      "B": {"item": "minecraft:bucket"}
+    },
+    "unlock": [{"item": "zoocraft:zoo_workshop"}],
+    "result": {"item": "zoocraft:water_fountain", "count": 1}
+  }
+}

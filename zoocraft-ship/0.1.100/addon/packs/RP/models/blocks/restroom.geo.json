@@ -1,0 +1,149 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.zoocraft.restroom_p0",
+        "texture_width": 16,
+        "texture_height": 16,
+        "visible_bounds_width": 1,
+        "visible_bounds_height": 2.5,
+        "visible_bounds_offset": [0, 0.75, 0]
+      },
+      "bones": [
+        {
+          "name": "body",
+          "pivot": [0, 0, 0],
+          "cubes": [
+            {
+              "origin": [-7.5, 0, -7.5],
+              "size": [15, 1, 15],
+              "uv": {
+                "north": {"uv": [0.5, 15], "uv_size": [15, 1], "material_instance": "trim"},
+                "south": {"uv": [0.5, 15], "uv_size": [15, 1], "material_instance": "trim"},
+                "east": {"uv": [0.5, 15], "uv_size": [15, 1], "material_instance": "trim"},
+                "west": {"uv": [0.5, 15], "uv_size": [15, 1], "material_instance": "trim"},
+                "up": {"uv": [0.5, 0.5], "uv_size": [15, 15], "material_instance": "trim"},
+                "down": {"uv": [0.5, 0.5], "uv_size": [15, 15], "material_instance": "trim"}
+              }
+            },
+            {
+              "origin": [-7, 1, -7],
+              "size": [14, 15, 14],
+              "uv": {
+                "north": {"uv": [1, 0], "uv_size": [14, 15], "material_instance": "door_lo"},
+                "south": {"uv": [1, 0], "uv_size": [14, 15], "material_instance": "wall"},
+                "east": {"uv": [1, 0], "uv_size": [14, 15], "material_instance": "wall"},
+                "west": {"uv": [1, 0], "uv_size": [14, 15], "material_instance": "wall"},
+                "up": {"uv": [1, 1], "uv_size": [14, 14], "material_instance": "wall"}
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": {
+        "identifier": "geometry.zoocraft.restroom_p1",
+        "texture_width": 16,
+        "texture_height": 16,
+        "visible_bounds_width": 1,
+        "visible_bounds_height": 2.5,
+        "visible_bounds_offset": [0, 0.75, 0]
+      },
+      "bones": [
+        {
+          "name": "body",
+          "pivot": [0, 0, 0],
+          "cubes": [
+            {
+              "origin": [-7, 0, -7],
+              "size": [14, 14, 14],
+              "uv": {
+                "north": {"uv": [1, 2], "uv_size": [14, 14], "material_instance": "door_hi"},
+                "south": {"uv": [1, 2], "uv_size": [14, 14], "material_instance": "wall"},
+                "east": {"uv": [1, 2], "uv_size": [14, 14], "material_instance": "wall"},
+                "west": {"uv": [1, 2], "uv_size": [14, 14], "material_instance": "wall"}
+              }
+            },
+            {
+              "origin": [-8, 14, -8],
+              "size": [16, 2, 16],
+              "uv": {
+                "north": {"uv": [0, 0], "uv_size": [16, 2], "material_instance": "roof"},
+                "south": {"uv": [0, 0], "uv_size": [16, 2], "material_instance": "roof"},
+                "east": {"uv": [0, 0], "uv_size": [16, 2], "material_instance": "roof"},
+                "west": {"uv": [0, 0], "uv_size": [16, 2], "material_instance": "roof"},
+                "up": {"uv": [0, 0], "uv_size": [16, 16], "material_instance": "roof"},
+                "down": {"uv": [0, 0], "uv_size": [16, 16], "material_instance": "roof"}
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": {
+        "identifier": "geometry.zoocraft.restroom_item",
+        "texture_width": 16,
+        "texture_height": 16,
+        "visible_bounds_width": 1,
+        "visible_bounds_height": 1.5,
+        "visible_bounds_offset": [0, 0.75, 0]
+      },
+      "bones": [
+        {
+          "name": "body",
+          "pivot": [0, 0, 0],
+          "cubes": [
+            {
+              "origin": [-3.75, 0, -3.75],
+              "size": [7.5, 0.5, 7.5],
+              "uv": {
+                "north": {"uv": [4.25, 15.5], "uv_size": [7.5, 0.5], "material_instance": "trim"},
+                "south": {"uv": [4.25, 15.5], "uv_size": [7.5, 0.5], "material_instance": "trim"},
+                "east": {"uv": [4.25, 15.5], "uv_size": [7.5, 0.5], "material_instance": "trim"},
+                "west": {"uv": [4.25, 15.5], "uv_size": [7.5, 0.5], "material_instance": "trim"},
+                "up": {"uv": [4.25, 4.25], "uv_size": [7.5, 7.5], "material_instance": "trim"},
+                "down": {"uv": [4.25, 4.25], "uv_size": [7.5, 7.5], "material_instance": "trim"}
+              }
+            },
+            {
+              "origin": [-3.5, 0.5, -3.5],
+              "size": [7, 7.5, 7],
+              "uv": {
+                "north": {"uv": [4.5, 8], "uv_size": [7, 7.5], "material_instance": "door_lo"},
+                "south": {"uv": [4.5, 8], "uv_size": [7, 7.5], "material_instance": "wall"},
+                "east": {"uv": [4.5, 8], "uv_size": [7, 7.5], "material_instance": "wall"},
+                "west": {"uv": [4.5, 8], "uv_size": [7, 7.5], "material_instance": "wall"},
+                "up": {"uv": [4.5, 4.5], "uv_size": [7, 7], "material_instance": "wall"}
+              }
+            },
+            {
+              "origin": [-3.5, 8, -3.5],
+              "size": [7, 7, 7],
+              "uv": {
+                "north": {"uv": [4.5, 1], "uv_size": [7, 7], "material_instance": "door_hi"},
+                "south": {"uv": [4.5, 1], "uv_size": [7, 7], "material_instance": "wall"},
+                "east": {"uv": [4.5, 1], "uv_size": [7, 7], "material_instance": "wall"},
+                "west": {"uv": [4.5, 1], "uv_size": [7, 7], "material_instance": "wall"}
+              }
+            },
+            {
+              "origin": [-4, 15, -4],
+              "size": [8, 1, 8],
+              "uv": {
+                "north": {"uv": [4, 0], "uv_size": [8, 1], "material_instance": "roof"},
+                "south": {"uv": [4, 0], "uv_size": [8, 1], "material_instance": "roof"},
+                "east": {"uv": [4, 0], "uv_size": [8, 1], "material_instance": "roof"},
+                "west": {"uv": [4, 0], "uv_size": [8, 1], "material_instance": "roof"},
+                "up": {"uv": [4, 4], "uv_size": [8, 8], "material_instance": "roof"},
+                "down": {"uv": [4, 4], "uv_size": [8, 8], "material_instance": "roof"}
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:block": {
+    "description": {
+      "identifier": "zoocraft:path_lamp",
+      "menu_category": {"category": "items"},
+      "traits": {
+        "minecraft:placement_direction": {"enabled_states": ["minecraft:cardinal_direction"], "y_rotation_offset": 180.0}
+      }
+    },
+    "components": {
+      "minecraft:geometry": "geometry.zoocraft.path_lamp_p0",
+      "minecraft:material_instances": {
+        "*": {"texture": "zoocraft_lamp_iron", "render_method": "opaque"},
+        "iron": {"texture": "zoocraft_lamp_iron", "render_method": "opaque"},
+        "glass": {"texture": "zoocraft_lamp_glass", "render_method": "opaque"}
+      },
+      "minecraft:collision_box": [{"origin": [-2, 0, -2], "size": [4, 16, 4]}],
+      "minecraft:selection_box": {"origin": [-3, 0, -3], "size": [6, 16, 6]},
+      "minecraft:movable": {"movement_type": "immovable"},
+      "minecraft:destructible_by_mining": {"seconds_to_destroy": 1.0},
+      "minecraft:destructible_by_explosion": {"explosion_resistance": 3},
+      "minecraft:map_color": "#2c3d31",
+      "minecraft:loot": "loot_tables/blocks/zoocraft_path_lamp.json",
+      "minecraft:light_dampening": 0,
+      "zoocraft:guest_service": {},
+      "minecraft:item_visual": {
+        "geometry": "geometry.zoocraft.path_lamp_item",
+        "material_instances": {
+          "*": {"texture": "zoocraft_lamp_iron", "render_method": "opaque"},
+          "iron": {"texture": "zoocraft_lamp_iron", "render_method": "opaque"},
+          "glass": {"texture": "zoocraft_lamp_glass", "render_method": "opaque"}
+        }
+      }
+    },
+    "permutations": [
+      {
+        "condition": "query.block_state('minecraft:cardinal_direction') == 'south'",
+        "components": {"minecraft:transformation": {"rotation": [0, 180, 0]}}
+      },
+      {
+        "condition": "query.block_state('minecraft:cardinal_direction') == 'west'",
+        "components": {"minecraft:transformation": {"rotation": [0, 90, 0]}}
+      },
+      {
+        "condition": "query.block_state('minecraft:cardinal_direction') == 'east'",
+        "components": {"minecraft:transformation": {"rotation": [0, 270, 0]}}
+      }
+    ]
+  }
+}

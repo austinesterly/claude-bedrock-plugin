@@ -1,0 +1,15 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {"identifier": "zoocraft:planter"},
+    "tags": ["zoocraft_workshop"],
+    "pattern": ["PBP", "PDP"],
+    "key": {
+      "P": {"tag": "minecraft:planks"},
+      "B": {"item": "minecraft:bone_meal"},
+      "D": {"item": "minecraft:dirt"}
+    },
+    "unlock": [{"item": "zoocraft:zoo_workshop"}],
+    "result": {"item": "zoocraft:planter", "count": 2}
+  }
+}

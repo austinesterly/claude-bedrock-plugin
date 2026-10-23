@@ -1,0 +1,57 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:block": {
+    "description": {
+      "identifier": "zoocraft:restroom",
+      "menu_category": {"category": "items"},
+      "traits": {
+        "minecraft:placement_direction": {"enabled_states": ["minecraft:cardinal_direction"], "y_rotation_offset": 180.0}
+      }
+    },
+    "components": {
+      "minecraft:geometry": "geometry.zoocraft.restroom_p0",
+      "minecraft:material_instances": {
+        "*": {"texture": "zoocraft_restroom_wall", "render_method": "opaque"},
+        "wall": {"texture": "zoocraft_restroom_wall", "render_method": "opaque"},
+        "door_lo": {"texture": "zoocraft_restroom_door_lo", "render_method": "opaque"},
+        "door_hi": {"texture": "zoocraft_restroom_door_hi", "render_method": "opaque"},
+        "roof": {"texture": "zoocraft_restroom_roof", "render_method": "opaque"},
+        "trim": {"texture": "zoocraft_restroom_trim", "render_method": "opaque"}
+      },
+      "minecraft:collision_box": [{"origin": [-7.5, 0, -7.5], "size": [15, 16, 15]}],
+      "minecraft:selection_box": {"origin": [-7.5, 0, -7.5], "size": [15, 16, 15]},
+      "minecraft:movable": {"movement_type": "immovable"},
+      "minecraft:destructible_by_mining": {"seconds_to_destroy": 2.0},
+      "minecraft:destructible_by_explosion": {"explosion_resistance": 4},
+      "minecraft:map_color": "#9fb59b",
+      "minecraft:loot": "loot_tables/blocks/zoocraft_restroom.json",
+      "minecraft:light_dampening": 0,
+      "zoocraft:guest_service": {},
+      "minecraft:item_visual": {
+        "geometry": "geometry.zoocraft.restroom_item",
+        "material_instances": {
+          "*": {"texture": "zoocraft_restroom_wall", "render_method": "opaque"},
+          "wall": {"texture": "zoocraft_restroom_wall", "render_method": "opaque"},
+          "door_lo": {"texture": "zoocraft_restroom_door_lo", "render_method": "opaque"},
+          "door_hi": {"texture": "zoocraft_restroom_door_hi", "render_method": "opaque"},
+          "roof": {"texture": "zoocraft_restroom_roof", "render_method": "opaque"},
+          "trim": {"texture": "zoocraft_restroom_trim", "render_method": "opaque"}
+        }
+      }
+    },
+    "permutations": [
+      {
+        "condition": "query.block_state('minecraft:cardinal_direction') == 'south'",
+        "components": {"minecraft:transformation": {"rotation": [0, 180, 0]}}
+      },
+      {
+        "condition": "query.block_state('minecraft:cardinal_direction') == 'west'",
+        "components": {"minecraft:transformation": {"rotation": [0, 90, 0]}}
+      },
+      {
+        "condition": "query.block_state('minecraft:cardinal_direction') == 'east'",
+        "components": {"minecraft:transformation": {"rotation": [0, 270, 0]}}
+      }
+    ]
+  }
+}
