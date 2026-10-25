@@ -1,0 +1,11 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {"identifier": "zoocraft:aluminum_fence_gate"},
+    "tags": ["zoocraft_workshop"],
+    "pattern": ["NCN", "NCN"],
+    "key": {"C": {"item": "minecraft:copper_ingot"}, "N": {"item": "minecraft:iron_nugget"}},
+    "unlock": [{"item": "zoocraft:zoo_workshop"}],
+    "result": {"item": "zoocraft:aluminum_fence_gate", "count": 1}
+  }
+}
