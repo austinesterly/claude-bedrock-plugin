@@ -1,0 +1,19 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:block": {
+    "description": {"identifier": "zoocraft:bank", "menu_category": {"category": "items"}},
+    "components": {
+      "minecraft:geometry": "minecraft:geometry.full_block",
+      "minecraft:material_instances": {
+        "*": {"texture": "zoocraft_bank_side", "render_method": "opaque"},
+        "up": {"texture": "zoocraft_bank_top", "render_method": "opaque"},
+        "down": {"texture": "zoocraft_bank_bottom", "render_method": "opaque"}
+      },
+      "minecraft:destructible_by_mining": {"seconds_to_destroy": 2.0},
+      "minecraft:destructible_by_explosion": {"explosion_resistance": 6},
+      "minecraft:map_color": "#d8d0bc",
+      "minecraft:loot": "loot_tables/blocks/zoocraft_bank.json",
+      "zoocraft:bank": {}
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {"identifier": "zoocraft:bank"},
+    "tags": ["zoocraft_workshop"],
+    "pattern": [" G ", "SCS", "SSS"],
+    "key": {
+      "G": {"item": "minecraft:gold_ingot"},
+      "S": {"item": "minecraft:stone_bricks"},
+      "C": {"item": "minecraft:chest"}
+    },
+    "unlock": [{"item": "zoocraft:zoo_workshop"}],
+    "result": {"item": "zoocraft:bank", "count": 1}
+  }
+}
