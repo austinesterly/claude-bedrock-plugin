@@ -1,0 +1,97 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.zoocraft.aluminum_fence",
+        "texture_width": 16,
+        "texture_height": 16,
+        "visible_bounds_width": 2,
+        "visible_bounds_height": 2.5,
+        "visible_bounds_offset": [0, 0.75, 0]
+      },
+      "bones": [
+        {
+          "name": "n",
+          "pivot": [0, 0, 0],
+          "cubes": [
+            {
+              "origin": [-8, 0, -8],
+              "size": [16, 16, 0],
+              "uv": {"north": {"uv": [0, 0], "uv_size": [16, 16]}}
+            },
+            {
+              "origin": [-8, 13, -8],
+              "size": [16, 2, 1],
+              "uv": {
+                "south": {"uv": [0, 1], "uv_size": [16, 2]},
+                "up": {"uv": [0, 1], "uv_size": [16, 1]},
+                "down": {"uv": [0, 2], "uv_size": [16, 1]}
+              }
+            }
+          ]
+        },
+        {
+          "name": "s",
+          "pivot": [0, 0, 0],
+          "cubes": [
+            {
+              "origin": [-8, 0, 8],
+              "size": [16, 16, 0],
+              "uv": {"south": {"uv": [0, 0], "uv_size": [16, 16]}}
+            },
+            {
+              "origin": [-8, 13, 7],
+              "size": [16, 2, 1],
+              "uv": {
+                "north": {"uv": [0, 1], "uv_size": [16, 2]},
+                "up": {"uv": [0, 1], "uv_size": [16, 1]},
+                "down": {"uv": [0, 2], "uv_size": [16, 1]}
+              }
+            }
+          ]
+        },
+        {
+          "name": "e",
+          "pivot": [0, 0, 0],
+          "cubes": [
+            {
+              "origin": [8, 0, -8],
+              "size": [0, 16, 16],
+              "uv": {"east": {"uv": [0, 0], "uv_size": [16, 16]}}
+            },
+            {
+              "origin": [7, 13, -7],
+              "size": [1, 2, 14],
+              "uv": {
+                "west": {"uv": [0, 1], "uv_size": [14, 2]},
+                "up": {"uv": [0, 1], "uv_size": [1, 14]},
+                "down": {"uv": [0, 2], "uv_size": [1, 14]}
+              }
+            }
+          ]
+        },
+        {
+          "name": "w",
+          "pivot": [0, 0, 0],
+          "cubes": [
+            {
+              "origin": [-8, 0, -8],
+              "size": [0, 16, 16],
+              "uv": {"west": {"uv": [0, 0], "uv_size": [16, 16]}}
+            },
+            {
+              "origin": [-8, 13, -7],
+              "size": [1, 2, 14],
+              "uv": {
+                "east": {"uv": [0, 1], "uv_size": [14, 2]},
+                "up": {"uv": [0, 1], "uv_size": [1, 14]},
+                "down": {"uv": [0, 2], "uv_size": [1, 14]}
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

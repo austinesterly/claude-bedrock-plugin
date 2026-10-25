@@ -1,0 +1,88 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:block_culling_rules": {
+    "description": {"identifier": "zoocraft:culling.aluminum_fence"},
+    "rules": [
+      {
+        "direction": "north",
+        "condition": "same_block",
+        "geometry_part": {"bone": "n", "cube": 0, "face": "north"}
+      },
+      {
+        "direction": "north",
+        "condition": "same_block",
+        "geometry_part": {"bone": "n", "cube": 1, "face": "south"}
+      },
+      {
+        "direction": "north",
+        "condition": "same_block",
+        "geometry_part": {"bone": "n", "cube": 1, "face": "up"}
+      },
+      {
+        "direction": "north",
+        "condition": "same_block",
+        "geometry_part": {"bone": "n", "cube": 1, "face": "down"}
+      },
+      {
+        "direction": "south",
+        "condition": "same_block",
+        "geometry_part": {"bone": "s", "cube": 0, "face": "south"}
+      },
+      {
+        "direction": "south",
+        "condition": "same_block",
+        "geometry_part": {"bone": "s", "cube": 1, "face": "north"}
+      },
+      {
+        "direction": "south",
+        "condition": "same_block",
+        "geometry_part": {"bone": "s", "cube": 1, "face": "up"}
+      },
+      {
+        "direction": "south",
+        "condition": "same_block",
+        "geometry_part": {"bone": "s", "cube": 1, "face": "down"}
+      },
+      {
+        "direction": "east",
+        "condition": "same_block",
+        "geometry_part": {"bone": "e", "cube": 0, "face": "east"}
+      },
+      {
+        "direction": "east",
+        "condition": "same_block",
+        "geometry_part": {"bone": "e", "cube": 1, "face": "west"}
+      },
+      {
+        "direction": "east",
+        "condition": "same_block",
+        "geometry_part": {"bone": "e", "cube": 1, "face": "up"}
+      },
+      {
+        "direction": "east",
+        "condition": "same_block",
+        "geometry_part": {"bone": "e", "cube": 1, "face": "down"}
+      },
+      {
+        "direction": "west",
+        "condition": "same_block",
+        "geometry_part": {"bone": "w", "cube": 0, "face": "west"}
+      },
+      {
+        "direction": "west",
+        "condition": "same_block",
+        "geometry_part": {"bone": "w", "cube": 1, "face": "east"}
+      },
+      {
+        "direction": "west",
+        "condition": "same_block",
+        "geometry_part": {"bone": "w", "cube": 1, "face": "up"}
+      },
+      {
+        "direction": "west",
+        "condition": "same_block",
+        "geometry_part": {"bone": "w", "cube": 1, "face": "down"}
+      }
+    ]
+  }
+}
