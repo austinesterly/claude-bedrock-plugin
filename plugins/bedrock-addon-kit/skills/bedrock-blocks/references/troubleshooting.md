@@ -37,7 +37,8 @@ Turn on Content Log File and Content Log GUI (Creator settings) and read the log
 |---|---|
 | Walk through it, or stuck on air | `collision_box` disagrees with the model. Collision is never taken from geometry; write the boxes yourself |
 | Load error at format 1.26.60 | `collision_box` written as a single object. Wrap it in an array |
-| Can't target or break it | `selection_box: false`, or a selection box taller than 16 |
+| Can't target or break it | `selection_box: false` |
+| Content log "selection_box: Invalid box size ... Vec3(-8,0,-8) and Vec3(8,16,8)", then the block's recipe "missing or invalid" and blocks.json "does not exist in the registry" | A selection box taller than 16 or outside the block: the game refuses the whole block. Keep it inside; collision may still be 24 tall |
 | Breaks instantly / takes forever | `seconds_to_destroy` is 0 or too large. Tool speed needs an `is_*_item_destructible` tag |
 | Drops nothing / the wrong item | a wrong `minecraft:loot` path (it's relative to the BP root); `{}` drops nothing; no `loot` drops itself |
 | Pops off right after placing | the `placement_filter` condition isn't met (wrong `allowed_faces`, block id not in `block_filter`) |

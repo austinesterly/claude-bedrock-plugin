@@ -366,6 +366,13 @@ for (const bp of bps) for (const f of walk(bp.dir)) {
       }
       const cb = c["minecraft:collision_box"];
       if (cb && typeof cb === "object" && !Array.isArray(cb) && vnum(fv) >= vnum("1.26.60")) err(f, `${id}: at format ${fv} minecraft:collision_box must be an array of boxes`);
+      // The game refuses the whole block (its recipes and blocks.json entry then fail too) when a selection box leaves
+      // the block: "must be inside the following limit: Vec3(-8,0,-8) and Vec3(8,16,8)". Collision may reach 24 high.
+      const sb = c["minecraft:selection_box"];
+      if (sb && typeof sb === "object" && Array.isArray(sb.origin) && Array.isArray(sb.size)) {
+        const [x, y, z] = sb.origin, [w, h, d] = sb.size;
+        if (x < -8 || z < -8 || y < 0 || x + w > 8 || z + d > 8 || y + h > 16) err(f, `${id}: minecraft:selection_box ${JSON.stringify(sb)} leaves the block; origin + size must stay inside (-8,0,-8) to (8,16,8) or the game refuses the block`);
+      }
       customComponentCheck(f, id, c);
     }
     const dn = bl.components?.["minecraft:display_name"];
