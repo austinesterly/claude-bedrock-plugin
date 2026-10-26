@@ -1,0 +1,28 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:block_culling_rules": {
+    "description": {"identifier": "zoocraft:culling.aluminum_fence"},
+    "rules": [
+      {
+        "direction": "east",
+        "condition": "same_block",
+        "geometry_part": {"bone": "slab_x", "cube": 0, "face": "east"}
+      },
+      {
+        "direction": "west",
+        "condition": "same_block",
+        "geometry_part": {"bone": "slab_x", "cube": 0, "face": "west"}
+      },
+      {
+        "direction": "north",
+        "condition": "same_block",
+        "geometry_part": {"bone": "slab_z", "cube": 0, "face": "north"}
+      },
+      {
+        "direction": "south",
+        "condition": "same_block",
+        "geometry_part": {"bone": "slab_z", "cube": 0, "face": "south"}
+      }
+    ]
+  }
+}
