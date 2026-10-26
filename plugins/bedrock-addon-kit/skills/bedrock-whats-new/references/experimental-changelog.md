@@ -1,6 +1,48 @@
 # Experimental and upcoming features in recent changelogs (generated)
 
-Generated on **2026-10-19** from feedback.minecraft.net (official Zendesk API). Each release lists its "Experimental ..." sections word for word, then other bullets that mention an experiment or beta (often a feature graduating out of an experiment). Newest first. Toggle names are as Mojang writes them in world settings > Experiments.
+Generated on **2026-10-26** from feedback.minecraft.net (official Zendesk API). Each release lists its "Experimental ..." sections word for word, then other bullets that mention an experiment or beta (often a feature graduating out of an experiment). Newest first. Toggle names are as Mojang writes them in world settings > Experiments.
+
+## Minecraft Beta & Preview - 26.70.21 (2026-10-20)
+
+Source: https://feedback.minecraft.net/hc/en-us/articles/49758922088845-Minecraft-Beta-Preview-26-70-21
+
+### Experimental Technical Updates
+
+##### Graphical
+
+- Fixed light leaking in Vibrant Visuals when Block Light Quality is set to Medium
+
+#### API
+
+- Added the beta usePreciseRaycast option to BlockRaycastOptions and EntityRaycastOptions to preserve fractional distances and check the full ray. It defaults to false, preserving legacy behavior, and does not apply to BlockSearchOptions
+- Entity raycasts with usePreciseRaycast enabled throw InvalidArgumentError for negative maxDistance values
+
+##### GameTest Command
+
+- Added new version for the runset command for GameTest which may run multiple tags in a single command. Ex. the command, /gametest runset SetA SetB, will now run all tests tagged as SetA or SetB.
+- runset now allows for a withoutTags flag to be added which ignores any tests with the specified tags. Ex. the command, /gametest runset SetA withoutTags SetB, will run all tests from SetA that do not also have the tag SetB.
+- Adjusted the parameter rotationSteps in runset to be explicit rather than implicit. Ex. Previously, a command such as /gametest runset SetA 2 would read the rotationSteps, 2, after the specified tag, SetA. Now the rotationSteps flag must be declared before its value as such, /gametest runset SetA rotationSteps 2
+
+#### Entity Filters
+
+- Added the speed entity filter for comparing an entity's speed in meters per second
+- Added the horizontal_speed entity filter for comparing an entity's horizontal speed in meters per second
+- Added the vertical_speed entity filter for comparing an entity's signed vertical speed in meters per second
+
+#### Graphical
+
+- Fixed lighting artifacts on terrain when Block Light Quality was Medium or higher
+  - Updated the contribution ratio between point lights and block lights
+
+#### Network Protocol
+
+- Added enum value GameTestRunSetMultiTag to CurrentCmdVersion.
+
+### Other experiment and beta mentions
+
+- Releasing PrimitiveShape properties hiddenFrom and defaultVisibleToAll from beta to V2.12.0.
+- Released block point-of-interest APIs from beta to v2.12.0
+- Added 2.5.0 beta of @minecraft/server-ui.
 
 ## Minecraft Beta & Preview - 26.70.20 (2026-10-13)
 
@@ -1119,120 +1161,3 @@ Source: https://feedback.minecraft.net/hc/en-us/articles/47702557761805-Minecraf
 - Released class FogSettingsError from beta to v2.10.0
 - Released class BlockDynamicPropertiesComponent from beta to V2.10.0.
 - Released class ItemBlockDynamicPropertiesComponent from beta to V2.10.0.
-
-## Minecraft Beta & Preview - 26.50.20 (2026-07-21)
-
-Source: https://feedback.minecraft.net/hc/en-us/articles/47534782342797-Minecraft-Beta-Preview-26-50-20
-
-### Drop 3 Experimental Features
-
-#### Abandoned Camp
-
-- Cushions now generate inside Abandoned Camps with the correct position, rotation, and color
-- Abandoned Camps now generate the variant matching their biome instead of the generic Forest variant in specialized forest biomes
-- Secret Chests in Abandoned Camps can now contain their intended Diamond and Potion loot and no longer generate Oxidized Copper Chains instead
-
-#### Accessibility
-
-- Added localized closed captions for jumping and landing on Poplar Leaves (MCPE-240465)
-
-#### Blocks
-
-- Poplar Saplings can now be composted (MCPE-240015)
-- Shelf Mushrooms now burn correctly when exposed to lava
-- Wool Stairs and Wool Slabs no longer conduct Redstone signals (MCPE-240018)
-- Fixed the stretched mining/cracking overlay when mining a Straw Bed (MCPE-240484)
-- Players will no longer fall through a Shelf Mushroom when growing it whilst standing upon it
-- Red Shrubs can now be snowlogged
-- Added breaking particles to the Shelf Mushroom
-
-#### Cushion
-
-- Players can now place Cushions next to each other when aiming the crosshair close to an already placed Cushion
-- Players are no longer moved into the ground when a Cushion they are sitting on is destroyed by Lava
-- Collecting any ingredient from a Cushion recipe now unlocks it in the Recipe Book and displays the recipe unlock Toast notification
-- Cushion name is now correctly translated (MCPE-240461)
-- Nudged the Cushion placement downwards slightly (MCPE-240468)
-- Increased the sitting height on the Cushion by one texel (MCPE-240499)
-
-#### Graphical
-
-- Fixed poplar sign UI texture to be in parity with Java
-- Fixed Hay Bale to be symmetrical (MCPE-240723)
-- Fixed Poplar log top to have the correct color palette
-
-#### Mobs
-
-- Wolves spawned in Dappled Forests now use the Pale Wolf variant
-- Wandering Traders can now offer Poplar Logs
-
-### Experimental Technical Updates
-
-#### API
-
-- Added lineHeightOverride property to both TextPrimitive and DebugText. .
-
-##### DDUI
-
-Added support to show icons for buttons.
-- Changed interface DropdownOptions
-  - Added property tooltip in beta
-  - tooltip?: ObservableString | ObservableUIRawMessage | string | UIRawMessage
-- Changed interface SliderOptions
-  - Added property tooltip in beta
-  - tooltip?: ObservableString | ObservableUIRawMessage | string | UIRawMessage
-- Changed interface TextFieldOptions
-  - Added property tooltip in beta
-  - tooltip?: ObservableString | ObservableUIRawMessage | string | UIRawMessage
-- Changed interface TextOptions
-  - Added property tooltip in beta
-  - tooltip?: ObservableString | ObservableUIRawMessage | string | UIRawMessage
-- Changed interface ToggleOptions
-  - Added property tooltip in beta
-  - tooltip?: ObservableString | ObservableUIRawMessage | string | UIRawMessage
-- Changed class MessageBox
-  - Added function button1WithOptions
-  - button1WithOptions(label: ObservableString | ObservableUIRawMessage | string | UIRawMessage, options?: MessageBoxButtonOptions): MessageBox
-  - Added function button2WithOptions
-  - button2WithOptions(label: ObservableString | ObservableUIRawMessage | string | UIRawMessage, options?: MessageBoxButtonOptions): MessageBox
-- Changed interface ButtonOptions
-  - Added property imageDetails
-  - imageDetails?: ImageDetails
-- Added interface ImageDetails
-- export interface ImageDetails { imagePackId: ObservableString | string; imageSrc: ObservableString | string; }
-- Added interface MessageBoxButtonOptions
-- export interface MessageBoxButtonOptions { imageDetails?: ImageDetails; tooltip?: ObservableString | ObservableUIRawMessage | string | UIRawMessage; }
-
-##### SoundDurationInfo
-
-- The playback position now restarts at the beginning of each iteration when a looping sound repeats, and a looping sound's duration is only considered complete after all of its iterations have played
-
-#### Blocks
-
-- Blocks defined with the minecraft:multi_block trait cannot also define the minecraft:random_offset component if the multi-block direction field is horizontal :
-
-#### Gameplay
-
-- Added the 'Creator World Clocks Features' experiment toggle
-
-### Other experiment and beta mentions
-
-- Added @minecraft/server version 2.11.0-beta
-- Released interface BlockQueryOptions from beta to v2.10.0
-- Released function BlockVolumeBase.getClosest from beta to v2.10.0
-- Released function BlockVolumeBase.getFarthest from beta to v2.10.0
-- Released function Camera.addShake from beta to V2.10.0
-- Released function Camera.stopShaking from beta to V2.10.0
-- Released interface CameraShakeOptions from beta to V2.10.0
-- Released enum CameraShakeType from beta to V2.10.0
-- Released class EntityTamedEventOptionsfrom beta to v2.10.0
-- Released class EntityTamedAfterEvent from beta to v2.10.0
-- Released class EntityTamedAfterEventSignal from beta to v2.10.0
-- Released class EntityTamedBeforeEvent from beta to v2.10.0
-- Released class EntityTamedBeforeEventSignal from beta to v2.10.0
-- Released interface EntityTamedEventOptions from beta to v2.10.0
-- Released property WorldAfterEvents.entityTamed from beta to v2.10.0
-- Released property WorldBeforeEvents.entityTamed from beta to v2.10.0
-- Moved BlockInstrumentComponent from beta into 2.10.0.
-- Moved Block Light Quality Video Settings out of the RenderDragon Features for Creators Experiment
-- Some options still require the RenderDragon Features for Creators Experiment

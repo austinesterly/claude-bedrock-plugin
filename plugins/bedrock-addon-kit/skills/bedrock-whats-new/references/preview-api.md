@@ -1,15 +1,24 @@
 # Upcoming and beta Script APIs (generated)
 
-Generated on **2026-10-19** from the official `index.d.ts` typings on npm. Labels: **[next stable]** is in the `rc` build (ships in the next game release, works without experiments once it does); **[beta]** needs the Beta APIs experiment and a `-beta` module version in the manifest; **[beta module]** has no stable release at all. Search for `Type.member`.
+Generated on **2026-10-26** from the official `index.d.ts` typings on npm. Labels: **[next stable]** is in the `rc` build (ships in the next game release, works without experiments once it does); **[beta]** needs the Beta APIs experiment and a `-beta` module version in the manifest; **[beta module]** has no stable release at all. Search for `Type.member`.
 
 ## @minecraft/server
 
-Stable 2.10.0, rc 2.12.0-rc.1.26.70-preview.20, beta 2.13.0-beta.1.26.70-preview.20. 85 names coming in the next stable, 269 beta-only.
+Stable 2.10.0, rc 2.12.0-rc.1.26.70-preview.21, beta 2.13.0-beta.1.26.70-preview.21. 125 names coming in the next stable, 236 beta-only.
+
+### BlockSearchOptions [next stable] (new type)
+
+Options for finding blocks.
+
+- `includeLiquidBlocks?: boolean` When true, includes liquid blocks.
+- `includePassableBlocks?: boolean` When true, includes passable blocks, such as vines and flowers.
+- `maxDistance?: number` Maximum search distance, in blocks.
 
 ### Dimension [next stable]
 
 A class that represents a particular dimension (e.g., The End) within a world.
 
+- `readonly poiManager: PoiManager`
 - `spawnXp(location: Vector3, amount: number): void`
 
 ### EntityIsTamedComponent [next stable]
@@ -19,11 +28,72 @@ When added, this component signifies that this entity is currently tamed.
 - `readonly tamedToPlayer?: Player`
 - `readonly tamedToPlayerId?: string`
 
+### InputMode [next stable]
+
+Describes the type of input of a device.
+
+- `GamepadAndMouse = 'GamepadAndMouse'`
+
 ### PlayerSoundOptions [next stable]
 
 Additional options for how a sound plays for a player.
 
 - `loopCount?: number`
+
+### PoiBlockInstance [next stable] (new type)
+
+- `readonly position: Vector3` Block position of this POI instance.
+- `readonly tickets: number` Number of tickets currently available to be claimed from this POI instance.
+
+### PoiBlockManager [next stable] (new type)
+
+- `addTemporary(position: Vector3, poi: PoiBlockType | string | number): void` Adds a block point of interest at a position.
+- `at(position: Vector3): PoiBlockType | undefined` Gets the type of the block point of interest at a position.
+- `exists(position: Vector3, filter: ((arg0: PoiBlockType) => boolean) | PoiNameFilter | PoiTagFilter): boolean` Tests whether a block point of interest at a position matches a type filter.
+- `getInRange(filter: ((arg0: PoiBlockType) => boolean) | PoiNameFilter | PoiTagFilter, center: Vector3, blockRadius: number, occupancyFilter?: PoiBlockOccupancyFilter): PoiBlockInstance[]` Returns block points of interest that match the supplied type and occupancy filters within the specified distance of a location.
+- `getInRangeSorted(filter: ((arg0: PoiBlockType) => boolean) | PoiNameFilter | PoiTagFilter, center: Vector3, blockRadius: number, occupancyFilter?: PoiBlockOccupancyFilter): PoiDistancePair[]` Returns block points of interest that match the supplied type and occupancy filters within an axis-aligned square centered on the specified location, sorted from nearest to farthest.
+- `getInSquare(filter: ((arg0: PoiBlockType) => boolean) | PoiNameFilter | PoiTagFilter, center: Vector3, blockRadius: number, occupancyFilter?: PoiBlockOccupancyFilter): PoiBlockInstance[]` Returns block points of interest that match the supplied type and occupancy filters within an axis-aligned square centered on the specified location.
+- `release(center: Vector3): boolean` Releases one previously claimed ticket at a block point of interest.
+- `take(filter: ((arg0: PoiBlockType) => boolean) | PoiNameFilter | PoiTagFilter, center: Vector3, blockRadius: number): Vector3 | undefined` Claims one available ticket from a matching block point of interest within range.
+
+### PoiBlockOccupancyFilter [next stable] (new type)
+
+- `Any = 'Any'` Includes POI instances regardless of their occupancy or available ticket count.
+- `Full = 'Full'` Includes POI instances with no available tickets.
+- `HasVacancy = 'HasVacancy'` Includes POI instances with at least one ticket available to be claimed.
+
+### PoiBlockType [next stable] (new type)
+
+- `equals(other: PoiBlockType): boolean` Tests whether this object and another object describe the same POI type.
+- `hasTag(tag: string): boolean` Tests whether the type has the provided tag attribute
+- `readonly id: number` Numeric identifier of this POI type.
+- `readonly name: string` Namespaced identifier of this POI type.
+- `readonly tickets: number` Maximum number of tickets that can be claimed from each POI instance of this type.
+- `readonly usableRange: number` Maximum range, in blocks, at which this POI type is considered usable.
+
+### PoiDistancePair [next stable] (new type)
+
+- `distance: number` Squared three-dimensional distance, in blocks squared, from the query center to the POI position.
+- `poi: PoiBlockInstance` POI instance at this distance.
+
+### PoiManager [next stable] (new type)
+
+- `readonly blocks: PoiBlockManager` Provides access to block-based points of interest in the dimension.
+
+### PoiNameFilter [next stable] (new type)
+
+- `name: string` Exact namespaced POI type identifier to match.
+
+### PoiTagFilter [next stable] (new type)
+
+- `tags: string[]` Namespaced POI tags that a matching type must contain.
+
+### PrimitiveShape [next stable]
+
+The base class for a text primitive.
+
+- `defaultVisibleToAll: boolean`
+- `hiddenFrom: Player[]`
 
 ### SoundInstance [next stable]
 
@@ -267,6 +337,12 @@ A BlockLocationIterator returns the next block location of the block volume acro
 
 - `isValid(): boolean`
 
+### BlockRaycastOptions [beta]
+
+Contains additional options for configuring a block raycast query.
+
+- `usePreciseRaycast?: boolean`
+
 ### BlockRecipeCraftingComponent [beta] (new type)
 
 - `static readonly componentId = 'minecraft:recipe_crafting'`
@@ -353,7 +429,6 @@ A class that represents a particular dimension (e.g., The End) within a world.
 
 - `getGeneratedStructures(location: Vector3): (minecraftvanilladata.MinecraftFeatureTypes | string)[]`
 - `getWeather(): WeatherType`
-- `readonly poiManager: PoiManager`
 - `stopAllSounds(): void`
 - `stopSound(soundId: string): void`
 
@@ -385,6 +460,12 @@ The types of entity components that are accessible via function Entity.getCompon
 - `defaultScene: string` The DialogueScene that is opened when players first interact with the NPC.
 - `name: string` The name of the NPC as it is displayed to players.
 - `skinIndex: number` The index of the skin the NPC will use.
+
+### EntityRaycastOptions [beta]
+
+Contains additional options for an entity raycast operation.
+
+- `usePreciseRaycast?: boolean`
 
 ### EquipmentSlot [beta]
 
@@ -547,61 +628,6 @@ Represents a player within the world.
 - `Everyone = 'Everyone'`
 - `Off = 'Off'`
 
-### PoiBlockInstance [beta] (new type)
-
-- `readonly position: Vector3` Block position of this POI instance.
-- `readonly tickets: number` Number of tickets currently available to be claimed from this POI instance.
-
-### PoiBlockManager [beta] (new type)
-
-- `addTemporary(position: Vector3, poi: PoiBlockType | string | number): void` Adds a block point of interest at a position.
-- `at(position: Vector3): PoiBlockType | undefined` Gets the type of the block point of interest at a position.
-- `exists(position: Vector3, filter: ((arg0: PoiBlockType) => boolean) | PoiNameFilter | PoiTagFilter): boolean` Tests whether a block point of interest at a position matches a type filter.
-- `getInRange(filter: ((arg0: PoiBlockType) => boolean) | PoiNameFilter | PoiTagFilter, center: Vector3, blockRadius: number, occupancyFilter?: PoiBlockOccupancyFilter): PoiBlockInstance[]` Returns block points of interest that match the supplied type and occupancy filters within the specified distance of a location.
-- `getInRangeSorted(filter: ((arg0: PoiBlockType) => boolean) | PoiNameFilter | PoiTagFilter, center: Vector3, blockRadius: number, occupancyFilter?: PoiBlockOccupancyFilter): PoiDistancePair[]` Returns block points of interest that match the supplied type and occupancy filters within an axis-aligned square centered on the specified location, sorted from nearest to farthest.
-- `getInSquare(filter: ((arg0: PoiBlockType) => boolean) | PoiNameFilter | PoiTagFilter, center: Vector3, blockRadius: number, occupancyFilter?: PoiBlockOccupancyFilter): PoiBlockInstance[]` Returns block points of interest that match the supplied type and occupancy filters within an axis-aligned square centered on the specified location.
-- `release(center: Vector3): boolean` Releases one previously claimed ticket at a block point of interest.
-- `take(filter: ((arg0: PoiBlockType) => boolean) | PoiNameFilter | PoiTagFilter, center: Vector3, blockRadius: number): Vector3 | undefined` Claims one available ticket from a matching block point of interest within range.
-
-### PoiBlockOccupancyFilter [beta] (new type)
-
-- `Any = 'Any'` Includes POI instances regardless of their occupancy or available ticket count.
-- `Full = 'Full'` Includes POI instances with no available tickets.
-- `HasVacancy = 'HasVacancy'` Includes POI instances with at least one ticket available to be claimed.
-
-### PoiBlockType [beta] (new type)
-
-- `equals(other: PoiBlockType): boolean` Tests whether this object and another object describe the same POI type.
-- `hasTag(tag: string): boolean` Tests whether the type has the provided tag attribute
-- `readonly id: number` Numeric identifier of this POI type.
-- `readonly name: string` Namespaced identifier of this POI type.
-- `readonly tickets: number` Maximum number of tickets that can be claimed from each POI instance of this type.
-- `readonly usableRange: number` Maximum range, in blocks, at which this POI type is considered usable.
-
-### PoiDistancePair [beta] (new type)
-
-- `distance: number` Squared three-dimensional distance, in blocks squared, from the query center to the POI position.
-- `poi: PoiBlockInstance` POI instance at this distance.
-
-### PoiManager [beta] (new type)
-
-- `readonly blocks: PoiBlockManager` Provides access to block-based points of interest in the dimension.
-
-### PoiNameFilter [beta] (new type)
-
-- `name: string` Exact namespaced POI type identifier to match.
-
-### PoiTagFilter [beta] (new type)
-
-- `tags: string[]` Namespaced POI tags that a matching type must contain.
-
-### PrimitiveShape [beta]
-
-The base class for a text primitive.
-
-- `defaultVisibleToAll: boolean`
-- `hiddenFrom: Player[]`
-
 ### RecipeCraftingContext [beta] (new type)
 
 - `getInputItem(slot: number): ItemStack | undefined` Gets the item in the provided input slot.
@@ -679,13 +705,25 @@ A set of events that fire before an actual action occurs.
 
 ## @minecraft/server-ui
 
-Stable 2.2.0, rc 2.3.0-rc.1.26.70-preview.20, beta 2.4.0-beta.1.26.70-preview.20. 14 names coming in the next stable, 14 beta-only.
+Stable 2.2.0, rc 2.4.0-rc.1.26.70-preview.21, beta 2.5.0-beta.1.26.70-preview.21. 24 names coming in the next stable, 4 beta-only.
+
+### ButtonData [next stable] (new type)
+
+- `label: ObservableString | ObservableUIRawMessage | string | UIRawMessage` The text label to display on the button.
+- `onClick: () => void` A callback function that is invoked when the player clicks the button.
+- `options?: ButtonOptions` Optional configuration for the button, such as a tooltip, disabled state, image, or visibility.
 
 ### ButtonOptions [next stable]
 
 Options for configuring a button component.
 
 - `imageDetails?: ImageDetails`
+
+### CustomForm [next stable]
+
+A customizable data driven (DDUI) form that lets you add buttons, labels, toggles, dropdowns, sliders, text fields, and more.
+
+- `multiButtonRow(buttons: ButtonData[], options?: MultiButtonRowOptions): CustomForm`
 
 ### DropdownOptions [next stable]
 
@@ -704,11 +742,22 @@ A simple message form with two buttons and a text body.
 
 - `button1WithOptions(label: ObservableString | ObservableUIRawMessage | string | UIRawMessage, options?: MessageBoxButtonOptions): MessageBox`
 - `button2WithOptions(label: ObservableString | ObservableUIRawMessage | string | UIRawMessage, options?: MessageBoxButtonOptions): MessageBox`
+- `button3WithOptions(label: ObservableString | ObservableUIRawMessage | string | UIRawMessage, options?: MessageBoxButtonOptions): MessageBox`
 
 ### MessageBoxButtonOptions [next stable] (new type)
 
 - `imageDetails?: ImageDetails` Details of an image to display alongside the button label.
 - `tooltip?: ObservableString | ObservableUIRawMessage | string | UIRawMessage` Text shown in a tooltip when the player hovers over the button.
+
+### MessageBoxOptions [next stable] (new type)
+
+Options for configuring a message box.
+
+- `showHorizontalButtons: boolean`
+
+### MultiButtonRowOptions [next stable] (new type)
+
+- `visible?: boolean | ObservableBoolean` When false or bound to a false, the entire row is hidden.
 
 ### SliderOptions [next stable]
 
@@ -734,37 +783,11 @@ Options for configuring a toggle component.
 
 - `tooltip?: ObservableString | ObservableUIRawMessage | string | UIRawMessage`
 
-### ButtonData [beta] (new type)
-
-- `label: ObservableString | ObservableUIRawMessage | string | UIRawMessage` The text label to display on the button.
-- `onClick: () => void` A callback function that is invoked when the player clicks the button.
-- `options?: ButtonOptions` Optional configuration for the button, such as a tooltip, disabled state, image, or visibility.
-
-### CustomForm [beta]
-
-A customizable data driven (DDUI) form that lets you add buttons, labels, toggles, dropdowns, sliders, text fields, and more.
-
-- `multiButtonRow(buttons: ButtonData[], options?: MultiButtonRowOptions): CustomForm`
-
 ### CustomFormOptions [beta] (new type)
 
 - `topCloseButtonVisible?: boolean | ObservableBoolean` Controls whether the form's top-right close button is visible.
 
-### MessageBox [beta]
-
-A simple message form with two buttons and a text body.
-
-- `button3WithOptions(label: ObservableString | ObservableUIRawMessage | string | UIRawMessage, options?: MessageBoxButtonOptions): MessageBox`
-
 ### MessageBoxBodyOptions [beta] (new type)
-
-### MessageBoxOptions [beta] (new type)
-
-- `showHorizontalButtons: boolean` Sets the desired layout for the buttons.
-
-### MultiButtonRowOptions [beta] (new type)
-
-- `visible?: boolean | ObservableBoolean` When false or bound to a false, the entire row is hidden.
 
 ### SliderOptions [beta]
 
@@ -774,11 +797,11 @@ Options for configuring a slider component.
 
 ## @minecraft/server-graphics
 
-Stable 1.0.0, rc 1.0.0-rc.1.26.60-preview.23, beta 1.1.0-beta.1.26.70-preview.20. 0 names coming in the next stable, 0 beta-only.
+Stable 1.0.0, rc 1.0.0-rc.1.26.60-preview.23, beta 1.1.0-beta.1.26.70-preview.21. 0 names coming in the next stable, 0 beta-only.
 
 ## @minecraft/server-gametest
 
-No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.70-preview.20). For automated tests in test worlds.
+No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.70-preview.21). For automated tests in test worlds.
 
 ### FenceConnectivity [beta module] (new type)
 
@@ -1089,7 +1112,7 @@ Main class for GameTest functions, with helpers and data for manipulating the re
 
 ## @minecraft/server-admin
 
-No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.70-preview.20). Bedrock Dedicated Server only.
+No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.70-preview.21). Bedrock Dedicated Server only.
 
 ### AdminBeforeEvents [beta module] (new type)
 
@@ -1258,7 +1281,7 @@ A globally available object that returns a list of dedicated-server configured v
 
 ## @minecraft/server-net
 
-No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.70-preview.20). Bedrock Dedicated Server only.
+No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.70-preview.21). Bedrock Dedicated Server only.
 
 ### beforeEvents [beta module] (new type)
 
@@ -1479,6 +1502,7 @@ Represents the unique type of network packet.
 - `ClientboundDebugRendererPacket = 'ClientboundDebugRendererPacket'`
 - `ClientboundMapItemDataPacket = 'ClientboundMapItemDataPacket'`
 - `ClientboundMatchmakingStatePacket = 'ClientboundMatchmakingStatePacket'`
+- `ClientboundOnlineMusicPlaybackResponsePacket = 'ClientboundOnlineMusicPlaybackResponsePacket'`
 - `ClientboundPlayAudioContentPacket = 'ClientboundPlayAudioContentPacket'`
 - `ClientboundStonecutterSetRecipePacket = 'ClientboundStonecutterSetRecipePacket'`
 - `ClientboundTextureShiftPacket = 'ClientboundTextureShiftPacket'`
@@ -1607,6 +1631,7 @@ Represents the unique type of network packet.
 - `ServerboundMatchmakingCancelPacket = 'ServerboundMatchmakingCancelPacket'`
 - `ServerboundPackSettingChangePacket = 'ServerboundPackSettingChangePacket'`
 - `ServerboundRegisterAudioContentPacket = 'ServerboundRegisterAudioContentPacket'`
+- `ServerboundRequestOnlineMusicPlaybackPacket = 'ServerboundRequestOnlineMusicPlaybackPacket'`
 - `ServerboundStonecutterSetRecipePacket = 'ServerboundStonecutterSetRecipePacket'`
 - `SetActorDataPacket = 'SetActorDataPacket'`
 - `SetActorLinkPacket = 'SetActorLinkPacket'`
@@ -1773,7 +1798,7 @@ An error thrown when attempting to use a WebSocket while the socket is not conne
 
 ## @minecraft/debug-utilities
 
-No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.70-preview.20). 
+No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.70-preview.21). 
 
 ### collectPluginStats [beta module] (new type)
 

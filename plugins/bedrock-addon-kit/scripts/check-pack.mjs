@@ -366,6 +366,10 @@ for (const bp of bps) for (const f of walk(bp.dir)) {
       if (cb && typeof cb === "object" && !Array.isArray(cb) && vnum(fv) >= vnum("1.26.60")) err(f, `${id}: at format ${fv} minecraft:collision_box must be an array of boxes`);
       customComponentCheck(f, id, c);
     }
+    for (const comps of [bl.components, ...(bl.permutations ?? []).map((p) => p.components)]) {
+      const dbm = comps?.["minecraft:destructible_by_mining"];
+      if (dbm && typeof dbm === "object" && "base_time_to_destroy" in dbm) warn(f, `${id}: destructible_by_mining.base_time_to_destroy is the Preview 26.70.21 name; stable 26.52 and 26.60 still read seconds_to_destroy`);
+    }
     const dn = bl.components?.["minecraft:display_name"];
     if (typeof dn === "string" && /\./.test(dn) && !/\s/.test(dn) && langKeys.size && !langKeys.has(dn)) warn(f, `${id}: display_name key "${dn}" is not in RP texts/en_US.lang`);
   }

@@ -182,7 +182,7 @@ Loot can differ per permutation (crop stages, `templates/berry_crop`). Loot tabl
 
 - No experiment needed from **format 1.26.20**. It gives each placed block its own storage. Script: `block.getComponent("minecraft:dynamic_properties")` returns `BlockDynamicPropertiesComponent` with `get(key)`, `set(key, value)` (boolean, number, string, Vector3; `undefined` deletes) and `totalByteCount()`. The `@minecraft/server` API is stable in 2.10.0.
 - The limit is **1 KB per content pack per block entity**. Keys are private to each pack. Changing only the block's state keeps the data. Replacing it with a different block creates a new, empty block entity (26.50).
-- Multi-blocks: each part has its own block entity (26.50). On item stacks, `ItemBlockDynamicPropertiesComponent` (`minecraft:block_actor_dynamic_properties`) reads and writes a block item's stored properties.
+- Multi-blocks: each part has its own block entity (26.50). On item stacks, `ItemBlockDynamicPropertiesComponent` (`minecraft:block_actor_dynamic_properties`, renamed `minecraft:block_dynamic_properties` in Preview 26.70.21, where it also stops working on vanilla items) reads and writes a block item's stored properties.
 - Use it for per-block counters, owners and settings. Each block entity costs memory, so don't add it to terrain blocks placed by the thousand.
 
 ```js

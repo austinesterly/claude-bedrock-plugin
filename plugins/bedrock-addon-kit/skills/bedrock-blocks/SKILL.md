@@ -52,6 +52,8 @@ Minimal working block (the `templates/simple_cube` files):
 }
 ```
 
+Heads-up: Preview 26.70.21 renames `seconds_to_destroy` to `base_time_to_destroy`. Keep `seconds_to_destroy` for stable 26.52 and 26.60, and check `bedrock-whats-new/references/changelog-digest.md` when 26.70 ships.
+
 ## How blocks are put together
 
 - **Description:** `identifier`, `menu_category`, `states` (custom, namespaced, values listed in an array or given as `{"values": {"min": 0, "max": 3}}`), `traits` (built-in states the game sets for you: `placement_direction`, `placement_position`, `connection`, `multi_block`).

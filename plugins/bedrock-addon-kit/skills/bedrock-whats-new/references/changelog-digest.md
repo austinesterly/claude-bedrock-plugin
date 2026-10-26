@@ -2,9 +2,9 @@
 
 Curated from the official changelogs on feedback.minecraft.net (links in `current-versions.md`). Newest first. Each entry keeps only what changes how add-ons are built: new stable APIs and components, things that left experiments, and stricter parsing that can break existing files. The refresh routine appends new releases here.
 
-Last curated: 2026-10-19 (through Preview 26.70.20).
+Last curated: 2026-10-26 (through Preview 26.70.21).
 
-## 26.70 (in Preview since 2026-10-13, Preview 26.70.20)
+## 26.70 (in Preview since 2026-10-13; latest Preview 26.70.21)
 
 Script API: `@minecraft/server` 2.12.0 released in Preview (stable when 26.70 ships); 2.13.0-beta added. 26.60 has not shipped as stable yet, so stable is still 2.10.0 and the next stable is 2.11.0.
 - **Points of interest leave experiments:** POI types with hierarchical tags in behavior packs and `/locate poi`. POI definitions follow behavior pack stacking order.
@@ -13,8 +13,12 @@ Script API: `@minecraft/server` 2.12.0 released in Preview (stable when 26.70 sh
 - Vanilla block states: the upper half of a door now reports the real `open_bit`; repeaters expose `locked`, scaffolding exposes `bottom`, and both trigger neighbor updates in worlds with base game version 1.26.60+.
 - Block permutations can now override `destruction_particles` and `precipitation_interactions`. `minecraft:transformation` with `preserve_equipment` keeps empty slots. `damage_absorption` items absorb damage when Unbreaking skips durability loss.
 - Packs: system packs can no longer be overridden by development packs with the same identity; Marketplace downloads no longer delete development packs with matching UUIDs; malformed JSON UI (unknown controls, bad anchors, binding loops) is reported in the content log. Structure blocks get a Keep Structure Void option.
+- 26.70.21: `@minecraft/server-ui` 2.4.0 released (`CustomForm.multiButtonRow`, `ButtonData`, `MultiButtonRowOptions`, `MessageBoxOptions.showHorizontalButtons`); 2.5.0-beta added. Block POI APIs and primitive shape `hiddenFrom` / `defaultVisibleToAll` released to 2.12.0. `BlockSearchOptions` replaces `BlockRaycastOptions` for `getBlockAbove` / `getBlockBelow` (old objects still work); raycast `maxDistance` outside 32-bit range throws; `InputMode.GamePadAndMouse`; item-hopper pickup events fire correctly.
+- **Renames in 26.70.21 that can break packs once 26.70 ships:** block `minecraft:destructible_by_mining` `seconds_to_destroy` is now `base_time_to_destroy` (the notes don't say whether older format versions keep the old name), and item component `minecraft:block_actor_dynamic_properties` is now `minecraft:block_dynamic_properties`; `ItemBlockDynamicPropertiesComponent` and `ItemBlockEntityStorageComponent` no longer work on vanilla items.
+- Projectiles at entity format 1.26.70+: `on_hit.impact_damage.scale_damage_with_difficulty` (default true; earlier formats keep difficulty scaling off).
+- Mojang's built-in "Music Features Add-On" (Disc Press, blank and track discs, Pocket Jukebox) ships in Preview as a free pack you add to a world.
 - `minecraft:crevasse_feature` appears in the notes but is internal only; creators can't use it.
-- Experimental (beta API or Upcoming Creator Features): `Entity.startPassengerOfBlock` / `stopPassengerOfBlock` / `isPassengerOfBlock` with Standing, Riding or Laying poses and `query.is_laying`; `ItemBlockEntityStorageComponent`; `carry_over_block_entity_data` `entity_storage`; `block_entity.container.show_ui_on_interaction`; entity `minecraft:time_marker_sensor`; `playMusic` returns a `SoundInstance`; `CustomFormOptions.topCloseButtonVisible`. **Breaking for beta users:** `removeScheduledNamedTick` renamed to `removeScheduledNamedTicks` and the named-tick event's `isName` split into `name` and `isMine()`.
+- Experimental (beta API or Upcoming Creator Features): `Entity.startPassengerOfBlock` / `stopPassengerOfBlock` / `isPassengerOfBlock` with Standing, Riding or Laying poses and `query.is_laying`; `ItemBlockEntityStorageComponent`; `carry_over_block_entity_data` `entity_storage`; `block_entity.container.show_ui_on_interaction`; entity `minecraft:time_marker_sensor`; `playMusic` returns a `SoundInstance`; `CustomFormOptions.topCloseButtonVisible`; `usePreciseRaycast` (26.70.21); experimental entity filters `speed`, `horizontal_speed`, `vertical_speed` (26.70.21); GameTest `runset` takes multiple tags and `withoutTags`, and `rotationSteps` must now be named. **Breaking for beta users:** `removeScheduledNamedTick` renamed to `removeScheduledNamedTicks` and the named-tick event's `isName` split into `name` and `isMine()`.
 - Gameplay (Drop 4 toggle): brittle ice, crevasses in Ice Caves, jukebox playlists, new sound events `convert_to_frostbite` / `convert_to_zombie`. New "Nether Spawning Rebalancing" experiment.
 
 ## 26.60 (in Preview since 2026-09-02; stable expected late October 2026; not shipped as of 2026-10-19)

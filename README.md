@@ -51,7 +51,7 @@ You need Claude Code (the terminal app or the desktop app's Code tab). The plugi
 /plugin install bedrock-addon-kit@bedrock-creator-tools
 ```
 
-**From a folder:** download this whole `claude-bedrock-plugin` folder (or unzip `claude-bedrock-plugin-0.4.2.zip` from the project files) to somewhere like `C:\Users\<you>\claude-plugins\claude-bedrock-plugin`, then in Claude Code run
+**From a folder:** download this whole `claude-bedrock-plugin` folder (or unzip `claude-bedrock-plugin-0.4.3.zip` from the project files) to somewhere like `C:\Users\<you>\claude-plugins\claude-bedrock-plugin`, then in Claude Code run
 ```
 /plugin marketplace add C:\Users\<you>\claude-plugins\claude-bedrock-plugin
 /plugin install bedrock-addon-kit@bedrock-creator-tools

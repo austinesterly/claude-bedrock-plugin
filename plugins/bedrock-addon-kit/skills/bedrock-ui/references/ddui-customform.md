@@ -100,12 +100,13 @@ There is no `UserClosed` value here (that name belongs to classic `FormCancelati
 | `ButtonOptions.imageDetails` (`ImageDetails` = `{ imageSrc, imagePackId }`) | rc 2.3.0 (game 26.60) | Icon on a CustomForm button |
 | `tooltip` on `DropdownOptions`, `SliderOptions`, `TextFieldOptions`, `TextOptions`, `ToggleOptions` | rc 2.3.0 | Hover tooltips on controls (buttons already have `tooltip` in 2.2.0) |
 | `MessageBox.button1WithOptions(label, options?: MessageBoxButtonOptions)`, `button2WithOptions` | rc 2.3.0 | `MessageBoxButtonOptions` = `{ tooltip?, imageDetails? }` |
-| `CustomForm.multiButtonRow(buttons: ButtonData[], options?)` (max 3), `ButtonData` = `{ label, onClick, options? }` | beta 2.4.0 | Row of buttons |
-| `CustomForm` constructor `options?: CustomFormOptions` (`visible`) | beta 2.4.0 | |
-| `MessageBox` constructor `options?: MessageBoxOptions` (`showHorizontalButtons`), `body(body, options?: MessageBoxBodyOptions)`, `button3WithOptions` | beta 2.4.0 | Three-button, horizontal message boxes |
-| `SliderOptions.fixedFormatDigits` | beta 2.4.0 | |
+| `CustomForm.multiButtonRow(buttons: ButtonData[], options?: MultiButtonRowOptions)` (max 3), `ButtonData` = `{ label, onClick, options? }`, `MultiButtonRowOptions` = `{ visible? }` | rc 2.4.0 (game 26.70) | Row of buttons |
+| `CustomForm` constructor `options?: CustomFormOptions` (`topCloseButtonVisible`) | beta 2.5.0 | Hide the top close button |
+| `MessageBox` constructor `options?: MessageBoxOptions` (`showHorizontalButtons`), `button3WithOptions` | rc 2.4.0 (game 26.70) | Three-button, horizontal message boxes |
+| `body(body, options?: MessageBoxBodyOptions)` | beta 2.5.0 | |
+| `SliderOptions.fixedFormatDigits` | beta 2.5.0 | |
 
-rc members become stable when 26.60 ships and `@minecraft/server-ui` 2.3.0 reaches `latest`. Until then, a pack pinned to 2.2.0 must not use them; check `../../bedrock-whats-new/references/current-versions.md` before raising the dependency.
+The 2.3.0 members become stable when 26.60 ships with `@minecraft/server-ui` 2.3.0, and the 2.4.0 members when 26.70 ships with 2.4.0 (Preview 26.70.21 moved them out of beta). Until then, a pack pinned to 2.2.0 must not use them; check `../../bedrock-whats-new/references/current-versions.md` before raising the dependency.
 
 ## Patterns
 
