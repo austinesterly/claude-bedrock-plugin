@@ -1,0 +1,5 @@
+96f97a22437cd4c494537c7d4258a5dc0d8757c9b6d152cf14cdd1ae76054d5d  addon\docs\Park_fence_test_plan.md
+f0ad4a1aca519292ca94cc1b4f1ccde9fe0dc63a6502029a6a54e79ce45ccaee  addon\docs\status.md
+2a3243f0955a621e3d5f15af80fefb97d9f9beaaac270c1176792cccc6b1dc16  addon\packs\BP\scripts\equipment\endFence.js
+c4f77c3cbf49ed33e5583671037eb91998daa90d93a9ac082fdf67ae820e0c71  addon\packs\BP\scripts\park\fence.js
+7f9e438d3624aa7533777c89e3252abbac3356f0985239f8b32579a9f6faecaa  addon\tests\logic.test.mjs
