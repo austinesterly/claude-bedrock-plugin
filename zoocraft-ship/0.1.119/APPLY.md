@@ -1,8 +1,8 @@
-# ZooCraft 0.1.119: the two-park benchmark run
+# ZooCraft 0.1.119: aquariums and the first four fish (tanks, Cod, Salmon, Tropical Fish, Pufferfish)
 
 Apply on 0.1.118 as built. Everything under `addon\` in this folder is the exact file the add-on should hold
-(7 files, all replacing 0.1.118's). `SHA256SUMS.txt` has the SHA-256 of each one; `BEFORE.txt` has the SHA-256
-of the 7 files it replaces, as 0.1.118 has them. Paths in both are relative to the folder that holds `addon\`
+(49 files: 23 replacing 0.1.118's and 26 new). `SHA256SUMS.txt` has the SHA-256 of each one; `BEFORE.txt` has the
+SHA-256 of the 23 files it replaces, as 0.1.118 has them. Paths in both are relative to the folder that holds `addon\`
 (this folder, and the ZooCraft Tychoon folder on the laptop).
 
 1. The laptop session downloads the commit-pinned archive of this branch into a new temp folder outside
@@ -14,13 +14,15 @@ of the 7 files it replaces, as 0.1.118 has them. Paths in both are relative to t
    nothing, and post those paths with the first 8 characters of their hashes.
 4. Copy each file listed in `BEFORE.txt` into a new `addon\backups\<yyyyMMdd-HHmmss>\` folder first,
    keeping its relative path.
-5. Copy every file under the extracted `addon\` into the add-on's `addon\` at the same relative path.
+5. Copy every file under the extracted `addon\` into the add-on's `addon\` at the same relative path (the 26
+   new files go in folders that exist already: `packs\BP\entities`, `packs\BP\items`, `packs\RP\entity` and so on).
    Delete nothing in the add-on, install nothing, and don't touch the manifests (build.cmd bumps the version).
 6. Check every line of `SHA256SUMS.txt` again, now against the add-on's files. All must match.
 7. Run build.cmd. Post one short line in the thread: the version it built and the test count
-   (expect 0.1.119 and 274), or what failed.
+   (expect 0.1.119 and 275), or what failed.
 8. Austin's rule ("Delete the old zip files everytime"): once the build has passed, delete the temp folder
    (the archive and what was extracted from it), and any `claude-bedrock-plugin-claude-project-thread-te8exa*.zip`
    files and folders extracted from them in Downloads. Leave the Oct 13 folder alone, and nothing else.
 
-Scripts only: leaving the world and joining again is enough. Test plan: `docs\Multipark_test_plan.md` (0.1.119).
+New entity, block, item and texture files: quit Minecraft fully and start it again (a rejoin is not enough).
+Test plan: `docs\Aquarium_test_plan.md`.
