@@ -1,0 +1,15 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {"identifier": "zoocraft:aquarium_feeder"},
+    "tags": ["zoocraft_workshop"],
+    "pattern": ["GGG", "GIG", " S "],
+    "key": {
+      "G": {"item": "minecraft:glass_pane"},
+      "I": {"item": "minecraft:iron_ingot"},
+      "S": {"item": "minecraft:stick"}
+    },
+    "unlock": [{"item": "zoocraft:zoo_workshop"}],
+    "result": {"item": "zoocraft:aquarium_feeder", "count": 1}
+  }
+}

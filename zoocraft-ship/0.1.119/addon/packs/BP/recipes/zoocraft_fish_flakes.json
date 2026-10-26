@@ -1,0 +1,10 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shapeless": {
+    "description": {"identifier": "zoocraft:fish_flakes"},
+    "tags": ["crafting_table", "zoocraft_workshop"],
+    "ingredients": [{"item": "minecraft:dried_kelp"}, {"item": "minecraft:wheat_seeds"}],
+    "unlock": [{"item": "minecraft:dried_kelp"}],
+    "result": {"item": "zoocraft:fish_flakes", "count": 4}
+  }
+}

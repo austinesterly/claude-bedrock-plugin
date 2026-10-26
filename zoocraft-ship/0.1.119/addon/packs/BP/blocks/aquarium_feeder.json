@@ -1,0 +1,32 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:block": {
+    "description": {
+      "identifier": "zoocraft:aquarium_feeder",
+      "menu_category": {"category": "items"},
+      "states": {"zoocraft:fill": [0, 1, 2]}
+    },
+    "components": {
+      "minecraft:geometry": {
+        "identifier": "geometry.zoocraft.aquarium_feeder",
+        "bone_visibility": {
+          "flakes_low": "query.block_state('zoocraft:fill') == 1",
+          "flakes_high": "query.block_state('zoocraft:fill') == 2"
+        }
+      },
+      "minecraft:material_instances": {
+        "*": {"texture": "zoocraft_aquarium_feeder_post", "render_method": "alpha_test"},
+        "glass": {"texture": "zoocraft_aquarium_feeder_glass", "render_method": "alpha_test"},
+        "flakes": {"texture": "zoocraft_aquarium_feeder_flakes", "render_method": "alpha_test"}
+      },
+      "minecraft:collision_box": {"origin": [-4, 0, -4], "size": [8, 14, 8]},
+      "minecraft:selection_box": {"origin": [-4, 0, -4], "size": [8, 14, 8]},
+      "minecraft:light_dampening": 0,
+      "minecraft:destructible_by_mining": {"seconds_to_destroy": 0.6},
+      "minecraft:destructible_by_explosion": {"explosion_resistance": 2},
+      "minecraft:map_color": "#9fbfcc",
+      "minecraft:loot": "loot_tables/blocks/zoocraft_aquarium_feeder.json",
+      "zoocraft:feeder": {}
+    }
+  }
+}

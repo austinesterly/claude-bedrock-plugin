@@ -1,0 +1,67 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.zoocraft.zoo_tropical_fish.body": {
+      "arrays": {
+        "geometries": {"Array.models": ["Geometry.typeA", "Geometry.typeB"]},
+        "textures": {
+          "Array.types": ["Texture.typeA", "Texture.typeB"],
+          "Array.patterns": [
+            "Texture.aPattern1",
+            "Texture.aPattern2",
+            "Texture.aPattern3",
+            "Texture.aPattern4",
+            "Texture.aPattern5",
+            "Texture.aPattern6",
+            "Texture.bPattern1",
+            "Texture.bPattern2",
+            "Texture.bPattern3",
+            "Texture.bPattern4",
+            "Texture.bPattern5",
+            "Texture.bPattern6"
+          ]
+        }
+      },
+      "geometry": "Array.models[q.variant]",
+      "materials": [{"*": "Material.default"}],
+      "textures": ["Array.types[q.variant]"],
+      "color": {
+        "r": "q.property('zoocraft:base') == 0 ? 0.976 : q.property('zoocraft:base') == 1 ? 0.976 : q.property('zoocraft:base') == 2 ? 0.780 : q.property('zoocraft:base') == 3 ? 0.227 : q.property('zoocraft:base') == 4 ? 0.996 : q.property('zoocraft:base') == 5 ? 0.502 : q.property('zoocraft:base') == 6 ? 0.953 : q.property('zoocraft:base') == 7 ? 0.278 : q.property('zoocraft:base') == 8 ? 0.616 : q.property('zoocraft:base') == 9 ? 0.086 : q.property('zoocraft:base') == 10 ? 0.537 : q.property('zoocraft:base') == 11 ? 0.235 : q.property('zoocraft:base') == 12 ? 0.514 : q.property('zoocraft:base') == 13 ? 0.369 : q.property('zoocraft:base') == 14 ? 0.690 : 0.114",
+        "g": "q.property('zoocraft:base') == 0 ? 1.000 : q.property('zoocraft:base') == 1 ? 0.502 : q.property('zoocraft:base') == 2 ? 0.306 : q.property('zoocraft:base') == 3 ? 0.702 : q.property('zoocraft:base') == 4 ? 0.847 : q.property('zoocraft:base') == 5 ? 0.780 : q.property('zoocraft:base') == 6 ? 0.545 : q.property('zoocraft:base') == 7 ? 0.310 : q.property('zoocraft:base') == 8 ? 0.616 : q.property('zoocraft:base') == 9 ? 0.612 : q.property('zoocraft:base') == 10 ? 0.196 : q.property('zoocraft:base') == 11 ? 0.267 : q.property('zoocraft:base') == 12 ? 0.329 : q.property('zoocraft:base') == 13 ? 0.486 : q.property('zoocraft:base') == 14 ? 0.180 : 0.114",
+        "b": "q.property('zoocraft:base') == 0 ? 0.996 : q.property('zoocraft:base') == 1 ? 0.114 : q.property('zoocraft:base') == 2 ? 0.741 : q.property('zoocraft:base') == 3 ? 0.855 : q.property('zoocraft:base') == 4 ? 0.239 : q.property('zoocraft:base') == 5 ? 0.122 : q.property('zoocraft:base') == 6 ? 0.667 : q.property('zoocraft:base') == 7 ? 0.322 : q.property('zoocraft:base') == 8 ? 0.592 : q.property('zoocraft:base') == 9 ? 0.612 : q.property('zoocraft:base') == 10 ? 0.722 : q.property('zoocraft:base') == 11 ? 0.667 : q.property('zoocraft:base') == 12 ? 0.196 : q.property('zoocraft:base') == 13 ? 0.086 : q.property('zoocraft:base') == 14 ? 0.149 : 0.129",
+        "a": 1.0
+      }
+    },
+    "controller.render.zoocraft.zoo_tropical_fish.pattern": {
+      "arrays": {
+        "geometries": {"Array.models": ["Geometry.typeA", "Geometry.typeB"]},
+        "textures": {
+          "Array.types": ["Texture.typeA", "Texture.typeB"],
+          "Array.patterns": [
+            "Texture.aPattern1",
+            "Texture.aPattern2",
+            "Texture.aPattern3",
+            "Texture.aPattern4",
+            "Texture.aPattern5",
+            "Texture.aPattern6",
+            "Texture.bPattern1",
+            "Texture.bPattern2",
+            "Texture.bPattern3",
+            "Texture.bPattern4",
+            "Texture.bPattern5",
+            "Texture.bPattern6"
+          ]
+        }
+      },
+      "geometry": "Array.models[q.variant]",
+      "materials": [{"*": "Material.default"}],
+      "textures": ["Array.patterns[q.variant * 6 + q.mark_variant]"],
+      "color": {
+        "r": "q.property('zoocraft:pat') == 0 ? 0.976 : q.property('zoocraft:pat') == 1 ? 0.976 : q.property('zoocraft:pat') == 2 ? 0.780 : q.property('zoocraft:pat') == 3 ? 0.227 : q.property('zoocraft:pat') == 4 ? 0.996 : q.property('zoocraft:pat') == 5 ? 0.502 : q.property('zoocraft:pat') == 6 ? 0.953 : q.property('zoocraft:pat') == 7 ? 0.278 : q.property('zoocraft:pat') == 8 ? 0.616 : q.property('zoocraft:pat') == 9 ? 0.086 : q.property('zoocraft:pat') == 10 ? 0.537 : q.property('zoocraft:pat') == 11 ? 0.235 : q.property('zoocraft:pat') == 12 ? 0.514 : q.property('zoocraft:pat') == 13 ? 0.369 : q.property('zoocraft:pat') == 14 ? 0.690 : 0.114",
+        "g": "q.property('zoocraft:pat') == 0 ? 1.000 : q.property('zoocraft:pat') == 1 ? 0.502 : q.property('zoocraft:pat') == 2 ? 0.306 : q.property('zoocraft:pat') == 3 ? 0.702 : q.property('zoocraft:pat') == 4 ? 0.847 : q.property('zoocraft:pat') == 5 ? 0.780 : q.property('zoocraft:pat') == 6 ? 0.545 : q.property('zoocraft:pat') == 7 ? 0.310 : q.property('zoocraft:pat') == 8 ? 0.616 : q.property('zoocraft:pat') == 9 ? 0.612 : q.property('zoocraft:pat') == 10 ? 0.196 : q.property('zoocraft:pat') == 11 ? 0.267 : q.property('zoocraft:pat') == 12 ? 0.329 : q.property('zoocraft:pat') == 13 ? 0.486 : q.property('zoocraft:pat') == 14 ? 0.180 : 0.114",
+        "b": "q.property('zoocraft:pat') == 0 ? 0.996 : q.property('zoocraft:pat') == 1 ? 0.114 : q.property('zoocraft:pat') == 2 ? 0.741 : q.property('zoocraft:pat') == 3 ? 0.855 : q.property('zoocraft:pat') == 4 ? 0.239 : q.property('zoocraft:pat') == 5 ? 0.122 : q.property('zoocraft:pat') == 6 ? 0.667 : q.property('zoocraft:pat') == 7 ? 0.322 : q.property('zoocraft:pat') == 8 ? 0.592 : q.property('zoocraft:pat') == 9 ? 0.612 : q.property('zoocraft:pat') == 10 ? 0.722 : q.property('zoocraft:pat') == 11 ? 0.667 : q.property('zoocraft:pat') == 12 ? 0.196 : q.property('zoocraft:pat') == 13 ? 0.086 : q.property('zoocraft:pat') == 14 ? 0.149 : 0.129",
+        "a": 1.0
+      }
+    }
+  }
+}

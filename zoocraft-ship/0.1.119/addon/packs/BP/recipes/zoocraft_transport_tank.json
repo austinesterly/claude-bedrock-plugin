@@ -1,0 +1,15 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {"identifier": "zoocraft:transport_tank"},
+    "tags": ["zoocraft_workshop"],
+    "pattern": [" G ", "GWG", "IGI"],
+    "key": {
+      "G": {"item": "minecraft:glass"},
+      "W": {"item": "minecraft:water_bucket"},
+      "I": {"item": "minecraft:iron_ingot"}
+    },
+    "unlock": [{"item": "zoocraft:zoo_workshop"}],
+    "result": {"item": "zoocraft:transport_tank", "count": 1}
+  }
+}
