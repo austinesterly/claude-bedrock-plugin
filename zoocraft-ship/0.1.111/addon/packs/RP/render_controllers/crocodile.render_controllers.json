@@ -1,0 +1,28 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.zoocraft.crocodile": {
+      "arrays": {
+        "textures": {
+          "Array.coats": [
+            "Texture.adult_0",
+            "Texture.adult_1",
+            "Texture.adult_2",
+            "Texture.young_0",
+            "Texture.young_1",
+            "Texture.young_2"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [{"*": "Material.default"}],
+      "textures": ["Array.coats[(q.is_baby ? 3 : 0) + math.clamp(q.skin_id, 0, 2)]"],
+      "part_visibility": [
+        {"*": true},
+        {
+          "lids": "query.property('zoocraft:act') == 26 || query.property('zoocraft:act') == 31 || query.property('zoocraft:act') == 9 || math.mod(q.life_time + v.offset * 0.37, 7.1) < 0.12"
+        }
+      ]
+    }
+  }
+}

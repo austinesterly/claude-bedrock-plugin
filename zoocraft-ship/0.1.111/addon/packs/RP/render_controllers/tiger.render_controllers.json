@@ -1,0 +1,29 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.zoocraft.tiger": {
+      "arrays": {
+        "textures": {
+          "Array.coats": [
+            "Texture.bengal_0",
+            "Texture.bengal_1",
+            "Texture.bengal_2",
+            "Texture.amur_0",
+            "Texture.amur_1",
+            "Texture.amur_2"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [{"*": "Material.default"}],
+      "textures": ["Array.coats[math.clamp(q.variant, 0, 1) * 3 + math.clamp(q.skin_id, 0, 2)]"],
+      "part_visibility": [
+        {"*": true},
+        {"tuft": "!q.is_baby"},
+        {
+          "lids": "query.property('zoocraft:act') == 6 || query.property('zoocraft:act') == 7 || query.property('zoocraft:act') == 11 || query.property('zoocraft:act') == 8 || query.property('zoocraft:act') == 24 || query.property('zoocraft:act') == 27 || v.lids || math.mod(q.life_time + v.offset * 0.37, 5.1) < 0.15"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,637 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.zoocraft.crocodile.idle": {
+      "loop": true,
+      "bones": {
+        "body": {"scale": ["1 + (math.sin(query.life_time * 40 + variable.offset) * 0.015)", 1, 1]},
+        "tail3": {"rotation": [0, "math.sin(query.life_time * 25 + variable.offset) * 6", 0]},
+        "jaw": {
+          "rotation": ["math.max(0, math.sin(query.life_time * 9 + variable.offset) - 0.8) * 10", 0, 0]
+        }
+      }
+    },
+    "animation.zoocraft.crocodile.walk": {
+      "loop": true,
+      "bones": {
+        "legFL": {
+          "rotation": ["math.sin(query.modified_distance_moved * 110) * 25", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.modified_distance_moved * 110)) * 1", 0]
+        },
+        "legFR": {
+          "rotation": ["math.sin(query.modified_distance_moved * 110 + 180) * 25", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.modified_distance_moved * 110 + 180)) * 1", 0]
+        },
+        "legHL": {
+          "rotation": ["math.sin(query.modified_distance_moved * 110 + 180) * 25", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.modified_distance_moved * 110 + 180)) * 1", 0]
+        },
+        "legHR": {
+          "rotation": ["math.sin(query.modified_distance_moved * 110) * 25", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.modified_distance_moved * 110)) * 1", 0]
+        },
+        "body": {"rotation": [0, "math.sin(query.modified_distance_moved * 110) * 4", 0]},
+        "neck": {"rotation": [0, "math.sin(query.modified_distance_moved * 110) * -5", 0]},
+        "tail1": {"rotation": [0, "math.sin((query.modified_distance_moved * 110) * 1) * 7", 0]},
+        "tail2": {"rotation": [0, "math.sin((query.modified_distance_moved * 110) * 1 + -70) * 11.2", 0]},
+        "tail3": {"rotation": [0, "math.sin((query.modified_distance_moved * 110) * 1 + -140) * 14", 0]}
+      }
+    },
+    "animation.zoocraft.crocodile.walk_t": {
+      "loop": true,
+      "bones": {
+        "legFL": {
+          "rotation": ["math.sin(query.anim_time * 324 * variable.leg_rate) * 25", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.anim_time * 324 * variable.leg_rate)) * 1", 0]
+        },
+        "legFR": {
+          "rotation": ["math.sin(query.anim_time * 324 * variable.leg_rate + 180) * 25", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.anim_time * 324 * variable.leg_rate + 180)) * 1", 0]
+        },
+        "legHL": {
+          "rotation": ["math.sin(query.anim_time * 324 * variable.leg_rate + 180) * 25", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.anim_time * 324 * variable.leg_rate + 180)) * 1", 0]
+        },
+        "legHR": {
+          "rotation": ["math.sin(query.anim_time * 324 * variable.leg_rate) * 25", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.anim_time * 324 * variable.leg_rate)) * 1", 0]
+        },
+        "body": {"rotation": [0, "math.sin(query.anim_time * 324 * variable.leg_rate) * 4", 0]},
+        "neck": {"rotation": [0, "math.sin(query.anim_time * 324 * variable.leg_rate) * -5", 0]},
+        "tail1": {"rotation": [0, "math.sin((query.anim_time * 324 * variable.leg_rate) * 1) * 7", 0]},
+        "tail2": {
+          "rotation": [0, "math.sin((query.anim_time * 324 * variable.leg_rate) * 1 + -70) * 11.2", 0]
+        },
+        "tail3": {
+          "rotation": [0, "math.sin((query.anim_time * 324 * variable.leg_rate) * 1 + -140) * 14", 0]
+        }
+      }
+    },
+    "animation.zoocraft.crocodile.drag": {
+      "loop": true,
+      "bones": {
+        "legFL": {
+          "rotation": ["math.sin(query.anim_time * -1620 * variable.leg_rate) * 20", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.anim_time * -1620 * variable.leg_rate)) * 0.8", 0]
+        },
+        "legFR": {
+          "rotation": ["math.sin(query.anim_time * -1620 * variable.leg_rate + 180) * 20", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.anim_time * -1620 * variable.leg_rate + 180)) * 0.8", 0]
+        },
+        "legHL": {
+          "rotation": ["math.sin(query.anim_time * -1620 * variable.leg_rate + 180) * 20", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.anim_time * -1620 * variable.leg_rate + 180)) * 0.8", 0]
+        },
+        "legHR": {
+          "rotation": ["math.sin(query.anim_time * -1620 * variable.leg_rate) * 20", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.anim_time * -1620 * variable.leg_rate)) * 0.8", 0]
+        },
+        "body": {"rotation": [0, "math.sin(query.anim_time * -1620 * variable.leg_rate) * 4", 0]},
+        "neck": {
+          "rotation": [
+            -8,
+            "(math.sin(query.anim_time * -1620 * variable.leg_rate) * -5) + (math.sin(query.life_time * 900 + variable.offset) * 12)",
+            0
+          ]
+        },
+        "tail1": {"rotation": [0, "math.sin((query.anim_time * -1620 * variable.leg_rate) * 1) * 7", 0]},
+        "tail2": {
+          "rotation": [0, "math.sin((query.anim_time * -1620 * variable.leg_rate) * 1 + -70) * 11.2", 0]
+        },
+        "tail3": {
+          "rotation": [0, "math.sin((query.anim_time * -1620 * variable.leg_rate) * 1 + -140) * 14", 0]
+        },
+        "jaw": {"rotation": [4, 0, 0]}
+      }
+    },
+    "animation.zoocraft.crocodile.carry": {
+      "loop": true,
+      "bones": {
+        "legFL": {
+          "rotation": ["math.sin(query.anim_time * 324 * variable.leg_rate) * 20", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.anim_time * 324 * variable.leg_rate)) * 0.8", 0]
+        },
+        "legFR": {
+          "rotation": ["math.sin(query.anim_time * 324 * variable.leg_rate + 180) * 20", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.anim_time * 324 * variable.leg_rate + 180)) * 0.8", 0]
+        },
+        "legHL": {
+          "rotation": ["math.sin(query.anim_time * 324 * variable.leg_rate + 180) * 20", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.anim_time * 324 * variable.leg_rate + 180)) * 0.8", 0]
+        },
+        "legHR": {
+          "rotation": ["math.sin(query.anim_time * 324 * variable.leg_rate) * 20", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.anim_time * 324 * variable.leg_rate)) * 0.8", 0]
+        },
+        "body": {"rotation": [0, "math.sin(query.anim_time * 324 * variable.leg_rate) * 4", 0]},
+        "neck": {"rotation": [-6, "math.sin(query.anim_time * 324 * variable.leg_rate) * -5", 0]},
+        "tail1": {"rotation": [0, "math.sin((query.anim_time * 324 * variable.leg_rate) * 1) * 7", 0]},
+        "tail2": {
+          "rotation": [0, "math.sin((query.anim_time * 324 * variable.leg_rate) * 1 + -70) * 11.2", 0]
+        },
+        "tail3": {
+          "rotation": [0, "math.sin((query.anim_time * 324 * variable.leg_rate) * 1 + -140) * 14", 0]
+        }
+      }
+    },
+    "animation.zoocraft.crocodile.belly": {
+      "loop": true,
+      "bones": {
+        "crocodile": {"position": [0, -2.165, 0]},
+        "legFL": {"rotation": ["math.sin(query.anim_time * 1548 * variable.leg_rate + 0) * 30", 0, -60]},
+        "legFR": {"rotation": ["math.sin(query.anim_time * 1548 * variable.leg_rate + 180) * 30", 0, 60]},
+        "legHL": {"rotation": ["math.sin(query.anim_time * 1548 * variable.leg_rate + 180) * 30", 0, -60]},
+        "legHR": {"rotation": ["math.sin(query.anim_time * 1548 * variable.leg_rate + 0) * 30", 0, 60]},
+        "neck": {"rotation": [-12, 0, 0]},
+        "head": {"rotation": [-4, 0, 0]},
+        "jaw": {
+          "rotation": ["math.max(0, math.sin(query.anim_time * 1548 * variable.leg_rate)) * 10", 0, 0]
+        },
+        "tail1": {"rotation": [0, "math.sin((query.anim_time * 1548 * variable.leg_rate) * 1) * 9", 0]},
+        "tail2": {
+          "rotation": [0, "math.sin((query.anim_time * 1548 * variable.leg_rate) * 1 + -70) * 14.4", 0]
+        },
+        "tail3": {
+          "rotation": [0, "math.sin((query.anim_time * 1548 * variable.leg_rate) * 1 + -140) * 18", 0]
+        }
+      }
+    },
+    "animation.zoocraft.crocodile.gallop": {
+      "loop": true,
+      "bones": {
+        "legFL": {
+          "rotation": ["math.sin(query.anim_time * 1440 * variable.leg_rate) * 40", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.anim_time * 1440 * variable.leg_rate)) * 2.5", 0]
+        },
+        "legFR": {
+          "rotation": ["math.sin(query.anim_time * 1440 * variable.leg_rate) * 40", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.anim_time * 1440 * variable.leg_rate)) * 2.5", 0]
+        },
+        "legHL": {
+          "rotation": ["math.sin(query.anim_time * 1440 * variable.leg_rate + 180) * 40", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.anim_time * 1440 * variable.leg_rate + 180)) * 2.5", 0]
+        },
+        "legHR": {
+          "rotation": ["math.sin(query.anim_time * 1440 * variable.leg_rate + 180) * 40", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.anim_time * 1440 * variable.leg_rate + 180)) * 2.5", 0]
+        },
+        "body": {
+          "rotation": ["math.sin(query.anim_time * 1440 * variable.leg_rate) * 6", 0, 0],
+          "position": [0, "1.5 + math.max(0, math.sin(query.anim_time * 1440 * variable.leg_rate)) * 1.5", 0]
+        },
+        "tail1": {"rotation": [0, "math.sin((query.anim_time * 1440 * variable.leg_rate) * 1) * 5", 0]},
+        "tail2": {"rotation": [0, "math.sin((query.anim_time * 1440 * variable.leg_rate) * 1 + -70) * 8", 0]},
+        "tail3": {
+          "rotation": [0, "math.sin((query.anim_time * 1440 * variable.leg_rate) * 1 + -140) * 10", 0]
+        }
+      }
+    },
+    "animation.zoocraft.crocodile.swim": {
+      "loop": true,
+      "bones": {
+        "legFL": {"rotation": [80, 0, -15]},
+        "legFR": {"rotation": [80, 0, 15]},
+        "legHL": {"rotation": [80, 0, -15]},
+        "legHR": {"rotation": [80, 0, 15]},
+        "tail1": {"rotation": [0, "math.sin(query.life_time * 470) * 14", 0]},
+        "tail2": {"rotation": [0, "math.sin(query.life_time * 470 + -70) * 22.4", 0]},
+        "tail3": {"rotation": [0, "math.sin(query.life_time * 470 + -140) * 28", 0]},
+        "body": {"rotation": [0, "math.sin(query.life_time * 470 + variable.offset) * 3", 0]}
+      }
+    },
+    "animation.zoocraft.crocodile.swim_fast": {
+      "loop": true,
+      "bones": {
+        "legFL": {"rotation": [80, 0, -15]},
+        "legFR": {"rotation": [80, 0, 15]},
+        "legHL": {"rotation": [80, 0, -15]},
+        "legHR": {"rotation": [80, 0, 15]},
+        "tail1": {"rotation": [0, "math.sin(query.life_time * 860) * 18", 0]},
+        "tail2": {"rotation": [0, "math.sin(query.life_time * 860 + -70) * 28.8", 0]},
+        "tail3": {"rotation": [0, "math.sin(query.life_time * 860 + -140) * 36", 0]},
+        "body": {"rotation": [0, "math.sin(query.life_time * 860 + variable.offset) * 4", 0]}
+      }
+    },
+    "animation.zoocraft.crocodile.float": {
+      "loop": true,
+      "bones": {
+        "legFL": {"rotation": [0, 0, -45]},
+        "legFR": {"rotation": [0, 0, 45]},
+        "legHL": {"rotation": ["math.sin(query.life_time * 60 + variable.offset) * 8", 0, -90]},
+        "legHR": {"rotation": [0, 0, 45]},
+        "tail3": {"rotation": [0, "math.sin(query.life_time * 30 + variable.offset) * 10", 0]},
+        "tail2": {"rotation": [0, "math.sin(query.life_time * 30 + variable.offset - 60) * 5", 0]}
+      }
+    },
+    "animation.zoocraft.crocodile.doze": {
+      "loop": true,
+      "bones": {
+        "legFL": {"rotation": [0, 0, -45]},
+        "legFR": {"rotation": [0, 0, 45]},
+        "legHL": {"rotation": [0, 0, -45]},
+        "legHR": {"rotation": [0, 0, 45]},
+        "body": {"scale": ["1 + (math.sin(query.life_time * 40 + variable.offset) * 0.015)", 1, 1]}
+      }
+    },
+    "animation.zoocraft.crocodile.sink": {
+      "loop": true,
+      "bones": {
+        "legFL": {"rotation": [0, 0, -40]},
+        "legFR": {"rotation": [0, 0, 40]},
+        "legHL": {"rotation": [0, 0, -40]},
+        "legHR": {"rotation": [0, 0, 40]},
+        "neck": {"rotation": [-18, 0, 0]},
+        "tail1": {"rotation": [-15, 0, 0]},
+        "tail2": {"rotation": [-10, 0, 0]}
+      }
+    },
+    "animation.zoocraft.crocodile.rise": {
+      "loop": true,
+      "bones": {
+        "legFL": {"rotation": [0, 0, -40]},
+        "legFR": {"rotation": [0, 0, 40]},
+        "legHL": {"rotation": [0, 0, -40]},
+        "legHR": {"rotation": [0, 0, 40]},
+        "neck": {"rotation": [-28, 0, 0]},
+        "head": {"rotation": [-8, 0, 0]},
+        "tail1": {"rotation": [-10, 0, 0]}
+      }
+    },
+    "animation.zoocraft.crocodile.roll": {
+      "loop": true,
+      "bones": {
+        "body": {"rotation": [0, 0, "query.anim_time * 576"]},
+        "legFL": {"rotation": [80, 0, -15]},
+        "legFR": {"rotation": [80, 0, 15]},
+        "legHL": {"rotation": [80, 0, -15]},
+        "legHR": {"rotation": [80, 0, 15]},
+        "jaw": {"rotation": [6, 0, 0]}
+      }
+    },
+    "animation.zoocraft.crocodile.display": {
+      "loop": true,
+      "bones": {
+        "legFL": {"rotation": [0, 0, -45]},
+        "legFR": {"rotation": [0, 0, 45]},
+        "legHL": {"rotation": [0, 0, -45]},
+        "legHR": {"rotation": [0, 0, 45]},
+        "neck": {"rotation": [-30, 0, 0]},
+        "head": {"rotation": [-10, 0, 0]},
+        "tail1": {"rotation": [28, 0, 0]},
+        "tail2": {"rotation": [22, 0, 0]},
+        "tail3": {"rotation": [18, 0, 0]},
+        "jaw": {
+          "rotation": ["math.max(0, math.sin(query.life_time * 120 + variable.offset) - 0.5) * 30", 0, 0]
+        }
+      }
+    },
+    "animation.zoocraft.crocodile.snout_lift": {
+      "loop": true,
+      "bones": {
+        "legFL": {"rotation": [0, 0, -45]},
+        "legFR": {"rotation": [0, 0, 45]},
+        "legHL": {"rotation": [0, 0, -45]},
+        "legHR": {"rotation": [0, 0, 45]},
+        "neck": {"rotation": [-40, 0, 0]},
+        "head": {"rotation": [-15, 0, 0]}
+      }
+    },
+    "animation.zoocraft.crocodile.rub": {
+      "loop": true,
+      "bones": {
+        "legFL": {"rotation": [0, 0, -45]},
+        "legFR": {"rotation": [0, 0, 45]},
+        "legHL": {"rotation": [0, 0, -45]},
+        "legHR": {"rotation": [0, 0, 45]},
+        "neck": {
+          "rotation": [
+            -10,
+            "math.sin(query.life_time * 60 + variable.offset) * 12",
+            "math.sin(query.life_time * 60 + variable.offset + 30) * 15"
+          ]
+        },
+        "head": {"rotation": [0, 0, "math.sin(query.life_time * 60 + variable.offset) * 8"]}
+      }
+    },
+    "animation.zoocraft.crocodile.swallow": {
+      "loop": true,
+      "bones": {
+        "neck": {
+          "rotation": ["-10 - math.max(0, math.sin(query.life_time * 150 + variable.offset)) * 35", 0, 0]
+        },
+        "head": {"rotation": ["-math.max(0, math.sin(query.life_time * 150 + variable.offset)) * 15", 0, 0]},
+        "jaw": {
+          "rotation": ["8 + math.max(0, math.sin(query.life_time * 150 + variable.offset + 40)) * 30", 0, 0]
+        }
+      }
+    },
+    "animation.zoocraft.crocodile.alert": {
+      "loop": true,
+      "bones": {
+        "neck": {"rotation": [-12, 0, 0]},
+        "head": {"rotation": [-4, 0, 0]},
+        "body": {"scale": ["1 + (math.sin(query.life_time * 60 + variable.offset) * 0.015)", 1, 1]}
+      }
+    },
+    "animation.zoocraft.crocodile.warn": {
+      "loop": true,
+      "bones": {
+        "body": {"rotation": [-10, 0, 0], "scale": [1.1, 1, 1]},
+        "neck": {"rotation": [-15, 0, 0]},
+        "tail1": {"rotation": [15, "math.sin(query.life_time * 300) * 3", 0]},
+        "tail2": {"rotation": [10, "math.sin(query.life_time * 300 + -70) * 4.8", 0]},
+        "crocodile": {"position": [0, 2.728, 0]},
+        "jaw": {"rotation": ["22 + (math.sin(query.life_time * 500 + variable.offset) * 2)", 0, 0]},
+        "head": {"rotation": [-16, 0, 0]},
+        "tail3": {"rotation": [0, "math.sin(query.life_time * 300 + -140) * 6", 0]}
+      }
+    },
+    "animation.zoocraft.crocodile.rear": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "body": {"rotation": ["-10 * (math.clamp(query.anim_time / 0.3, 0, 1))", 0, 0]},
+        "tail2": {"rotation": ["10 * (math.clamp(query.anim_time / 0.3, 0, 1))", 0, 0]},
+        "tail1": {"rotation": ["15 * (math.clamp(query.anim_time / 0.3, 0, 1))", 0, 0]},
+        "neck": {"rotation": ["-15 * (math.clamp(query.anim_time / 0.3, 0, 1))", 0, 0]},
+        "crocodile": {
+          "position": {
+            "0.0": [0, 0, 0],
+            "0.025": [0, 0.239, 0],
+            "0.05": [0, 0.476, 0],
+            "0.075": [0, 0.711, 0],
+            "0.1": [0, 0.944, 0],
+            "0.125": [0, 1.175, 0],
+            "0.15": [0, 1.404, 0],
+            "0.175": [0, 1.63, 0],
+            "0.2": [0, 1.855, 0],
+            "0.225": [0, 2.077, 0],
+            "0.25": [0, 2.296, 0],
+            "0.275": [0, 2.514, 0],
+            "0.3": [0, 2.728, 0]
+          }
+        }
+      },
+      "animation_length": 0.3
+    },
+    "animation.zoocraft.crocodile.drop": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "body": {"rotation": ["-10 + (10 * (math.clamp(query.anim_time / 0.35, 0, 1)))", 0, 0]},
+        "tail2": {"rotation": ["10 + (-10 * (math.clamp(query.anim_time / 0.35, 0, 1)))", 0, 0]},
+        "tail1": {"rotation": ["15 + (-15 * (math.clamp(query.anim_time / 0.35, 0, 1)))", 0, 0]},
+        "neck": {"rotation": ["-15 + (15 * (math.clamp(query.anim_time / 0.35, 0, 1)))", 0, 0]},
+        "crocodile": {
+          "position": {
+            "0.0": [0, 2.728, 0],
+            "0.0292": [0, 2.514, 0],
+            "0.0583": [0, 2.296, 0],
+            "0.0875": [0, 2.077, 0],
+            "0.1167": [0, 1.855, 0],
+            "0.1458": [0, 1.63, 0],
+            "0.175": [0, 1.404, 0],
+            "0.2042": [0, 1.175, 0],
+            "0.2333": [0, 0.944, 0],
+            "0.2625": [0, 0.711, 0],
+            "0.2917": [0, 0.476, 0],
+            "0.3208": [0, 0.239, 0],
+            "0.35": [0, 0, 0]
+          }
+        }
+      },
+      "animation_length": 0.35
+    },
+    "animation.zoocraft.crocodile.snap": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "neck": {
+          "rotation": [
+            "-22 * (math.sin(math.clamp(query.anim_time / 0.6, 0, 1) * 180))",
+            "35 * (math.sin(math.clamp(query.anim_time / 0.6, 0, 1) * 180))",
+            0
+          ]
+        },
+        "head": {"rotation": [0, "15 * (math.sin(math.clamp(query.anim_time / 0.6, 0, 1) * 180))", 0]},
+        "jaw": {"rotation": ["16 * (math.sin(math.clamp(query.anim_time / 0.45, 0, 1) * 180))", 0, 0]}
+      },
+      "animation_length": 0.6
+    },
+    "animation.zoocraft.crocodile.lunge": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "crocodile": {
+          "position": [
+            0,
+            "3.5 * (math.sin(math.clamp(query.anim_time / 0.7, 0, 1) * 180))",
+            "-7 * (math.sin(math.clamp(query.anim_time / 0.7, 0, 1) * 180))"
+          ]
+        },
+        "body": {"rotation": ["-12 * (math.sin(math.clamp(query.anim_time / 0.7, 0, 1) * 180))", 0, 0]},
+        "neck": {"rotation": ["-10 * (math.sin(math.clamp(query.anim_time / 0.7, 0, 1) * 180))", 0, 0]},
+        "jaw": {"rotation": ["18 * (math.sin(math.clamp(query.anim_time / 0.5, 0, 1) * 180))", 0, 0]},
+        "legFL": {"rotation": ["-35 * (math.sin(math.clamp(query.anim_time / 0.7, 0, 1) * 180))", 0, 0]},
+        "legFR": {"rotation": ["-35 * (math.sin(math.clamp(query.anim_time / 0.7, 0, 1) * 180))", 0, 0]},
+        "legHL": {"rotation": ["30 * (math.sin(math.clamp(query.anim_time / 0.7, 0, 1) * 180))", 0, 0]},
+        "legHR": {"rotation": ["30 * (math.sin(math.clamp(query.anim_time / 0.7, 0, 1) * 180))", 0, 0]},
+        "tail1": {"rotation": ["12 * (math.sin(math.clamp(query.anim_time / 0.7, 0, 1) * 180))", 0, 0]}
+      },
+      "animation_length": 0.7
+    },
+    "animation.zoocraft.crocodile.feed": {
+      "loop": true,
+      "bones": {
+        "neck": {
+          "rotation": ["-22 + math.max(0, math.sin(query.life_time * 200 + variable.offset)) * 10", 0, 0]
+        },
+        "jaw": {
+          "rotation": ["math.max(0, math.sin(query.life_time * 200 + variable.offset + 60)) * 16", 0, 0]
+        }
+      }
+    },
+    "animation.zoocraft.crocodile.chirp": {
+      "loop": true,
+      "bones": {
+        "neck": {"rotation": [-25, 0, 0]},
+        "head": {"rotation": [-8, 0, 0]},
+        "jaw": {"rotation": ["math.max(0, math.sin(query.life_time * 400 + variable.offset)) * 12", 0, 0]}
+      }
+    },
+    "animation.zoocraft.crocodile.carried": {
+      "loop": true,
+      "bones": {
+        "legFL": {"rotation": [10, 0, -20]},
+        "legFR": {"rotation": [10, 0, 20]},
+        "legHL": {"rotation": [10, 0, -20]},
+        "legHR": {"rotation": [10, 0, 20]},
+        "tail1": {"rotation": [-20, 0, 0]},
+        "tail2": {"rotation": [-15, 0, 0]},
+        "tail3": {"rotation": [-10, 0, 0]},
+        "neck": {"rotation": [15, 0, 0]}
+      }
+    },
+    "animation.zoocraft.crocodile.look_at_target": {
+      "loop": true,
+      "bones": {"head": {"rotation": [0, "math.clamp(query.target_y_rotation, -30, 30)", 0]}}
+    },
+    "animation.zoocraft.crocodile.lie_down": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "legHR": {"rotation": [0, 0, "73.16 * (math.clamp(query.anim_time / 1, 0, 1))"]},
+        "head": {"rotation": [0, 0, 0]},
+        "legFR": {"rotation": [0, 0, "73.16 * (math.clamp(query.anim_time / 1, 0, 1))"]},
+        "legFL": {"rotation": [0, 0, "-73.16 * (math.clamp(query.anim_time / 1, 0, 1))"]},
+        "legHL": {"rotation": [0, 0, "-73.16 * (math.clamp(query.anim_time / 1, 0, 1))"]},
+        "neck": {"rotation": [0, 0, 0]},
+        "crocodile": {
+          "position": {
+            "0.0": [0, 0, 0],
+            "0.0833": [0, 0.215, 0],
+            "0.1667": [0, 0.325, 0],
+            "0.25": [0, 0.33, 0],
+            "0.3333": [0, 0.229, 0],
+            "0.4167": [0, 0.024, 0],
+            "0.5": [0, -0.283, 0],
+            "0.5833": [0, -0.689, 0],
+            "0.6667": [0, -1.188, 0],
+            "0.75": [0, -1.776, 0],
+            "0.8333": [0, -2.446, 0],
+            "0.9167": [0, -3.19, 0],
+            "1": [0, -4, 0]
+          }
+        }
+      },
+      "animation_length": 1
+    },
+    "animation.zoocraft.crocodile.get_up": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "legHR": {"rotation": [0, 0, "73.16 + (-73.16 * (math.clamp(query.anim_time / 1.2, 0, 1)))"]},
+        "head": {"rotation": [-0.0, 0, 0]},
+        "legFR": {"rotation": [0, 0, "73.16 + (-73.16 * (math.clamp(query.anim_time / 1.2, 0, 1)))"]},
+        "legFL": {"rotation": [0, 0, "-73.16 + (73.16 * (math.clamp(query.anim_time / 1.2, 0, 1)))"]},
+        "legHL": {"rotation": [0, 0, "-73.16 + (73.16 * (math.clamp(query.anim_time / 1.2, 0, 1)))"]},
+        "neck": {"rotation": [0.0, 0, 0]},
+        "crocodile": {
+          "position": {
+            "0.0": [0, -4, 0],
+            "0.1": [0, -3.19, 0],
+            "0.2": [0, -2.446, 0],
+            "0.3": [0, -1.776, 0],
+            "0.4": [0, -1.188, 0],
+            "0.5": [0, -0.689, 0],
+            "0.6": [0, -0.283, 0],
+            "0.7": [0, 0.024, 0],
+            "0.8": [0, 0.229, 0],
+            "0.9": [0, 0.33, 0],
+            "1": [0, 0.325, 0],
+            "1.1": [0, 0.215, 0],
+            "1.2": [0, 0, 0]
+          }
+        }
+      },
+      "animation_length": 1.2
+    },
+    "animation.zoocraft.crocodile.lie": {
+      "loop": true,
+      "bones": {
+        "crocodile": {"position": [0, -4, 0]},
+        "legFL": {"rotation": [0, 0, -73.16]},
+        "legFR": {"rotation": [0, 0, 73.16]},
+        "legHL": {"rotation": [0, 0, -73.16]},
+        "legHR": {"rotation": [0, 0, 73.16]},
+        "neck": {"rotation": [0.0, 0, 0]},
+        "head": {"rotation": [-0.0, 0, 0]},
+        "body": {"scale": ["1 + (math.sin(query.life_time * 40 + variable.offset) * 0.015)", 1, 1]},
+        "tail3": {"rotation": [0, "math.sin(query.life_time * 20 + variable.offset) * 4", 0]}
+      }
+    },
+    "animation.zoocraft.crocodile.bask": {
+      "loop": true,
+      "bones": {
+        "crocodile": {"position": [0, -4, 0]},
+        "legFL": {"rotation": [0, 0, -73.16]},
+        "legFR": {"rotation": [0, 0, 73.16]},
+        "legHL": {"rotation": [0, 0, -73.16]},
+        "legHR": {"rotation": [0, 0, 73.16]},
+        "neck": {"rotation": [-18, 0, 0]},
+        "head": {"rotation": [-10, 0, 0]},
+        "body": {"scale": ["1 + (math.sin(query.life_time * 40 + variable.offset) * 0.015)", 1, 1]},
+        "jaw": {"rotation": ["7 + (math.sin(query.life_time * 30 + variable.offset) * 1)", 0, 0]}
+      }
+    },
+    "animation.zoocraft.crocodile.halfout": {
+      "loop": true,
+      "bones": {
+        "crocodile": {"position": [0, -4, 0]},
+        "legFL": {"rotation": [0, 0, -73.16]},
+        "legFR": {"rotation": [0, 0, 73.16]},
+        "legHL": {"rotation": [0, 0, -73.16]},
+        "legHR": {"rotation": [0, 0, 73.16]},
+        "neck": {"rotation": [0.0, 0, 0]},
+        "head": {"rotation": [-0.0, 0, 0]},
+        "body": {"scale": ["1 + (math.sin(query.life_time * 40 + variable.offset) * 0.015)", 1, 1]}
+      }
+    },
+    "animation.zoocraft.crocodile.slide": {
+      "loop": true,
+      "bones": {
+        "crocodile": {"position": [0, -4, 0]},
+        "legFL": {"rotation": [50, 0, -73.16]},
+        "legFR": {"rotation": [50, 0, 73.16]},
+        "legHL": {"rotation": [50, 0, -73.16]},
+        "legHR": {"rotation": [50, 0, 73.16]},
+        "neck": {"rotation": [-8, 0, 0]},
+        "head": {"rotation": [-0.0, 0, 0]}
+      }
+    },
+    "animation.zoocraft.crocodile.dig": {
+      "loop": true,
+      "bones": {
+        "crocodile": {"position": [0, -4, 0]},
+        "legFL": {"rotation": [0, 0, -73.16]},
+        "legFR": {"rotation": [0, 0, 73.16]},
+        "legHL": {
+          "rotation": ["math.sin(query.life_time * 300) * 35", 0, -73.16],
+          "position": [0, "math.max(0, math.cos(query.life_time * 300)) * 1.5", 0]
+        },
+        "legHR": {
+          "rotation": ["math.sin(query.life_time * 300 + 180) * 35", 0, 73.16],
+          "position": [0, "math.max(0, math.cos(query.life_time * 300 + 180)) * 1.5", 0]
+        },
+        "neck": {"rotation": [0.0, 0, 0]},
+        "head": {"rotation": [-0.0, 0, 0]},
+        "body": {"rotation": [0, 0, "math.sin(query.life_time * 300 + variable.offset) * 2"]}
+      }
+    },
+    "animation.zoocraft.crocodile.guard": {
+      "loop": true,
+      "bones": {
+        "crocodile": {"position": [0, -4, 0]},
+        "legFL": {"rotation": [0, 0, -73.16]},
+        "legFR": {"rotation": [0, 0, 73.16]},
+        "legHL": {"rotation": [0, 0, -73.16]},
+        "legHR": {"rotation": [0, 0, 73.16]},
+        "neck": {"rotation": [-22, "math.sin(query.life_time * 15 + variable.offset) * 10", 0]},
+        "head": {"rotation": [-6, 0, 0]},
+        "body": {"scale": ["1 + (math.sin(query.life_time * 40 + variable.offset) * 0.015)", 1, 1]}
+      }
+    },
+    "animation.zoocraft.crocodile.sleep": {
+      "loop": true,
+      "bones": {
+        "crocodile": {"position": [0, -4, 0]},
+        "legFL": {"rotation": [0, 0, -73.16]},
+        "legFR": {"rotation": [0, 0, 73.16]},
+        "legHL": {"rotation": [0, 0, -73.16]},
+        "legHR": {"rotation": [0, 0, 73.16]},
+        "neck": {"rotation": [0.0, 0, 0]},
+        "head": {"rotation": [-0.0, 0, 0]},
+        "body": {"scale": ["1 + (math.sin(query.life_time * 25 + variable.offset) * 0.015)", 1, 1]}
+      }
+    },
+    "animation.zoocraft.crocodile.young": {
+      "loop": true,
+      "bones": {"head": {"scale": [1.2, 1.25, 0.9]}, "neck": {"scale": [1.15, 1.15, 1]}}
+    },
+    "animation.zoocraft.crocodile.male": {"loop": true, "bones": {"head": {"scale": [1.12, 1.08, 1]}, "neck": {"scale": [1.1, 1.05, 1]}}}
+  }
+}

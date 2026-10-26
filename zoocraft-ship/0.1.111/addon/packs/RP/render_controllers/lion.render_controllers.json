@@ -1,0 +1,21 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.zoocraft.lion": {
+      "arrays": {
+        "textures": {"Array.coats": ["Texture.default", "Texture.lion", "Texture.lion_dark", "Texture.cub"]}
+      },
+      "geometry": "Geometry.default",
+      "materials": [{"*": "Material.default"}],
+      "textures": ["Array.coats[q.is_baby ? 3 : (q.variant == 1 ? (q.mark_variant == 1 ? 2 : 1) : 0)]"],
+      "part_visibility": [
+        {"*": true},
+        {"mane": "(!q.is_baby && q.variant == 1)"},
+        {"tuft": "!q.is_baby"},
+        {
+          "lids": "query.property('zoocraft:act') == 6 || query.property('zoocraft:act') == 7 || query.property('zoocraft:act') == 11 || query.property('zoocraft:act') == 8 || query.property('zoocraft:act') == 24 || v.lids || math.mod(q.life_time + v.offset * 0.37, 5.1) < 0.15"
+        }
+      ]
+    }
+  }
+}

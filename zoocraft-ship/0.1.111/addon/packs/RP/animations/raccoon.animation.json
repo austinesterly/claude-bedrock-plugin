@@ -1,0 +1,292 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.zoocraft.raccoon.idle": {
+      "loop": true,
+      "bones": {
+        "body": {"position": [0, "math.max(0, math.sin(query.life_time * 80 + variable.offset) * 0.12)", 0]},
+        "head": {
+          "rotation": [
+            "(math.sin(query.life_time * 30 + variable.offset) * 4) + (math.max(0, math.sin(query.life_time * 400 + variable.offset) - 0.85) * 25)",
+            "math.sin(query.life_time * 12 + variable.offset) * 15",
+            0
+          ]
+        },
+        "earL": {
+          "rotation": [0, "math.max(0, math.sin(query.life_time * 55 + variable.offset * 3)) * 20", 0]
+        },
+        "earR": {
+          "rotation": [0, "-math.max(0, math.sin(query.life_time * 47 + variable.offset * 5)) * 20", 0]
+        },
+        "tail2": {
+          "rotation": [
+            "math.sin(query.life_time * 35 + variable.offset) * 6",
+            "math.sin(query.life_time * 23 + variable.offset) * 8",
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.raccoon.walk": {
+      "loop": true,
+      "bones": {
+        "leg0": {
+          "rotation": ["math.sin(query.modified_distance_moved * 130) * 35", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.modified_distance_moved * 130)) * 0.8", 0]
+        },
+        "leg1": {
+          "rotation": ["math.sin(query.modified_distance_moved * 130 + 180) * 35", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.modified_distance_moved * 130 + 180)) * 0.8", 0]
+        },
+        "leg2": {
+          "rotation": ["math.sin(query.modified_distance_moved * 130 + 180) * 35", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.modified_distance_moved * 130 + 180)) * 0.8", 0]
+        },
+        "leg3": {
+          "rotation": ["math.sin(query.modified_distance_moved * 130) * 35", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.modified_distance_moved * 130)) * 0.8", 0]
+        },
+        "body": {
+          "rotation": [0, 0, "math.sin(query.modified_distance_moved * 130) * 5"],
+          "position": [0, "math.abs(math.sin(query.modified_distance_moved * 130)) * 0.3", 0]
+        },
+        "head": {
+          "rotation": [
+            "math.sin(query.modified_distance_moved * 130 * 2) * 3",
+            0,
+            "math.sin(query.modified_distance_moved * 130) * -3"
+          ]
+        },
+        "tail": {"rotation": [0, "math.sin(query.modified_distance_moved * 130) * 12", 0]},
+        "tail2": {"rotation": [0, "math.sin(query.modified_distance_moved * 130 - 70) * 12", 0]},
+        "hand0": {"rotation": ["math.max(0, -math.cos(query.modified_distance_moved * 130)) * -30", 0, 0]},
+        "hand1": {
+          "rotation": ["math.max(0, -math.cos(query.modified_distance_moved * 130 + 180)) * -30", 0, 0]
+        }
+      }
+    },
+    "animation.zoocraft.raccoon.scramble": {
+      "loop": true,
+      "bones": {
+        "leg0": {
+          "rotation": ["math.sin(query.anim_time * 900) * 40", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.anim_time * 900)) * 1.2", 0]
+        },
+        "leg1": {
+          "rotation": ["math.sin(query.anim_time * 900 + 180) * 40", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.anim_time * 900 + 180)) * 1.2", 0]
+        },
+        "leg2": {
+          "rotation": ["math.sin(query.anim_time * 900 + 180) * 40", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.anim_time * 900 + 180)) * 1.2", 0]
+        },
+        "leg3": {
+          "rotation": ["math.sin(query.anim_time * 900) * 40", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.anim_time * 900)) * 1.2", 0]
+        },
+        "body": {
+          "rotation": [-18, 0, "math.sin(query.anim_time * 900) * 5"],
+          "position": [0, "math.abs(math.sin(query.anim_time * 900)) * 0.3", 0]
+        },
+        "head": {
+          "rotation": [
+            "(math.sin(query.anim_time * 900 * 2) * 3) + 14",
+            0,
+            "math.sin(query.anim_time * 900) * -3"
+          ]
+        },
+        "tail": {"rotation": [30, "math.sin(query.anim_time * 900) * 12", 0]},
+        "tail2": {"rotation": [0, "math.sin(query.anim_time * 900 - 70) * 12", 0]},
+        "hand0": {"rotation": ["math.max(0, -math.cos(query.anim_time * 900)) * -30", 0, 0]},
+        "hand1": {"rotation": ["math.max(0, -math.cos(query.anim_time * 900 + 180)) * -30", 0, 0]},
+        "climb": {"position": [0, 2.2, 0]}
+      }
+    },
+    "animation.zoocraft.raccoon.climb": {
+      "loop": true,
+      "bones": {
+        "climb": {"rotation": [-90, 0, 0]},
+        "leg0": {"rotation": ["-45 + (math.sin(query.anim_time * 700 + 0) * 28)", 0, -12]},
+        "leg1": {"rotation": ["-45 + (math.sin(query.anim_time * 700 + 180) * 28)", 0, 12]},
+        "leg2": {"rotation": ["-25 + (math.sin(query.anim_time * 700 + 180) * 28)", 0, -12]},
+        "leg3": {"rotation": ["-25 + (math.sin(query.anim_time * 700 + 0) * 28)", 0, 12]},
+        "hand0": {"rotation": [-20, 0, 0]},
+        "hand1": {"rotation": [-20, 0, 0]},
+        "body": {"rotation": [0, 0, "math.sin(query.anim_time * 700) * 4"]},
+        "head": {"rotation": [-18, 0, 0]},
+        "tail": {"rotation": [40, "math.sin(query.anim_time * 700 * 0.5) * 8", 0]}
+      }
+    },
+    "animation.zoocraft.raccoon.cling": {
+      "loop": true,
+      "bones": {
+        "climb": {"rotation": [-90, 0, 0]},
+        "leg0": {"rotation": [-50, 0, -12]},
+        "leg1": {"rotation": [-50, 0, 12]},
+        "leg2": {"rotation": [-30, 0, -12]},
+        "leg3": {"rotation": [-30, 0, 12]},
+        "hand0": {"rotation": [-25, 0, 0]},
+        "hand1": {"rotation": [-25, 0, 0]},
+        "head": {
+          "rotation": [
+            "-12 + (math.sin(query.life_time * 40 + variable.offset) * 5)",
+            "math.sin(query.life_time * 25 + variable.offset) * 20",
+            0
+          ]
+        },
+        "tail": {"rotation": [35, "math.sin(query.life_time * 30 + variable.offset) * 8", 0]},
+        "body": {"position": [0, "math.max(0, math.sin(query.life_time * 90 + variable.offset) * 0.1)", 0]}
+      }
+    },
+    "animation.zoocraft.raccoon.down": {
+      "loop": true,
+      "bones": {
+        "descend": {"rotation": [90, 0, 0]},
+        "leg0": {"rotation": ["-40 + (math.sin(query.anim_time * 800 + 0) * 25)", 0, -12]},
+        "leg1": {"rotation": ["-40 + (math.sin(query.anim_time * 800 + 180) * 25)", 0, 12]},
+        "leg2": {"rotation": ["30 + (math.sin(query.anim_time * 800 + 180) * 25)", 0, -12]},
+        "leg3": {"rotation": ["30 + (math.sin(query.anim_time * 800 + 0) * 25)", 0, 12]},
+        "head": {"rotation": [-30, 0, 0]},
+        "tail": {"rotation": [30, 0, 0]},
+        "body": {"rotation": [0, 0, "math.sin(query.anim_time * 800) * 4"]}
+      }
+    },
+    "animation.zoocraft.raccoon.lookout": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "rotation": ["-70 * (math.clamp(query.anim_time / 0.4, 0, 1))", 0, 0],
+          "position": [0, "math.max(0, math.sin(query.life_time * 90 + variable.offset) * 0.1)", 0]
+        },
+        "leg2": {"rotation": ["70 * (math.clamp(query.anim_time / 0.4, 0, 1))", 0, 0]},
+        "leg3": {"rotation": ["70 * (math.clamp(query.anim_time / 0.4, 0, 1))", 0, 0]},
+        "leg0": {"rotation": ["-60 * (math.clamp(query.anim_time / 0.4, 0, 1))", 0, 0]},
+        "leg1": {"rotation": ["-60 * (math.clamp(query.anim_time / 0.4, 0, 1))", 0, 0]},
+        "hand0": {"rotation": ["-30 * (math.clamp(query.anim_time / 0.4, 0, 1))", 0, 0]},
+        "hand1": {"rotation": ["-30 * (math.clamp(query.anim_time / 0.4, 0, 1))", 0, 0]},
+        "head": {
+          "rotation": [
+            "63 * (math.clamp(query.anim_time / 0.4, 0, 1))",
+            "math.sin(query.life_time * 20 + variable.offset) * 35",
+            0
+          ]
+        },
+        "tail": {"rotation": ["80 * (math.clamp(query.anim_time / 0.4, 0, 1))", 0, 0]},
+        "tail2": {"rotation": ["-20 * (math.clamp(query.anim_time / 0.4, 0, 1))", 0, 0]},
+        "climb": {"position": [0, "2.223 * (math.clamp(query.anim_time / 0.4, 0, 1))", 0]}
+      }
+    },
+    "animation.zoocraft.raccoon.wash": {
+      "loop": true,
+      "bones": {
+        "body": {"rotation": ["-40 * (math.clamp(query.anim_time / 0.4, 0, 1))", 0, 0]},
+        "leg2": {"rotation": ["40 * (math.clamp(query.anim_time / 0.4, 0, 1))", 0, 0]},
+        "leg3": {"rotation": ["40 * (math.clamp(query.anim_time / 0.4, 0, 1))", 0, 0]},
+        "leg0": {
+          "rotation": [
+            "(-75 * (math.clamp(query.anim_time / 0.4, 0, 1))) + (math.sin(query.life_time * 500) * 12)",
+            0,
+            -10
+          ]
+        },
+        "leg1": {
+          "rotation": [
+            "(-75 * (math.clamp(query.anim_time / 0.4, 0, 1))) + (math.sin(query.life_time * 500 + 180) * 12)",
+            0,
+            10
+          ]
+        },
+        "hand0": {
+          "rotation": [
+            "(-30 * (math.clamp(query.anim_time / 0.4, 0, 1))) + (math.sin(query.life_time * 500) * 20)",
+            0,
+            0
+          ]
+        },
+        "hand1": {
+          "rotation": [
+            "(-30 * (math.clamp(query.anim_time / 0.4, 0, 1))) + (math.sin(query.life_time * 500 + 180) * 20)",
+            0,
+            0
+          ]
+        },
+        "head": {"rotation": ["(36 * (math.clamp(query.anim_time / 0.4, 0, 1))) + 20", 0, 0]},
+        "tail": {"rotation": ["50 * (math.clamp(query.anim_time / 0.4, 0, 1))", 0, 0]},
+        "tail2": {"rotation": ["-20 * (math.clamp(query.anim_time / 0.4, 0, 1))", 0, 0]},
+        "climb": {"position": [0, "-0.491 * (math.clamp(query.anim_time / 0.4, 0, 1))", 0]}
+      }
+    },
+    "animation.zoocraft.raccoon.puzzle": {
+      "loop": true,
+      "bones": {
+        "head": {
+          "rotation": [
+            "28 + (math.sin(query.life_time * 420 + variable.offset) * 4)",
+            "math.sin(query.life_time * 120 + variable.offset) * 10",
+            0
+          ]
+        },
+        "leg0": {
+          "rotation": ["-20 - math.max(0, math.sin(query.life_time * 420)) * 35", 0, 0],
+          "position": [0, "math.max(0, math.sin(query.life_time * 420)) * 1", 0]
+        },
+        "leg1": {
+          "rotation": ["-20 - math.max(0, math.sin(query.life_time * 420 + 180)) * 35", 0, 0],
+          "position": [0, "math.max(0, math.sin(query.life_time * 420 + 180)) * 1", 0]
+        },
+        "hand0": {"rotation": ["math.sin(query.life_time * 420) * 25", 0, 0]},
+        "hand1": {"rotation": ["math.sin(query.life_time * 420 + 180) * 25", 0, 0]},
+        "tail": {"rotation": [10, 0, 0]}
+      }
+    },
+    "animation.zoocraft.raccoon.rummage": {
+      "loop": true,
+      "bones": {
+        "body": {"rotation": [-25, 0, 0]},
+        "leg2": {"rotation": [25, 0, 0]},
+        "leg3": {"rotation": [25, 0, 0]},
+        "leg0": {"rotation": ["-60 - math.max(0, math.sin(query.life_time * 460)) * 30", 0, 0]},
+        "leg1": {"rotation": ["-60 - math.max(0, math.sin(query.life_time * 460 + 180)) * 30", 0, 0]},
+        "head": {
+          "rotation": [
+            "45 + (math.sin(query.life_time * 460 + variable.offset) * 6)",
+            "math.sin(query.life_time * 100 + variable.offset) * 12",
+            0
+          ]
+        },
+        "hand0": {"rotation": ["math.sin(query.life_time * 460) * 25", 0, 0]},
+        "hand1": {"rotation": ["math.sin(query.life_time * 460 + 180) * 25", 0, 0]},
+        "tail": {"rotation": [35, "math.sin(query.life_time * 230 + variable.offset) * 10", 0]},
+        "climb": {"position": [0, -0.423, 0]}
+      }
+    },
+    "animation.zoocraft.raccoon.sleep": {
+      "loop": true,
+      "bones": {
+        "leg0": {"rotation": [-90, 0, 0]},
+        "leg1": {"rotation": [-90, 0, 0]},
+        "leg2": {"rotation": [-90, 0, 0]},
+        "leg3": {"rotation": [-90, 0, 0]},
+        "hand0": {"rotation": [90, 0, 0]},
+        "hand1": {"rotation": [90, 0, 0]},
+        "head": {"rotation": [28, 45, 0]},
+        "tail": {"rotation": [45, 90, 0]},
+        "tail2": {"rotation": [-10, 60, 0]},
+        "climb": {"position": [0, -0.773, 0]},
+        "body": {"scale": [1, "1 + (math.sin(query.life_time * 40 + variable.offset) * 0.025)", 1]}
+      }
+    },
+    "animation.zoocraft.raccoon.look_at_target": {
+      "loop": true,
+      "bones": {
+        "head": {
+          "rotation": [
+            "math.clamp(query.target_x_rotation, -25, 25)",
+            "math.clamp(query.target_y_rotation, -40, 40)",
+            0
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,1095 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.zoocraft.tiger.idle": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "position": [0, "math.max(0, math.sin(query.life_time * 70 + variable.offset) * 0.192)", 0]
+        },
+        "earL": {
+          "rotation": [0, "math.max(0, math.sin(query.life_time * 50 + variable.offset * 3)) * 15", 0]
+        },
+        "earR": {
+          "rotation": [0, "-math.max(0, math.sin(query.life_time * 43 + variable.offset * 5)) * 15", 0]
+        },
+        "tail2": {
+          "rotation": [
+            "math.sin(query.life_time * 35 + variable.offset) * 6",
+            "math.sin(query.life_time * 23 + variable.offset) * 10",
+            0
+          ]
+        },
+        "neck": {
+          "rotation": [
+            "math.sin(query.life_time * 20 + variable.offset) * 3",
+            "math.sin(query.life_time * 11 + variable.offset) * 12",
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.tiger.walk": {
+      "loop": true,
+      "bones": {
+        "armL": {
+          "rotation": ["math.sin(query.modified_distance_moved * 90 + 90) * 28", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.modified_distance_moved * 90 + 90)) * 1.2", 0]
+        },
+        "armR": {
+          "rotation": ["math.sin(query.modified_distance_moved * 90 + 270) * 28", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.modified_distance_moved * 90 + 270)) * 1.2", 0]
+        },
+        "thighL": {
+          "rotation": ["math.sin(query.modified_distance_moved * 90) * 28", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.modified_distance_moved * 90)) * 1.2", 0]
+        },
+        "thighR": {
+          "rotation": ["math.sin(query.modified_distance_moved * 90 + 180) * 28", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.modified_distance_moved * 90 + 180)) * 1.2", 0]
+        },
+        "body": {
+          "rotation": [0, 0, "math.sin(query.modified_distance_moved * 90) * 1.5"],
+          "position": [0, "math.abs(math.sin(query.modified_distance_moved * 90)) * 0.3", 0]
+        },
+        "neck": {"rotation": ["6 + (math.sin(query.modified_distance_moved * 90 * 2) * 2)", 0, 0]},
+        "head": {"rotation": ["math.sin(query.modified_distance_moved * 90 * 2 + 90) * 2", 0, 0]},
+        "tail": {"rotation": [0, "math.sin(query.modified_distance_moved * 90) * 8", 0]},
+        "tail2": {"rotation": [0, "math.sin(query.modified_distance_moved * 90 - 60) * 10", 0]}
+      }
+    },
+    "animation.zoocraft.tiger.walk_t": {
+      "loop": true,
+      "bones": {
+        "armL": {
+          "rotation": ["math.sin(query.anim_time * 360 * variable.leg_rate + 90) * 28", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.anim_time * 360 * variable.leg_rate + 90)) * 1.2", 0]
+        },
+        "armR": {
+          "rotation": ["math.sin(query.anim_time * 360 * variable.leg_rate + 270) * 28", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.anim_time * 360 * variable.leg_rate + 270)) * 1.2", 0]
+        },
+        "thighL": {
+          "rotation": ["math.sin(query.anim_time * 360 * variable.leg_rate) * 28", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.anim_time * 360 * variable.leg_rate)) * 1.2", 0]
+        },
+        "thighR": {
+          "rotation": ["math.sin(query.anim_time * 360 * variable.leg_rate + 180) * 28", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.anim_time * 360 * variable.leg_rate + 180)) * 1.2", 0]
+        },
+        "body": {
+          "rotation": [0, 0, "math.sin(query.anim_time * 360 * variable.leg_rate) * 1.5"],
+          "position": [0, "math.abs(math.sin(query.anim_time * 360 * variable.leg_rate)) * 0.3", 0]
+        },
+        "neck": {"rotation": ["6 + (math.sin(query.anim_time * 360 * variable.leg_rate * 2) * 2)", 0, 0]},
+        "head": {"rotation": ["math.sin(query.anim_time * 360 * variable.leg_rate * 2 + 90) * 2", 0, 0]},
+        "tail": {"rotation": [0, "math.sin(query.anim_time * 360 * variable.leg_rate) * 8", 0]},
+        "tail2": {"rotation": [0, "math.sin(query.anim_time * 360 * variable.leg_rate - 60) * 10", 0]}
+      }
+    },
+    "animation.zoocraft.tiger.trot": {
+      "loop": true,
+      "bones": {
+        "armL": {
+          "rotation": ["math.sin(query.anim_time * 576 * variable.trot_rate) * 32", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.anim_time * 576 * variable.trot_rate)) * 2", 0]
+        },
+        "armR": {
+          "rotation": ["math.sin(query.anim_time * 576 * variable.trot_rate + 180) * 32", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.anim_time * 576 * variable.trot_rate + 180)) * 2", 0]
+        },
+        "thighL": {
+          "rotation": ["math.sin(query.anim_time * 576 * variable.trot_rate + 180) * 32", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.anim_time * 576 * variable.trot_rate + 180)) * 2", 0]
+        },
+        "thighR": {
+          "rotation": ["math.sin(query.anim_time * 576 * variable.trot_rate) * 32", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.anim_time * 576 * variable.trot_rate)) * 2", 0]
+        },
+        "body": {"position": [0, "math.abs(math.sin(query.anim_time * 576 * variable.trot_rate)) * 0.8", 0]},
+        "neck": {"rotation": [4, 0, 0]},
+        "tail": {"rotation": [15, 0, 0]}
+      }
+    },
+    "animation.zoocraft.tiger.gallop": {
+      "loop": true,
+      "bones": {
+        "armL": {
+          "rotation": ["math.sin(query.anim_time * 1080 * variable.gallop_rate) * 42", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.anim_time * 1080 * variable.gallop_rate)) * 2.5", 0]
+        },
+        "armR": {
+          "rotation": ["math.sin(query.anim_time * 1080 * variable.gallop_rate + 40) * 42", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.anim_time * 1080 * variable.gallop_rate + 40)) * 2.5", 0]
+        },
+        "thighL": {
+          "rotation": ["math.sin(query.anim_time * 1080 * variable.gallop_rate + 180) * 42", 0, 0],
+          "position": [
+            0,
+            "math.max(0, -math.cos(query.anim_time * 1080 * variable.gallop_rate + 180)) * 2.5",
+            0
+          ]
+        },
+        "thighR": {
+          "rotation": ["math.sin(query.anim_time * 1080 * variable.gallop_rate + 220) * 42", 0, 0],
+          "position": [
+            0,
+            "math.max(0, -math.cos(query.anim_time * 1080 * variable.gallop_rate + 220)) * 2.5",
+            0
+          ]
+        },
+        "body": {
+          "rotation": ["math.sin(query.anim_time * 1080 * variable.gallop_rate + 60) * 7", 0, 0],
+          "position": [
+            0,
+            "1.6 + math.max(0, math.sin(query.anim_time * 1080 * variable.gallop_rate + 60)) * 1.5",
+            0
+          ]
+        },
+        "neck": {
+          "rotation": ["14 + (math.sin(query.anim_time * 1080 * variable.gallop_rate + 60) * -6)", 0, 0]
+        },
+        "jaw": {"rotation": [8, 0, 0]},
+        "earL": {"rotation": [60, 0, 0]},
+        "earR": {"rotation": [60, 0, 0]},
+        "tail": {"rotation": [45, 0, 0]},
+        "tail2": {"rotation": [-15, 0, 0]}
+      }
+    },
+    "animation.zoocraft.tiger.stalk": {
+      "loop": true,
+      "bones": {
+        "armL": {
+          "rotation": ["(math.sin(query.anim_time * 290 * variable.leg_rate + 90) * 8) + -28", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.anim_time * 290 * variable.leg_rate + 90)) * 0.6", 0]
+        },
+        "armR": {
+          "rotation": ["(math.sin(query.anim_time * 290 * variable.leg_rate + 270) * 8) + -28", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.anim_time * 290 * variable.leg_rate + 270)) * 0.6", 0]
+        },
+        "thighL": {
+          "rotation": ["(math.sin(query.anim_time * 290 * variable.leg_rate) * 8) + 28", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.anim_time * 290 * variable.leg_rate)) * 0.6", 0]
+        },
+        "thighR": {
+          "rotation": ["(math.sin(query.anim_time * 290 * variable.leg_rate + 180) * 8) + 28", 0, 0],
+          "position": [0, "math.max(0, -math.cos(query.anim_time * 290 * variable.leg_rate + 180)) * 0.6", 0]
+        },
+        "tiger": {"position": [0, -0.401, 0]},
+        "neck": {"rotation": [22, 0, 0]},
+        "head": {"rotation": [-10, 0, 0]},
+        "earL": {"rotation": [-10, 0, 0]},
+        "earR": {"rotation": [-10, 0, 0]},
+        "tail": {"rotation": [25, 0, 0]}
+      }
+    },
+    "animation.zoocraft.tiger.alert": {
+      "loop": true,
+      "bones": {
+        "neck": {"rotation": [-12, 0, 0]},
+        "earL": {"rotation": [-15, 0, 0]},
+        "earR": {"rotation": [-15, 0, 0]},
+        "body": {
+          "position": [0, "math.max(0, math.sin(query.life_time * 90 + variable.offset) * 0.128)", 0]
+        }
+      }
+    },
+    "animation.zoocraft.tiger.warn": {
+      "loop": true,
+      "bones": {
+        "armL": {"rotation": [-18, 0, 0]},
+        "armR": {"rotation": [-18, 0, 0]},
+        "thighL": {"rotation": [18, 0, 0]},
+        "thighR": {"rotation": [18, 0, 0]},
+        "tiger": {"position": [0, -0.263, 0]},
+        "neck": {"rotation": [18, 0, 0]},
+        "head": {"rotation": [-6, "math.sin(query.life_time * 300 + variable.offset) * 4", 0]},
+        "jaw": {
+          "rotation": ["14 + (math.max(0, math.sin(query.life_time * 240 + variable.offset)))", 0, 0]
+        },
+        "earL": {"rotation": [70, 0, 0]},
+        "earR": {"rotation": [70, 0, 0]},
+        "tail": {"rotation": [20, "math.sin(query.life_time * 400 + variable.offset) * 35", 0]},
+        "tail2": {"rotation": [0, "math.sin(query.life_time * 400 + variable.offset - 60) * 25", 0]}
+      }
+    },
+    "animation.zoocraft.tiger.swipe": {
+      "loop": "hold_on_last_frame",
+      "animation_length": 0.9,
+      "bones": {
+        "armL": {
+          "rotation": {
+            "0.0": {"post": [0, 0, 0]},
+            "0.15": {"post": [-75, 0, 20]},
+            "0.3": {"post": [-95, 0, -25]},
+            "0.45": {"post": [-60, 0, -35]},
+            "0.65": {"post": [-20, 0, -10]},
+            "0.9": {"post": [0, 0, 0]}
+          }
+        },
+        "body": {
+          "rotation": {"0.0": {"post": [0, 0, 0]}, "0.3": {"post": [-6, 0, -4]}, "0.9": {"post": [0, 0, 0]}},
+          "position": {"0.0": {"post": [0, 0, 0]}, "0.3": {"post": [0, 2, 0]}, "0.9": {"post": [0, 0, 0]}}
+        },
+        "neck": {"rotation": [10, 0, 0]},
+        "jaw": {"rotation": [18, 0, 0]},
+        "earL": {"rotation": [60, 0, 0]},
+        "earR": {"rotation": [60, 0, 0]}
+      }
+    },
+    "animation.zoocraft.tiger.roar": {
+      "loop": true,
+      "bones": {
+        "neck": {
+          "rotation": ["12 * (math.clamp(query.anim_time / 0.4, 0, 1))", 0, 0],
+          "position": [0, 0, "-1.5 * (math.clamp(query.anim_time / 0.4, 0, 1))"]
+        },
+        "head": {"rotation": ["-8 * (math.clamp(query.anim_time / 0.4, 0, 1))", 0, 0]},
+        "jaw": {
+          "rotation": [
+            "(24 * (math.clamp(query.anim_time / 0.4, 0, 1))) + ((math.max(0, math.sin(query.life_time * 180 + variable.offset))) * 8)",
+            0,
+            0
+          ]
+        },
+        "earL": {"rotation": ["45 * (math.clamp(query.anim_time / 0.4, 0, 1))", 0, 0]},
+        "earR": {"rotation": ["45 * (math.clamp(query.anim_time / 0.4, 0, 1))", 0, 0]},
+        "body": {
+          "position": [0, "(math.max(0, math.sin(query.life_time * 180 + variable.offset))) * 0.5", 0]
+        },
+        "tail": {"rotation": [12, 0, 0]}
+      }
+    },
+    "animation.zoocraft.tiger.rub": {
+      "loop": true,
+      "bones": {
+        "neck": {
+          "rotation": [8, 0, "math.sin(query.life_time * 90 + variable.offset) * 14"],
+          "position": [0, 0, -1]
+        },
+        "head": {
+          "rotation": [
+            "math.sin(query.life_time * 90 + variable.offset) * 5",
+            0,
+            "math.sin(query.life_time * 90 + variable.offset + 40) * 10"
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.tiger.sniff": {
+      "loop": true,
+      "bones": {
+        "neck": {
+          "rotation": [
+            "42 + (math.sin(query.life_time * 400 + variable.offset) * 4)",
+            "math.sin(query.life_time * 70 + variable.offset) * 10",
+            0
+          ]
+        },
+        "head": {"rotation": [20, 0, 0]},
+        "earL": {"rotation": [15, 0, 0]},
+        "earR": {"rotation": [15, 0, 0]}
+      }
+    },
+    "animation.zoocraft.tiger.flehmen": {
+      "loop": true,
+      "bones": {
+        "neck": {"rotation": [-22, 0, 0]},
+        "head": {"rotation": [-10, "math.sin(query.life_time * 30 + variable.offset) * 3", 0]},
+        "jaw": {"rotation": [10, 0, 0]},
+        "earL": {"rotation": [35, 0, 0]},
+        "earR": {"rotation": [35, 0, 0]},
+        "body": {
+          "position": [0, "math.max(0, math.sin(query.life_time * 120 + variable.offset) * 0.096)", 0]
+        }
+      }
+    },
+    "animation.zoocraft.tiger.spray": {
+      "loop": true,
+      "bones": {
+        "body": {"rotation": [-3, 0, 0]},
+        "tiger": {"position": [0, 0.7, 0]},
+        "tail": {"rotation": ["135 + (math.sin(query.life_time * 700 + variable.offset) * 4)", 0, 0]},
+        "tail2": {"rotation": [-20, 0, 0]},
+        "neck": {"rotation": [-5, 0, 0]}
+      }
+    },
+    "animation.zoocraft.tiger.scrape": {
+      "loop": true,
+      "bones": {
+        "body": {"rotation": [-4, 0, 0]},
+        "tiger": {"position": [0, 0.918, 0]},
+        "neck": {"rotation": [20, 0, 0]},
+        "head": {"rotation": [-5, 0, 0]},
+        "tail": {"rotation": [40, 0, 0]}
+      }
+    },
+    "animation.zoocraft.tiger.leg_rake_l": {
+      "loop": true,
+      "animation_length": 1.05,
+      "bones": {
+        "thighL": {
+          "rotation": ["55 * (variable.rake_l)", 0, "-10 * (variable.rake_l)"],
+          "position": [0, "2 * (variable.rake_l)", 0]
+        }
+      }
+    },
+    "animation.zoocraft.tiger.leg_rake_r": {
+      "loop": true,
+      "animation_length": 1.05,
+      "bones": {
+        "thighR": {
+          "rotation": ["55 * (variable.rake_r)", 0, "10 * (variable.rake_r)"],
+          "position": [0, "2 * (variable.rake_r)", 0]
+        }
+      }
+    },
+    "animation.zoocraft.tiger.suckle": {
+      "loop": true,
+      "bones": {
+        "neck": {"rotation": ["30 + (math.sin(query.life_time * 500 + variable.offset) * 3)", 0, 0]},
+        "head": {"rotation": ["10 + (math.sin(query.life_time * 500 + variable.offset) * 4)", 0, 0]},
+        "jaw": {"rotation": ["(math.max(0, math.sin(query.life_time * 500 + variable.offset))) * 5", 0, 0]},
+        "tail": {"rotation": [60, "math.sin(query.life_time * 350 + variable.offset) * 25", 0]},
+        "armL": {"rotation": [-12, 0, 0]},
+        "armR": {"rotation": [-12, 0, 0]},
+        "thighL": {"rotation": [12, 0, 0]},
+        "thighR": {"rotation": [12, 0, 0]},
+        "tiger": {"position": [0, 0.022, 0]}
+      }
+    },
+    "animation.zoocraft.tiger.play": {
+      "loop": true,
+      "bones": {
+        "tiger": {"position": [0, "math.abs(math.sin(query.anim_time * 420)) * 2", 0]},
+        "body": {"rotation": ["math.sin(query.anim_time * 420) * 8", 0, 0]},
+        "armL": {"rotation": ["-math.max(0, math.sin(query.anim_time * 420)) * 70", 0, -15]},
+        "armR": {"rotation": ["-math.max(0, math.sin(query.anim_time * 420 + 180)) * 70", 0, 15]},
+        "thighL": {"rotation": ["math.sin(query.anim_time * 420 + 90) * 25", 0, 0]},
+        "thighR": {"rotation": ["math.sin(query.anim_time * 420 + 90) * 25", 0, 0]},
+        "neck": {"rotation": ["math.sin(query.anim_time * 420 * 0.5) * 10", 0, 0]},
+        "jaw": {
+          "rotation": ["(math.max(0, math.sin(query.life_time * 420 + variable.offset))) * 10", 0, 0]
+        },
+        "tail": {"rotation": [40, 0, 0]}
+      }
+    },
+    "animation.zoocraft.tiger.play_life": {
+      "loop": true,
+      "bones": {
+        "earL": {
+          "rotation": [0, "math.max(0, math.sin(query.life_time * 50 + variable.offset * 3)) * 15", 0]
+        },
+        "earR": {
+          "rotation": [0, "-math.max(0, math.sin(query.life_time * 43 + variable.offset * 5)) * 15", 0]
+        },
+        "tail2": {
+          "rotation": [
+            "math.sin(query.life_time * 35 + variable.offset) * 6",
+            "math.sin(query.life_time * 23 + variable.offset) * 10",
+            0
+          ]
+        },
+        "head": {"rotation": [0, "math.sin(query.life_time * 300 + variable.offset) * 20", 0]}
+      }
+    },
+    "animation.zoocraft.tiger.drink": {
+      "loop": true,
+      "bones": {
+        "neck": {"rotation": ["48 + (math.sin(query.life_time * 280 + variable.offset) * 1)", 0, 0]},
+        "head": {"rotation": [12, 0, 0]},
+        "jaw": {"rotation": ["(math.max(0, math.sin(query.life_time * 560 + variable.offset))) * 4", 0, 0]},
+        "armL": {"rotation": [-12, 0, 0]},
+        "armR": {"rotation": [-12, 0, 0]},
+        "tiger": {"position": [0, 0.022, 0]},
+        "tail": {"rotation": [10, 0, 0]}
+      }
+    },
+    "animation.zoocraft.tiger.feed": {
+      "loop": true,
+      "bones": {
+        "neck": {"rotation": ["40 + (math.sin(query.life_time * 190 + variable.offset) * 3)", 0, 0]},
+        "head": {"rotation": [12, 0, 0]},
+        "jaw": {"rotation": ["(math.max(0, math.sin(query.life_time * 380 + variable.offset))) * 7", 0, 0]},
+        "tail": {"rotation": [8, 0, 0]}
+      }
+    },
+    "animation.zoocraft.tiger.eat": {
+      "loop": true,
+      "bones": {
+        "neck": {"rotation": ["48 + (math.sin(query.life_time * 150 + variable.offset) * 3)", 0, 0]},
+        "head": {"rotation": [12, 0, 0]},
+        "jaw": {"rotation": ["(math.max(0, math.sin(query.life_time * 300 + variable.offset))) * 9", 0, 0]},
+        "tail": {"rotation": [8, 0, 0]}
+      }
+    },
+    "animation.zoocraft.tiger.yawn": {
+      "loop": true,
+      "bones": {
+        "neck": {"rotation": ["-18 * (math.sin(math.clamp(query.anim_time / 1.6, 0, 1) * 180))", 0, 0]},
+        "head": {"rotation": ["-10 * (math.sin(math.clamp(query.anim_time / 1.6, 0, 1) * 180))", 0, 0]},
+        "jaw": {"rotation": ["38 * (math.sin(math.clamp(query.anim_time / 1.6, 0, 1) * 180))", 0, 0]},
+        "earL": {"rotation": ["50 * (math.sin(math.clamp(query.anim_time / 1.6, 0, 1) * 180))", 0, 0]},
+        "earR": {"rotation": ["50 * (math.sin(math.clamp(query.anim_time / 1.6, 0, 1) * 180))", 0, 0]}
+      }
+    },
+    "animation.zoocraft.tiger.claw": {
+      "loop": true,
+      "bones": {
+        "body": {"rotation": ["-62 * (math.clamp(query.anim_time / 0.6, 0, 1))", 0, 0]},
+        "thighL": {"rotation": ["62 * (math.clamp(query.anim_time / 0.6, 0, 1))", 0, 0]},
+        "thighR": {"rotation": ["62 * (math.clamp(query.anim_time / 0.6, 0, 1))", 0, 0]},
+        "armL": {
+          "rotation": [
+            "(-120 * (math.clamp(query.anim_time / 0.6, 0, 1))) + ((math.sin(query.life_time * 300 + variable.offset) * 15) * (math.clamp(query.anim_time / 0.6, 0, 1)))",
+            0,
+            0
+          ],
+          "position": [
+            0,
+            "(math.sin(query.life_time * 300 + variable.offset) * 1) * (math.clamp(query.anim_time / 0.6, 0, 1))",
+            0
+          ]
+        },
+        "armR": {
+          "rotation": [
+            "(-120 * (math.clamp(query.anim_time / 0.6, 0, 1))) + ((math.sin(query.life_time * 300 + variable.offset + 180) * 15) * (math.clamp(query.anim_time / 0.6, 0, 1)))",
+            0,
+            0
+          ],
+          "position": [
+            0,
+            "(math.sin(query.life_time * 300 + variable.offset + 180) * 1) * (math.clamp(query.anim_time / 0.6, 0, 1))",
+            0
+          ]
+        },
+        "neck": {"rotation": ["20 * (math.clamp(query.anim_time / 0.6, 0, 1))", 0, 0]},
+        "tail": {"rotation": ["30 * (math.clamp(query.anim_time / 0.6, 0, 1))", 0, 0]},
+        "tiger": {"position": [0, "16.592 * (math.clamp(query.anim_time / 0.6, 0, 1))", 0]}
+      }
+    },
+    "animation.zoocraft.tiger.look_at_target": {
+      "loop": true,
+      "bones": {
+        "head": {
+          "rotation": [
+            "math.clamp(query.target_x_rotation, -25, 25)",
+            "math.clamp(query.target_y_rotation, -40, 40)",
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.tiger.sit_down": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "armR": {"rotation": ["41.81 * (math.clamp(query.anim_time / 1.1, 0, 1))", 0, 0]},
+        "thighL": {"rotation": ["-48.19 * (math.clamp(query.anim_time / 1.1, 0, 1))", 0, 0]},
+        "armL": {"rotation": ["41.81 * (math.clamp(query.anim_time / 1.1, 0, 1))", 0, 0]},
+        "neck": {"rotation": ["-8 * (math.clamp(query.anim_time / 1.1, 0, 1))", 0, 0]},
+        "thighR": {"rotation": ["-48.19 * (math.clamp(query.anim_time / 1.1, 0, 1))", 0, 0]},
+        "tail": {"rotation": ["86.81 * (math.clamp(query.anim_time / 1.1, 0, 1))", 0, 0]},
+        "tail2": {"rotation": ["-25 * (math.clamp(query.anim_time / 1.1, 0, 1))", 0, 0]},
+        "body": {"rotation": ["-41.81 * (math.clamp(query.anim_time / 1.1, 0, 1))", 0, 0]},
+        "tiger": {
+          "position": {
+            "0.0": [0, 0, 0],
+            "0.0917": [0, 0.825, 0],
+            "0.1833": [0, 1.316, 0],
+            "0.275": [0, 1.473, 0],
+            "0.3667": [0, 1.302, 0],
+            "0.4583": [0, 0.815, 0],
+            "0.55": [0, 0.029, 0],
+            "0.6417": [0, -1.036, 0],
+            "0.7333": [0, -2.354, 0],
+            "0.825": [0, -3.896, 0],
+            "0.9167": [0, -5.629, 0],
+            "1.0083": [0, -7.519, 0],
+            "1.1": [0, -8.116, 0]
+          }
+        }
+      },
+      "animation_length": 1.1
+    },
+    "animation.zoocraft.tiger.sit_up": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "armR": {"rotation": ["41.81 + (-41.81 * (math.clamp(query.anim_time / 0.8, 0, 1)))", 0, 0]},
+        "thighL": {"rotation": ["-48.19 + (48.19 * (math.clamp(query.anim_time / 0.8, 0, 1)))", 0, 0]},
+        "armL": {"rotation": ["41.81 + (-41.81 * (math.clamp(query.anim_time / 0.8, 0, 1)))", 0, 0]},
+        "neck": {"rotation": ["-8 + (8 * (math.clamp(query.anim_time / 0.8, 0, 1)))", 0, 0]},
+        "thighR": {"rotation": ["-48.19 + (48.19 * (math.clamp(query.anim_time / 0.8, 0, 1)))", 0, 0]},
+        "tail": {"rotation": ["86.81 + (-86.81 * (math.clamp(query.anim_time / 0.8, 0, 1)))", 0, 0]},
+        "tail2": {"rotation": ["-25 + (25 * (math.clamp(query.anim_time / 0.8, 0, 1)))", 0, 0]},
+        "body": {"rotation": ["-41.81 + (41.81 * (math.clamp(query.anim_time / 0.8, 0, 1)))", 0, 0]},
+        "tiger": {
+          "position": {
+            "0.0": [0, -8.116, 0],
+            "0.0667": [0, -7.519, 0],
+            "0.1333": [0, -5.629, 0],
+            "0.2": [0, -3.896, 0],
+            "0.2667": [0, -2.354, 0],
+            "0.3333": [0, -1.036, 0],
+            "0.4": [0, 0.029, 0],
+            "0.4667": [0, 0.815, 0],
+            "0.5333": [0, 1.302, 0],
+            "0.6": [0, 1.473, 0],
+            "0.6667": [0, 1.316, 0],
+            "0.7333": [0, 0.825, 0],
+            "0.8": [0, 0, 0]
+          }
+        }
+      },
+      "animation_length": 0.8
+    },
+    "animation.zoocraft.tiger.sit": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "rotation": [-41.81, 0, 0],
+          "position": [0, "math.max(0, math.sin(query.life_time * 60 + variable.offset) * 0.16)", 0]
+        },
+        "armL": {"rotation": [41.81, 0, 0]},
+        "armR": {"rotation": [41.81, 0, 0]},
+        "thighL": {"rotation": [-48.19, 0, 0]},
+        "thighR": {"rotation": [-48.19, 0, 0]},
+        "neck": {"rotation": [-8, 0, 0]},
+        "tail": {"rotation": [86.81, 0, 0]},
+        "tail2": {"rotation": [-25, 0, 0]},
+        "tiger": {"position": [0, -8.116, 0]}
+      }
+    },
+    "animation.zoocraft.tiger.lie_down": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "armR": {"rotation": ["-90 * (math.clamp(query.anim_time / 2, 0, 1))", 0, 0]},
+        "tail": {"rotation": ["40 * (math.clamp(query.anim_time / 2, 0, 1))", 0, 0]},
+        "thighL": {"rotation": ["-90 * (math.clamp(query.anim_time / 2, 0, 1))", 0, 0]},
+        "armL": {"rotation": ["-90 * (math.clamp(query.anim_time / 2, 0, 1))", 0, 0]},
+        "tail2": {"rotation": ["-10 * (math.clamp(query.anim_time / 2, 0, 1))", 0, 0]},
+        "thighR": {"rotation": ["-90 * (math.clamp(query.anim_time / 2, 0, 1))", 0, 0]},
+        "neck": {"rotation": ["20 * (math.sin(math.clamp(query.anim_time / 2, 0, 1) * 180))", 0, 0]},
+        "tiger": {
+          "position": {
+            "0.0": [0, 0, 0],
+            "0.1667": [0, 0.107, 0],
+            "0.3333": [0, -0.096, 0],
+            "0.5": [0, -0.605, 0],
+            "0.6667": [0, -1.412, 0],
+            "0.8333": [0, -2.502, 0],
+            "1": [0, -3.858, 0],
+            "1.1667": [0, -5.456, 0],
+            "1.3333": [0, -7.268, 0],
+            "1.5": [0, -9.264, 0],
+            "1.6667": [0, -11.409, 0],
+            "1.8333": [0, -13.668, 0],
+            "2": [0, -16, 0]
+          }
+        }
+      },
+      "animation_length": 2
+    },
+    "animation.zoocraft.tiger.get_up": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "armR": {"rotation": ["-90 + (90 * (math.clamp(query.anim_time / 1.5, 0, 1)))", 0, 0]},
+        "tail": {"rotation": ["40 + (-40 * (math.clamp(query.anim_time / 1.5, 0, 1)))", 0, 0]},
+        "thighL": {"rotation": ["-90 + (90 * (math.clamp(query.anim_time / 1.5, 0, 1)))", 0, 0]},
+        "armL": {"rotation": ["-90 + (90 * (math.clamp(query.anim_time / 1.5, 0, 1)))", 0, 0]},
+        "tail2": {"rotation": ["-10 + (10 * (math.clamp(query.anim_time / 1.5, 0, 1)))", 0, 0]},
+        "thighR": {"rotation": ["-90 + (90 * (math.clamp(query.anim_time / 1.5, 0, 1)))", 0, 0]},
+        "tiger": {
+          "position": {
+            "0.0": [0, -16, 0],
+            "0.125": [0, -13.668, 0],
+            "0.25": [0, -11.409, 0],
+            "0.375": [0, -9.264, 0],
+            "0.5": [0, -7.268, 0],
+            "0.625": [0, -5.456, 0],
+            "0.75": [0, -3.858, 0],
+            "0.875": [0, -2.502, 0],
+            "1": [0, -1.412, 0],
+            "1.125": [0, -0.605, 0],
+            "1.25": [0, -0.096, 0],
+            "1.375": [0, 0.107, 0],
+            "1.5": [0, 0, 0]
+          }
+        }
+      },
+      "animation_length": 1.5
+    },
+    "animation.zoocraft.tiger.lie": {
+      "loop": true,
+      "bones": {
+        "armL": {"rotation": [-90, 0, 0]},
+        "armR": {"rotation": [-90, 0, 0]},
+        "thighL": {"rotation": [-90, 0, 0]},
+        "thighR": {"rotation": [-90, 0, 0]},
+        "tail": {"rotation": [40, 0, 0]},
+        "tail2": {"rotation": [-10, 0, 0]},
+        "tiger": {"position": [0, -16, 0]},
+        "body": {"position": [0, "math.max(0, math.sin(query.life_time * 60 + variable.offset) * 0.16)", 0]},
+        "neck": {"rotation": ["28.21 * (variable.rest_head)", 0, 0]},
+        "head": {"rotation": ["-14.105 * (variable.rest_head)", 0, 0]}
+      }
+    },
+    "animation.zoocraft.tiger.to_sleep": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "armR": {"rotation": ["-90 + (65 * (math.clamp(query.anim_time / 1.3, 0, 1)))", 0, 0]},
+        "thighL": {"rotation": ["-90 + (80 * (math.clamp(query.anim_time / 1.3, 0, 1)))", 0, 0]},
+        "armL": {"rotation": ["-90 + (65 * (math.clamp(query.anim_time / 1.3, 0, 1)))", 0, 0]},
+        "neck": {"rotation": ["12 * (math.clamp(query.anim_time / 1.3, 0, 1))", 0, 0]},
+        "thighR": {"rotation": ["-90 + (80 * (math.clamp(query.anim_time / 1.3, 0, 1)))", 0, 0]},
+        "tail": {"rotation": ["40 + (-20 * (math.clamp(query.anim_time / 1.3, 0, 1)))", 0, 0]},
+        "tail2": {"rotation": ["-10 + (10 * (math.clamp(query.anim_time / 1.3, 0, 1)))", 0, 0]},
+        "body": {"rotation": [0, 0, "90 * (math.clamp(query.anim_time / 1.3, 0, 1))"]},
+        "tiger": {
+          "position": {
+            "0.0": [0, -16, 0],
+            "0.1083": [0, -13.227, 0],
+            "0.2167": [0, -10.762, 0],
+            "0.325": [0, -8.737, 0],
+            "0.4333": [0, -7.26, 0],
+            "0.5417": [0, -6.414, 0],
+            "0.65": [0, -6.25, 0],
+            "0.7583": [0, -6.781, 0],
+            "0.8667": [0, -7.988, 0],
+            "0.975": [0, -9.812, 0],
+            "1.0833": [0, -12.169, 0],
+            "1.1917": [0, -14.943, 0],
+            "1.3": [0, -18, 0]
+          }
+        }
+      },
+      "animation_length": 1.3
+    },
+    "animation.zoocraft.tiger.wake": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "armR": {"rotation": ["-25 + (-65 * (math.clamp(query.anim_time / 1.2, 0, 1)))", 0, 0]},
+        "thighL": {"rotation": ["-10 + (-80 * (math.clamp(query.anim_time / 1.2, 0, 1)))", 0, 0]},
+        "armL": {"rotation": ["-25 + (-65 * (math.clamp(query.anim_time / 1.2, 0, 1)))", 0, 0]},
+        "neck": {"rotation": ["12 + (-12 * (math.clamp(query.anim_time / 1.2, 0, 1)))", 0, 0]},
+        "thighR": {"rotation": ["-10 + (-80 * (math.clamp(query.anim_time / 1.2, 0, 1)))", 0, 0]},
+        "tail": {"rotation": ["20 + (20 * (math.clamp(query.anim_time / 1.2, 0, 1)))", 0, 0]},
+        "tail2": {"rotation": ["-10 * (math.clamp(query.anim_time / 1.2, 0, 1))", 0, 0]},
+        "body": {"rotation": [0, 0, "90 + (-90 * (math.clamp(query.anim_time / 1.2, 0, 1)))"]},
+        "tiger": {
+          "position": {
+            "0.0": [0, -18, 0],
+            "0.1": [0, -14.943, 0],
+            "0.2": [0, -12.169, 0],
+            "0.3": [0, -9.812, 0],
+            "0.4": [0, -7.988, 0],
+            "0.5": [0, -6.781, 0],
+            "0.6": [0, -6.25, 0],
+            "0.7": [0, -6.414, 0],
+            "0.8": [0, -7.26, 0],
+            "0.9": [0, -8.737, 0],
+            "1": [0, -10.762, 0],
+            "1.1": [0, -13.227, 0],
+            "1.2": [0, -16, 0]
+          }
+        }
+      },
+      "animation_length": 1.2
+    },
+    "animation.zoocraft.tiger.sleep_side": {
+      "loop": true,
+      "bones": {
+        "body": {"rotation": [0, 0, 90]},
+        "armL": {"rotation": [-25, 0, 0]},
+        "armR": {"rotation": [-25, 0, 0]},
+        "thighL": {"rotation": [-10, 0, 0]},
+        "thighR": {"rotation": [-10, 0, 0]},
+        "neck": {"rotation": [12, 0, 0]},
+        "tail": {"rotation": [20, 0, 0]},
+        "tiger": {"position": [0, -18, 0]}
+      }
+    },
+    "animation.zoocraft.tiger.to_back": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "armR": {
+          "rotation": [
+            "-25 + (-20 * (math.clamp(query.anim_time / 1, 0, 1)))",
+            0,
+            "12 * (math.clamp(query.anim_time / 1, 0, 1))"
+          ]
+        },
+        "thighL": {
+          "rotation": [
+            "-10 + (-25 * (math.clamp(query.anim_time / 1, 0, 1)))",
+            0,
+            "-12 * (math.clamp(query.anim_time / 1, 0, 1))"
+          ]
+        },
+        "armL": {
+          "rotation": [
+            "-25 + (-20 * (math.clamp(query.anim_time / 1, 0, 1)))",
+            0,
+            "-12 * (math.clamp(query.anim_time / 1, 0, 1))"
+          ]
+        },
+        "neck": {"rotation": ["12 + (-37 * (math.clamp(query.anim_time / 1, 0, 1)))", 0, 0]},
+        "thighR": {
+          "rotation": [
+            "-10 + (-25 * (math.clamp(query.anim_time / 1, 0, 1)))",
+            0,
+            "12 * (math.clamp(query.anim_time / 1, 0, 1))"
+          ]
+        },
+        "tail": {"rotation": ["20 + (15 * (math.clamp(query.anim_time / 1, 0, 1)))", 0, 0]},
+        "body": {"rotation": [0, 0, "90 + (90 * (math.clamp(query.anim_time / 1, 0, 1)))"]},
+        "tiger": {
+          "position": {
+            "0.0": [0, -18, 0],
+            "0.0833": [0, -17.138, 0],
+            "0.1667": [0, -16.393, 0],
+            "0.25": [0, -15.759, 0],
+            "0.3333": [0, -14.635, 0],
+            "0.4167": [0, -13.519, 0],
+            "0.5": [0, -12.469, 0],
+            "0.5833": [0, -11.526, 0],
+            "0.6667": [0, -10.73, 0],
+            "0.75": [0, -10.116, 0],
+            "0.8333": [0, -9.719, 0],
+            "0.9167": [0, -9.555, 0],
+            "1": [0, -9.378, 0]
+          }
+        }
+      },
+      "animation_length": 1
+    },
+    "animation.zoocraft.tiger.from_back": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "armR": {
+          "rotation": [
+            "-45 + (20 * (math.clamp(query.anim_time / 1, 0, 1)))",
+            0,
+            "12 + (-12 * (math.clamp(query.anim_time / 1, 0, 1)))"
+          ]
+        },
+        "thighL": {
+          "rotation": [
+            "-35 + (25 * (math.clamp(query.anim_time / 1, 0, 1)))",
+            0,
+            "-12 + (12 * (math.clamp(query.anim_time / 1, 0, 1)))"
+          ]
+        },
+        "armL": {
+          "rotation": [
+            "-45 + (20 * (math.clamp(query.anim_time / 1, 0, 1)))",
+            0,
+            "-12 + (12 * (math.clamp(query.anim_time / 1, 0, 1)))"
+          ]
+        },
+        "neck": {"rotation": ["-25 + (37 * (math.clamp(query.anim_time / 1, 0, 1)))", 0, 0]},
+        "thighR": {
+          "rotation": [
+            "-35 + (25 * (math.clamp(query.anim_time / 1, 0, 1)))",
+            0,
+            "12 + (-12 * (math.clamp(query.anim_time / 1, 0, 1)))"
+          ]
+        },
+        "tail": {"rotation": ["35 + (-15 * (math.clamp(query.anim_time / 1, 0, 1)))", 0, 0]},
+        "body": {"rotation": [0, 0, "180 + (-90 * (math.clamp(query.anim_time / 1, 0, 1)))"]},
+        "tiger": {
+          "position": {
+            "0.0": [0, -9.378, 0],
+            "0.0833": [0, -9.555, 0],
+            "0.1667": [0, -9.719, 0],
+            "0.25": [0, -10.116, 0],
+            "0.3333": [0, -10.73, 0],
+            "0.4167": [0, -11.526, 0],
+            "0.5": [0, -12.469, 0],
+            "0.5833": [0, -13.519, 0],
+            "0.6667": [0, -14.635, 0],
+            "0.75": [0, -15.759, 0],
+            "0.8333": [0, -16.393, 0],
+            "0.9167": [0, -17.138, 0],
+            "1": [0, -18, 0]
+          }
+        }
+      },
+      "animation_length": 1
+    },
+    "animation.zoocraft.tiger.sleep_back": {
+      "loop": true,
+      "bones": {
+        "body": {"rotation": [0, 0, 180]},
+        "armL": {"rotation": ["-45 + (math.sin(query.life_time * 40 + variable.offset) * 4)", 0, -12]},
+        "armR": {"rotation": [-45, 0, 12]},
+        "thighL": {"rotation": [-35, 0, -12]},
+        "thighR": {"rotation": ["-35 + (math.sin(query.life_time * 33 + variable.offset) * 3)", 0, 12]},
+        "neck": {"rotation": [-25, 0, 0]},
+        "tail": {"rotation": [35, 0, 0]},
+        "tiger": {"position": [0, -9.378, 0]}
+      }
+    },
+    "animation.zoocraft.tiger.sleep": {
+      "loop": true,
+      "bones": {"body": {"scale": [1, "1 + (math.sin(query.life_time * 40 + variable.offset) * 0.02)", 1]}}
+    },
+    "animation.zoocraft.tiger.down_life": {
+      "loop": true,
+      "bones": {
+        "earL": {
+          "rotation": [0, "math.max(0, math.sin(query.life_time * 50 + variable.offset * 3)) * 15", 0]
+        },
+        "earR": {
+          "rotation": [0, "-math.max(0, math.sin(query.life_time * 43 + variable.offset * 5)) * 15", 0]
+        },
+        "tail2": {
+          "rotation": [
+            "math.sin(query.life_time * 35 + variable.offset) * 6",
+            "math.sin(query.life_time * 23 + variable.offset) * 10",
+            0
+          ]
+        },
+        "neck": {"rotation": [0, "math.sin(query.life_time * 15 + variable.offset) * 6", 0]}
+      }
+    },
+    "animation.zoocraft.tiger.eat_w": {
+      "loop": true,
+      "bones": {
+        "neck": {
+          "rotation": [
+            "(23.979 + (math.sin(query.life_time * 200 + variable.offset) * 3)) * (variable.eat_k)",
+            0,
+            0
+          ]
+        },
+        "head": {"rotation": ["-11.284 * (variable.eat_k)", 0, 0]},
+        "jaw": {
+          "rotation": [
+            "((math.max(0, math.sin(query.life_time * 300 + variable.offset))) * 8) * (variable.eat_k)",
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.tiger.nurse_w": {
+      "loop": true,
+      "bones": {
+        "neck": {"rotation": ["-15 * (variable.nurse_k)", 0, 0]},
+        "head": {"rotation": ["8 * (variable.nurse_k)", 0, 0]}
+      }
+    },
+    "animation.zoocraft.tiger.cub": {
+      "loop": true,
+      "bones": {
+        "head": {"scale": [1.2, 1.2, 1.2]},
+        "earL": {"scale": [1.2, 1.2, 1.2]},
+        "earR": {"scale": [1.2, 1.2, 1.2]}
+      }
+    },
+    "animation.zoocraft.tiger.swim": {
+      "loop": true,
+      "bones": {
+        "armL": {"rotation": ["math.sin(query.anim_time * 400 + 0) * 30 + 10", 0, 0]},
+        "armR": {"rotation": ["math.sin(query.anim_time * 400 + 180) * 30 + 10", 0, 0]},
+        "thighL": {"rotation": ["math.sin(query.anim_time * 400 + 180) * 30 + 10", 0, 0]},
+        "thighR": {"rotation": ["math.sin(query.anim_time * 400 + 0) * 30 + 10", 0, 0]},
+        "neck": {"rotation": [-28, 0, 0]},
+        "head": {"rotation": [-10, 0, 0]},
+        "tail": {"rotation": [50, "math.sin(query.life_time * 200 + variable.offset) * 10", 0]},
+        "tail2": {"rotation": [5, 0, 0]}
+      }
+    },
+    "animation.zoocraft.tiger.chuff": {
+      "loop": true,
+      "bones": {
+        "neck": {
+          "rotation": ["-8 + math.max(0, math.sin(query.life_time * 250 + variable.offset)) * 10", 0, 0]
+        },
+        "head": {"rotation": ["math.sin(query.life_time * 250 + variable.offset) * 4", 0, 0]},
+        "earL": {
+          "rotation": [0, "math.max(0, math.sin(query.life_time * 50 + variable.offset * 3)) * 15", 0]
+        },
+        "earR": {
+          "rotation": [0, "-math.max(0, math.sin(query.life_time * 43 + variable.offset * 5)) * 15", 0]
+        },
+        "tail2": {
+          "rotation": [
+            "math.sin(query.life_time * 35 + variable.offset) * 6",
+            "math.sin(query.life_time * 23 + variable.offset) * 10",
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.tiger.ambush": {
+      "loop": true,
+      "bones": {
+        "armL": {"rotation": [-15, 0, -68]},
+        "armR": {"rotation": [-15, 0, 68]},
+        "thighL": {"rotation": [15, 0, -68]},
+        "thighR": {"rotation": [15, 0, 68]},
+        "neck": {"rotation": [14, 0, 0]},
+        "head": {"rotation": [-18, 0, 0]},
+        "earL": {"rotation": [-10, 0, 0]},
+        "earR": {"rotation": [-10, 0, 0]},
+        "tail": {"rotation": [50, 0, 0]},
+        "tiger": {"position": [0, -9.439, 0]}
+      }
+    },
+    "animation.zoocraft.tiger.pounce": {
+      "loop": "hold_on_last_frame",
+      "animation_length": 0.85,
+      "bones": {
+        "body": {
+          "rotation": [
+            "(10 * (math.clamp(query.anim_time / 0.3, 0, 1))) + (-35 * (math.clamp((query.anim_time - 0.3) / 0.4, 0, 1)))",
+            0,
+            0
+          ],
+          "position": [
+            0,
+            "(-1 * (math.clamp(query.anim_time / 0.3, 0, 1))) + (9 * (math.clamp((query.anim_time - 0.3) / 0.4, 0, 1)))",
+            0
+          ]
+        },
+        "armL": {
+          "rotation": [
+            "(-14 * (math.clamp(query.anim_time / 0.3, 0, 1))) + (-80 * (math.clamp((query.anim_time - 0.3) / 0.4, 0, 1)))",
+            0,
+            0
+          ]
+        },
+        "armR": {
+          "rotation": [
+            "(-14 * (math.clamp(query.anim_time / 0.3, 0, 1))) + (-80 * (math.clamp((query.anim_time - 0.3) / 0.4, 0, 1)))",
+            0,
+            0
+          ]
+        },
+        "thighL": {
+          "rotation": [
+            "(14 * (math.clamp(query.anim_time / 0.3, 0, 1))) + (75 * (math.clamp((query.anim_time - 0.3) / 0.4, 0, 1)))",
+            0,
+            0
+          ]
+        },
+        "thighR": {
+          "rotation": [
+            "(14 * (math.clamp(query.anim_time / 0.3, 0, 1))) + (75 * (math.clamp((query.anim_time - 0.3) / 0.4, 0, 1)))",
+            0,
+            0
+          ]
+        },
+        "neck": {
+          "rotation": [
+            "(15 * (math.clamp(query.anim_time / 0.3, 0, 1))) + (-10 * (math.clamp((query.anim_time - 0.3) / 0.4, 0, 1)))",
+            0,
+            0
+          ]
+        },
+        "jaw": {"rotation": ["20 * (math.clamp((query.anim_time - 0.3) / 0.4, 0, 1))", 0, 0]},
+        "earL": {"rotation": ["60 * (math.clamp((query.anim_time - 0.3) / 0.4, 0, 1))", 0, 0]},
+        "earR": {"rotation": ["60 * (math.clamp((query.anim_time - 0.3) / 0.4, 0, 1))", 0, 0]},
+        "tail": {"rotation": ["40 * (math.clamp((query.anim_time - 0.3) / 0.4, 0, 1))", 0, 0]}
+      }
+    },
+    "animation.zoocraft.tiger.spar": {
+      "loop": true,
+      "bones": {
+        "body": {"rotation": ["-55 * (math.clamp(query.anim_time / 0.5, 0, 1))", 0, 0]},
+        "thighL": {"rotation": ["55 * (math.clamp(query.anim_time / 0.5, 0, 1))", 0, 0]},
+        "thighR": {"rotation": ["55 * (math.clamp(query.anim_time / 0.5, 0, 1))", 0, 0]},
+        "armL": {
+          "rotation": [
+            "(-100 * (math.clamp(query.anim_time / 0.5, 0, 1))) + ((math.max(0, math.sin(query.life_time * 420 + variable.offset)) * 40) * (math.clamp(query.anim_time / 0.5, 0, 1)))",
+            0,
+            -20
+          ]
+        },
+        "armR": {
+          "rotation": [
+            "(-100 * (math.clamp(query.anim_time / 0.5, 0, 1))) + ((math.max(0, math.sin(query.life_time * 420 + variable.offset + 180)) * 40) * (math.clamp(query.anim_time / 0.5, 0, 1)))",
+            0,
+            20
+          ]
+        },
+        "neck": {"rotation": ["20 * (math.clamp(query.anim_time / 0.5, 0, 1))", 0, 0]},
+        "tail": {"rotation": ["30 * (math.clamp(query.anim_time / 0.5, 0, 1))", 0, 0]},
+        "tiger": {"position": [0, "13.993 * (math.clamp(query.anim_time / 0.5, 0, 1))", 0]},
+        "jaw": {
+          "rotation": ["12 + ((math.max(0, math.sin(query.life_time * 420 + variable.offset))) * 8)", 0, 0]
+        },
+        "earL": {"rotation": [60, 0, 0]},
+        "earR": {"rotation": [60, 0, 0]}
+      }
+    },
+    "animation.zoocraft.tiger.groom_w": {
+      "loop": true,
+      "bones": {
+        "armL": {
+          "rotation": [
+            "(55 + (math.sin(query.life_time * 300 + variable.offset) * 8)) * (variable.groom_k)",
+            0,
+            "-20 * (variable.groom_k)"
+          ]
+        },
+        "neck": {
+          "rotation": [
+            "(30 + (math.sin(query.life_time * 300 + variable.offset) * 4)) * (variable.groom_k)",
+            "-15 * (variable.groom_k)",
+            0
+          ]
+        },
+        "head": {"rotation": ["10 * (variable.groom_k)", 0, 0]},
+        "jaw": {
+          "rotation": [
+            "((math.max(0, math.sin(query.life_time * 300 + variable.offset))) * 7) * (variable.groom_k)",
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.tiger.soak_w": {
+      "loop": true,
+      "bones": {
+        "neck": {"rotation": ["-25 * (variable.soak_k)", 0, 0]},
+        "head": {"rotation": ["-5 * (variable.soak_k)", 0, 0]},
+        "tiger": {"position": [0, "(variable.soak_lift) * (variable.soak_k)", 0]}
+      }
+    },
+    "animation.zoocraft.tiger.roll_w": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "rotation": [0, 0, "(math.sin(query.life_time * 120 + variable.offset) * 18) * (variable.roll_k)"]
+        },
+        "armL": {
+          "rotation": ["(math.sin(query.life_time * 170 + variable.offset) * 20) * (variable.roll_k)", 0, 0]
+        },
+        "armR": {
+          "rotation": [
+            "(math.sin(query.life_time * 170 + variable.offset + 90) * 20) * (variable.roll_k)",
+            0,
+            0
+          ]
+        },
+        "thighL": {
+          "rotation": [
+            "(math.sin(query.life_time * 140 + variable.offset + 45) * 15) * (variable.roll_k)",
+            0,
+            0
+          ]
+        },
+        "thighR": {
+          "rotation": [
+            "(math.sin(query.life_time * 140 + variable.offset + 200) * 15) * (variable.roll_k)",
+            0,
+            0
+          ]
+        }
+      }
+    }
+  }
+}
