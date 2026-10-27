@@ -1,0 +1,62 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.zoocraft.giant_stingray.swim": {
+      "loop": true,
+      "bones": {
+        "wingL": {"rotation": [0, 0, "math.sin(query.anim_time * 200) * 14"]},
+        "wingL_tip": {"rotation": [0, 0, "math.sin(query.anim_time * 200 - 60) * 18.2"]},
+        "wingR": {"rotation": [0, 0, "-math.sin(query.anim_time * 200) * 14"]},
+        "wingR_tip": {"rotation": [0, 0, "-math.sin(query.anim_time * 200 - 60) * 18.2"]},
+        "tail": {"rotation": [0, "math.sin(query.anim_time * 200 * 0.5) * 8", 0]},
+        "whip": {"rotation": [0, "math.sin(query.anim_time * 200 * 0.5 - 50) * 12.0", 0]}
+      }
+    },
+    "animation.zoocraft.giant_stingray.idle": {
+      "loop": true,
+      "bones": {
+        "wingL": {"rotation": [0, 0, "math.sin(query.life_time * 70) * 5"]},
+        "wingL_tip": {"rotation": [0, 0, "math.sin(query.life_time * 70 - 60) * 6.5"]},
+        "wingR": {"rotation": [0, 0, "-math.sin(query.life_time * 70) * 5"]},
+        "wingR_tip": {"rotation": [0, 0, "-math.sin(query.life_time * 70 - 60) * 6.5"]},
+        "tail": {"rotation": [0, "math.sin(query.life_time * 70 * 0.5) * 4", 0]},
+        "whip": {"rotation": [0, "math.sin(query.life_time * 70 * 0.5 - 50) * 6.0", 0]}
+      }
+    },
+    "animation.zoocraft.giant_stingray.settle": {
+      "loop": true,
+      "bones": {
+        "wingL": {"rotation": [0, 0, "math.sin(query.life_time * 90) * 6"]},
+        "wingL_tip": {"rotation": [0, 0, "math.sin(query.life_time * 90 - 60) * 7.800000000000001"]},
+        "wingR": {"rotation": [0, 0, "-math.sin(query.life_time * 90) * 6"]},
+        "wingR_tip": {"rotation": [0, 0, "-math.sin(query.life_time * 90 - 60) * 7.800000000000001"]},
+        "tail": {"rotation": [0, "math.sin(query.life_time * 90 * 0.5) * 3", 0]},
+        "whip": {"rotation": [0, "math.sin(query.life_time * 90 * 0.5 - 50) * 4.5", 0]}
+      }
+    },
+    "animation.zoocraft.giant_stingray.buried": {
+      "loop": true,
+      "bones": {
+        "wingL": {"rotation": [0, 0, 0]},
+        "wingL_tip": {"rotation": [0, 0, 0]},
+        "wingR": {"rotation": [0, 0, 0]},
+        "wingR_tip": {"rotation": [0, 0, 0]},
+        "tail": {"rotation": [0, 0, 0]},
+        "whip": {"rotation": [0, 0, 0]},
+        "body": {"position": [0, -2.5, 0]}
+      }
+    },
+    "animation.zoocraft.giant_stingray.burst": {
+      "loop": true,
+      "bones": {
+        "wingL": {"rotation": [0, 0, "math.sin(query.anim_time * 600) * 28"]},
+        "wingL_tip": {"rotation": [0, 0, "math.sin(query.anim_time * 600 - 60) * 36.4"]},
+        "wingR": {"rotation": [0, 0, "-math.sin(query.anim_time * 600) * 28"]},
+        "wingR_tip": {"rotation": [0, 0, "-math.sin(query.anim_time * 600 - 60) * 36.4"]},
+        "tail": {"rotation": [0, "math.sin(query.anim_time * 600 * 0.5) * 12", 0]},
+        "whip": {"rotation": [0, "math.sin(query.anim_time * 600 * 0.5 - 50) * 18.0", 0]},
+        "body": {"position": [0, "math.min(0, -2.5 + query.anim_time * 7)", 0]}
+      }
+    }
+  }
+}

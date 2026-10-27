@@ -1,0 +1,18 @@
+{
+  "format_version": "1.8.0",
+  "minecraft:spawn_rules": {
+    "description": {"identifier": "zoocraft:wild_jellyfish", "population_control": "water_animal"},
+    "conditions": [
+      {
+        "minecraft:spawns_underwater": {},
+        "minecraft:height_filter": {"min": 20, "max": 56},
+        "minecraft:weight": {"default": 4},
+        "minecraft:herd": {"min_size": 2, "max_size": 4},
+        "minecraft:density_limit": {"surface": 6},
+        "minecraft:biome_filter": {
+          "all_of": [{"test": "has_biome_tag", "value": "ocean"}, {"test": "has_biome_tag", "value": "deep"}]
+        }
+      }
+    ]
+  }
+}

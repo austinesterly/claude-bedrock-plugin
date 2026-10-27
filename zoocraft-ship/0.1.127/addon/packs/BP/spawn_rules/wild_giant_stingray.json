@@ -1,0 +1,26 @@
+{
+  "format_version": "1.8.0",
+  "minecraft:spawn_rules": {
+    "description": {"identifier": "zoocraft:wild_giant_stingray", "population_control": "water_animal"},
+    "conditions": [
+      {
+        "minecraft:spawns_underwater": {},
+        "minecraft:height_filter": {"min": -64, "max": 56},
+        "minecraft:weight": {"default": 3},
+        "minecraft:herd": {"min_size": 1, "max_size": 1},
+        "minecraft:density_limit": {"surface": 2},
+        "minecraft:biome_filter": {
+          "all_of": [
+            {"test": "has_biome_tag", "value": "ocean"},
+            {
+              "any_of": [
+                {"test": "has_biome_tag", "value": "warm"},
+                {"test": "has_biome_tag", "value": "lukewarm"}
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

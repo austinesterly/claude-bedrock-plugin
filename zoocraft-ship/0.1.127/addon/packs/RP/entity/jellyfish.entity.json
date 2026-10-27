@@ -1,0 +1,18 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:jellyfish",
+      "materials": {"default": "entity_emissive_alpha"},
+      "textures": {
+        "crimson": "textures/entity/zoocraft/jellyfish_crimson",
+        "sapphire": "textures/entity/zoocraft/jellyfish_sapphire",
+        "violet": "textures/entity/zoocraft/jellyfish_violet"
+      },
+      "geometry": {"default": "geometry.zoocraft.jellyfish"},
+      "animations": {"drift": "animation.zoocraft.jellyfish.drift", "spin": "animation.zoocraft.jellyfish.spin"},
+      "render_controllers": ["controller.render.zoocraft.jellyfish"],
+      "scripts": {"scale": "1.25", "animate": ["drift", "spin"]}
+    }
+  }
+}

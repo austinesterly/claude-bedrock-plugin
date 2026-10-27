@@ -1,0 +1,12 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.zoocraft.jellyfish": {
+      "arrays": {"textures": {"Array.colours": ["Texture.crimson", "Texture.sapphire", "Texture.violet"]}},
+      "geometry": "Geometry.default",
+      "materials": [{"*": "Material.default"}],
+      "textures": ["Array.colours[query.variant]"],
+      "part_visibility": [{"*": true}, {"flash": "query.property('zoocraft:flashing')"}]
+    }
+  }
+}

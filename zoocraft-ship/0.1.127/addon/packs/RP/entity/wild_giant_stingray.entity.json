@@ -1,0 +1,23 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:wild_giant_stingray",
+      "materials": {"default": "entity_alphatest"},
+      "textures": {"default": "textures/entity/zoocraft/giant_stingray"},
+      "geometry": {"default": "geometry.zoocraft.giant_stingray"},
+      "animations": {
+        "swim": "animation.zoocraft.giant_stingray.swim",
+        "idle": "animation.zoocraft.giant_stingray.idle",
+        "settle": "animation.zoocraft.giant_stingray.settle",
+        "buried": "animation.zoocraft.giant_stingray.buried",
+        "burst": "animation.zoocraft.giant_stingray.burst",
+        "move": "controller.animation.zoocraft.giant_stingray.move",
+        "acting": "controller.animation.zoocraft.giant_stingray.act"
+      },
+      "render_controllers": ["controller.render.zoocraft.giant_stingray"],
+      "scripts": {"scale": "2.0", "animate": ["acting"]},
+      "spawn_egg": {"base_color": "#6b6258", "overlay_color": "#eeeae2"}
+    }
+  }
+}
