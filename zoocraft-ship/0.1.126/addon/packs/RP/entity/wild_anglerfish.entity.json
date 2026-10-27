@@ -1,0 +1,21 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:wild_anglerfish",
+      "materials": {"default": "entity_emissive_alpha"},
+      "textures": {"default": "textures/entity/zoocraft/anglerfish"},
+      "geometry": {"default": "geometry.zoocraft.anglerfish"},
+      "animations": {
+        "swim": "animation.zoocraft.anglerfish.swim",
+        "idle": "animation.zoocraft.anglerfish.idle",
+        "lure": "animation.zoocraft.anglerfish.lure",
+        "move": "controller.animation.zoocraft.anglerfish.move",
+        "acting": "controller.animation.zoocraft.anglerfish.act"
+      },
+      "render_controllers": ["controller.render.zoocraft.anglerfish"],
+      "scripts": {"scale": "1.0", "animate": ["acting"]},
+      "spawn_egg": {"base_color": "#141414", "overlay_color": "#8fe9ff"}
+    }
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.zoocraft.anglerfish",
+        "texture_width": 64,
+        "texture_height": 32,
+        "visible_bounds_width": 1.5,
+        "visible_bounds_height": 1.5,
+        "visible_bounds_offset": [0, 0.75, 0]
+      },
+      "bones": [
+        {
+          "name": "body",
+          "pivot": [0, 4, 0],
+          "cubes": [
+            {"origin": [-4, 0, -4], "size": [8, 8, 8], "uv": [0, 0]},
+            {"origin": [-3.5, 4, -7], "size": [7, 4, 3], "uv": [0, 16]},
+            {"origin": [4, 5, -4], "size": [1, 1, 1], "uv": [10, 23]},
+            {"origin": [-5, 5, -4], "size": [1, 1, 1], "uv": [14, 23]}
+          ]
+        },
+        {
+          "name": "jaw",
+          "parent": "body",
+          "pivot": [0, 3, -3],
+          "cubes": [
+            {"origin": [-3.5, 0, -8], "size": [7, 3, 5], "uv": [32, 0]},
+            {"origin": [-3, 3, -8], "size": [6, 2, 1], "uv": [40, 16]}
+          ]
+        },
+        {
+          "name": "rod",
+          "parent": "body",
+          "pivot": [0, 8, -2.5],
+          "cubes": [
+            {"origin": [-0.5, 8, -3], "size": [1, 4, 1], "uv": [28, 16]},
+            {"origin": [-1, 12, -3.5], "size": [2, 2, 2], "uv": [32, 16]}
+          ]
+        },
+        {
+          "name": "finL",
+          "parent": "body",
+          "pivot": [4, 2.5, 1],
+          "cubes": [{"origin": [4, 2, 0], "size": [3, 1, 2], "uv": [54, 16]}]
+        },
+        {
+          "name": "finR",
+          "parent": "body",
+          "pivot": [-4, 2.5, 1],
+          "cubes": [{"origin": [-7, 2, 0], "size": [3, 1, 2], "uv": [0, 23]}]
+        },
+        {
+          "name": "tail",
+          "parent": "body",
+          "pivot": [0, 4, 4],
+          "cubes": [{"origin": [-0.5, 2, 4], "size": [1, 4, 3], "uv": [20, 16]}]
+        }
+      ]
+    }
+  ]
+}

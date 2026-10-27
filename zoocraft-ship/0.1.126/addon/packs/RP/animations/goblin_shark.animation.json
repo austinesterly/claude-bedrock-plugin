@@ -1,0 +1,149 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.zoocraft.goblin_shark.swim": {
+      "loop": true,
+      "bones": {
+        "body": {"rotation": [0, "math.sin(query.anim_time * 90) * 3.5", 0]},
+        "head": {"rotation": [0, "0 + math.sin(query.anim_time * 90 + 40) * 4.2", 0]},
+        "tail": {"rotation": [0, "math.sin(query.anim_time * 90 - 60) * 14", 0]},
+        "tail_fin": {"rotation": [0, "math.sin(query.anim_time * 90 - 120) * 18.2", 0]},
+        "finL": {
+          "rotation": [
+            "math.sin(query.anim_time * 90) * 7.0",
+            0,
+            "-10 + math.sin(query.anim_time * 90 + 90) * 6"
+          ]
+        },
+        "finR": {
+          "rotation": [
+            "math.sin(query.anim_time * 90) * 7.0",
+            0,
+            "10 - math.sin(query.anim_time * 90 + 90) * 6"
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.goblin_shark.idle": {
+      "loop": true,
+      "bones": {
+        "body": {"rotation": [0, "math.sin(query.life_time * 40) * 1.5", 0]},
+        "head": {"rotation": [0, "0 + math.sin(query.life_time * 40 + 40) * 1.7999999999999998", 0]},
+        "tail": {"rotation": [0, "math.sin(query.life_time * 40 - 60) * 6", 0]},
+        "tail_fin": {"rotation": [0, "math.sin(query.life_time * 40 - 120) * 7.800000000000001", 0]},
+        "finL": {
+          "rotation": [
+            "math.sin(query.life_time * 40) * 3.0",
+            0,
+            "-10 + math.sin(query.life_time * 40 + 90) * 6"
+          ]
+        },
+        "finR": {
+          "rotation": [
+            "math.sin(query.life_time * 40) * 3.0",
+            0,
+            "10 - math.sin(query.life_time * 40 + 90) * 6"
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.goblin_shark.circle": {
+      "loop": true,
+      "bones": {
+        "body": {"rotation": [0, "math.sin(query.anim_time * 160) * 4.0", 0]},
+        "head": {"rotation": [0, "16 + math.sin(query.anim_time * 160 + 40) * 4.8", 0]},
+        "tail": {"rotation": [0, "math.sin(query.anim_time * 160 - 60) * 16", 0]},
+        "tail_fin": {"rotation": [0, "math.sin(query.anim_time * 160 - 120) * 20.8", 0]},
+        "finL": {
+          "rotation": [
+            "math.sin(query.anim_time * 160) * 8.0",
+            0,
+            "-10 + math.sin(query.anim_time * 160 + 90) * 6"
+          ]
+        },
+        "finR": {
+          "rotation": [
+            "math.sin(query.anim_time * 160) * 8.0",
+            0,
+            "10 - math.sin(query.anim_time * 160 + 90) * 6"
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.goblin_shark.rush": {
+      "loop": true,
+      "bones": {
+        "body": {"rotation": [0, "math.sin(query.anim_time * 160) * 5.0", 0]},
+        "head": {"rotation": [0, "0 + math.sin(query.anim_time * 160 + 40) * 6.0", 0]},
+        "tail": {"rotation": [0, "math.sin(query.anim_time * 160 - 60) * 20", 0]},
+        "tail_fin": {"rotation": [0, "math.sin(query.anim_time * 160 - 120) * 26.0", 0]},
+        "finL": {
+          "rotation": [
+            "math.sin(query.anim_time * 160) * 10.0",
+            0,
+            "-10 + math.sin(query.anim_time * 160 + 90) * 6"
+          ]
+        },
+        "finR": {
+          "rotation": [
+            "math.sin(query.anim_time * 160) * 10.0",
+            0,
+            "10 - math.sin(query.anim_time * 160 + 90) * 6"
+          ]
+        },
+        "jaw": {"position": [0, 0, -3], "rotation": ["24 + math.sin(query.life_time * 400) * 6", 0, 0]}
+      }
+    },
+    "animation.zoocraft.goblin_shark.lunge": {
+      "loop": true,
+      "bones": {
+        "body": {"rotation": [-8, "math.sin(query.life_time * 40) * 1.5", 0]},
+        "head": {"rotation": [0, "0 + math.sin(query.life_time * 40 + 40) * 1.7999999999999998", 0]},
+        "tail": {"rotation": [0, "math.sin(query.life_time * 40 - 60) * 6", 0]},
+        "tail_fin": {"rotation": [0, "math.sin(query.life_time * 40 - 120) * 7.800000000000001", 0]},
+        "finL": {
+          "rotation": [
+            "math.sin(query.life_time * 40) * 3.0",
+            0,
+            "-10 + math.sin(query.life_time * 40 + 90) * 6"
+          ]
+        },
+        "finR": {
+          "rotation": [
+            "math.sin(query.life_time * 40) * 3.0",
+            0,
+            "10 - math.sin(query.life_time * 40 + 90) * 6"
+          ]
+        },
+        "jaw": {
+          "position": [0, 0, "-2 - math.abs(math.sin(query.life_time * 300)) * 3"],
+          "rotation": ["10 + math.abs(math.sin(query.life_time * 300)) * 20", 0, 0]
+        }
+      }
+    },
+    "animation.zoocraft.goblin_shark.eat": {
+      "loop": true,
+      "bones": {
+        "body": {"rotation": [0, "math.sin(query.life_time * 40) * 1.5", 0]},
+        "head": {"rotation": [0, "0 + math.sin(query.life_time * 40 + 40) * 1.7999999999999998", 0]},
+        "tail": {"rotation": [0, "math.sin(query.life_time * 40 - 60) * 6", 0]},
+        "tail_fin": {"rotation": [0, "math.sin(query.life_time * 40 - 120) * 7.800000000000001", 0]},
+        "finL": {
+          "rotation": [
+            "math.sin(query.life_time * 40) * 3.0",
+            0,
+            "-10 + math.sin(query.life_time * 40 + 90) * 6"
+          ]
+        },
+        "finR": {
+          "rotation": [
+            "math.sin(query.life_time * 40) * 3.0",
+            0,
+            "10 - math.sin(query.life_time * 40 + 90) * 6"
+          ]
+        },
+        "jaw": {"position": [0, 0, -1.5], "rotation": ["12 + math.sin(query.life_time * 500) * 12", 0, 0]}
+      }
+    }
+  }
+}

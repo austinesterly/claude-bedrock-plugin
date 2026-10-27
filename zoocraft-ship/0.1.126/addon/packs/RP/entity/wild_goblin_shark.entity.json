@@ -1,0 +1,24 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:wild_goblin_shark",
+      "materials": {"default": "entity_alphatest"},
+      "textures": {"default": "textures/entity/zoocraft/goblin_shark"},
+      "geometry": {"default": "geometry.zoocraft.goblin_shark"},
+      "animations": {
+        "swim": "animation.zoocraft.goblin_shark.swim",
+        "idle": "animation.zoocraft.goblin_shark.idle",
+        "circle": "animation.zoocraft.goblin_shark.circle",
+        "rush": "animation.zoocraft.goblin_shark.rush",
+        "lunge": "animation.zoocraft.goblin_shark.lunge",
+        "eat": "animation.zoocraft.goblin_shark.eat",
+        "move": "controller.animation.zoocraft.goblin_shark.move",
+        "acting": "controller.animation.zoocraft.goblin_shark.act"
+      },
+      "render_controllers": ["controller.render.zoocraft.goblin_shark"],
+      "scripts": {"scale": "2.0", "animate": ["acting"]},
+      "spawn_egg": {"base_color": "#e8a6a6", "overlay_color": "#8a7373"}
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.zoocraft.anglerfish.idle": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "rotation": ["math.sin(query.life_time * 60 * 0.5) * 3", "math.sin(query.life_time * 60) * 2.0", 0]
+        },
+        "tail": {"rotation": [0, "math.sin(query.life_time * 60 - 60) * 10", 0]},
+        "finL": {"rotation": [0, 0, "-15 + math.sin(query.life_time * 60 + 90) * 12"]},
+        "finR": {"rotation": [0, 0, "15 - math.sin(query.life_time * 60 + 90) * 12"]},
+        "rod": {"rotation": ["-25 + math.sin(query.life_time * 60 * 0.7) * 6", 0, 0]},
+        "jaw": {"rotation": ["6 + math.sin(query.life_time * 30) * 3", 0, 0]}
+      }
+    },
+    "animation.zoocraft.anglerfish.swim": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "rotation": ["math.sin(query.anim_time * 140 * 0.5) * 3", "math.sin(query.anim_time * 140) * 3.6", 0]
+        },
+        "tail": {"rotation": [0, "math.sin(query.anim_time * 140 - 60) * 18", 0]},
+        "finL": {"rotation": [0, 0, "-15 + math.sin(query.anim_time * 140 + 90) * 12"]},
+        "finR": {"rotation": [0, 0, "15 - math.sin(query.anim_time * 140 + 90) * 12"]},
+        "rod": {"rotation": ["-25 + math.sin(query.anim_time * 140 * 0.7) * 6", 0, 0]},
+        "jaw": {"rotation": ["6 + math.sin(query.life_time * 30) * 3", 0, 0]}
+      }
+    },
+    "animation.zoocraft.anglerfish.lure": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "rotation": ["math.sin(query.life_time * 60 * 0.5) * 3", "math.sin(query.life_time * 60) * 2.0", 0]
+        },
+        "tail": {"rotation": [0, "math.sin(query.life_time * 60 - 60) * 10", 0]},
+        "finL": {"rotation": [0, 0, "-15 + math.sin(query.life_time * 60 + 90) * 12"]},
+        "finR": {"rotation": [0, 0, "15 - math.sin(query.life_time * 60 + 90) * 12"]},
+        "rod": {
+          "rotation": ["-45 + math.sin(query.life_time * 400) * 18", "math.sin(query.life_time * 300) * 20", 0]
+        },
+        "jaw": {"rotation": ["40 + math.sin(query.life_time * 200) * 14", 0, 0]}
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.zoocraft.anglerfish.move": {
+      "initial_state": "idle",
+      "states": {
+        "idle": {
+          "animations": ["idle"],
+          "transitions": [{"swimming": "query.modified_move_speed > 0.01"}],
+          "blend_transition": 0.6
+        },
+        "swimming": {
+          "animations": ["swim"],
+          "transitions": [{"idle": "query.modified_move_speed <= 0.01"}],
+          "blend_transition": 0.6
+        }
+      }
+    },
+    "controller.animation.zoocraft.anglerfish.act": {
+      "initial_state": "cruise",
+      "states": {
+        "cruise": {
+          "animations": ["move"],
+          "transitions": [{"lure": "query.property('zoocraft:luring')"}],
+          "blend_transition": 0.4
+        },
+        "lure": {
+          "animations": ["lure"],
+          "transitions": [{"cruise": "!query.property('zoocraft:luring')"}],
+          "blend_transition": 0.4
+        }
+      }
+    }
+  }
+}

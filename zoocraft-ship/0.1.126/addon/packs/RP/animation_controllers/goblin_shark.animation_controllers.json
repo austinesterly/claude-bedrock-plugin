@@ -1,0 +1,55 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.zoocraft.goblin_shark.move": {
+      "initial_state": "idle",
+      "states": {
+        "idle": {
+          "animations": ["idle"],
+          "transitions": [{"swimming": "query.modified_move_speed > 0.03"}],
+          "blend_transition": 0.5
+        },
+        "swimming": {
+          "animations": ["swim"],
+          "transitions": [{"idle": "query.modified_move_speed <= 0.03"}],
+          "blend_transition": 0.5
+        }
+      }
+    },
+    "controller.animation.zoocraft.goblin_shark.act": {
+      "initial_state": "cruise",
+      "states": {
+        "cruise": {
+          "animations": ["move"],
+          "transitions": [
+            {"circle": "query.property('zoocraft:act') == 1"},
+            {"rush": "query.property('zoocraft:act') == 2"},
+            {"lunge": "query.property('zoocraft:act') == 6"},
+            {"eat": "query.property('zoocraft:act') == 5"}
+          ],
+          "blend_transition": 0.4
+        },
+        "circle": {
+          "animations": ["circle"],
+          "transitions": [{"cruise": "query.property('zoocraft:act') != 1"}],
+          "blend_transition": 0.4
+        },
+        "rush": {
+          "animations": ["rush"],
+          "transitions": [{"cruise": "query.property('zoocraft:act') != 2"}],
+          "blend_transition": 0.4
+        },
+        "lunge": {
+          "animations": ["lunge"],
+          "transitions": [{"cruise": "query.property('zoocraft:act') != 6"}],
+          "blend_transition": 0.4
+        },
+        "eat": {
+          "animations": ["eat"],
+          "transitions": [{"cruise": "query.property('zoocraft:act') != 5"}],
+          "blend_transition": 0.4
+        }
+      }
+    }
+  }
+}
