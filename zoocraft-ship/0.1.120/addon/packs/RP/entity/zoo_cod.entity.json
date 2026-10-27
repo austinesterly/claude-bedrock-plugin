@@ -1,0 +1,24 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:zoo_cod",
+      "materials": {"default": "cod"},
+      "textures": {"default": "textures/entity/fish/cod"},
+      "geometry": {"default": "geometry.cod"},
+      "scripts": {
+        "pre_animation": [
+          "variable.ZRot = !query.is_in_water ? Math.cos((query.time_stamp + query.frame_alpha) * 14.32) * 90 : 0.0;",
+          "variable.AnimationAmountBlend = query.life_time * 8.0 + query.modified_distance_moved * 10.0;"
+        ],
+        "animate": ["general"]
+      },
+      "animations": {
+        "flop": "animation.cod.flop",
+        "swim": "animation.cod.swim",
+        "general": "controller.animation.fish.general"
+      },
+      "render_controllers": ["controller.render.cod"]
+    }
+  }
+}
