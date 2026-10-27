@@ -1,0 +1,47 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:zoo_tropical_fish",
+      "materials": {"default": "entity_alphatest"},
+      "textures": {
+        "look_0": "textures/entity/zoocraft/tropical/clownfish",
+        "look_1": "textures/entity/zoocraft/tropical/triggerfish",
+        "look_2": "textures/entity/zoocraft/tropical/tomato_clownfish",
+        "look_3": "textures/entity/zoocraft/tropical/red_snapper",
+        "look_4": "textures/entity/zoocraft/tropical/red_cichlid",
+        "look_5": "textures/entity/zoocraft/tropical/ornate_butterflyfish",
+        "look_6": "textures/entity/zoocraft/tropical/queen_angelfish",
+        "look_7": "textures/entity/zoocraft/tropical/cotton_candy_betta",
+        "look_8": "textures/entity/zoocraft/tropical/threadfin",
+        "look_9": "textures/entity/zoocraft/tropical/goatfish",
+        "look_10": "textures/entity/zoocraft/tropical/yellow_tang",
+        "look_11": "textures/entity/zoocraft/tropical/yellowtail_parrotfish",
+        "look_12": "textures/entity/zoocraft/tropical/dottyback",
+        "look_13": "textures/entity/zoocraft/tropical/parrotfish",
+        "look_14": "textures/entity/zoocraft/tropical/moorish_idol",
+        "look_15": "textures/entity/zoocraft/tropical/butterflyfish",
+        "look_16": "textures/entity/zoocraft/tropical/anemone",
+        "look_17": "textures/entity/zoocraft/tropical/black_tang",
+        "look_18": "textures/entity/zoocraft/tropical/cichlid",
+        "look_19": "textures/entity/zoocraft/tropical/blue_tang",
+        "look_20": "textures/entity/zoocraft/tropical/emperor_red_snapper",
+        "look_21": "textures/entity/zoocraft/tropical/red_lipped_blenny"
+      },
+      "scripts": {
+        "pre_animation": [
+          "variable.ZRot = !query.is_in_water ? Math.cos((query.time_stamp + query.frame_alpha) * 0.25) * 90 : 0.0;",
+          "variable.AnimationAmountBlend = query.life_time * 8.0 + query.modified_distance_moved * 10.0;"
+        ],
+        "animate": ["general"]
+      },
+      "geometry": {"typeA": "geometry.tropicalfish_a", "typeB": "geometry.tropicalfish_b"},
+      "animations": {
+        "flop": "animation.tropicalfish.flop",
+        "swim": "animation.tropicalfish.swim",
+        "general": "controller.animation.fish.general"
+      },
+      "render_controllers": ["controller.render.zoocraft.zoo_tropical_fish"]
+    }
+  }
+}

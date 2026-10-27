@@ -1,0 +1,25 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:zoo_glow_squid",
+      "materials": {"default": "glow_squid"},
+      "textures": {
+        "default": "textures/entity/glow_squid/glow_squid",
+        "baby": "textures/entity/glow_squid/glow_squid_baby"
+      },
+      "geometry": {"default": "geometry.squid", "baby": "geometry.squid.baby"},
+      "animations": {"move": "animation.squid.move", "squid_rotate": "animation.squid.rotate"},
+      "scripts": {
+        "animate": ["move", "squid_rotate"],
+        "scale": "1.0",
+        "pre_animation": [
+          "variable.squid.tentacle_angle = math.abs(math.sin(query.life_time * 90.0 + query.modified_distance_moved * 40.0)) * 45.0;",
+          "variable.squid.swim_rotation = math.sin(query.life_time * 20.0) * 15.0;",
+          "variable.glow_alpha = 0.0;"
+        ]
+      },
+      "render_controllers": ["controller.render.glow_squid.v2"]
+    }
+  }
+}

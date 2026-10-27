@@ -1,0 +1,39 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.zoocraft.zoo_tropical_fish": {
+      "arrays": {
+        "geometries": {"Array.models": ["Geometry.typeA", "Geometry.typeB"]},
+        "textures": {
+          "Array.looks": [
+            "Texture.look_0",
+            "Texture.look_1",
+            "Texture.look_2",
+            "Texture.look_3",
+            "Texture.look_4",
+            "Texture.look_5",
+            "Texture.look_6",
+            "Texture.look_7",
+            "Texture.look_8",
+            "Texture.look_9",
+            "Texture.look_10",
+            "Texture.look_11",
+            "Texture.look_12",
+            "Texture.look_13",
+            "Texture.look_14",
+            "Texture.look_15",
+            "Texture.look_16",
+            "Texture.look_17",
+            "Texture.look_18",
+            "Texture.look_19",
+            "Texture.look_20",
+            "Texture.look_21"
+          ]
+        }
+      },
+      "geometry": "Array.models[q.variant]",
+      "materials": [{"*": "Material.default"}],
+      "textures": ["Array.looks[q.property('zoocraft:look')]"]
+    }
+  }
+}

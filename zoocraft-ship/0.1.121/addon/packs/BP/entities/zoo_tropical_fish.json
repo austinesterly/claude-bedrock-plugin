@@ -1,0 +1,120 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "zoocraft:zoo_tropical_fish",
+      "spawn_category": "water_ambient",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "properties": {"zoocraft:look": {"type": "int", "range": [0, 21], "default": 0, "client_sync": true}}
+    },
+    "component_groups": {
+      "zoocraft:home_4": {"minecraft:home": {"restriction_type": "random_movement", "restriction_radius": 4}},
+      "zoocraft:home_8": {"minecraft:home": {"restriction_type": "random_movement", "restriction_radius": 8}},
+      "zoocraft:home_16": {"minecraft:home": {"restriction_type": "random_movement", "restriction_radius": 16}},
+      "zoocraft:home_32": {"minecraft:home": {"restriction_type": "random_movement", "restriction_radius": 32}},
+      "zoocraft:shape_0": {"minecraft:variant": {"value": 0}},
+      "zoocraft:shape_1": {"minecraft:variant": {"value": 1}}
+    },
+    "components": {
+      "minecraft:behavior.random_swim": {"interval": 0, "xz_dist": 16, "priority": 3, "speed_multiplier": 1, "y_dist": 4},
+      "minecraft:behavior.swim_idle": {"priority": 5},
+      "minecraft:behavior.swim_wander": {"interval": 0.1, "look_ahead": 2, "priority": 4},
+      "minecraft:breathable": {"breathes_air": false, "breathes_water": true, "suffocate_time": 0, "total_supply": 15},
+      "minecraft:collision_box": {"height": 0.4, "width": 0.4},
+      "minecraft:conditional_bandwidth_optimization": {},
+      "minecraft:flocking": {
+        "breach_influence": 7,
+        "block_distance": 2,
+        "high_flock_limit": 8,
+        "block_weight": 0.85,
+        "min_height": 1.5,
+        "cohesion_threshold": 1.5,
+        "in_water": true,
+        "cohesion_weight": 2.75,
+        "goal_weight": 2,
+        "influence_radius": 3,
+        "innner_cohesion_threshold": 1.5,
+        "loner_chance": 0.1,
+        "low_flock_limit": 4,
+        "match_variants": true,
+        "max_height": 6,
+        "separation_threshold": 0.15,
+        "separation_weight": 0.65,
+        "use_center_of_mass": false
+      },
+      "minecraft:health": {"max": 3, "value": 3},
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:movement": {"value": 0.12},
+      "minecraft:movement.sway": {"sway_amplitude": 0},
+      "minecraft:nameable": {"always_show": false, "allow_name_tag_renaming": true},
+      "minecraft:navigation.generic": {
+        "can_breach": false,
+        "can_walk": false,
+        "can_path_over_water": false,
+        "can_sink": false,
+        "can_swim": true,
+        "is_amphibious": false,
+        "using_door_annotation": true
+      },
+      "minecraft:physics": {"has_gravity": false},
+      "minecraft:scale": {"value": 1.3},
+      "minecraft:type_family": {"family": ["zoocraft_animal", "zoo_tropical_fish", "aquatic", "tropicalfish", "fish"]},
+      "minecraft:underwater_movement": {"value": 0.12},
+      "minecraft:persistent": {},
+      "minecraft:damage_sensor": {"triggers": [{"cause": "all", "deals_damage": "no"}]},
+      "minecraft:pushable_by_entity": {},
+      "minecraft:pushable_by_block": {},
+      "minecraft:behavior.move_towards_home_restriction": {"priority": 2, "speed_multiplier": 1.0}
+    },
+    "events": {
+      "zoocraft:home_4": {
+        "remove": {"component_groups": ["zoocraft:home_8", "zoocraft:home_16", "zoocraft:home_32"]},
+        "add": {"component_groups": ["zoocraft:home_4"]}
+      },
+      "zoocraft:home_8": {
+        "remove": {"component_groups": ["zoocraft:home_4", "zoocraft:home_16", "zoocraft:home_32"]},
+        "add": {"component_groups": ["zoocraft:home_8"]}
+      },
+      "zoocraft:home_16": {
+        "remove": {"component_groups": ["zoocraft:home_4", "zoocraft:home_8", "zoocraft:home_32"]},
+        "add": {"component_groups": ["zoocraft:home_16"]}
+      },
+      "zoocraft:home_32": {
+        "remove": {"component_groups": ["zoocraft:home_4", "zoocraft:home_8", "zoocraft:home_16"]},
+        "add": {"component_groups": ["zoocraft:home_32"]}
+      },
+      "zoocraft:shape_0": {
+        "remove": {"component_groups": ["zoocraft:shape_1"]},
+        "add": {"component_groups": ["zoocraft:shape_0"]}
+      },
+      "zoocraft:shape_1": {
+        "remove": {"component_groups": ["zoocraft:shape_0"]},
+        "add": {"component_groups": ["zoocraft:shape_1"]}
+      },
+      "minecraft:entity_spawned": {"add": {"component_groups": ["zoocraft:home_8", "zoocraft:shape_0"]}},
+      "zoocraft:look_0": {"set_property": {"zoocraft:look": 0}},
+      "zoocraft:look_1": {"set_property": {"zoocraft:look": 1}},
+      "zoocraft:look_2": {"set_property": {"zoocraft:look": 2}},
+      "zoocraft:look_3": {"set_property": {"zoocraft:look": 3}},
+      "zoocraft:look_4": {"set_property": {"zoocraft:look": 4}},
+      "zoocraft:look_5": {"set_property": {"zoocraft:look": 5}},
+      "zoocraft:look_6": {"set_property": {"zoocraft:look": 6}},
+      "zoocraft:look_7": {"set_property": {"zoocraft:look": 7}},
+      "zoocraft:look_8": {"set_property": {"zoocraft:look": 8}},
+      "zoocraft:look_9": {"set_property": {"zoocraft:look": 9}},
+      "zoocraft:look_10": {"set_property": {"zoocraft:look": 10}},
+      "zoocraft:look_11": {"set_property": {"zoocraft:look": 11}},
+      "zoocraft:look_12": {"set_property": {"zoocraft:look": 12}},
+      "zoocraft:look_13": {"set_property": {"zoocraft:look": 13}},
+      "zoocraft:look_14": {"set_property": {"zoocraft:look": 14}},
+      "zoocraft:look_15": {"set_property": {"zoocraft:look": 15}},
+      "zoocraft:look_16": {"set_property": {"zoocraft:look": 16}},
+      "zoocraft:look_17": {"set_property": {"zoocraft:look": 17}},
+      "zoocraft:look_18": {"set_property": {"zoocraft:look": 18}},
+      "zoocraft:look_19": {"set_property": {"zoocraft:look": 19}},
+      "zoocraft:look_20": {"set_property": {"zoocraft:look": 20}},
+      "zoocraft:look_21": {"set_property": {"zoocraft:look": 21}}
+    }
+  }
+}
