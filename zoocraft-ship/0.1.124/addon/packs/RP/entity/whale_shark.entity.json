@@ -1,0 +1,20 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:whale_shark",
+      "materials": {"default": "entity_alphatest"},
+      "textures": {"default": "textures/entity/zoocraft/whale_shark"},
+      "geometry": {"default": "geometry.zoocraft.whale_shark"},
+      "animations": {
+        "swim": "animation.zoocraft.whale_shark.swim",
+        "idle": "animation.zoocraft.whale_shark.idle",
+        "feed": "animation.zoocraft.whale_shark.feed",
+        "move": "controller.animation.zoocraft.whale_shark.move",
+        "feeding": "controller.animation.zoocraft.whale_shark.feed"
+      },
+      "render_controllers": ["controller.render.zoocraft.whale_shark"],
+      "scripts": {"scale": "4.0", "animate": ["move", "feeding"]}
+    }
+  }
+}

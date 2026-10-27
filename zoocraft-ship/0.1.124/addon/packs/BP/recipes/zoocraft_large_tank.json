@@ -1,0 +1,16 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {"identifier": "zoocraft:large_tank"},
+    "tags": ["zoocraft_workshop"],
+    "pattern": ["GGG", "GTG", "IWI"],
+    "key": {
+      "G": {"item": "minecraft:glass"},
+      "T": {"item": "zoocraft:transport_tank"},
+      "W": {"item": "minecraft:water_bucket"},
+      "I": {"item": "minecraft:iron_ingot"}
+    },
+    "unlock": [{"item": "zoocraft:transport_tank"}],
+    "result": {"item": "zoocraft:large_tank", "count": 1}
+  }
+}
