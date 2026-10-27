@@ -1,0 +1,24 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:hammerhead",
+      "materials": {"default": "entity_alphatest"},
+      "textures": {"default": "textures/entity/zoocraft/hammerhead"},
+      "geometry": {"default": "geometry.zoocraft.hammerhead"},
+      "animations": {
+        "swim": "animation.zoocraft.hammerhead.swim",
+        "idle": "animation.zoocraft.hammerhead.idle",
+        "circle": "animation.zoocraft.hammerhead.circle",
+        "rush": "animation.zoocraft.hammerhead.rush",
+        "breach": "animation.zoocraft.hammerhead.breach",
+        "sweep": "animation.zoocraft.hammerhead.sweep",
+        "eat": "animation.zoocraft.hammerhead.eat",
+        "move": "controller.animation.zoocraft.hammerhead.move",
+        "acting": "controller.animation.zoocraft.hammerhead.act"
+      },
+      "render_controllers": ["controller.render.zoocraft.hammerhead"],
+      "scripts": {"scale": "2.0", "animate": ["acting"]}
+    }
+  }
+}

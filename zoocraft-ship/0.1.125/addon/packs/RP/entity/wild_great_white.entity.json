@@ -1,0 +1,25 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:wild_great_white",
+      "materials": {"default": "entity_alphatest"},
+      "textures": {"default": "textures/entity/zoocraft/great_white"},
+      "geometry": {"default": "geometry.zoocraft.great_white"},
+      "animations": {
+        "swim": "animation.zoocraft.great_white.swim",
+        "idle": "animation.zoocraft.great_white.idle",
+        "circle": "animation.zoocraft.great_white.circle",
+        "rush": "animation.zoocraft.great_white.rush",
+        "breach": "animation.zoocraft.great_white.breach",
+        "sweep": "animation.zoocraft.great_white.sweep",
+        "eat": "animation.zoocraft.great_white.eat",
+        "move": "controller.animation.zoocraft.great_white.move",
+        "acting": "controller.animation.zoocraft.great_white.act"
+      },
+      "render_controllers": ["controller.render.zoocraft.great_white"],
+      "scripts": {"scale": "2.0", "animate": ["acting"]},
+      "spawn_egg": {"base_color": "#5a6670", "overlay_color": "#f2f2f2"}
+    }
+  }
+}

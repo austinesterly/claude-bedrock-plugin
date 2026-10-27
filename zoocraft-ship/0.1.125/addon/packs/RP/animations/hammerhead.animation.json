@@ -1,0 +1,169 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.zoocraft.hammerhead.swim": {
+      "loop": true,
+      "bones": {
+        "body": {"rotation": [0, "math.sin(query.anim_time * 160) * 4.0", 0]},
+        "head": {"rotation": [0, "0 + math.sin(query.anim_time * 160 + 40) * 4.8", 0]},
+        "tail": {"rotation": [0, "math.sin(query.anim_time * 160 - 60) * 16", 0]},
+        "tail_fin": {"rotation": [0, "math.sin(query.anim_time * 160 - 120) * 20.8", 0]},
+        "finL": {
+          "rotation": [
+            "math.sin(query.anim_time * 160) * 8.0",
+            0,
+            "-10 + math.sin(query.anim_time * 160 + 90) * 6"
+          ]
+        },
+        "finR": {
+          "rotation": [
+            "math.sin(query.anim_time * 160) * 8.0",
+            0,
+            "10 - math.sin(query.anim_time * 160 + 90) * 6"
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.hammerhead.idle": {
+      "loop": true,
+      "bones": {
+        "body": {"rotation": [0, "math.sin(query.life_time * 70) * 1.75", 0]},
+        "head": {"rotation": [0, "0 + math.sin(query.life_time * 70 + 40) * 2.1", 0]},
+        "tail": {"rotation": [0, "math.sin(query.life_time * 70 - 60) * 7", 0]},
+        "tail_fin": {"rotation": [0, "math.sin(query.life_time * 70 - 120) * 9.1", 0]},
+        "finL": {
+          "rotation": [
+            "math.sin(query.life_time * 70) * 3.5",
+            0,
+            "-10 + math.sin(query.life_time * 70 + 90) * 6"
+          ]
+        },
+        "finR": {
+          "rotation": [
+            "math.sin(query.life_time * 70) * 3.5",
+            0,
+            "10 - math.sin(query.life_time * 70 + 90) * 6"
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.hammerhead.circle": {
+      "loop": true,
+      "bones": {
+        "body": {"rotation": [0, "math.sin(query.anim_time * 260) * 4.5", 0]},
+        "head": {"rotation": [0, "18 + math.sin(query.anim_time * 260 + 40) * 5.3999999999999995", 0]},
+        "tail": {"rotation": [0, "math.sin(query.anim_time * 260 - 60) * 18", 0]},
+        "tail_fin": {"rotation": [0, "math.sin(query.anim_time * 260 - 120) * 23.400000000000002", 0]},
+        "finL": {
+          "rotation": [
+            "math.sin(query.anim_time * 260) * 9.0",
+            0,
+            "-10 + math.sin(query.anim_time * 260 + 90) * 6"
+          ]
+        },
+        "finR": {
+          "rotation": [
+            "math.sin(query.anim_time * 260) * 9.0",
+            0,
+            "10 - math.sin(query.anim_time * 260 + 90) * 6"
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.hammerhead.rush": {
+      "loop": true,
+      "bones": {
+        "body": {"rotation": [0, "math.sin(query.anim_time * 260) * 5.5", 0]},
+        "head": {"rotation": [0, "0 + math.sin(query.anim_time * 260 + 40) * 6.6", 0]},
+        "tail": {"rotation": [0, "math.sin(query.anim_time * 260 - 60) * 22", 0]},
+        "tail_fin": {"rotation": [0, "math.sin(query.anim_time * 260 - 120) * 28.6", 0]},
+        "finL": {
+          "rotation": [
+            "math.sin(query.anim_time * 260) * 11.0",
+            0,
+            "-10 + math.sin(query.anim_time * 260 + 90) * 6"
+          ]
+        },
+        "finR": {
+          "rotation": [
+            "math.sin(query.anim_time * 260) * 11.0",
+            0,
+            "10 - math.sin(query.anim_time * 260 + 90) * 6"
+          ]
+        },
+        "jaw": {"rotation": ["28 + math.sin(query.life_time * 400) * 6", 0, 0]}
+      }
+    },
+    "animation.zoocraft.hammerhead.breach": {
+      "loop": true,
+      "bones": {
+        "body": {"rotation": [-35, "math.sin(query.anim_time * 260) * 5.0", 0]},
+        "head": {"rotation": [0, "0 + math.sin(query.anim_time * 260 + 40) * 6.0", 0]},
+        "tail": {"rotation": [0, "math.sin(query.anim_time * 260 - 60) * 20", 0]},
+        "tail_fin": {"rotation": [0, "math.sin(query.anim_time * 260 - 120) * 26.0", 0]},
+        "finL": {
+          "rotation": [
+            "math.sin(query.anim_time * 260) * 10.0",
+            0,
+            "-10 + math.sin(query.anim_time * 260 + 90) * 6"
+          ]
+        },
+        "finR": {
+          "rotation": [
+            "math.sin(query.anim_time * 260) * 10.0",
+            0,
+            "10 - math.sin(query.anim_time * 260 + 90) * 6"
+          ]
+        },
+        "jaw": {"rotation": [18, 0, 0]}
+      }
+    },
+    "animation.zoocraft.hammerhead.sweep": {
+      "loop": true,
+      "bones": {
+        "body": {"rotation": [14, "math.sin(query.anim_time * 160) * 3.0", 0]},
+        "head": {"rotation": [0, "math.sin(query.life_time * 240) * 32", 0]},
+        "tail": {"rotation": [0, "math.sin(query.anim_time * 160 - 60) * 12", 0]},
+        "tail_fin": {"rotation": [0, "math.sin(query.anim_time * 160 - 120) * 15.600000000000001", 0]},
+        "finL": {
+          "rotation": [
+            "math.sin(query.anim_time * 160) * 6.0",
+            0,
+            "-10 + math.sin(query.anim_time * 160 + 90) * 6"
+          ]
+        },
+        "finR": {
+          "rotation": [
+            "math.sin(query.anim_time * 160) * 6.0",
+            0,
+            "10 - math.sin(query.anim_time * 160 + 90) * 6"
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.hammerhead.eat": {
+      "loop": true,
+      "bones": {
+        "body": {"rotation": [0, "math.sin(query.life_time * 70) * 1.75", 0]},
+        "head": {"rotation": [0, "0 + math.sin(query.life_time * 70 + 40) * 2.1", 0]},
+        "tail": {"rotation": [0, "math.sin(query.life_time * 70 - 60) * 7", 0]},
+        "tail_fin": {"rotation": [0, "math.sin(query.life_time * 70 - 120) * 9.1", 0]},
+        "finL": {
+          "rotation": [
+            "math.sin(query.life_time * 70) * 3.5",
+            0,
+            "-10 + math.sin(query.life_time * 70 + 90) * 6"
+          ]
+        },
+        "finR": {
+          "rotation": [
+            "math.sin(query.life_time * 70) * 3.5",
+            0,
+            "10 - math.sin(query.life_time * 70 + 90) * 6"
+          ]
+        },
+        "jaw": {"rotation": ["14 + math.sin(query.life_time * 500) * 14", 0, 0]}
+      }
+    }
+  }
+}

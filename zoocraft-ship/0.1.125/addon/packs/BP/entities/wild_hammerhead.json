@@ -1,0 +1,124 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "zoocraft:wild_hammerhead",
+      "spawn_category": "water_creature",
+      "is_spawnable": true,
+      "is_summonable": true,
+      "properties": {"zoocraft:act": {"type": "int", "range": [0, 5], "default": 0, "client_sync": true}}
+    },
+    "component_groups": {
+      "zoocraft:free": {
+        "minecraft:behavior.random_swim": {
+          "priority": 3,
+          "interval": 0,
+          "speed_multiplier": 1,
+          "xz_dist": 16,
+          "y_dist": 4,
+          "avoid_surface": false
+        },
+        "minecraft:behavior.swim_wander": {"priority": 4, "interval": 0.1, "look_ahead": 4},
+        "minecraft:behavior.swim_idle": {"priority": 5}
+      },
+      "zoocraft:cruise": {
+        "minecraft:timer": {
+          "looping": false,
+          "randomInterval": true,
+          "time": [30, 70],
+          "time_down_event": {"event": "zoocraft:show"}
+        }
+      },
+      "zoocraft:showing": {
+        "minecraft:timer": {
+          "looping": false,
+          "randomInterval": true,
+          "time": [6, 10],
+          "time_down_event": {"event": "zoocraft:cruise"}
+        }
+      },
+      "zoocraft:hunting": {
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 1,
+          "must_see": true,
+          "reselect_targets": true,
+          "within_radius": 16,
+          "entity_types": [
+            {
+              "filters": {"test": "is_family", "subject": "other", "value": "player"},
+              "max_dist": 16
+            }
+          ]
+        },
+        "minecraft:behavior.melee_attack": {"priority": 2, "speed_multiplier": 1.8, "track_target": true, "reach_multiplier": 1.4}
+      },
+      "zoocraft:calm": {
+        "minecraft:behavior.tempt": {
+          "priority": 2,
+          "speed_multiplier": 1.0,
+          "within_radius": 10,
+          "items": ["zoocraft:fish_ration"]
+        }
+      }
+    },
+    "components": {
+      "minecraft:type_family": {"family": ["wild_hammerhead", "hammerhead", "shark", "aquatic", "mob", "monster"]},
+      "minecraft:nameable": {},
+      "minecraft:attack": {"damage": 6},
+      "minecraft:despawn": {"despawn_from_distance": {}},
+      "minecraft:health": {"value": 30, "max": 30},
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:breathable": {
+        "total_supply": 15,
+        "suffocate_time": 0,
+        "breathes_air": false,
+        "breathes_water": true,
+        "generates_bubbles": false
+      },
+      "minecraft:collision_box": {"width": 1.4, "height": 0.8},
+      "minecraft:navigation.generic": {
+        "can_breach": false,
+        "can_walk": false,
+        "can_path_over_water": false,
+        "can_sink": false,
+        "can_swim": true,
+        "is_amphibious": false,
+        "using_door_annotation": true
+      },
+      "minecraft:movement.basic": {},
+      "minecraft:movement": {"value": 0.14},
+      "minecraft:underwater_movement": {"value": 0.14},
+      "minecraft:physics": {},
+      "minecraft:pushable_by_entity": {},
+      "minecraft:pushable_by_block": {},
+      "minecraft:conditional_bandwidth_optimization": {},
+      "minecraft:behavior.look_at_player": {"priority": 9, "look_distance": 10, "probability": 0.02}
+    },
+    "events": {
+      "zoocraft:show": {
+        "remove": {"component_groups": ["zoocraft:cruise"]},
+        "add": {"component_groups": ["zoocraft:showing"]},
+        "set_property": {"zoocraft:act": 4}
+      },
+      "zoocraft:cruise": {
+        "remove": {"component_groups": ["zoocraft:showing"]},
+        "add": {"component_groups": ["zoocraft:cruise"]},
+        "set_property": {"zoocraft:act": 0}
+      },
+      "zoocraft:hold": {"remove": {"component_groups": ["zoocraft:free", "zoocraft:cruise", "zoocraft:showing"]}},
+      "zoocraft:free": {
+        "add": {"component_groups": ["zoocraft:free", "zoocraft:cruise"]},
+        "set_property": {"zoocraft:act": 0}
+      },
+      "zoocraft:hunt": {
+        "remove": {"component_groups": ["zoocraft:calm"]},
+        "add": {"component_groups": ["zoocraft:hunting"]}
+      },
+      "zoocraft:calm": {
+        "remove": {"component_groups": ["zoocraft:hunting"]},
+        "add": {"component_groups": ["zoocraft:calm"]}
+      },
+      "minecraft:entity_spawned": {"add": {"component_groups": ["zoocraft:free", "zoocraft:cruise", "zoocraft:hunting"]}}
+    }
+  }
+}
