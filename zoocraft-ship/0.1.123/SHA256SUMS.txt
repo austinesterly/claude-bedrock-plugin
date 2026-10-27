@@ -1,0 +1,5 @@
+ba88fad9dd0ffd58f4cd961f7321d30ac4d51c77f0605066bdacc966a913bcc8  addon\docs\Aquarium_test_plan.md
+ec068d2bc06975a9633367595eca6ec627f7c22066f560962f250b56f2b098c3  addon\docs\status.md
+12be1c23eaf811b536ed376a4878983212f1d3d3ef508feca13035532e8803ba  addon\packs\BP\entities\zoo_glow_squid.json
+9c0289ed71e5fc2c70347bed51130587940246635a7f7d2ea6f57508d5eba8d9  addon\packs\BP\entities\zoo_squid.json
+52560a16c4026924a59d16ed019a5c5f510482dac03339bb6436d3bdf96f9348  addon\tests\logic.test.mjs

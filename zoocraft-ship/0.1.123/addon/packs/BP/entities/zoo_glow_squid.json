@@ -1,0 +1,67 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "zoocraft:zoo_glow_squid",
+      "spawn_category": "water_creature",
+      "is_spawnable": false,
+      "is_summonable": true
+    },
+    "component_groups": {
+      "zoocraft:home_4": {"minecraft:home": {"restriction_type": "random_movement", "restriction_radius": 4}},
+      "zoocraft:home_8": {"minecraft:home": {"restriction_type": "random_movement", "restriction_radius": 8}},
+      "zoocraft:home_16": {"minecraft:home": {"restriction_type": "random_movement", "restriction_radius": 16}},
+      "zoocraft:home_32": {"minecraft:home": {"restriction_type": "random_movement", "restriction_radius": 32}},
+      "zoocraft:grown": {"minecraft:collision_box": {"height": 0.8, "width": 0.8}}
+    },
+    "components": {
+      "minecraft:breathable": {"breathes_air": false, "breathes_water": true, "suffocate_time": 0, "total_supply": 15},
+      "minecraft:can_climb": {},
+      "minecraft:collision_box": {"height": 0.8, "width": 0.8},
+      "minecraft:health": {"max": 10, "value": 10},
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:movement": {"value": 0.2},
+      "minecraft:movement.basic": {},
+      "minecraft:nameable": {"always_show": false, "allow_name_tag_renaming": true},
+      "minecraft:physics": {},
+      "minecraft:pushable_by_entity": {},
+      "minecraft:pushable_by_block": {},
+      "minecraft:type_family": {"family": ["zoocraft_animal", "zoo_glow_squid", "aquatic", "squid", "mob"]},
+      "minecraft:persistent": {},
+      "minecraft:damage_sensor": {"triggers": [{"cause": "all", "deals_damage": "no"}]},
+      "minecraft:behavior.move_towards_home_restriction": {"priority": 2, "speed_multiplier": 1.0},
+      "minecraft:navigation.generic": {
+        "can_breach": false,
+        "can_walk": false,
+        "can_path_over_water": false,
+        "can_sink": false,
+        "can_swim": true,
+        "is_amphibious": false,
+        "using_door_annotation": true
+      },
+      "minecraft:underwater_movement": {"value": 0.2},
+      "minecraft:behavior.random_swim": {"priority": 3, "interval": 0, "speed_multiplier": 1, "xz_dist": 12, "y_dist": 4},
+      "minecraft:behavior.swim_wander": {"priority": 4, "interval": 0.1, "look_ahead": 2},
+      "minecraft:behavior.swim_idle": {"priority": 5}
+    },
+    "events": {
+      "zoocraft:home_4": {
+        "remove": {"component_groups": ["zoocraft:home_8", "zoocraft:home_16", "zoocraft:home_32"]},
+        "add": {"component_groups": ["zoocraft:home_4"]}
+      },
+      "zoocraft:home_8": {
+        "remove": {"component_groups": ["zoocraft:home_4", "zoocraft:home_16", "zoocraft:home_32"]},
+        "add": {"component_groups": ["zoocraft:home_8"]}
+      },
+      "zoocraft:home_16": {
+        "remove": {"component_groups": ["zoocraft:home_4", "zoocraft:home_8", "zoocraft:home_32"]},
+        "add": {"component_groups": ["zoocraft:home_16"]}
+      },
+      "zoocraft:home_32": {
+        "remove": {"component_groups": ["zoocraft:home_4", "zoocraft:home_8", "zoocraft:home_16"]},
+        "add": {"component_groups": ["zoocraft:home_32"]}
+      },
+      "minecraft:entity_spawned": {"add": {"component_groups": ["zoocraft:grown", "zoocraft:home_8"]}}
+    }
+  }
+}
