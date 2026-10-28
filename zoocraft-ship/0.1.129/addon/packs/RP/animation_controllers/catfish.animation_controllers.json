@@ -1,0 +1,35 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.zoocraft.catfish.move": {
+      "initial_state": "idle",
+      "states": {
+        "idle": {
+          "animations": ["idle"],
+          "transitions": [{"swimming": "query.modified_move_speed > 0.02"}],
+          "blend_transition": 0.5
+        },
+        "swimming": {
+          "animations": ["swim"],
+          "transitions": [{"idle": "query.modified_move_speed <= 0.02"}],
+          "blend_transition": 0.5
+        }
+      }
+    },
+    "controller.animation.zoocraft.catfish.act": {
+      "initial_state": "cruise",
+      "states": {
+        "cruise": {
+          "animations": ["move"],
+          "transitions": [{"forage": "query.property('zoocraft:act') == 1"}],
+          "blend_transition": 0.4
+        },
+        "forage": {
+          "animations": ["forage"],
+          "transitions": [{"cruise": "query.property('zoocraft:act') == 0"}],
+          "blend_transition": 0.5
+        }
+      }
+    }
+  }
+}

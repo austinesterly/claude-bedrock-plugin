@@ -1,0 +1,22 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:manatee",
+      "materials": {"default": "entity_alphatest"},
+      "textures": {"default": "textures/entity/zoocraft/manatee"},
+      "geometry": {"default": "geometry.zoocraft.manatee"},
+      "animations": {
+        "swim": "animation.zoocraft.manatee.swim",
+        "idle": "animation.zoocraft.manatee.idle",
+        "graze": "animation.zoocraft.manatee.graze",
+        "rise": "animation.zoocraft.manatee.rise",
+        "breathe": "animation.zoocraft.manatee.breathe",
+        "move": "controller.animation.zoocraft.manatee.move",
+        "acting": "controller.animation.zoocraft.manatee.act"
+      },
+      "render_controllers": ["controller.render.zoocraft.manatee"],
+      "scripts": {"scale": "q.is_baby ? 0.8 : 2.0", "animate": ["acting"]}
+    }
+  }
+}

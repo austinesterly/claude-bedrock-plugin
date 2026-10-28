@@ -1,0 +1,21 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:wild_catfish",
+      "materials": {"default": "entity_alphatest"},
+      "textures": {"default": "textures/entity/zoocraft/catfish"},
+      "geometry": {"default": "geometry.zoocraft.catfish"},
+      "animations": {
+        "swim": "animation.zoocraft.catfish.swim",
+        "idle": "animation.zoocraft.catfish.idle",
+        "forage": "animation.zoocraft.catfish.forage",
+        "move": "controller.animation.zoocraft.catfish.move",
+        "acting": "controller.animation.zoocraft.catfish.act"
+      },
+      "render_controllers": ["controller.render.zoocraft.catfish"],
+      "scripts": {"scale": "0.75", "animate": ["acting"]},
+      "spawn_egg": {"base_color": "#5b6b5a", "overlay_color": "#e9e4d2"}
+    }
+  }
+}

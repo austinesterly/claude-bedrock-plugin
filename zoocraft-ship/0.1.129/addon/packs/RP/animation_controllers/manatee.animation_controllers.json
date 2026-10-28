@@ -1,0 +1,61 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.zoocraft.manatee.move": {
+      "initial_state": "idle",
+      "states": {
+        "idle": {
+          "animations": ["idle"],
+          "transitions": [{"swimming": "query.modified_move_speed > 0.02"}],
+          "blend_transition": 0.5
+        },
+        "swimming": {
+          "animations": ["swim"],
+          "transitions": [{"idle": "query.modified_move_speed <= 0.02"}],
+          "blend_transition": 0.5
+        }
+      }
+    },
+    "controller.animation.zoocraft.manatee.act": {
+      "initial_state": "cruise",
+      "states": {
+        "cruise": {
+          "animations": ["move"],
+          "transitions": [
+            {"graze": "query.property('zoocraft:act') == 1"},
+            {"rise": "query.property('zoocraft:act') == 2"},
+            {"breathe": "query.property('zoocraft:act') == 3"}
+          ],
+          "blend_transition": 0.4
+        },
+        "graze": {
+          "animations": ["graze"],
+          "transitions": [
+            {"cruise": "query.property('zoocraft:act') == 0"},
+            {"rise": "query.property('zoocraft:act') == 2"},
+            {"breathe": "query.property('zoocraft:act') == 3"}
+          ],
+          "blend_transition": 0.5
+        },
+        "rise": {
+          "animations": ["rise"],
+          "transitions": [
+            {"cruise": "query.property('zoocraft:act') == 0"},
+            {"graze": "query.property('zoocraft:act') == 1"},
+            {"breathe": "query.property('zoocraft:act') == 3"}
+          ],
+          "blend_transition": 0.5
+        },
+        "breathe": {
+          "animations": ["breathe"],
+          "transitions": [
+            {"cruise": "query.property('zoocraft:act') == 0"},
+            {"graze": "query.property('zoocraft:act') == 1"},
+            {"rise": "query.property('zoocraft:act') == 2"}
+          ],
+          "blend_transition": 0.5
+        }
+      }
+    }
+  }
+}
