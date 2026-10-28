@@ -1,0 +1,13 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:scatter_feature": {
+    "description": {
+      "identifier": "zoocraft:trench_lantern_here"
+    },
+    "places_feature": "zoocraft:trench_lantern",
+    "iterations": "(query.has_biome_tag('zoocraft_trench', variable.originx, 40, variable.originz) && variable.originy <= 1) ? 1 : 0",
+    "x": 0,
+    "y": -1,
+    "z": 0
+  }
+}

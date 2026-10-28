@@ -1,0 +1,20 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:aggregate_feature": {
+    "description": {
+      "identifier": "zoocraft:trench_reef_fans"
+    },
+    "features": [
+      "zoocraft:trench_reef_fire_fans",
+      "zoocraft:trench_reef_fire_fans2",
+      "zoocraft:trench_reef_brain_fans",
+      "zoocraft:trench_reef_brain_fans2",
+      "zoocraft:trench_reef_horn_fans",
+      "zoocraft:trench_reef_horn_fans2",
+      "zoocraft:trench_reef_tube_fans",
+      "zoocraft:trench_reef_tube_fans2",
+      "zoocraft:trench_reef_bubble_fans",
+      "zoocraft:trench_reef_bubble_fans2"
+    ]
+  }
+}

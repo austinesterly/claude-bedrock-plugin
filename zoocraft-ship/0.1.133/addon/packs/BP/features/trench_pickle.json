@@ -1,0 +1,20 @@
+{
+  "format_version": "1.21.40",
+  "minecraft:single_block_feature": {
+    "description": {
+      "identifier": "zoocraft:trench_pickle"
+    },
+    "places_block": {
+      "name": "minecraft:sea_pickle",
+      "states": {
+        "cluster_count": 3,
+        "dead_bit": false
+      }
+    },
+    "enforce_placement_rules": false,
+    "enforce_survivability_rules": false,
+    "may_replace": [
+      "minecraft:water"
+    ]
+  }
+}

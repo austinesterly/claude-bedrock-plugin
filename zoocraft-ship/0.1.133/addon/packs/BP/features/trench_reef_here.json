@@ -1,0 +1,13 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:scatter_feature": {
+    "description": {
+      "identifier": "zoocraft:trench_reef_here"
+    },
+    "places_feature": "zoocraft:trench_reef",
+    "iterations": "(query.has_biome_tag('zoocraft_trench', variable.originx, 40, variable.originz) && math.mod(math.abs(math.sin(variable.originx * 12.9898 + variable.originz * 78.233 + 52 * 37.719) * 43758.5453), 1) < 0.45) ? 1 : 0",
+    "x": 0,
+    "y": 0,
+    "z": 0
+  }
+}

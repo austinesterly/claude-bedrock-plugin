@@ -1,0 +1,14 @@
+{
+  "format_version": "1.21.40",
+  "minecraft:single_block_feature": {
+    "description": {
+      "identifier": "zoocraft:trench_bubble_coral"
+    },
+    "places_block": "minecraft:bubble_coral_block",
+    "enforce_placement_rules": false,
+    "enforce_survivability_rules": false,
+    "may_replace": [
+      "minecraft:water"
+    ]
+  }
+}

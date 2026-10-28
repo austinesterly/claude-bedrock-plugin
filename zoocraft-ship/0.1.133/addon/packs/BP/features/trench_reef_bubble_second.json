@@ -1,0 +1,26 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:scatter_feature": {
+    "description": {
+      "identifier": "zoocraft:trench_reef_bubble_second"
+    },
+    "places_feature": "zoocraft:trench_brain_coral",
+    "iterations": "(math.mod(math.abs(math.sin(variable.originx * 12.9898 + variable.originz * 78.233 + 51 * 37.719) * 43758.5453), 1) >= 0.8888888888888888 && math.mod(math.abs(math.sin(variable.originx * 12.9898 + variable.originz * 78.233 + 51 * 37.719) * 43758.5453), 1) < 1.0) ? 25 : 0",
+    "coordinate_eval_order": "xzy",
+    "x": {
+      "distribution": "triangle",
+      "extent": [
+        -4,
+        4
+      ]
+    },
+    "z": {
+      "distribution": "triangle",
+      "extent": [
+        -4,
+        4
+      ]
+    },
+    "y": "query.above_top_solid(variable.worldx, variable.worldz) - variable.originy"
+  }
+}

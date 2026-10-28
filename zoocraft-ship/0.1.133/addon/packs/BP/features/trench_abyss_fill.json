@@ -1,0 +1,19 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:scatter_feature": {
+    "description": {
+      "identifier": "zoocraft:trench_abyss_fill"
+    },
+    "places_feature": "zoocraft:trench_abyss_water",
+    "iterations": "math.max(0, 62 - variable.originy)",
+    "x": 0,
+    "z": 0,
+    "y": {
+      "distribution": "fixed_grid",
+      "extent": [
+        0,
+        127
+      ]
+    }
+  }
+}

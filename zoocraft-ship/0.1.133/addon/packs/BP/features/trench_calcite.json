@@ -1,0 +1,45 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:ore_feature": {
+    "description": {
+      "identifier": "zoocraft:trench_calcite"
+    },
+    "count": 14,
+    "replace_rules": [
+      {
+        "places_block": "minecraft:calcite",
+        "may_replace": [
+          "minecraft:deepslate",
+          "minecraft:cobbled_deepslate",
+          "minecraft:tuff",
+          "minecraft:stone",
+          "minecraft:gravel",
+          "minecraft:sand",
+          "minecraft:clay",
+          "minecraft:dirt",
+          "minecraft:granite",
+          "minecraft:diorite",
+          "minecraft:andesite",
+          "minecraft:smooth_basalt",
+          "minecraft:calcite",
+          "minecraft:deepslate_coal_ore",
+          "minecraft:deepslate_iron_ore",
+          "minecraft:deepslate_copper_ore",
+          "minecraft:deepslate_gold_ore",
+          "minecraft:deepslate_redstone_ore",
+          "minecraft:deepslate_lapis_ore",
+          "minecraft:deepslate_diamond_ore",
+          "minecraft:deepslate_emerald_ore",
+          "minecraft:coal_ore",
+          "minecraft:iron_ore",
+          "minecraft:copper_ore",
+          "minecraft:gold_ore",
+          "minecraft:redstone_ore",
+          "minecraft:lapis_ore",
+          "minecraft:diamond_ore",
+          "minecraft:emerald_ore"
+        ]
+      }
+    ]
+  }
+}

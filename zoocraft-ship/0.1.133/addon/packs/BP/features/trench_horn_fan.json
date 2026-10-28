@@ -1,0 +1,19 @@
+{
+  "format_version": "1.21.40",
+  "minecraft:single_block_feature": {
+    "description": {
+      "identifier": "zoocraft:trench_horn_fan"
+    },
+    "places_block": {
+      "name": "minecraft:horn_coral_fan",
+      "states": {
+        "coral_fan_direction": 0
+      }
+    },
+    "enforce_placement_rules": false,
+    "enforce_survivability_rules": true,
+    "may_replace": [
+      "minecraft:water"
+    ]
+  }
+}

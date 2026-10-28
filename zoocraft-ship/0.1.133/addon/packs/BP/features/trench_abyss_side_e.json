@@ -1,0 +1,19 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:scatter_feature": {
+    "description": {
+      "identifier": "zoocraft:trench_abyss_side_e"
+    },
+    "places_feature": "zoocraft:trench_abyss_unlichen",
+    "iterations": "math.mod(math.mod(variable.originx, 16) + 16, 16) == 15 ? math.max(0, 62 - variable.originy) : 0",
+    "x": 1,
+    "z": 0,
+    "y": {
+      "distribution": "fixed_grid",
+      "extent": [
+        0,
+        127
+      ]
+    }
+  }
+}

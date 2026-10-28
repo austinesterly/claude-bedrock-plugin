@@ -1,0 +1,20 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:aggregate_feature": {
+    "description": {
+      "identifier": "zoocraft:trench_reef_body"
+    },
+    "features": [
+      "zoocraft:trench_reef_fire_main",
+      "zoocraft:trench_reef_fire_second",
+      "zoocraft:trench_reef_brain_main",
+      "zoocraft:trench_reef_brain_second",
+      "zoocraft:trench_reef_horn_main",
+      "zoocraft:trench_reef_horn_second",
+      "zoocraft:trench_reef_tube_main",
+      "zoocraft:trench_reef_tube_second",
+      "zoocraft:trench_reef_bubble_main",
+      "zoocraft:trench_reef_bubble_second"
+    ]
+  }
+}

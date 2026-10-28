@@ -1,0 +1,15 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:aggregate_feature": {
+    "description": {
+      "identifier": "zoocraft:trench_abyss_column"
+    },
+    "features": [
+      "zoocraft:trench_abyss_fill",
+      "zoocraft:trench_abyss_side_w",
+      "zoocraft:trench_abyss_side_e",
+      "zoocraft:trench_abyss_side_n",
+      "zoocraft:trench_abyss_side_s"
+    ]
+  }
+}
