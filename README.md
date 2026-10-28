@@ -35,7 +35,7 @@ Commands:
 
 Scripts (Node 18+, no dependencies, nothing to install):
 - `scripts/new-addon.mjs <folder> --name <Name> --ns <namespace>`: the generator behind `/bedrock-new`. Writes only into the new folder.
-- `scripts/check-pack.mjs <folder>`: read-only checker for the links the game never reports (BP/RP ids, geometry, texture paths and sizes, bones, animation names, controller states, effects, manifests, UUIDs, BOMs, comment keys, loop seams, item icons, block textures and geometry, custom components that are never registered, attachables, lang keys).
+- `scripts/check-pack.mjs <folder>`: read-only checker for the links the game never reports (BP/RP ids, geometry, texture paths and sizes, bones, animation names, controller states, effects, manifests, UUIDs, BOMs, comment keys, loop seams, item icons, block textures and geometry, custom components that are never registered, attachables, lang keys, biome replacement targets and client biomes).
 - `scripts/package-addon.mjs <packs dir>`: builds `<name>_BP.mcpack`, `<name>_RP.mcpack` and `<name>.mcaddon` (also `npm run package` in a generated add-on).
 - `scripts/build-vanilla-ids.mjs <bedrock-samples>/resource_pack`: rebuilds the list of vanilla resources the checker accepts.
 - `scripts/build-json-reference.mjs <content/forms>`: rebuilds the JSON reference from the official Microsoft Learn docs repo.
@@ -51,7 +51,7 @@ You need Claude Code (the terminal app or the desktop app's Code tab). The plugi
 /plugin install bedrock-addon-kit@bedrock-creator-tools
 ```
 
-**From a folder:** download this whole `claude-bedrock-plugin` folder (or unzip `claude-bedrock-plugin-0.4.3.zip` from the project files) to somewhere like `C:\Users\<you>\claude-plugins\claude-bedrock-plugin`, then in Claude Code run
+**From a folder:** download this whole `claude-bedrock-plugin` folder (or unzip `claude-bedrock-plugin-0.4.4.zip` from the project files) to somewhere like `C:\Users\<you>\claude-plugins\claude-bedrock-plugin`, then in Claude Code run
 ```
 /plugin marketplace add C:\Users\<you>\claude-plugins\claude-bedrock-plugin
 /plugin install bedrock-addon-kit@bedrock-creator-tools

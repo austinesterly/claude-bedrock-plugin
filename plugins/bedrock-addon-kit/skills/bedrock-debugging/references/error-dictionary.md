@@ -12,6 +12,7 @@ Content log lines look roughly like `[Category][Severity]-<file or id> | <JSON p
 - **CL x.y**: quoted in the official changelog for that version.
 - **Learn**: quoted on a Microsoft Learn page (some of those pages are marked AI-assisted, so treat the text as an example).
 - **Typ**: an error class or enum name from the official typings. The class name shows in the log; the message after it varies.
+- **Game**: seen verbatim in a real content log (the date says when).
 - **P**: paraphrased. No official source gives the exact text. Search the log for the *idea*, not the words.
 
 Placeholders: `<id>`, `<uuid>`, `<file>`.
@@ -192,6 +193,8 @@ Warnings can be silenced per pack in **test worlds** with `disableWatchdogTiming
 | Snow accumulation min above max | CL 1.21.20 (P) | Biome `snow_accumulation` range reversed | Swap them |
 | `overworld_generation_rules` / `multinoise_generation_rules` error in a custom biome | CL 1.21.110 (P) | Vanilla-only components | Remove; use `minecraft:replace_biomes` |
 | Missing block or biome reference in biome or client biome JSON | CL 1.21.90 / 1.21.100 (P) | Typo | Fix the id |
+| `[BiomeRegistry][error]-minecraft:replace_biomes \| No biome found with name: 'deep_ocean'` and `[Json][error]- -> components -> minecraft:replace_biomes -> replacements[0] -> targets[0]: Missing referenced asset deep_ocean` | Game 2026-10-28 | A bare target name. The docs say "Target biomes must not contain namespaces", but the game wants full ids, and one bad target drops the whole biome | `"targets": ["minecraft:deep_ocean"]` |
+| `[BiomeRegistry][error]-Loaded client biome but no biome with that name exists: <id>` | Game 2026-10-28 | The BP biome was rejected (see the line before it) or its identifier differs from the client biome's | Fix the BP biome's errors first |
 | `CustomDimensionAlreadyRegisteredError` / `CustomDimensionNameError` | Typ | Same id in JSON and script, or a bad name | Define each dimension once; `ns:name`, lower case |
 
 More: `../../bedrock-dimensions-biomes/SKILL.md` "Rules that bite".

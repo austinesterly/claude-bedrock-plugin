@@ -20,6 +20,11 @@ if (!formsDir || !existsSync(join(formsDir, "item"))) { console.error("Pass the 
 const TYPE = { 0: "int", 1: "boolean", 2: "string", 3: "float" };
 const clean = (s) => String(s ?? "").replace(/\s+/g, " ").replace(/\|/g, "\\|").trim();
 const short = (s, n = 260) => { const c = clean(s); return c.length > n ? c.slice(0, n - 1) + "…" : c; };
+// Official field text that the game contradicts, checked in game. The note is added after the field's own text.
+const CORRECTIONS = [
+  { field: "targets", text: /Target biomes must not contain namespaces/, note: "**Correction (checked in game 2026-10-28):** write full ids (`minecraft:plains`). The game rejects bare names (\"No biome found with name\", \"Missing referenced asset\") and drops the whole biome." },
+];
+const correction = (fl) => CORRECTIONS.find((c) => c.field === fl.id && c.text.test(clean(fl.description ?? fl.title)))?.note;
 
 function load(domain) {
   const dir = join(formsDir, domain);
@@ -73,7 +78,7 @@ function renderForm(form, lines) {
       const choices = Array.isArray(fl.choices) && fl.choices.length ? ` Values: ${fl.choices.slice(0, 24).map((c) => "`" + clean(c.id ?? c) + "`").join(", ")}${fl.choices.length > 24 ? ", …" : ""}.` : "";
       const range = fl.minValue !== undefined || fl.maxValue !== undefined ? ` Range: ${fl.minValue ?? ""}..${fl.maxValue ?? ""}.` : "";
       const sub = fl.subFormId ? ` See \`${fl.subFormId}\`.` : "";
-      lines.push(`| \`${fl.id}\` | ${fieldType(fl)} | ${def} | ${[flags, short(fl.description ?? fl.title ?? "")].filter(Boolean).join(". ")}${choices}${range}${sub} |`);
+      lines.push(`| \`${fl.id}\` | ${fieldType(fl)} | ${def} | ${[flags, short(fl.description ?? fl.title ?? "")].filter(Boolean).join(". ")}${choices}${range}${sub}${correction(fl) ? " " + correction(fl) : ""} |`);
     }
     lines.push("");
   }

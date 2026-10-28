@@ -53,7 +53,7 @@ Checked 2026-10-06 against `@minecraft/server` 2.10.0 typings, Mojang bedrock-sa
 ## Rules that bite
 
 - Custom dimensions have **void generation only**. Surface builders, noise and `overworld_generation_rules` do nothing there. Whether feature rules run during void generation is unverified; place features from script.
-- `replace_biomes.targets` are vanilla names **without** a namespace; `dimension` is `minecraft:overworld` or `minecraft:nether`. Append new replacements; reordering changes seeds.
+- `replace_biomes.targets` are **full** vanilla ids (`minecraft:plains`). Learn, the schema text and the wikis still say "Target biomes must not contain namespaces"; that is out of date. The game rejects a bare name ("No biome found with name", "Missing referenced asset") and drops the whole biome (checked in game, 2026-10-28). `dimension` is `minecraft:overworld` or `minecraft:nether`. Append new replacements; reordering changes seeds.
 - `overworld_generation_rules`, `multinoise_generation_rules` and `overworld_height` are vanilla-only ("unused for custom biomes"; height only affects map rendering).
 - `minecraft:default_biome` on a vanilla dimension file is a content error (26.50).
 - `/reload` can't add a newly registered dimension (`CustomDimensionReloadNewDimensionError`): restart the world.

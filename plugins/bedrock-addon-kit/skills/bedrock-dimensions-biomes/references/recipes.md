@@ -137,12 +137,12 @@ Add a cooldown (a player dynamic property with `system.currentTick`) so a player
 
 ## 4. Overworld custom biome
 
-`templates/overworld-biome`: `ns:glimmer_meadow` replaces part of `plains` and `sunflower_plains`.
+`templates/overworld-biome`: `ns:glimmer_meadow` replaces part of `minecraft:plains` and `minecraft:sunflower_plains`. Targets are full ids: a bare `plains` makes the game drop the whole biome ("No biome found with name", "Missing referenced asset" in the content log), though the docs still say to leave the namespace off.
 
 ```json
 "minecraft:replace_biomes": {
   "replacements": [
-    { "dimension": "minecraft:overworld", "targets": [ "plains", "sunflower_plains" ], "amount": 0.3, "noise_frequency_scale": 0.5 }
+    { "dimension": "minecraft:overworld", "targets": [ "minecraft:plains", "minecraft:sunflower_plains" ], "amount": 0.3, "noise_frequency_scale": 0.5 }
   ]
 }
 ```
@@ -152,4 +152,4 @@ Checklist:
 2. Keep vanilla tags you want (`animal`, `monster`, `overworld`, `bee_habitat`) and add a unique one (`ns_glimmer_meadow`) for your feature and spawn rules.
 3. A client biome for colors; reuse a vanilla fog id (`minecraft:fog_plains`) or ship one.
 4. Test in a new world or unexplored chunks; `/locate biome ns:glimmer_meadow`.
-5. In the Nether use `"dimension": "minecraft:nether"`, targets such as `crimson_forest`, and a surface builder of type `overworld`, `frozen_ocean`, `capped` or `the_end`.
+5. In the Nether use `"dimension": "minecraft:nether"`, targets such as `minecraft:crimson_forest`, and a surface builder of type `overworld`, `frozen_ocean`, `capped` or `the_end`.

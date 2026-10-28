@@ -46,7 +46,7 @@
         "replacements": [
           {
             "dimension": "minecraft:overworld",
-            "targets": [ "plains", "sunflower_plains" ],
+            "targets": [ "minecraft:plains", "minecraft:sunflower_plains" ],
             "amount": 0.3,
             "noise_frequency_scale": 0.5
           }

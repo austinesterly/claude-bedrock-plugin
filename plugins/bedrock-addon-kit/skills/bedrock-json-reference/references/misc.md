@@ -849,7 +849,7 @@ Represents the replacement information used to determine the placement of the ov
 | `amount` | float |  | **required**. Noise value used to determine whether or not the replacement is attempted, similar to a percentage. Must be in the range (0.0, 1.0]. |
 | `dimension` | string |  | **required**. Dimension in which this replacement can happen. Must be 'minecraft:overworld'. |
 | `noise_frequency_scale` | float |  | **required**. Scaling value used to alter the frequency of replacement attempts. A lower frequency will mean a bigger contiguous biome area that occurs less often. A higher frequency will mean smaller contiguous biome areas that occur more often. Must be in the range (0.0,… |
-| `targets` |  |  | **required**. Biomes that are going to be replaced by the overriding biome. Target biomes must not contain namespaces. |
+| `targets` |  |  | **required**. Biomes that are going to be replaced by the overriding biome. Target biomes must not contain namespaces. **Correction (checked in game 2026-10-28):** write full ids (`minecraft:plains`). The game rejects bare names ("No biome found with name", "Missing referenced asset") and drops the whole biome. |
 
 ### BiomeConditions (biomeconditions)
 

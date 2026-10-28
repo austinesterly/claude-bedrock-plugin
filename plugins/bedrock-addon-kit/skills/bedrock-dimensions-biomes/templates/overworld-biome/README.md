@@ -17,6 +17,6 @@ A custom biome `ns:glimmer_meadow` that takes over about 30% of Plains and Sunfl
 
 ## Notes
 
-- `targets` take vanilla biome names without a namespace (`plains`, not `minecraft:plains`).
+- `targets` take full vanilla biome ids (`minecraft:plains`, not `plains`). The docs still say no namespace, but the game rejects a bare name ("No biome found with name", "Missing referenced asset") and drops the whole biome. `/bedrock-check` flags it.
 - Add new replacements to the end of `replacements`: changing the order changes generation of seeds already in use.
 - The tags `animal` and `monster` keep vanilla spawn rules working here. The tag `ns_glimmer_meadow` is what your own feature rules and spawn rules should test.

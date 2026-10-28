@@ -407,6 +407,31 @@ for (const rp of rps) {
   }
 }
 
+// ---------- biomes ----------
+// replace_biomes targets are full ids ("minecraft:plains"). The docs say "Target biomes must not contain namespaces", but the
+// game rejects a bare name ("No biome found with name", "Missing referenced asset") and drops the whole biome (seen 2026-10-28).
+const vanillaBiomes = new Set(VANILLA.biomes ?? []), bpBiomes = new Set();
+for (const bp of bps) for (const f of walk(bp.dir)) {
+  if (!f.endsWith(".biome.json")) continue;
+  const b = readJson(f)?.["minecraft:biome"];
+  if (!b) continue;
+  const id = b.description?.identifier;
+  if (!id) { err(f, "biome without description.identifier"); continue; }
+  bpBiomes.add(id);
+  (b.components?.["minecraft:replace_biomes"]?.replacements ?? []).forEach((r, i) => {
+    for (const t of r?.targets ?? []) {
+      if (typeof t !== "string") continue;
+      if (!t.includes(":")) err(f, `${id}: replace_biomes replacements[${i}] target "${t}" needs its namespace ("minecraft:${t}"); the game drops the whole biome on a bare name, whatever the docs say`);
+      else if (t.startsWith("minecraft:") && vanillaBiomes.size && !vanillaBiomes.has(t)) err(f, `${id}: replace_biomes target ${t} is not a vanilla biome`);
+    }
+  });
+}
+if (bps.length) for (const rp of rps) for (const f of walk(rp.dir)) {
+  if (!f.endsWith(".client_biome.json")) continue;
+  const id = readJson(f)?.["minecraft:client_biome"]?.description?.identifier;
+  if (id && !bpBiomes.has(id) && !vanillaBiomes.has(id) && !id.startsWith("minecraft:")) warn(f, `client biome ${id} has no BP biome with that identifier (the game logs "Loaded client biome but no biome with that name exists")`);
+}
+
 // ---------- animation controllers ----------
 for (const [cid, c] of controllers) {
   const states = c.data.states ?? {};
