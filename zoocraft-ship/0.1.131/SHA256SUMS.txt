@@ -1,0 +1,4 @@
+ce03535088aa590fecc29f49c101539619a4c73fa6531be2b0e2341e161ac484  addon\docs\Trench_test_plan.md
+0e69d8aca05635e9b6011c74f63914c651de05957d1380b32157b9ef732332db  addon\docs\status.md
+5167f575677bec06c1d33467cc9221ecd68fea725c76c4aa1cab9f4ed31599f3  addon\packs\BP\biomes\deep_trench.biome.json
+5c7e7dc64bf399e0518945ea7df905454f9d359ad6894f10ed03bdc39bfac831  addon\tests\logic.test.mjs
