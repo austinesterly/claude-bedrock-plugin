@@ -1,0 +1,11 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.zoocraft.molebear": {
+      "arrays": {"textures": {"Array.coats": ["Texture.default", "Texture.loam", "Texture.cub"]}},
+      "geometry": "Geometry.default",
+      "materials": [{"*": "Material.default"}],
+      "textures": ["Array.coats[q.is_baby ? 2 : (q.variant == 1 ? 1 : 0)]"]
+    }
+  }
+}

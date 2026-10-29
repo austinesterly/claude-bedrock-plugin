@@ -1,0 +1,749 @@
+{
+  "resource_pack_name": "zoocraft",
+  "texture_name": "atlas.terrain",
+  "padding": 8,
+  "num_mip_levels": 4,
+  "texture_data": {
+    "zoocraft_controller_side": {
+      "textures": "textures/blocks/zoocraft/controller_side"
+    },
+    "zoocraft_controller_top": {
+      "textures": "textures/blocks/zoocraft/controller_top"
+    },
+    "zoocraft_planks": {
+      "textures": "textures/blocks/zoocraft/planks"
+    },
+    "zoocraft_feeder_side": {
+      "textures": "textures/blocks/zoocraft/feeder_side"
+    },
+    "zoocraft_feeder_top_0": {
+      "textures": "textures/blocks/zoocraft/feeder_top_0"
+    },
+    "zoocraft_feeder_top_1": {
+      "textures": "textures/blocks/zoocraft/feeder_top_1"
+    },
+    "zoocraft_feeder_top_2": {
+      "textures": "textures/blocks/zoocraft/feeder_top_2"
+    },
+    "zoocraft_gate_side": {
+      "textures": "textures/blocks/zoocraft/gate_side"
+    },
+    "zoocraft_gate_top": {
+      "textures": "textures/blocks/zoocraft/gate_top"
+    },
+    "zoocraft_gate_pillar": {
+      "textures": "textures/blocks/zoocraft/gate_pillar"
+    },
+    "zoocraft_gate_stone": {
+      "textures": "textures/blocks/zoocraft/gate_stone"
+    },
+    "zoocraft_gate_hedge": {
+      "textures": "textures/blocks/zoocraft/gate_hedge"
+    },
+    "zoocraft_gate_sign_z": {
+      "textures": "textures/blocks/zoocraft/gate_sign_z"
+    },
+    "zoocraft_gate_sign_o": {
+      "textures": "textures/blocks/zoocraft/gate_sign_o"
+    },
+    "zoocraft_workshop_top": {
+      "textures": "textures/blocks/cartography_table_top"
+    },
+    "zoocraft_workshop_front": {
+      "textures": "textures/blocks/crafting_table_front"
+    },
+    "zoocraft_workshop_side": {
+      "textures": "textures/blocks/crafting_table_side"
+    },
+    "zoocraft_workshop_bottom": {
+      "textures": "textures/blocks/planks_oak"
+    },
+    "zoocraft_trough": {
+      "textures": "textures/blocks/zoocraft/trough"
+    },
+    "zoocraft_trough_water": {
+      "textures": "textures/blocks/zoocraft/trough_water"
+    },
+    "zoocraft_basket": {
+      "textures": "textures/blocks/zoocraft/basket"
+    },
+    "zoocraft_basket_rope": {
+      "textures": "textures/blocks/zoocraft/basket_rope"
+    },
+    "zoocraft_basket_food": {
+      "textures": "textures/blocks/zoocraft/basket_food"
+    },
+    "zoocraft_filter_side_off": {
+      "textures": "textures/blocks/zoocraft/filter_side_off"
+    },
+    "zoocraft_filter_side_on": {
+      "textures": "textures/blocks/zoocraft/filter_side_on"
+    },
+    "zoocraft_filter_top": {
+      "textures": "textures/blocks/zoocraft/filter_top"
+    },
+    "zoocraft_keeper_gate_lower": {
+      "textures": "textures/blocks/zoocraft/keeper_gate_lower"
+    },
+    "zoocraft_keeper_gate_upper": {
+      "textures": "textures/blocks/zoocraft/keeper_gate_upper"
+    },
+    "zoocraft_station_side": {
+      "textures": "textures/blocks/zoocraft/station_side"
+    },
+    "zoocraft_station_top": {
+      "textures": "textures/blocks/zoocraft/station_top"
+    },
+    "zoocraft_booth_side": {
+      "textures": "textures/blocks/zoocraft/booth_side"
+    },
+    "zoocraft_booth_front": {
+      "textures": "textures/blocks/zoocraft/booth_front"
+    },
+    "zoocraft_booth_roof": {
+      "textures": "textures/blocks/zoocraft/booth_roof"
+    },
+    "zoocraft_viewpoint_post": {
+      "textures": "textures/blocks/zoocraft/viewpoint_post"
+    },
+    "zoocraft_viewpoint_plaque_off": {
+      "textures": "textures/blocks/zoocraft/viewpoint_plaque_off"
+    },
+    "zoocraft_viewpoint_plaque_on": {
+      "textures": "textures/blocks/zoocraft/viewpoint_plaque_on"
+    },
+    "zoocraft_stand_side": {
+      "textures": "textures/blocks/zoocraft/stand_side"
+    },
+    "zoocraft_stand_front": {
+      "textures": "textures/blocks/zoocraft/stand_front"
+    },
+    "zoocraft_stand_roof": {
+      "textures": "textures/blocks/zoocraft/stand_roof"
+    },
+    "zoocraft_stand_wheel": {
+      "textures": "textures/blocks/zoocraft/stand_wheel"
+    },
+    "zoocraft_stand_food_on": {
+      "textures": "textures/blocks/zoocraft/stand_food_on"
+    },
+    "zoocraft_stand_food_off": {
+      "textures": "textures/blocks/zoocraft/stand_food_off"
+    },
+    "zoocraft_stand_menu": {
+      "textures": "textures/blocks/zoocraft/stand_menu"
+    },
+    "zoocraft_bench_wood": {
+      "textures": "textures/blocks/zoocraft/bench_wood"
+    },
+    "zoocraft_bench_iron": {
+      "textures": "textures/blocks/zoocraft/bench_iron"
+    },
+    "zoocraft_bin_side": {
+      "textures": "textures/blocks/zoocraft/bin_side"
+    },
+    "zoocraft_bin_rim": {
+      "textures": "textures/blocks/zoocraft/bin_rim"
+    },
+    "zoocraft_bin_inside_0": {
+      "textures": "textures/blocks/zoocraft/bin_inside_0"
+    },
+    "zoocraft_bin_inside_1": {
+      "textures": "textures/blocks/zoocraft/bin_inside_1"
+    },
+    "zoocraft_bin_inside_2": {
+      "textures": "textures/blocks/zoocraft/bin_inside_2"
+    },
+    "zoocraft_donation_glass": {
+      "textures": "textures/blocks/zoocraft/donation_glass"
+    },
+    "zoocraft_donation_front": {
+      "textures": "textures/blocks/zoocraft/donation_front"
+    },
+    "zoocraft_donation_top": {
+      "textures": "textures/blocks/zoocraft/donation_top"
+    },
+    "zoocraft_staff_room_side": {
+      "textures": "textures/blocks/zoocraft/staff_room_side"
+    },
+    "zoocraft_staff_room_top": {
+      "textures": "textures/blocks/zoocraft/staff_room_top"
+    },
+    "zoocraft_research_desk_side": {
+      "textures": "textures/blocks/zoocraft/research_desk_side"
+    },
+    "zoocraft_research_desk_top": {
+      "textures": "textures/blocks/zoocraft/research_desk_top"
+    },
+    "zoocraft_gift_shop_side": {
+      "textures": "textures/blocks/zoocraft/gift_shop_side"
+    },
+    "zoocraft_gift_shop_top": {
+      "textures": "textures/blocks/zoocraft/gift_shop_top"
+    },
+    "zoocraft_cooler_side_off": {
+      "textures": "textures/blocks/zoocraft/cooler_side_off"
+    },
+    "zoocraft_cooler_side_low": {
+      "textures": "textures/blocks/zoocraft/cooler_side_low"
+    },
+    "zoocraft_cooler_side_on": {
+      "textures": "textures/blocks/zoocraft/cooler_side_on"
+    },
+    "zoocraft_cooler_top": {
+      "textures": "textures/blocks/zoocraft/cooler_top"
+    },
+    "zoocraft_browse_wood": {
+      "textures": "textures/blocks/zoocraft/browse_wood"
+    },
+    "zoocraft_browse_leaves": {
+      "textures": "textures/blocks/zoocraft/browse_leaves"
+    },
+    "zoocraft_heater_side_off": {
+      "textures": "textures/blocks/zoocraft/heater_side_off"
+    },
+    "zoocraft_heater_side_low": {
+      "textures": "textures/blocks/zoocraft/heater_side_low"
+    },
+    "zoocraft_heater_side_on": {
+      "textures": "textures/blocks/zoocraft/heater_side_on"
+    },
+    "zoocraft_heater_top": {
+      "textures": "textures/blocks/zoocraft/heater_top"
+    },
+    "zoocraft_feeder_fish_1": {
+      "textures": "textures/blocks/zoocraft/feeder_fish_1"
+    },
+    "zoocraft_feeder_fish_2": {
+      "textures": "textures/blocks/zoocraft/feeder_fish_2"
+    },
+    "zoocraft_feeder_mineral_1": {
+      "textures": "textures/blocks/zoocraft/feeder_mineral_1"
+    },
+    "zoocraft_feeder_mineral_2": {
+      "textures": "textures/blocks/zoocraft/feeder_mineral_2"
+    },
+    "zoocraft_basket_food_fish": {
+      "textures": "textures/blocks/zoocraft/basket_food_fish"
+    },
+    "zoocraft_basket_food_mineral": {
+      "textures": "textures/blocks/zoocraft/basket_food_mineral"
+    },
+    "zoocraft_trough_lava": {
+      "textures": "textures/blocks/zoocraft/trough_lava"
+    },
+    "zoocraft_lava_trough": {
+      "textures": "textures/blocks/zoocraft/lava_trough"
+    },
+    "zoocraft_warm_ash": {
+      "textures": "textures/blocks/zoocraft/warm_ash"
+    },
+    "zoocraft_den_stone": {
+      "textures": "textures/blocks/zoocraft/den_stone"
+    },
+    "zoocraft_den_coals": {
+      "textures": "textures/blocks/zoocraft/den_coals"
+    },
+    "zoocraft_feeder_ember_1": {
+      "textures": "textures/blocks/zoocraft/feeder_ember_1"
+    },
+    "zoocraft_feeder_ember_2": {
+      "textures": "textures/blocks/zoocraft/feeder_ember_2"
+    },
+    "zoocraft_basket_food_ember": {
+      "textures": "textures/blocks/zoocraft/basket_food_ember"
+    },
+    "zoocraft_basket_food_plankton": {
+      "textures": "textures/blocks/zoocraft/basket_food_plankton"
+    },
+    "zoocraft_thermal_feeder_side": {
+      "textures": "textures/blocks/zoocraft/thermal_feeder_side"
+    },
+    "zoocraft_thermal_feeder_top_0": {
+      "textures": "textures/blocks/zoocraft/thermal_feeder_top_0"
+    },
+    "zoocraft_thermal_feeder_top_1": {
+      "textures": "textures/blocks/zoocraft/thermal_feeder_top_1"
+    },
+    "zoocraft_thermal_feeder_top_2": {
+      "textures": "textures/blocks/zoocraft/thermal_feeder_top_2"
+    },
+    "zoocraft_thermal_feeder_bottom": {
+      "textures": "textures/blocks/zoocraft/thermal_feeder_bottom"
+    },
+    "zoocraft_clear_lava": {
+      "textures": "textures/blocks/zoocraft/clear_lava"
+    },
+    "zoocraft_lava_filter_side_off": {
+      "textures": "textures/blocks/zoocraft/lava_filter_side_off"
+    },
+    "zoocraft_lava_filter_side_on": {
+      "textures": "textures/blocks/zoocraft/lava_filter_side_on"
+    },
+    "zoocraft_lava_filter_top": {
+      "textures": "textures/blocks/zoocraft/lava_filter_top"
+    },
+    "zoocraft_lava_filter_bottom": {
+      "textures": "textures/blocks/zoocraft/lava_filter_bottom"
+    },
+    "zoocraft_feeder_fungus_1": {
+      "textures": "textures/blocks/zoocraft/feeder_fungus_1"
+    },
+    "zoocraft_feeder_fungus_2": {
+      "textures": "textures/blocks/zoocraft/feeder_fungus_2"
+    },
+    "zoocraft_basket_food_fungus": {
+      "textures": "textures/blocks/zoocraft/basket_food_fungus"
+    },
+    "zoocraft_feeder_chorus_1": {
+      "textures": "textures/blocks/zoocraft/feeder_chorus_1"
+    },
+    "zoocraft_feeder_chorus_2": {
+      "textures": "textures/blocks/zoocraft/feeder_chorus_2"
+    },
+    "zoocraft_basket_food_chorus": {
+      "textures": "textures/blocks/zoocraft/basket_food_chorus"
+    },
+    "zoocraft_perch_stone": {
+      "textures": "textures/blocks/zoocraft/perch_stone"
+    },
+    "zoocraft_perch_trim": {
+      "textures": "textures/blocks/zoocraft/perch_trim"
+    },
+    "zoocraft_perch_glow": {
+      "textures": "textures/blocks/zoocraft/perch_glow"
+    },
+    "zoocraft_anchor_base": {
+      "textures": "textures/blocks/zoocraft/anchor_base"
+    },
+    "zoocraft_anchor_pillar": {
+      "textures": "textures/blocks/zoocraft/anchor_pillar"
+    },
+    "zoocraft_anchor_crystal_off": {
+      "textures": "textures/blocks/zoocraft/anchor_crystal_off"
+    },
+    "zoocraft_anchor_crystal_low": {
+      "textures": "textures/blocks/zoocraft/anchor_crystal_low"
+    },
+    "zoocraft_anchor_crystal_on": {
+      "textures": "textures/blocks/zoocraft/anchor_crystal_on"
+    },
+    "zoocraft_tunnel_brick": {
+      "textures": "textures/blocks/zoocraft/tunnel_brick"
+    },
+    "zoocraft_tunnel_inner": {
+      "textures": "textures/blocks/zoocraft/tunnel_inner"
+    },
+    "zoocraft_tunnel_crystal": {
+      "textures": "textures/blocks/zoocraft/tunnel_crystal"
+    },
+    "zoocraft_burrow_leaves": {
+      "textures": "textures/blocks/zoocraft/burrow_leaves"
+    },
+    "zoocraft_burrow_log": {
+      "textures": "textures/blocks/zoocraft/burrow_log"
+    },
+    "zoocraft_burrow_dark": {
+      "textures": "textures/blocks/zoocraft/burrow_dark"
+    },
+    "zoocraft_hatchery_soil": {
+      "textures": "textures/blocks/zoocraft/hatchery_soil"
+    },
+    "zoocraft_hatchery_grubs_0": {
+      "textures": "textures/blocks/zoocraft/hatchery_grubs_0"
+    },
+    "zoocraft_hatchery_grubs_1": {
+      "textures": "textures/blocks/zoocraft/hatchery_grubs_1"
+    },
+    "zoocraft_hatchery_grubs_2": {
+      "textures": "textures/blocks/zoocraft/hatchery_grubs_2"
+    },
+    "zoocraft_hatchery_grubs_3": {
+      "textures": "textures/blocks/zoocraft/hatchery_grubs_3"
+    },
+    "zoocraft_hatchery_wood": {
+      "textures": "textures/blocks/zoocraft/hatchery_wood"
+    },
+    "zoocraft_hatchery_side": {
+      "textures": "textures/blocks/zoocraft/hatchery_side"
+    },
+    "zoocraft_hatchery_lid": {
+      "textures": "textures/blocks/zoocraft/hatchery_lid"
+    },
+    "zoocraft_feeder_insect_1": {
+      "textures": "textures/blocks/zoocraft/feeder_insect_1"
+    },
+    "zoocraft_feeder_insect_2": {
+      "textures": "textures/blocks/zoocraft/feeder_insect_2"
+    },
+    "zoocraft_basket_food_insect": {
+      "textures": "textures/blocks/zoocraft/basket_food_insect"
+    },
+    "zoocraft_night_lamp_frame": {
+      "textures": "textures/blocks/zoocraft/night_lamp_frame"
+    },
+    "zoocraft_night_lamp_red": {
+      "textures": "textures/blocks/zoocraft/night_lamp_red"
+    },
+    "zoocraft_night_lamp_purple": {
+      "textures": "textures/blocks/zoocraft/night_lamp_purple"
+    },
+    "zoocraft_tour_desk_side": {
+      "textures": "textures/blocks/zoocraft/tour_desk_side"
+    },
+    "zoocraft_tour_desk_top": {
+      "textures": "textures/blocks/zoocraft/tour_desk_top"
+    },
+    "zoocraft_tour_desk_map": {
+      "textures": "textures/blocks/zoocraft/tour_desk_map"
+    },
+    "zoocraft_tour_desk_flag": {
+      "textures": "textures/blocks/zoocraft/tour_desk_flag"
+    },
+    "zoocraft_platform_deck": {
+      "textures": "textures/blocks/zoocraft/platform_deck"
+    },
+    "zoocraft_platform_post": {
+      "textures": "textures/blocks/zoocraft/platform_post"
+    },
+    "zoocraft_platform_lamp": {
+      "textures": "textures/blocks/zoocraft/platform_lamp"
+    },
+    "zoocraft_platform_sign": {
+      "textures": "textures/blocks/zoocraft/platform_sign"
+    },
+    "zoocraft_feeder_fruit_1": {
+      "textures": "textures/blocks/zoocraft/feeder_fruit_1"
+    },
+    "zoocraft_feeder_fruit_2": {
+      "textures": "textures/blocks/zoocraft/feeder_fruit_2"
+    },
+    "zoocraft_basket_food_fruit": {
+      "textures": "textures/blocks/zoocraft/basket_food_fruit"
+    },
+    "zoocraft_puzzle_wood": {
+      "textures": "textures/blocks/zoocraft/puzzle_wood"
+    },
+    "zoocraft_puzzle_top": {
+      "textures": "textures/blocks/zoocraft/puzzle_top"
+    },
+    "zoocraft_puzzle_dark": {
+      "textures": "textures/blocks/zoocraft/puzzle_dark"
+    },
+    "zoocraft_puzzle_metal": {
+      "textures": "textures/blocks/zoocraft/puzzle_metal"
+    },
+    "zoocraft_frame_bark": {
+      "textures": "textures/blocks/zoocraft/frame_bark"
+    },
+    "zoocraft_frame_rope": {
+      "textures": "textures/blocks/zoocraft/frame_rope"
+    },
+    "zoocraft_frame_plank": {
+      "textures": "textures/blocks/zoocraft/frame_plank"
+    },
+    "zoocraft_frame_wood": {
+      "textures": "textures/blocks/zoocraft/frame_wood"
+    },
+    "zoocraft_bin_fallen_up": {
+      "textures": "textures/blocks/zoocraft/bin_fallen_up"
+    },
+    "zoocraft_bin_fallen_e": {
+      "textures": "textures/blocks/zoocraft/bin_fallen_e"
+    },
+    "zoocraft_bin_fallen_w": {
+      "textures": "textures/blocks/zoocraft/bin_fallen_w"
+    },
+    "zoocraft_bin_latch": {
+      "textures": "textures/blocks/zoocraft/bin_latch"
+    },
+    "zoocraft_bin_spill": {
+      "textures": "textures/blocks/zoocraft/bin_spill"
+    },
+    "zoocraft_feeder_pellet_1": {
+      "textures": "textures/blocks/zoocraft/feeder_pellet_1"
+    },
+    "zoocraft_feeder_pellet_2": {
+      "textures": "textures/blocks/zoocraft/feeder_pellet_2"
+    },
+    "zoocraft_basket_food_pellet": {
+      "textures": "textures/blocks/zoocraft/basket_food_pellet"
+    },
+    "zoocraft_nest_mud": {
+      "textures": "textures/blocks/zoocraft/nest_mud"
+    },
+    "zoocraft_nest_side": {
+      "textures": "textures/blocks/zoocraft/nest_side"
+    },
+    "zoocraft_nest_cup": {
+      "textures": "textures/blocks/zoocraft/nest_cup"
+    },
+    "zoocraft_nest_egg": {
+      "textures": "textures/blocks/zoocraft/nest_egg"
+    },
+    "zoocraft_nest_shell": {
+      "textures": "textures/blocks/zoocraft/nest_shell"
+    },
+    "zoocraft_mirror_frame": {
+      "textures": "textures/blocks/zoocraft/mirror_frame"
+    },
+    "zoocraft_mirror_glass_low": {
+      "textures": "textures/blocks/zoocraft/mirror_glass_low"
+    },
+    "zoocraft_mirror_glass_high": {
+      "textures": "textures/blocks/zoocraft/mirror_glass_high"
+    },
+    "zoocraft_feeder_grain_1": {
+      "textures": "textures/blocks/zoocraft/feeder_grain_1"
+    },
+    "zoocraft_feeder_grain_2": {
+      "textures": "textures/blocks/zoocraft/feeder_grain_2"
+    },
+    "zoocraft_basket_food_grain": {
+      "textures": "textures/blocks/zoocraft/basket_food_grain"
+    },
+    "zoocraft_rack_wood": {
+      "textures": "textures/blocks/zoocraft/rack_wood"
+    },
+    "zoocraft_rack_slat": {
+      "textures": "textures/blocks/zoocraft/rack_slat"
+    },
+    "zoocraft_rack_iron": {
+      "textures": "textures/blocks/zoocraft/rack_iron"
+    },
+    "zoocraft_rack_hay_leafy": {
+      "textures": "textures/blocks/zoocraft/rack_hay_leafy"
+    },
+    "zoocraft_rack_hay_grain": {
+      "textures": "textures/blocks/zoocraft/rack_hay_grain"
+    },
+    "zoocraft_feeder_meat_1": {
+      "textures": "textures/blocks/zoocraft/feeder_meat_1"
+    },
+    "zoocraft_feeder_meat_2": {
+      "textures": "textures/blocks/zoocraft/feeder_meat_2"
+    },
+    "zoocraft_basket_food_meat": {
+      "textures": "textures/blocks/zoocraft/basket_food_meat"
+    },
+    "zoocraft_den_blocks": {
+      "textures": "textures/blocks/zoocraft/den_blocks"
+    },
+    "zoocraft_den_door": {
+      "textures": "textures/blocks/zoocraft/den_door"
+    },
+    "zoocraft_den_mesh": {
+      "textures": "textures/blocks/zoocraft/den_mesh"
+    },
+    "zoocraft_den_dark": {
+      "textures": "textures/blocks/zoocraft/den_dark"
+    },
+    "zoocraft_den_eyes": {
+      "textures": "textures/blocks/zoocraft/den_eyes"
+    },
+    "zoocraft_den_straw": {
+      "textures": "textures/blocks/zoocraft/den_straw"
+    },
+    "zoocraft_den_roof": {
+      "textures": "textures/blocks/zoocraft/den_roof"
+    },
+    "zoocraft_den_hazard": {
+      "textures": "textures/blocks/zoocraft/den_hazard"
+    },
+    "zoocraft_den_steel": {
+      "textures": "textures/blocks/zoocraft/den_steel"
+    },
+    "zoocraft_scent_post": {
+      "textures": "textures/blocks/zoocraft/scent_post"
+    },
+    "zoocraft_scent_rope": {
+      "textures": "textures/blocks/zoocraft/scent_rope"
+    },
+    "zoocraft_scent_post_top": {
+      "textures": "textures/blocks/zoocraft/scent_post_top"
+    },
+    "zoocraft_cnest_top": {
+      "textures": "textures/blocks/zoocraft/cnest_top"
+    },
+    "zoocraft_cnest_side": {
+      "textures": "textures/blocks/zoocraft/cnest_side"
+    },
+    "zoocraft_cnest_hole": {
+      "textures": "textures/blocks/zoocraft/cnest_hole"
+    },
+    "zoocraft_cnest_drag": {
+      "textures": "textures/blocks/zoocraft/cnest_drag"
+    },
+    "zoocraft_cnest_red_top": {
+      "textures": "textures/blocks/zoocraft/cnest_red_top"
+    },
+    "zoocraft_cnest_red_side": {
+      "textures": "textures/blocks/zoocraft/cnest_red_side"
+    },
+    "zoocraft_cnest_red_hole": {
+      "textures": "textures/blocks/zoocraft/cnest_red_hole"
+    },
+    "zoocraft_cnest_red_drag": {
+      "textures": "textures/blocks/zoocraft/cnest_red_drag"
+    },
+    "zoocraft_cnest_egg": {
+      "textures": "textures/blocks/zoocraft/cnest_egg"
+    },
+    "zoocraft_cnest_shell": {
+      "textures": "textures/blocks/zoocraft/cnest_shell"
+    },
+    "zoocraft_nest_box_wood": {
+      "textures": "textures/blocks/zoocraft/nest_box_wood"
+    },
+    "zoocraft_nest_box_roof": {
+      "textures": "textures/blocks/zoocraft/nest_box_roof"
+    },
+    "zoocraft_nest_box_hole": {
+      "textures": "textures/blocks/zoocraft/nest_box_hole"
+    },
+    "zoocraft_perch_bark": {
+      "textures": "textures/blocks/zoocraft/perch_bark"
+    },
+    "zoocraft_perch_end": {
+      "textures": "textures/blocks/zoocraft/perch_end"
+    },
+    "zoocraft_insect_feeder_wood": {
+      "textures": "textures/blocks/zoocraft/insect_feeder_wood"
+    },
+    "zoocraft_insect_feeder_mesh": {
+      "textures": "textures/blocks/zoocraft/insect_feeder_mesh"
+    },
+    "zoocraft_insect_feeder_grubs": {
+      "textures": "textures/blocks/zoocraft/insect_feeder_grubs"
+    },
+    "zoocraft_thermal_mud": {
+      "textures": "textures/blocks/zoocraft/thermal_mud"
+    },
+    "zoocraft_nectar_feeder_post": {
+      "textures": "textures/blocks/zoocraft/nectar_feeder_post"
+    },
+    "zoocraft_nectar_feeder_glass": {
+      "textures": "textures/blocks/zoocraft/nectar_feeder_glass"
+    },
+    "zoocraft_nectar_feeder_nectar": {
+      "textures": "textures/blocks/zoocraft/nectar_feeder_nectar"
+    },
+    "zoocraft_nectar_feeder_petal": {
+      "textures": "textures/blocks/zoocraft/nectar_feeder_petal"
+    },
+    "zoocraft_basket_food_nectar": {
+      "textures": "textures/blocks/zoocraft/basket_food_nectar"
+    },
+    "zoocraft_mineral_substrate": {
+      "textures": "textures/blocks/zoocraft/mineral_substrate"
+    },
+    "zoocraft_landing_pad_side": {
+      "textures": "textures/blocks/zoocraft/landing_pad_side"
+    },
+    "zoocraft_landing_pad_top": {
+      "textures": "textures/blocks/zoocraft/landing_pad_top"
+    },
+    "zoocraft_landing_pad_bottom": {
+      "textures": "textures/blocks/zoocraft/landing_pad_bottom"
+    },
+    "zoocraft_mineral_feeder_stone": {
+      "textures": "textures/blocks/zoocraft/mineral_feeder_stone"
+    },
+    "zoocraft_warm_pad_top": {
+      "textures": "textures/blocks/zoocraft/warm_pad_top"
+    },
+    "zoocraft_warm_pad_side": {
+      "textures": "textures/blocks/zoocraft/warm_pad_side"
+    },
+    "zoocraft_warm_pad_bottom": {
+      "textures": "textures/blocks/zoocraft/warm_pad_bottom"
+    },
+    "zoocraft_restroom_wall": {
+      "textures": "textures/blocks/zoocraft/restroom_wall"
+    },
+    "zoocraft_restroom_door_lo": {
+      "textures": "textures/blocks/zoocraft/restroom_door_lo"
+    },
+    "zoocraft_restroom_door_hi": {
+      "textures": "textures/blocks/zoocraft/restroom_door_hi"
+    },
+    "zoocraft_restroom_roof": {
+      "textures": "textures/blocks/zoocraft/restroom_roof"
+    },
+    "zoocraft_restroom_trim": {
+      "textures": "textures/blocks/zoocraft/restroom_trim"
+    },
+    "zoocraft_fountain_stone": {
+      "textures": "textures/blocks/zoocraft/fountain_stone"
+    },
+    "zoocraft_fountain_basin": {
+      "textures": "textures/blocks/zoocraft/fountain_basin"
+    },
+    "zoocraft_fountain_spout": {
+      "textures": "textures/blocks/zoocraft/fountain_spout"
+    },
+    "zoocraft_lamp_iron": {
+      "textures": "textures/blocks/zoocraft/lamp_iron"
+    },
+    "zoocraft_lamp_glass": {
+      "textures": "textures/blocks/zoocraft/lamp_glass"
+    },
+    "zoocraft_planter_box": {
+      "textures": "textures/blocks/zoocraft/planter_box"
+    },
+    "zoocraft_planter_soil": {
+      "textures": "textures/blocks/zoocraft/planter_soil"
+    },
+    "zoocraft_planter_leaves": {
+      "textures": "textures/blocks/zoocraft/planter_leaves"
+    },
+    "zoocraft_planter_stem": {
+      "textures": "textures/blocks/zoocraft/planter_stem"
+    },
+    "zoocraft_petal_red": {
+      "textures": "textures/blocks/zoocraft/petal_red"
+    },
+    "zoocraft_petal_yellow": {
+      "textures": "textures/blocks/zoocraft/petal_yellow"
+    },
+    "zoocraft_petal_blue": {
+      "textures": "textures/blocks/zoocraft/petal_blue"
+    },
+    "zoocraft_petal_white": {
+      "textures": "textures/blocks/zoocraft/petal_white"
+    },
+    "zoocraft_aluminum": {
+      "textures": "textures/blocks/zoocraft/aluminum"
+    },
+    "zoocraft_aluminum_dark": {
+      "textures": "textures/blocks/zoocraft/aluminum_dark"
+    },
+    "zoocraft_bank_side": {
+      "textures": "textures/blocks/zoocraft/bank_side"
+    },
+    "zoocraft_bank_top": {
+      "textures": "textures/blocks/zoocraft/bank_top"
+    },
+    "zoocraft_bank_bottom": {
+      "textures": "textures/blocks/zoocraft/bank_bottom"
+    },
+    "zoocraft_aluminum_fence": {
+      "textures": "textures/blocks/zoocraft/aluminum_fence"
+    },
+    "zoocraft_aluminum_gate": {
+      "textures": "textures/blocks/zoocraft/aluminum_gate"
+    },
+    "zoocraft_aquarium_feeder_post": {
+      "textures": "textures/blocks/zoocraft/aquarium_feeder_post"
+    },
+    "zoocraft_aquarium_feeder_glass": {
+      "textures": "textures/blocks/zoocraft/aquarium_feeder_glass"
+    },
+    "zoocraft_aquarium_feeder_flakes": {
+      "textures": "textures/blocks/zoocraft/aquarium_feeder_flakes"
+    },
+    "zoocraft_burrow_soil": {
+      "textures": "textures/blocks/zoocraft/burrow_soil"
+    }
+  }
+}
