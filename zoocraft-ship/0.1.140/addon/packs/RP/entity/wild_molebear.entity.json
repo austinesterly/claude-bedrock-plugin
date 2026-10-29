@@ -1,0 +1,51 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:wild_molebear",
+      "materials": {"default": "entity_alphatest"},
+      "textures": {
+        "default": "textures/entity/zoocraft/molebear",
+        "loam": "textures/entity/zoocraft/molebear_loam",
+        "cub": "textures/entity/zoocraft/molebear_cub"
+      },
+      "geometry": {"default": "geometry.zoocraft.molebear"},
+      "animations": {
+        "idle": "animation.zoocraft.molebear.idle",
+        "walk": "animation.zoocraft.molebear.walk",
+        "look_at_target": "animation.zoocraft.molebear.look_at_target",
+        "dig": "animation.zoocraft.molebear.dig",
+        "sniff": "animation.zoocraft.molebear.sniff",
+        "snap": "animation.zoocraft.molebear.snap",
+        "stand": "animation.zoocraft.molebear.stand",
+        "rest": "animation.zoocraft.molebear.rest",
+        "rest_down": "animation.zoocraft.molebear.rest_down",
+        "rest_up": "animation.zoocraft.molebear.rest_up",
+        "buried": "animation.zoocraft.molebear.buried",
+        "dig_down": "animation.zoocraft.molebear.dig_down",
+        "dig_up": "animation.zoocraft.molebear.dig_up",
+        "crawl": "animation.zoocraft.molebear.crawl",
+        "cub": "animation.zoocraft.molebear.cub",
+        "move": "controller.animation.zoocraft.molebear.move"
+      },
+      "render_controllers": ["controller.render.zoocraft.molebear"],
+      "scripts": {
+        "scale": "q.is_baby ? 0.8 : 2",
+        "initialize": [
+          "variable.offset = math.random(0, 20);",
+          "v.st = 0;",
+          "v.act = 0;",
+          "v.moving = 0;",
+          "v.leg_rate = 1;"
+        ],
+        "pre_animation": [
+          "v.act = q.property('zoocraft:act');",
+          "v.moving = q.modified_move_speed > 0.05;",
+          "v.leg_rate = q.is_baby ? 2.2 : 1;"
+        ],
+        "animate": ["move", {"cub": "q.is_baby"}]
+      },
+      "spawn_egg": {"base_color": "#3a3e45", "overlay_color": "#e98aa0"}
+    }
+  }
+}
