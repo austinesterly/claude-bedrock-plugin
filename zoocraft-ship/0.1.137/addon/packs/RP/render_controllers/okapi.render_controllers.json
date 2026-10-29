@@ -1,0 +1,21 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.zoocraft.okapi": {
+      "arrays": {"textures": {"Array.coats": ["Texture.default", "Texture.male", "Texture.calf"]}},
+      "geometry": "Geometry.default",
+      "materials": [{"*": "Material.default"}],
+      "textures": ["Array.coats[q.is_baby ? 2 : (q.mark_variant == 1 ? 1 : 0)]"],
+      "part_visibility": [
+        {"*": true},
+        {"ossicones": "q.mark_variant == 1 && !q.is_baby"},
+        {
+          "tongue": "query.property('zoocraft:act') == 1 || query.property('zoocraft:act') == 2 || query.property('zoocraft:act') == 3"
+        },
+        {
+          "lids": "query.property('zoocraft:act') == 7 || query.property('zoocraft:act') == 9 || math.mod(q.life_time + v.offset * 0.37, 4.3) < 0.15"
+        }
+      ]
+    }
+  }
+}

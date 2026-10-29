@@ -1,0 +1,224 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.zoocraft.okapi.move": {
+      "initial_state": "start",
+      "states": {
+        "start": {
+          "transitions": [{"lie": "v.act == 9"}, {"hide": "v.act == 7"}, {"idle": "v.act != 9 && v.act != 7"}],
+          "blend_transition": 0
+        },
+        "idle": {
+          "animations": ["idle", "look_at_target"],
+          "transitions": [
+            {"lie_down": "v.act == 9"},
+            {"hide_down": "v.act == 7"},
+            {"walking": "v.act == 0 && v.moving"},
+            {"browse": "v.act == 1"},
+            {"lick": "v.act == 2"},
+            {"groom": "v.act == 3"},
+            {"rub": "v.act == 4"},
+            {"flehmen": "v.act == 5"},
+            {"alert": "v.act == 6"},
+            {"nurse": "v.act == 8"}
+          ],
+          "blend_transition": 0.3
+        },
+        "walking": {
+          "animations": ["walk", "look_at_target"],
+          "transitions": [
+            {"lie_down": "v.act == 9"},
+            {"hide_down": "v.act == 7"},
+            {"idle": "v.act == 0 && !v.moving"},
+            {"browse": "v.act == 1"},
+            {"lick": "v.act == 2"},
+            {"groom": "v.act == 3"},
+            {"rub": "v.act == 4"},
+            {"flehmen": "v.act == 5"},
+            {"alert": "v.act == 6"},
+            {"nurse": "v.act == 8"}
+          ],
+          "blend_transition": 0.25
+        },
+        "browse": {
+          "animations": ["browse"],
+          "transitions": [
+            {"lie_down": "v.act == 9"},
+            {"hide_down": "v.act == 7"},
+            {"idle": "v.act == 0 && !v.moving"},
+            {"walking": "v.act == 0 && v.moving"},
+            {"lick": "v.act == 2"},
+            {"groom": "v.act == 3"},
+            {"rub": "v.act == 4"},
+            {"flehmen": "v.act == 5"},
+            {"alert": "v.act == 6"},
+            {"nurse": "v.act == 8"}
+          ],
+          "blend_transition": 0.45
+        },
+        "lick": {
+          "animations": ["lick"],
+          "transitions": [
+            {"lie_down": "v.act == 9"},
+            {"hide_down": "v.act == 7"},
+            {"idle": "v.act == 0 && !v.moving"},
+            {"walking": "v.act == 0 && v.moving"},
+            {"browse": "v.act == 1"},
+            {"groom": "v.act == 3"},
+            {"rub": "v.act == 4"},
+            {"flehmen": "v.act == 5"},
+            {"alert": "v.act == 6"},
+            {"nurse": "v.act == 8"}
+          ],
+          "blend_transition": 0.45
+        },
+        "groom": {
+          "animations": ["groom"],
+          "transitions": [
+            {"lie_down": "v.act == 9"},
+            {"hide_down": "v.act == 7"},
+            {"idle": "v.act == 0 && !v.moving"},
+            {"walking": "v.act == 0 && v.moving"},
+            {"browse": "v.act == 1"},
+            {"lick": "v.act == 2"},
+            {"rub": "v.act == 4"},
+            {"flehmen": "v.act == 5"},
+            {"alert": "v.act == 6"},
+            {"nurse": "v.act == 8"}
+          ],
+          "blend_transition": 0.45,
+          "on_entry": ["v.side = math.random(0, 1) < 0.5 ? -1 : 1;"]
+        },
+        "rub": {
+          "animations": ["rub"],
+          "transitions": [
+            {"lie_down": "v.act == 9"},
+            {"hide_down": "v.act == 7"},
+            {"idle": "v.act == 0 && !v.moving"},
+            {"walking": "v.act == 0 && v.moving"},
+            {"browse": "v.act == 1"},
+            {"lick": "v.act == 2"},
+            {"groom": "v.act == 3"},
+            {"flehmen": "v.act == 5"},
+            {"alert": "v.act == 6"},
+            {"nurse": "v.act == 8"}
+          ],
+          "blend_transition": 0.45,
+          "on_entry": ["v.side = math.random(0, 1) < 0.5 ? -1 : 1;"]
+        },
+        "flehmen": {
+          "animations": ["flehmen"],
+          "transitions": [
+            {"lie_down": "v.act == 9"},
+            {"hide_down": "v.act == 7"},
+            {"idle": "v.act == 0 && !v.moving"},
+            {"walking": "v.act == 0 && v.moving"},
+            {"browse": "v.act == 1"},
+            {"lick": "v.act == 2"},
+            {"groom": "v.act == 3"},
+            {"rub": "v.act == 4"},
+            {"alert": "v.act == 6"},
+            {"nurse": "v.act == 8"}
+          ],
+          "blend_transition": 0.45
+        },
+        "alert": {
+          "animations": ["alert", "look_at_target"],
+          "transitions": [
+            {"lie_down": "v.act == 9"},
+            {"hide_down": "v.act == 7"},
+            {"idle": "v.act == 0 && !v.moving"},
+            {"walking": "v.act == 0 && v.moving"},
+            {"browse": "v.act == 1"},
+            {"lick": "v.act == 2"},
+            {"groom": "v.act == 3"},
+            {"rub": "v.act == 4"},
+            {"flehmen": "v.act == 5"},
+            {"nurse": "v.act == 8"}
+          ],
+          "blend_transition": 0.45
+        },
+        "nurse": {
+          "animations": ["nurse"],
+          "transitions": [
+            {"lie_down": "v.act == 9"},
+            {"hide_down": "v.act == 7"},
+            {"idle": "v.act == 0 && !v.moving"},
+            {"walking": "v.act == 0 && v.moving"},
+            {"browse": "v.act == 1"},
+            {"lick": "v.act == 2"},
+            {"groom": "v.act == 3"},
+            {"rub": "v.act == 4"},
+            {"flehmen": "v.act == 5"},
+            {"alert": "v.act == 6"}
+          ],
+          "blend_transition": 0.45
+        },
+        "lie_down": {
+          "animations": ["lie_down", "down_life"],
+          "blend_transition": 0,
+          "on_entry": ["v.st = q.life_time;"],
+          "transitions": [
+            {"lie": "(q.life_time - v.st) > 2.0 && v.act == 9"},
+            {"get_up": "(q.life_time - v.st) > 2.0 && v.act != 9"}
+          ]
+        },
+        "lie": {
+          "animations": ["lie", "down_life"],
+          "blend_transition": 0,
+          "transitions": [{"get_up": "v.act != 9"}]
+        },
+        "get_up": {
+          "animations": ["get_up"],
+          "blend_transition": 0.2,
+          "on_entry": ["v.st = q.life_time;"],
+          "transitions": [
+            {"lie_down": "v.act == 9 && (q.life_time - v.st) > 1.2"},
+            {"hide_down": "v.act == 7 && (q.life_time - v.st) > 1.2"},
+            {"idle": "v.act == 0 && !v.moving && (q.life_time - v.st) > 1.2"},
+            {"walking": "v.act == 0 && v.moving && (q.life_time - v.st) > 1.2"},
+            {"browse": "v.act == 1 && (q.life_time - v.st) > 1.2"},
+            {"lick": "v.act == 2 && (q.life_time - v.st) > 1.2"},
+            {"groom": "v.act == 3 && (q.life_time - v.st) > 1.2"},
+            {"rub": "v.act == 4 && (q.life_time - v.st) > 1.2"},
+            {"flehmen": "v.act == 5 && (q.life_time - v.st) > 1.2"},
+            {"alert": "v.act == 6 && (q.life_time - v.st) > 1.2"},
+            {"nurse": "v.act == 8 && (q.life_time - v.st) > 1.2"}
+          ]
+        },
+        "hide_down": {
+          "animations": ["hide_down", "down_life"],
+          "blend_transition": 0,
+          "on_entry": ["v.st = q.life_time;"],
+          "transitions": [
+            {"hide": "(q.life_time - v.st) > 2.0 && v.act == 7"},
+            {"get_up_hide": "(q.life_time - v.st) > 2.0 && v.act != 7"}
+          ]
+        },
+        "hide": {
+          "animations": ["hide"],
+          "blend_transition": 0,
+          "transitions": [{"get_up_hide": "v.act != 7"}]
+        },
+        "get_up_hide": {
+          "animations": ["get_up_hide"],
+          "blend_transition": 0.2,
+          "on_entry": ["v.st = q.life_time;"],
+          "transitions": [
+            {"lie_down": "v.act == 9 && (q.life_time - v.st) > 1.2"},
+            {"hide_down": "v.act == 7 && (q.life_time - v.st) > 1.2"},
+            {"idle": "v.act == 0 && !v.moving && (q.life_time - v.st) > 1.2"},
+            {"walking": "v.act == 0 && v.moving && (q.life_time - v.st) > 1.2"},
+            {"browse": "v.act == 1 && (q.life_time - v.st) > 1.2"},
+            {"lick": "v.act == 2 && (q.life_time - v.st) > 1.2"},
+            {"groom": "v.act == 3 && (q.life_time - v.st) > 1.2"},
+            {"rub": "v.act == 4 && (q.life_time - v.st) > 1.2"},
+            {"flehmen": "v.act == 5 && (q.life_time - v.st) > 1.2"},
+            {"alert": "v.act == 6 && (q.life_time - v.st) > 1.2"},
+            {"nurse": "v.act == 8 && (q.life_time - v.st) > 1.2"}
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,748 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.zoocraft.okapi.idle": {
+      "loop": true,
+      "bones": {
+        "body": {"position": [0, "math.max(0, math.sin(query.life_time * 55 + variable.offset) * 0.15)", 0]},
+        "earL": {
+          "rotation": [
+            "math.sin(query.life_time * 45 + variable.offset) * 8",
+            "math.max(0, math.sin(query.life_time * 50 + variable.offset * 3)) * 25",
+            0
+          ]
+        },
+        "earR": {
+          "rotation": [
+            "math.sin(query.life_time * 38 + variable.offset + 2) * 8",
+            "-math.max(0, math.sin(query.life_time * 43 + variable.offset * 5)) * 25",
+            0
+          ]
+        },
+        "tail": {
+          "rotation": [
+            "math.sin(query.life_time * 60 + variable.offset) * 4",
+            "math.sin(query.life_time * 90 + variable.offset * 4) * math.max(0, math.sin(query.life_time * 17 + variable.offset)) * 30",
+            0
+          ]
+        },
+        "jaw": {
+          "rotation": [
+            "(math.max(0, math.sin(query.life_time * 420 + variable.offset))) * (6 * (math.clamp((math.mod(query.life_time + variable.offset, 20) - 12) / 0.5, 0, 1) * math.clamp((18 - math.mod(query.life_time + variable.offset, 20)) / 0.5, 0, 1)))",
+            0,
+            "(math.sin(query.life_time * 420 + variable.offset) * 3) * (math.clamp((math.mod(query.life_time + variable.offset, 20) - 12) / 0.5, 0, 1) * math.clamp((18 - math.mod(query.life_time + variable.offset, 20)) / 0.5, 0, 1))"
+          ]
+        },
+        "neck": {
+          "rotation": [
+            "math.sin(query.life_time * 18 + variable.offset) * 3",
+            "math.sin(query.life_time * 9 + variable.offset) * 6",
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.okapi.walk": {
+      "loop": true,
+      "bones": {
+        "armL": {
+          "rotation": ["math.sin(query.modified_distance_moved * 68 * variable.leg_rate) * 20", 0, 0],
+          "position": [
+            0,
+            "math.max(0, -math.cos(query.modified_distance_moved * 68 * variable.leg_rate)) * 1.2",
+            0
+          ]
+        },
+        "armR": {
+          "rotation": ["math.sin(query.modified_distance_moved * 68 * variable.leg_rate + 180) * 20", 0, 0],
+          "position": [
+            0,
+            "math.max(0, -math.cos(query.modified_distance_moved * 68 * variable.leg_rate + 180)) * 1.2",
+            0
+          ]
+        },
+        "thighL": {
+          "rotation": ["math.sin(query.modified_distance_moved * 68 * variable.leg_rate) * 20", 0, 0],
+          "position": [
+            0,
+            "math.max(0, -math.cos(query.modified_distance_moved * 68 * variable.leg_rate)) * 1.2",
+            0
+          ]
+        },
+        "thighR": {
+          "rotation": ["math.sin(query.modified_distance_moved * 68 * variable.leg_rate + 180) * 20", 0, 0],
+          "position": [
+            0,
+            "math.max(0, -math.cos(query.modified_distance_moved * 68 * variable.leg_rate + 180)) * 1.2",
+            0
+          ]
+        },
+        "body": {
+          "rotation": [0, 0, "math.cos(query.modified_distance_moved * 68 * variable.leg_rate) * 2.5"],
+          "position": [
+            "math.cos(query.modified_distance_moved * 68 * variable.leg_rate) * 0.4",
+            "math.abs(math.sin(query.modified_distance_moved * 68 * variable.leg_rate)) * 0.3",
+            0
+          ]
+        },
+        "neck": {
+          "rotation": [
+            "math.sin(query.modified_distance_moved * 68 * variable.leg_rate * 2) * 2",
+            "-math.cos(query.modified_distance_moved * 68 * variable.leg_rate) * 3",
+            0
+          ]
+        },
+        "head": {
+          "rotation": ["math.sin(query.modified_distance_moved * 68 * variable.leg_rate * 2 + 90) * 2", 0, 0]
+        },
+        "tail": {"rotation": [0, "math.sin(query.modified_distance_moved * 68 * variable.leg_rate) * 8", 0]}
+      }
+    },
+    "animation.zoocraft.okapi.look_at_target": {
+      "loop": true,
+      "bones": {
+        "neck": {"rotation": [0, "math.clamp(query.target_y_rotation, -35, 35) * 0.4", 0]},
+        "head": {
+          "rotation": [
+            "math.clamp(query.target_x_rotation, -20, 20) * 0.5",
+            "math.clamp(query.target_y_rotation, -35, 35) * 0.6",
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.okapi.browse": {
+      "loop": true,
+      "bones": {
+        "body": {"position": [0, "math.max(0, math.sin(query.life_time * 55 + variable.offset) * 0.15)", 0]},
+        "neck": {
+          "rotation": [
+            "20.71 + (-6 * (math.clamp((math.mod(query.life_time + variable.offset, 2.4) - 0.8) / 0.25, 0, 1) * math.clamp((1.7 - math.mod(query.life_time + variable.offset, 2.4)) / 0.5, 0, 1)))",
+            "math.sin(query.life_time * 25 + variable.offset) * 4",
+            0
+          ]
+        },
+        "head": {
+          "rotation": [
+            "-61.37 + (14 * (math.clamp((math.mod(query.life_time + variable.offset, 2.4) - 0.8) / 0.25, 0, 1) * math.clamp((1.7 - math.mod(query.life_time + variable.offset, 2.4)) / 0.5, 0, 1)))",
+            0,
+            "math.sin(query.life_time * 25 + variable.offset) * 3"
+          ]
+        },
+        "tongue": {
+          "rotation": [
+            "(-25 * (math.clamp(math.mod(query.life_time + variable.offset, 2.4) / 0.45, 0, 1) * math.clamp((1.1 - math.mod(query.life_time + variable.offset, 2.4)) / 0.3, 0, 1))) + (-55 * (math.clamp((math.mod(query.life_time + variable.offset, 2.4) - 0.8) / 0.25, 0, 1) * math.clamp((1.7 - math.mod(query.life_time + variable.offset, 2.4)) / 0.5, 0, 1)))",
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            "0.15 + (0.85 * (math.clamp(math.mod(query.life_time + variable.offset, 2.4) / 0.45, 0, 1) * math.clamp((1.1 - math.mod(query.life_time + variable.offset, 2.4)) / 0.3, 0, 1)))",
+            1
+          ]
+        },
+        "jaw": {
+          "rotation": [
+            "(10 * (math.clamp(math.mod(query.life_time + variable.offset, 2.4) / 0.45, 0, 1) * math.clamp((1.1 - math.mod(query.life_time + variable.offset, 2.4)) / 0.3, 0, 1))) + ((math.max(0, math.sin(query.life_time * 480 + variable.offset))) * (6 * (math.clamp((math.mod(query.life_time + variable.offset, 2.4) - 1.1) / 0.2, 0, 1))))",
+            0,
+            "(math.sin(query.life_time * 480 + variable.offset) * 3) * (math.clamp((math.mod(query.life_time + variable.offset, 2.4) - 1.1) / 0.2, 0, 1))"
+          ]
+        },
+        "earL": {"rotation": [-15, "math.sin(query.life_time * 40 + variable.offset) * 10", 0]},
+        "earR": {"rotation": [-15, "math.sin(query.life_time * 33 + variable.offset + 50) * 10", 0]},
+        "tail": {"rotation": [0, "math.sin(query.life_time * 55 + variable.offset) * 10", 0]}
+      }
+    },
+    "animation.zoocraft.okapi.lick": {
+      "loop": true,
+      "bones": {
+        "neck": {
+          "rotation": ["88.91 + ((math.max(0, math.sin(query.life_time * 260 + variable.offset))) * 2)", 0, 0]
+        },
+        "head": {"rotation": [-26.673, 0, 0]},
+        "tongue": {
+          "rotation": ["math.sin(query.life_time * 260 + variable.offset + 60) * 20", 0, 0],
+          "scale": [1, "0.2 + (0.25 * (math.max(0, math.sin(query.life_time * 260 + variable.offset))))", 1]
+        },
+        "jaw": {
+          "rotation": ["6 + (6 * (math.max(0, math.sin(query.life_time * 260 + variable.offset))))", 0, 0]
+        },
+        "earL": {"rotation": [10, "math.sin(query.life_time * 30 + variable.offset) * 12", 0]},
+        "earR": {"rotation": [10, "math.sin(query.life_time * 26 + variable.offset + 40) * 12", 0]},
+        "tail": {"rotation": [0, "math.sin(query.life_time * 50 + variable.offset) * 10", 0]}
+      }
+    },
+    "animation.zoocraft.okapi.groom": {
+      "loop": true,
+      "bones": {
+        "body": {"position": [0, "math.max(0, math.sin(query.life_time * 55 + variable.offset) * 0.15)", 0]},
+        "neck": {"rotation": [-4, 0, 0]},
+        "head": {
+          "rotation": [
+            "-6 + (math.sin(query.life_time * 200 + variable.offset) * 2)",
+            "10 * (variable.side)",
+            "10 * (variable.side)"
+          ]
+        },
+        "jaw": {"rotation": [8, 0, 0]},
+        "tongue": {
+          "rotation": [
+            "-10 + (math.sin(query.life_time * 330 + variable.offset) * 8)",
+            0,
+            "(190 + (math.sin(query.life_time * 330 + variable.offset + 90) * 5)) * (variable.side)"
+          ],
+          "position": ["2 * (variable.side)", 0, 0],
+          "scale": [1, "0.9 + (math.max(0, math.sin(query.life_time * 330 + variable.offset)) * -0.15)", 1]
+        },
+        "earL": {"rotation": [-10, 0, 0]},
+        "earR": {"rotation": [-10, 0, 0]},
+        "tail": {"rotation": [0, "math.sin(query.life_time * 50 + variable.offset) * 8", 0]}
+      }
+    },
+    "animation.zoocraft.okapi.rub": {
+      "loop": true,
+      "bones": {
+        "neck": {
+          "rotation": [
+            "8 + (math.sin(query.life_time * 150 + variable.offset) * 7)",
+            "26 * (variable.side)",
+            "12 * (variable.side)"
+          ]
+        },
+        "head": {
+          "rotation": [
+            "-4 + (math.sin(query.life_time * 150 + variable.offset + 40) * 4)",
+            "-22 * (variable.side)",
+            0
+          ]
+        },
+        "body": {
+          "position": [0, 0, "math.sin(query.life_time * 150 + variable.offset) * 0.7"],
+          "rotation": [0, 0, "(math.sin(query.life_time * 150 + variable.offset) * 2) * (variable.side)"]
+        },
+        "earL": {"rotation": [30, 0, 20]},
+        "earR": {"rotation": [30, 0, -20]},
+        "tail": {"rotation": [0, "math.sin(query.life_time * 60 + variable.offset) * 12", 0]}
+      }
+    },
+    "animation.zoocraft.okapi.flehmen": {
+      "loop": true,
+      "bones": {
+        "neck": {"rotation": [-18, 0, 0]},
+        "head": {
+          "rotation": [
+            "-52.66 + (math.sin(query.life_time * 300 + variable.offset) * 1.5)",
+            "math.sin(query.life_time * 40 + variable.offset) * 3",
+            0
+          ]
+        },
+        "jaw": {"rotation": ["14 + (math.sin(query.life_time * 300 + variable.offset) * 2)", 0, 0]},
+        "earL": {"rotation": [20, 0, 40]},
+        "earR": {"rotation": [20, 0, -40]}
+      }
+    },
+    "animation.zoocraft.okapi.alert": {
+      "loop": true,
+      "bones": {
+        "neck": {"rotation": [-14, 0, 0]},
+        "head": {"rotation": [-9.66, 0, 0]},
+        "earL": {"rotation": [-20, "math.sin(query.life_time * 80 + variable.offset) * 40", 0]},
+        "earR": {"rotation": [-20, "math.sin(query.life_time * 57 + variable.offset * 2 + 70) * 40", 0]},
+        "tail": {"rotation": [-10, 0, 0]}
+      }
+    },
+    "animation.zoocraft.okapi.nurse": {
+      "loop": true,
+      "bones": {
+        "neck": {
+          "rotation": [
+            "query.is_baby ? (14 + ((math.max(0, math.sin(query.life_time * 260 + variable.offset))) * 5)) : (8)",
+            "query.is_baby ? (0) : (30)",
+            0
+          ]
+        },
+        "head": {"rotation": ["query.is_baby ? (-89.66) : (6)", "query.is_baby ? (0) : (20)", 0]},
+        "jaw": {
+          "rotation": [
+            "query.is_baby ? ((math.max(0, math.sin(query.life_time * 520 + variable.offset))) * 5) : (0)",
+            0,
+            0
+          ]
+        },
+        "body": {"position": [0, "math.max(0, math.sin(query.life_time * 55 + variable.offset) * 0.15)", 0]},
+        "earL": {"rotation": ["query.is_baby ? (25) : (0)", 0, "query.is_baby ? (30) : (0)"]},
+        "earR": {"rotation": ["query.is_baby ? (25) : (0)", 0, "query.is_baby ? (-30) : (0)"]},
+        "tail": {
+          "rotation": [
+            0,
+            "query.is_baby ? (math.sin(query.life_time * 400 + variable.offset) * 25) : (math.sin(query.life_time * 50 + variable.offset) * 10)",
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.okapi.lie_down": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "armL": {
+          "position": [
+            "1.5 * (math.clamp((query.anim_time - 1) / 1, 0, 1))",
+            0,
+            "-1.5 * (math.clamp((query.anim_time - 1) / 1, 0, 1))"
+          ],
+          "rotation": [
+            "(5.91 * (math.clamp(query.anim_time / 1, 0, 1))) + (84.09 * (math.clamp((query.anim_time - 1) / 1, 0, 1)))",
+            0,
+            0
+          ],
+          "scale": [1, "1 + (-0.45 * (math.clamp(query.anim_time / 1, 0, 1)))", 1]
+        },
+        "armR": {
+          "position": [
+            "-1.5 * (math.clamp((query.anim_time - 1) / 1, 0, 1))",
+            0,
+            "-1.5 * (math.clamp((query.anim_time - 1) / 1, 0, 1))"
+          ],
+          "rotation": [
+            "(5.91 * (math.clamp(query.anim_time / 1, 0, 1))) + (84.09 * (math.clamp((query.anim_time - 1) / 1, 0, 1)))",
+            0,
+            0
+          ],
+          "scale": [1, "1 + (-0.45 * (math.clamp(query.anim_time / 1, 0, 1)))", 1]
+        },
+        "body": {
+          "rotation": [
+            "(24.09 * (math.clamp(query.anim_time / 1, 0, 1))) + (-20.09 * (math.clamp((query.anim_time - 1) / 1, 0, 1)))",
+            0,
+            0
+          ]
+        },
+        "head": {"rotation": ["6 * (math.clamp((query.anim_time - 1) / 1, 0, 1))", 0, 0]},
+        "neck": {
+          "rotation": [
+            "(-30.09 * (math.clamp(query.anim_time / 1, 0, 1))) + (20.09 * (math.clamp((query.anim_time - 1) / 1, 0, 1)))",
+            0,
+            0
+          ]
+        },
+        "tail": {"rotation": ["25 * (math.clamp((query.anim_time - 1) / 1, 0, 1))", 0, 0]},
+        "thighL": {
+          "position": ["1.8 * (math.clamp((query.anim_time - 1) / 1, 0, 1))", 0, 0],
+          "rotation": [
+            "(-24.09 * (math.clamp(query.anim_time / 1, 0, 1))) + (-65.91 * (math.clamp((query.anim_time - 1) / 1, 0, 1)))",
+            "-12 * (math.clamp((query.anim_time - 1) / 1, 0, 1))",
+            0
+          ],
+          "scale": [1, "1 + (-0.4 * (math.clamp((query.anim_time - 1) / 1, 0, 1)))", 1]
+        },
+        "thighR": {
+          "position": ["-1.8 * (math.clamp((query.anim_time - 1) / 1, 0, 1))", 0, 0],
+          "rotation": [
+            "(-24.09 * (math.clamp(query.anim_time / 1, 0, 1))) + (-65.91 * (math.clamp((query.anim_time - 1) / 1, 0, 1)))",
+            "12 * (math.clamp((query.anim_time - 1) / 1, 0, 1))",
+            0
+          ],
+          "scale": [1, "1 + (-0.4 * (math.clamp((query.anim_time - 1) / 1, 0, 1)))", 1]
+        },
+        "okapi": {
+          "position": {
+            "0.0": [0, 0, 0],
+            "0.125": [0, -0.353, 0],
+            "0.25": [0, -0.773, 0],
+            "0.375": [0, -1.25, 0],
+            "0.5": [0, -1.774, 0],
+            "0.625": [0, -2.333, 0],
+            "0.75": [0, -2.917, 0],
+            "0.875": [0, -3.517, 0],
+            "1": [0, -4.122, 0],
+            "1.125": [0, -4.389, 0],
+            "1.25": [0, -5.111, 0],
+            "1.375": [0, -6.197, 0],
+            "1.5": [0, -7.545, 0],
+            "1.625": [0, -9.052, 0],
+            "1.75": [0, -10.615, 0],
+            "1.875": [0, -12.136, 0],
+            "2": [0, -13.531, 0]
+          }
+        }
+      },
+      "animation_length": 2
+    },
+    "animation.zoocraft.okapi.hide_down": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "armL": {
+          "position": [
+            "1.5 * (math.clamp((query.anim_time - 1) / 1, 0, 1))",
+            0,
+            "-1.5 * (math.clamp((query.anim_time - 1) / 1, 0, 1))"
+          ],
+          "rotation": [
+            "(5.91 * (math.clamp(query.anim_time / 1, 0, 1))) + (84.09 * (math.clamp((query.anim_time - 1) / 1, 0, 1)))",
+            0,
+            0
+          ],
+          "scale": [1, "1 + (-0.45 * (math.clamp(query.anim_time / 1, 0, 1)))", 1]
+        },
+        "armR": {
+          "position": [
+            "-1.5 * (math.clamp((query.anim_time - 1) / 1, 0, 1))",
+            0,
+            "-1.5 * (math.clamp((query.anim_time - 1) / 1, 0, 1))"
+          ],
+          "rotation": [
+            "(5.91 * (math.clamp(query.anim_time / 1, 0, 1))) + (84.09 * (math.clamp((query.anim_time - 1) / 1, 0, 1)))",
+            0,
+            0
+          ],
+          "scale": [1, "1 + (-0.45 * (math.clamp(query.anim_time / 1, 0, 1)))", 1]
+        },
+        "body": {
+          "rotation": [
+            "(24.09 * (math.clamp(query.anim_time / 1, 0, 1))) + (-20.09 * (math.clamp((query.anim_time - 1) / 1, 0, 1)))",
+            0,
+            0
+          ]
+        },
+        "earL": {
+          "rotation": [
+            "55 * (math.clamp((query.anim_time - 1) / 1, 0, 1))",
+            0,
+            "20 * (math.clamp((query.anim_time - 1) / 1, 0, 1))"
+          ]
+        },
+        "earR": {
+          "rotation": [
+            "55 * (math.clamp((query.anim_time - 1) / 1, 0, 1))",
+            0,
+            "-20 * (math.clamp((query.anim_time - 1) / 1, 0, 1))"
+          ]
+        },
+        "head": {"rotation": ["-85.91 * (math.clamp((query.anim_time - 1) / 1, 0, 1))", 0, 0]},
+        "neck": {
+          "rotation": [
+            "(-30.09 * (math.clamp(query.anim_time / 1, 0, 1))) + (80.34 * (math.clamp((query.anim_time - 1) / 1, 0, 1)))",
+            0,
+            0
+          ]
+        },
+        "tail": {"rotation": ["25 * (math.clamp((query.anim_time - 1) / 1, 0, 1))", 0, 0]},
+        "thighL": {
+          "position": ["1.8 * (math.clamp((query.anim_time - 1) / 1, 0, 1))", 0, 0],
+          "rotation": [
+            "(-24.09 * (math.clamp(query.anim_time / 1, 0, 1))) + (-65.91 * (math.clamp((query.anim_time - 1) / 1, 0, 1)))",
+            "-12 * (math.clamp((query.anim_time - 1) / 1, 0, 1))",
+            0
+          ],
+          "scale": [1, "1 + (-0.4 * (math.clamp((query.anim_time - 1) / 1, 0, 1)))", 1]
+        },
+        "thighR": {
+          "position": ["-1.8 * (math.clamp((query.anim_time - 1) / 1, 0, 1))", 0, 0],
+          "rotation": [
+            "(-24.09 * (math.clamp(query.anim_time / 1, 0, 1))) + (-65.91 * (math.clamp((query.anim_time - 1) / 1, 0, 1)))",
+            "12 * (math.clamp((query.anim_time - 1) / 1, 0, 1))",
+            0
+          ],
+          "scale": [1, "1 + (-0.4 * (math.clamp((query.anim_time - 1) / 1, 0, 1)))", 1]
+        },
+        "okapi": {
+          "position": {
+            "0.0": [0, 0, 0],
+            "0.125": [0, -0.353, 0],
+            "0.25": [0, -0.773, 0],
+            "0.375": [0, -1.25, 0],
+            "0.5": [0, -1.774, 0],
+            "0.625": [0, -2.333, 0],
+            "0.75": [0, -2.917, 0],
+            "0.875": [0, -3.517, 0],
+            "1": [0, -4.122, 0],
+            "1.125": [0, -4.389, 0],
+            "1.25": [0, -5.111, 0],
+            "1.375": [0, -6.197, 0],
+            "1.5": [0, -7.545, 0],
+            "1.625": [0, -9.052, 0],
+            "1.75": [0, -10.615, 0],
+            "1.875": [0, -12.136, 0],
+            "2": [0, -13.531, 0]
+          }
+        }
+      },
+      "animation_length": 2
+    },
+    "animation.zoocraft.okapi.get_up": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "armL": {
+          "position": [
+            "1.5 + (-1.5 * (math.clamp(query.anim_time / 0.6, 0, 1)))",
+            0,
+            "-1.5 + (1.5 * (math.clamp(query.anim_time / 0.6, 0, 1)))"
+          ],
+          "rotation": [
+            "90 + (-84.09 * (math.clamp(query.anim_time / 0.6, 0, 1))) + (-5.91 * (math.clamp((query.anim_time - 0.6) / 0.6, 0, 1)))",
+            0,
+            0
+          ],
+          "scale": [1, "0.55 + (0.45 * (math.clamp((query.anim_time - 0.6) / 0.6, 0, 1)))", 1]
+        },
+        "armR": {
+          "position": [
+            "-1.5 + (1.5 * (math.clamp(query.anim_time / 0.6, 0, 1)))",
+            0,
+            "-1.5 + (1.5 * (math.clamp(query.anim_time / 0.6, 0, 1)))"
+          ],
+          "rotation": [
+            "90 + (-84.09 * (math.clamp(query.anim_time / 0.6, 0, 1))) + (-5.91 * (math.clamp((query.anim_time - 0.6) / 0.6, 0, 1)))",
+            0,
+            0
+          ],
+          "scale": [1, "0.55 + (0.45 * (math.clamp((query.anim_time - 0.6) / 0.6, 0, 1)))", 1]
+        },
+        "body": {
+          "rotation": [
+            "4 + (20.09 * (math.clamp(query.anim_time / 0.6, 0, 1))) + (-24.09 * (math.clamp((query.anim_time - 0.6) / 0.6, 0, 1)))",
+            0,
+            0
+          ]
+        },
+        "head": {"rotation": ["6 + (-6 * (math.clamp(query.anim_time / 0.6, 0, 1)))", 0, 0]},
+        "neck": {
+          "rotation": [
+            "(-10 + (-20.09 * (math.clamp(query.anim_time / 0.6, 0, 1))) + (30.09 * (math.clamp((query.anim_time - 0.6) / 0.6, 0, 1)))) + (10 * (math.sin(math.clamp(query.anim_time / 1.2, 0, 1) * 180)))",
+            0,
+            0
+          ]
+        },
+        "tail": {"rotation": ["25 + (-25 * (math.clamp(query.anim_time / 0.6, 0, 1)))", 0, 0]},
+        "thighL": {
+          "position": ["1.8 + (-1.8 * (math.clamp(query.anim_time / 0.6, 0, 1)))", 0, 0],
+          "rotation": [
+            "-90 + (65.91 * (math.clamp(query.anim_time / 0.6, 0, 1))) + (24.09 * (math.clamp((query.anim_time - 0.6) / 0.6, 0, 1)))",
+            "-12 + (12 * (math.clamp(query.anim_time / 0.6, 0, 1)))",
+            0
+          ],
+          "scale": [1, "0.6 + (0.4 * (math.clamp(query.anim_time / 0.6, 0, 1)))", 1]
+        },
+        "thighR": {
+          "position": ["-1.8 + (1.8 * (math.clamp(query.anim_time / 0.6, 0, 1)))", 0, 0],
+          "rotation": [
+            "-90 + (65.91 * (math.clamp(query.anim_time / 0.6, 0, 1))) + (24.09 * (math.clamp((query.anim_time - 0.6) / 0.6, 0, 1)))",
+            "12 + (-12 * (math.clamp(query.anim_time / 0.6, 0, 1)))",
+            0
+          ],
+          "scale": [1, "0.6 + (0.4 * (math.clamp(query.anim_time / 0.6, 0, 1)))", 1]
+        },
+        "okapi": {
+          "position": {
+            "0.0": [0, -13.531, 0],
+            "0.075": [0, -12.136, 0],
+            "0.15": [0, -10.615, 0],
+            "0.225": [0, -9.052, 0],
+            "0.3": [0, -7.545, 0],
+            "0.375": [0, -6.197, 0],
+            "0.45": [0, -5.111, 0],
+            "0.525": [0, -4.389, 0],
+            "0.6": [0, -4.122, 0],
+            "0.675": [0, -3.517, 0],
+            "0.75": [0, -2.917, 0],
+            "0.825": [0, -2.333, 0],
+            "0.9": [0, -1.774, 0],
+            "0.975": [0, -1.25, 0],
+            "1.05": [0, -0.773, 0],
+            "1.125": [0, -0.353, 0],
+            "1.2": [0, 0, 0]
+          }
+        }
+      },
+      "animation_length": 1.2
+    },
+    "animation.zoocraft.okapi.get_up_hide": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "armL": {
+          "position": [
+            "1.5 + (-1.5 * (math.clamp(query.anim_time / 0.6, 0, 1)))",
+            0,
+            "-1.5 + (1.5 * (math.clamp(query.anim_time / 0.6, 0, 1)))"
+          ],
+          "rotation": [
+            "90 + (-84.09 * (math.clamp(query.anim_time / 0.6, 0, 1))) + (-5.91 * (math.clamp((query.anim_time - 0.6) / 0.6, 0, 1)))",
+            0,
+            0
+          ],
+          "scale": [1, "0.55 + (0.45 * (math.clamp((query.anim_time - 0.6) / 0.6, 0, 1)))", 1]
+        },
+        "armR": {
+          "position": [
+            "-1.5 + (1.5 * (math.clamp(query.anim_time / 0.6, 0, 1)))",
+            0,
+            "-1.5 + (1.5 * (math.clamp(query.anim_time / 0.6, 0, 1)))"
+          ],
+          "rotation": [
+            "90 + (-84.09 * (math.clamp(query.anim_time / 0.6, 0, 1))) + (-5.91 * (math.clamp((query.anim_time - 0.6) / 0.6, 0, 1)))",
+            0,
+            0
+          ],
+          "scale": [1, "0.55 + (0.45 * (math.clamp((query.anim_time - 0.6) / 0.6, 0, 1)))", 1]
+        },
+        "body": {
+          "rotation": [
+            "4 + (20.09 * (math.clamp(query.anim_time / 0.6, 0, 1))) + (-24.09 * (math.clamp((query.anim_time - 0.6) / 0.6, 0, 1)))",
+            0,
+            0
+          ]
+        },
+        "earL": {
+          "rotation": [
+            "55 + (-55 * (math.clamp(query.anim_time / 0.6, 0, 1)))",
+            0,
+            "20 + (-20 * (math.clamp(query.anim_time / 0.6, 0, 1)))"
+          ]
+        },
+        "earR": {
+          "rotation": [
+            "55 + (-55 * (math.clamp(query.anim_time / 0.6, 0, 1)))",
+            0,
+            "-20 + (20 * (math.clamp(query.anim_time / 0.6, 0, 1)))"
+          ]
+        },
+        "head": {"rotation": ["-85.91 + (85.91 * (math.clamp(query.anim_time / 0.6, 0, 1)))", 0, 0]},
+        "neck": {
+          "rotation": [
+            "50.25 + (-80.34 * (math.clamp(query.anim_time / 0.6, 0, 1))) + (30.09 * (math.clamp((query.anim_time - 0.6) / 0.6, 0, 1)))",
+            0,
+            0
+          ]
+        },
+        "tail": {"rotation": ["25 + (-25 * (math.clamp(query.anim_time / 0.6, 0, 1)))", 0, 0]},
+        "thighL": {
+          "position": ["1.8 + (-1.8 * (math.clamp(query.anim_time / 0.6, 0, 1)))", 0, 0],
+          "rotation": [
+            "-90 + (65.91 * (math.clamp(query.anim_time / 0.6, 0, 1))) + (24.09 * (math.clamp((query.anim_time - 0.6) / 0.6, 0, 1)))",
+            "-12 + (12 * (math.clamp(query.anim_time / 0.6, 0, 1)))",
+            0
+          ],
+          "scale": [1, "0.6 + (0.4 * (math.clamp(query.anim_time / 0.6, 0, 1)))", 1]
+        },
+        "thighR": {
+          "position": ["-1.8 + (1.8 * (math.clamp(query.anim_time / 0.6, 0, 1)))", 0, 0],
+          "rotation": [
+            "-90 + (65.91 * (math.clamp(query.anim_time / 0.6, 0, 1))) + (24.09 * (math.clamp((query.anim_time - 0.6) / 0.6, 0, 1)))",
+            "12 + (-12 * (math.clamp(query.anim_time / 0.6, 0, 1)))",
+            0
+          ],
+          "scale": [1, "0.6 + (0.4 * (math.clamp(query.anim_time / 0.6, 0, 1)))", 1]
+        },
+        "okapi": {
+          "position": {
+            "0.0": [0, -13.531, 0],
+            "0.075": [0, -12.136, 0],
+            "0.15": [0, -10.615, 0],
+            "0.225": [0, -9.052, 0],
+            "0.3": [0, -7.545, 0],
+            "0.375": [0, -6.197, 0],
+            "0.45": [0, -5.111, 0],
+            "0.525": [0, -4.389, 0],
+            "0.6": [0, -4.122, 0],
+            "0.675": [0, -3.517, 0],
+            "0.75": [0, -2.917, 0],
+            "0.825": [0, -2.333, 0],
+            "0.9": [0, -1.774, 0],
+            "0.975": [0, -1.25, 0],
+            "1.05": [0, -0.773, 0],
+            "1.125": [0, -0.353, 0],
+            "1.2": [0, 0, 0]
+          }
+        }
+      },
+      "animation_length": 1.2
+    },
+    "animation.zoocraft.okapi.lie": {
+      "loop": true,
+      "bones": {
+        "armL": {"rotation": [90, 0, 0], "position": [1.5, 0, -1.5], "scale": [1, 0.55, 1]},
+        "armR": {"rotation": [90, 0, 0], "position": [-1.5, 0, -1.5], "scale": [1, 0.55, 1]},
+        "thighL": {"rotation": [-90, -12, 0], "position": [1.8, 0, 0], "scale": [1, 0.6, 1]},
+        "thighR": {"rotation": [-90, 12, 0], "position": [-1.8, 0, 0], "scale": [1, 0.6, 1]},
+        "body": {
+          "rotation": [4, 0, 0],
+          "position": [0, "math.max(0, math.sin(query.life_time * 45 + variable.offset) * 0.12)", 0]
+        },
+        "tail": {"rotation": [25, 0, 0]},
+        "neck": {"rotation": [-10, 0, 0]},
+        "head": {
+          "rotation": ["6 + (math.max(0, math.sin(query.life_time * 12 + variable.offset) - 0.6) * 20)", 0, 0]
+        },
+        "okapi": {"position": [0, -13.531, 0]},
+        "jaw": {
+          "rotation": [
+            "(math.max(0, math.sin(query.life_time * 380 + variable.offset))) * 6",
+            0,
+            "math.sin(query.life_time * 380 + variable.offset) * 3"
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.okapi.hide": {
+      "loop": true,
+      "bones": {
+        "armL": {"rotation": [90, 0, 0], "position": [1.5, 0, -1.5], "scale": [1, 0.55, 1]},
+        "armR": {"rotation": [90, 0, 0], "position": [-1.5, 0, -1.5], "scale": [1, 0.55, 1]},
+        "thighL": {"rotation": [-90, -12, 0], "position": [1.8, 0, 0], "scale": [1, 0.6, 1]},
+        "thighR": {"rotation": [-90, 12, 0], "position": [-1.8, 0, 0], "scale": [1, 0.6, 1]},
+        "body": {
+          "rotation": [4, 0, 0],
+          "position": [0, "math.max(0, math.sin(query.life_time * 40 + variable.offset) * 0.08)", 0]
+        },
+        "tail": {"rotation": [25, 0, 0]},
+        "neck": {"rotation": [50.25, 0, 0]},
+        "earL": {
+          "rotation": [55, "math.max(0, math.sin(query.life_time * 23 + variable.offset) - 0.92) * 120", 20]
+        },
+        "earR": {
+          "rotation": [
+            55,
+            "-math.max(0, math.sin(query.life_time * 19 + variable.offset * 2) - 0.92) * 120",
+            -20
+          ]
+        },
+        "head": {"rotation": [-85.91, 0, 0]},
+        "okapi": {"position": [0, -13.531, 0]}
+      }
+    },
+    "animation.zoocraft.okapi.down_life": {
+      "loop": true,
+      "bones": {
+        "earL": {
+          "rotation": [
+            "math.sin(query.life_time * 45 + variable.offset) * 8",
+            "math.max(0, math.sin(query.life_time * 50 + variable.offset * 3)) * 25",
+            0
+          ]
+        },
+        "earR": {
+          "rotation": [
+            "math.sin(query.life_time * 38 + variable.offset + 2) * 8",
+            "-math.max(0, math.sin(query.life_time * 43 + variable.offset * 5)) * 25",
+            0
+          ]
+        },
+        "tail": {
+          "rotation": [
+            "math.sin(query.life_time * 60 + variable.offset) * 4",
+            "math.sin(query.life_time * 90 + variable.offset * 4) * math.max(0, math.sin(query.life_time * 17 + variable.offset)) * 30",
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.okapi.calf": {
+      "loop": true,
+      "bones": {
+        "head": {"scale": [1.2, 1.2, 1.2]},
+        "earL": {"scale": [1.1, 1.1, 1.1]},
+        "earR": {"scale": [1.1, 1.1, 1.1]}
+      }
+    }
+  }
+}

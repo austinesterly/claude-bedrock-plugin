@@ -1,0 +1,392 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "zoocraft:wild_okapi",
+      "spawn_category": "creature",
+      "is_spawnable": true,
+      "is_summonable": true,
+      "properties": {
+        "zoocraft:act": {
+          "type": "int",
+          "range": [
+            0,
+            9
+          ],
+          "default": 0,
+          "client_sync": true
+        }
+      }
+    },
+    "component_groups": {
+      "zoocraft:moving": {
+        "minecraft:movement": {
+          "value": 0.2
+        },
+        "minecraft:physics": {},
+        "minecraft:behavior.random_stroll": {
+          "priority": 7,
+          "interval": 120,
+          "speed_multiplier": 0.9,
+          "xz_dist": 6,
+          "y_dist": 1
+        },
+        "minecraft:behavior.tempt": {
+          "priority": 1,
+          "speed_multiplier": 1.0,
+          "within_radius": 8,
+          "items": [
+            "zoocraft:leafy_ration"
+          ]
+        },
+        "minecraft:behavior.avoid_mob_type": {
+          "priority": 2,
+          "entity_types": [
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "test": "is_sneaking",
+                    "subject": "other",
+                    "value": false
+                  },
+                  {
+                    "test": "has_ability",
+                    "subject": "other",
+                    "operator": "!=",
+                    "value": "instabuild"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "operator": "!=",
+                    "value": "zoocraft:leafy_ration"
+                  }
+                ]
+              },
+              "max_dist": 10,
+              "walk_speed_multiplier": 1.2,
+              "sprint_speed_multiplier": 1.5
+            }
+          ],
+          "ignore_visibility": true
+        },
+        "minecraft:behavior.look_at_player": {
+          "priority": 9,
+          "look_distance": 8,
+          "probability": 0.03
+        },
+        "minecraft:behavior.random_look_around": {
+          "priority": 10
+        }
+      },
+      "zoocraft:still": {
+        "minecraft:movement": {
+          "value": 0.0
+        },
+        "minecraft:physics": {},
+        "minecraft:behavior.look_at_player": {
+          "priority": 9,
+          "look_distance": 8,
+          "probability": 0.03
+        },
+        "minecraft:behavior.random_look_around": {
+          "priority": 10
+        }
+      },
+      "zoocraft:sex_0": {
+        "minecraft:mark_variant": {
+          "value": 0
+        }
+      },
+      "zoocraft:sex_1": {
+        "minecraft:mark_variant": {
+          "value": 1
+        }
+      },
+      "zoocraft:seek_browse": {
+        "minecraft:behavior.move_to_block": {
+          "priority": 4,
+          "tick_interval": 20,
+          "start_chance": 1.0,
+          "search_range": 12,
+          "search_height": 3,
+          "goal_radius": 1.5,
+          "speed_multiplier": 1.0,
+          "target_selection_method": "nearest",
+          "target_blocks": [
+            "minecraft:azalea",
+            "minecraft:flowering_azalea",
+            "minecraft:azalea_leaves",
+            "minecraft:azalea_leaves_flowered",
+            "minecraft:big_dripleaf",
+            "minecraft:small_dripleaf_block",
+            "minecraft:cave_vines",
+            "minecraft:cave_vines_body_with_berries",
+            "minecraft:cave_vines_head_with_berries"
+          ],
+          "target_offset": [
+            0,
+            0,
+            0
+          ],
+          "stay_duration": 60
+        }
+      },
+      "zoocraft:seek_clay": {
+        "minecraft:behavior.move_to_block": {
+          "priority": 4,
+          "tick_interval": 20,
+          "start_chance": 1.0,
+          "search_range": 12,
+          "search_height": 3,
+          "goal_radius": 1.0,
+          "speed_multiplier": 1.0,
+          "target_selection_method": "nearest",
+          "target_blocks": [
+            "minecraft:clay"
+          ],
+          "target_offset": [
+            0,
+            1,
+            0
+          ],
+          "stay_duration": 60
+        }
+      },
+      "zoocraft:seek_rub": {
+        "minecraft:behavior.move_to_block": {
+          "priority": 4,
+          "tick_interval": 20,
+          "start_chance": 1.0,
+          "search_range": 12,
+          "search_height": 3,
+          "goal_radius": 1.5,
+          "speed_multiplier": 1.0,
+          "target_selection_method": "nearest",
+          "target_blocks": [
+            "minecraft:oak_log",
+            "minecraft:spruce_log",
+            "minecraft:birch_log",
+            "minecraft:jungle_log",
+            "minecraft:acacia_log",
+            "minecraft:dark_oak_log",
+            "minecraft:mangrove_log",
+            "minecraft:cherry_log",
+            "minecraft:pale_oak_log",
+            "minecraft:oak_wood",
+            "minecraft:spruce_wood",
+            "minecraft:birch_wood",
+            "minecraft:jungle_wood",
+            "minecraft:acacia_wood",
+            "minecraft:dark_oak_wood",
+            "minecraft:mangrove_wood",
+            "minecraft:cherry_wood",
+            "minecraft:pale_oak_wood",
+            "minecraft:stripped_oak_log",
+            "minecraft:stripped_spruce_log",
+            "minecraft:stripped_birch_log",
+            "minecraft:stripped_jungle_log",
+            "minecraft:stripped_acacia_log",
+            "minecraft:stripped_dark_oak_log",
+            "minecraft:stripped_mangrove_log",
+            "minecraft:stripped_cherry_log",
+            "minecraft:stripped_pale_oak_log"
+          ],
+          "target_offset": [
+            0,
+            0,
+            0
+          ],
+          "stay_duration": 60
+        }
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": [
+          "wild_okapi",
+          "okapi",
+          "mob"
+        ]
+      },
+      "minecraft:nameable": {},
+      "minecraft:health": {
+        "value": 20,
+        "max": 20
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "cause": "fall",
+            "deals_damage": "no"
+          }
+        ]
+      },
+      "minecraft:despawn": {
+        "despawn_from_distance": {}
+      },
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:breathable": {
+        "total_supply": 15,
+        "suffocate_time": 0
+      },
+      "minecraft:collision_box": {
+        "width": 0.9,
+        "height": 1.9
+      },
+      "minecraft:navigation.walk": {
+        "can_path_over_water": false,
+        "avoid_water": true,
+        "avoid_damage_blocks": true
+      },
+      "minecraft:movement.basic": {},
+      "minecraft:movement": {
+        "value": 0.2
+      },
+      "minecraft:jump.static": {},
+      "minecraft:physics": {},
+      "minecraft:pushable_by_entity": {},
+      "minecraft:pushable_by_block": {},
+      "minecraft:conditional_bandwidth_optimization": {},
+      "minecraft:behavior.float": {
+        "priority": 0
+      }
+    },
+    "events": {
+      "zoocraft:move": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:still"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:moving"
+          ]
+        }
+      },
+      "zoocraft:still": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:moving"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:still"
+          ]
+        }
+      },
+      "zoocraft:sex_0": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:sex_1"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:sex_0"
+          ]
+        }
+      },
+      "zoocraft:sex_1": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:sex_0"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:sex_1"
+          ]
+        }
+      },
+      "zoocraft:seek_browse": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:seek_clay",
+            "zoocraft:seek_rub"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:seek_browse"
+          ]
+        }
+      },
+      "zoocraft:seek_clay": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:seek_browse",
+            "zoocraft:seek_rub"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:seek_clay"
+          ]
+        }
+      },
+      "zoocraft:seek_rub": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:seek_browse",
+            "zoocraft:seek_clay"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:seek_rub"
+          ]
+        }
+      },
+      "zoocraft:seek_none": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:seek_browse",
+            "zoocraft:seek_clay",
+            "zoocraft:seek_rub"
+          ]
+        }
+      },
+      "minecraft:entity_spawned": {
+        "sequence": [
+          {
+            "add": {
+              "component_groups": [
+                "zoocraft:moving"
+              ]
+            }
+          },
+          {
+            "randomize": [
+              {
+                "weight": 1,
+                "add": {
+                  "component_groups": [
+                    "zoocraft:sex_0"
+                  ]
+                }
+              },
+              {
+                "weight": 1,
+                "add": {
+                  "component_groups": [
+                    "zoocraft:sex_1"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

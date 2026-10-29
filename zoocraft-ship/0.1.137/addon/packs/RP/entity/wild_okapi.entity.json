@@ -1,0 +1,55 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:wild_okapi",
+      "materials": {"default": "entity_alphatest"},
+      "textures": {
+        "default": "textures/entity/zoocraft/okapi",
+        "male": "textures/entity/zoocraft/okapi_male",
+        "calf": "textures/entity/zoocraft/okapi_calf"
+      },
+      "geometry": {"default": "geometry.zoocraft.okapi"},
+      "animations": {
+        "idle": "animation.zoocraft.okapi.idle",
+        "walk": "animation.zoocraft.okapi.walk",
+        "look_at_target": "animation.zoocraft.okapi.look_at_target",
+        "browse": "animation.zoocraft.okapi.browse",
+        "lick": "animation.zoocraft.okapi.lick",
+        "groom": "animation.zoocraft.okapi.groom",
+        "rub": "animation.zoocraft.okapi.rub",
+        "flehmen": "animation.zoocraft.okapi.flehmen",
+        "alert": "animation.zoocraft.okapi.alert",
+        "nurse": "animation.zoocraft.okapi.nurse",
+        "lie_down": "animation.zoocraft.okapi.lie_down",
+        "hide_down": "animation.zoocraft.okapi.hide_down",
+        "get_up": "animation.zoocraft.okapi.get_up",
+        "get_up_hide": "animation.zoocraft.okapi.get_up_hide",
+        "lie": "animation.zoocraft.okapi.lie",
+        "hide": "animation.zoocraft.okapi.hide",
+        "down_life": "animation.zoocraft.okapi.down_life",
+        "calf": "animation.zoocraft.okapi.calf",
+        "move": "controller.animation.zoocraft.okapi.move"
+      },
+      "render_controllers": ["controller.render.zoocraft.okapi"],
+      "scripts": {
+        "scale": "q.is_baby ? 0.45 : 1",
+        "initialize": [
+          "variable.offset = math.random(0, 20);",
+          "v.st = 0;",
+          "v.side = 1;",
+          "v.act = 0;",
+          "v.moving = 0;",
+          "v.leg_rate = 1;"
+        ],
+        "pre_animation": [
+          "v.act = q.property('zoocraft:act');",
+          "v.moving = q.modified_move_speed > 0.05;",
+          "v.leg_rate = q.is_baby ? 2.2 : 1;"
+        ],
+        "animate": ["move", {"calf": "q.is_baby"}]
+      },
+      "spawn_egg": {"base_color": "#4b2a20", "overlay_color": "#ebe6dc"}
+    }
+  }
+}
