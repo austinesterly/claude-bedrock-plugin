@@ -1,0 +1,36 @@
+{
+  "format_version": "1.8.0",
+  "minecraft:spawn_rules": {
+    "description": {"identifier": "zoocraft:wild_flamingo", "population_control": "animal"},
+    "conditions": [
+      {
+        "minecraft:spawns_on_surface": {},
+        "minecraft:spawns_on_block_filter": [
+          "minecraft:sand",
+          "minecraft:mud",
+          "minecraft:grass_block",
+          "minecraft:dirt",
+          "minecraft:clay",
+          "minecraft:gravel",
+          "minecraft:muddy_mangrove_roots"
+        ],
+        "minecraft:brightness_filter": {"min": 7, "max": 15, "adjust_for_weather": false},
+        "minecraft:weight": {"default": 18},
+        "minecraft:herd": {"min_size": 4, "max_size": 8},
+        "minecraft:density_limit": {"surface": 8},
+        "minecraft:biome_filter": {
+          "any_of": [
+            {"test": "has_biome_tag", "value": "mangrove_swamp"},
+            {"test": "has_biome_tag", "value": "swamp"},
+            {
+              "all_of": [
+                {"test": "has_biome_tag", "value": "beach"},
+                {"test": "has_biome_tag", "value": "warm"}
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
