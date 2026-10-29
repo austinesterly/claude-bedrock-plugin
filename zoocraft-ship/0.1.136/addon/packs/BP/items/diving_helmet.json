@@ -1,0 +1,20 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "zoocraft:diving_helmet",
+      "menu_category": {"category": "equipment", "group": "minecraft:itemGroup.name.helmet"}
+    },
+    "components": {
+      "minecraft:icon": {"textures": {"default": "zoocraft:diving_helmet"}},
+      "minecraft:display_name": {"value": "item.zoocraft:diving_helmet.name"},
+      "minecraft:max_stack_size": {"value": 1},
+      "minecraft:wearable": {"slot": "slot.armor.head", "protection": 2},
+      "minecraft:durability": {"max_durability": 275},
+      "minecraft:repairable": {
+        "repair_items": [{"items": ["minecraft:copper_ingot"], "repair_amount": "query.max_durability * 0.25"}]
+      },
+      "minecraft:enchantable": {"slot": "armor_head", "value": 9}
+    }
+  }
+}

@@ -1,0 +1,5 @@
+1206caeacf5bef5162cb774e2b2b6d46e7cc92a840b16f3d4f3bf2effe377eb5  addon\docs\status.md
+44b71db0e52646d6622d801695a6495b95410a3f479addbd596ffd6a4a13d279  addon\packs\BP\scripts\main.js
+b1086a6f6a91f9edc1a9eb6630cf1c5d342656e994ce2edd0cf43c537a1721ff  addon\packs\RP\texts\en_US.lang
+66a4174abe2f4f9021d836da8aa5985370a864f50afdf3367266057cb5ad9cbb  addon\packs\RP\textures\item_texture.json
+c19605af71e5eecd97da42a6267896ccbe58b52be6dd6ea94de457939a671be8  addon\tests\logic.test.mjs
