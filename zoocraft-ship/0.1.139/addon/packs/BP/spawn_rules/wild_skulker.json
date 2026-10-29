@@ -1,0 +1,42 @@
+{
+  "format_version": "1.8.0",
+  "minecraft:spawn_rules": {
+    "description": {
+      "identifier": "zoocraft:wild_skulker",
+      "population_control": "animal"
+    },
+    "conditions": [
+      {
+        "minecraft:spawns_underground": {},
+        "minecraft:spawns_on_block_filter": [
+          "minecraft:sculk",
+          "minecraft:deepslate",
+          "minecraft:cobbled_deepslate"
+        ],
+        "minecraft:brightness_filter": {
+          "min": 0,
+          "max": 15,
+          "adjust_for_weather": false
+        },
+        "minecraft:height_filter": {
+          "min": -64,
+          "max": 0
+        },
+        "minecraft:weight": {
+          "default": 4
+        },
+        "minecraft:herd": {
+          "min_size": 1,
+          "max_size": 1
+        },
+        "minecraft:density_limit": {
+          "underground": 1
+        },
+        "minecraft:biome_filter": {
+          "test": "has_biome_tag",
+          "value": "deep_dark"
+        }
+      }
+    ]
+  }
+}

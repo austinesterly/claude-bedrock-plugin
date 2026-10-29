@@ -1,0 +1,430 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.zoocraft.skulker.idle": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "scale": [
+            "1 + (0.006 * (math.sin(query.life_time * 50 + variable.offset * 20)))",
+            1,
+            "1 + (0.01 * (math.sin(query.life_time * 50 + variable.offset * 20)))"
+          ]
+        },
+        "tendrilL": {
+          "rotation": [
+            "math.sin(query.life_time * 25 + variable.offset * 10 + 0) * 4",
+            0,
+            "math.sin(query.life_time * 17.5 + variable.offset * 7 + 0) * 2"
+          ]
+        },
+        "tendrilR": {
+          "rotation": [
+            "math.sin(query.life_time * 25 + variable.offset * 10 + 90) * 4",
+            0,
+            "math.sin(query.life_time * 17.5 + variable.offset * 7 + 90) * 2"
+          ]
+        },
+        "head": {
+          "rotation": [
+            "math.sin(query.life_time * 15 + variable.offset) * 2",
+            "math.sin(query.life_time * 9 + variable.offset) * 4",
+            0
+          ]
+        },
+        "armL": {"rotation": ["math.sin(query.life_time * 30 + variable.offset) * 2", 0, -3]},
+        "armR": {"rotation": ["math.sin(query.life_time * 30 + variable.offset + 60) * 2", 0, 3]}
+      }
+    },
+    "animation.zoocraft.skulker.walk": {
+      "loop": true,
+      "bones": {
+        "tendrilL": {
+          "rotation": [
+            "math.sin(query.life_time * 60 + variable.offset * 10 + 0) * 6",
+            0,
+            "math.sin(query.life_time * 42 + variable.offset * 7 + 0) * 3"
+          ]
+        },
+        "tendrilR": {
+          "rotation": [
+            "math.sin(query.life_time * 60 + variable.offset * 10 + 90) * 6",
+            0,
+            "math.sin(query.life_time * 42 + variable.offset * 7 + 90) * 3"
+          ]
+        },
+        "legL": {
+          "rotation": ["math.sin(query.modified_distance_moved * 90 * variable.leg_rate) * 26", 0, 0]
+        },
+        "legR": {
+          "rotation": ["-math.sin(query.modified_distance_moved * 90 * variable.leg_rate) * 26", 0, 0]
+        },
+        "armL": {
+          "rotation": ["-math.sin(query.modified_distance_moved * 90 * variable.leg_rate) * 18", 0, -4]
+        },
+        "armR": {
+          "rotation": ["math.sin(query.modified_distance_moved * 90 * variable.leg_rate) * 18", 0, 4]
+        },
+        "body": {
+          "rotation": [3, 0, "math.cos(query.modified_distance_moved * 90 * variable.leg_rate) * 4"],
+          "position": [0, "math.abs(math.cos(query.modified_distance_moved * 90 * variable.leg_rate)) * 0.4", 0]
+        },
+        "head": {
+          "rotation": [
+            "math.sin(query.modified_distance_moved * 90 * variable.leg_rate * 2) * 3",
+            "-math.cos(query.modified_distance_moved * 90 * variable.leg_rate) * 5",
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.skulker.look_at_target": {
+      "loop": true,
+      "bones": {
+        "head": {
+          "rotation": [
+            "math.clamp(query.target_x_rotation, -25, 25) * 0.6",
+            "math.clamp(query.target_y_rotation, -50, 50) * 0.7",
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.skulker.listen": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "scale": [
+            "1 + (0.009 * (math.sin(query.life_time * 120 + variable.offset * 20)))",
+            1,
+            "1 + (0.015 * (math.sin(query.life_time * 120 + variable.offset * 20)))"
+          ],
+          "rotation": [-3, 0, 0]
+        },
+        "tendrilL": {
+          "rotation": [
+            "math.sin(query.life_time * 900 + variable.offset * 10 + 0) * 16",
+            0,
+            "math.sin(query.life_time * 630 + variable.offset * 7 + 0) * 8"
+          ]
+        },
+        "tendrilR": {
+          "rotation": [
+            "math.sin(query.life_time * 900 + variable.offset * 10 + 90) * 16",
+            0,
+            "math.sin(query.life_time * 630 + variable.offset * 7 + 90) * 8"
+          ]
+        },
+        "head": {
+          "rotation": [
+            -8,
+            "math.sin(query.life_time * 40 + variable.offset) * 10",
+            "12 + (math.sin(query.life_time * 70 + variable.offset) * 3)"
+          ]
+        },
+        "armL": {"rotation": [-6, 0, -8]},
+        "armR": {"rotation": [-6, 0, 8]}
+      }
+    },
+    "animation.zoocraft.skulker.sniff": {
+      "loop": true,
+      "bones": {
+        "tendrilL": {
+          "rotation": [
+            "math.sin(query.life_time * 400 + variable.offset * 10 + 0) * 8",
+            0,
+            "math.sin(query.life_time * 280 + variable.offset * 7 + 0) * 4"
+          ]
+        },
+        "tendrilR": {
+          "rotation": [
+            "math.sin(query.life_time * 400 + variable.offset * 10 + 90) * 8",
+            0,
+            "math.sin(query.life_time * 280 + variable.offset * 7 + 90) * 4"
+          ]
+        },
+        "body": {"rotation": [18, 0, 0]},
+        "legL": {"rotation": [-18, 0, 0]},
+        "legR": {"rotation": [-18, 0, 0]},
+        "head": {
+          "rotation": [
+            "14 + (6 * (math.max(0, math.sin(query.life_time * 1080 + variable.offset * 20))))",
+            "math.sin(query.life_time * 30 + variable.offset) * 8",
+            0
+          ],
+          "position": [0, 0, "-0.6 * (math.max(0, math.sin(query.life_time * 1080 + variable.offset * 20)))"]
+        },
+        "armL": {"rotation": [-24, 0, -6]},
+        "armR": {"rotation": [-24, 0, 6]}
+      }
+    },
+    "animation.zoocraft.skulker.feed": {
+      "loop": true,
+      "bones": {
+        "body": {"rotation": [40, 0, 0]},
+        "legL": {"rotation": [-40, 0, 0]},
+        "legR": {"rotation": [-40, 0, 0]},
+        "armL": {"rotation": ["-62 + (math.sin(query.life_time * 300 + variable.offset) * 10)", 0, -10]},
+        "armR": {
+          "rotation": ["-62 + (math.sin(query.life_time * 300 + variable.offset + 180) * 10)", 0, 10]
+        },
+        "head": {"rotation": ["20 + (math.sin(query.life_time * 300 + variable.offset) * 8)", 0, 0]},
+        "skulker": {"position": [0, -0.82, 0]},
+        "tendrilL": {
+          "rotation": [
+            "math.sin(query.life_time * 60 + variable.offset * 10 + 0) * 4",
+            0,
+            "math.sin(query.life_time * 42 + variable.offset * 7 + 0) * 2"
+          ]
+        },
+        "tendrilR": {
+          "rotation": [
+            "math.sin(query.life_time * 60 + variable.offset * 10 + 90) * 4",
+            0,
+            "math.sin(query.life_time * 42 + variable.offset * 7 + 90) * 2"
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.skulker.sit": {
+      "loop": true,
+      "bones": {
+        "legL": {"rotation": [-88, 0, -8]},
+        "legR": {"rotation": [-88, 0, 8]},
+        "armL": {"rotation": [-10, 0, -22]},
+        "armR": {"rotation": [-10, 0, 22]},
+        "body": {
+          "rotation": [-6, 0, 0],
+          "scale": [
+            "1 + (0.007 * (math.sin(query.life_time * 35 + variable.offset * 20)))",
+            1,
+            "1 + (0.013 * (math.sin(query.life_time * 35 + variable.offset * 20)))"
+          ]
+        },
+        "head": {"rotation": [12, 0, 0]},
+        "skulker": {"position": [0, -4.589, 0]},
+        "tendrilL": {
+          "rotation": [
+            "math.sin(query.life_time * 18 + variable.offset * 10 + 0) * 3",
+            0,
+            "math.sin(query.life_time * 12.6 + variable.offset * 7 + 0) * 1.5"
+          ]
+        },
+        "tendrilR": {
+          "rotation": [
+            "math.sin(query.life_time * 18 + variable.offset * 10 + 90) * 3",
+            0,
+            "math.sin(query.life_time * 12.6 + variable.offset * 7 + 90) * 1.5"
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.skulker.sit_down": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "armL": {
+          "rotation": [
+            "-10 * (math.clamp(query.anim_time / 1, 0, 1))",
+            0,
+            "-22 * (math.clamp(query.anim_time / 1, 0, 1))"
+          ]
+        },
+        "armR": {
+          "rotation": [
+            "-10 * (math.clamp(query.anim_time / 1, 0, 1))",
+            0,
+            "22 * (math.clamp(query.anim_time / 1, 0, 1))"
+          ]
+        },
+        "body": {"rotation": ["-6 * (math.clamp(query.anim_time / 1, 0, 1))", 0, 0]},
+        "head": {"rotation": ["12 * (math.clamp(query.anim_time / 1, 0, 1))", 0, 0]},
+        "legL": {
+          "rotation": [
+            "-88 * (math.clamp(query.anim_time / 1, 0, 1))",
+            0,
+            "-8 * (math.clamp(query.anim_time / 1, 0, 1))"
+          ]
+        },
+        "legR": {
+          "rotation": [
+            "-88 * (math.clamp(query.anim_time / 1, 0, 1))",
+            0,
+            "8 * (math.clamp(query.anim_time / 1, 0, 1))"
+          ]
+        },
+        "skulker": {
+          "position": {
+            "0.0": [0, 0, 0],
+            "0.0833": [0, 0.204, 0],
+            "0.1667": [0, 0.257, 0],
+            "0.25": [0, 0.158, 0],
+            "0.3333": [0, -0.091, 0],
+            "0.4167": [0, -0.485, 0],
+            "0.5": [0, -1.016, 0],
+            "0.5833": [0, -1.676, 0],
+            "0.6667": [0, -2.453, 0],
+            "0.75": [0, -3.333, 0],
+            "0.8333": [0, -4.235, 0],
+            "0.9167": [0, -4.399, 0],
+            "1": [0, -4.589, 0]
+          }
+        }
+      },
+      "animation_length": 1
+    },
+    "animation.zoocraft.skulker.sit_up": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "armL": {
+          "rotation": [
+            "-10 + (10 * (math.clamp(query.anim_time / 0.8, 0, 1)))",
+            0,
+            "-22 + (22 * (math.clamp(query.anim_time / 0.8, 0, 1)))"
+          ]
+        },
+        "armR": {
+          "rotation": [
+            "-10 + (10 * (math.clamp(query.anim_time / 0.8, 0, 1)))",
+            0,
+            "22 + (-22 * (math.clamp(query.anim_time / 0.8, 0, 1)))"
+          ]
+        },
+        "body": {"rotation": ["-6 + (6 * (math.clamp(query.anim_time / 0.8, 0, 1)))", 0, 0]},
+        "head": {"rotation": ["12 + (-12 * (math.clamp(query.anim_time / 0.8, 0, 1)))", 0, 0]},
+        "legL": {
+          "rotation": [
+            "-88 + (88 * (math.clamp(query.anim_time / 0.8, 0, 1)))",
+            0,
+            "-8 + (8 * (math.clamp(query.anim_time / 0.8, 0, 1)))"
+          ]
+        },
+        "legR": {
+          "rotation": [
+            "-88 + (88 * (math.clamp(query.anim_time / 0.8, 0, 1)))",
+            0,
+            "8 + (-8 * (math.clamp(query.anim_time / 0.8, 0, 1)))"
+          ]
+        },
+        "skulker": {
+          "position": {
+            "0.0": [0, -4.589, 0],
+            "0.0667": [0, -4.399, 0],
+            "0.1333": [0, -4.235, 0],
+            "0.2": [0, -3.333, 0],
+            "0.2667": [0, -2.453, 0],
+            "0.3333": [0, -1.676, 0],
+            "0.4": [0, -1.016, 0],
+            "0.4667": [0, -0.485, 0],
+            "0.5333": [0, -0.091, 0],
+            "0.6": [0, 0.158, 0],
+            "0.6667": [0, 0.257, 0],
+            "0.7333": [0, 0.204, 0],
+            "0.8": [0, 0, 0]
+          }
+        }
+      },
+      "animation_length": 0.8
+    },
+    "animation.zoocraft.skulker.buried": {
+      "loop": true,
+      "bones": {
+        "skulker": {"position": [0, -27, 0]},
+        "tendrilL": {
+          "rotation": [
+            "math.sin(query.life_time * 20 + variable.offset * 10 + 0) * 7",
+            0,
+            "math.sin(query.life_time * 14 + variable.offset * 7 + 0) * 3.5"
+          ]
+        },
+        "tendrilR": {
+          "rotation": [
+            "math.sin(query.life_time * 20 + variable.offset * 10 + 90) * 7",
+            0,
+            "math.sin(query.life_time * 14 + variable.offset * 7 + 90) * 3.5"
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.skulker.dig_down": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "skulker": {"position": [0, "-27 * (math.clamp((query.anim_time - 0.3) / 2, 0, 1))", 0]},
+        "body": {"rotation": ["24 * (math.sin(math.clamp((query.anim_time - 0.3) / 2, 0, 1) * 180))", 0, 0]},
+        "armL": {
+          "rotation": [
+            "(-70 + (30 * (math.sin(query.anim_time * 540)))) * (1 - math.clamp((query.anim_time - 0.3) / 2, 0, 1) * math.clamp((query.anim_time - 0.3) / 2, 0, 1))",
+            0,
+            -10
+          ]
+        },
+        "armR": {
+          "rotation": [
+            "(-70 + (-30 * (math.sin(query.anim_time * 540)))) * (1 - math.clamp((query.anim_time - 0.3) / 2, 0, 1) * math.clamp((query.anim_time - 0.3) / 2, 0, 1))",
+            0,
+            10
+          ]
+        },
+        "head": {"rotation": ["20 * (math.clamp((query.anim_time - 0.3) / 2, 0, 1))", 0, 0]},
+        "tendrilL": {
+          "rotation": [
+            "math.sin(query.life_time * 200 + variable.offset * 10 + 0) * 10",
+            0,
+            "math.sin(query.life_time * 140 + variable.offset * 7 + 0) * 5"
+          ]
+        },
+        "tendrilR": {
+          "rotation": [
+            "math.sin(query.life_time * 200 + variable.offset * 10 + 90) * 10",
+            0,
+            "math.sin(query.life_time * 140 + variable.offset * 7 + 90) * 5"
+          ]
+        }
+      },
+      "animation_length": 2.5
+    },
+    "animation.zoocraft.skulker.emerge": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "skulker": {
+          "position": [0, "-27 * (1 - math.sqrt(math.clamp((query.anim_time - 0.2) / 2.1, 0, 1)))", 0]
+        },
+        "armR": {
+          "rotation": [
+            "-160 * (math.sin(math.clamp(math.clamp((query.anim_time - 0.2) / 2.1, 0, 1) * 1.4, 0, 1) * 180))",
+            0,
+            10
+          ]
+        },
+        "armL": {
+          "rotation": [
+            "-110 * (math.sin(math.clamp(math.clamp((query.anim_time - 0.2) / 2.1, 0, 1) * 1.4 - 0.25, 0, 1) * 180))",
+            0,
+            -10
+          ]
+        },
+        "body": {
+          "rotation": ["-16 * (math.sin(math.clamp((query.anim_time - 0.2) / 2.1, 0, 1) * 180))", 0, 0]
+        },
+        "head": {
+          "rotation": ["-14 * (math.sin(math.clamp((query.anim_time - 0.2) / 2.1, 0, 1) * 180))", 0, 0]
+        },
+        "tendrilL": {
+          "rotation": [
+            "math.sin(query.life_time * 300 + variable.offset * 10 + 0) * 12",
+            0,
+            "math.sin(query.life_time * 210 + variable.offset * 7 + 0) * 6"
+          ]
+        },
+        "tendrilR": {
+          "rotation": [
+            "math.sin(query.life_time * 300 + variable.offset * 10 + 90) * 12",
+            0,
+            "math.sin(query.life_time * 210 + variable.offset * 7 + 90) * 6"
+          ]
+        }
+      },
+      "animation_length": 2.5
+    },
+    "animation.zoocraft.skulker.young": {"loop": true, "bones": {"head": {"scale": [1.3, 1.3, 1.3]}}}
+  }
+}

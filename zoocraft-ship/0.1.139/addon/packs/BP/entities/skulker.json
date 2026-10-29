@@ -1,0 +1,339 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "zoocraft:skulker",
+      "spawn_category": "creature",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "properties": {
+        "zoocraft:act": {
+          "type": "int",
+          "range": [
+            0,
+            6
+          ],
+          "default": 0,
+          "client_sync": true
+        },
+        "zoocraft:excited": {
+          "type": "bool",
+          "default": false,
+          "client_sync": true
+        }
+      }
+    },
+    "component_groups": {
+      "zoocraft:moving": {
+        "minecraft:movement": {
+          "value": 0.2
+        },
+        "minecraft:physics": {},
+        "minecraft:behavior.random_stroll": {
+          "priority": 7,
+          "interval": 120,
+          "speed_multiplier": 0.9,
+          "xz_dist": 6,
+          "y_dist": 1
+        },
+        "minecraft:behavior.tempt": {
+          "priority": 3,
+          "speed_multiplier": 1.1,
+          "items": [
+            "zoocraft:insect_ration"
+          ]
+        },
+        "minecraft:behavior.look_at_player": {
+          "priority": 9,
+          "look_distance": 8,
+          "probability": 0.02
+        },
+        "minecraft:behavior.random_look_around": {
+          "priority": 10
+        }
+      },
+      "zoocraft:still": {
+        "minecraft:movement": {
+          "value": 0.0
+        },
+        "minecraft:physics": {},
+        "minecraft:behavior.look_at_player": {
+          "priority": 9,
+          "look_distance": 8,
+          "probability": 0.02
+        },
+        "minecraft:behavior.random_look_around": {
+          "priority": 10
+        }
+      },
+      "zoocraft:visit": {
+        "minecraft:movement": {
+          "value": 0.2
+        },
+        "minecraft:physics": {},
+        "minecraft:behavior.follow_mob": {
+          "priority": 2,
+          "search_range": 16,
+          "speed_multiplier": 1.0,
+          "stop_distance": 2,
+          "filters": {
+            "all_of": [
+              {
+                "test": "is_family",
+                "subject": "other",
+                "value": "player"
+              },
+              {
+                "test": "has_tag",
+                "subject": "other",
+                "value": "zoocraft_heard"
+              }
+            ]
+          }
+        }
+      },
+      "zoocraft:seek_feeder": {
+        "minecraft:behavior.move_to_block": {
+          "priority": 4,
+          "tick_interval": 20,
+          "start_chance": 1.0,
+          "search_range": 12,
+          "search_height": 3,
+          "goal_radius": 1.5,
+          "speed_multiplier": 1.0,
+          "target_selection_method": "nearest",
+          "target_blocks": [
+            "zoocraft:basic_feeder",
+            "zoocraft:insect_feeder"
+          ],
+          "target_offset": [
+            0,
+            0,
+            0
+          ],
+          "stay_duration": 60
+        }
+      },
+      "zoocraft:juvenile": {
+        "minecraft:is_baby": {},
+        "minecraft:collision_box": {
+          "width": 0.35,
+          "height": 0.95
+        },
+        "minecraft:behavior.follow_parent": {
+          "priority": 4,
+          "speed_multiplier": 1.1
+        }
+      },
+      "zoocraft:home_4": {
+        "minecraft:home": {
+          "restriction_type": "random_movement",
+          "restriction_radius": 4
+        }
+      },
+      "zoocraft:home_8": {
+        "minecraft:home": {
+          "restriction_type": "random_movement",
+          "restriction_radius": 8
+        }
+      },
+      "zoocraft:home_16": {
+        "minecraft:home": {
+          "restriction_type": "random_movement",
+          "restriction_radius": 16
+        }
+      },
+      "zoocraft:home_32": {
+        "minecraft:home": {
+          "restriction_type": "random_movement",
+          "restriction_radius": 32
+        }
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": [
+          "zoocraft_animal",
+          "skulker",
+          "mob"
+        ]
+      },
+      "minecraft:nameable": {
+        "always_show": false,
+        "allow_name_tag_renaming": true
+      },
+      "minecraft:health": {
+        "value": 30,
+        "max": 30
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "cause": "all",
+            "deals_damage": "no"
+          }
+        ]
+      },
+      "minecraft:persistent": {},
+      "minecraft:behavior.move_towards_home_restriction": {
+        "priority": 2,
+        "speed_multiplier": 1.0
+      },
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:breathable": {
+        "total_supply": 15,
+        "suffocate_time": 0
+      },
+      "minecraft:collision_box": {
+        "width": 0.7,
+        "height": 1.9
+      },
+      "minecraft:navigation.walk": {
+        "can_path_over_water": false,
+        "avoid_water": true,
+        "avoid_damage_blocks": true
+      },
+      "minecraft:movement.basic": {},
+      "minecraft:movement": {
+        "value": 0.2
+      },
+      "minecraft:jump.static": {},
+      "minecraft:physics": {},
+      "minecraft:pushable_by_entity": {},
+      "minecraft:pushable_by_block": {},
+      "minecraft:conditional_bandwidth_optimization": {},
+      "minecraft:behavior.float": {
+        "priority": 0
+      }
+    },
+    "events": {
+      "zoocraft:move": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:still",
+            "zoocraft:visit"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:moving"
+          ]
+        }
+      },
+      "zoocraft:still": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:moving",
+            "zoocraft:visit"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:still"
+          ]
+        }
+      },
+      "zoocraft:visit": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:moving",
+            "zoocraft:still"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:visit"
+          ]
+        }
+      },
+      "zoocraft:seek_feeder": {
+        "remove": {
+          "component_groups": []
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:seek_feeder"
+          ]
+        }
+      },
+      "zoocraft:seek_none": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:seek_feeder"
+          ]
+        }
+      },
+      "zoocraft:juvenile": {
+        "add": {
+          "component_groups": [
+            "zoocraft:juvenile"
+          ]
+        }
+      },
+      "zoocraft:home_4": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:home_8",
+            "zoocraft:home_16",
+            "zoocraft:home_32"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:home_4"
+          ]
+        }
+      },
+      "zoocraft:home_8": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:home_4",
+            "zoocraft:home_16",
+            "zoocraft:home_32"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:home_8"
+          ]
+        }
+      },
+      "zoocraft:home_16": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:home_4",
+            "zoocraft:home_8",
+            "zoocraft:home_32"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:home_16"
+          ]
+        }
+      },
+      "zoocraft:home_32": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:home_4",
+            "zoocraft:home_8",
+            "zoocraft:home_16"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:home_32"
+          ]
+        }
+      },
+      "minecraft:entity_spawned": {
+        "add": {
+          "component_groups": [
+            "zoocraft:home_8",
+            "zoocraft:moving"
+          ]
+        }
+      }
+    }
+  }
+}

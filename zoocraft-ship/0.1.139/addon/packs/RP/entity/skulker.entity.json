@@ -1,0 +1,59 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:skulker",
+      "materials": {"default": "entity_alphatest", "glow": "warden_bioluminescent_layer"},
+      "textures": {
+        "default": "textures/entity/zoocraft/skulker",
+        "glow": "textures/entity/zoocraft/skulker_glow",
+        "heart": "textures/entity/zoocraft/skulker_heart"
+      },
+      "geometry": {"default": "geometry.zoocraft.skulker"},
+      "animations": {
+        "idle": "animation.zoocraft.skulker.idle",
+        "walk": "animation.zoocraft.skulker.walk",
+        "look_at_target": "animation.zoocraft.skulker.look_at_target",
+        "listen": "animation.zoocraft.skulker.listen",
+        "sniff": "animation.zoocraft.skulker.sniff",
+        "feed": "animation.zoocraft.skulker.feed",
+        "sit": "animation.zoocraft.skulker.sit",
+        "sit_down": "animation.zoocraft.skulker.sit_down",
+        "sit_up": "animation.zoocraft.skulker.sit_up",
+        "buried": "animation.zoocraft.skulker.buried",
+        "dig_down": "animation.zoocraft.skulker.dig_down",
+        "emerge": "animation.zoocraft.skulker.emerge",
+        "young": "animation.zoocraft.skulker.young",
+        "move": "controller.animation.zoocraft.skulker.move"
+      },
+      "render_controllers": [
+        "controller.render.zoocraft.skulker",
+        "controller.render.zoocraft.skulker_glow",
+        "controller.render.zoocraft.skulker_heart"
+      ],
+      "scripts": {
+        "scale": "q.is_baby ? 0.5 : 1",
+        "initialize": [
+          "variable.offset = math.random(0, 20);",
+          "v.st = 0;",
+          "v.act = 0;",
+          "v.moving = 0;",
+          "v.leg_rate = 1;",
+          "v.excited = 0;",
+          "v.glow_alpha = 0.6;",
+          "v.heart_alpha = 0.3;"
+        ],
+        "pre_animation": [
+          "v.act = q.property('zoocraft:act');",
+          "v.moving = q.modified_move_speed > 0.05;",
+          "v.leg_rate = q.is_baby ? 1.8 : 1;",
+          "v.excited = q.property('zoocraft:excited');",
+          "v.beat = math.mod(q.life_time * (v.excited ? 2.4 : 0.9) + v.offset * 0.13, 1);",
+          "v.heart_alpha = 0.15 + 0.85 * math.pow(math.max(0, 1 - v.beat * 3), 2);",
+          "v.glow_alpha = 0.55 + 0.1 * math.cos(q.life_time * 90 + v.offset * 20) + (v.act == 1 ? 0.3 : 0);"
+        ],
+        "animate": ["move", {"young": "q.is_baby"}]
+      }
+    }
+  }
+}
