@@ -1,0 +1,17 @@
+{
+  "format_version": "1.8.0",
+  "minecraft:spawn_rules": {
+    "description": {"identifier": "zoocraft:wild_basalt_tortoise", "population_control": "animal"},
+    "conditions": [
+      {
+        "minecraft:spawns_on_surface": {},
+        "minecraft:spawns_underground": {},
+        "minecraft:spawns_on_block_filter": ["minecraft:basalt", "minecraft:blackstone", "minecraft:magma", "minecraft:netherrack"],
+        "minecraft:weight": {"default": 12},
+        "minecraft:herd": {"min_size": 1, "max_size": 2},
+        "minecraft:density_limit": {"surface": 4, "underground": 4},
+        "minecraft:biome_filter": {"test": "has_biome_tag", "value": "basalt_deltas"}
+      }
+    ]
+  }
+}
