@@ -1,0 +1,24 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:multiface_feature": {
+    "description": {
+      "identifier": "zoocraft:glade_lichen"
+    },
+    "search_range": 6,
+    "places_block": "minecraft:glow_lichen",
+    "can_place_on_floor": false,
+    "can_place_on_ceiling": true,
+    "can_place_on_wall": true,
+    "chance_of_spreading": 0.6,
+    "can_place_on": [
+      "minecraft:stone",
+      "minecraft:andesite",
+      "minecraft:diorite",
+      "minecraft:granite",
+      "minecraft:tuff",
+      "minecraft:calcite",
+      "minecraft:dirt",
+      "minecraft:amethyst_block"
+    ]
+  }
+}

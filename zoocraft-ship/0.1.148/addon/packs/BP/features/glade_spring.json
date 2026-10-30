@@ -1,0 +1,53 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:single_block_feature": {
+    "description": {
+      "identifier": "zoocraft:glade_spring"
+    },
+    "places_block": "zoocraft:glade_spring",
+    "enforce_placement_rules": false,
+    "enforce_survivability_rules": false,
+    "may_replace": [
+      "minecraft:stone",
+      "minecraft:granite",
+      "minecraft:diorite",
+      "minecraft:andesite",
+      "minecraft:tuff",
+      "minecraft:calcite",
+      "minecraft:dirt",
+      "minecraft:coarse_dirt",
+      "minecraft:grass_block",
+      "minecraft:gravel"
+    ],
+    "may_attach_to": {
+      "min_sides_must_attach": 1,
+      "top": [
+        "minecraft:stone",
+        "minecraft:granite",
+        "minecraft:diorite",
+        "minecraft:andesite",
+        "minecraft:tuff",
+        "minecraft:calcite",
+        "minecraft:dirt",
+        "minecraft:coarse_dirt",
+        "minecraft:grass_block",
+        "minecraft:gravel"
+      ],
+      "bottom": [
+        "minecraft:stone",
+        "minecraft:granite",
+        "minecraft:diorite",
+        "minecraft:andesite",
+        "minecraft:tuff",
+        "minecraft:calcite",
+        "minecraft:dirt",
+        "minecraft:coarse_dirt",
+        "minecraft:grass_block",
+        "minecraft:gravel"
+      ],
+      "sides": [
+        "minecraft:air"
+      ]
+    }
+  }
+}

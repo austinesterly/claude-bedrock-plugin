@@ -1,0 +1,38 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:feature_rules": {
+    "description": {
+      "identifier": "zoocraft:mythic_pools_rule",
+      "places_feature": "zoocraft:mythic_pool_flat"
+    },
+    "conditions": {
+      "placement_pass": "surface_pass",
+      "minecraft:biome_filter": [
+        {
+          "test": "has_biome_tag",
+          "operator": "==",
+          "value": "zoocraft_mythic"
+        }
+      ]
+    },
+    "distribution": {
+      "iterations": "((math.floor(variable.originx / 16) - 4 * math.floor(math.floor(variable.originx / 16) / 4)) == 2 || (math.floor(variable.originz / 16) - 4 * math.floor(math.floor(variable.originz / 16) / 4)) == 2) ? 1 : 0",
+      "scatter_chance": 50.0,
+      "x": {
+        "distribution": "uniform",
+        "extent": [
+          5,
+          10
+        ]
+      },
+      "z": {
+        "distribution": "uniform",
+        "extent": [
+          5,
+          10
+        ]
+      },
+      "y": "t.c = query.above_top_solid(variable.worldx, variable.worldz) - 1; return (query.heightmap(variable.worldx + 5, variable.worldz + 0) <= query.above_top_solid(variable.worldx + 5, variable.worldz + 0) && query.above_top_solid(variable.worldx + 5, variable.worldz + 0) >= t.c && query.heightmap(variable.worldx - 5, variable.worldz + 0) <= query.above_top_solid(variable.worldx - 5, variable.worldz + 0) && query.above_top_solid(variable.worldx - 5, variable.worldz + 0) >= t.c && query.heightmap(variable.worldx + 0, variable.worldz + 5) <= query.above_top_solid(variable.worldx + 0, variable.worldz + 5) && query.above_top_solid(variable.worldx + 0, variable.worldz + 5) >= t.c && query.heightmap(variable.worldx + 0, variable.worldz - 5) <= query.above_top_solid(variable.worldx + 0, variable.worldz - 5) && query.above_top_solid(variable.worldx + 0, variable.worldz - 5) >= t.c && query.heightmap(variable.worldx + 4, variable.worldz + 4) <= query.above_top_solid(variable.worldx + 4, variable.worldz + 4) && query.above_top_solid(variable.worldx + 4, variable.worldz + 4) >= t.c && query.heightmap(variable.worldx + 4, variable.worldz - 4) <= query.above_top_solid(variable.worldx + 4, variable.worldz - 4) && query.above_top_solid(variable.worldx + 4, variable.worldz - 4) >= t.c && query.heightmap(variable.worldx - 4, variable.worldz + 4) <= query.above_top_solid(variable.worldx - 4, variable.worldz + 4) && query.above_top_solid(variable.worldx - 4, variable.worldz + 4) >= t.c && query.heightmap(variable.worldx - 4, variable.worldz - 4) <= query.above_top_solid(variable.worldx - 4, variable.worldz - 4) && query.above_top_solid(variable.worldx - 4, variable.worldz - 4) >= t.c) ? query.heightmap(variable.worldx, variable.worldz) : -60;"
+    }
+  }
+}

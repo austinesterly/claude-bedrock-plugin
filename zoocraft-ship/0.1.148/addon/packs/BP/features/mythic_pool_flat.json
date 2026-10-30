@@ -1,0 +1,12 @@
+{
+  "format_version": "1.26.30",
+  "minecraft:height_difference_filter_feature": {
+    "description": {
+      "identifier": "zoocraft:mythic_pool_flat"
+    },
+    "places_feature": "zoocraft:mythic_pool_try",
+    "search_radius": 5,
+    "max_allowed_upward_height_diff": 3,
+    "max_allowed_downward_height_diff": 1
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "format_version": "1.26.10",
+  "minecraft:structure_template_feature": {
+    "description": {
+      "identifier": "zoocraft:mythic_glade_pool_mid_2"
+    },
+    "structure_name": "zoocraft:glade_pool_mid_2",
+    "adjustment_radius": 0,
+    "ground_level": 3,
+    "rotate_around_center": true,
+    "constraints": {
+      "block_intersection": {
+        "only_check_intersection_for_motion_blocking_blocks": false,
+        "block_allowlist": [
+          "minecraft:air",
+          "minecraft:short_grass",
+          "minecraft:fern",
+          "minecraft:tall_grass",
+          "minecraft:large_fern",
+          "minecraft:snow_layer",
+          "zoocraft:moonbloom",
+          "zoocraft:starpetal",
+          "zoocraft:wisp_fern",
+          {
+            "tags": "query.any_tag('dirt', 'sand', 'gravel')"
+          },
+          "minecraft:grass_block",
+          "minecraft:dirt",
+          "minecraft:coarse_dirt",
+          "minecraft:podzol",
+          "minecraft:dirt_with_roots",
+          "minecraft:moss_block",
+          "minecraft:clay",
+          "minecraft:gravel",
+          "minecraft:sand",
+          "minecraft:stone",
+          "minecraft:granite",
+          "minecraft:diorite",
+          "minecraft:andesite",
+          "minecraft:tuff",
+          "minecraft:calcite",
+          "minecraft:amethyst_block",
+          "minecraft:small_amethyst_bud",
+          "minecraft:medium_amethyst_bud",
+          "minecraft:large_amethyst_bud",
+          "minecraft:amethyst_cluster",
+          "minecraft:coal_ore",
+          "minecraft:iron_ore",
+          "minecraft:copper_ore",
+          "minecraft:gold_ore",
+          "minecraft:redstone_ore",
+          "minecraft:lapis_ore",
+          "minecraft:emerald_ore",
+          "minecraft:diamond_ore"
+        ]
+      }
+    }
+  }
+}

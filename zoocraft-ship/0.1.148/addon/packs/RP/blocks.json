@@ -1,0 +1,225 @@
+{
+  "format_version": "1.21.40",
+  "zoocraft:exhibit_controller": {
+    "sound": "wood"
+  },
+  "zoocraft:basic_feeder": {
+    "sound": "wood"
+  },
+  "zoocraft:park_entrance_gate": {
+    "sound": "stone"
+  },
+  "zoocraft:park_entrance_gate_part": {
+    "sound": "stone"
+  },
+  "zoocraft:water_trough": {
+    "sound": "wood"
+  },
+  "zoocraft:hanging_food_basket": {
+    "sound": "wood"
+  },
+  "zoocraft:water_filter": {
+    "sound": "metal"
+  },
+  "zoocraft:keeper_gate": {
+    "sound": "wood"
+  },
+  "zoocraft:keeper_gate_top": {
+    "sound": "wood"
+  },
+  "zoocraft:recovery_station": {
+    "sound": "wood"
+  },
+  "zoocraft:ticket_booth": {
+    "sound": "wood"
+  },
+  "zoocraft:viewing_point": {
+    "sound": "wood"
+  },
+  "zoocraft:snack_stand": {
+    "sound": "wood"
+  },
+  "zoocraft:snack_stand_part": {
+    "sound": "wood"
+  },
+  "zoocraft:bench": {
+    "sound": "wood"
+  },
+  "zoocraft:bench_part": {
+    "sound": "wood"
+  },
+  "zoocraft:litter_bin": {
+    "sound": "metal"
+  },
+  "zoocraft:donation_box": {
+    "sound": "wood"
+  },
+  "zoocraft:staff_room": {
+    "sound": "wood"
+  },
+  "zoocraft:research_desk": {
+    "sound": "wood"
+  },
+  "zoocraft:gift_shop": {
+    "sound": "wood"
+  },
+  "zoocraft:clear_lava": {
+    "sound": "stone"
+  },
+  "zoocraft:lava_filter": {
+    "sound": "stone"
+  },
+  "zoocraft:clear_lava_flowing_1": {
+    "sound": "stone"
+  },
+  "zoocraft:clear_lava_flowing_2": {
+    "sound": "stone"
+  },
+  "zoocraft:clear_lava_flowing_3": {
+    "sound": "stone"
+  },
+  "zoocraft:clear_lava_flowing_4": {
+    "sound": "stone"
+  },
+  "zoocraft:clear_lava_flowing_5": {
+    "sound": "stone"
+  },
+  "zoocraft:clear_lava_flowing_6": {
+    "sound": "stone"
+  },
+  "zoocraft:clear_lava_flowing_7": {
+    "sound": "stone"
+  },
+  "zoocraft:tour_desk": {
+    "sound": "wood"
+  },
+  "zoocraft:expedition_platform": {
+    "sound": "stone"
+  },
+  "zoocraft:holding_den": {
+    "sound": "stone"
+  },
+  "zoocraft:holding_den_top": {
+    "sound": "stone"
+  },
+  "zoocraft:scent_post": {
+    "sound": "wood"
+  },
+  "zoocraft:nest_box": {
+    "sound": "wood"
+  },
+  "zoocraft:perch": {
+    "sound": "wood"
+  },
+  "zoocraft:thermal_mud": {
+    "sound": "mud"
+  },
+  "zoocraft:mineral_substrate": {
+    "sound": "gravel"
+  },
+  "zoocraft:landing_pad": {
+    "sound": "cloth"
+  },
+  "zoocraft:mineral_feeder": {
+    "sound": "stone"
+  },
+  "zoocraft:warm_pad": {
+    "sound": "stone"
+  },
+  "zoocraft:restroom": {
+    "sound": "wood"
+  },
+  "zoocraft:restroom_part": {
+    "sound": "wood"
+  },
+  "zoocraft:water_fountain": {
+    "sound": "stone"
+  },
+  "zoocraft:path_lamp": {
+    "sound": "metal"
+  },
+  "zoocraft:path_lamp_part": {
+    "sound": "metal"
+  },
+  "zoocraft:planter": {
+    "sound": "wood"
+  },
+  "zoocraft:aluminum_fence": {
+    "sound": "metal"
+  },
+  "zoocraft:aluminum_fence_gate": {
+    "sound": "metal"
+  },
+  "zoocraft:bank": {
+    "sound": "stone"
+  },
+  "zoocraft:burrow_soil": {
+    "sound": "gravel"
+  },
+  "zoocraft:lava_spring": {
+    "sound": "nether"
+  },
+  "zoocraft:glade_spring": {
+    "sound": "stone"
+  },
+  "zoocraft:chorus_turf": {
+    "sound": "grass"
+  },
+  "zoocraft:whitewood_log": {
+    "sound": "wood"
+  },
+  "zoocraft:whitewood_planks": {
+    "sound": "wood"
+  },
+  "zoocraft:whitewood_leaves": {
+    "sound": "grass"
+  },
+  "zoocraft:end_grass": {
+    "sound": "grass"
+  },
+  "zoocraft:rift_turf": {
+    "sound": "grass"
+  },
+  "zoocraft:rift_grass": {
+    "sound": "grass"
+  },
+  "zoocraft:white_willow_log": {
+    "sound": "wood"
+  },
+  "zoocraft:white_willow_leaves": {
+    "sound": "grass"
+  },
+  "zoocraft:willow_strands": {
+    "sound": "grass"
+  },
+  "zoocraft:mythwood_log": {
+    "sound": "wood"
+  },
+  "zoocraft:mythwood_wood": {
+    "sound": "wood"
+  },
+  "zoocraft:mythwood_planks": {
+    "sound": "wood"
+  },
+  "zoocraft:mythwood_leaves": {
+    "sound": "grass"
+  },
+  "zoocraft:moonwillow_leaves": {
+    "sound": "grass"
+  },
+  "zoocraft:willow_veil": {
+    "sound": "grass"
+  },
+  "zoocraft:willowlight": {
+    "sound": "grass"
+  },
+  "zoocraft:moonbloom": {
+    "sound": "grass"
+  },
+  "zoocraft:starpetal": {
+    "sound": "grass"
+  },
+  "zoocraft:wisp_fern": {
+    "sound": "grass"
+  }
+}

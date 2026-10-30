@@ -1,0 +1,36 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:block": {
+    "description": {
+      "identifier": "zoocraft:glade_spring",
+      "menu_category": {
+        "category": "none"
+      }
+    },
+    "components": {
+      "minecraft:geometry": "minecraft:geometry.full_block",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "zoocraft_glade_spring",
+          "render_method": "opaque"
+        }
+      },
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 1.5
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 6
+      },
+      "minecraft:map_color": "#7d7d7d",
+      "minecraft:loot": "loot_tables/blocks/zoocraft_glade_spring.json",
+      "minecraft:tick": {
+        "interval_range": [
+          20,
+          40
+        ],
+        "looping": true
+      },
+      "zoocraft:glade_spring": {}
+    }
+  }
+}
