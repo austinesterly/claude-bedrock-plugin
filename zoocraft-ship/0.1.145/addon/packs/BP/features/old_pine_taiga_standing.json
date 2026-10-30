@@ -1,0 +1,30 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:weighted_random_feature": {
+    "description": {
+      "identifier": "zoocraft:old_pine_taiga_standing"
+    },
+    "features": [
+      [
+        "zoocraft:pine_giant",
+        40
+      ],
+      [
+        "zoocraft:pine_tall",
+        25
+      ],
+      [
+        "zoocraft:spruce_twin",
+        5
+      ],
+      [
+        "zoocraft:spruce_tall",
+        15
+      ],
+      [
+        "minecraft:select_standing_spruce_tree_feature",
+        15
+      ]
+    ]
+  }
+}

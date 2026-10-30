@@ -1,0 +1,2 @@
+4ef8bccea59b39969716e1d8063efa0a982913ccd5d3f4bc6ea9c6b9c6c61e85  addon\docs\status.md
+1cac1611801269bda056be7d6f44eb4f0f74d56b60c6cab05dc13cf5ce854992  addon\tests\logic.test.mjs

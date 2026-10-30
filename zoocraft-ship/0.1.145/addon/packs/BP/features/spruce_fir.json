@@ -1,0 +1,58 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:tree_feature": {
+    "description": {
+      "identifier": "zoocraft:spruce_fir"
+    },
+    "mega_trunk": {
+      "trunk_width": 1,
+      "trunk_height": {
+        "base": 14,
+        "intervals": [
+          5
+        ]
+      },
+      "trunk_block": {
+        "name": "minecraft:spruce_log"
+      }
+    },
+    "mega_pine_canopy": {
+      "canopy_height": {
+        "range_min": 11,
+        "range_max": 14
+      },
+      "base_radius": 0,
+      "radius_step_modifier": 2.0,
+      "core_width": 1,
+      "leaf_block": {
+        "name": "minecraft:spruce_leaves"
+      }
+    },
+    "may_grow_on": [
+      {
+        "tags": "query.any_tag('dirt')"
+      }
+    ],
+    "base_block": [
+      "minecraft:dirt",
+      "minecraft:coarse_dirt"
+    ],
+    "may_grow_through": [
+      {
+        "tags": "query.any_tag('dirt')"
+      }
+    ],
+    "may_replace": [
+      "minecraft:air",
+      "minecraft:snow_layer",
+      {
+        "tags": "query.any_tag('minecraft:leaves')"
+      },
+      "minecraft:short_grass",
+      "minecraft:tall_grass",
+      "minecraft:fern",
+      "minecraft:large_fern",
+      "minecraft:sweet_berry_bush"
+    ]
+  }
+}

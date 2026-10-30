@@ -1,0 +1,13 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:aggregate_feature": {
+    "description": {
+      "identifier": "zoocraft:taiga_trees"
+    },
+    "early_out": "first_success",
+    "features": [
+      "minecraft:optional_fallen_spruce_tree_feature",
+      "zoocraft:taiga_standing"
+    ]
+  }
+}

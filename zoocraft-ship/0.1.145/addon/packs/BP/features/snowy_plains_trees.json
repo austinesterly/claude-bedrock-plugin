@@ -1,0 +1,26 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:weighted_random_feature": {
+    "description": {
+      "identifier": "zoocraft:snowy_plains_trees"
+    },
+    "features": [
+      [
+        "zoocraft:spruce_tall",
+        35
+      ],
+      [
+        "zoocraft:spruce_fir",
+        30
+      ],
+      [
+        "zoocraft:spruce_great",
+        15
+      ],
+      [
+        "minecraft:select_standing_spruce_tree_feature",
+        20
+      ]
+    ]
+  }
+}
