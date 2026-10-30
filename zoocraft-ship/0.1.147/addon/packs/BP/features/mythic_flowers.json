@@ -1,0 +1,22 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:weighted_random_feature": {
+    "description": {
+      "identifier": "zoocraft:mythic_flowers"
+    },
+    "features": [
+      [
+        "zoocraft:mythic_moonbloom_drift",
+        3
+      ],
+      [
+        "zoocraft:mythic_starpetal_drift",
+        3
+      ],
+      [
+        "zoocraft:mythic_wisp_fern_drift",
+        2
+      ]
+    ]
+  }
+}

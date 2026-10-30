@@ -1,0 +1,38 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:weighted_random_feature": {
+    "description": {
+      "identifier": "zoocraft:mythic_giants"
+    },
+    "features": [
+      [
+        "zoocraft:mythic_grow_elder_mythwood_1",
+        3
+      ],
+      [
+        "zoocraft:mythic_grow_elder_mythwood_2",
+        3
+      ],
+      [
+        "zoocraft:mythic_grow_elder_mythwood_3",
+        3
+      ],
+      [
+        "zoocraft:mythic_grow_great_moonwillow_1",
+        4
+      ],
+      [
+        "zoocraft:mythic_grow_great_moonwillow_2",
+        4
+      ],
+      [
+        "zoocraft:mythic_grow_spiral_spire_1",
+        3
+      ],
+      [
+        "zoocraft:mythic_grow_spiral_spire_2",
+        3
+      ]
+    ]
+  }
+}

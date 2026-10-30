@@ -1,0 +1,22 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:weighted_random_feature": {
+    "description": {
+      "identifier": "zoocraft:mythic_young_trees"
+    },
+    "features": [
+      [
+        "zoocraft:mythic_grow_young_mythwood_1",
+        1
+      ],
+      [
+        "zoocraft:mythic_grow_young_mythwood_2",
+        1
+      ],
+      [
+        "zoocraft:mythic_grow_young_moonwillow_1",
+        1
+      ]
+    ]
+  }
+}

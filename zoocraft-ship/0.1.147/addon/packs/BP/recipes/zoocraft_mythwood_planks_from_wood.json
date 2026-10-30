@@ -1,0 +1,26 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "zoocraft:mythwood_planks_from_wood"
+    },
+    "tags": [
+      "crafting_table",
+      "zoocraft_workshop"
+    ],
+    "ingredients": [
+      {
+        "item": "zoocraft:mythwood_wood"
+      }
+    ],
+    "unlock": [
+      {
+        "item": "zoocraft:mythwood_wood"
+      }
+    ],
+    "result": {
+      "item": "zoocraft:mythwood_planks",
+      "count": 4
+    }
+  }
+}

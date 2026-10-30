@@ -1,0 +1,79 @@
+{
+  "format_version": "1.26.10",
+  "minecraft:structure_template_feature": {
+    "description": {
+      "identifier": "zoocraft:mythic_tree_moonwillow_1"
+    },
+    "structure_name": "zoocraft:moonwillow_1",
+    "adjustment_radius": 0,
+    "ground_level": 4,
+    "rotate_around_center": true,
+    "constraints": {
+      "block_intersection": {
+        "only_check_intersection_for_motion_blocking_blocks": true,
+        "block_allowlist": [
+          "minecraft:air",
+          "minecraft:short_grass",
+          "minecraft:fern",
+          "minecraft:tall_grass",
+          "minecraft:large_fern",
+          "minecraft:vine",
+          "minecraft:snow_layer",
+          "zoocraft:moonbloom",
+          "zoocraft:starpetal",
+          "zoocraft:wisp_fern",
+          "zoocraft:willow_veil",
+          "zoocraft:willowlight",
+          "zoocraft:mythwood_leaves",
+          "zoocraft:moonwillow_leaves",
+          {
+            "tags": "query.any_tag('minecraft:leaves')"
+          },
+          {
+            "tags": "query.any_tag('dirt', 'sand', 'gravel')"
+          },
+          "minecraft:grass_block",
+          "minecraft:dirt",
+          "minecraft:coarse_dirt",
+          "minecraft:podzol",
+          "minecraft:mycelium",
+          "minecraft:dirt_with_roots",
+          "minecraft:moss_block",
+          "minecraft:clay",
+          "minecraft:gravel",
+          "minecraft:sand",
+          "minecraft:snow",
+          "minecraft:stone",
+          "minecraft:granite",
+          "minecraft:diorite",
+          "minecraft:andesite",
+          "minecraft:tuff",
+          "minecraft:deepslate",
+          "minecraft:calcite",
+          "minecraft:amethyst_block",
+          "minecraft:budding_amethyst",
+          "minecraft:small_amethyst_bud",
+          "minecraft:medium_amethyst_bud",
+          "minecraft:large_amethyst_bud",
+          "minecraft:amethyst_cluster",
+          "minecraft:coal_ore",
+          "minecraft:deepslate_coal_ore",
+          "minecraft:iron_ore",
+          "minecraft:deepslate_iron_ore",
+          "minecraft:copper_ore",
+          "minecraft:deepslate_copper_ore",
+          "minecraft:gold_ore",
+          "minecraft:deepslate_gold_ore",
+          "minecraft:redstone_ore",
+          "minecraft:deepslate_redstone_ore",
+          "minecraft:lapis_ore",
+          "minecraft:deepslate_lapis_ore",
+          "minecraft:emerald_ore",
+          "minecraft:deepslate_emerald_ore",
+          "minecraft:diamond_ore",
+          "minecraft:deepslate_diamond_ore"
+        ]
+      }
+    }
+  }
+}

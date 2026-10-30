@@ -1,0 +1,26 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:weighted_random_feature": {
+    "description": {
+      "identifier": "zoocraft:mythic_amethyst_growth"
+    },
+    "features": [
+      [
+        "zoocraft:mythic_amethyst_cluster",
+        2
+      ],
+      [
+        "zoocraft:mythic_large_bud",
+        2
+      ],
+      [
+        "zoocraft:mythic_medium_bud",
+        3
+      ],
+      [
+        "zoocraft:mythic_small_bud",
+        3
+      ]
+    ]
+  }
+}

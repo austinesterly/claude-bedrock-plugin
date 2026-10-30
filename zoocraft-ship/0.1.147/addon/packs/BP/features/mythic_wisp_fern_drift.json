@@ -1,0 +1,32 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:scatter_feature": {
+    "description": {
+      "identifier": "zoocraft:mythic_wisp_fern_drift"
+    },
+    "places_feature": "zoocraft:mythic_wisp_fern",
+    "iterations": 14,
+    "coordinate_eval_order": "zyx",
+    "x": {
+      "distribution": "triangle",
+      "extent": [
+        -4,
+        4
+      ]
+    },
+    "y": {
+      "distribution": "triangle",
+      "extent": [
+        -2,
+        2
+      ]
+    },
+    "z": {
+      "distribution": "triangle",
+      "extent": [
+        -4,
+        4
+      ]
+    }
+  }
+}

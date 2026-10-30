@@ -1,0 +1,38 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:feature_rules": {
+    "description": {
+      "identifier": "zoocraft:mythic_young_trees_rule",
+      "places_feature": "zoocraft:mythic_young_trees"
+    },
+    "conditions": {
+      "placement_pass": "after_surface_pass",
+      "minecraft:biome_filter": [
+        {
+          "test": "has_biome_tag",
+          "operator": "==",
+          "value": "zoocraft_mythic"
+        }
+      ]
+    },
+    "distribution": {
+      "iterations": "((math.floor(variable.originx / 16) - 4 * math.floor(math.floor(variable.originx / 16) / 4)) == 2 || (math.floor(variable.originz / 16) - 4 * math.floor(math.floor(variable.originz / 16) / 4)) == 2) ? 2 : 0",
+      "scatter_chance": 50.0,
+      "x": {
+        "distribution": "uniform",
+        "extent": [
+          0,
+          15
+        ]
+      },
+      "z": {
+        "distribution": "uniform",
+        "extent": [
+          0,
+          15
+        ]
+      },
+      "y": "query.heightmap(variable.worldx, variable.worldz)"
+    }
+  }
+}

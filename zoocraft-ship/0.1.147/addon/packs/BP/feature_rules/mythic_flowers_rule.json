@@ -1,0 +1,38 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:feature_rules": {
+    "description": {
+      "identifier": "zoocraft:mythic_flowers_rule",
+      "places_feature": "zoocraft:mythic_flowers"
+    },
+    "conditions": {
+      "placement_pass": "after_surface_pass",
+      "minecraft:biome_filter": [
+        {
+          "test": "has_biome_tag",
+          "operator": "==",
+          "value": "zoocraft_mythic"
+        }
+      ]
+    },
+    "distribution": {
+      "iterations": 2,
+      "scatter_chance": 70.0,
+      "x": {
+        "distribution": "uniform",
+        "extent": [
+          0,
+          15
+        ]
+      },
+      "z": {
+        "distribution": "uniform",
+        "extent": [
+          0,
+          15
+        ]
+      },
+      "y": "query.heightmap(variable.worldx, variable.worldz)"
+    }
+  }
+}

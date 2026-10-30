@@ -1,0 +1,32 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:scatter_feature": {
+    "description": {
+      "identifier": "zoocraft:mythic_grass"
+    },
+    "places_feature": "zoocraft:mythic_grass_one",
+    "iterations": 40,
+    "coordinate_eval_order": "zyx",
+    "x": {
+      "distribution": "triangle",
+      "extent": [
+        -7,
+        7
+      ]
+    },
+    "y": {
+      "distribution": "triangle",
+      "extent": [
+        -2,
+        2
+      ]
+    },
+    "z": {
+      "distribution": "triangle",
+      "extent": [
+        -7,
+        7
+      ]
+    }
+  }
+}

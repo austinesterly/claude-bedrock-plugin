@@ -1,0 +1,13 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:aggregate_feature": {
+    "description": {
+      "identifier": "zoocraft:mythic_grow_young_mythwood_2"
+    },
+    "early_out": "first_failure",
+    "features": [
+      "zoocraft:mythic_tree_guard",
+      "zoocraft:mythic_tree_young_mythwood_2"
+    ]
+  }
+}

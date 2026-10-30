@@ -1,0 +1,30 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "zoocraft:mythwood_sticks"
+    },
+    "tags": [
+      "crafting_table",
+      "zoocraft_workshop"
+    ],
+    "pattern": [
+      "#",
+      "#"
+    ],
+    "key": {
+      "#": {
+        "item": "zoocraft:mythwood_planks"
+      }
+    },
+    "unlock": [
+      {
+        "item": "zoocraft:mythwood_planks"
+      }
+    ],
+    "result": {
+      "item": "minecraft:stick",
+      "count": 4
+    }
+  }
+}

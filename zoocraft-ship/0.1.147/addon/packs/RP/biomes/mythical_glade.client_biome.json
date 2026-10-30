@@ -1,0 +1,38 @@
+{
+  "format_version": "1.21.130",
+  "minecraft:client_biome": {
+    "description": {
+      "identifier": "zoocraft:mythical_glade"
+    },
+    "components": {
+      "minecraft:sky_color": {
+        "sky_color": "#b7a3f5"
+      },
+      "minecraft:fog_appearance": {
+        "fog_identifier": "zoocraft:fog_mythical_glade"
+      },
+      "minecraft:water_appearance": {
+        "surface_color": "#3fd9c8",
+        "surface_opacity": 0.65
+      },
+      "minecraft:grass_appearance": {
+        "color": "#79dfb0"
+      },
+      "minecraft:foliage_appearance": {
+        "color": "#a8e6c8"
+      },
+      "minecraft:atmosphere_identifier": {
+        "atmosphere_identifier": "minecraft:default_atmospherics"
+      },
+      "minecraft:color_grading_identifier": {
+        "color_grading_identifier": "minecraft:default_color_grading"
+      },
+      "minecraft:lighting_identifier": {
+        "lighting_identifier": "minecraft:default_lighting"
+      },
+      "minecraft:water_identifier": {
+        "water_identifier": "minecraft:default_water"
+      }
+    }
+  }
+}

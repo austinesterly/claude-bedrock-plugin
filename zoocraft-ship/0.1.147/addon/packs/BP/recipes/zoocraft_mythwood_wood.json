@@ -1,0 +1,30 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "zoocraft:mythwood_wood"
+    },
+    "tags": [
+      "crafting_table",
+      "zoocraft_workshop"
+    ],
+    "pattern": [
+      "##",
+      "##"
+    ],
+    "key": {
+      "#": {
+        "item": "zoocraft:mythwood_log"
+      }
+    },
+    "unlock": [
+      {
+        "item": "zoocraft:mythwood_log"
+      }
+    ],
+    "result": {
+      "item": "zoocraft:mythwood_wood",
+      "count": 3
+    }
+  }
+}

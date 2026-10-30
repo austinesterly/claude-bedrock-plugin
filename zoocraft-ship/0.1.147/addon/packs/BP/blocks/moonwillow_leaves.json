@@ -1,0 +1,38 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:block": {
+    "description": {
+      "identifier": "zoocraft:moonwillow_leaves",
+      "menu_category": {
+        "category": "nature"
+      }
+    },
+    "components": {
+      "minecraft:geometry": "minecraft:geometry.full_block",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "zoocraft_moonwillow_leaves",
+          "render_method": "alpha_test_to_opaque"
+        }
+      },
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 0.3
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 0.2
+      },
+      "minecraft:light_dampening": 1,
+      "minecraft:flammable": {
+        "catch_chance_modifier": 30,
+        "destroy_chance_modifier": 60
+      },
+      "minecraft:tags": [
+        "minecraft:leaves",
+        "minecraft:is_shears_item_destructible",
+        "minecraft:is_hoe_item_destructible"
+      ],
+      "minecraft:map_color": "#5fd2c2",
+      "minecraft:loot": "loot_tables/blocks/zoocraft_moonwillow_leaves.json"
+    }
+  }
+}

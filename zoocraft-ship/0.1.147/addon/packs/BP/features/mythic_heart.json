@@ -1,0 +1,13 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:aggregate_feature": {
+    "description": {
+      "identifier": "zoocraft:mythic_heart"
+    },
+    "early_out": "first_success",
+    "features": [
+      "zoocraft:mythic_giants",
+      "zoocraft:mythic_trees"
+    ]
+  }
+}

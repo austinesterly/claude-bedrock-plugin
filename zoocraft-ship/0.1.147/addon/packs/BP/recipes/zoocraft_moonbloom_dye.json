@@ -1,0 +1,26 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "zoocraft:moonbloom_dye"
+    },
+    "tags": [
+      "crafting_table",
+      "zoocraft_workshop"
+    ],
+    "ingredients": [
+      {
+        "item": "zoocraft:moonbloom"
+      }
+    ],
+    "unlock": [
+      {
+        "item": "zoocraft:moonbloom"
+      }
+    ],
+    "result": {
+      "item": "minecraft:light_blue_dye",
+      "count": 1
+    }
+  }
+}

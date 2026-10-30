@@ -1,0 +1,18 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:weighted_random_feature": {
+    "description": {
+      "identifier": "zoocraft:mythic_grass_one"
+    },
+    "features": [
+      [
+        "zoocraft:mythic_short_grass",
+        8
+      ],
+      [
+        "zoocraft:mythic_fern",
+        1
+      ]
+    ]
+  }
+}

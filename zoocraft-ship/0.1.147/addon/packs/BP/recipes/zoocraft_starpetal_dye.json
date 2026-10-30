@@ -1,0 +1,26 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "zoocraft:starpetal_dye"
+    },
+    "tags": [
+      "crafting_table",
+      "zoocraft_workshop"
+    ],
+    "ingredients": [
+      {
+        "item": "zoocraft:starpetal"
+      }
+    ],
+    "unlock": [
+      {
+        "item": "zoocraft:starpetal"
+      }
+    ],
+    "result": {
+      "item": "minecraft:pink_dye",
+      "count": 1
+    }
+  }
+}
