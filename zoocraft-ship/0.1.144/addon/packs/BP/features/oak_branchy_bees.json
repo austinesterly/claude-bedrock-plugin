@@ -1,0 +1,13 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:aggregate_feature": {
+    "description": {
+      "identifier": "zoocraft:oak_branchy_bees"
+    },
+    "early_out": "first_failure",
+    "features": [
+      "zoocraft:oak_branchy",
+      "minecraft:optional_beehive_feature"
+    ]
+  }
+}

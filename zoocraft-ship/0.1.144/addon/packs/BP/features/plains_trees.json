@@ -1,0 +1,18 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:weighted_random_feature": {
+    "description": {
+      "identifier": "zoocraft:plains_trees"
+    },
+    "features": [
+      [
+        "zoocraft:oak_great_bees",
+        50
+      ],
+      [
+        "zoocraft:oak_round_bees",
+        50
+      ]
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:aggregate_feature": {
+    "description": {
+      "identifier": "zoocraft:oak_round_litter"
+    },
+    "early_out": "first_failure",
+    "features": [
+      "zoocraft:oak_round_bees",
+      "minecraft:scatter_leaf_litter_feature"
+    ]
+  }
+}

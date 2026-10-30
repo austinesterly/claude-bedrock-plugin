@@ -1,0 +1,26 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:weighted_random_feature": {
+    "description": {
+      "identifier": "zoocraft:birch_forest_standing"
+    },
+    "features": [
+      [
+        "zoocraft:birch_tall_bees",
+        40
+      ],
+      [
+        "zoocraft:birch_slim_bees",
+        35
+      ],
+      [
+        "zoocraft:birch_old_bees",
+        15
+      ],
+      [
+        "zoocraft:oak_round_bees",
+        10
+      ]
+    ]
+  }
+}

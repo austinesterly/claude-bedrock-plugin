@@ -1,0 +1,34 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:weighted_random_feature": {
+    "description": {
+      "identifier": "zoocraft:forest_standing"
+    },
+    "features": [
+      [
+        "zoocraft:oak_round_litter",
+        25
+      ],
+      [
+        "zoocraft:oak_branchy_litter",
+        20
+      ],
+      [
+        "zoocraft:oak_great_litter",
+        15
+      ],
+      [
+        "zoocraft:oak_tall_litter",
+        15
+      ],
+      [
+        "zoocraft:birch_tall_litter",
+        15
+      ],
+      [
+        "zoocraft:birch_slim_litter",
+        10
+      ]
+    ]
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:weighted_random_feature": {
+    "description": {
+      "identifier": "zoocraft:dark_forest_standing"
+    },
+    "features": [
+      [
+        "zoocraft:dark_great",
+        35
+      ],
+      [
+        "zoocraft:dark_great_vines",
+        7
+      ],
+      [
+        "zoocraft:dark_giant",
+        12
+      ],
+      [
+        "zoocraft:dark_giant_vines",
+        3
+      ],
+      [
+        "minecraft:select_roofed_tree_feature",
+        20
+      ],
+      [
+        "zoocraft:mushroom_brown",
+        2
+      ],
+      [
+        "zoocraft:mushroom_red",
+        2
+      ],
+      [
+        "zoocraft:oak_round_bees",
+        10
+      ],
+      [
+        "zoocraft:birch_tall_bees",
+        9
+      ]
+    ]
+  }
+}

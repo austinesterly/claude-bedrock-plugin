@@ -1,0 +1,13 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:aggregate_feature": {
+    "description": {
+      "identifier": "zoocraft:oak_tall_bees"
+    },
+    "early_out": "first_failure",
+    "features": [
+      "zoocraft:oak_tall",
+      "minecraft:optional_beehive_feature"
+    ]
+  }
+}

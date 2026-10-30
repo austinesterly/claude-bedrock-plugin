@@ -1,0 +1,13 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:aggregate_feature": {
+    "description": {
+      "identifier": "zoocraft:birch_forest_trees"
+    },
+    "early_out": "first_success",
+    "features": [
+      "minecraft:optional_fallen_birch_tree_feature",
+      "zoocraft:birch_forest_standing"
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:weighted_random_feature": {
+    "description": {
+      "identifier": "zoocraft:flower_forest_trees"
+    },
+    "features": [
+      [
+        "zoocraft:oak_round_bees",
+        35
+      ],
+      [
+        "zoocraft:oak_tall_bees",
+        20
+      ],
+      [
+        "zoocraft:birch_tall_bees",
+        25
+      ],
+      [
+        "zoocraft:birch_slim_bees",
+        20
+      ]
+    ]
+  }
+}
