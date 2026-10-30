@@ -1,0 +1,73 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:tree_feature": {
+    "description": {
+      "identifier": "zoocraft:baobab"
+    },
+    "mega_trunk": {
+      "trunk_width": 2,
+      "trunk_height": {
+        "base": 8,
+        "intervals": [
+          2
+        ]
+      },
+      "trunk_block": {
+        "name": "minecraft:acacia_log"
+      },
+      "branches": {
+        "branch_length": 3,
+        "branch_slope": 0.6,
+        "branch_interval": {
+          "range_min": 1,
+          "range_max": 2
+        },
+        "branch_altitude_factor": {
+          "min": 0.8,
+          "max": 1.0
+        },
+        "branch_canopy": {
+          "acacia_canopy": {
+            "canopy_size": 1,
+            "leaf_block": {
+              "name": "minecraft:acacia_leaves"
+            },
+            "simplify_canopy": true
+          }
+        }
+      }
+    },
+    "acacia_canopy": {
+      "canopy_size": 2,
+      "leaf_block": {
+        "name": "minecraft:acacia_leaves"
+      },
+      "simplify_canopy": true
+    },
+    "may_grow_on": [
+      {
+        "tags": "query.any_tag('dirt')"
+      }
+    ],
+    "base_block": [
+      "minecraft:dirt",
+      "minecraft:coarse_dirt"
+    ],
+    "may_grow_through": [
+      {
+        "tags": "query.any_tag('dirt')"
+      }
+    ],
+    "may_replace": [
+      "minecraft:air",
+      {
+        "tags": "query.any_tag('minecraft:leaves')"
+      },
+      "minecraft:short_grass",
+      "minecraft:tall_grass",
+      "minecraft:fern",
+      "minecraft:large_fern",
+      "minecraft:vine"
+    ]
+  }
+}

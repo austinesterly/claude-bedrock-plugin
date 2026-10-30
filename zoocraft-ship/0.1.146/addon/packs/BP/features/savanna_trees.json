@@ -1,0 +1,42 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:weighted_random_feature": {
+    "description": {
+      "identifier": "zoocraft:savanna_trees"
+    },
+    "features": [
+      [
+        "zoocraft:acacia_umbrella",
+        20
+      ],
+      [
+        "zoocraft:acacia_tiered",
+        15
+      ],
+      [
+        "zoocraft:acacia_great",
+        10
+      ],
+      [
+        "zoocraft:acacia_wide",
+        10
+      ],
+      [
+        "zoocraft:baobab",
+        5
+      ],
+      [
+        "minecraft:savanna_tree_feature",
+        15
+      ],
+      [
+        "zoocraft:oak_round",
+        10
+      ],
+      [
+        "minecraft:oak_tree_feature",
+        15
+      ]
+    ]
+  }
+}

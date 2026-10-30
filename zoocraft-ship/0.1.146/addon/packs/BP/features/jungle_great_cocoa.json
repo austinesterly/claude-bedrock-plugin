@@ -1,0 +1,12 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:sequence_feature": {
+    "description": {
+      "identifier": "zoocraft:jungle_great_cocoa"
+    },
+    "features": [
+      "zoocraft:jungle_great",
+      "minecraft:optional_jungle_tree_cocoa_feature"
+    ]
+  }
+}

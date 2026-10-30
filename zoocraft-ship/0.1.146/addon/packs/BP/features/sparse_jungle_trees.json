@@ -1,0 +1,30 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:weighted_random_feature": {
+    "description": {
+      "identifier": "zoocraft:sparse_jungle_trees"
+    },
+    "features": [
+      [
+        "zoocraft:jungle_great_cocoa",
+        5
+      ],
+      [
+        "zoocraft:jungle_tall_cocoa",
+        20
+      ],
+      [
+        "zoocraft:jungle_mid_cocoa",
+        25
+      ],
+      [
+        "zoocraft:jungle_bush",
+        35
+      ],
+      [
+        "minecraft:select_jungle_tree_feature",
+        15
+      ]
+    ]
+  }
+}
