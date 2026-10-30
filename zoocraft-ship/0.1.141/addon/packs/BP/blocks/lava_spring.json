@@ -1,0 +1,36 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:block": {
+    "description": {
+      "identifier": "zoocraft:lava_spring",
+      "menu_category": {
+        "category": "none"
+      }
+    },
+    "components": {
+      "minecraft:geometry": "minecraft:geometry.full_block",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "zoocraft_lava_spring",
+          "render_method": "opaque"
+        }
+      },
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 0.4
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 0.4
+      },
+      "minecraft:map_color": "#6f3535",
+      "minecraft:loot": "loot_tables/blocks/zoocraft_lava_spring.json",
+      "minecraft:tick": {
+        "interval_range": [
+          20,
+          40
+        ],
+        "looping": true
+      },
+      "zoocraft:lava_spring": {}
+    }
+  }
+}

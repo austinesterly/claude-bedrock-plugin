@@ -1,0 +1,11 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:snap_to_surface_feature": {
+    "description": {
+      "identifier": "zoocraft:lava_falls_glow"
+    },
+    "feature_to_snap": "zoocraft:lava_falls_glow_blob",
+    "vertical_search_range": 32,
+    "surface": "ceiling"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:ore_feature": {
+    "description": {
+      "identifier": "zoocraft:lava_falls_glow_blob"
+    },
+    "count": 14,
+    "replace_rules": [
+      {
+        "places_block": "minecraft:glowstone",
+        "may_replace": [
+          "minecraft:air",
+          "minecraft:netherrack"
+        ]
+      }
+    ]
+  }
+}

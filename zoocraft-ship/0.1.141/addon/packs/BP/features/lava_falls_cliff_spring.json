@@ -1,0 +1,36 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:single_block_feature": {
+    "description": {
+      "identifier": "zoocraft:lava_falls_cliff_spring"
+    },
+    "places_block": "zoocraft:lava_spring",
+    "enforce_placement_rules": false,
+    "enforce_survivability_rules": false,
+    "may_replace": [
+      "minecraft:netherrack"
+    ],
+    "may_attach_to": {
+      "min_sides_must_attach": 1,
+      "top": [
+        "minecraft:netherrack",
+        "minecraft:warped_nylium",
+        "minecraft:blackstone",
+        "minecraft:basalt",
+        "minecraft:glowstone",
+        "minecraft:magma"
+      ],
+      "bottom": [
+        "minecraft:netherrack",
+        "minecraft:warped_nylium",
+        "minecraft:blackstone",
+        "minecraft:basalt",
+        "minecraft:glowstone",
+        "minecraft:magma"
+      ],
+      "sides": [
+        "minecraft:air"
+      ]
+    }
+  }
+}
