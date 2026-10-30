@@ -1,0 +1,12 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:aggregate_feature": {
+    "description": {
+      "identifier": "zoocraft:chorus_meadow_column"
+    },
+    "features": [
+      "zoocraft:chorus_meadow_turf",
+      "zoocraft:chorus_meadow_grass_try"
+    ]
+  }
+}

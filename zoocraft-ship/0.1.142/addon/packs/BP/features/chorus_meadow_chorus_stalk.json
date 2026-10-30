@@ -1,0 +1,19 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:scatter_feature": {
+    "description": {
+      "identifier": "zoocraft:chorus_meadow_chorus_stalk"
+    },
+    "places_feature": "zoocraft:chorus_meadow_chorus_plant",
+    "iterations": "(2 + math.floor(math.mod(math.abs(math.sin((variable.originx) * 12.9898 + (variable.originz) * 78.233 + 12 * 37.719) * 43758.5453), 1) * 3))",
+    "x": 0,
+    "z": 0,
+    "y": {
+      "distribution": "fixed_grid",
+      "extent": [
+        1,
+        127
+      ]
+    }
+  }
+}

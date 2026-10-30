@@ -1,0 +1,16 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:fog_settings": {
+    "description": {
+      "identifier": "zoocraft:fog_chorus_meadow"
+    },
+    "distance": {
+      "air": {
+        "fog_start": 24.0,
+        "fog_end": 150.0,
+        "fog_color": "#8a7ca6",
+        "render_distance_type": "fixed"
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:weighted_random_feature": {
+    "description": {
+      "identifier": "zoocraft:whitewood_trees"
+    },
+    "features": [
+      [
+        "zoocraft:whitewood_tree",
+        4
+      ],
+      [
+        "zoocraft:whitewood_tree_young",
+        2
+      ],
+      [
+        "zoocraft:whitewood_tree_old",
+        2
+      ]
+    ]
+  }
+}

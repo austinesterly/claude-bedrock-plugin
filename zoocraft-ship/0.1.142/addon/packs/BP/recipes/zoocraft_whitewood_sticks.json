@@ -1,0 +1,30 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "zoocraft:whitewood_sticks"
+    },
+    "tags": [
+      "crafting_table",
+      "zoocraft_workshop"
+    ],
+    "pattern": [
+      "#",
+      "#"
+    ],
+    "key": {
+      "#": {
+        "item": "zoocraft:whitewood_planks"
+      }
+    },
+    "unlock": [
+      {
+        "item": "zoocraft:whitewood_planks"
+      }
+    ],
+    "result": {
+      "item": "minecraft:stick",
+      "count": 4
+    }
+  }
+}

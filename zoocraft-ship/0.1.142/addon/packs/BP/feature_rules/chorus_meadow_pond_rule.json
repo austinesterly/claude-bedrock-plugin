@@ -1,0 +1,25 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:feature_rules": {
+    "description": {
+      "identifier": "zoocraft:chorus_meadow_pond_rule",
+      "places_feature": "zoocraft:chorus_meadow_ponds"
+    },
+    "conditions": {
+      "placement_pass": "before_surface_pass",
+      "minecraft:biome_filter": [
+        {
+          "test": "has_biome_tag",
+          "operator": "==",
+          "value": "the_end"
+        }
+      ]
+    },
+    "distribution": {
+      "iterations": "((variable.originx + 8) * (variable.originx + 8) + (variable.originz + 8) * (variable.originz + 8) > 640000) ? 1 : 0",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    }
+  }
+}

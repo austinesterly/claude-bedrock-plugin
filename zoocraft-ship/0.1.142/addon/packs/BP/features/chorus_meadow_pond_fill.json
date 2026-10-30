@@ -1,0 +1,19 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:scatter_feature": {
+    "description": {
+      "identifier": "zoocraft:chorus_meadow_pond_fill"
+    },
+    "places_feature": "zoocraft:chorus_meadow_water",
+    "iterations": "t.n = 0; variable.originy > 0 ? { t.ci = math.floor(variable.originx / 16); t.cj = math.floor(variable.originz / 16); t.px = t.ci * 16 + 5 + math.floor(math.mod(math.abs(math.sin((t.ci) * 12.9898 + (t.cj) * 78.233 + 2 * 37.719) * 43758.5453), 1) * 6); t.pz = t.cj * 16 + 5 + math.floor(math.mod(math.abs(math.sin((t.ci) * 12.9898 + (t.cj) * 78.233 + 3 * 37.719) * 43758.5453), 1) * 6); t.pr = 2.6 + 1.6 * math.mod(math.abs(math.sin((t.ci) * 12.9898 + (t.cj) * 78.233 + 4 * 37.719) * 43758.5453), 1); t.k = math.round(t.pr + 1); t.g = math.round((t.pr + 1) * 0.71); t.l = math.min(query.heightmap(t.px + 1 * t.k, t.pz + 0 * t.k), math.min(query.heightmap(t.px + -1 * t.k, t.pz + 0 * t.k), math.min(query.heightmap(t.px + 0 * t.k, t.pz + 1 * t.k), math.min(query.heightmap(t.px + 0 * t.k, t.pz + -1 * t.k), math.min(query.heightmap(t.px + 1 * t.g, t.pz + 1 * t.g), math.min(query.heightmap(t.px + 1 * t.g, t.pz + -1 * t.g), math.min(query.heightmap(t.px + -1 * t.g, t.pz + 1 * t.g), query.heightmap(t.px + -1 * t.g, t.pz + -1 * t.g)))))))) - 1; t.n = math.clamp(t.l + 1 - variable.originy, 0, 6); }; return t.n;",
+    "x": 0,
+    "z": 0,
+    "y": {
+      "distribution": "fixed_grid",
+      "extent": [
+        0,
+        127
+      ]
+    }
+  }
+}

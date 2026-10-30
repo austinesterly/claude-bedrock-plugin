@@ -1,0 +1,26 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:scatter_feature": {
+    "description": {
+      "identifier": "zoocraft:chorus_meadow_ground"
+    },
+    "places_feature": "zoocraft:chorus_meadow_column",
+    "iterations": 257,
+    "coordinate_eval_order": "xzy",
+    "x": {
+      "distribution": "fixed_grid",
+      "extent": [
+        0,
+        15
+      ]
+    },
+    "z": {
+      "distribution": "fixed_grid",
+      "extent": [
+        0,
+        15
+      ]
+    },
+    "y": "t.y = 0; (((variable.worldx) * (variable.worldx) + (variable.worldz) * (variable.worldz) > 640000) && (query.noise((variable.worldx) / 170 + 41.3, (variable.worldz) / 170 + 12.7) + 0.18 * query.noise((variable.worldx) / 21 + 5.1, (variable.worldz) / 21 + 8.8)) > 0.3 + 0.06 * (math.mod(math.abs(math.sin((variable.worldx) * 12.9898 + (variable.worldz) * 78.233 + 7 * 37.719) * 43758.5453), 1) - 0.5)) ? { t.y = query.heightmap(variable.worldx, variable.worldz) - 1; }; return math.max(t.y, 0);"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:tree_feature": {
+    "description": {
+      "identifier": "zoocraft:whitewood_tree"
+    },
+    "trunk": {
+      "trunk_height": {
+        "range_min": 6,
+        "range_max": 9
+      },
+      "trunk_block": {
+        "name": "zoocraft:whitewood_log"
+      }
+    },
+    "canopy": {
+      "canopy_offset": {
+        "min": -3,
+        "max": 0
+      },
+      "variation_chance": [
+        {
+          "numerator": 1,
+          "denominator": 2
+        },
+        {
+          "numerator": 1,
+          "denominator": 2
+        },
+        {
+          "numerator": 1,
+          "denominator": 2
+        },
+        {
+          "numerator": 1,
+          "denominator": 1
+        }
+      ],
+      "leaf_block": {
+        "name": "zoocraft:whitewood_leaves"
+      }
+    },
+    "may_grow_on": [
+      "zoocraft:chorus_turf"
+    ],
+    "base_block": [
+      "zoocraft:chorus_turf"
+    ],
+    "may_grow_through": [
+      "zoocraft:chorus_turf"
+    ],
+    "may_replace": [
+      "minecraft:air",
+      "zoocraft:end_grass",
+      {
+        "tags": "query.any_tag('minecraft:leaves')"
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:scatter_feature": {
+    "description": {
+      "identifier": "zoocraft:chorus_meadow_grass_try"
+    },
+    "places_feature": "zoocraft:chorus_meadow_grass",
+    "iterations": "(variable.originy > 0 && math.mod(math.abs(math.sin((variable.originx) * 12.9898 + (variable.originz) * 78.233 + 9 * 37.719) * 43758.5453), 1) < 0.1 + 0.35 * math.clamp(query.noise(variable.originx / 7 + 2.2, variable.originz / 7 + 6.6), 0, 1)) ? 1 : 0",
+    "x": 0,
+    "y": 1,
+    "z": 0
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:scatter_feature": {
+    "description": {
+      "identifier": "zoocraft:chorus_meadow_chorus_branch_top"
+    },
+    "places_feature": "zoocraft:chorus_meadow_chorus_flower",
+    "iterations": 1,
+    "x": 0,
+    "z": 0,
+    "y": 2
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:aggregate_feature": {
+    "description": {
+      "identifier": "zoocraft:chorus_meadow_chorus_branch"
+    },
+    "early_out": "first_failure",
+    "features": [
+      "zoocraft:chorus_meadow_chorus_plant",
+      "zoocraft:chorus_meadow_chorus_branch_up",
+      "zoocraft:chorus_meadow_chorus_branch_top"
+    ]
+  }
+}
