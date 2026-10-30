@@ -1,0 +1,47 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:unicorn",
+      "materials": {"default": "entity_emissive_alpha"},
+      "textures": {
+        "default": "textures/entity/zoocraft/unicorn",
+        "dawn": "textures/entity/zoocraft/unicorn_dawn",
+        "foal": "textures/entity/zoocraft/unicorn_foal"
+      },
+      "geometry": {"default": "geometry.zoocraft.unicorn"},
+      "animations": {
+        "idle": "animation.zoocraft.unicorn.idle",
+        "walk": "animation.zoocraft.unicorn.walk",
+        "look_at_target": "animation.zoocraft.unicorn.look_at_target",
+        "graze": "animation.zoocraft.unicorn.graze",
+        "dip": "animation.zoocraft.unicorn.dip",
+        "alert": "animation.zoocraft.unicorn.alert",
+        "rear": "animation.zoocraft.unicorn.rear",
+        "lie_down": "animation.zoocraft.unicorn.lie_down",
+        "get_up": "animation.zoocraft.unicorn.get_up",
+        "lie": "animation.zoocraft.unicorn.lie",
+        "down_life": "animation.zoocraft.unicorn.down_life",
+        "foal": "animation.zoocraft.unicorn.foal",
+        "move": "controller.animation.zoocraft.unicorn.move"
+      },
+      "render_controllers": ["controller.render.zoocraft.unicorn"],
+      "scripts": {
+        "scale": "q.is_baby ? 0.6 : 1",
+        "initialize": [
+          "variable.offset = math.random(0, 20);",
+          "v.st = 0;",
+          "v.act = 0;",
+          "v.moving = 0;",
+          "v.leg_rate = 1;"
+        ],
+        "pre_animation": [
+          "v.act = q.property('zoocraft:act');",
+          "v.moving = q.modified_move_speed > 0.05;",
+          "v.leg_rate = q.is_baby ? 1.8 : 1;"
+        ],
+        "animate": ["move", {"foal": "q.is_baby"}]
+      }
+    }
+  }
+}

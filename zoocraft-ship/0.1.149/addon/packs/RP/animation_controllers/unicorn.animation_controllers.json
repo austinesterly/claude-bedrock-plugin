@@ -1,0 +1,131 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.zoocraft.unicorn.move": {
+      "initial_state": "start",
+      "states": {
+        "start": {"transitions": [{"lie": "v.act == 5"}, {"idle": "v.act != 5"}], "blend_transition": 0},
+        "idle": {
+          "animations": ["idle", "look_at_target"],
+          "transitions": [
+            {"lie_down": "v.act == 5"},
+            {"walking": "v.act == 0 && v.moving"},
+            {"graze": "v.act == 1"},
+            {"dip": "v.act == 2"},
+            {"rear": "v.act == 3"},
+            {"alert": "v.act == 4"},
+            {"flowers": "v.act == 6"}
+          ],
+          "blend_transition": 0.3
+        },
+        "walking": {
+          "animations": ["walk", "look_at_target"],
+          "transitions": [
+            {"lie_down": "v.act == 5"},
+            {"idle": "v.act == 0 && !v.moving"},
+            {"graze": "v.act == 1"},
+            {"dip": "v.act == 2"},
+            {"rear": "v.act == 3"},
+            {"alert": "v.act == 4"},
+            {"flowers": "v.act == 6"}
+          ],
+          "blend_transition": 0.25
+        },
+        "graze": {
+          "animations": ["graze"],
+          "transitions": [
+            {"lie_down": "v.act == 5"},
+            {"idle": "v.act == 0 && !v.moving"},
+            {"walking": "v.act == 0 && v.moving"},
+            {"dip": "v.act == 2"},
+            {"rear": "v.act == 3"},
+            {"alert": "v.act == 4"},
+            {"flowers": "v.act == 6"}
+          ],
+          "blend_transition": 0.45
+        },
+        "dip": {
+          "animations": ["dip"],
+          "transitions": [
+            {"lie_down": "v.act == 5"},
+            {"idle": "v.act == 0 && !v.moving"},
+            {"walking": "v.act == 0 && v.moving"},
+            {"graze": "v.act == 1"},
+            {"rear": "v.act == 3"},
+            {"alert": "v.act == 4"},
+            {"flowers": "v.act == 6"}
+          ],
+          "blend_transition": 0.45
+        },
+        "rear": {
+          "animations": ["rear"],
+          "transitions": [
+            {"lie_down": "v.act == 5"},
+            {"idle": "v.act == 0 && !v.moving"},
+            {"walking": "v.act == 0 && v.moving"},
+            {"graze": "v.act == 1"},
+            {"dip": "v.act == 2"},
+            {"alert": "v.act == 4"},
+            {"flowers": "v.act == 6"}
+          ],
+          "blend_transition": 0.2
+        },
+        "alert": {
+          "animations": ["alert", "look_at_target"],
+          "transitions": [
+            {"lie_down": "v.act == 5"},
+            {"idle": "v.act == 0 && !v.moving"},
+            {"walking": "v.act == 0 && v.moving"},
+            {"graze": "v.act == 1"},
+            {"dip": "v.act == 2"},
+            {"rear": "v.act == 3"},
+            {"flowers": "v.act == 6"}
+          ],
+          "blend_transition": 0.45
+        },
+        "flowers": {
+          "animations": ["graze"],
+          "transitions": [
+            {"lie_down": "v.act == 5"},
+            {"idle": "v.act == 0 && !v.moving"},
+            {"walking": "v.act == 0 && v.moving"},
+            {"graze": "v.act == 1"},
+            {"dip": "v.act == 2"},
+            {"rear": "v.act == 3"},
+            {"alert": "v.act == 4"}
+          ],
+          "blend_transition": 0.45
+        },
+        "lie_down": {
+          "animations": ["lie_down", "down_life"],
+          "blend_transition": 0,
+          "on_entry": ["v.st = q.life_time;"],
+          "transitions": [
+            {"lie": "(q.life_time - v.st) > 2.0 && v.act == 5"},
+            {"get_up": "(q.life_time - v.st) > 2.0 && v.act != 5"}
+          ]
+        },
+        "lie": {
+          "animations": ["lie", "down_life"],
+          "blend_transition": 0,
+          "transitions": [{"get_up": "v.act != 5"}]
+        },
+        "get_up": {
+          "animations": ["get_up"],
+          "blend_transition": 0.2,
+          "on_entry": ["v.st = q.life_time;"],
+          "transitions": [
+            {"lie_down": "v.act == 5 && (q.life_time - v.st) > 1.2"},
+            {"idle": "v.act == 0 && !v.moving && (q.life_time - v.st) > 1.2"},
+            {"walking": "v.act == 0 && v.moving && (q.life_time - v.st) > 1.2"},
+            {"graze": "v.act == 1 && (q.life_time - v.st) > 1.2"},
+            {"dip": "v.act == 2 && (q.life_time - v.st) > 1.2"},
+            {"rear": "v.act == 3 && (q.life_time - v.st) > 1.2"},
+            {"alert": "v.act == 4 && (q.life_time - v.st) > 1.2"},
+            {"flowers": "v.act == 6 && (q.life_time - v.st) > 1.2"}
+          ]
+        }
+      }
+    }
+  }
+}

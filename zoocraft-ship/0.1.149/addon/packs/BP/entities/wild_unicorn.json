@@ -1,0 +1,325 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "zoocraft:wild_unicorn",
+      "spawn_category": "creature",
+      "is_spawnable": true,
+      "is_summonable": true,
+      "properties": {
+        "zoocraft:act": {
+          "type": "int",
+          "range": [
+            0,
+            9
+          ],
+          "default": 0,
+          "client_sync": true
+        }
+      }
+    },
+    "component_groups": {
+      "zoocraft:moving": {
+        "minecraft:movement": {
+          "value": 0.22
+        },
+        "minecraft:physics": {},
+        "minecraft:behavior.random_stroll": {
+          "priority": 7,
+          "interval": 120,
+          "speed_multiplier": 0.9,
+          "xz_dist": 8,
+          "y_dist": 1
+        },
+        "minecraft:behavior.tempt": {
+          "priority": 1,
+          "speed_multiplier": 1.0,
+          "within_radius": 8,
+          "items": [
+            "zoocraft:grain_ration"
+          ]
+        },
+        "minecraft:behavior.avoid_mob_type": {
+          "priority": 2,
+          "entity_types": [
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "test": "is_sneaking",
+                    "subject": "other",
+                    "value": false
+                  },
+                  {
+                    "test": "has_ability",
+                    "subject": "other",
+                    "operator": "!=",
+                    "value": "instabuild"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "operator": "!=",
+                    "value": "zoocraft:grain_ration"
+                  }
+                ]
+              },
+              "max_dist": 10,
+              "walk_speed_multiplier": 1.3,
+              "sprint_speed_multiplier": 1.7
+            }
+          ],
+          "ignore_visibility": true
+        },
+        "minecraft:behavior.look_at_player": {
+          "priority": 9,
+          "look_distance": 8,
+          "probability": 0.03
+        },
+        "minecraft:behavior.random_look_around": {
+          "priority": 10
+        }
+      },
+      "zoocraft:still": {
+        "minecraft:movement": {
+          "value": 0.0
+        },
+        "minecraft:physics": {},
+        "minecraft:behavior.look_at_player": {
+          "priority": 9,
+          "look_distance": 8,
+          "probability": 0.03
+        },
+        "minecraft:behavior.random_look_around": {
+          "priority": 10
+        }
+      },
+      "zoocraft:coat_0": {
+        "minecraft:variant": {
+          "value": 0
+        }
+      },
+      "zoocraft:coat_1": {
+        "minecraft:variant": {
+          "value": 1
+        }
+      },
+      "zoocraft:seek_flowers": {
+        "minecraft:behavior.move_to_block": {
+          "priority": 4,
+          "tick_interval": 20,
+          "start_chance": 1.0,
+          "search_range": 12,
+          "search_height": 3,
+          "goal_radius": 1.2,
+          "speed_multiplier": 1.0,
+          "target_selection_method": "nearest",
+          "target_blocks": [
+            "zoocraft:moonbloom",
+            "zoocraft:starpetal",
+            "zoocraft:wisp_fern"
+          ],
+          "target_offset": [
+            0,
+            0,
+            0
+          ],
+          "stay_duration": 60
+        }
+      },
+      "zoocraft:seek_water": {
+        "minecraft:behavior.move_to_block": {
+          "priority": 4,
+          "tick_interval": 20,
+          "start_chance": 1.0,
+          "search_range": 16,
+          "search_height": 3,
+          "goal_radius": 1.6,
+          "speed_multiplier": 1.0,
+          "target_selection_method": "nearest",
+          "target_blocks": [
+            "minecraft:water",
+            "zoocraft:water_trough"
+          ],
+          "target_offset": [
+            0,
+            0,
+            0
+          ],
+          "stay_duration": 60
+        }
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": [
+          "wild_unicorn",
+          "unicorn",
+          "mob"
+        ]
+      },
+      "minecraft:nameable": {},
+      "minecraft:health": {
+        "value": 25,
+        "max": 25
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "cause": "fall",
+            "deals_damage": "no"
+          }
+        ]
+      },
+      "minecraft:despawn": {
+        "despawn_from_distance": {}
+      },
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:breathable": {
+        "total_supply": 15,
+        "suffocate_time": 0
+      },
+      "minecraft:collision_box": {
+        "width": 1.2,
+        "height": 2.0
+      },
+      "minecraft:navigation.walk": {
+        "can_path_over_water": false,
+        "avoid_water": false,
+        "avoid_damage_blocks": true
+      },
+      "minecraft:movement.basic": {},
+      "minecraft:movement": {
+        "value": 0.22
+      },
+      "minecraft:jump.static": {},
+      "minecraft:physics": {},
+      "minecraft:pushable_by_entity": {},
+      "minecraft:pushable_by_block": {},
+      "minecraft:conditional_bandwidth_optimization": {},
+      "minecraft:behavior.float": {
+        "priority": 0
+      }
+    },
+    "events": {
+      "zoocraft:move": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:still"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:moving"
+          ]
+        }
+      },
+      "zoocraft:still": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:moving"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:still"
+          ]
+        }
+      },
+      "zoocraft:coat_0": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:coat_1"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:coat_0"
+          ]
+        }
+      },
+      "zoocraft:coat_1": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:coat_0"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:coat_1"
+          ]
+        }
+      },
+      "zoocraft:seek_flowers": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:seek_water"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:seek_flowers"
+          ]
+        }
+      },
+      "zoocraft:seek_water": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:seek_flowers"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:seek_water"
+          ]
+        }
+      },
+      "zoocraft:seek_none": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:seek_flowers",
+            "zoocraft:seek_water"
+          ]
+        }
+      },
+      "minecraft:entity_spawned": {
+        "randomize": [
+          {
+            "weight": 3,
+            "add": {
+              "component_groups": [
+                "zoocraft:coat_0",
+                "zoocraft:moving"
+              ]
+            },
+            "remove": {
+              "component_groups": [
+                "zoocraft:coat_1"
+              ]
+            }
+          },
+          {
+            "weight": 2,
+            "add": {
+              "component_groups": [
+                "zoocraft:coat_1",
+                "zoocraft:moving"
+              ]
+            },
+            "remove": {
+              "component_groups": [
+                "zoocraft:coat_0"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}
