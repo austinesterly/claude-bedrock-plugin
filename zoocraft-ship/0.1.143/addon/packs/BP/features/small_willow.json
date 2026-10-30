@@ -1,0 +1,87 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:tree_feature": {
+    "description": {
+      "identifier": "zoocraft:small_willow"
+    },
+    "cherry_trunk": {
+      "trunk_block": {
+        "name": "zoocraft:white_willow_log"
+      },
+      "trunk_height": {
+        "base": 9,
+        "intervals": [
+          2,
+          2
+        ]
+      },
+      "branches": {
+        "tree_type_weights": {
+          "one_branch": 0,
+          "two_branches": 5,
+          "two_branches_and_trunk": 10
+        },
+        "branch_horizontal_length": {
+          "range_min": 3,
+          "range_max": 5
+        },
+        "branch_start_offset_from_top": {
+          "range_min": -5,
+          "range_max": -4
+        },
+        "branch_end_offset_from_top": {
+          "range_min": -1,
+          "range_max": 0
+        },
+        "branch_canopy": {
+          "cherry_canopy": {
+            "leaf_block": {
+              "name": "zoocraft:white_willow_leaves"
+            },
+            "height": 5,
+            "radius": {
+              "range_min": 4,
+              "range_max": 5
+            },
+            "wide_bottom_layer_hole_chance": 20,
+            "corner_hole_chance": 50,
+            "hanging_leaves_chance": 55,
+            "hanging_leaves_extension_chance": 60
+          }
+        }
+      }
+    },
+    "cherry_canopy": {
+      "leaf_block": {
+        "name": "zoocraft:white_willow_leaves"
+      },
+      "height": 5,
+      "radius": {
+        "range_min": 5,
+        "range_max": 5
+      },
+      "wide_bottom_layer_hole_chance": 20,
+      "corner_hole_chance": 50,
+      "hanging_leaves_chance": 55,
+      "hanging_leaves_extension_chance": 60
+    },
+    "may_grow_on": [
+      "zoocraft:rift_turf"
+    ],
+    "base_block": [
+      "zoocraft:rift_turf"
+    ],
+    "may_grow_through": [
+      "zoocraft:rift_turf",
+      "zoocraft:rift_grass"
+    ],
+    "may_replace": [
+      "minecraft:air",
+      "zoocraft:rift_grass",
+      "zoocraft:willow_strands",
+      {
+        "tags": "query.any_tag('minecraft:leaves')"
+      }
+    ]
+  }
+}

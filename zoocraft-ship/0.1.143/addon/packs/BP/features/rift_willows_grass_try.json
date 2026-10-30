@@ -1,0 +1,13 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:scatter_feature": {
+    "description": {
+      "identifier": "zoocraft:rift_willows_grass_try"
+    },
+    "places_feature": "zoocraft:rift_willows_grass",
+    "iterations": "(variable.originy > 0 && math.mod(math.abs(math.sin((variable.originx) * 12.9898 + (variable.originz) * 78.233 + 19 * 37.719) * 43758.5453), 1) < 0.25 + 0.45 * math.clamp(query.noise(variable.originx / 6 + 3.3, variable.originz / 6 + 7.7), 0, 1)) ? 1 : 0",
+    "x": 0,
+    "y": 1,
+    "z": 0
+  }
+}

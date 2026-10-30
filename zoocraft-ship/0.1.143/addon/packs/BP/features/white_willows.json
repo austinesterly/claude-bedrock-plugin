@@ -1,0 +1,22 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:weighted_random_feature": {
+    "description": {
+      "identifier": "zoocraft:white_willows"
+    },
+    "features": [
+      [
+        "zoocraft:ancient_willow_with_strands",
+        2
+      ],
+      [
+        "zoocraft:great_willow_with_strands",
+        3
+      ],
+      [
+        "zoocraft:small_willow_with_strands",
+        2
+      ]
+    ]
+  }
+}

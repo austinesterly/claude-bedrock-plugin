@@ -1,0 +1,16 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:snap_to_surface_feature": {
+    "description": {
+      "identifier": "zoocraft:willow_strand_snap"
+    },
+    "feature_to_snap": "zoocraft:willow_strand",
+    "vertical_search_range": 28,
+    "surface": "ceiling",
+    "allowed_surface_blocks": [
+      {
+        "name": "zoocraft:white_willow_leaves"
+      }
+    ]
+  }
+}

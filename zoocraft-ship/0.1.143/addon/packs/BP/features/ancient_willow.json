@@ -1,0 +1,99 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:tree_feature": {
+    "description": {
+      "identifier": "zoocraft:ancient_willow"
+    },
+    "acacia_trunk": {
+      "trunk_width": 2,
+      "trunk_height": {
+        "base": 14,
+        "intervals": [
+          4,
+          3
+        ]
+      },
+      "trunk_block": {
+        "name": "zoocraft:white_willow_log"
+      },
+      "trunk_lean": {
+        "allow_diagonal_growth": true,
+        "lean_height": {
+          "range_min": 2,
+          "range_max": 5
+        },
+        "lean_steps": {
+          "range_min": 1,
+          "range_max": 3
+        },
+        "lean_length": {
+          "range_min": 1,
+          "range_max": 3
+        }
+      },
+      "branches": {
+        "branch_chance": {
+          "numerator": 1,
+          "denominator": 1
+        },
+        "branch_length": {
+          "range_min": 6,
+          "range_max": 8
+        },
+        "branch_position": {
+          "range_min": 5,
+          "range_max": 10
+        },
+        "branch_canopy": {
+          "cherry_canopy": {
+            "leaf_block": {
+              "name": "zoocraft:white_willow_leaves"
+            },
+            "height": 5,
+            "radius": {
+              "range_min": 5,
+              "range_max": 5
+            },
+            "wide_bottom_layer_hole_chance": 20,
+            "corner_hole_chance": 50,
+            "hanging_leaves_chance": 55,
+            "hanging_leaves_extension_chance": 60
+          }
+        }
+      }
+    },
+    "cherry_canopy": {
+      "leaf_block": {
+        "name": "zoocraft:white_willow_leaves"
+      },
+      "height": 7,
+      "radius": {
+        "range_min": 7,
+        "range_max": 7
+      },
+      "wide_bottom_layer_hole_chance": 20,
+      "corner_hole_chance": 50,
+      "hanging_leaves_chance": 55,
+      "hanging_leaves_extension_chance": 60,
+      "trunk_width": 2
+    },
+    "may_grow_on": [
+      "zoocraft:rift_turf"
+    ],
+    "base_block": [
+      "zoocraft:rift_turf"
+    ],
+    "may_grow_through": [
+      "zoocraft:rift_turf",
+      "zoocraft:rift_grass"
+    ],
+    "may_replace": [
+      "minecraft:air",
+      "zoocraft:rift_grass",
+      "zoocraft:willow_strands",
+      {
+        "tags": "query.any_tag('minecraft:leaves')"
+      }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:growing_plant_feature": {
+    "description": {
+      "identifier": "zoocraft:willow_strand"
+    },
+    "height_distribution": [
+      [
+        {
+          "range_min": 2,
+          "range_max": 3
+        },
+        5
+      ],
+      [
+        {
+          "range_min": 4,
+          "range_max": 5
+        },
+        8
+      ],
+      [
+        {
+          "range_min": 6,
+          "range_max": 8
+        },
+        6
+      ],
+      [
+        {
+          "range_min": 9,
+          "range_max": 11
+        },
+        2
+      ]
+    ],
+    "growth_direction": "DOWN",
+    "body_blocks": [
+      [
+        {
+          "name": "zoocraft:willow_strands",
+          "states": {
+            "zoocraft:tip": false
+          }
+        },
+        1
+      ]
+    ],
+    "head_blocks": [
+      [
+        {
+          "name": "zoocraft:willow_strands",
+          "states": {
+            "zoocraft:tip": true
+          }
+        },
+        1
+      ]
+    ],
+    "allow_water": false
+  }
+}

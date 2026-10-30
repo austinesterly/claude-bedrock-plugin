@@ -1,0 +1,27 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:scatter_feature": {
+    "description": {
+      "identifier": "zoocraft:ancient_willow_strands"
+    },
+    "places_feature": "zoocraft:willow_strand_snap",
+    "iterations": 120,
+    "scatter_chance": 100.0,
+    "x": {
+      "extent": [
+        -12,
+        12
+      ],
+      "distribution": "uniform"
+    },
+    "z": {
+      "extent": [
+        -12,
+        12
+      ],
+      "distribution": "uniform"
+    },
+    "y": 0,
+    "project_input_to_floor": false
+  }
+}

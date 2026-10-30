@@ -1,0 +1,40 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:block": {
+    "description": {
+      "identifier": "zoocraft:rift_turf",
+      "menu_category": {
+        "category": "nature"
+      }
+    },
+    "components": {
+      "minecraft:geometry": "minecraft:geometry.full_block",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "zoocraft_rift_turf_side",
+          "render_method": "opaque"
+        },
+        "up": {
+          "texture": "zoocraft_rift_turf_top",
+          "render_method": "opaque",
+          "isotropic": true
+        },
+        "down": {
+          "texture": "zoocraft_chorus_turf_bottom",
+          "render_method": "opaque"
+        }
+      },
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 2.0
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 9
+      },
+      "minecraft:map_color": "#5f418f",
+      "minecraft:tags": [
+        "minecraft:is_pickaxe_item_destructible"
+      ],
+      "minecraft:loot": "loot_tables/blocks/zoocraft_rift_turf.json"
+    }
+  }
+}

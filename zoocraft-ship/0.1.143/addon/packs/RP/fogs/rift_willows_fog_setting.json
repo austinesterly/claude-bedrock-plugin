@@ -1,0 +1,16 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:fog_settings": {
+    "description": {
+      "identifier": "zoocraft:fog_rift_willows"
+    },
+    "distance": {
+      "air": {
+        "fog_start": 18.0,
+        "fog_end": 130.0,
+        "fog_color": "#6a4f99",
+        "render_distance_type": "fixed"
+      }
+    }
+  }
+}

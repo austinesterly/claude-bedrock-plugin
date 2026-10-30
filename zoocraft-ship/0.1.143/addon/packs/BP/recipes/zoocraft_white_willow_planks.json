@@ -1,0 +1,26 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "zoocraft:white_willow_planks"
+    },
+    "tags": [
+      "crafting_table",
+      "zoocraft_workshop"
+    ],
+    "ingredients": [
+      {
+        "item": "zoocraft:white_willow_log"
+      }
+    ],
+    "unlock": [
+      {
+        "item": "zoocraft:white_willow_log"
+      }
+    ],
+    "result": {
+      "item": "zoocraft:whitewood_planks",
+      "count": 4
+    }
+  }
+}

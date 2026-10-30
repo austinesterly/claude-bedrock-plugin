@@ -1,0 +1,12 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:aggregate_feature": {
+    "description": {
+      "identifier": "zoocraft:rift_willows_column"
+    },
+    "features": [
+      "zoocraft:rift_willows_turf",
+      "zoocraft:rift_willows_grass_try"
+    ]
+  }
+}
