@@ -1,0 +1,175 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.zoocraft.griffin.move": {
+      "initial_state": "start",
+      "states": {
+        "start": {
+          "transitions": [
+            {"fly": "v.act == 0 && !v.glide"},
+            {"glide": "v.act == 0 && v.glide"},
+            {"stand": "v.act == 1"},
+            {"guard": "v.act == 2"},
+            {"screech": "v.act == 3"},
+            {"preen": "v.act == 4"},
+            {"eat": "v.act == 5"},
+            {"sleep": "v.act == 6"},
+            {"hover": "v.act == 7"},
+            {"dive": "v.act == 8"}
+          ],
+          "blend_transition": 0
+        },
+        "fly": {
+          "animations": ["fly"],
+          "transitions": [
+            {"glide": "v.act == 0 && v.glide"},
+            {"stand": "v.act == 1"},
+            {"guard": "v.act == 2"},
+            {"screech": "v.act == 3"},
+            {"preen": "v.act == 4"},
+            {"eat": "v.act == 5"},
+            {"sleep": "v.act == 6"},
+            {"hover": "v.act == 7"},
+            {"dive": "v.act == 8"}
+          ],
+          "blend_transition": 0.5
+        },
+        "glide": {
+          "animations": ["glide"],
+          "transitions": [
+            {"fly": "v.act == 0 && !v.glide"},
+            {"stand": "v.act == 1"},
+            {"guard": "v.act == 2"},
+            {"screech": "v.act == 3"},
+            {"preen": "v.act == 4"},
+            {"eat": "v.act == 5"},
+            {"sleep": "v.act == 6"},
+            {"hover": "v.act == 7"},
+            {"dive": "v.act == 8"}
+          ],
+          "blend_transition": 0.5
+        },
+        "stand": {
+          "animations": ["idle", "look_at_target"],
+          "transitions": [
+            {"fly": "v.act == 0 && !v.glide"},
+            {"glide": "v.act == 0 && v.glide"},
+            {"guard": "v.act == 2"},
+            {"screech": "v.act == 3"},
+            {"preen": "v.act == 4"},
+            {"eat": "v.act == 5"},
+            {"sleep": "v.act == 6"},
+            {"hover": "v.act == 7"},
+            {"dive": "v.act == 8"}
+          ],
+          "blend_transition": 0.5
+        },
+        "guard": {
+          "animations": ["guard"],
+          "transitions": [
+            {"fly": "v.act == 0 && !v.glide"},
+            {"glide": "v.act == 0 && v.glide"},
+            {"stand": "v.act == 1"},
+            {"screech": "v.act == 3"},
+            {"preen": "v.act == 4"},
+            {"eat": "v.act == 5"},
+            {"sleep": "v.act == 6"},
+            {"hover": "v.act == 7"},
+            {"dive": "v.act == 8"}
+          ],
+          "blend_transition": 0.4
+        },
+        "screech": {
+          "animations": ["screech"],
+          "transitions": [
+            {"fly": "v.act == 0 && !v.glide"},
+            {"glide": "v.act == 0 && v.glide"},
+            {"stand": "v.act == 1"},
+            {"guard": "v.act == 2"},
+            {"preen": "v.act == 4"},
+            {"eat": "v.act == 5"},
+            {"sleep": "v.act == 6"},
+            {"hover": "v.act == 7"},
+            {"dive": "v.act == 8"}
+          ],
+          "blend_transition": 0.4
+        },
+        "preen": {
+          "animations": ["preen"],
+          "transitions": [
+            {"fly": "v.act == 0 && !v.glide"},
+            {"glide": "v.act == 0 && v.glide"},
+            {"stand": "v.act == 1"},
+            {"guard": "v.act == 2"},
+            {"screech": "v.act == 3"},
+            {"eat": "v.act == 5"},
+            {"sleep": "v.act == 6"},
+            {"hover": "v.act == 7"},
+            {"dive": "v.act == 8"}
+          ],
+          "blend_transition": 0.4
+        },
+        "eat": {
+          "animations": ["eat"],
+          "transitions": [
+            {"fly": "v.act == 0 && !v.glide"},
+            {"glide": "v.act == 0 && v.glide"},
+            {"stand": "v.act == 1"},
+            {"guard": "v.act == 2"},
+            {"screech": "v.act == 3"},
+            {"preen": "v.act == 4"},
+            {"sleep": "v.act == 6"},
+            {"hover": "v.act == 7"},
+            {"dive": "v.act == 8"}
+          ],
+          "blend_transition": 0.4
+        },
+        "sleep": {
+          "animations": ["sleep"],
+          "transitions": [
+            {"fly": "v.act == 0 && !v.glide"},
+            {"glide": "v.act == 0 && v.glide"},
+            {"stand": "v.act == 1"},
+            {"guard": "v.act == 2"},
+            {"screech": "v.act == 3"},
+            {"preen": "v.act == 4"},
+            {"eat": "v.act == 5"},
+            {"hover": "v.act == 7"},
+            {"dive": "v.act == 8"}
+          ],
+          "blend_transition": 0.4
+        },
+        "hover": {
+          "animations": ["hover"],
+          "transitions": [
+            {"fly": "v.act == 0 && !v.glide"},
+            {"glide": "v.act == 0 && v.glide"},
+            {"stand": "v.act == 1"},
+            {"guard": "v.act == 2"},
+            {"screech": "v.act == 3"},
+            {"preen": "v.act == 4"},
+            {"eat": "v.act == 5"},
+            {"sleep": "v.act == 6"},
+            {"dive": "v.act == 8"}
+          ],
+          "blend_transition": 0.5
+        },
+        "dive": {
+          "animations": ["dive"],
+          "transitions": [
+            {"fly": "v.act == 0 && !v.glide"},
+            {"glide": "v.act == 0 && v.glide"},
+            {"stand": "v.act == 1"},
+            {"guard": "v.act == 2"},
+            {"screech": "v.act == 3"},
+            {"preen": "v.act == 4"},
+            {"eat": "v.act == 5"},
+            {"sleep": "v.act == 6"},
+            {"hover": "v.act == 7"}
+          ],
+          "blend_transition": 0.5
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:wild_griffin",
+      "materials": {"default": "entity_alphatest"},
+      "textures": {
+        "default": "textures/entity/zoocraft/griffin",
+        "snowy": "textures/entity/zoocraft/griffin_snowy",
+        "storm": "textures/entity/zoocraft/griffin_storm"
+      },
+      "geometry": {"default": "geometry.zoocraft.griffin"},
+      "animations": {
+        "idle": "animation.zoocraft.griffin.idle",
+        "look_at_target": "animation.zoocraft.griffin.look_at_target",
+        "fly": "animation.zoocraft.griffin.fly",
+        "glide": "animation.zoocraft.griffin.glide",
+        "hover": "animation.zoocraft.griffin.hover",
+        "dive": "animation.zoocraft.griffin.dive",
+        "guard": "animation.zoocraft.griffin.guard",
+        "sleep": "animation.zoocraft.griffin.sleep",
+        "screech": "animation.zoocraft.griffin.screech",
+        "preen": "animation.zoocraft.griffin.preen",
+        "eat": "animation.zoocraft.griffin.eat",
+        "chick": "animation.zoocraft.griffin.chick",
+        "move": "controller.animation.zoocraft.griffin.move"
+      },
+      "render_controllers": ["controller.render.zoocraft.griffin"],
+      "scripts": {
+        "scale": "q.is_baby ? 0.4 : 1",
+        "initialize": ["variable.offset = math.random(0, 20);", "v.act = 1;", "v.glide = 0;"],
+        "pre_animation": ["v.act = query.property('zoocraft:act');", "v.glide = q.property('zoocraft:gliding');"],
+        "animate": ["move", {"chick": "q.is_baby"}]
+      },
+      "spawn_egg": {"base_color": "#cf9f55", "overlay_color": "#f1ebdd"}
+    }
+  }
+}
