@@ -1,0 +1,206 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "zoocraft:wild_flamingo",
+      "spawn_category": "creature",
+      "is_spawnable": true,
+      "is_summonable": true,
+      "properties": {
+        "zoocraft:act": {"type": "int", "range": [0, 11], "default": 0, "client_sync": true},
+        "zoocraft:pink": {"type": "int", "range": [0, 2], "default": 0, "client_sync": true},
+        "zoocraft:swim": {"type": "bool", "default": false, "client_sync": true}
+      }
+    },
+    "component_groups": {
+      "zoocraft:moving": {
+        "minecraft:movement": {"value": 0.2},
+        "minecraft:physics": {},
+        "minecraft:behavior.look_at_player": {"priority": 9, "look_distance": 6, "probability": 0.03},
+        "minecraft:behavior.random_look_around": {"priority": 10}
+      },
+      "zoocraft:still": {
+        "minecraft:movement": {"value": 0.0},
+        "minecraft:physics": {},
+        "minecraft:behavior.look_at_player": {"priority": 9, "look_distance": 6, "probability": 0.03},
+        "minecraft:behavior.random_look_around": {"priority": 10}
+      },
+      "zoocraft:wading": {
+        "minecraft:navigation.generic": {
+          "is_amphibious": true,
+          "can_path_over_water": false,
+          "can_swim": false,
+          "can_walk": true,
+          "can_sink": true,
+          "avoid_damage_blocks": true
+        }
+      },
+      "zoocraft:swimming": {
+        "minecraft:navigation.generic": {
+          "is_amphibious": true,
+          "can_path_over_water": false,
+          "can_swim": true,
+          "can_walk": true,
+          "can_sink": false,
+          "avoid_damage_blocks": true
+        },
+        "minecraft:behavior.float": {"priority": 0},
+        "minecraft:behavior.random_swim": {"priority": 6, "interval": 20, "xz_dist": 5, "y_dist": 1}
+      },
+      "zoocraft:seek_water": {
+        "minecraft:behavior.move_to_water": {
+          "priority": 4,
+          "search_range": 10,
+          "search_height": 3,
+          "search_count": 20,
+          "goal_radius": 0.5,
+          "speed_multiplier": 1.0
+        }
+      },
+      "zoocraft:seek_land": {
+        "minecraft:behavior.move_to_land": {
+          "priority": 4,
+          "search_range": 10,
+          "search_height": 3,
+          "search_count": 20,
+          "goal_radius": 0.5,
+          "speed_multiplier": 1.0
+        }
+      },
+      "zoocraft:seek_nest": {
+        "minecraft:behavior.move_to_block": {
+          "priority": 4,
+          "tick_interval": 20,
+          "start_chance": 1.0,
+          "search_range": 16,
+          "search_height": 4,
+          "goal_radius": 1.2,
+          "speed_multiplier": 1.0,
+          "target_selection_method": "nearest",
+          "target_blocks": ["zoocraft:flamingo_nest"],
+          "target_offset": [0, 0, 0],
+          "stay_duration": 60
+        }
+      }
+    },
+    "components": {
+      "minecraft:type_family": {"family": ["wild_flamingo", "flamingo", "mob"]},
+      "minecraft:nameable": {},
+      "minecraft:health": {"value": 10, "max": 10},
+      "minecraft:damage_sensor": {"triggers": [{"cause": "fall", "deals_damage": "no"}]},
+      "minecraft:despawn": {"despawn_from_distance": {}},
+      "minecraft:behavior.panic": {"priority": 0, "speed_multiplier": 1.4},
+      "minecraft:behavior.tempt": {
+        "priority": 1,
+        "speed_multiplier": 1.1,
+        "within_radius": 8,
+        "items": ["zoocraft:flamingo_pellets"]
+      },
+      "minecraft:behavior.avoid_mob_type": {
+        "priority": 2,
+        "max_dist": 8,
+        "max_flee": 14,
+        "entity_types": [
+          {
+            "filters": {
+              "all_of": [
+                {"test": "is_family", "subject": "other", "value": "player"},
+                {"test": "is_sneaking", "subject": "other", "value": false}
+              ]
+            },
+            "max_dist": 8,
+            "walk_speed_multiplier": 1.2,
+            "sprint_speed_multiplier": 1.8
+          }
+        ]
+      },
+      "minecraft:behavior.follow_mob": {
+        "priority": 6,
+        "search_range": 10,
+        "speed_multiplier": 1.0,
+        "stop_distance": 2.5,
+        "use_home_position_restriction": false,
+        "filters": {
+          "all_of": [
+            {"test": "is_family", "subject": "other", "value": "flamingo"},
+            {"test": "is_family", "subject": "other", "value": "wild_flamingo"}
+          ]
+        }
+      },
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:breathable": {"total_supply": 15, "suffocate_time": 0},
+      "minecraft:collision_box": {"width": 0.6, "height": 1.5},
+      "minecraft:movement.amphibious": {"max_turn": 15.0},
+      "minecraft:movement": {"value": 0.2},
+      "minecraft:underwater_movement": {"value": 0.15},
+      "minecraft:water_movement": {"drag_factor": 0.9},
+      "minecraft:jump.static": {},
+      "minecraft:physics": {},
+      "minecraft:pushable_by_entity": {},
+      "minecraft:pushable_by_block": {},
+      "minecraft:conditional_bandwidth_optimization": {},
+      "minecraft:environment_sensor": {
+        "triggers": [
+          {
+            "filters": {
+              "all_of": [
+                {"test": "is_underwater", "value": true},
+                {"test": "bool_property", "domain": "zoocraft:swim", "value": false}
+              ]
+            },
+            "event": "zoocraft:swim"
+          },
+          {
+            "filters": {
+              "all_of": [
+                {"test": "on_ground", "value": true},
+                {"test": "is_underwater", "value": false},
+                {"test": "bool_property", "domain": "zoocraft:swim", "value": true},
+                {"test": "is_baby", "value": false}
+              ]
+            },
+            "event": "zoocraft:wade"
+          }
+        ]
+      },
+      "minecraft:behavior.follow_parent": {"priority": 5, "speed_multiplier": 1.1},
+      "minecraft:behavior.random_stroll": {"priority": 7, "interval": 80, "speed_multiplier": 0.9, "xz_dist": 6, "y_dist": 1}
+    },
+    "events": {
+      "zoocraft:move": {
+        "remove": {"component_groups": ["zoocraft:still"]},
+        "add": {"component_groups": ["zoocraft:moving"]}
+      },
+      "zoocraft:still": {
+        "remove": {"component_groups": ["zoocraft:moving"]},
+        "add": {"component_groups": ["zoocraft:still"]}
+      },
+      "zoocraft:swim": {
+        "remove": {"component_groups": ["zoocraft:wading"]},
+        "add": {"component_groups": ["zoocraft:swimming"]},
+        "set_property": {"zoocraft:swim": true}
+      },
+      "zoocraft:wade": {
+        "remove": {"component_groups": ["zoocraft:swimming"]},
+        "add": {"component_groups": ["zoocraft:wading"]},
+        "set_property": {"zoocraft:swim": false}
+      },
+      "zoocraft:seek_water": {
+        "remove": {"component_groups": ["zoocraft:seek_land", "zoocraft:seek_nest"]},
+        "add": {"component_groups": ["zoocraft:seek_water"]}
+      },
+      "zoocraft:seek_land": {
+        "remove": {"component_groups": ["zoocraft:seek_water", "zoocraft:seek_nest"]},
+        "add": {"component_groups": ["zoocraft:seek_land"]}
+      },
+      "zoocraft:seek_nest": {
+        "remove": {"component_groups": ["zoocraft:seek_water", "zoocraft:seek_land"]},
+        "add": {"component_groups": ["zoocraft:seek_nest"]}
+      },
+      "zoocraft:seek_none": {
+        "remove": {"component_groups": ["zoocraft:seek_water", "zoocraft:seek_land", "zoocraft:seek_nest"]}
+      },
+      "minecraft:entity_spawned": {"add": {"component_groups": ["zoocraft:moving", "zoocraft:wading"]}}
+    }
+  }
+}
