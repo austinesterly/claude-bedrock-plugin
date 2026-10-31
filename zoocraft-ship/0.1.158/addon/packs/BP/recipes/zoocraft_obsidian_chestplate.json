@@ -1,0 +1,31 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "zoocraft:obsidian_chestplate"
+    },
+    "tags": [
+      "crafting_table",
+      "zoocraft_workshop"
+    ],
+    "pattern": [
+      "O O",
+      "OOO",
+      "OOO"
+    ],
+    "key": {
+      "O": {
+        "item": "minecraft:obsidian"
+      }
+    },
+    "unlock": [
+      {
+        "item": "minecraft:obsidian"
+      }
+    ],
+    "result": {
+      "item": "zoocraft:obsidian_chestplate",
+      "count": 1
+    }
+  }
+}
