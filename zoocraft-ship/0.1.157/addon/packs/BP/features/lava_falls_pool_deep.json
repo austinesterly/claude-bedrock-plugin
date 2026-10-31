@@ -1,0 +1,26 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:scatter_feature": {
+    "description": {
+      "identifier": "zoocraft:lava_falls_pool_deep"
+    },
+    "places_feature": "zoocraft:lava_falls_pool_deep_cell",
+    "iterations": 169,
+    "coordinate_eval_order": "xzy",
+    "x": {
+      "distribution": "fixed_grid",
+      "extent": [
+        0,
+        12
+      ]
+    },
+    "z": {
+      "distribution": "fixed_grid",
+      "extent": [
+        0,
+        12
+      ]
+    },
+    "y": "t.dx = variable.worldx - variable.originx - 6; t.dz = variable.worldz - variable.originz - 6; t.d2 = t.dx * t.dx + t.dz * t.dz; t.r = 4.0 + 1.2 * query.noise(variable.originx * 0.11, variable.originz * 0.11) + 0.8 * query.noise(variable.worldx * 0.37, variable.worldz * 0.37); return t.d2 <= (t.r - 1.6) * (t.r - 1.6) ? -1 : 400;"
+  }
+}

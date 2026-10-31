@@ -1,0 +1,13 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:scatter_feature": {
+    "description": {
+      "identifier": "zoocraft:lava_falls_pool_shift"
+    },
+    "places_feature": "zoocraft:lava_falls_pool_parts",
+    "iterations": 1,
+    "x": -6,
+    "y": 0,
+    "z": -6
+  }
+}

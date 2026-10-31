@@ -1,0 +1,16 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:aggregate_feature": {
+    "description": {
+      "identifier": "zoocraft:lava_falls_pool_parts"
+    },
+    "early_out": "none",
+    "features": [
+      "zoocraft:lava_falls_pool_top",
+      "zoocraft:lava_falls_pool_tidy",
+      "zoocraft:lava_falls_pool_tidy2",
+      "zoocraft:lava_falls_pool_deep",
+      "zoocraft:lava_falls_pool_rim"
+    ]
+  }
+}

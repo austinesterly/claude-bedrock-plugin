@@ -1,0 +1,3 @@
+c49fba2e311726b3669684369879c24306add808578be14b47cca156aee648f8  addon\docs\status.md
+abdc6975039350d01be4e53f069b9a8a359c0d9bdc17428598dc34eb192ddee5  addon\packs\BP\scripts\world\trenchRules.js
+e24386baf8a89c2fbbcf863b2ed30d02306509a19b751bf2da4f229507fd7e3f  addon\tests\logic.test.mjs

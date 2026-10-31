@@ -1,0 +1,26 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:scatter_feature": {
+    "description": {
+      "identifier": "zoocraft:lava_falls_pool_tidy2"
+    },
+    "places_feature": "zoocraft:lava_falls_pool_tidy_cell",
+    "iterations": 169,
+    "coordinate_eval_order": "xzy",
+    "x": {
+      "distribution": "fixed_grid",
+      "extent": [
+        0,
+        12
+      ]
+    },
+    "z": {
+      "distribution": "fixed_grid",
+      "extent": [
+        0,
+        12
+      ]
+    },
+    "y": 0
+  }
+}

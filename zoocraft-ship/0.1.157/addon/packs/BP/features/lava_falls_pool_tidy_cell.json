@@ -1,0 +1,39 @@
+{
+  "format_version": "1.21.40",
+  "minecraft:single_block_feature": {
+    "description": {
+      "identifier": "zoocraft:lava_falls_pool_tidy_cell"
+    },
+    "places_block": "minecraft:warped_nylium",
+    "enforce_placement_rules": false,
+    "enforce_survivability_rules": false,
+    "may_replace": [
+      "minecraft:lava"
+    ],
+    "may_attach_to": {
+      "min_sides_must_attach": 3,
+      "sides": [
+        "minecraft:netherrack",
+        "minecraft:warped_nylium",
+        "minecraft:crimson_nylium",
+        "minecraft:blackstone",
+        "minecraft:basalt",
+        "minecraft:magma",
+        "minecraft:soul_sand",
+        "minecraft:soul_soil",
+        "minecraft:gravel",
+        "minecraft:quartz_ore",
+        "minecraft:nether_gold_ore",
+        "minecraft:ancient_debris",
+        "minecraft:glowstone",
+        "minecraft:bedrock",
+        "minecraft:warped_wart_block",
+        "minecraft:nether_wart_block",
+        "minecraft:shroomlight",
+        "minecraft:obsidian",
+        "minecraft:bone_block",
+        "zoocraft:lava_spring"
+      ]
+    }
+  }
+}

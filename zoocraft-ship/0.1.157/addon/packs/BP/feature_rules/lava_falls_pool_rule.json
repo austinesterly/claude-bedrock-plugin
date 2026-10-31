@@ -1,0 +1,43 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:feature_rules": {
+    "description": {
+      "identifier": "zoocraft:lava_falls_pool_rule",
+      "places_feature": "zoocraft:lava_falls_pool"
+    },
+    "conditions": {
+      "placement_pass": "first_pass",
+      "minecraft:biome_filter": [
+        {
+          "test": "has_biome_tag",
+          "operator": "==",
+          "value": "zoocraft_lava_falls"
+        }
+      ]
+    },
+    "distribution": {
+      "iterations": 2,
+      "x": {
+        "distribution": "uniform",
+        "extent": [
+          7,
+          8
+        ]
+      },
+      "z": {
+        "distribution": "uniform",
+        "extent": [
+          7,
+          8
+        ]
+      },
+      "y": {
+        "distribution": "uniform",
+        "extent": [
+          34,
+          100
+        ]
+      }
+    }
+  }
+}

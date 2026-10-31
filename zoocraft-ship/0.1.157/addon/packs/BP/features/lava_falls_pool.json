@@ -1,0 +1,17 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:snap_to_surface_feature": {
+    "description": {
+      "identifier": "zoocraft:lava_falls_pool"
+    },
+    "feature_to_snap": "zoocraft:lava_falls_pool_shift",
+    "search_range": 40,
+    "surface": "floor",
+    "embed_in_surface": true,
+    "allowed_surface_blocks": [
+      "minecraft:warped_nylium",
+      "minecraft:crimson_nylium",
+      "minecraft:netherrack"
+    ]
+  }
+}
