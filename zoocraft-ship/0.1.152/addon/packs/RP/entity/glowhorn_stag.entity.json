@@ -1,0 +1,54 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:glowhorn_stag",
+      "materials": {"default": "entity_emissive_alpha"},
+      "textures": {
+        "stag": "textures/entity/zoocraft/glowhorn_stag",
+        "stag_night": "textures/entity/zoocraft/glowhorn_stag_night",
+        "hind": "textures/entity/zoocraft/glowhorn_hind",
+        "hind_night": "textures/entity/zoocraft/glowhorn_hind_night",
+        "fawn": "textures/entity/zoocraft/glowhorn_fawn",
+        "fawn_night": "textures/entity/zoocraft/glowhorn_fawn_night"
+      },
+      "geometry": {"default": "geometry.zoocraft.glowhorn"},
+      "animations": {
+        "idle": "animation.zoocraft.glowhorn.idle",
+        "walk": "animation.zoocraft.glowhorn.walk",
+        "step": "animation.zoocraft.glowhorn.step",
+        "back": "animation.zoocraft.glowhorn.back",
+        "look_at_target": "animation.zoocraft.glowhorn.look_at_target",
+        "graze": "animation.zoocraft.glowhorn.graze",
+        "rub": "animation.zoocraft.glowhorn.rub",
+        "alert": "animation.zoocraft.glowhorn.alert",
+        "glow": "animation.zoocraft.glowhorn.glow",
+        "bellow": "animation.zoocraft.glowhorn.bellow",
+        "lie_down": "animation.zoocraft.glowhorn.lie_down",
+        "get_up": "animation.zoocraft.glowhorn.get_up",
+        "lie": "animation.zoocraft.glowhorn.lie",
+        "down_life": "animation.zoocraft.glowhorn.down_life",
+        "fawn": "animation.zoocraft.glowhorn.fawn",
+        "hind": "animation.zoocraft.glowhorn.hind",
+        "move": "controller.animation.zoocraft.glowhorn.move"
+      },
+      "render_controllers": ["controller.render.zoocraft.glowhorn"],
+      "scripts": {
+        "scale": "q.is_baby ? 0.5 : 1",
+        "initialize": [
+          "variable.offset = math.random(0, 20);",
+          "v.st = 0;",
+          "v.act = 0;",
+          "v.moving = 0;",
+          "v.leg_rate = 1;"
+        ],
+        "pre_animation": [
+          "v.act = q.property('zoocraft:act');",
+          "v.moving = q.modified_move_speed > 0.05;",
+          "v.leg_rate = q.is_baby ? 1.8 : 1;"
+        ],
+        "animate": ["move", {"fawn": "q.is_baby"}, {"hind": "!q.is_baby && q.variant != 1"}]
+      }
+    }
+  }
+}

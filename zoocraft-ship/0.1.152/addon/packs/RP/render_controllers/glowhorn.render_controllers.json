@@ -1,0 +1,42 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.zoocraft.glowhorn": {
+      "arrays": {
+        "textures": {
+          "Array.coats": [
+            "Texture.stag",
+            "Texture.stag_night",
+            "Texture.hind",
+            "Texture.hind_night",
+            "Texture.fawn",
+            "Texture.fawn_night"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [{"*": "Material.default"}],
+      "textures": [
+        "Array.coats[(q.is_baby ? 4 : (q.variant == 1 ? 0 : 2)) + ((q.time_of_day < 0.22 || q.time_of_day > 0.78 || query.property('zoocraft:act') == 6) ? 1 : 0)]"
+      ],
+      "part_visibility": [
+        {"*": true},
+        {
+          "lids": "query.property('zoocraft:act') == 5 || math.mod(q.life_time + v.offset * 0.37, 4.7) < 0.15"
+        },
+        {"bezL": "!q.is_baby && q.variant == 1"},
+        {"crownFL": "!q.is_baby && q.variant == 1"},
+        {"crownBL": "!q.is_baby && q.variant == 1"},
+        {"bezR": "!q.is_baby && q.variant == 1"},
+        {"crownFR": "!q.is_baby && q.variant == 1"},
+        {"crownBR": "!q.is_baby && q.variant == 1"},
+        {"browL": "!q.is_baby"},
+        {"antUpL": "!q.is_baby"},
+        {"trezL": "!q.is_baby"},
+        {"browR": "!q.is_baby"},
+        {"antUpR": "!q.is_baby"},
+        {"trezR": "!q.is_baby"}
+      ]
+    }
+  }
+}
