@@ -1,0 +1,150 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.zoocraft.dragon.move": {
+      "initial_state": "start",
+      "states": {
+        "start": {
+          "transitions": [
+            {"fly": "v.act == 0 && !v.glide"},
+            {"glide": "v.act == 0 && v.glide"},
+            {"stand": "v.act == 1"},
+            {"bask": "v.act == 2"},
+            {"roar": "v.act == 3"},
+            {"fire": "v.act == 4"},
+            {"eat": "v.act == 5"},
+            {"sleep": "v.act == 6"},
+            {"hover": "v.act == 7"}
+          ],
+          "blend_transition": 0
+        },
+        "fly": {
+          "animations": ["fly"],
+          "transitions": [
+            {"glide": "v.act == 0 && v.glide"},
+            {"stand": "v.act == 1"},
+            {"bask": "v.act == 2"},
+            {"roar": "v.act == 3"},
+            {"fire": "v.act == 4"},
+            {"eat": "v.act == 5"},
+            {"sleep": "v.act == 6"},
+            {"hover": "v.act == 7"}
+          ],
+          "blend_transition": 0.6
+        },
+        "glide": {
+          "animations": ["glide"],
+          "transitions": [
+            {"fly": "v.act == 0 && !v.glide"},
+            {"stand": "v.act == 1"},
+            {"bask": "v.act == 2"},
+            {"roar": "v.act == 3"},
+            {"fire": "v.act == 4"},
+            {"eat": "v.act == 5"},
+            {"sleep": "v.act == 6"},
+            {"hover": "v.act == 7"}
+          ],
+          "blend_transition": 0.6
+        },
+        "stand": {
+          "animations": ["idle", "look_at_target"],
+          "transitions": [
+            {"fly": "v.act == 0 && !v.glide"},
+            {"glide": "v.act == 0 && v.glide"},
+            {"bask": "v.act == 2"},
+            {"roar": "v.act == 3"},
+            {"fire": "v.act == 4"},
+            {"eat": "v.act == 5"},
+            {"sleep": "v.act == 6"},
+            {"hover": "v.act == 7"}
+          ],
+          "blend_transition": 0.6
+        },
+        "bask": {
+          "animations": ["bask"],
+          "transitions": [
+            {"fly": "v.act == 0 && !v.glide"},
+            {"glide": "v.act == 0 && v.glide"},
+            {"stand": "v.act == 1"},
+            {"roar": "v.act == 3"},
+            {"fire": "v.act == 4"},
+            {"eat": "v.act == 5"},
+            {"sleep": "v.act == 6"},
+            {"hover": "v.act == 7"}
+          ],
+          "blend_transition": 0.4
+        },
+        "roar": {
+          "animations": ["roar"],
+          "transitions": [
+            {"fly": "v.act == 0 && !v.glide"},
+            {"glide": "v.act == 0 && v.glide"},
+            {"stand": "v.act == 1"},
+            {"bask": "v.act == 2"},
+            {"fire": "v.act == 4"},
+            {"eat": "v.act == 5"},
+            {"sleep": "v.act == 6"},
+            {"hover": "v.act == 7"}
+          ],
+          "blend_transition": 0.4
+        },
+        "fire": {
+          "animations": ["fire"],
+          "transitions": [
+            {"fly": "v.act == 0 && !v.glide"},
+            {"glide": "v.act == 0 && v.glide"},
+            {"stand": "v.act == 1"},
+            {"bask": "v.act == 2"},
+            {"roar": "v.act == 3"},
+            {"eat": "v.act == 5"},
+            {"sleep": "v.act == 6"},
+            {"hover": "v.act == 7"}
+          ],
+          "blend_transition": 0.4
+        },
+        "eat": {
+          "animations": ["eat"],
+          "transitions": [
+            {"fly": "v.act == 0 && !v.glide"},
+            {"glide": "v.act == 0 && v.glide"},
+            {"stand": "v.act == 1"},
+            {"bask": "v.act == 2"},
+            {"roar": "v.act == 3"},
+            {"fire": "v.act == 4"},
+            {"sleep": "v.act == 6"},
+            {"hover": "v.act == 7"}
+          ],
+          "blend_transition": 0.4
+        },
+        "sleep": {
+          "animations": ["sleep"],
+          "transitions": [
+            {"fly": "v.act == 0 && !v.glide"},
+            {"glide": "v.act == 0 && v.glide"},
+            {"stand": "v.act == 1"},
+            {"bask": "v.act == 2"},
+            {"roar": "v.act == 3"},
+            {"fire": "v.act == 4"},
+            {"eat": "v.act == 5"},
+            {"hover": "v.act == 7"}
+          ],
+          "blend_transition": 0.4
+        },
+        "hover": {
+          "animations": ["hover"],
+          "transitions": [
+            {"fly": "v.act == 0 && !v.glide"},
+            {"glide": "v.act == 0 && v.glide"},
+            {"stand": "v.act == 1"},
+            {"bask": "v.act == 2"},
+            {"roar": "v.act == 3"},
+            {"fire": "v.act == 4"},
+            {"eat": "v.act == 5"},
+            {"sleep": "v.act == 6"}
+          ],
+          "blend_transition": 0.6
+        }
+      }
+    }
+  }
+}

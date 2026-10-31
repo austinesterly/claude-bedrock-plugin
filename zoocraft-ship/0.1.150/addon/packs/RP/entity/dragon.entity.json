@@ -1,0 +1,36 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:dragon",
+      "materials": {"default": "entity_emissive_alpha", "wing": "entity_alphatest"},
+      "textures": {
+        "default": "textures/entity/zoocraft/dragon",
+        "ember": "textures/entity/zoocraft/dragon_ember",
+        "frost": "textures/entity/zoocraft/dragon_frost"
+      },
+      "geometry": {"default": "geometry.zoocraft.dragon"},
+      "animations": {
+        "idle": "animation.zoocraft.dragon.idle",
+        "look_at_target": "animation.zoocraft.dragon.look_at_target",
+        "fly": "animation.zoocraft.dragon.fly",
+        "glide": "animation.zoocraft.dragon.glide",
+        "hover": "animation.zoocraft.dragon.hover",
+        "bask": "animation.zoocraft.dragon.bask",
+        "sleep": "animation.zoocraft.dragon.sleep",
+        "roar": "animation.zoocraft.dragon.roar",
+        "fire": "animation.zoocraft.dragon.fire",
+        "eat": "animation.zoocraft.dragon.eat",
+        "hatchling": "animation.zoocraft.dragon.hatchling",
+        "move": "controller.animation.zoocraft.dragon.move"
+      },
+      "render_controllers": ["controller.render.zoocraft.dragon"],
+      "scripts": {
+        "scale": "q.is_baby ? 0.35 : 1",
+        "initialize": ["variable.offset = math.random(0, 20);", "v.act = 1;", "v.glide = 0;"],
+        "pre_animation": ["v.act = query.property('zoocraft:act');", "v.glide = q.property('zoocraft:gliding');"],
+        "animate": ["move", {"hatchling": "q.is_baby"}]
+      }
+    }
+  }
+}

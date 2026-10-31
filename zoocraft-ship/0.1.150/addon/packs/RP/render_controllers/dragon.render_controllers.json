@@ -1,0 +1,17 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.zoocraft.dragon": {
+      "arrays": {"textures": {"Array.coats": ["Texture.default", "Texture.ember", "Texture.frost"]}},
+      "geometry": "Geometry.default",
+      "materials": [{"*": "Material.default"}, {"wing*": "Material.wing"}],
+      "textures": ["Array.coats[math.clamp(q.variant, 0, 2)]"],
+      "part_visibility": [
+        {"*": true},
+        {
+          "lids": "query.property('zoocraft:act') == 6 || math.mod(q.life_time + v.offset * 0.37, 5.3) < 0.15"
+        }
+      ]
+    }
+  }
+}
