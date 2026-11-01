@@ -1,0 +1,59 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:wild_giant_yeti",
+      "materials": {"default": "entity_alphatest"},
+      "textures": {"default": "textures/entity/zoocraft/giant_yeti"},
+      "geometry": {"default": "geometry.zoocraft.giant_yeti"},
+      "animations": {
+        "idle": "animation.zoocraft.giant_yeti.idle",
+        "walk": "animation.zoocraft.giant_yeti.walk",
+        "look_at_target": "animation.zoocraft.giant_yeti.look_at_target",
+        "swipe": "animation.zoocraft.giant_yeti.swipe",
+        "slam": "animation.zoocraft.giant_yeti.slam",
+        "hurl": "animation.zoocraft.giant_yeti.hurl",
+        "roar": "animation.zoocraft.giant_yeti.roar",
+        "roar_shake": "animation.zoocraft.giant_yeti.roar_shake",
+        "eat": "animation.zoocraft.giant_yeti.eat",
+        "sit": "animation.zoocraft.giant_yeti.sit",
+        "sleep": "animation.zoocraft.giant_yeti.sleep",
+        "tired": "animation.zoocraft.giant_yeti.tired",
+        "sit_down": "animation.zoocraft.giant_yeti.sit_down",
+        "sleep_down": "animation.zoocraft.giant_yeti.sleep_down",
+        "tired_down": "animation.zoocraft.giant_yeti.tired_down",
+        "get_up": "animation.zoocraft.giant_yeti.get_up",
+        "toss": "animation.zoocraft.giant_yeti.toss",
+        "toss_ball": "animation.zoocraft.giant_yeti.toss_ball",
+        "ball": "animation.zoocraft.giant_yeti.ball",
+        "move": "controller.animation.zoocraft.giant_yeti.move"
+      },
+      "render_controllers": ["controller.render.zoocraft.giant_yeti"],
+      "scripts": {
+        "scale": "1.123",
+        "initialize": [
+          "variable.offset = math.random(0, 20);",
+          "v.st = 0;",
+          "v.act = 0;",
+          "v.last_act = 0;",
+          "v.act_t = 0;",
+          "v.at = 0;",
+          "v.moving = 0;",
+          "v.leg_rate = 1;",
+          "v.ball = 0;"
+        ],
+        "pre_animation": [
+          "v.act = q.property('zoocraft:act');",
+          "v.act_t = (v.act != v.last_act) ? q.life_time : v.act_t;",
+          "v.last_act = v.act;",
+          "v.at = q.life_time - v.act_t;",
+          "v.ball = ((v.act == 3 && v.at > 0.5 && v.at < 1.08) || (v.act == 9 && v.at > 0.45 && v.at < 1.95)) ? 1 : 0;",
+          "v.moving = q.modified_move_speed > 0.04;",
+          "v.leg_rate = 1;"
+        ],
+        "animate": ["move", "ball"]
+      },
+      "spawn_egg": {"base_color": "#eef2f5", "overlay_color": "#5f7186"}
+    }
+  }
+}

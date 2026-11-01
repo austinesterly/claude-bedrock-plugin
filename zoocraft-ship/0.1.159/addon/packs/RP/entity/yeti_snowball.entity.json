@@ -1,0 +1,14 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:yeti_snowball",
+      "materials": {"default": "entity_alphatest"},
+      "textures": {"default": "textures/entity/zoocraft/giant_yeti"},
+      "geometry": {"default": "geometry.zoocraft.yeti_snowball"},
+      "animations": {"spin": "animation.zoocraft.giant_yeti.snowball_spin"},
+      "scripts": {"animate": ["spin"]},
+      "render_controllers": ["controller.render.zoocraft.giant_yeti"]
+    }
+  }
+}

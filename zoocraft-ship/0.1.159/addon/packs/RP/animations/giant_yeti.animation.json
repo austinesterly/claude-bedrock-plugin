@@ -1,0 +1,720 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.zoocraft.giant_yeti.idle": {
+      "loop": true,
+      "bones": {
+        "armL": {"rotation": ["math.sin(query.life_time * 32 + variable.offset) * 2", 0, -5]},
+        "armR": {"rotation": ["math.sin(query.life_time * 32 + variable.offset + 60) * 2", 0, 5]},
+        "body": {
+          "scale": [
+            "1 + (0.012 * (math.sin(query.life_time * 40 + variable.offset * 20)))",
+            1,
+            "1 + (0.02 * (math.sin(query.life_time * 40 + variable.offset * 20)))"
+          ]
+        },
+        "head": {
+          "rotation": [
+            "math.sin(query.life_time * 14 + variable.offset) * 2",
+            "math.sin(query.life_time * 8 + variable.offset) * 4",
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.giant_yeti.walk": {
+      "loop": true,
+      "bones": {
+        "armL": {
+          "rotation": [
+            "-math.sin(query.modified_distance_moved * 34 * variable.leg_rate) * 20",
+            0,
+            "-5 + (-math.abs(math.cos(query.modified_distance_moved * 34 * variable.leg_rate)) * 3)"
+          ]
+        },
+        "armR": {
+          "rotation": [
+            "math.sin(query.modified_distance_moved * 34 * variable.leg_rate) * 20",
+            0,
+            "5 + (math.abs(math.cos(query.modified_distance_moved * 34 * variable.leg_rate)) * 3)"
+          ]
+        },
+        "legL": {
+          "rotation": ["math.sin(query.modified_distance_moved * 34 * variable.leg_rate) * 24", 0, 0]
+        },
+        "legR": {
+          "rotation": ["-math.sin(query.modified_distance_moved * 34 * variable.leg_rate) * 24", 0, 0]
+        },
+        "body": {
+          "rotation": [
+            2,
+            "math.sin(query.modified_distance_moved * 34 * variable.leg_rate) * 4",
+            "math.cos(query.modified_distance_moved * 34 * variable.leg_rate) * 3"
+          ],
+          "position": [0, "math.abs(math.cos(query.modified_distance_moved * 34 * variable.leg_rate)) * 0.6", 0]
+        },
+        "head": {
+          "rotation": [
+            "math.sin(query.modified_distance_moved * 34 * variable.leg_rate * 2) * 2",
+            "-math.sin(query.modified_distance_moved * 34 * variable.leg_rate) * 4",
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.giant_yeti.look_at_target": {
+      "loop": true,
+      "bones": {
+        "head": {
+          "rotation": [
+            "math.clamp(query.target_x_rotation, -25, 25) * 0.6",
+            "math.clamp(query.target_y_rotation, -45, 45) * 0.7",
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.giant_yeti.swipe": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "armL": {
+          "rotation": {
+            "0.0": [0, 0, -5],
+            "0.7": [-10, 0, -15],
+            "0.8": [-10, 0, -15],
+            "0.95": [20, 0, -20],
+            "1.1": [20, 0, -20],
+            "1.5": [0, 0, -5]
+          }
+        },
+        "armR": {
+          "rotation": {
+            "0.0": [0, 0, 5],
+            "0.7": [40, 0, 75],
+            "0.8": [40, 0, 75],
+            "0.95": [-85, 0, -20],
+            "1.1": [-85, 0, -20],
+            "1.5": [0, 0, 5]
+          }
+        },
+        "body": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "0.7": [-4, 28, 0],
+            "0.8": [-4, 28, 0],
+            "0.95": [4, -34, 0],
+            "1.1": [4, -34, 0],
+            "1.5": [0, 0, 0]
+          }
+        },
+        "head": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "0.7": [0, -20, 0],
+            "0.8": [0, -20, 0],
+            "0.95": [6, 20, 0],
+            "1.1": [6, 20, 0],
+            "1.5": [0, 0, 0]
+          }
+        }
+      },
+      "animation_length": 1.5
+    },
+    "animation.zoocraft.giant_yeti.slam": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "armL": {
+          "rotation": {
+            "0.0": [0, 0, -5],
+            "1.05": [-168, 0, 9],
+            "1.15": [-168, 0, 9],
+            "1.25": [-97.5, 0, 5],
+            "1.6": [-97.5, 0, 5],
+            "2": [0, 0, -5]
+          }
+        },
+        "armR": {
+          "rotation": {
+            "0.0": [0, 0, 5],
+            "1.05": [-168, 0, -9],
+            "1.15": [-168, 0, -9],
+            "1.25": [-97.5, 0, -5],
+            "1.6": [-97.5, 0, -5],
+            "2": [0, 0, 5]
+          }
+        },
+        "body": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "1.05": [-14, 0, 0],
+            "1.15": [-14, 0, 0],
+            "1.25": [45, 0, 0],
+            "1.6": [45, 0, 0],
+            "2": [0, 0, 0]
+          }
+        },
+        "head": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "1.05": [-18, 0, 0],
+            "1.15": [-18, 0, 0],
+            "1.25": [-25, 0, 0],
+            "1.6": [-25, 0, 0],
+            "2": [0, 0, 0]
+          }
+        },
+        "jaw": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "1.05": [14, 0, 0],
+            "1.15": [14, 0, 0],
+            "1.25": [0, 0, 0],
+            "1.6": [0, 0, 0],
+            "2": [0, 0, 0]
+          }
+        },
+        "legL": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "1.05": [0, 0, 0],
+            "1.15": [0, 0, 0],
+            "1.25": [-32.5, 0, 0],
+            "1.6": [-32.5, 0, 0],
+            "2": [0, 0, 0]
+          }
+        },
+        "legR": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "1.05": [0, 0, 0],
+            "1.15": [0, 0, 0],
+            "1.25": [-32.5, 0, 0],
+            "1.6": [-32.5, 0, 0],
+            "2": [0, 0, 0]
+          }
+        }
+      },
+      "animation_length": 2
+    },
+    "animation.zoocraft.giant_yeti.hurl": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "armL": {
+          "rotation": {
+            "0.0": [0, 0, -5],
+            "0.4": [-62, 0, 9],
+            "0.85": [-172, 0, 11],
+            "0.95": [-172, 0, 11],
+            "1.1": [-70, 0, 5],
+            "1.5": [0, 0, -5]
+          }
+        },
+        "armR": {
+          "rotation": {
+            "0.0": [0, 0, 5],
+            "0.4": [-62, 0, -9],
+            "0.85": [-172, 0, -11],
+            "0.95": [-172, 0, -11],
+            "1.1": [-70, 0, -5],
+            "1.5": [0, 0, 5]
+          }
+        },
+        "body": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "0.4": [28, 0, 0],
+            "0.85": [-16, 0, 0],
+            "0.95": [-16, 0, 0],
+            "1.1": [22, 0, 0],
+            "1.5": [0, 0, 0]
+          }
+        },
+        "head": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "0.4": [-12, 0, 0],
+            "0.85": [-14, 0, 0],
+            "0.95": [-14, 0, 0],
+            "1.1": [4, 0, 0],
+            "1.5": [0, 0, 0]
+          }
+        },
+        "legL": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "0.4": [-18, 0, 0],
+            "0.85": [0, 0, 0],
+            "0.95": [0, 0, 0],
+            "1.1": [0, 0, 0],
+            "1.5": [0, 0, 0]
+          }
+        },
+        "legR": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "0.4": [-18, 0, 0],
+            "0.85": [0, 0, 0],
+            "0.95": [0, 0, 0],
+            "1.1": [0, 0, 0],
+            "1.5": [0, 0, 0]
+          }
+        }
+      },
+      "animation_length": 1.5
+    },
+    "animation.zoocraft.giant_yeti.roar": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "armL": {
+          "rotation": {
+            "0.0": [0, 0, -5],
+            "0.15": [-70, 0, 29],
+            "0.3": [-30, 0, 15],
+            "0.45": [-70, 0, 29],
+            "0.6": [-30, 0, 15],
+            "0.8": [-40, 0, -67],
+            "1.85": [-40, 0, -67],
+            "2.2": [0, 0, -5]
+          }
+        },
+        "armR": {
+          "rotation": {
+            "0.0": [0, 0, 5],
+            "0.15": [-30, 0, -15],
+            "0.3": [-70, 0, -29],
+            "0.45": [-30, 0, -15],
+            "0.6": [-70, 0, -29],
+            "0.8": [-40, 0, 67],
+            "1.85": [-40, 0, 67],
+            "2.2": [0, 0, 5]
+          }
+        },
+        "body": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "0.15": [-6, 0, 0],
+            "0.3": [-6, 0, 0],
+            "0.45": [-6, 0, 0],
+            "0.6": [-6, 0, 0],
+            "0.8": [-16, 0, 0],
+            "1.85": [-16, 0, 0],
+            "2.2": [0, 0, 0]
+          }
+        },
+        "head": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "0.15": [0, 0, 0],
+            "0.3": [0, 0, 0],
+            "0.45": [0, 0, 0],
+            "0.6": [0, 0, 0],
+            "0.8": [-28, 0, 0],
+            "1.85": [-28, 0, 0],
+            "2.2": [0, 0, 0]
+          }
+        },
+        "jaw": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "0.15": [0, 0, 0],
+            "0.3": [0, 0, 0],
+            "0.45": [0, 0, 0],
+            "0.6": [0, 0, 0],
+            "0.8": [32, 0, 0],
+            "1.85": [32, 0, 0],
+            "2.2": [0, 0, 0]
+          }
+        }
+      },
+      "animation_length": 2.2
+    },
+    "animation.zoocraft.giant_yeti.roar_shake": {
+      "loop": true,
+      "bones": {
+        "head": {
+          "rotation": ["math.sin(query.life_time * 1800) * 2", "math.sin(query.life_time * 1500) * 2", 0]
+        },
+        "jaw": {"rotation": ["math.sin(query.life_time * 2100) * 3", 0, 0]}
+      }
+    },
+    "animation.zoocraft.giant_yeti.eat": {
+      "loop": true,
+      "bones": {
+        "armL": {"rotation": ["-40 + (-34 * (math.max(0, math.sin(query.life_time * 160 + 180))))", 0, 3]},
+        "armR": {"rotation": ["-40 + (-34 * (math.max(0, math.sin(query.life_time * 160))))", 0, -3]},
+        "body": {"rotation": [26, 0, 0]},
+        "head": {"rotation": [-6, 0, 0]},
+        "legL": {"rotation": [-14, 0, 0]},
+        "legR": {"rotation": [-14, 0, 0]},
+        "jaw": {"rotation": ["6 + (math.sin(query.life_time * 540) * 6)", 0, 0]}
+      }
+    },
+    "animation.zoocraft.giant_yeti.sit": {
+      "loop": true,
+      "bones": {
+        "legL": {"rotation": [-84, 0, -10]},
+        "legR": {"rotation": [-84, 0, 10]},
+        "body": {
+          "rotation": [-4, 0, 0],
+          "scale": [
+            "1 + (0.012 * (math.sin(query.life_time * 30 + variable.offset * 20)))",
+            1,
+            "1 + (0.02 * (math.sin(query.life_time * 30 + variable.offset * 20)))"
+          ]
+        },
+        "head": {
+          "rotation": [
+            "6 + (math.sin(query.life_time * 10 + variable.offset) * 3)",
+            "math.sin(query.life_time * 6 + variable.offset) * 6",
+            0
+          ]
+        },
+        "armL": {"rotation": [-59.86, 0, -14]},
+        "armR": {"rotation": [-59.86, 0, 14]},
+        "yeti": {"position": [0, -11.535, 0]}
+      }
+    },
+    "animation.zoocraft.giant_yeti.sleep": {
+      "loop": true,
+      "bones": {
+        "legL": {"rotation": [-84, 0, -10]},
+        "legR": {"rotation": [-84, 0, 10]},
+        "body": {
+          "rotation": [4, 0, 0],
+          "scale": [
+            "1 + (0.017 * (math.sin(query.life_time * 18 + variable.offset * 20)))",
+            1,
+            "1 + (0.028 * (math.sin(query.life_time * 18 + variable.offset * 20)))"
+          ]
+        },
+        "head": {"rotation": [36, 0, 0]},
+        "armL": {"rotation": [-59.86, 0, -14]},
+        "armR": {"rotation": [-59.86, 0, 14]},
+        "yeti": {"position": [0, -11.535, 0]}
+      }
+    },
+    "animation.zoocraft.giant_yeti.tired": {
+      "loop": true,
+      "bones": {
+        "legL": {"rotation": [-84, 0, -14]},
+        "legR": {"rotation": [-84, 0, 14]},
+        "body": {
+          "rotation": [22, 0, 0],
+          "scale": [
+            "1 + (0.036 * (math.sin(query.life_time * 300 + variable.offset * 20)))",
+            1,
+            "1 + (0.06 * (math.sin(query.life_time * 300 + variable.offset * 20)))"
+          ]
+        },
+        "head": {"rotation": ["26 + (math.sin(query.life_time * 300 + 40) * 2)", 0, 0]},
+        "jaw": {"rotation": ["16 + (math.sin(query.life_time * 300) * 5)", 0, 0]},
+        "armL": {"rotation": [-90.52, 0, -30]},
+        "armR": {"rotation": [-90.52, 0, 30]},
+        "yeti": {"position": [0, -11.347, 0]}
+      }
+    },
+    "animation.zoocraft.giant_yeti.sit_down": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "armL": {
+          "rotation": [
+            "-59.86 * (math.clamp(query.anim_time / 1.2, 0, 1))",
+            0,
+            "-5 + (-9 * (math.clamp(query.anim_time / 1.2, 0, 1)))"
+          ]
+        },
+        "armR": {
+          "rotation": [
+            "-59.86 * (math.clamp(query.anim_time / 1.2, 0, 1))",
+            0,
+            "5 + (9 * (math.clamp(query.anim_time / 1.2, 0, 1)))"
+          ]
+        },
+        "body": {"rotation": ["-4 * (math.clamp(query.anim_time / 1.2, 0, 1))", 0, 0]},
+        "head": {"rotation": ["6 * (math.clamp(query.anim_time / 1.2, 0, 1))", 0, 0]},
+        "legL": {
+          "rotation": [
+            "-84 * (math.clamp(query.anim_time / 1.2, 0, 1))",
+            0,
+            "-10 * (math.clamp(query.anim_time / 1.2, 0, 1))"
+          ]
+        },
+        "legR": {
+          "rotation": [
+            "-84 * (math.clamp(query.anim_time / 1.2, 0, 1))",
+            0,
+            "10 * (math.clamp(query.anim_time / 1.2, 0, 1))"
+          ]
+        },
+        "yeti": {
+          "position": {
+            "0.0": [0, 0, 0],
+            "0.1": [0, 0.41, 0],
+            "0.2": [0, 0.542, 0],
+            "0.3": [0, 0.395, 0],
+            "0.4": [0, -0.027, 0],
+            "0.5": [0, -0.715, 0],
+            "0.6": [0, -1.659, 0],
+            "0.7": [0, -2.842, 0],
+            "0.8": [0, -4.244, 0],
+            "0.9": [0, -5.842, 0],
+            "1": [0, -7.61, 0],
+            "1.1": [0, -9.518, 0],
+            "1.2": [0, -11.535, 0]
+          }
+        }
+      },
+      "animation_length": 1.2
+    },
+    "animation.zoocraft.giant_yeti.sleep_down": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "armL": {
+          "rotation": [
+            "-59.86 * (math.clamp(query.anim_time / 1.2, 0, 1))",
+            0,
+            "-5 + (-9 * (math.clamp(query.anim_time / 1.2, 0, 1)))"
+          ]
+        },
+        "armR": {
+          "rotation": [
+            "-59.86 * (math.clamp(query.anim_time / 1.2, 0, 1))",
+            0,
+            "5 + (9 * (math.clamp(query.anim_time / 1.2, 0, 1)))"
+          ]
+        },
+        "body": {"rotation": ["4 * (math.clamp(query.anim_time / 1.2, 0, 1))", 0, 0]},
+        "head": {"rotation": ["36 * (math.clamp(query.anim_time / 1.2, 0, 1))", 0, 0]},
+        "legL": {
+          "rotation": [
+            "-84 * (math.clamp(query.anim_time / 1.2, 0, 1))",
+            0,
+            "-10 * (math.clamp(query.anim_time / 1.2, 0, 1))"
+          ]
+        },
+        "legR": {
+          "rotation": [
+            "-84 * (math.clamp(query.anim_time / 1.2, 0, 1))",
+            0,
+            "10 * (math.clamp(query.anim_time / 1.2, 0, 1))"
+          ]
+        },
+        "yeti": {
+          "position": {
+            "0.0": [0, 0, 0],
+            "0.1": [0, 0.41, 0],
+            "0.2": [0, 0.542, 0],
+            "0.3": [0, 0.395, 0],
+            "0.4": [0, -0.027, 0],
+            "0.5": [0, -0.715, 0],
+            "0.6": [0, -1.659, 0],
+            "0.7": [0, -2.842, 0],
+            "0.8": [0, -4.244, 0],
+            "0.9": [0, -5.842, 0],
+            "1": [0, -7.61, 0],
+            "1.1": [0, -9.518, 0],
+            "1.2": [0, -11.535, 0]
+          }
+        }
+      },
+      "animation_length": 1.2
+    },
+    "animation.zoocraft.giant_yeti.tired_down": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "armL": {
+          "rotation": [
+            "-90.52 * (math.clamp(query.anim_time / 1.2, 0, 1))",
+            0,
+            "-5 + (-25 * (math.clamp(query.anim_time / 1.2, 0, 1)))"
+          ]
+        },
+        "armR": {
+          "rotation": [
+            "-90.52 * (math.clamp(query.anim_time / 1.2, 0, 1))",
+            0,
+            "5 + (25 * (math.clamp(query.anim_time / 1.2, 0, 1)))"
+          ]
+        },
+        "body": {"rotation": ["22 * (math.clamp(query.anim_time / 1.2, 0, 1))", 0, 0]},
+        "head": {"rotation": ["26 * (math.clamp(query.anim_time / 1.2, 0, 1))", 0, 0]},
+        "jaw": {"rotation": ["16 * (math.clamp(query.anim_time / 1.2, 0, 1))", 0, 0]},
+        "legL": {
+          "rotation": [
+            "-84 * (math.clamp(query.anim_time / 1.2, 0, 1))",
+            0,
+            "-14 * (math.clamp(query.anim_time / 1.2, 0, 1))"
+          ]
+        },
+        "legR": {
+          "rotation": [
+            "-84 * (math.clamp(query.anim_time / 1.2, 0, 1))",
+            0,
+            "14 * (math.clamp(query.anim_time / 1.2, 0, 1))"
+          ]
+        },
+        "yeti": {
+          "position": {
+            "0.0": [0, 0, 0],
+            "0.1": [0, 0.431, 0],
+            "0.2": [0, 0.581, 0],
+            "0.3": [0, 0.448, 0],
+            "0.4": [0, 0.037, 0],
+            "0.5": [0, -0.643, 0],
+            "0.6": [0, -1.579, 0],
+            "0.7": [0, -2.754, 0],
+            "0.8": [0, -4.147, 0],
+            "0.9": [0, -5.732, 0],
+            "1": [0, -7.481, 0],
+            "1.1": [0, -9.363, 0],
+            "1.2": [0, -11.347, 0]
+          }
+        }
+      },
+      "animation_length": 1.2
+    },
+    "animation.zoocraft.giant_yeti.get_up": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "armL": {
+          "rotation": [
+            "-59.86 + (59.86 * (math.clamp(query.anim_time / 1.2, 0, 1)))",
+            0,
+            "-14 + (9 * (math.clamp(query.anim_time / 1.2, 0, 1)))"
+          ]
+        },
+        "armR": {
+          "rotation": [
+            "-59.86 + (59.86 * (math.clamp(query.anim_time / 1.2, 0, 1)))",
+            0,
+            "14 + (-9 * (math.clamp(query.anim_time / 1.2, 0, 1)))"
+          ]
+        },
+        "body": {"rotation": ["-4 + (4 * (math.clamp(query.anim_time / 1.2, 0, 1)))", 0, 0]},
+        "head": {"rotation": ["6 + (-6 * (math.clamp(query.anim_time / 1.2, 0, 1)))", 0, 0]},
+        "legL": {
+          "rotation": [
+            "-84 + (84 * (math.clamp(query.anim_time / 1.2, 0, 1)))",
+            0,
+            "-10 + (10 * (math.clamp(query.anim_time / 1.2, 0, 1)))"
+          ]
+        },
+        "legR": {
+          "rotation": [
+            "-84 + (84 * (math.clamp(query.anim_time / 1.2, 0, 1)))",
+            0,
+            "10 + (-10 * (math.clamp(query.anim_time / 1.2, 0, 1)))"
+          ]
+        },
+        "yeti": {
+          "position": {
+            "0.0": [0, -11.535, 0],
+            "0.1": [0, -9.518, 0],
+            "0.2": [0, -7.61, 0],
+            "0.3": [0, -5.842, 0],
+            "0.4": [0, -4.244, 0],
+            "0.5": [0, -2.842, 0],
+            "0.6": [0, -1.659, 0],
+            "0.7": [0, -0.715, 0],
+            "0.8": [0, -0.027, 0],
+            "0.9": [0, 0.395, 0],
+            "1": [0, 0.542, 0],
+            "1.1": [0, 0.41, 0],
+            "1.2": [0, 0, 0]
+          }
+        }
+      },
+      "animation_length": 1.2
+    },
+    "animation.zoocraft.giant_yeti.toss": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "armL": {
+          "rotation": {
+            "0.0": [0, 0, -5],
+            "0.4": [-62, 0, 9],
+            "0.75": [-172, 0, 11],
+            "1.9": [-172, 0, 11],
+            "2.15": [-74, 0, 21],
+            "2.4": [0, 0, -5]
+          }
+        },
+        "armR": {
+          "rotation": {
+            "0.0": [0, 0, 5],
+            "0.4": [-62, 0, -9],
+            "0.75": [-172, 0, -11],
+            "1.9": [-172, 0, -11],
+            "2.15": [-74, 0, -21],
+            "2.4": [0, 0, 5]
+          }
+        },
+        "body": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "0.4": [28, 0, 0],
+            "0.75": [-16, 0, 0],
+            "1.9": [-16, 0, 0],
+            "2.15": [-2, 0, 0],
+            "2.4": [0, 0, 0]
+          }
+        },
+        "head": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "0.4": [-12, 0, 0],
+            "0.75": [-14, 0, 0],
+            "1.9": [-14, 0, 0],
+            "2.15": [10, 0, 0],
+            "2.4": [0, 0, 0]
+          }
+        },
+        "legL": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "0.4": [-18, 0, 0],
+            "0.75": [0, 0, 0],
+            "1.9": [0, 0, 0],
+            "2.15": [0, 0, 0],
+            "2.4": [0, 0, 0]
+          }
+        },
+        "legR": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "0.4": [-18, 0, 0],
+            "0.75": [0, 0, 0],
+            "1.9": [0, 0, 0],
+            "2.15": [0, 0, 0],
+            "2.4": [0, 0, 0]
+          }
+        }
+      },
+      "animation_length": 2.4
+    },
+    "animation.zoocraft.giant_yeti.toss_ball": {
+      "loop": true,
+      "bones": {
+        "ball": {
+          "position": [
+            0,
+            "math.max(0, math.sin(math.clamp((query.anim_time - 0.8) / 1.0, 0, 1) * 180)) * 40",
+            0
+          ]
+        },
+        "head": {
+          "rotation": [
+            "-math.max(0, math.sin(math.clamp((query.anim_time - 0.8) / 1.0, 0, 1) * 180)) * 24",
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.giant_yeti.ball": {"loop": true, "bones": {"ball": {"scale": ["v.ball", "v.ball", "v.ball"]}}},
+    "animation.zoocraft.giant_yeti.snowball_spin": {
+      "loop": true,
+      "bones": {"ball": {"rotation": ["query.life_time * 540", "query.life_time * 300", 0]}}
+    }
+  }
+}

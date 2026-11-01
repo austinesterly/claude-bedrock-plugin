@@ -1,0 +1,76 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "zoocraft:yeti_snowball",
+      "spawn_category": "misc",
+      "is_spawnable": false,
+      "is_summonable": true
+    },
+    "component_groups": {
+      "zoocraft:gone": {
+        "minecraft:instant_despawn": {}
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": [
+          "projectile",
+          "yeti_snowball"
+        ]
+      },
+      "minecraft:collision_box": {
+        "width": 0.6,
+        "height": 0.6
+      },
+      "minecraft:physics": {},
+      "minecraft:conditional_bandwidth_optimization": {
+        "default_values": {
+          "max_dropped_ticks": 7,
+          "max_optimized_distance": 100,
+          "use_motion_prediction_hints": true
+        }
+      },
+      "minecraft:projectile": {
+        "power": 1.4,
+        "gravity": 0.05,
+        "inertia": 1.0,
+        "liquid_inertia": 0.6,
+        "uncertainty_base": 0,
+        "uncertainty_multiplier": 0,
+        "on_hit": {
+          "impact_damage": {
+            "damage": {
+              "min": 5,
+              "max": 5
+            },
+            "knockback": true
+          },
+          "particle_on_hit": {
+            "particle_type": "snowballpoof",
+            "num_particles": 16,
+            "on_entity_hit": true,
+            "on_other_hit": true
+          },
+          "remove_on_hit": {}
+        }
+      },
+      "minecraft:timer": {
+        "looping": false,
+        "time": 6,
+        "time_down_event": {
+          "event": "zoocraft:gone"
+        }
+      }
+    },
+    "events": {
+      "zoocraft:gone": {
+        "add": {
+          "component_groups": [
+            "zoocraft:gone"
+          ]
+        }
+      }
+    }
+  }
+}

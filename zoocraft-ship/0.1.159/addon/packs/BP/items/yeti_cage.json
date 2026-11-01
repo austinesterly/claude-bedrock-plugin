@@ -1,0 +1,25 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "zoocraft:yeti_cage",
+      "menu_category": {
+        "category": "equipment"
+      }
+    },
+    "components": {
+      "minecraft:icon": {
+        "textures": {
+          "default": "zoocraft:yeti_cage"
+        }
+      },
+      "minecraft:display_name": {
+        "value": "item.zoocraft:yeti_cage.name"
+      },
+      "minecraft:max_stack_size": {
+        "value": 1
+      },
+      "zoocraft:carrier": {}
+    }
+  }
+}

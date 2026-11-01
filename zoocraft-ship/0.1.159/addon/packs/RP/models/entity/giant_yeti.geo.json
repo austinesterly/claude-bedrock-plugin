@@ -1,0 +1,76 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.zoocraft.giant_yeti",
+        "texture_width": 256,
+        "texture_height": 128,
+        "visible_bounds_width": 4.5,
+        "visible_bounds_height": 5.0,
+        "visible_bounds_offset": [0, 1.8, 0]
+      },
+      "bones": [
+        {"name": "yeti", "pivot": [0, 0, 0]},
+        {
+          "name": "body",
+          "pivot": [0, 18, 0],
+          "parent": "yeti",
+          "rotation": [10, 0, 0],
+          "cubes": [
+            {"origin": [-11, 17, -7], "size": [22, 26, 14], "uv": [0, 0]},
+            {"origin": [-12.5, 36, -8], "size": [25, 8, 16], "uv": [72, 0]}
+          ]
+        },
+        {
+          "name": "head",
+          "pivot": [0, 43, -5],
+          "parent": "body",
+          "cubes": [{"origin": [-7, 42, -13], "size": [14, 10, 12], "uv": [154, 0]}]
+        },
+        {
+          "name": "jaw",
+          "pivot": [0, 42, -4],
+          "parent": "head",
+          "cubes": [{"origin": [-6, 38, -12.5], "size": [12, 4, 9], "uv": [206, 0]}]
+        },
+        {
+          "name": "armL",
+          "pivot": [14.5, 41, -1],
+          "parent": "body",
+          "cubes": [
+            {"origin": [10, 13, -5.5], "size": [9, 30, 9], "uv": [0, 40]},
+            {"origin": [9.5, 6, -6], "size": [10, 7, 10], "uv": [36, 40]}
+          ]
+        },
+        {
+          "name": "armR",
+          "pivot": [-14.5, 41, -1],
+          "parent": "body",
+          "cubes": [
+            {"origin": [-19, 13, -5.5], "size": [9, 30, 9], "uv": [76, 40]},
+            {"origin": [-19.5, 6, -6], "size": [10, 7, 10], "uv": [112, 40]}
+          ]
+        },
+        {
+          "name": "legL",
+          "pivot": [5.5, 18, 0],
+          "parent": "yeti",
+          "cubes": [{"origin": [1.5, 0, -4], "size": [8, 18, 8], "uv": [152, 40]}]
+        },
+        {
+          "name": "legR",
+          "pivot": [-5.5, 18, 0],
+          "parent": "yeti",
+          "cubes": [{"origin": [-9.5, 0, -4], "size": [8, 18, 8], "uv": [184, 40]}]
+        },
+        {
+          "name": "ball",
+          "pivot": [0, 71, -5],
+          "parent": "body",
+          "cubes": [{"origin": [-5, 66, -10], "size": [10, 10, 10], "uv": [216, 40]}]
+        }
+      ]
+    }
+  ]
+}
