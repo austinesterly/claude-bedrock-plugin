@@ -1,0 +1,14 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:necro_bolt",
+      "materials": {"default": "entity_alphatest"},
+      "textures": {"default": "textures/entity/zoocraft/necromancer"},
+      "geometry": {"default": "geometry.zoocraft.necro_bolt"},
+      "animations": {"spin": "animation.zoocraft.necromancer.bolt_spin"},
+      "scripts": {"animate": ["spin"]},
+      "render_controllers": ["controller.render.zoocraft.necromancer"]
+    }
+  }
+}

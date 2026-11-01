@@ -1,0 +1,61 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:calm_necromancer",
+      "materials": {"default": "entity_alphatest"},
+      "textures": {"default": "textures/entity/zoocraft/necromancer"},
+      "geometry": {"default": "geometry.zoocraft.necromancer"},
+      "animations": {
+        "idle": "animation.zoocraft.necromancer.idle",
+        "walk": "animation.zoocraft.necromancer.walk",
+        "look_at_target": "animation.zoocraft.necromancer.look_at_target",
+        "swipe": "animation.zoocraft.necromancer.swipe",
+        "slam": "animation.zoocraft.necromancer.slam",
+        "hurl": "animation.zoocraft.necromancer.hurl",
+        "raise": "animation.zoocraft.necromancer.raise",
+        "roar": "animation.zoocraft.necromancer.roar",
+        "roar_shake": "animation.zoocraft.necromancer.roar_shake",
+        "eat": "animation.zoocraft.necromancer.eat",
+        "sit": "animation.zoocraft.necromancer.sit",
+        "sleep": "animation.zoocraft.necromancer.sleep",
+        "tired": "animation.zoocraft.necromancer.tired",
+        "sit_down": "animation.zoocraft.necromancer.sit_down",
+        "sleep_down": "animation.zoocraft.necromancer.sleep_down",
+        "tired_down": "animation.zoocraft.necromancer.tired_down",
+        "get_up": "animation.zoocraft.necromancer.get_up",
+        "toss": "animation.zoocraft.necromancer.toss",
+        "toss_ball": "animation.zoocraft.necromancer.toss_ball",
+        "ball": "animation.zoocraft.necromancer.ball",
+        "bolt_spin": "animation.zoocraft.necromancer.bolt_spin",
+        "flicker": "animation.zoocraft.necromancer.flicker",
+        "move": "controller.animation.zoocraft.necromancer.move"
+      },
+      "render_controllers": ["controller.render.zoocraft.necromancer"],
+      "scripts": {
+        "scale": "1.067",
+        "initialize": [
+          "variable.offset = math.random(0, 20);",
+          "v.st = 0;",
+          "v.act = 0;",
+          "v.last_act = 0;",
+          "v.act_t = 0;",
+          "v.at = 0;",
+          "v.moving = 0;",
+          "v.leg_rate = 1;",
+          "v.ball = 0;"
+        ],
+        "pre_animation": [
+          "v.act = q.property('zoocraft:act');",
+          "v.act_t = (v.act != v.last_act) ? q.life_time : v.act_t;",
+          "v.last_act = v.act;",
+          "v.at = q.life_time - v.act_t;",
+          "v.ball = ((v.act == 3 && v.at > 0.3 && v.at < 0.88) || (v.act == 9 && v.at > 0.5 && v.at < 2.0)) ? 1 : 0;",
+          "v.moving = q.modified_move_speed > 0.04;",
+          "v.leg_rate = 1;"
+        ],
+        "animate": ["move", "ball", "flicker"]
+      }
+    }
+  }
+}
