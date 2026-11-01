@@ -1,0 +1,15 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:void_bolt",
+      "materials": {"default": "entity_emissive_alpha"},
+      "textures": {"default": "textures/entity/zoocraft/void_bolt"},
+      "geometry": {"default": "geometry.zoocraft.void_bolt"},
+      "animations": {"spin": "animation.zoocraft.void_bolt.spin", "trail": "animation.zoocraft.void_bolt.trail"},
+      "particle_effects": {"trail": "zoocraft:drake_bolt_trail"},
+      "scripts": {"animate": ["spin", "trail"]},
+      "render_controllers": ["controller.render.zoocraft.void_bolt"]
+    }
+  }
+}

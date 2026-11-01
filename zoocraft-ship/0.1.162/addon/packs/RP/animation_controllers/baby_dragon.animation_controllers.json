@@ -1,0 +1,367 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.zoocraft.baby_dragon.move": {
+      "initial_state": "start",
+      "states": {
+        "start": {
+          "transitions": [
+            {"fly": "v.act == 0 && !v.glide"},
+            {"glide": "v.act == 0 && v.glide"},
+            {"stand": "v.act == 1"},
+            {"bask": "v.act == 2"},
+            {"roar": "v.act == 3"},
+            {"fire": "v.act == 4"},
+            {"eat": "v.act == 5"},
+            {"sleep": "v.act == 6"},
+            {"hover": "v.act == 7"},
+            {"dive_wind": "v.act == 8"},
+            {"bolt": "v.act == 9"},
+            {"gust": "v.act == 10"},
+            {"air_roar": "v.act == 11"},
+            {"tired": "v.act == 12"},
+            {"stunned": "v.act == 13"},
+            {"stoop": "v.act == 14"}
+          ],
+          "blend_transition": 0
+        },
+        "fly": {
+          "animations": ["fly"],
+          "transitions": [
+            {"glide": "v.act == 0 && v.glide"},
+            {"stand": "v.act == 1"},
+            {"bask": "v.act == 2"},
+            {"roar": "v.act == 3"},
+            {"fire": "v.act == 4"},
+            {"eat": "v.act == 5"},
+            {"sleep": "v.act == 6"},
+            {"hover": "v.act == 7"},
+            {"dive_wind": "v.act == 8"},
+            {"bolt": "v.act == 9"},
+            {"gust": "v.act == 10"},
+            {"air_roar": "v.act == 11"},
+            {"tired": "v.act == 12"},
+            {"stunned": "v.act == 13"},
+            {"stoop": "v.act == 14"}
+          ],
+          "blend_transition": 0.6
+        },
+        "glide": {
+          "animations": ["glide"],
+          "transitions": [
+            {"fly": "v.act == 0 && !v.glide"},
+            {"stand": "v.act == 1"},
+            {"bask": "v.act == 2"},
+            {"roar": "v.act == 3"},
+            {"fire": "v.act == 4"},
+            {"eat": "v.act == 5"},
+            {"sleep": "v.act == 6"},
+            {"hover": "v.act == 7"},
+            {"dive_wind": "v.act == 8"},
+            {"bolt": "v.act == 9"},
+            {"gust": "v.act == 10"},
+            {"air_roar": "v.act == 11"},
+            {"tired": "v.act == 12"},
+            {"stunned": "v.act == 13"},
+            {"stoop": "v.act == 14"}
+          ],
+          "blend_transition": 0.6
+        },
+        "stand": {
+          "animations": ["idle", "look_at_target"],
+          "transitions": [
+            {"fly": "v.act == 0 && !v.glide"},
+            {"glide": "v.act == 0 && v.glide"},
+            {"bask": "v.act == 2"},
+            {"roar": "v.act == 3"},
+            {"fire": "v.act == 4"},
+            {"eat": "v.act == 5"},
+            {"sleep": "v.act == 6"},
+            {"hover": "v.act == 7"},
+            {"dive_wind": "v.act == 8"},
+            {"bolt": "v.act == 9"},
+            {"gust": "v.act == 10"},
+            {"air_roar": "v.act == 11"},
+            {"tired": "v.act == 12"},
+            {"stunned": "v.act == 13"},
+            {"stoop": "v.act == 14"}
+          ],
+          "blend_transition": 0.6
+        },
+        "bask": {
+          "animations": ["bask"],
+          "transitions": [
+            {"fly": "v.act == 0 && !v.glide"},
+            {"glide": "v.act == 0 && v.glide"},
+            {"stand": "v.act == 1"},
+            {"roar": "v.act == 3"},
+            {"fire": "v.act == 4"},
+            {"eat": "v.act == 5"},
+            {"sleep": "v.act == 6"},
+            {"hover": "v.act == 7"},
+            {"dive_wind": "v.act == 8"},
+            {"bolt": "v.act == 9"},
+            {"gust": "v.act == 10"},
+            {"air_roar": "v.act == 11"},
+            {"tired": "v.act == 12"},
+            {"stunned": "v.act == 13"},
+            {"stoop": "v.act == 14"}
+          ],
+          "blend_transition": 0.4
+        },
+        "roar": {
+          "animations": ["roar"],
+          "transitions": [
+            {"fly": "v.act == 0 && !v.glide"},
+            {"glide": "v.act == 0 && v.glide"},
+            {"stand": "v.act == 1"},
+            {"bask": "v.act == 2"},
+            {"fire": "v.act == 4"},
+            {"eat": "v.act == 5"},
+            {"sleep": "v.act == 6"},
+            {"hover": "v.act == 7"},
+            {"dive_wind": "v.act == 8"},
+            {"bolt": "v.act == 9"},
+            {"gust": "v.act == 10"},
+            {"air_roar": "v.act == 11"},
+            {"tired": "v.act == 12"},
+            {"stunned": "v.act == 13"},
+            {"stoop": "v.act == 14"}
+          ],
+          "blend_transition": 0.4
+        },
+        "fire": {
+          "animations": ["fire"],
+          "transitions": [
+            {"fly": "v.act == 0 && !v.glide"},
+            {"glide": "v.act == 0 && v.glide"},
+            {"stand": "v.act == 1"},
+            {"bask": "v.act == 2"},
+            {"roar": "v.act == 3"},
+            {"eat": "v.act == 5"},
+            {"sleep": "v.act == 6"},
+            {"hover": "v.act == 7"},
+            {"dive_wind": "v.act == 8"},
+            {"bolt": "v.act == 9"},
+            {"gust": "v.act == 10"},
+            {"air_roar": "v.act == 11"},
+            {"tired": "v.act == 12"},
+            {"stunned": "v.act == 13"},
+            {"stoop": "v.act == 14"}
+          ],
+          "blend_transition": 0.4
+        },
+        "eat": {
+          "animations": ["eat"],
+          "transitions": [
+            {"fly": "v.act == 0 && !v.glide"},
+            {"glide": "v.act == 0 && v.glide"},
+            {"stand": "v.act == 1"},
+            {"bask": "v.act == 2"},
+            {"roar": "v.act == 3"},
+            {"fire": "v.act == 4"},
+            {"sleep": "v.act == 6"},
+            {"hover": "v.act == 7"},
+            {"dive_wind": "v.act == 8"},
+            {"bolt": "v.act == 9"},
+            {"gust": "v.act == 10"},
+            {"air_roar": "v.act == 11"},
+            {"tired": "v.act == 12"},
+            {"stunned": "v.act == 13"},
+            {"stoop": "v.act == 14"}
+          ],
+          "blend_transition": 0.4
+        },
+        "sleep": {
+          "animations": ["sleep"],
+          "transitions": [
+            {"fly": "v.act == 0 && !v.glide"},
+            {"glide": "v.act == 0 && v.glide"},
+            {"stand": "v.act == 1"},
+            {"bask": "v.act == 2"},
+            {"roar": "v.act == 3"},
+            {"fire": "v.act == 4"},
+            {"eat": "v.act == 5"},
+            {"hover": "v.act == 7"},
+            {"dive_wind": "v.act == 8"},
+            {"bolt": "v.act == 9"},
+            {"gust": "v.act == 10"},
+            {"air_roar": "v.act == 11"},
+            {"tired": "v.act == 12"},
+            {"stunned": "v.act == 13"},
+            {"stoop": "v.act == 14"}
+          ],
+          "blend_transition": 0.4
+        },
+        "hover": {
+          "animations": ["hover", "look_at_target"],
+          "transitions": [
+            {"fly": "v.act == 0 && !v.glide"},
+            {"glide": "v.act == 0 && v.glide"},
+            {"stand": "v.act == 1"},
+            {"bask": "v.act == 2"},
+            {"roar": "v.act == 3"},
+            {"fire": "v.act == 4"},
+            {"eat": "v.act == 5"},
+            {"sleep": "v.act == 6"},
+            {"dive_wind": "v.act == 8"},
+            {"bolt": "v.act == 9"},
+            {"gust": "v.act == 10"},
+            {"air_roar": "v.act == 11"},
+            {"tired": "v.act == 12"},
+            {"stunned": "v.act == 13"},
+            {"stoop": "v.act == 14"}
+          ],
+          "blend_transition": 0.6
+        },
+        "dive_wind": {
+          "animations": ["dive_wind"],
+          "transitions": [
+            {"fly": "v.act == 0 && !v.glide"},
+            {"glide": "v.act == 0 && v.glide"},
+            {"stand": "v.act == 1"},
+            {"bask": "v.act == 2"},
+            {"roar": "v.act == 3"},
+            {"fire": "v.act == 4"},
+            {"eat": "v.act == 5"},
+            {"sleep": "v.act == 6"},
+            {"hover": "v.act == 7"},
+            {"bolt": "v.act == 9"},
+            {"gust": "v.act == 10"},
+            {"air_roar": "v.act == 11"},
+            {"tired": "v.act == 12"},
+            {"stunned": "v.act == 13"},
+            {"stoop": "v.act == 14"}
+          ],
+          "blend_transition": 0.25
+        },
+        "bolt": {
+          "animations": ["bolt"],
+          "transitions": [
+            {"fly": "v.act == 0 && !v.glide"},
+            {"glide": "v.act == 0 && v.glide"},
+            {"stand": "v.act == 1"},
+            {"bask": "v.act == 2"},
+            {"roar": "v.act == 3"},
+            {"fire": "v.act == 4"},
+            {"eat": "v.act == 5"},
+            {"sleep": "v.act == 6"},
+            {"hover": "v.act == 7"},
+            {"dive_wind": "v.act == 8"},
+            {"gust": "v.act == 10"},
+            {"air_roar": "v.act == 11"},
+            {"tired": "v.act == 12"},
+            {"stunned": "v.act == 13"},
+            {"stoop": "v.act == 14"}
+          ],
+          "blend_transition": 0.25
+        },
+        "gust": {
+          "animations": ["gust"],
+          "transitions": [
+            {"fly": "v.act == 0 && !v.glide"},
+            {"glide": "v.act == 0 && v.glide"},
+            {"stand": "v.act == 1"},
+            {"bask": "v.act == 2"},
+            {"roar": "v.act == 3"},
+            {"fire": "v.act == 4"},
+            {"eat": "v.act == 5"},
+            {"sleep": "v.act == 6"},
+            {"hover": "v.act == 7"},
+            {"dive_wind": "v.act == 8"},
+            {"bolt": "v.act == 9"},
+            {"air_roar": "v.act == 11"},
+            {"tired": "v.act == 12"},
+            {"stunned": "v.act == 13"},
+            {"stoop": "v.act == 14"}
+          ],
+          "blend_transition": 0.25
+        },
+        "air_roar": {
+          "animations": ["air_roar"],
+          "transitions": [
+            {"fly": "v.act == 0 && !v.glide"},
+            {"glide": "v.act == 0 && v.glide"},
+            {"stand": "v.act == 1"},
+            {"bask": "v.act == 2"},
+            {"roar": "v.act == 3"},
+            {"fire": "v.act == 4"},
+            {"eat": "v.act == 5"},
+            {"sleep": "v.act == 6"},
+            {"hover": "v.act == 7"},
+            {"dive_wind": "v.act == 8"},
+            {"bolt": "v.act == 9"},
+            {"gust": "v.act == 10"},
+            {"tired": "v.act == 12"},
+            {"stunned": "v.act == 13"},
+            {"stoop": "v.act == 14"}
+          ],
+          "blend_transition": 0.3
+        },
+        "tired": {
+          "animations": ["tired"],
+          "transitions": [
+            {"fly": "v.act == 0 && !v.glide"},
+            {"glide": "v.act == 0 && v.glide"},
+            {"stand": "v.act == 1"},
+            {"bask": "v.act == 2"},
+            {"roar": "v.act == 3"},
+            {"fire": "v.act == 4"},
+            {"eat": "v.act == 5"},
+            {"sleep": "v.act == 6"},
+            {"hover": "v.act == 7"},
+            {"dive_wind": "v.act == 8"},
+            {"bolt": "v.act == 9"},
+            {"gust": "v.act == 10"},
+            {"air_roar": "v.act == 11"},
+            {"stunned": "v.act == 13"},
+            {"stoop": "v.act == 14"}
+          ],
+          "blend_transition": 0.4
+        },
+        "stunned": {
+          "animations": ["stunned"],
+          "transitions": [
+            {"fly": "v.act == 0 && !v.glide"},
+            {"glide": "v.act == 0 && v.glide"},
+            {"stand": "v.act == 1"},
+            {"bask": "v.act == 2"},
+            {"roar": "v.act == 3"},
+            {"fire": "v.act == 4"},
+            {"eat": "v.act == 5"},
+            {"sleep": "v.act == 6"},
+            {"hover": "v.act == 7"},
+            {"dive_wind": "v.act == 8"},
+            {"bolt": "v.act == 9"},
+            {"gust": "v.act == 10"},
+            {"air_roar": "v.act == 11"},
+            {"tired": "v.act == 12"},
+            {"stoop": "v.act == 14"}
+          ],
+          "blend_transition": 0.25
+        },
+        "stoop": {
+          "animations": ["stoop"],
+          "transitions": [
+            {"fly": "v.act == 0 && !v.glide"},
+            {"glide": "v.act == 0 && v.glide"},
+            {"stand": "v.act == 1"},
+            {"bask": "v.act == 2"},
+            {"roar": "v.act == 3"},
+            {"fire": "v.act == 4"},
+            {"eat": "v.act == 5"},
+            {"sleep": "v.act == 6"},
+            {"hover": "v.act == 7"},
+            {"dive_wind": "v.act == 8"},
+            {"bolt": "v.act == 9"},
+            {"gust": "v.act == 10"},
+            {"air_roar": "v.act == 11"},
+            {"tired": "v.act == 12"},
+            {"stunned": "v.act == 13"}
+          ],
+          "blend_transition": 0.15
+        }
+      }
+    }
+  }
+}

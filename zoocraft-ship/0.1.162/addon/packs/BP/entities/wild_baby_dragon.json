@@ -1,0 +1,209 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "zoocraft:wild_baby_dragon",
+      "spawn_category": "creature",
+      "is_spawnable": true,
+      "is_summonable": true,
+      "properties": {
+        "zoocraft:act": {
+          "type": "int",
+          "range": [
+            0,
+            15
+          ],
+          "default": 1,
+          "client_sync": true
+        },
+        "zoocraft:gliding": {
+          "type": "bool",
+          "default": false,
+          "client_sync": true
+        }
+      }
+    },
+    "component_groups": {
+      "zoocraft:boss_bar": {
+        "minecraft:boss": {
+          "hud_range": 48,
+          "should_darken_sky": false
+        }
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": [
+          "wild_baby_dragon",
+          "baby_dragon",
+          "zoocraft_boss",
+          "mob"
+        ]
+      },
+      "minecraft:nameable": {},
+      "minecraft:health": {
+        "value": 300,
+        "max": 300
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "cause": "fall",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "fire",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "fire_tick",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "lava",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "drowning",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "suffocation",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "magma",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "freezing",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "lightning",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "block_explosion",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "entity_explosion",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "contact",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "campfire",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "soul_campfire",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "stalactite",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "stalagmite",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "falling_block",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "anvil",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "piston",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "fly_into_wall",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "temperature",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "wither",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "magic",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "thorns",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "sonic_boom",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "ram_attack",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "fireworks",
+            "deals_damage": "no"
+          }
+        ]
+      },
+      "minecraft:knockback_resistance": {
+        "value": 1
+      },
+      "minecraft:persistent": {},
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:fire_immune": {},
+      "minecraft:breathable": {
+        "total_supply": 15,
+        "suffocate_time": 0
+      },
+      "minecraft:collision_box": {
+        "width": 2.0,
+        "height": 1.8
+      },
+      "minecraft:physics": {
+        "has_gravity": false,
+        "has_collision": true
+      },
+      "minecraft:navigation.hover": {
+        "can_path_over_water": true,
+        "can_sink": false,
+        "can_pass_doors": false,
+        "can_path_from_air": true,
+        "avoid_water": true,
+        "avoid_damage_blocks": true
+      },
+      "minecraft:movement.hover": {},
+      "minecraft:movement": {
+        "value": 0.0
+      },
+      "minecraft:conditional_bandwidth_optimization": {}
+    },
+    "events": {
+      "zoocraft:bar_on": {
+        "add": {
+          "component_groups": [
+            "zoocraft:boss_bar"
+          ]
+        }
+      },
+      "zoocraft:bar_off": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:boss_bar"
+          ]
+        }
+      }
+    }
+  }
+}

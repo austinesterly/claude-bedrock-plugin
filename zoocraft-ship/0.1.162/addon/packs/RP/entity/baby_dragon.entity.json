@@ -1,0 +1,37 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:baby_dragon",
+      "materials": {"default": "entity_emissive_alpha", "wing": "entity_alphatest"},
+      "textures": {"default": "textures/entity/zoocraft/baby_dragon"},
+      "geometry": {"default": "geometry.zoocraft.baby_dragon"},
+      "animations": {
+        "idle": "animation.zoocraft.baby_dragon.idle",
+        "look_at_target": "animation.zoocraft.baby_dragon.look_at_target",
+        "fly": "animation.zoocraft.baby_dragon.fly",
+        "glide": "animation.zoocraft.baby_dragon.glide",
+        "hover": "animation.zoocraft.baby_dragon.hover",
+        "bask": "animation.zoocraft.baby_dragon.bask",
+        "sleep": "animation.zoocraft.baby_dragon.sleep",
+        "roar": "animation.zoocraft.baby_dragon.roar",
+        "fire": "animation.zoocraft.baby_dragon.fire",
+        "eat": "animation.zoocraft.baby_dragon.eat",
+        "dive_wind": "animation.zoocraft.baby_dragon.dive_wind",
+        "stoop": "animation.zoocraft.baby_dragon.stoop",
+        "bolt": "animation.zoocraft.baby_dragon.bolt",
+        "gust": "animation.zoocraft.baby_dragon.gust",
+        "air_roar": "animation.zoocraft.baby_dragon.air_roar",
+        "tired": "animation.zoocraft.baby_dragon.tired",
+        "stunned": "animation.zoocraft.baby_dragon.stunned",
+        "move": "controller.animation.zoocraft.baby_dragon.move"
+      },
+      "render_controllers": ["controller.render.zoocraft.baby_dragon"],
+      "scripts": {
+        "initialize": ["variable.offset = math.random(0, 20);", "v.act = 1;", "v.glide = 0;"],
+        "pre_animation": ["v.act = query.property('zoocraft:act');", "v.glide = q.property('zoocraft:gliding');"],
+        "animate": ["move"]
+      }
+    }
+  }
+}
