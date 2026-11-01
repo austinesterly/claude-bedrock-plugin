@@ -1,0 +1,36 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "zoocraft:mob_cage"
+    },
+    "tags": [
+      "zoocraft_workshop"
+    ],
+    "pattern": [
+      "BCB",
+      "BRB",
+      "BBB"
+    ],
+    "key": {
+      "B": {
+        "item": "minecraft:iron_bars"
+      },
+      "C": {
+        "item": "minecraft:iron_chain"
+      },
+      "R": {
+        "item": "zoocraft:reinforced_crate"
+      }
+    },
+    "unlock": [
+      {
+        "item": "zoocraft:zoo_workshop"
+      }
+    ],
+    "result": {
+      "item": "zoocraft:mob_cage",
+      "count": 1
+    }
+  }
+}

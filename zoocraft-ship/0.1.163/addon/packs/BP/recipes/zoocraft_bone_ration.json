@@ -1,0 +1,35 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "zoocraft:bone_ration"
+    },
+    "tags": [
+      "crafting_table",
+      "zoocraft_workshop"
+    ],
+    "ingredients": [
+      {
+        "item": "minecraft:bone"
+      },
+      {
+        "item": "minecraft:bone"
+      },
+      {
+        "item": "minecraft:bone"
+      },
+      {
+        "item": "minecraft:bowl"
+      }
+    ],
+    "unlock": [
+      {
+        "item": "minecraft:bone"
+      }
+    ],
+    "result": {
+      "item": "zoocraft:bone_ration",
+      "count": 3
+    }
+  }
+}

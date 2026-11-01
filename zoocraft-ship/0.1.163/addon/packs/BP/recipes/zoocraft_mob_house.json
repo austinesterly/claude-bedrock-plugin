@@ -1,0 +1,35 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "zoocraft:mob_house"
+    },
+    "tags": [
+      "zoocraft_workshop"
+    ],
+    "pattern": [
+      "BLB",
+      "DDD"
+    ],
+    "key": {
+      "B": {
+        "item": "minecraft:iron_bars"
+      },
+      "L": {
+        "item": "minecraft:lantern"
+      },
+      "D": {
+        "item": "minecraft:dark_oak_planks"
+      }
+    },
+    "unlock": [
+      {
+        "item": "zoocraft:zoo_workshop"
+      }
+    ],
+    "result": {
+      "item": "zoocraft:mob_house",
+      "count": 1
+    }
+  }
+}

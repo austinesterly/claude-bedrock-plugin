@@ -1,0 +1,31 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "zoocraft:passivity_serum"
+    },
+    "tags": [
+      "zoocraft_workshop"
+    ],
+    "ingredients": [
+      {
+        "item": "minecraft:glass_bottle"
+      },
+      {
+        "item": "minecraft:golden_carrot"
+      },
+      {
+        "item": "minecraft:fermented_spider_eye"
+      }
+    ],
+    "unlock": [
+      {
+        "item": "zoocraft:zoo_workshop"
+      }
+    ],
+    "result": {
+      "item": "zoocraft:passivity_serum",
+      "count": 2
+    }
+  }
+}
