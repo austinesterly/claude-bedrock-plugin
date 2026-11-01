@@ -1,0 +1,762 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "zoocraft:zoo_sheep",
+      "spawn_category": "creature",
+      "is_spawnable": false,
+      "is_summonable": true
+    },
+    "component_groups": {
+      "zoocraft:home_4": {
+        "minecraft:home": {
+          "restriction_type": "random_movement",
+          "restriction_radius": 4
+        }
+      },
+      "zoocraft:home_8": {
+        "minecraft:home": {
+          "restriction_type": "random_movement",
+          "restriction_radius": 8
+        }
+      },
+      "zoocraft:home_16": {
+        "minecraft:home": {
+          "restriction_type": "random_movement",
+          "restriction_radius": 16
+        }
+      },
+      "zoocraft:home_32": {
+        "minecraft:home": {
+          "restriction_type": "random_movement",
+          "restriction_radius": 32
+        }
+      },
+      "zoocraft:juvenile": {
+        "minecraft:is_baby": {},
+        "minecraft:scale": {
+          "value": 0.5
+        }
+      },
+      "zoocraft:coat_0": {
+        "minecraft:color": {
+          "value": 0
+        }
+      },
+      "zoocraft:coat_1": {
+        "minecraft:color": {
+          "value": 1
+        }
+      },
+      "zoocraft:coat_2": {
+        "minecraft:color": {
+          "value": 2
+        }
+      },
+      "zoocraft:coat_3": {
+        "minecraft:color": {
+          "value": 3
+        }
+      },
+      "zoocraft:coat_4": {
+        "minecraft:color": {
+          "value": 4
+        }
+      },
+      "zoocraft:coat_5": {
+        "minecraft:color": {
+          "value": 5
+        }
+      },
+      "zoocraft:coat_6": {
+        "minecraft:color": {
+          "value": 6
+        }
+      },
+      "zoocraft:coat_7": {
+        "minecraft:color": {
+          "value": 7
+        }
+      },
+      "zoocraft:coat_8": {
+        "minecraft:color": {
+          "value": 8
+        }
+      },
+      "zoocraft:coat_9": {
+        "minecraft:color": {
+          "value": 9
+        }
+      },
+      "zoocraft:coat_10": {
+        "minecraft:color": {
+          "value": 10
+        }
+      },
+      "zoocraft:coat_11": {
+        "minecraft:color": {
+          "value": 11
+        }
+      },
+      "zoocraft:coat_12": {
+        "minecraft:color": {
+          "value": 12
+        }
+      },
+      "zoocraft:coat_13": {
+        "minecraft:color": {
+          "value": 13
+        }
+      },
+      "zoocraft:coat_14": {
+        "minecraft:color": {
+          "value": 14
+        }
+      },
+      "zoocraft:coat_15": {
+        "minecraft:color": {
+          "value": 15
+        }
+      },
+      "zoocraft:sheared": {
+        "minecraft:is_sheared": {}
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": [
+          "zoocraft_animal",
+          "zoo_sheep",
+          "sheep",
+          "mob"
+        ]
+      },
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:breathable": {
+        "total_supply": 15,
+        "suffocate_time": 0
+      },
+      "minecraft:nameable": {
+        "always_show": false,
+        "allow_name_tag_renaming": true
+      },
+      "minecraft:health": {
+        "value": 8,
+        "max": 8
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "cause": "all",
+            "deals_damage": "no"
+          }
+        ]
+      },
+      "minecraft:collision_box": {
+        "width": 0.9,
+        "height": 1.3
+      },
+      "minecraft:movement": {
+        "value": 0.25
+      },
+      "minecraft:movement.basic": {},
+      "minecraft:navigation.walk": {
+        "can_path_over_water": true,
+        "avoid_water": true,
+        "avoid_damage_blocks": true
+      },
+      "minecraft:jump.static": {},
+      "minecraft:can_climb": {},
+      "minecraft:persistent": {},
+      "minecraft:behavior.float": {
+        "priority": 0
+      },
+      "minecraft:behavior.move_towards_home_restriction": {
+        "priority": 2,
+        "speed_multiplier": 0.8
+      },
+      "minecraft:behavior.tempt": {
+        "priority": 3,
+        "speed_multiplier": 1.0,
+        "items": [
+          "zoocraft:grain_ration",
+          "wheat"
+        ]
+      },
+      "minecraft:behavior.random_stroll": {
+        "priority": 6,
+        "speed_multiplier": 0.8
+      },
+      "minecraft:behavior.look_at_player": {
+        "priority": 7,
+        "look_distance": 6,
+        "probability": 0.02
+      },
+      "minecraft:behavior.random_look_around": {
+        "priority": 8
+      },
+      "minecraft:physics": {},
+      "minecraft:pushable_by_entity": {},
+      "minecraft:pushable_by_block": {},
+      "minecraft:conditional_bandwidth_optimization": {},
+      "minecraft:interact": {
+        "interactions": [
+          {
+            "cooldown": 2.5,
+            "use_item": false,
+            "swing": true,
+            "hurt_item": 1,
+            "spawn_items": {
+              "table": "loot_tables/entities/sheep_shear.json"
+            },
+            "play_sounds": [
+              "shear"
+            ],
+            "interact_text": "action.interact.shear",
+            "vibration": "shear",
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "value": "shears"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "test": "has_component",
+                    "operator": "!=",
+                    "value": "minecraft:is_baby"
+                  },
+                  {
+                    "test": "has_component",
+                    "subject": "self",
+                    "operator": "!=",
+                    "value": "minecraft:is_sheared"
+                  }
+                ]
+              },
+              "event": "zoocraft:on_sheared",
+              "target": "self"
+            }
+          }
+        ]
+      }
+    },
+    "events": {
+      "zoocraft:home_4": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:home_8",
+            "zoocraft:home_16",
+            "zoocraft:home_32"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:home_4"
+          ]
+        }
+      },
+      "zoocraft:home_8": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:home_4",
+            "zoocraft:home_16",
+            "zoocraft:home_32"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:home_8"
+          ]
+        }
+      },
+      "zoocraft:home_16": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:home_4",
+            "zoocraft:home_8",
+            "zoocraft:home_32"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:home_16"
+          ]
+        }
+      },
+      "zoocraft:home_32": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:home_4",
+            "zoocraft:home_8",
+            "zoocraft:home_16"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:home_32"
+          ]
+        }
+      },
+      "zoocraft:juvenile": {
+        "add": {
+          "component_groups": [
+            "zoocraft:juvenile"
+          ]
+        }
+      },
+      "zoocraft:coat_0": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:coat_1",
+            "zoocraft:coat_2",
+            "zoocraft:coat_3",
+            "zoocraft:coat_4",
+            "zoocraft:coat_5",
+            "zoocraft:coat_6",
+            "zoocraft:coat_7",
+            "zoocraft:coat_8",
+            "zoocraft:coat_9",
+            "zoocraft:coat_10",
+            "zoocraft:coat_11",
+            "zoocraft:coat_12",
+            "zoocraft:coat_13",
+            "zoocraft:coat_14",
+            "zoocraft:coat_15"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:coat_0"
+          ]
+        }
+      },
+      "zoocraft:coat_1": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:coat_0",
+            "zoocraft:coat_2",
+            "zoocraft:coat_3",
+            "zoocraft:coat_4",
+            "zoocraft:coat_5",
+            "zoocraft:coat_6",
+            "zoocraft:coat_7",
+            "zoocraft:coat_8",
+            "zoocraft:coat_9",
+            "zoocraft:coat_10",
+            "zoocraft:coat_11",
+            "zoocraft:coat_12",
+            "zoocraft:coat_13",
+            "zoocraft:coat_14",
+            "zoocraft:coat_15"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:coat_1"
+          ]
+        }
+      },
+      "zoocraft:coat_2": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:coat_0",
+            "zoocraft:coat_1",
+            "zoocraft:coat_3",
+            "zoocraft:coat_4",
+            "zoocraft:coat_5",
+            "zoocraft:coat_6",
+            "zoocraft:coat_7",
+            "zoocraft:coat_8",
+            "zoocraft:coat_9",
+            "zoocraft:coat_10",
+            "zoocraft:coat_11",
+            "zoocraft:coat_12",
+            "zoocraft:coat_13",
+            "zoocraft:coat_14",
+            "zoocraft:coat_15"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:coat_2"
+          ]
+        }
+      },
+      "zoocraft:coat_3": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:coat_0",
+            "zoocraft:coat_1",
+            "zoocraft:coat_2",
+            "zoocraft:coat_4",
+            "zoocraft:coat_5",
+            "zoocraft:coat_6",
+            "zoocraft:coat_7",
+            "zoocraft:coat_8",
+            "zoocraft:coat_9",
+            "zoocraft:coat_10",
+            "zoocraft:coat_11",
+            "zoocraft:coat_12",
+            "zoocraft:coat_13",
+            "zoocraft:coat_14",
+            "zoocraft:coat_15"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:coat_3"
+          ]
+        }
+      },
+      "zoocraft:coat_4": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:coat_0",
+            "zoocraft:coat_1",
+            "zoocraft:coat_2",
+            "zoocraft:coat_3",
+            "zoocraft:coat_5",
+            "zoocraft:coat_6",
+            "zoocraft:coat_7",
+            "zoocraft:coat_8",
+            "zoocraft:coat_9",
+            "zoocraft:coat_10",
+            "zoocraft:coat_11",
+            "zoocraft:coat_12",
+            "zoocraft:coat_13",
+            "zoocraft:coat_14",
+            "zoocraft:coat_15"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:coat_4"
+          ]
+        }
+      },
+      "zoocraft:coat_5": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:coat_0",
+            "zoocraft:coat_1",
+            "zoocraft:coat_2",
+            "zoocraft:coat_3",
+            "zoocraft:coat_4",
+            "zoocraft:coat_6",
+            "zoocraft:coat_7",
+            "zoocraft:coat_8",
+            "zoocraft:coat_9",
+            "zoocraft:coat_10",
+            "zoocraft:coat_11",
+            "zoocraft:coat_12",
+            "zoocraft:coat_13",
+            "zoocraft:coat_14",
+            "zoocraft:coat_15"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:coat_5"
+          ]
+        }
+      },
+      "zoocraft:coat_6": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:coat_0",
+            "zoocraft:coat_1",
+            "zoocraft:coat_2",
+            "zoocraft:coat_3",
+            "zoocraft:coat_4",
+            "zoocraft:coat_5",
+            "zoocraft:coat_7",
+            "zoocraft:coat_8",
+            "zoocraft:coat_9",
+            "zoocraft:coat_10",
+            "zoocraft:coat_11",
+            "zoocraft:coat_12",
+            "zoocraft:coat_13",
+            "zoocraft:coat_14",
+            "zoocraft:coat_15"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:coat_6"
+          ]
+        }
+      },
+      "zoocraft:coat_7": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:coat_0",
+            "zoocraft:coat_1",
+            "zoocraft:coat_2",
+            "zoocraft:coat_3",
+            "zoocraft:coat_4",
+            "zoocraft:coat_5",
+            "zoocraft:coat_6",
+            "zoocraft:coat_8",
+            "zoocraft:coat_9",
+            "zoocraft:coat_10",
+            "zoocraft:coat_11",
+            "zoocraft:coat_12",
+            "zoocraft:coat_13",
+            "zoocraft:coat_14",
+            "zoocraft:coat_15"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:coat_7"
+          ]
+        }
+      },
+      "zoocraft:coat_8": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:coat_0",
+            "zoocraft:coat_1",
+            "zoocraft:coat_2",
+            "zoocraft:coat_3",
+            "zoocraft:coat_4",
+            "zoocraft:coat_5",
+            "zoocraft:coat_6",
+            "zoocraft:coat_7",
+            "zoocraft:coat_9",
+            "zoocraft:coat_10",
+            "zoocraft:coat_11",
+            "zoocraft:coat_12",
+            "zoocraft:coat_13",
+            "zoocraft:coat_14",
+            "zoocraft:coat_15"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:coat_8"
+          ]
+        }
+      },
+      "zoocraft:coat_9": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:coat_0",
+            "zoocraft:coat_1",
+            "zoocraft:coat_2",
+            "zoocraft:coat_3",
+            "zoocraft:coat_4",
+            "zoocraft:coat_5",
+            "zoocraft:coat_6",
+            "zoocraft:coat_7",
+            "zoocraft:coat_8",
+            "zoocraft:coat_10",
+            "zoocraft:coat_11",
+            "zoocraft:coat_12",
+            "zoocraft:coat_13",
+            "zoocraft:coat_14",
+            "zoocraft:coat_15"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:coat_9"
+          ]
+        }
+      },
+      "zoocraft:coat_10": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:coat_0",
+            "zoocraft:coat_1",
+            "zoocraft:coat_2",
+            "zoocraft:coat_3",
+            "zoocraft:coat_4",
+            "zoocraft:coat_5",
+            "zoocraft:coat_6",
+            "zoocraft:coat_7",
+            "zoocraft:coat_8",
+            "zoocraft:coat_9",
+            "zoocraft:coat_11",
+            "zoocraft:coat_12",
+            "zoocraft:coat_13",
+            "zoocraft:coat_14",
+            "zoocraft:coat_15"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:coat_10"
+          ]
+        }
+      },
+      "zoocraft:coat_11": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:coat_0",
+            "zoocraft:coat_1",
+            "zoocraft:coat_2",
+            "zoocraft:coat_3",
+            "zoocraft:coat_4",
+            "zoocraft:coat_5",
+            "zoocraft:coat_6",
+            "zoocraft:coat_7",
+            "zoocraft:coat_8",
+            "zoocraft:coat_9",
+            "zoocraft:coat_10",
+            "zoocraft:coat_12",
+            "zoocraft:coat_13",
+            "zoocraft:coat_14",
+            "zoocraft:coat_15"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:coat_11"
+          ]
+        }
+      },
+      "zoocraft:coat_12": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:coat_0",
+            "zoocraft:coat_1",
+            "zoocraft:coat_2",
+            "zoocraft:coat_3",
+            "zoocraft:coat_4",
+            "zoocraft:coat_5",
+            "zoocraft:coat_6",
+            "zoocraft:coat_7",
+            "zoocraft:coat_8",
+            "zoocraft:coat_9",
+            "zoocraft:coat_10",
+            "zoocraft:coat_11",
+            "zoocraft:coat_13",
+            "zoocraft:coat_14",
+            "zoocraft:coat_15"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:coat_12"
+          ]
+        }
+      },
+      "zoocraft:coat_13": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:coat_0",
+            "zoocraft:coat_1",
+            "zoocraft:coat_2",
+            "zoocraft:coat_3",
+            "zoocraft:coat_4",
+            "zoocraft:coat_5",
+            "zoocraft:coat_6",
+            "zoocraft:coat_7",
+            "zoocraft:coat_8",
+            "zoocraft:coat_9",
+            "zoocraft:coat_10",
+            "zoocraft:coat_11",
+            "zoocraft:coat_12",
+            "zoocraft:coat_14",
+            "zoocraft:coat_15"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:coat_13"
+          ]
+        }
+      },
+      "zoocraft:coat_14": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:coat_0",
+            "zoocraft:coat_1",
+            "zoocraft:coat_2",
+            "zoocraft:coat_3",
+            "zoocraft:coat_4",
+            "zoocraft:coat_5",
+            "zoocraft:coat_6",
+            "zoocraft:coat_7",
+            "zoocraft:coat_8",
+            "zoocraft:coat_9",
+            "zoocraft:coat_10",
+            "zoocraft:coat_11",
+            "zoocraft:coat_12",
+            "zoocraft:coat_13",
+            "zoocraft:coat_15"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:coat_14"
+          ]
+        }
+      },
+      "zoocraft:coat_15": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:coat_0",
+            "zoocraft:coat_1",
+            "zoocraft:coat_2",
+            "zoocraft:coat_3",
+            "zoocraft:coat_4",
+            "zoocraft:coat_5",
+            "zoocraft:coat_6",
+            "zoocraft:coat_7",
+            "zoocraft:coat_8",
+            "zoocraft:coat_9",
+            "zoocraft:coat_10",
+            "zoocraft:coat_11",
+            "zoocraft:coat_12",
+            "zoocraft:coat_13",
+            "zoocraft:coat_14"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:coat_15"
+          ]
+        }
+      },
+      "zoocraft:on_sheared": {
+        "add": {
+          "component_groups": [
+            "zoocraft:sheared"
+          ]
+        }
+      },
+      "zoocraft:shorn": {
+        "add": {
+          "component_groups": [
+            "zoocraft:sheared"
+          ]
+        }
+      },
+      "zoocraft:wool_back": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:sheared"
+          ]
+        }
+      },
+      "minecraft:entity_spawned": {
+        "add": {
+          "component_groups": [
+            "zoocraft:coat_0",
+            "zoocraft:home_8"
+          ]
+        }
+      }
+    }
+  }
+}

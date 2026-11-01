@@ -1,0 +1,48 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:zoo_pig",
+      "min_engine_version": "1.8.0",
+      "materials": {
+        "default": "pig_v3"
+      },
+      "textures": {
+        "default": "textures/entity/pig/pig_v3",
+        "saddled": "textures/entity/pig/pig_saddle",
+        "warm": "textures/entity/pig/pig_warm",
+        "cold": "textures/entity/pig/pig_cold",
+        "saddle": "textures/entity/saddle_v2",
+        "baby_default": "textures/entity/pig/pig_temperate_baby",
+        "baby_warm": "textures/entity/pig/pig_warm_baby",
+        "baby_cold": "textures/entity/pig/pig_cold_baby"
+      },
+      "geometry": {
+        "default": "geometry.pig.v3",
+        "baby": "geometry.pig.baby"
+      },
+      "animations": {
+        "setup": "animation.pig.setup",
+        "walk": "animation.quadruped.walk",
+        "look_at_target": "animation.common.look_at_target",
+        "baby_transform": "animation.pig.baby_transform"
+      },
+      "scripts": {
+        "animate": [
+          "setup",
+          {
+            "walk": "query.modified_move_speed"
+          },
+          "look_at_target"
+        ],
+        "pre_animation": [
+          "v.index = math.clamp(query.variant, 0, 2);"
+        ],
+        "scale": "query.is_baby ? 2.0 : 1.0"
+      },
+      "render_controllers": [
+        "controller.render.pig.v4"
+      ]
+    }
+  }
+}
