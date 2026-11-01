@@ -1,0 +1,49 @@
+{
+  "format_version": "1.26.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:zoo_panda",
+      "materials": {
+        "default": "panda"
+      },
+      "textures": {
+        "default": "textures/entity/panda/panda",
+        "lazy": "textures/entity/panda/panda_lazy",
+        "worried": "textures/entity/panda/panda_worried",
+        "playful": "textures/entity/panda/panda_playful",
+        "brown": "textures/entity/panda/panda_brown",
+        "weak": "textures/entity/panda/panda_sneezy",
+        "aggressive": "textures/entity/panda/panda_aggressive"
+      },
+      "geometry": {
+        "default": "geometry.panda"
+      },
+      "animations": {
+        "unhappy": "animation.panda.unhappy",
+        "sneezing": "animation.panda.sneezing",
+        "walk": "animation.quadruped.walk",
+        "look_at_target": "animation.common.look_at_target",
+        "baby_transform": "animation.panda.baby_transform",
+        "sitting": "animation.panda.sitting",
+        "rolling": "animation.panda.rolling",
+        "lying": "animation.panda.lying",
+        "move_controller": "controller.animation.zoocraft.zoo_panda.move",
+        "unhappy_controller": "controller.animation.panda.unhappy",
+        "sneezing_controller": "controller.animation.panda.sneezing"
+      },
+      "render_controllers": [
+        "controller.render.zoocraft.zoo_panda"
+      ],
+      "scripts": {
+        "animate": [
+          "move_controller",
+          "unhappy_controller",
+          "sneezing_controller",
+          {
+            "baby_transform": "query.is_baby"
+          }
+        ]
+      }
+    }
+  }
+}

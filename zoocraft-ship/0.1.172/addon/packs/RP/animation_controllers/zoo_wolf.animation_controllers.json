@@ -1,0 +1,40 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.zoocraft.zoo_wolf.setup": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "animations": [
+            "wolf_setup"
+          ]
+        }
+      }
+    },
+    "controller.animation.zoocraft.zoo_wolf.sitting": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "animations": [
+            "wolf_leg_default"
+          ],
+          "transitions": [
+            {
+              "sitting": "query.is_sitting"
+            }
+          ]
+        },
+        "sitting": {
+          "animations": [
+            "wolf_sitting"
+          ],
+          "transitions": [
+            {
+              "default": "!query.is_sitting"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
