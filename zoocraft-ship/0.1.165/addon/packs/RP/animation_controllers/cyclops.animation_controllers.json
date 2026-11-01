@@ -1,0 +1,225 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.zoocraft.cyclops.move": {
+      "initial_state": "start",
+      "states": {
+        "start": {
+          "transitions": [
+            {"tired": "v.act == 6"},
+            {"sit": "v.act == 7"},
+            {"sleep": "v.act == 8"},
+            {"idle": "!(v.act == 6 || v.act == 7 || v.act == 8)"}
+          ],
+          "blend_transition": 0
+        },
+        "idle": {
+          "animations": ["idle", "look_at_target"],
+          "transitions": [
+            {"tired_down": "v.act == 6"},
+            {"sit_down": "v.act == 7"},
+            {"sleep_down": "v.act == 8"},
+            {"walking": "v.act == 0 && v.moving"},
+            {"swipe": "v.act == 1"},
+            {"slam": "v.act == 2"},
+            {"hurl": "v.act == 3"},
+            {"roar": "v.act == 4"},
+            {"toss": "v.act == 9"},
+            {"eat": "v.act == 5"}
+          ],
+          "blend_transition": 0.3
+        },
+        "walking": {
+          "animations": ["walk", "look_at_target"],
+          "transitions": [
+            {"tired_down": "v.act == 6"},
+            {"sit_down": "v.act == 7"},
+            {"sleep_down": "v.act == 8"},
+            {"idle": "v.act == 0 && !v.moving"},
+            {"swipe": "v.act == 1"},
+            {"slam": "v.act == 2"},
+            {"hurl": "v.act == 3"},
+            {"roar": "v.act == 4"},
+            {"toss": "v.act == 9"},
+            {"eat": "v.act == 5"}
+          ],
+          "blend_transition": 0.25
+        },
+        "eat": {
+          "animations": ["eat"],
+          "transitions": [
+            {"tired_down": "v.act == 6"},
+            {"sit_down": "v.act == 7"},
+            {"sleep_down": "v.act == 8"},
+            {"idle": "v.act == 0 && !v.moving"},
+            {"walking": "v.act == 0 && v.moving"},
+            {"swipe": "v.act == 1"},
+            {"slam": "v.act == 2"},
+            {"hurl": "v.act == 3"},
+            {"roar": "v.act == 4"},
+            {"toss": "v.act == 9"}
+          ],
+          "blend_transition": 0.2
+        },
+        "swipe": {
+          "animations": ["swipe"],
+          "blend_transition": 0.12,
+          "transitions": [
+            {"tired_down": "v.act == 6"},
+            {"sit_down": "v.act == 7"},
+            {"sleep_down": "v.act == 8"},
+            {"idle": "v.act == 0 && !v.moving"},
+            {"walking": "v.act == 0 && v.moving"},
+            {"slam": "v.act == 2"},
+            {"hurl": "v.act == 3"},
+            {"roar": "v.act == 4"},
+            {"toss": "v.act == 9"},
+            {"eat": "v.act == 5"}
+          ]
+        },
+        "slam": {
+          "animations": ["slam"],
+          "blend_transition": 0.12,
+          "transitions": [
+            {"tired_down": "v.act == 6"},
+            {"sit_down": "v.act == 7"},
+            {"sleep_down": "v.act == 8"},
+            {"idle": "v.act == 0 && !v.moving"},
+            {"walking": "v.act == 0 && v.moving"},
+            {"swipe": "v.act == 1"},
+            {"hurl": "v.act == 3"},
+            {"roar": "v.act == 4"},
+            {"toss": "v.act == 9"},
+            {"eat": "v.act == 5"}
+          ]
+        },
+        "hurl": {
+          "animations": ["hurl"],
+          "blend_transition": 0.12,
+          "transitions": [
+            {"tired_down": "v.act == 6"},
+            {"sit_down": "v.act == 7"},
+            {"sleep_down": "v.act == 8"},
+            {"idle": "v.act == 0 && !v.moving"},
+            {"walking": "v.act == 0 && v.moving"},
+            {"swipe": "v.act == 1"},
+            {"slam": "v.act == 2"},
+            {"roar": "v.act == 4"},
+            {"toss": "v.act == 9"},
+            {"eat": "v.act == 5"}
+          ]
+        },
+        "roar": {
+          "animations": ["roar", {"roar_shake": "v.at > 0.8 && v.at < 1.85"}],
+          "blend_transition": 0.12,
+          "transitions": [
+            {"tired_down": "v.act == 6"},
+            {"sit_down": "v.act == 7"},
+            {"sleep_down": "v.act == 8"},
+            {"idle": "v.act == 0 && !v.moving"},
+            {"walking": "v.act == 0 && v.moving"},
+            {"swipe": "v.act == 1"},
+            {"slam": "v.act == 2"},
+            {"hurl": "v.act == 3"},
+            {"toss": "v.act == 9"},
+            {"eat": "v.act == 5"}
+          ]
+        },
+        "toss": {
+          "animations": ["toss", "toss_ball"],
+          "blend_transition": 0.12,
+          "transitions": [
+            {"tired_down": "v.act == 6"},
+            {"sit_down": "v.act == 7"},
+            {"sleep_down": "v.act == 8"},
+            {"idle": "v.act == 0 && !v.moving"},
+            {"walking": "v.act == 0 && v.moving"},
+            {"swipe": "v.act == 1"},
+            {"slam": "v.act == 2"},
+            {"hurl": "v.act == 3"},
+            {"roar": "v.act == 4"},
+            {"eat": "v.act == 5"}
+          ]
+        },
+        "tired_down": {
+          "animations": ["tired_down"],
+          "blend_transition": 0.2,
+          "on_entry": ["v.st = q.life_time;"],
+          "transitions": [
+            {"tired": "(q.life_time - v.st) > 1.2 && v.act == 6"},
+            {"get_up": "(q.life_time - v.st) > 1.2 && !(v.act == 6 || v.act == 7 || v.act == 8)"},
+            {"sit": "(q.life_time - v.st) > 1.2 && v.act == 7"},
+            {"sleep": "(q.life_time - v.st) > 1.2 && v.act == 8"}
+          ]
+        },
+        "tired": {
+          "animations": ["tired"],
+          "blend_transition": 0.6,
+          "transitions": [
+            {"get_up": "!(v.act == 6 || v.act == 7 || v.act == 8)"},
+            {"sit": "v.act == 7"},
+            {"sleep": "v.act == 8"}
+          ]
+        },
+        "sit_down": {
+          "animations": ["sit_down"],
+          "blend_transition": 0.2,
+          "on_entry": ["v.st = q.life_time;"],
+          "transitions": [
+            {"sit": "(q.life_time - v.st) > 1.2 && v.act == 7"},
+            {"get_up": "(q.life_time - v.st) > 1.2 && !(v.act == 6 || v.act == 7 || v.act == 8)"},
+            {"tired": "(q.life_time - v.st) > 1.2 && v.act == 6"},
+            {"sleep": "(q.life_time - v.st) > 1.2 && v.act == 8"}
+          ]
+        },
+        "sit": {
+          "animations": ["sit"],
+          "blend_transition": 0.6,
+          "transitions": [
+            {"get_up": "!(v.act == 6 || v.act == 7 || v.act == 8)"},
+            {"tired": "v.act == 6"},
+            {"sleep": "v.act == 8"}
+          ]
+        },
+        "sleep_down": {
+          "animations": ["sleep_down"],
+          "blend_transition": 0.2,
+          "on_entry": ["v.st = q.life_time;"],
+          "transitions": [
+            {"sleep": "(q.life_time - v.st) > 1.2 && v.act == 8"},
+            {"get_up": "(q.life_time - v.st) > 1.2 && !(v.act == 6 || v.act == 7 || v.act == 8)"},
+            {"tired": "(q.life_time - v.st) > 1.2 && v.act == 6"},
+            {"sit": "(q.life_time - v.st) > 1.2 && v.act == 7"}
+          ]
+        },
+        "sleep": {
+          "animations": ["sleep"],
+          "blend_transition": 0.6,
+          "transitions": [
+            {"get_up": "!(v.act == 6 || v.act == 7 || v.act == 8)"},
+            {"tired": "v.act == 6"},
+            {"sit": "v.act == 7"}
+          ]
+        },
+        "get_up": {
+          "animations": ["get_up"],
+          "blend_transition": 0.4,
+          "on_entry": ["v.st = q.life_time;"],
+          "transitions": [
+            {"tired_down": "v.act == 6 && (q.life_time - v.st) > 1.2"},
+            {"sit_down": "v.act == 7 && (q.life_time - v.st) > 1.2"},
+            {"sleep_down": "v.act == 8 && (q.life_time - v.st) > 1.2"},
+            {"idle": "v.act == 0 && !v.moving && (q.life_time - v.st) > 1.2"},
+            {"walking": "v.act == 0 && v.moving && (q.life_time - v.st) > 1.2"},
+            {"swipe": "v.act == 1 && (q.life_time - v.st) > 1.2"},
+            {"slam": "v.act == 2 && (q.life_time - v.st) > 1.2"},
+            {"hurl": "v.act == 3 && (q.life_time - v.st) > 1.2"},
+            {"roar": "v.act == 4 && (q.life_time - v.st) > 1.2"},
+            {"toss": "v.act == 9 && (q.life_time - v.st) > 1.2"},
+            {"eat": "v.act == 5 && (q.life_time - v.st) > 1.2"}
+          ]
+        }
+      }
+    }
+  }
+}

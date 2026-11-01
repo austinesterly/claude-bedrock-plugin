@@ -1,0 +1,92 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.zoocraft.cyclops",
+        "texture_width": 256,
+        "texture_height": 128,
+        "visible_bounds_width": 4.5,
+        "visible_bounds_height": 5.0,
+        "visible_bounds_offset": [0, 1.8, 0]
+      },
+      "bones": [
+        {"name": "cyclops", "pivot": [0, 0, 0]},
+        {
+          "name": "body",
+          "pivot": [0, 18, 0],
+          "parent": "cyclops",
+          "rotation": [8, 0, 0],
+          "cubes": [
+            {"origin": [-10, 18, -6], "size": [20, 21, 12], "uv": [0, 0]},
+            {"origin": [-11, 14, -7], "size": [22, 8, 14], "uv": [64, 0]},
+            {"origin": [-4, 8, -8], "size": [8, 6, 1], "uv": [136, 0]}
+          ]
+        },
+        {
+          "name": "head",
+          "pivot": [0, 39, -1],
+          "parent": "body",
+          "cubes": [
+            {"origin": [-6, 39, -7], "size": [12, 12, 12], "uv": [154, 0]},
+            {"origin": [-6, 48, -8], "size": [12, 2, 1], "uv": [202, 0]},
+            {"origin": [6, 44, -2], "size": [2, 4, 1], "uv": [228, 0]},
+            {"origin": [-8, 44, -2], "size": [2, 4, 1], "uv": [234, 0]}
+          ]
+        },
+        {
+          "name": "jaw",
+          "pivot": [0, 39, 0],
+          "parent": "head",
+          "cubes": [{"origin": [-5, 36, -8], "size": [10, 3, 8], "uv": [0, 33]}]
+        },
+        {
+          "name": "armL",
+          "pivot": [13.5, 36, 0],
+          "parent": "body",
+          "cubes": [
+            {"origin": [10, 14, -3.5], "size": [7, 22, 7], "uv": [36, 33]},
+            {"origin": [9.5, 8, -4], "size": [8, 6, 8], "uv": [64, 33]}
+          ]
+        },
+        {
+          "name": "armR",
+          "pivot": [-13.5, 36, 0],
+          "parent": "body",
+          "cubes": [
+            {"origin": [-17, 14, -3.5], "size": [7, 22, 7], "uv": [96, 33]},
+            {"origin": [-17.5, 8, -4], "size": [8, 6, 8], "uv": [124, 33]}
+          ]
+        },
+        {
+          "name": "legL",
+          "pivot": [5, 18, 0],
+          "parent": "cyclops",
+          "cubes": [{"origin": [1.5, 0, -3.5], "size": [7, 18, 7], "uv": [156, 33]}]
+        },
+        {
+          "name": "legR",
+          "pivot": [-5, 18, 0],
+          "parent": "cyclops",
+          "cubes": [{"origin": [-8.5, 0, -3.5], "size": [7, 18, 7], "uv": [184, 33]}]
+        },
+        {
+          "name": "club",
+          "pivot": [-13.5, 10, 0],
+          "parent": "armR",
+          "rotation": [-90, 0, 0],
+          "cubes": [
+            {"origin": [-14.5, -1, -1], "size": [2, 13, 2], "uv": [212, 33]},
+            {"origin": [-16, -13, -2.5], "size": [5, 12, 5], "uv": [220, 33]}
+          ]
+        },
+        {
+          "name": "rock",
+          "pivot": [0, 66, -4],
+          "parent": "body",
+          "cubes": [{"origin": [-4, 62, -8], "size": [8, 8, 8], "uv": [0, 62]}]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:cyclops_rock",
+      "materials": {"default": "entity_alphatest"},
+      "textures": {"default": "textures/entity/zoocraft/cyclops"},
+      "geometry": {"default": "geometry.zoocraft.cyclops_rock"},
+      "animations": {"spin": "animation.zoocraft.cyclops.rock_spin"},
+      "scripts": {"animate": ["spin"]},
+      "render_controllers": ["controller.render.zoocraft.cyclops"]
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:zoo_cyclops",
+      "materials": {"default": "entity_alphatest"},
+      "textures": {"default": "textures/entity/zoocraft/cyclops"},
+      "geometry": {"default": "geometry.zoocraft.cyclops"},
+      "animations": {
+        "idle": "animation.zoocraft.cyclops.idle",
+        "walk": "animation.zoocraft.cyclops.walk",
+        "look_at_target": "animation.zoocraft.cyclops.look_at_target",
+        "swipe": "animation.zoocraft.cyclops.swipe",
+        "slam": "animation.zoocraft.cyclops.slam",
+        "hurl": "animation.zoocraft.cyclops.hurl",
+        "roar": "animation.zoocraft.cyclops.roar",
+        "roar_shake": "animation.zoocraft.cyclops.roar_shake",
+        "eat": "animation.zoocraft.cyclops.eat",
+        "sit": "animation.zoocraft.cyclops.sit",
+        "sleep": "animation.zoocraft.cyclops.sleep",
+        "tired": "animation.zoocraft.cyclops.tired",
+        "sit_down": "animation.zoocraft.cyclops.sit_down",
+        "sleep_down": "animation.zoocraft.cyclops.sleep_down",
+        "tired_down": "animation.zoocraft.cyclops.tired_down",
+        "get_up": "animation.zoocraft.cyclops.get_up",
+        "toss": "animation.zoocraft.cyclops.toss",
+        "toss_ball": "animation.zoocraft.cyclops.toss_ball",
+        "ball": "animation.zoocraft.cyclops.ball",
+        "move": "controller.animation.zoocraft.cyclops.move"
+      },
+      "render_controllers": ["controller.render.zoocraft.cyclops"],
+      "scripts": {
+        "scale": "1.09",
+        "initialize": [
+          "variable.offset = math.random(0, 20);",
+          "v.st = 0;",
+          "v.act = 0;",
+          "v.last_act = 0;",
+          "v.act_t = 0;",
+          "v.at = 0;",
+          "v.moving = 0;",
+          "v.leg_rate = 1;",
+          "v.ball = 0;"
+        ],
+        "pre_animation": [
+          "v.act = q.property('zoocraft:act');",
+          "v.act_t = (v.act != v.last_act) ? q.life_time : v.act_t;",
+          "v.last_act = v.act;",
+          "v.at = q.life_time - v.act_t;",
+          "v.ball = ((v.act == 3 && v.at > 0.45 && v.at < 1.08) || (v.act == 9 && v.at > 0.45 && v.at < 1.95)) ? 1 : 0;",
+          "v.moving = q.modified_move_speed > 0.04;",
+          "v.leg_rate = 1;"
+        ],
+        "animate": ["move", "ball"]
+      }
+    }
+  }
+}
