@@ -1,0 +1,14 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:voidling_orb",
+      "materials": {"default": "entity_emissive_alpha"},
+      "textures": {"default": "textures/entity/zoocraft/voidling"},
+      "geometry": {"default": "geometry.zoocraft.voidling_orb"},
+      "animations": {"spin": "animation.zoocraft.voidling.orb_spin"},
+      "scripts": {"animate": ["spin"]},
+      "render_controllers": ["controller.render.zoocraft.voidling"]
+    }
+  }
+}

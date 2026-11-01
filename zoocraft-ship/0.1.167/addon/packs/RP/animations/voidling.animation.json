@@ -1,0 +1,1263 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.zoocraft.voidling.idle": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "rotation": [7, 0, "math.sin(query.life_time * 9 + variable.offset) * 1.5"],
+          "scale": [
+            "1 + (0.012 * (math.sin(query.life_time * 40 + variable.offset * 20)))",
+            1,
+            "1 + (0.02 * (math.sin(query.life_time * 40 + variable.offset * 20)))"
+          ]
+        },
+        "head": {
+          "rotation": [
+            "-9 + (math.sin(query.life_time * 12 + variable.offset) * 2)",
+            "math.sin(query.life_time * 5 + variable.offset) * 5",
+            "math.sin(query.life_time * 7 + variable.offset) * 6"
+          ]
+        },
+        "armL": {"rotation": ["-4 + (math.sin(query.life_time * 20 + variable.offset) * 2)", 0, -4]},
+        "armR": {"rotation": ["-4 + (math.sin(query.life_time * 20 + variable.offset + 90) * 2)", 0, 4]},
+        "foreL": {"rotation": [-10, 0, 0]},
+        "foreR": {"rotation": [-10, 0, 0]},
+        "handL": {"rotation": ["-6 + (math.sin(query.life_time * 70 + variable.offset) * 6)", 0, -6]},
+        "handR": {"rotation": ["-6 + (math.sin(query.life_time * 63 + variable.offset + 40) * 6)", 0, 6]},
+        "thighL": {"rotation": [-4, 0, 0]},
+        "thighR": {"rotation": [-4, 0, 0]},
+        "shinL": {"rotation": [6, 0, 0]},
+        "shinR": {"rotation": [6, 0, 0]}
+      }
+    },
+    "animation.zoocraft.voidling.walk": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "rotation": [
+            9,
+            "math.sin(query.modified_distance_moved * 24 * variable.leg_rate) * 3",
+            "math.cos(query.modified_distance_moved * 24 * variable.leg_rate) * 1.5"
+          ],
+          "position": [0, "math.abs(math.cos(query.modified_distance_moved * 24 * variable.leg_rate)) * 0.5", 0]
+        },
+        "head": {
+          "rotation": [
+            "-9 + (math.sin(query.modified_distance_moved * 24 * variable.leg_rate * 2) * 2)",
+            "-math.sin(query.modified_distance_moved * 24 * variable.leg_rate) * 3",
+            0
+          ]
+        },
+        "armL": {
+          "rotation": ["-4 + (-math.sin(query.modified_distance_moved * 24 * variable.leg_rate) * 10)", 0, -4]
+        },
+        "armR": {
+          "rotation": ["-4 + (math.sin(query.modified_distance_moved * 24 * variable.leg_rate) * 10)", 0, 4]
+        },
+        "foreL": {
+          "rotation": [
+            "-10 + (-math.max(0, math.sin(query.modified_distance_moved * 24 * variable.leg_rate)) * 8)",
+            0,
+            0
+          ]
+        },
+        "foreR": {
+          "rotation": [
+            "-10 + (-math.max(0, -math.sin(query.modified_distance_moved * 24 * variable.leg_rate)) * 8)",
+            0,
+            0
+          ]
+        },
+        "handL": {"rotation": [-6, 0, -6]},
+        "handR": {"rotation": [-6, 0, 6]},
+        "thighL": {
+          "rotation": ["math.sin(query.modified_distance_moved * 24 * variable.leg_rate) * 18 - 4", 0, 0]
+        },
+        "thighR": {
+          "rotation": ["-math.sin(query.modified_distance_moved * 24 * variable.leg_rate) * 18 - 4", 0, 0]
+        },
+        "shinL": {
+          "rotation": [
+            "math.max(0, -math.cos(query.modified_distance_moved * 24 * variable.leg_rate)) * 26 + 6",
+            0,
+            0
+          ]
+        },
+        "shinR": {
+          "rotation": [
+            "math.max(0, math.cos(query.modified_distance_moved * 24 * variable.leg_rate)) * 26 + 6",
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.voidling.look_at_target": {
+      "loop": true,
+      "bones": {
+        "head": {
+          "rotation": [
+            "math.clamp(query.target_x_rotation, -25, 25) * 0.6",
+            "math.clamp(query.target_y_rotation, -45, 45) * 0.7",
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.voidling.swipe": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "body": {
+          "rotation": {
+            "0.0": [7, 0, 0],
+            "0.55": [-6, 18, 0],
+            "0.62": [-6, 18, 0],
+            "0.7": [16, -24, 0],
+            "0.9": [16, -24, 0],
+            "1.3": [7, 0, 0]
+          }
+        },
+        "head": {
+          "rotation": {
+            "0.0": [-9, 0, 0],
+            "0.55": [-10, -10, 0],
+            "0.62": [-10, -10, 0],
+            "0.7": [-14, 14, 0],
+            "0.9": [-14, 14, 0],
+            "1.3": [-9, 0, 0]
+          }
+        },
+        "armL": {
+          "rotation": {
+            "0.0": [-4, 0, -4],
+            "0.55": [-20, 0, -18],
+            "0.62": [-20, 0, -18],
+            "0.7": [-8, 0, -14],
+            "0.9": [-8, 0, -14],
+            "1.3": [-4, 0, -4]
+          }
+        },
+        "armR": {
+          "rotation": {
+            "0.0": [-4, 0, 4],
+            "0.55": [-165, 0, 28],
+            "0.62": [-165, 0, 28],
+            "0.7": [-62, 0, -26],
+            "0.9": [-62, 0, -26],
+            "1.3": [-4, 0, 4]
+          }
+        },
+        "foreL": {
+          "rotation": {
+            "0.0": [-10, 0, 0],
+            "0.55": [-10, 0, 0],
+            "0.62": [-10, 0, 0],
+            "0.7": [-10, 0, 0],
+            "0.9": [-10, 0, 0],
+            "1.3": [-10, 0, 0]
+          }
+        },
+        "foreR": {
+          "rotation": {
+            "0.0": [-10, 0, 0],
+            "0.55": [-30, 0, 0],
+            "0.62": [-30, 0, 0],
+            "0.7": [-8, 0, 0],
+            "0.9": [-8, 0, 0],
+            "1.3": [-10, 0, 0]
+          }
+        },
+        "handL": {
+          "rotation": {
+            "0.0": [-6, 0, -6],
+            "0.55": [-6, 0, -6],
+            "0.62": [-6, 0, -6],
+            "0.7": [-6, 0, -6],
+            "0.9": [-6, 0, -6],
+            "1.3": [-6, 0, -6]
+          }
+        },
+        "handR": {
+          "rotation": {
+            "0.0": [-6, 0, 6],
+            "0.55": [-20, 0, 0],
+            "0.62": [-20, 0, 0],
+            "0.7": [30, 0, 0],
+            "0.9": [30, 0, 0],
+            "1.3": [-6, 0, 6]
+          }
+        },
+        "thighL": {
+          "rotation": {
+            "0.0": [-4, 0, 0],
+            "0.55": [-4, 0, 0],
+            "0.62": [-4, 0, 0],
+            "0.7": [-22, 0, 0],
+            "0.9": [-22, 0, 0],
+            "1.3": [-4, 0, 0]
+          }
+        },
+        "thighR": {
+          "rotation": {
+            "0.0": [-4, 0, 0],
+            "0.55": [-4, 0, 0],
+            "0.62": [-4, 0, 0],
+            "0.7": [8, 0, 0],
+            "0.9": [8, 0, 0],
+            "1.3": [-4, 0, 0]
+          }
+        },
+        "shinL": {
+          "rotation": {
+            "0.0": [6, 0, 0],
+            "0.55": [6, 0, 0],
+            "0.62": [6, 0, 0],
+            "0.7": [16, 0, 0],
+            "0.9": [16, 0, 0],
+            "1.3": [6, 0, 0]
+          }
+        },
+        "shinR": {
+          "rotation": {
+            "0.0": [6, 0, 0],
+            "0.55": [6, 0, 0],
+            "0.62": [6, 0, 0],
+            "0.7": [10, 0, 0],
+            "0.9": [10, 0, 0],
+            "1.3": [6, 0, 0]
+          }
+        }
+      },
+      "animation_length": 1.3
+    },
+    "animation.zoocraft.voidling.slam": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "body": {
+          "rotation": {
+            "0.0": [7, 0, 0],
+            "0.8": [-10, 0, 0],
+            "0.85": [-10, 0, 0],
+            "0.9": [22, 0, 0],
+            "1.2": [22, 0, 0],
+            "1.5": [7, 0, 0]
+          }
+        },
+        "head": {
+          "rotation": {
+            "0.0": [-9, 0, 0],
+            "0.8": [-16, 0, 0],
+            "0.85": [-16, 0, 0],
+            "0.9": [-16, 0, 0],
+            "1.2": [-16, 0, 0],
+            "1.5": [-9, 0, 0]
+          }
+        },
+        "armL": {
+          "rotation": {
+            "0.0": [-4, 0, -4],
+            "0.8": [-170, 0, -14],
+            "0.85": [-170, 0, -14],
+            "0.9": [-50, 0, 6],
+            "1.2": [-50, 0, 6],
+            "1.5": [-4, 0, -4]
+          }
+        },
+        "armR": {
+          "rotation": {
+            "0.0": [-4, 0, 4],
+            "0.8": [-170, 0, 14],
+            "0.85": [-170, 0, 14],
+            "0.9": [-50, 0, -6],
+            "1.2": [-50, 0, -6],
+            "1.5": [-4, 0, 4]
+          }
+        },
+        "foreL": {
+          "rotation": {
+            "0.0": [-10, 0, 0],
+            "0.8": [-20, 0, 0],
+            "0.85": [-20, 0, 0],
+            "0.9": [-6, 0, 0],
+            "1.2": [-6, 0, 0],
+            "1.5": [-10, 0, 0]
+          }
+        },
+        "foreR": {
+          "rotation": {
+            "0.0": [-10, 0, 0],
+            "0.8": [-20, 0, 0],
+            "0.85": [-20, 0, 0],
+            "0.9": [-6, 0, 0],
+            "1.2": [-6, 0, 0],
+            "1.5": [-10, 0, 0]
+          }
+        },
+        "handL": {
+          "rotation": {
+            "0.0": [-6, 0, -6],
+            "0.8": [-6, 0, -6],
+            "0.85": [-6, 0, -6],
+            "0.9": [30, 0, 0],
+            "1.2": [30, 0, 0],
+            "1.5": [-6, 0, -6]
+          }
+        },
+        "handR": {
+          "rotation": {
+            "0.0": [-6, 0, 6],
+            "0.8": [-6, 0, 6],
+            "0.85": [-6, 0, 6],
+            "0.9": [30, 0, 0],
+            "1.2": [30, 0, 0],
+            "1.5": [-6, 0, 6]
+          }
+        },
+        "thighL": {
+          "rotation": {
+            "0.0": [-4, 0, 0],
+            "0.8": [-4, 0, 0],
+            "0.85": [-4, 0, 0],
+            "0.9": [-16, 0, 0],
+            "1.2": [-16, 0, 0],
+            "1.5": [-4, 0, 0]
+          }
+        },
+        "thighR": {
+          "rotation": {
+            "0.0": [-4, 0, 0],
+            "0.8": [-4, 0, 0],
+            "0.85": [-4, 0, 0],
+            "0.9": [-4, 0, 0],
+            "1.2": [-4, 0, 0],
+            "1.5": [-4, 0, 0]
+          }
+        },
+        "shinL": {
+          "rotation": {
+            "0.0": [6, 0, 0],
+            "0.8": [6, 0, 0],
+            "0.85": [6, 0, 0],
+            "0.9": [14, 0, 0],
+            "1.2": [14, 0, 0],
+            "1.5": [6, 0, 0]
+          }
+        },
+        "shinR": {
+          "rotation": {
+            "0.0": [6, 0, 0],
+            "0.8": [6, 0, 0],
+            "0.85": [6, 0, 0],
+            "0.9": [6, 0, 0],
+            "1.2": [6, 0, 0],
+            "1.5": [6, 0, 0]
+          }
+        }
+      },
+      "animation_length": 1.5
+    },
+    "animation.zoocraft.voidling.hurl": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "body": {
+          "rotation": {
+            "0.0": [7, 0, 0],
+            "0.3": [-4, 0, 0],
+            "0.82": [-4, 0, 0],
+            "0.9": [16, 0, 0],
+            "1.05": [16, 0, 0],
+            "1.4": [7, 0, 0]
+          }
+        },
+        "head": {
+          "rotation": {
+            "0.0": [-9, 0, 0],
+            "0.3": [2, 0, 0],
+            "0.82": [2, 0, 0],
+            "0.9": [-12, 0, 0],
+            "1.05": [-12, 0, 0],
+            "1.4": [-9, 0, 0]
+          }
+        },
+        "armL": {
+          "rotation": {
+            "0.0": [-4, 0, -4],
+            "0.3": [-48, 0, 22],
+            "0.82": [-48, 0, 22],
+            "0.9": [-92, 0, 8],
+            "1.05": [-92, 0, 8],
+            "1.4": [-4, 0, -4]
+          }
+        },
+        "armR": {
+          "rotation": {
+            "0.0": [-4, 0, 4],
+            "0.3": [-48, 0, -22],
+            "0.82": [-48, 0, -22],
+            "0.9": [-92, 0, -8],
+            "1.05": [-92, 0, -8],
+            "1.4": [-4, 0, 4]
+          }
+        },
+        "foreL": {
+          "rotation": {
+            "0.0": [-10, 0, 0],
+            "0.3": [-62, 0, 0],
+            "0.82": [-62, 0, 0],
+            "0.9": [-4, 0, 0],
+            "1.05": [-4, 0, 0],
+            "1.4": [-10, 0, 0]
+          }
+        },
+        "foreR": {
+          "rotation": {
+            "0.0": [-10, 0, 0],
+            "0.3": [-62, 0, 0],
+            "0.82": [-62, 0, 0],
+            "0.9": [-4, 0, 0],
+            "1.05": [-4, 0, 0],
+            "1.4": [-10, 0, 0]
+          }
+        },
+        "handL": {
+          "rotation": {
+            "0.0": [-6, 0, -6],
+            "0.3": [60, 0, 30],
+            "0.82": [60, 0, 30],
+            "0.9": [-20, 0, -20],
+            "1.05": [-20, 0, -20],
+            "1.4": [-6, 0, -6]
+          }
+        },
+        "handR": {
+          "rotation": {
+            "0.0": [-6, 0, 6],
+            "0.3": [60, 0, -30],
+            "0.82": [60, 0, -30],
+            "0.9": [-20, 0, 20],
+            "1.05": [-20, 0, 20],
+            "1.4": [-6, 0, 6]
+          }
+        },
+        "thighL": {
+          "rotation": {
+            "0.0": [-4, 0, 0],
+            "0.3": [-4, 0, 0],
+            "0.82": [-4, 0, 0],
+            "0.9": [-18, 0, 0],
+            "1.05": [-18, 0, 0],
+            "1.4": [-4, 0, 0]
+          }
+        },
+        "thighR": {
+          "rotation": {
+            "0.0": [-4, 0, 0],
+            "0.3": [-4, 0, 0],
+            "0.82": [-4, 0, 0],
+            "0.9": [-4, 0, 0],
+            "1.05": [-4, 0, 0],
+            "1.4": [-4, 0, 0]
+          }
+        },
+        "shinL": {
+          "rotation": {
+            "0.0": [6, 0, 0],
+            "0.3": [6, 0, 0],
+            "0.82": [6, 0, 0],
+            "0.9": [14, 0, 0],
+            "1.05": [14, 0, 0],
+            "1.4": [6, 0, 0]
+          }
+        },
+        "shinR": {
+          "rotation": {
+            "0.0": [6, 0, 0],
+            "0.3": [6, 0, 0],
+            "0.82": [6, 0, 0],
+            "0.9": [6, 0, 0],
+            "1.05": [6, 0, 0],
+            "1.4": [6, 0, 0]
+          }
+        }
+      },
+      "animation_length": 1.4
+    },
+    "animation.zoocraft.voidling.roar": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "body": {
+          "rotation": {
+            "0.0": [7, 0, 0],
+            "0.4": [-4, 0, 0],
+            "0.8": [-14, 0, 0],
+            "1.85": [-14, 0, 0],
+            "2.2": [7, 0, 0]
+          }
+        },
+        "head": {
+          "rotation": {
+            "0.0": [-9, 0, 0],
+            "0.4": [-9, 0, 0],
+            "0.8": [-38, 0, 0],
+            "1.85": [-38, 0, 0],
+            "2.2": [-9, 0, 0]
+          }
+        },
+        "armL": {
+          "rotation": {
+            "0.0": [-4, 0, -4],
+            "0.4": [-13, 0, -59],
+            "0.8": [-26, 0, -118],
+            "1.85": [-26, 0, -118],
+            "2.2": [-4, 0, -4]
+          }
+        },
+        "armR": {
+          "rotation": {
+            "0.0": [-4, 0, 4],
+            "0.4": [-13, 0, 59],
+            "0.8": [-26, 0, 118],
+            "1.85": [-26, 0, 118],
+            "2.2": [-4, 0, 4]
+          }
+        },
+        "foreL": {
+          "rotation": {
+            "0.0": [-10, 0, 0],
+            "0.4": [-7, 0, 0],
+            "0.8": [-14, 0, 0],
+            "1.85": [-14, 0, 0],
+            "2.2": [-10, 0, 0]
+          }
+        },
+        "foreR": {
+          "rotation": {
+            "0.0": [-10, 0, 0],
+            "0.4": [-7, 0, 0],
+            "0.8": [-14, 0, 0],
+            "1.85": [-14, 0, 0],
+            "2.2": [-10, 0, 0]
+          }
+        },
+        "handL": {
+          "rotation": {
+            "0.0": [-6, 0, -6],
+            "0.4": [0, 0, -12],
+            "0.8": [0, 0, -24],
+            "1.85": [0, 0, -24],
+            "2.2": [-6, 0, -6]
+          }
+        },
+        "handR": {
+          "rotation": {
+            "0.0": [-6, 0, 6],
+            "0.4": [0, 0, 12],
+            "0.8": [0, 0, 24],
+            "1.85": [0, 0, 24],
+            "2.2": [-6, 0, 6]
+          }
+        },
+        "thighL": {
+          "rotation": {
+            "0.0": [-4, 0, 0],
+            "0.4": [-4, 0, 0],
+            "0.8": [-4, 0, 0],
+            "1.85": [-4, 0, 0],
+            "2.2": [-4, 0, 0]
+          }
+        },
+        "thighR": {
+          "rotation": {
+            "0.0": [-4, 0, 0],
+            "0.4": [-4, 0, 0],
+            "0.8": [-4, 0, 0],
+            "1.85": [-4, 0, 0],
+            "2.2": [-4, 0, 0]
+          }
+        },
+        "shinL": {
+          "rotation": {
+            "0.0": [6, 0, 0],
+            "0.4": [6, 0, 0],
+            "0.8": [6, 0, 0],
+            "1.85": [6, 0, 0],
+            "2.2": [6, 0, 0]
+          }
+        },
+        "shinR": {
+          "rotation": {
+            "0.0": [6, 0, 0],
+            "0.4": [6, 0, 0],
+            "0.8": [6, 0, 0],
+            "1.85": [6, 0, 0],
+            "2.2": [6, 0, 0]
+          }
+        }
+      },
+      "animation_length": 2.2
+    },
+    "animation.zoocraft.voidling.roar_shake": {
+      "loop": true,
+      "bones": {
+        "head": {
+          "rotation": [
+            "math.sin(query.life_time * 1800) * 3",
+            "math.sin(query.life_time * 1500) * 4",
+            "math.sin(query.life_time * 1200) * 3"
+          ]
+        },
+        "handL": {"rotation": ["math.sin(query.life_time * 1400) * 10", 0, 0]},
+        "handR": {"rotation": ["math.sin(query.life_time * 1300) * 10", 0, 0]},
+        "body": {"rotation": [0, 0, "math.sin(query.life_time * 1100) * 1.5"]}
+      }
+    },
+    "animation.zoocraft.voidling.grab": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "body": {
+          "rotation": {
+            "0.0": [7, 0, 0],
+            "0.25": [-12, 0, 0],
+            "0.95": [-12, 0, 0],
+            "1": [24, 0, 0],
+            "1.2": [24, 0, 0],
+            "1.5": [7, 0, 0]
+          }
+        },
+        "head": {
+          "rotation": {
+            "0.0": [-9, 0, 0],
+            "0.25": [-34, 0, 0],
+            "0.95": [-34, 0, 0],
+            "1": [-22, 0, 0],
+            "1.2": [-22, 0, 0],
+            "1.5": [-9, 0, 0]
+          }
+        },
+        "armL": {
+          "rotation": {
+            "0.0": [-4, 0, -4],
+            "0.25": [-26, 0, -118],
+            "0.95": [-26, 0, -118],
+            "1": [-96, 0, 10],
+            "1.2": [-96, 0, 10],
+            "1.5": [-4, 0, -4]
+          }
+        },
+        "armR": {
+          "rotation": {
+            "0.0": [-4, 0, 4],
+            "0.25": [-26, 0, 118],
+            "0.95": [-26, 0, 118],
+            "1": [-96, 0, -10],
+            "1.2": [-96, 0, -10],
+            "1.5": [-4, 0, 4]
+          }
+        },
+        "foreL": {
+          "rotation": {
+            "0.0": [-10, 0, 0],
+            "0.25": [-14, 0, 0],
+            "0.95": [-14, 0, 0],
+            "1": [-4, 0, 0],
+            "1.2": [-4, 0, 0],
+            "1.5": [-10, 0, 0]
+          }
+        },
+        "foreR": {
+          "rotation": {
+            "0.0": [-10, 0, 0],
+            "0.25": [-14, 0, 0],
+            "0.95": [-14, 0, 0],
+            "1": [-4, 0, 0],
+            "1.2": [-4, 0, 0],
+            "1.5": [-10, 0, 0]
+          }
+        },
+        "handL": {
+          "rotation": {
+            "0.0": [-6, 0, -6],
+            "0.25": [0, 0, -24],
+            "0.95": [0, 0, -24],
+            "1": [-16, 0, -16],
+            "1.2": [-16, 0, -16],
+            "1.5": [-6, 0, -6]
+          }
+        },
+        "handR": {
+          "rotation": {
+            "0.0": [-6, 0, 6],
+            "0.25": [0, 0, 24],
+            "0.95": [0, 0, 24],
+            "1": [-16, 0, 16],
+            "1.2": [-16, 0, 16],
+            "1.5": [-6, 0, 6]
+          }
+        },
+        "thighL": {
+          "rotation": {
+            "0.0": [-4, 0, 0],
+            "0.25": [-4, 0, 0],
+            "0.95": [-4, 0, 0],
+            "1": [-30, 0, 0],
+            "1.2": [-30, 0, 0],
+            "1.5": [-4, 0, 0]
+          }
+        },
+        "thighR": {
+          "rotation": {
+            "0.0": [-4, 0, 0],
+            "0.25": [-4, 0, 0],
+            "0.95": [-4, 0, 0],
+            "1": [12, 0, 0],
+            "1.2": [12, 0, 0],
+            "1.5": [-4, 0, 0]
+          }
+        },
+        "shinL": {
+          "rotation": {
+            "0.0": [6, 0, 0],
+            "0.25": [6, 0, 0],
+            "0.95": [6, 0, 0],
+            "1": [22, 0, 0],
+            "1.2": [22, 0, 0],
+            "1.5": [6, 0, 0]
+          }
+        },
+        "shinR": {
+          "rotation": {
+            "0.0": [6, 0, 0],
+            "0.25": [6, 0, 0],
+            "0.95": [6, 0, 0],
+            "1": [8, 0, 0],
+            "1.2": [8, 0, 0],
+            "1.5": [6, 0, 0]
+          }
+        }
+      },
+      "animation_length": 1.5
+    },
+    "animation.zoocraft.voidling.grab_shake": {
+      "loop": true,
+      "bones": {
+        "head": {
+          "rotation": ["math.sin(query.life_time * 1900) * 3", "math.sin(query.life_time * 1500) * 3", 0]
+        },
+        "handL": {"rotation": ["math.sin(query.life_time * 1500) * 12", 0, 0]},
+        "handR": {"rotation": ["math.sin(query.life_time * 1400) * 12", 0, 0]}
+      }
+    },
+    "animation.zoocraft.voidling.drag": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "rotation": [-4, "math.sin(query.anim_time * 230) * 2", 0],
+          "position": [0, "math.abs(math.cos(query.anim_time * 230)) * 0.4", 0]
+        },
+        "head": {
+          "rotation": ["-2 + (math.sin(query.life_time * 40) * 3)", "math.sin(query.life_time * 23) * 5", 0]
+        },
+        "armL": {"rotation": ["-70 + (math.sin(query.anim_time * 230 * 2) * 2)", 0, -16]},
+        "armR": {"rotation": ["-70 + (math.sin(query.anim_time * 230 * 2) * 2)", 0, 16]},
+        "foreL": {"rotation": [-14, 0, 0]},
+        "foreR": {"rotation": [-14, 0, 0]},
+        "handL": {"rotation": [30, 0, 34]},
+        "handR": {"rotation": [30, 0, -34]},
+        "thighL": {"rotation": ["math.sin(query.anim_time * 230) * 18 - 4", 0, 0]},
+        "thighR": {"rotation": ["-math.sin(query.anim_time * 230) * 18 - 4", 0, 0]},
+        "shinL": {"rotation": ["math.max(0, -math.cos(query.anim_time * 230)) * 26 + 6", 0, 0]},
+        "shinR": {"rotation": ["math.max(0, math.cos(query.anim_time * 230)) * 26 + 6", 0, 0]}
+      }
+    },
+    "animation.zoocraft.voidling.letgo": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "body": {"rotation": {"0.0": [-4, 0, 0], "0.2": [8, 0, 0], "0.4": [8, 0, 0], "0.7": [7, 0, 0]}},
+        "head": {"rotation": {"0.0": [-2, 0, 0], "0.2": [14, 0, 0], "0.4": [14, 0, 0], "0.7": [-9, 0, 0]}},
+        "armL": {
+          "rotation": {"0.0": [-70, 0, -16], "0.2": [-120, 0, -40], "0.4": [-120, 0, -40], "0.7": [-4, 0, -4]}
+        },
+        "armR": {
+          "rotation": {"0.0": [-70, 0, 16], "0.2": [-120, 0, 40], "0.4": [-120, 0, 40], "0.7": [-4, 0, 4]}
+        },
+        "foreL": {
+          "rotation": {"0.0": [-14, 0, 0], "0.2": [-10, 0, 0], "0.4": [-10, 0, 0], "0.7": [-10, 0, 0]}
+        },
+        "foreR": {
+          "rotation": {"0.0": [-14, 0, 0], "0.2": [-10, 0, 0], "0.4": [-10, 0, 0], "0.7": [-10, 0, 0]}
+        },
+        "handL": {
+          "rotation": {"0.0": [30, 0, 34], "0.2": [-30, 0, -20], "0.4": [-30, 0, -20], "0.7": [-6, 0, -6]}
+        },
+        "handR": {
+          "rotation": {"0.0": [30, 0, -34], "0.2": [-30, 0, 20], "0.4": [-30, 0, 20], "0.7": [-6, 0, 6]}
+        },
+        "thighL": {"rotation": {"0.0": [-4, 0, 0], "0.2": [-4, 0, 0], "0.4": [-4, 0, 0], "0.7": [-4, 0, 0]}},
+        "thighR": {"rotation": {"0.0": [-4, 0, 0], "0.2": [-4, 0, 0], "0.4": [-4, 0, 0], "0.7": [-4, 0, 0]}},
+        "shinL": {"rotation": {"0.0": [6, 0, 0], "0.2": [6, 0, 0], "0.4": [6, 0, 0], "0.7": [6, 0, 0]}},
+        "shinR": {"rotation": {"0.0": [6, 0, 0], "0.2": [6, 0, 0], "0.4": [6, 0, 0], "0.7": [6, 0, 0]}}
+      },
+      "animation_length": 0.7
+    },
+    "animation.zoocraft.voidling.stagger": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "body": {
+          "rotation": {"0.0": [-4, 0, 0], "0.15": [-22, 0, 6], "0.45": [-8, 0, -4], "0.8": [7, 0, 0]}
+        },
+        "head": {
+          "rotation": {"0.0": [-2, 0, 0], "0.15": [-24, 8, 0], "0.45": [-10, -6, 0], "0.8": [-9, 0, 0]}
+        },
+        "armL": {
+          "rotation": {"0.0": [-70, 0, -16], "0.15": [-150, 0, -36], "0.45": [-60, 0, -30], "0.8": [-4, 0, -4]}
+        },
+        "armR": {
+          "rotation": {"0.0": [-70, 0, 16], "0.15": [-140, 0, 40], "0.45": [-50, 0, 30], "0.8": [-4, 0, 4]}
+        },
+        "foreL": {
+          "rotation": {"0.0": [-14, 0, 0], "0.15": [-30, 0, 0], "0.45": [-10, 0, 0], "0.8": [-10, 0, 0]}
+        },
+        "foreR": {
+          "rotation": {"0.0": [-14, 0, 0], "0.15": [-30, 0, 0], "0.45": [-10, 0, 0], "0.8": [-10, 0, 0]}
+        },
+        "handL": {
+          "rotation": {"0.0": [30, 0, 34], "0.15": [-30, 0, 0], "0.45": [-6, 0, -6], "0.8": [-6, 0, -6]}
+        },
+        "handR": {
+          "rotation": {"0.0": [30, 0, -34], "0.15": [-30, 0, 0], "0.45": [-6, 0, 6], "0.8": [-6, 0, 6]}
+        },
+        "thighL": {"rotation": {"0.0": [-4, 0, 0], "0.15": [14, 0, 0], "0.45": [-4, 0, 0], "0.8": [-4, 0, 0]}},
+        "thighR": {
+          "rotation": {"0.0": [-4, 0, 0], "0.15": [-14, 0, 0], "0.45": [-4, 0, 0], "0.8": [-4, 0, 0]}
+        },
+        "shinL": {"rotation": {"0.0": [6, 0, 0], "0.15": [6, 0, 0], "0.45": [6, 0, 0], "0.8": [6, 0, 0]}},
+        "shinR": {"rotation": {"0.0": [6, 0, 0], "0.15": [18, 0, 0], "0.45": [6, 0, 0], "0.8": [6, 0, 0]}}
+      },
+      "animation_length": 0.8
+    },
+    "animation.zoocraft.voidling.eat": {
+      "loop": true,
+      "bones": {
+        "body": {"rotation": [34, 0, 0]},
+        "head": {"rotation": ["-6 + (math.sin(query.life_time * 520) * 4)", 0, 0]},
+        "armL": {"rotation": [-50, 0, 10]},
+        "armR": {"rotation": [-20, 0, 6]},
+        "foreL": {"rotation": ["-70 + (-30 * (math.max(0, math.sin(query.life_time * 150))))", 0, 0]},
+        "foreR": {"rotation": [-20, 0, 0]},
+        "handL": {"rotation": [-6, 0, -6]},
+        "handR": {"rotation": [-6, 0, 6]},
+        "thighL": {"rotation": [-10, 0, 0]},
+        "thighR": {"rotation": [-10, 0, 0]},
+        "shinL": {"rotation": [14, 0, 0]},
+        "shinR": {"rotation": [14, 0, 0]}
+      }
+    },
+    "animation.zoocraft.voidling.sit": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "rotation": [30, 0, 0],
+          "scale": [
+            "1 + (0.012 * (math.sin(query.life_time * 30 + variable.offset * 20)))",
+            1,
+            "1 + (0.02 * (math.sin(query.life_time * 30 + variable.offset * 20)))"
+          ]
+        },
+        "head": {
+          "rotation": [
+            "-24 + (math.sin(query.life_time * 10 + variable.offset) * 3)",
+            "math.sin(query.life_time * 6 + variable.offset) * 6",
+            0
+          ]
+        },
+        "armL": {"rotation": [-56, 0, -6]},
+        "armR": {"rotation": [-56, 0, 6]},
+        "foreL": {"rotation": [-128, 0, 0]},
+        "foreR": {"rotation": [-128, 0, 0]},
+        "handL": {"rotation": [50, 0, 20]},
+        "handR": {"rotation": [50, 0, -20]},
+        "thighL": {"rotation": [-96, 0, -12]},
+        "thighR": {"rotation": [-96, 0, 12]},
+        "shinL": {"rotation": [140, 0, 0]},
+        "shinR": {"rotation": [140, 0, 0]},
+        "voidling": {"position": [0, -11.404, 0]}
+      }
+    },
+    "animation.zoocraft.voidling.sleep": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "rotation": [50, 0, 0],
+          "scale": [
+            "1 + (0.014 * (math.sin(query.life_time * 16 + variable.offset * 20)))",
+            1,
+            "1 + (0.024 * (math.sin(query.life_time * 16 + variable.offset * 20)))"
+          ]
+        },
+        "head": {"rotation": [30, 0, 0]},
+        "armL": {"rotation": [-64, 0, 14]},
+        "armR": {"rotation": [-64, 0, -14]},
+        "foreL": {"rotation": [-104, 0, 0]},
+        "foreR": {"rotation": [-104, 0, 0]},
+        "handL": {"rotation": [60, 0, 20]},
+        "handR": {"rotation": [60, 0, -20]},
+        "thighL": {"rotation": [-96, 0, -12]},
+        "thighR": {"rotation": [-96, 0, 12]},
+        "shinL": {"rotation": [140, 0, 0]},
+        "shinR": {"rotation": [140, 0, 0]},
+        "voidling": {"position": [0, -11.404, 0]}
+      }
+    },
+    "animation.zoocraft.voidling.tired": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "rotation": [42, 0, 0],
+          "scale": [
+            "1 + (0.038 * (math.sin(query.life_time * 300 + variable.offset * 20)))",
+            1,
+            "1 + (0.064 * (math.sin(query.life_time * 300 + variable.offset * 20)))"
+          ]
+        },
+        "head": {"rotation": ["26 + (math.sin(query.life_time * 300 + 40) * 3)", 0, 0]},
+        "armL": {"rotation": [-30, 0, -14]},
+        "armR": {"rotation": [-92.56, 0, 6]},
+        "foreL": {"rotation": [-6, 0, 0]},
+        "foreR": {"rotation": [-30, 0, 0]},
+        "handL": {"rotation": [6, 0, 0]},
+        "handR": {"rotation": [40, 0, 0]},
+        "thighL": {"rotation": [-96, 0, -12]},
+        "thighR": {"rotation": [-96, 0, 12]},
+        "shinL": {"rotation": [140, 0, 0]},
+        "shinR": {"rotation": [140, 0, 0]},
+        "voidling": {"position": [0, -0.728, 0]}
+      }
+    },
+    "animation.zoocraft.voidling.sit_down": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "armL": {
+          "rotation": [
+            "-4 + (-52 * (math.clamp(query.anim_time / 1.2, 0, 1)))",
+            0,
+            "-4 + (-2 * (math.clamp(query.anim_time / 1.2, 0, 1)))"
+          ]
+        },
+        "armR": {
+          "rotation": [
+            "-4 + (-52 * (math.clamp(query.anim_time / 1.2, 0, 1)))",
+            0,
+            "4 + (2 * (math.clamp(query.anim_time / 1.2, 0, 1)))"
+          ]
+        },
+        "body": {"rotation": ["7 + (23 * (math.clamp(query.anim_time / 1.2, 0, 1)))", 0, 0]},
+        "foreL": {"rotation": ["-10 + (-118 * (math.clamp(query.anim_time / 1.2, 0, 1)))", 0, 0]},
+        "foreR": {"rotation": ["-10 + (-118 * (math.clamp(query.anim_time / 1.2, 0, 1)))", 0, 0]},
+        "handL": {
+          "rotation": [
+            "-6 + (56 * (math.clamp(query.anim_time / 1.2, 0, 1)))",
+            0,
+            "-6 + (26 * (math.clamp(query.anim_time / 1.2, 0, 1)))"
+          ]
+        },
+        "handR": {
+          "rotation": [
+            "-6 + (56 * (math.clamp(query.anim_time / 1.2, 0, 1)))",
+            0,
+            "6 + (-26 * (math.clamp(query.anim_time / 1.2, 0, 1)))"
+          ]
+        },
+        "head": {"rotation": ["-9 + (-15 * (math.clamp(query.anim_time / 1.2, 0, 1)))", 0, 0]},
+        "shinL": {"rotation": ["6 + (134 * (math.clamp(query.anim_time / 1.2, 0, 1)))", 0, 0]},
+        "shinR": {"rotation": ["6 + (134 * (math.clamp(query.anim_time / 1.2, 0, 1)))", 0, 0]},
+        "thighL": {
+          "rotation": [
+            "-4 + (-92 * (math.clamp(query.anim_time / 1.2, 0, 1)))",
+            0,
+            "-12 * (math.clamp(query.anim_time / 1.2, 0, 1))"
+          ]
+        },
+        "thighR": {
+          "rotation": [
+            "-4 + (-92 * (math.clamp(query.anim_time / 1.2, 0, 1)))",
+            0,
+            "12 * (math.clamp(query.anim_time / 1.2, 0, 1))"
+          ]
+        },
+        "voidling": {
+          "position": {
+            "0.0": [0, 0.008, 0],
+            "0.1": [0, -0.112, 0],
+            "0.2": [0, -0.425, 0],
+            "0.3": [0, -0.924, 0],
+            "0.4": [0, -1.6, 0],
+            "0.5": [0, -2.44, 0],
+            "0.6": [0, -3.43, 0],
+            "0.7": [0, -4.551, 0],
+            "0.8": [0, -5.785, 0],
+            "0.9": [0, -7.111, 0],
+            "1": [0, -8.504, 0],
+            "1.1": [0, -9.943, 0],
+            "1.2": [0, -11.404, 0]
+          }
+        }
+      },
+      "animation_length": 1.2
+    },
+    "animation.zoocraft.voidling.sleep_down": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "armL": {
+          "rotation": [
+            "-4 + (-60 * (math.clamp(query.anim_time / 1.2, 0, 1)))",
+            0,
+            "-4 + (18 * (math.clamp(query.anim_time / 1.2, 0, 1)))"
+          ]
+        },
+        "armR": {
+          "rotation": [
+            "-4 + (-60 * (math.clamp(query.anim_time / 1.2, 0, 1)))",
+            0,
+            "4 + (-18 * (math.clamp(query.anim_time / 1.2, 0, 1)))"
+          ]
+        },
+        "body": {"rotation": ["7 + (43 * (math.clamp(query.anim_time / 1.2, 0, 1)))", 0, 0]},
+        "foreL": {"rotation": ["-10 + (-94 * (math.clamp(query.anim_time / 1.2, 0, 1)))", 0, 0]},
+        "foreR": {"rotation": ["-10 + (-94 * (math.clamp(query.anim_time / 1.2, 0, 1)))", 0, 0]},
+        "handL": {
+          "rotation": [
+            "-6 + (66 * (math.clamp(query.anim_time / 1.2, 0, 1)))",
+            0,
+            "-6 + (26 * (math.clamp(query.anim_time / 1.2, 0, 1)))"
+          ]
+        },
+        "handR": {
+          "rotation": [
+            "-6 + (66 * (math.clamp(query.anim_time / 1.2, 0, 1)))",
+            0,
+            "6 + (-26 * (math.clamp(query.anim_time / 1.2, 0, 1)))"
+          ]
+        },
+        "head": {"rotation": ["-9 + (39 * (math.clamp(query.anim_time / 1.2, 0, 1)))", 0, 0]},
+        "shinL": {"rotation": ["6 + (134 * (math.clamp(query.anim_time / 1.2, 0, 1)))", 0, 0]},
+        "shinR": {"rotation": ["6 + (134 * (math.clamp(query.anim_time / 1.2, 0, 1)))", 0, 0]},
+        "thighL": {
+          "rotation": [
+            "-4 + (-92 * (math.clamp(query.anim_time / 1.2, 0, 1)))",
+            0,
+            "-12 * (math.clamp(query.anim_time / 1.2, 0, 1))"
+          ]
+        },
+        "thighR": {
+          "rotation": [
+            "-4 + (-92 * (math.clamp(query.anim_time / 1.2, 0, 1)))",
+            0,
+            "12 * (math.clamp(query.anim_time / 1.2, 0, 1))"
+          ]
+        },
+        "voidling": {
+          "position": {
+            "0.0": [0, 0.008, 0],
+            "0.1": [0, -0.112, 0],
+            "0.2": [0, -0.425, 0],
+            "0.3": [0, -0.924, 0],
+            "0.4": [0, -1.6, 0],
+            "0.5": [0, -2.44, 0],
+            "0.6": [0, -3.43, 0],
+            "0.7": [0, -4.551, 0],
+            "0.8": [0, -5.785, 0],
+            "0.9": [0, -7.111, 0],
+            "1": [0, -8.504, 0],
+            "1.1": [0, -7.753, 0],
+            "1.2": [0, -6.747, 0]
+          }
+        }
+      },
+      "animation_length": 1.2
+    },
+    "animation.zoocraft.voidling.tired_down": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "armL": {
+          "rotation": [
+            "-4 + (-26 * (math.clamp(query.anim_time / 1.2, 0, 1)))",
+            0,
+            "-4 + (-10 * (math.clamp(query.anim_time / 1.2, 0, 1)))"
+          ]
+        },
+        "armR": {
+          "rotation": [
+            "-4 + (-88.56 * (math.clamp(query.anim_time / 1.2, 0, 1)))",
+            0,
+            "4 + (2 * (math.clamp(query.anim_time / 1.2, 0, 1)))"
+          ]
+        },
+        "body": {"rotation": ["7 + (35 * (math.clamp(query.anim_time / 1.2, 0, 1)))", 0, 0]},
+        "foreL": {"rotation": ["-10 + (4 * (math.clamp(query.anim_time / 1.2, 0, 1)))", 0, 0]},
+        "foreR": {"rotation": ["-10 + (-20 * (math.clamp(query.anim_time / 1.2, 0, 1)))", 0, 0]},
+        "handL": {
+          "rotation": [
+            "-6 + (12 * (math.clamp(query.anim_time / 1.2, 0, 1)))",
+            0,
+            "-6 + (6 * (math.clamp(query.anim_time / 1.2, 0, 1)))"
+          ]
+        },
+        "handR": {
+          "rotation": [
+            "-6 + (46 * (math.clamp(query.anim_time / 1.2, 0, 1)))",
+            0,
+            "6 + (-6 * (math.clamp(query.anim_time / 1.2, 0, 1)))"
+          ]
+        },
+        "head": {"rotation": ["-9 + (35 * (math.clamp(query.anim_time / 1.2, 0, 1)))", 0, 0]},
+        "shinL": {"rotation": ["6 + (134 * (math.clamp(query.anim_time / 1.2, 0, 1)))", 0, 0]},
+        "shinR": {"rotation": ["6 + (134 * (math.clamp(query.anim_time / 1.2, 0, 1)))", 0, 0]},
+        "thighL": {
+          "rotation": [
+            "-4 + (-92 * (math.clamp(query.anim_time / 1.2, 0, 1)))",
+            0,
+            "-12 * (math.clamp(query.anim_time / 1.2, 0, 1))"
+          ]
+        },
+        "thighR": {
+          "rotation": [
+            "-4 + (-92 * (math.clamp(query.anim_time / 1.2, 0, 1)))",
+            0,
+            "12 * (math.clamp(query.anim_time / 1.2, 0, 1))"
+          ]
+        },
+        "voidling": {
+          "position": {
+            "0.0": [0, 0.008, 0],
+            "0.1": [0, -0.112, 0],
+            "0.2": [0, -0.425, 0],
+            "0.3": [0, -0.924, 0],
+            "0.4": [0, -1.6, 0],
+            "0.5": [0, -2.44, 0],
+            "0.6": [0, -2.374, 0],
+            "0.7": [0, -2.143, 0],
+            "0.8": [0, -1.884, 0],
+            "0.9": [0, -1.613, 0],
+            "1": [0, -1.33, 0],
+            "1.1": [0, -1.035, 0],
+            "1.2": [0, -0.728, 0]
+          }
+        }
+      },
+      "animation_length": 1.2
+    },
+    "animation.zoocraft.voidling.get_up": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "armL": {
+          "rotation": [
+            "-56 + (52 * (math.clamp(query.anim_time / 1.2, 0, 1)))",
+            0,
+            "-6 + (2 * (math.clamp(query.anim_time / 1.2, 0, 1)))"
+          ]
+        },
+        "armR": {
+          "rotation": [
+            "-56 + (52 * (math.clamp(query.anim_time / 1.2, 0, 1)))",
+            0,
+            "6 + (-2 * (math.clamp(query.anim_time / 1.2, 0, 1)))"
+          ]
+        },
+        "body": {"rotation": ["30 + (-23 * (math.clamp(query.anim_time / 1.2, 0, 1)))", 0, 0]},
+        "foreL": {"rotation": ["-128 + (118 * (math.clamp(query.anim_time / 1.2, 0, 1)))", 0, 0]},
+        "foreR": {"rotation": ["-128 + (118 * (math.clamp(query.anim_time / 1.2, 0, 1)))", 0, 0]},
+        "handL": {
+          "rotation": [
+            "50 + (-56 * (math.clamp(query.anim_time / 1.2, 0, 1)))",
+            0,
+            "20 + (-26 * (math.clamp(query.anim_time / 1.2, 0, 1)))"
+          ]
+        },
+        "handR": {
+          "rotation": [
+            "50 + (-56 * (math.clamp(query.anim_time / 1.2, 0, 1)))",
+            0,
+            "-20 + (26 * (math.clamp(query.anim_time / 1.2, 0, 1)))"
+          ]
+        },
+        "head": {"rotation": ["-24 + (15 * (math.clamp(query.anim_time / 1.2, 0, 1)))", 0, 0]},
+        "shinL": {"rotation": ["140 + (-134 * (math.clamp(query.anim_time / 1.2, 0, 1)))", 0, 0]},
+        "shinR": {"rotation": ["140 + (-134 * (math.clamp(query.anim_time / 1.2, 0, 1)))", 0, 0]},
+        "thighL": {
+          "rotation": [
+            "-96 + (92 * (math.clamp(query.anim_time / 1.2, 0, 1)))",
+            0,
+            "-12 + (12 * (math.clamp(query.anim_time / 1.2, 0, 1)))"
+          ]
+        },
+        "thighR": {
+          "rotation": [
+            "-96 + (92 * (math.clamp(query.anim_time / 1.2, 0, 1)))",
+            0,
+            "12 + (-12 * (math.clamp(query.anim_time / 1.2, 0, 1)))"
+          ]
+        },
+        "voidling": {
+          "position": {
+            "0.0": [0, -11.404, 0],
+            "0.1": [0, -9.943, 0],
+            "0.2": [0, -8.504, 0],
+            "0.3": [0, -7.111, 0],
+            "0.4": [0, -5.785, 0],
+            "0.5": [0, -4.551, 0],
+            "0.6": [0, -3.43, 0],
+            "0.7": [0, -2.44, 0],
+            "0.8": [0, -1.6, 0],
+            "0.9": [0, -0.924, 0],
+            "1": [0, -0.425, 0],
+            "1.1": [0, -0.112, 0],
+            "1.2": [0, 0.008, 0]
+          }
+        }
+      },
+      "animation_length": 1.2
+    },
+    "animation.zoocraft.voidling.toss": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "body": {"rotation": {"0.0": [7, 0, 0], "0.5": [2, 0, 0], "2": [2, 0, 0], "2.4": [7, 0, 0]}},
+        "head": {"rotation": {"0.0": [-9, 0, 0], "0.5": [4, 0, 0], "2": [4, 0, 0], "2.4": [-9, 0, 0]}},
+        "armL": {
+          "rotation": {"0.0": [-4, 0, -4], "0.5": [-48, 0, 22], "2": [-48, 0, 22], "2.4": [-4, 0, -4]}
+        },
+        "armR": {
+          "rotation": {"0.0": [-4, 0, 4], "0.5": [-48, 0, -22], "2": [-48, 0, -22], "2.4": [-4, 0, 4]}
+        },
+        "foreL": {"rotation": {"0.0": [-10, 0, 0], "0.5": [-62, 0, 0], "2": [-62, 0, 0], "2.4": [-10, 0, 0]}},
+        "foreR": {"rotation": {"0.0": [-10, 0, 0], "0.5": [-62, 0, 0], "2": [-62, 0, 0], "2.4": [-10, 0, 0]}},
+        "handL": {"rotation": {"0.0": [-6, 0, -6], "0.5": [70, 0, 24], "2": [70, 0, 24], "2.4": [-6, 0, -6]}},
+        "handR": {"rotation": {"0.0": [-6, 0, 6], "0.5": [70, 0, -24], "2": [70, 0, -24], "2.4": [-6, 0, 6]}},
+        "thighL": {"rotation": {"0.0": [-4, 0, 0], "0.5": [-4, 0, 0], "2": [-4, 0, 0], "2.4": [-4, 0, 0]}},
+        "thighR": {"rotation": {"0.0": [-4, 0, 0], "0.5": [-4, 0, 0], "2": [-4, 0, 0], "2.4": [-4, 0, 0]}},
+        "shinL": {"rotation": {"0.0": [6, 0, 0], "0.5": [6, 0, 0], "2": [6, 0, 0], "2.4": [6, 0, 0]}},
+        "shinR": {"rotation": {"0.0": [6, 0, 0], "0.5": [6, 0, 0], "2": [6, 0, 0], "2.4": [6, 0, 0]}}
+      },
+      "animation_length": 2.4
+    },
+    "animation.zoocraft.voidling.toss_ball": {
+      "loop": true,
+      "bones": {
+        "orb": {
+          "position": [0, "math.clamp((query.anim_time - 0.8) / 1.2, 0, 1) * 20", 0],
+          "scale": [
+            "0.6 - math.clamp((query.anim_time - 1.2) / 0.8, 0, 1) * 0.5",
+            "0.6 - math.clamp((query.anim_time - 1.2) / 0.8, 0, 1) * 0.5",
+            "0.6 - math.clamp((query.anim_time - 1.2) / 0.8, 0, 1) * 0.5"
+          ]
+        },
+        "head": {"rotation": ["-math.clamp((query.anim_time - 0.8) / 1.2, 0, 1) * 26", 0, 0]}
+      }
+    },
+    "animation.zoocraft.voidling.ball": {"loop": true, "bones": {"orb": {"scale": ["v.ball", "v.ball", "v.ball"]}}},
+    "animation.zoocraft.voidling.orb_spin": {
+      "loop": true,
+      "bones": {"orb": {"rotation": ["query.life_time * 400", "query.life_time * 300", 0]}}
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.zoocraft.voidling",
+        "texture_width": 64,
+        "texture_height": 64,
+        "visible_bounds_width": 2.5,
+        "visible_bounds_height": 3.4,
+        "visible_bounds_offset": [0, 1.3, 0]
+      },
+      "bones": [
+        {"name": "voidling", "pivot": [0, 0, 0]},
+        {
+          "name": "thighL",
+          "pivot": [1.5, 17, 0],
+          "parent": "voidling",
+          "cubes": [{"origin": [0.5, 8, -1], "size": [2, 9, 2], "uv": [0, 0]}]
+        },
+        {
+          "name": "shinL",
+          "pivot": [1.5, 8, 0],
+          "parent": "thighL",
+          "cubes": [{"origin": [0.5, 0, -1], "size": [2, 8, 2], "uv": [8, 0]}]
+        },
+        {
+          "name": "thighR",
+          "pivot": [-1.5, 17, 0],
+          "parent": "voidling",
+          "cubes": [{"origin": [-2.5, 8, -1], "size": [2, 9, 2], "uv": [16, 0]}]
+        },
+        {
+          "name": "shinR",
+          "pivot": [-1.5, 8, 0],
+          "parent": "thighR",
+          "cubes": [{"origin": [-2.5, 0, -1], "size": [2, 8, 2], "uv": [24, 0]}]
+        },
+        {
+          "name": "body",
+          "pivot": [0, 17, 0],
+          "parent": "voidling",
+          "cubes": [{"origin": [-3, 17, -1.5], "size": [6, 11, 3], "uv": [32, 0]}]
+        },
+        {
+          "name": "head",
+          "pivot": [0, 28, 0],
+          "parent": "body",
+          "cubes": [{"origin": [-2.5, 28, -2.5], "size": [5, 6, 5], "uv": [0, 14]}]
+        },
+        {
+          "name": "armL",
+          "pivot": [4, 27, 0],
+          "parent": "body",
+          "cubes": [{"origin": [3, 17, -1], "size": [2, 10, 2], "uv": [20, 14]}]
+        },
+        {
+          "name": "foreL",
+          "pivot": [4, 17, 0],
+          "parent": "armL",
+          "cubes": [{"origin": [3, 8, -1], "size": [2, 9, 2], "uv": [28, 14]}]
+        },
+        {
+          "name": "handL",
+          "pivot": [4, 8, 0],
+          "parent": "foreL",
+          "cubes": [
+            {"origin": [3.5, 3, -2], "size": [1, 5, 1], "uv": [36, 14]},
+            {"origin": [3.5, 3, -0.5], "size": [1, 5, 1], "uv": [40, 14]},
+            {"origin": [3.5, 3, 1], "size": [1, 5, 1], "uv": [44, 14]}
+          ]
+        },
+        {
+          "name": "armR",
+          "pivot": [-4, 27, 0],
+          "parent": "body",
+          "cubes": [{"origin": [-5, 17, -1], "size": [2, 10, 2], "uv": [48, 14]}]
+        },
+        {
+          "name": "foreR",
+          "pivot": [-4, 17, 0],
+          "parent": "armR",
+          "cubes": [{"origin": [-5, 8, -1], "size": [2, 9, 2], "uv": [56, 14]}]
+        },
+        {
+          "name": "handR",
+          "pivot": [-4, 8, 0],
+          "parent": "foreR",
+          "cubes": [
+            {"origin": [-4.5, 3, -2], "size": [1, 5, 1], "uv": [0, 26]},
+            {"origin": [-4.5, 3, -0.5], "size": [1, 5, 1], "uv": [4, 26]},
+            {"origin": [-4.5, 3, 1], "size": [1, 5, 1], "uv": [8, 26]}
+          ]
+        },
+        {
+          "name": "orb",
+          "pivot": [0, 24.5, -16],
+          "parent": "body",
+          "cubes": [{"origin": [-2, 22.5, -18], "size": [4, 4, 4], "uv": [12, 26]}]
+        }
+      ]
+    }
+  ]
+}

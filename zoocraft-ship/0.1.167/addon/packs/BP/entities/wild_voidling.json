@@ -1,0 +1,448 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "zoocraft:wild_voidling",
+      "spawn_category": "creature",
+      "is_spawnable": true,
+      "is_summonable": true,
+      "properties": {
+        "zoocraft:act": {
+          "type": "int",
+          "range": [
+            0,
+            13
+          ],
+          "default": 0,
+          "client_sync": true
+        }
+      }
+    },
+    "component_groups": {
+      "zoocraft:calm": {
+        "minecraft:movement": {
+          "value": 0.12
+        },
+        "minecraft:behavior.move_towards_home_restriction": {
+          "priority": 2,
+          "speed_multiplier": 1.0
+        },
+        "minecraft:behavior.random_stroll": {
+          "priority": 7,
+          "interval": 160,
+          "speed_multiplier": 0.9,
+          "xz_dist": 3,
+          "y_dist": 1
+        },
+        "minecraft:behavior.look_at_player": {
+          "priority": 9,
+          "look_distance": 10,
+          "probability": 0.03
+        },
+        "minecraft:behavior.random_look_around": {
+          "priority": 10
+        }
+      },
+      "zoocraft:seek_den": {
+        "minecraft:movement": {
+          "value": 0.12
+        },
+        "minecraft:behavior.move_to_block": {
+          "priority": 3,
+          "tick_interval": 20,
+          "start_chance": 1.0,
+          "search_range": 10,
+          "search_height": 4,
+          "goal_radius": 1.2,
+          "speed_multiplier": 1.0,
+          "target_selection_method": "nearest",
+          "target_blocks": [
+            "minecraft:crying_obsidian"
+          ],
+          "stay_duration": 200
+        }
+      },
+      "zoocraft:rest": {
+        "minecraft:movement": {
+          "value": 0.0
+        }
+      },
+      "zoocraft:chase": {
+        "minecraft:movement": {
+          "value": 0.14
+        },
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 1,
+          "within_radius": 32,
+          "reselect_targets": true,
+          "must_see": false,
+          "persist_time": 2,
+          "entity_types": [
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "test": "has_ability",
+                    "subject": "other",
+                    "operator": "!=",
+                    "value": "instabuild"
+                  }
+                ]
+              },
+              "max_dist": 32
+            }
+          ]
+        },
+        "minecraft:attack": {
+          "damage": 0
+        },
+        "minecraft:behavior.melee_box_attack": {
+          "priority": 2,
+          "speed_multiplier": 1.0,
+          "track_target": true,
+          "cooldown_time": 3.0
+        }
+      },
+      "zoocraft:chase_angry": {
+        "minecraft:movement": {
+          "value": 0.17
+        },
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 1,
+          "within_radius": 32,
+          "reselect_targets": true,
+          "must_see": false,
+          "persist_time": 2,
+          "entity_types": [
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "test": "has_ability",
+                    "subject": "other",
+                    "operator": "!=",
+                    "value": "instabuild"
+                  }
+                ]
+              },
+              "max_dist": 32
+            }
+          ]
+        },
+        "minecraft:attack": {
+          "damage": 0
+        },
+        "minecraft:behavior.melee_box_attack": {
+          "priority": 2,
+          "speed_multiplier": 1.0,
+          "track_target": true,
+          "cooldown_time": 3.0
+        }
+      },
+      "zoocraft:hold": {
+        "minecraft:movement": {
+          "value": 0.0
+        }
+      },
+      "zoocraft:boss_bar": {
+        "minecraft:boss": {
+          "hud_range": 48,
+          "should_darken_sky": false
+        }
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": [
+          "wild_voidling",
+          "voidling",
+          "zoocraft_boss",
+          "mob"
+        ]
+      },
+      "minecraft:nameable": {},
+      "minecraft:health": {
+        "value": 80,
+        "max": 80
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "cause": "fall",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "fire",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "fire_tick",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "lava",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "drowning",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "suffocation",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "magma",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "freezing",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "lightning",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "block_explosion",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "entity_explosion",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "contact",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "campfire",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "soul_campfire",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "stalactite",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "stalagmite",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "falling_block",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "anvil",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "piston",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "fly_into_wall",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "temperature",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "wither",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "magic",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "thorns",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "sonic_boom",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "ram_attack",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "fireworks",
+            "deals_damage": "no"
+          }
+        ]
+      },
+      "minecraft:knockback_resistance": {
+        "value": 1
+      },
+      "minecraft:persistent": {},
+      "minecraft:home": {
+        "restriction_type": "random_movement",
+        "restriction_radius": 4
+      },
+      "minecraft:follow_range": {
+        "value": 48,
+        "max": 48
+      },
+      "minecraft:movement": {
+        "value": 0.12
+      },
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:breathable": {
+        "total_supply": 15,
+        "suffocate_time": 0
+      },
+      "minecraft:collision_box": {
+        "width": 0.6,
+        "height": 2.4
+      },
+      "minecraft:navigation.walk": {
+        "can_path_over_water": false,
+        "avoid_water": false,
+        "avoid_damage_blocks": true
+      },
+      "minecraft:movement.basic": {},
+      "minecraft:jump.static": {},
+      "minecraft:physics": {},
+      "minecraft:pushable_by_block": {},
+      "minecraft:conditional_bandwidth_optimization": {},
+      "minecraft:behavior.float": {
+        "priority": 0
+      }
+    },
+    "events": {
+      "minecraft:entity_spawned": {
+        "add": {
+          "component_groups": [
+            "zoocraft:calm"
+          ]
+        }
+      },
+      "zoocraft:calm": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:seek_den",
+            "zoocraft:rest",
+            "zoocraft:chase",
+            "zoocraft:chase_angry",
+            "zoocraft:hold"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:calm"
+          ]
+        }
+      },
+      "zoocraft:seek_den": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:calm",
+            "zoocraft:rest",
+            "zoocraft:chase",
+            "zoocraft:chase_angry",
+            "zoocraft:hold"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:seek_den"
+          ]
+        }
+      },
+      "zoocraft:rest": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:calm",
+            "zoocraft:seek_den",
+            "zoocraft:chase",
+            "zoocraft:chase_angry",
+            "zoocraft:hold"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:rest"
+          ]
+        }
+      },
+      "zoocraft:chase": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:calm",
+            "zoocraft:seek_den",
+            "zoocraft:rest",
+            "zoocraft:chase_angry",
+            "zoocraft:hold"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:chase"
+          ]
+        }
+      },
+      "zoocraft:chase_angry": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:calm",
+            "zoocraft:seek_den",
+            "zoocraft:rest",
+            "zoocraft:chase",
+            "zoocraft:hold"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:chase_angry"
+          ]
+        }
+      },
+      "zoocraft:hold": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:calm",
+            "zoocraft:seek_den",
+            "zoocraft:rest",
+            "zoocraft:chase",
+            "zoocraft:chase_angry"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:hold"
+          ]
+        }
+      },
+      "zoocraft:bar_on": {
+        "add": {
+          "component_groups": [
+            "zoocraft:boss_bar"
+          ]
+        }
+      },
+      "zoocraft:bar_off": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:boss_bar"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:wild_voidling",
+      "materials": {"default": "entity_emissive_alpha"},
+      "textures": {"default": "textures/entity/zoocraft/voidling"},
+      "geometry": {"default": "geometry.zoocraft.voidling"},
+      "animations": {
+        "idle": "animation.zoocraft.voidling.idle",
+        "walk": "animation.zoocraft.voidling.walk",
+        "look_at_target": "animation.zoocraft.voidling.look_at_target",
+        "swipe": "animation.zoocraft.voidling.swipe",
+        "slam": "animation.zoocraft.voidling.slam",
+        "hurl": "animation.zoocraft.voidling.hurl",
+        "roar": "animation.zoocraft.voidling.roar",
+        "roar_shake": "animation.zoocraft.voidling.roar_shake",
+        "grab": "animation.zoocraft.voidling.grab",
+        "grab_shake": "animation.zoocraft.voidling.grab_shake",
+        "drag": "animation.zoocraft.voidling.drag",
+        "letgo": "animation.zoocraft.voidling.letgo",
+        "stagger": "animation.zoocraft.voidling.stagger",
+        "eat": "animation.zoocraft.voidling.eat",
+        "sit": "animation.zoocraft.voidling.sit",
+        "sleep": "animation.zoocraft.voidling.sleep",
+        "tired": "animation.zoocraft.voidling.tired",
+        "sit_down": "animation.zoocraft.voidling.sit_down",
+        "sleep_down": "animation.zoocraft.voidling.sleep_down",
+        "tired_down": "animation.zoocraft.voidling.tired_down",
+        "get_up": "animation.zoocraft.voidling.get_up",
+        "toss": "animation.zoocraft.voidling.toss",
+        "toss_ball": "animation.zoocraft.voidling.toss_ball",
+        "ball": "animation.zoocraft.voidling.ball",
+        "orb_spin": "animation.zoocraft.voidling.orb_spin",
+        "move": "controller.animation.zoocraft.voidling.move"
+      },
+      "render_controllers": ["controller.render.zoocraft.voidling"],
+      "scripts": {
+        "scale": "1.176",
+        "initialize": [
+          "variable.offset = math.random(0, 20);",
+          "v.st = 0;",
+          "v.act = 0;",
+          "v.last_act = 0;",
+          "v.act_t = 0;",
+          "v.at = 0;",
+          "v.moving = 0;",
+          "v.leg_rate = 1;",
+          "v.ball = 0;"
+        ],
+        "pre_animation": [
+          "v.act = q.property('zoocraft:act');",
+          "v.act_t = (v.act != v.last_act) ? q.life_time : v.act_t;",
+          "v.last_act = v.act;",
+          "v.at = q.life_time - v.act_t;",
+          "v.ball = ((v.act == 3 && v.at > 0.3 && v.at < 0.88) || (v.act == 9 && v.at > 0.5 && v.at < 2.0)) ? 1 : 0;",
+          "v.moving = q.modified_move_speed > 0.04;",
+          "v.leg_rate = 1;"
+        ],
+        "animate": ["move", "ball", "orb_spin"]
+      },
+      "spawn_egg": {"base_color": "#17111f", "overlay_color": "#b45cff"}
+    }
+  }
+}
