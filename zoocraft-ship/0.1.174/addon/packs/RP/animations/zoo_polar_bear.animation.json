@@ -1,0 +1,60 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.zoocraft.zoo_polar_bear.move": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "position": [
+            0.0,
+            "-9 - 2 * variable.stand - this",
+            0.0
+          ],
+          "rotation": [
+            "(-(variable.stand) * 63) - this",
+            0.0,
+            0.0
+          ]
+        },
+        "leg0": {
+          "position": [
+            0.0,
+            "-1 * variable.stand",
+            "6 * variable.stand"
+          ],
+          "rotation": [
+            "variable.stand * 63",
+            0.0,
+            0.0
+          ]
+        },
+        "leg1": {
+          "position": [
+            0.0,
+            "-1 * variable.stand",
+            "6 * variable.stand"
+          ],
+          "rotation": [
+            "variable.stand * 63",
+            0.0,
+            0.0
+          ]
+        },
+        "leg2": {
+          "rotation": [
+            "(variable.stand > 1) ? (variable.stand * 81) - this : 0",
+            0.0,
+            0.0
+          ]
+        },
+        "leg3": {
+          "rotation": [
+            "(variable.stand > 1) ? (variable.stand * 81) - this : 0",
+            0.0,
+            0.0
+          ]
+        }
+      }
+    }
+  }
+}

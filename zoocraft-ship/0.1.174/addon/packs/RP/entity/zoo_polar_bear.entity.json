@@ -1,0 +1,43 @@
+{
+  "format_version": "1.26.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:zoo_polar_bear",
+      "materials": {
+        "default": "polar_bear"
+      },
+      "textures": {
+        "default": "textures/entity/polar_bear"
+      },
+      "geometry": {
+        "default": "geometry.polarbear"
+      },
+      "animations": {
+        "walk": "animation.quadruped.walk",
+        "move": "animation.zoocraft.zoo_polar_bear.move",
+        "look_at_target": "animation.common.look_at_target",
+        "baby_transform": "animation.polarbear.baby_transform",
+        "move_controller": "controller.animation.zoocraft.zoo_polar_bear.move"
+      },
+      "render_controllers": [
+        "controller.render.zoocraft.zoo_polar_bear"
+      ],
+      "scripts": {
+        "initialize": [
+          "variable.stand = 0.0;"
+        ],
+        "pre_animation": [
+          "variable.up = query.property('zoocraft:act') == 1 || query.property('zoocraft:act') == 4;",
+          "variable.stand = math.clamp(variable.stand + (variable.up ? 1.0 : -1.0) * query.delta_time * 3.3, 0.0, 1.0);"
+        ],
+        "scale": "1.2",
+        "animate": [
+          "move_controller",
+          {
+            "baby_transform": "query.is_baby"
+          }
+        ]
+      }
+    }
+  }
+}
