@@ -1,0 +1,401 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.zoocraft.soul_sloth.move": {
+      "initial_state": "start",
+      "states": {
+        "start": {
+          "transitions": [
+            {"tired": "v.act == 6"},
+            {"sit": "v.act == 7"},
+            {"curl_sleep": "v.act == 14"},
+            {"hang": "v.act == 10"},
+            {"hang_sleep": "v.act == 8"},
+            {"climb": "v.act == 12"},
+            {
+              "idle": "!(v.act == 6 || v.act == 7 || v.act == 14) && !(v.act == 10 || v.act == 8) && v.act != 12"
+            }
+          ],
+          "blend_transition": 0
+        },
+        "idle": {
+          "animations": ["idle", "look_at_target"],
+          "transitions": [
+            {"tired_down": "v.act == 6"},
+            {"sit_down": "v.act == 7"},
+            {"curl_sleep_down": "v.act == 14"},
+            {"walking": "((v.act == 0 && v.moving) || v.act == 15)"},
+            {"rake": "v.act == 1"},
+            {"wail": "v.act == 2"},
+            {"lob": "v.act == 3"},
+            {"howl": "v.act == 4"},
+            {"yawn": "v.act == 9"},
+            {"rake_ground": "v.act == 13"},
+            {"eat": "v.act == 5"},
+            {"climb": "v.act == 12"},
+            {"drop": "v.act == 11"},
+            {"hang": "v.act == 10"},
+            {"hang_sleep": "v.act == 8"}
+          ],
+          "blend_transition": 0.3
+        },
+        "walking": {
+          "animations": ["walk", "look_at_target"],
+          "transitions": [
+            {"tired_down": "v.act == 6"},
+            {"sit_down": "v.act == 7"},
+            {"curl_sleep_down": "v.act == 14"},
+            {"idle": "v.act == 0 && !v.moving"},
+            {"rake": "v.act == 1"},
+            {"wail": "v.act == 2"},
+            {"lob": "v.act == 3"},
+            {"howl": "v.act == 4"},
+            {"yawn": "v.act == 9"},
+            {"rake_ground": "v.act == 13"},
+            {"eat": "v.act == 5"},
+            {"climb": "v.act == 12"},
+            {"drop": "v.act == 11"},
+            {"hang": "v.act == 10"},
+            {"hang_sleep": "v.act == 8"}
+          ],
+          "blend_transition": 0.25
+        },
+        "eat": {
+          "animations": ["eat"],
+          "transitions": [
+            {"tired_down": "v.act == 6"},
+            {"sit_down": "v.act == 7"},
+            {"curl_sleep_down": "v.act == 14"},
+            {"idle": "v.act == 0 && !v.moving"},
+            {"walking": "((v.act == 0 && v.moving) || v.act == 15)"},
+            {"rake": "v.act == 1"},
+            {"wail": "v.act == 2"},
+            {"lob": "v.act == 3"},
+            {"howl": "v.act == 4"},
+            {"yawn": "v.act == 9"},
+            {"rake_ground": "v.act == 13"},
+            {"climb": "v.act == 12"},
+            {"drop": "v.act == 11"},
+            {"hang": "v.act == 10"},
+            {"hang_sleep": "v.act == 8"}
+          ],
+          "blend_transition": 0.2
+        },
+        "rake": {
+          "animations": ["rake"],
+          "blend_transition": 0.12,
+          "transitions": [
+            {"tired_down": "v.act == 6"},
+            {"sit_down": "v.act == 7"},
+            {"curl_sleep_down": "v.act == 14"},
+            {"idle": "v.act == 0 && !v.moving"},
+            {"walking": "((v.act == 0 && v.moving) || v.act == 15)"},
+            {"wail": "v.act == 2"},
+            {"lob": "v.act == 3"},
+            {"howl": "v.act == 4"},
+            {"yawn": "v.act == 9"},
+            {"rake_ground": "v.act == 13"},
+            {"eat": "v.act == 5"},
+            {"climb": "v.act == 12"},
+            {"drop": "v.act == 11"},
+            {"hang": "v.act == 10"},
+            {"hang_sleep": "v.act == 8"}
+          ]
+        },
+        "wail": {
+          "animations": ["wail", {"wail_shake": "v.at > 0.9 && v.at < 1.6"}],
+          "blend_transition": 0.12,
+          "transitions": [
+            {"tired_down": "v.act == 6"},
+            {"sit_down": "v.act == 7"},
+            {"curl_sleep_down": "v.act == 14"},
+            {"idle": "v.act == 0 && !v.moving"},
+            {"walking": "((v.act == 0 && v.moving) || v.act == 15)"},
+            {"rake": "v.act == 1"},
+            {"lob": "v.act == 3"},
+            {"howl": "v.act == 4"},
+            {"yawn": "v.act == 9"},
+            {"rake_ground": "v.act == 13"},
+            {"eat": "v.act == 5"},
+            {"climb": "v.act == 12"},
+            {"drop": "v.act == 11"},
+            {"hang": "v.act == 10"},
+            {"hang_sleep": "v.act == 8"}
+          ]
+        },
+        "lob": {
+          "animations": ["lob"],
+          "blend_transition": 0.12,
+          "transitions": [
+            {"tired_down": "v.act == 6"},
+            {"sit_down": "v.act == 7"},
+            {"curl_sleep_down": "v.act == 14"},
+            {"idle": "v.act == 0 && !v.moving"},
+            {"walking": "((v.act == 0 && v.moving) || v.act == 15)"},
+            {"rake": "v.act == 1"},
+            {"wail": "v.act == 2"},
+            {"howl": "v.act == 4"},
+            {"yawn": "v.act == 9"},
+            {"rake_ground": "v.act == 13"},
+            {"eat": "v.act == 5"},
+            {"climb": "v.act == 12"},
+            {"drop": "v.act == 11"},
+            {"hang": "v.act == 10"},
+            {"hang_sleep": "v.act == 8"}
+          ]
+        },
+        "howl": {
+          "animations": ["howl", {"howl_shake": "v.at > 1.05 && v.at < 1.9"}],
+          "blend_transition": 0.12,
+          "transitions": [
+            {"tired_down": "v.act == 6"},
+            {"sit_down": "v.act == 7"},
+            {"curl_sleep_down": "v.act == 14"},
+            {"idle": "v.act == 0 && !v.moving"},
+            {"walking": "((v.act == 0 && v.moving) || v.act == 15)"},
+            {"rake": "v.act == 1"},
+            {"wail": "v.act == 2"},
+            {"lob": "v.act == 3"},
+            {"yawn": "v.act == 9"},
+            {"rake_ground": "v.act == 13"},
+            {"eat": "v.act == 5"},
+            {"climb": "v.act == 12"},
+            {"drop": "v.act == 11"},
+            {"hang": "v.act == 10"},
+            {"hang_sleep": "v.act == 8"}
+          ]
+        },
+        "yawn": {
+          "animations": ["yawn"],
+          "blend_transition": 0.12,
+          "transitions": [
+            {"tired_down": "v.act == 6"},
+            {"sit_down": "v.act == 7"},
+            {"curl_sleep_down": "v.act == 14"},
+            {"idle": "v.act == 0 && !v.moving"},
+            {"walking": "((v.act == 0 && v.moving) || v.act == 15)"},
+            {"rake": "v.act == 1"},
+            {"wail": "v.act == 2"},
+            {"lob": "v.act == 3"},
+            {"howl": "v.act == 4"},
+            {"rake_ground": "v.act == 13"},
+            {"eat": "v.act == 5"},
+            {"climb": "v.act == 12"},
+            {"drop": "v.act == 11"},
+            {"hang": "v.act == 10"},
+            {"hang_sleep": "v.act == 8"}
+          ]
+        },
+        "rake_ground": {
+          "animations": ["rake_ground"],
+          "blend_transition": 0.12,
+          "transitions": [
+            {"tired_down": "v.act == 6"},
+            {"sit_down": "v.act == 7"},
+            {"curl_sleep_down": "v.act == 14"},
+            {"idle": "v.act == 0 && !v.moving"},
+            {"walking": "((v.act == 0 && v.moving) || v.act == 15)"},
+            {"rake": "v.act == 1"},
+            {"wail": "v.act == 2"},
+            {"lob": "v.act == 3"},
+            {"howl": "v.act == 4"},
+            {"yawn": "v.act == 9"},
+            {"eat": "v.act == 5"},
+            {"climb": "v.act == 12"},
+            {"drop": "v.act == 11"},
+            {"hang": "v.act == 10"},
+            {"hang_sleep": "v.act == 8"}
+          ]
+        },
+        "tired_down": {
+          "animations": ["tired_down"],
+          "blend_transition": 0.2,
+          "on_entry": ["v.st = q.life_time;"],
+          "transitions": [
+            {"tired": "(q.life_time - v.st) > 1.2 && v.act == 6"},
+            {"uncurl": "(q.life_time - v.st) > 1.2 && !(v.act == 6 || v.act == 7 || v.act == 14)"},
+            {"sit": "(q.life_time - v.st) > 1.2 && v.act == 7"},
+            {"curl_sleep": "(q.life_time - v.st) > 1.2 && v.act == 14"}
+          ]
+        },
+        "tired": {
+          "animations": ["tired"],
+          "blend_transition": 0.6,
+          "transitions": [
+            {"uncurl": "!(v.act == 6 || v.act == 7 || v.act == 14)"},
+            {"sit": "v.act == 7"},
+            {"curl_sleep": "v.act == 14"}
+          ]
+        },
+        "sit_down": {
+          "animations": ["sit_down"],
+          "blend_transition": 0.2,
+          "on_entry": ["v.st = q.life_time;"],
+          "transitions": [
+            {"sit": "(q.life_time - v.st) > 1.2 && v.act == 7"},
+            {"get_up": "(q.life_time - v.st) > 1.2 && !(v.act == 6 || v.act == 7 || v.act == 14)"},
+            {"tired": "(q.life_time - v.st) > 1.2 && v.act == 6"},
+            {"curl_sleep": "(q.life_time - v.st) > 1.2 && v.act == 14"}
+          ]
+        },
+        "sit": {
+          "animations": ["sit"],
+          "blend_transition": 0.6,
+          "transitions": [
+            {"get_up": "!(v.act == 6 || v.act == 7 || v.act == 14)"},
+            {"tired": "v.act == 6"},
+            {"curl_sleep": "v.act == 14"}
+          ]
+        },
+        "curl_sleep_down": {
+          "animations": ["curl_sleep_down"],
+          "blend_transition": 0.2,
+          "on_entry": ["v.st = q.life_time;"],
+          "transitions": [
+            {"curl_sleep": "(q.life_time - v.st) > 1.2 && v.act == 14"},
+            {"uncurl": "(q.life_time - v.st) > 1.2 && !(v.act == 6 || v.act == 7 || v.act == 14)"},
+            {"tired": "(q.life_time - v.st) > 1.2 && v.act == 6"},
+            {"sit": "(q.life_time - v.st) > 1.2 && v.act == 7"}
+          ]
+        },
+        "curl_sleep": {
+          "animations": ["curl_sleep"],
+          "blend_transition": 0.6,
+          "transitions": [
+            {"uncurl": "!(v.act == 6 || v.act == 7 || v.act == 14)"},
+            {"tired": "v.act == 6"},
+            {"sit": "v.act == 7"}
+          ]
+        },
+        "get_up": {
+          "animations": ["get_up"],
+          "blend_transition": 0.4,
+          "on_entry": ["v.st = q.life_time;"],
+          "transitions": [
+            {"tired_down": "v.act == 6 && (q.life_time - v.st) > 1.2"},
+            {"sit_down": "v.act == 7 && (q.life_time - v.st) > 1.2"},
+            {"curl_sleep_down": "v.act == 14 && (q.life_time - v.st) > 1.2"},
+            {"idle": "v.act == 0 && !v.moving && (q.life_time - v.st) > 1.2"},
+            {"walking": "((v.act == 0 && v.moving) || v.act == 15) && (q.life_time - v.st) > 1.2"},
+            {"rake": "v.act == 1 && (q.life_time - v.st) > 1.2"},
+            {"wail": "v.act == 2 && (q.life_time - v.st) > 1.2"},
+            {"lob": "v.act == 3 && (q.life_time - v.st) > 1.2"},
+            {"howl": "v.act == 4 && (q.life_time - v.st) > 1.2"},
+            {"yawn": "v.act == 9 && (q.life_time - v.st) > 1.2"},
+            {"rake_ground": "v.act == 13 && (q.life_time - v.st) > 1.2"},
+            {"eat": "v.act == 5 && (q.life_time - v.st) > 1.2"},
+            {"climb": "v.act == 12 && (q.life_time - v.st) > 1.2"},
+            {"drop": "v.act == 11 && (q.life_time - v.st) > 1.2"},
+            {"hang": "v.act == 10 && (q.life_time - v.st) > 1.2"},
+            {"hang_sleep": "v.act == 8 && (q.life_time - v.st) > 1.2"}
+          ]
+        },
+        "uncurl": {
+          "animations": ["uncurl"],
+          "blend_transition": 0.4,
+          "on_entry": ["v.st = q.life_time;"],
+          "transitions": [
+            {"tired_down": "v.act == 6 && (q.life_time - v.st) > 1.2"},
+            {"sit_down": "v.act == 7 && (q.life_time - v.st) > 1.2"},
+            {"curl_sleep_down": "v.act == 14 && (q.life_time - v.st) > 1.2"},
+            {"idle": "v.act == 0 && !v.moving && (q.life_time - v.st) > 1.2"},
+            {"walking": "((v.act == 0 && v.moving) || v.act == 15) && (q.life_time - v.st) > 1.2"},
+            {"rake": "v.act == 1 && (q.life_time - v.st) > 1.2"},
+            {"wail": "v.act == 2 && (q.life_time - v.st) > 1.2"},
+            {"lob": "v.act == 3 && (q.life_time - v.st) > 1.2"},
+            {"howl": "v.act == 4 && (q.life_time - v.st) > 1.2"},
+            {"yawn": "v.act == 9 && (q.life_time - v.st) > 1.2"},
+            {"rake_ground": "v.act == 13 && (q.life_time - v.st) > 1.2"},
+            {"eat": "v.act == 5 && (q.life_time - v.st) > 1.2"},
+            {"climb": "v.act == 12 && (q.life_time - v.st) > 1.2"},
+            {"drop": "v.act == 11 && (q.life_time - v.st) > 1.2"},
+            {"hang": "v.act == 10 && (q.life_time - v.st) > 1.2"},
+            {"hang_sleep": "v.act == 8 && (q.life_time - v.st) > 1.2"}
+          ]
+        },
+        "climb": {
+          "animations": ["climb"],
+          "blend_transition": 0.35,
+          "transitions": [
+            {"turn_up": "v.act == 10 || v.act == 8"},
+            {"drop": "v.act == 11"},
+            {"tired_down": "v.act == 6"},
+            {"sit_down": "v.act == 7"},
+            {"curl_sleep_down": "v.act == 14"},
+            {"idle": "v.act == 0 && !v.moving"},
+            {"walking": "((v.act == 0 && v.moving) || v.act == 15)"},
+            {"rake": "v.act == 1"},
+            {"wail": "v.act == 2"},
+            {"lob": "v.act == 3"},
+            {"howl": "v.act == 4"},
+            {"yawn": "v.act == 9"},
+            {"rake_ground": "v.act == 13"},
+            {"eat": "v.act == 5"}
+          ]
+        },
+        "turn_up": {
+          "animations": ["turn_up"],
+          "blend_transition": 0.1,
+          "on_entry": ["v.st = q.life_time;"],
+          "transitions": [
+            {"drop": "!(v.act == 10 || v.act == 8) && v.act != 12"},
+            {"turn_down": "v.act == 12"},
+            {"hang": "(q.life_time - v.st) > 0.8 && v.act == 10"},
+            {"hang_sleep": "(q.life_time - v.st) > 0.8 && v.act == 8"}
+          ]
+        },
+        "hang": {
+          "animations": ["hang"],
+          "blend_transition": 0.6,
+          "transitions": [
+            {"hang_sleep": "v.act == 8"},
+            {"turn_down": "v.act == 12"},
+            {"drop": "!(v.act == 10 || v.act == 8) && v.act != 12"}
+          ]
+        },
+        "hang_sleep": {
+          "animations": ["hang_sleep"],
+          "blend_transition": 0.8,
+          "transitions": [
+            {"hang": "v.act == 10"},
+            {"turn_down": "v.act == 12"},
+            {"drop": "!(v.act == 10 || v.act == 8) && v.act != 12"}
+          ]
+        },
+        "turn_down": {
+          "animations": ["turn_down"],
+          "blend_transition": 0.1,
+          "on_entry": ["v.st = q.life_time;"],
+          "transitions": [
+            {"drop": "v.act == 11"},
+            {"climb": "(q.life_time - v.st) > 0.8 && v.act == 12"},
+            {"turn_up": "(q.life_time - v.st) > 0.8 && (v.act == 10 || v.act == 8)"},
+            {"idle": "(q.life_time - v.st) > 0.8 && v.act != 12 && !(v.act == 10 || v.act == 8)"}
+          ]
+        },
+        "drop": {
+          "animations": ["drop"],
+          "blend_transition": 0.1,
+          "on_entry": ["v.st = q.life_time;"],
+          "transitions": [
+            {"tired_down": "v.act == 6 && (q.life_time - v.st) > 0.5"},
+            {"sit_down": "v.act == 7 && (q.life_time - v.st) > 0.5"},
+            {"curl_sleep_down": "v.act == 14 && (q.life_time - v.st) > 0.5"},
+            {"idle": "v.act == 0 && !v.moving && (q.life_time - v.st) > 0.5"},
+            {"walking": "((v.act == 0 && v.moving) || v.act == 15) && (q.life_time - v.st) > 0.5"},
+            {"rake": "v.act == 1 && (q.life_time - v.st) > 0.5"},
+            {"wail": "v.act == 2 && (q.life_time - v.st) > 0.5"},
+            {"lob": "v.act == 3 && (q.life_time - v.st) > 0.5"},
+            {"howl": "v.act == 4 && (q.life_time - v.st) > 0.5"},
+            {"yawn": "v.act == 9 && (q.life_time - v.st) > 0.5"},
+            {"rake_ground": "v.act == 13 && (q.life_time - v.st) > 0.5"},
+            {"eat": "v.act == 5 && (q.life_time - v.st) > 0.5"},
+            {"climb": "v.act == 12 && (q.life_time - v.st) > 0.5"},
+            {"hang": "v.act == 10 && (q.life_time - v.st) > 0.5"},
+            {"hang_sleep": "v.act == 8 && (q.life_time - v.st) > 0.5"}
+          ]
+        }
+      }
+    }
+  }
+}

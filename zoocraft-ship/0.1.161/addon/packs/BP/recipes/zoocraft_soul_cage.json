@@ -1,0 +1,39 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "zoocraft:soul_cage"
+    },
+    "tags": [
+      "zoocraft_workshop"
+    ],
+    "pattern": [
+      "BLB",
+      "SCS",
+      "BLB"
+    ],
+    "key": {
+      "B": {
+        "item": "minecraft:iron_bars"
+      },
+      "L": {
+        "item": "minecraft:soul_lantern"
+      },
+      "S": {
+        "item": "minecraft:soul_sand"
+      },
+      "C": {
+        "item": "zoocraft:reinforced_crate"
+      }
+    },
+    "unlock": [
+      {
+        "item": "zoocraft:zoo_workshop"
+      }
+    ],
+    "result": {
+      "item": "zoocraft:soul_cage",
+      "count": 1
+    }
+  }
+}

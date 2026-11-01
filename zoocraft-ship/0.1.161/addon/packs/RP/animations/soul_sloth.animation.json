@@ -1,0 +1,812 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.zoocraft.soul_sloth.idle": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "scale": [
+            "1 + (0.012 * (math.sin(query.life_time * 40 + variable.offset * 20)))",
+            "1 + (0.016 * (math.sin(query.life_time * 40 + variable.offset * 20)))",
+            1
+          ]
+        },
+        "head": {
+          "rotation": [
+            "math.sin(query.life_time * 12 + variable.offset) * 2",
+            "math.sin(query.life_time * 7 + variable.offset) * 5",
+            0
+          ]
+        },
+        "tail": {
+          "rotation": [
+            "math.sin(query.life_time * 20 + variable.offset) * 3",
+            "math.sin(query.life_time * 14 + variable.offset) * 4",
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.soul_sloth.walk": {
+      "loop": true,
+      "bones": {
+        "armL": {"rotation": ["math.sin(v.wph) * 12 - 6", 0, 0]},
+        "armR": {"rotation": ["-math.sin(v.wph) * 12 - 6", 0, 0]},
+        "legL": {"rotation": ["-math.sin(v.wph) * 9", 0, 0]},
+        "legR": {"rotation": ["math.sin(v.wph) * 9", 0, 0]},
+        "body": {
+          "rotation": [0, "math.sin(v.wph) * 3", "math.cos(v.wph) * 2.5"],
+          "position": [0, "math.abs(math.cos(v.wph)) * 0.5", 0]
+        },
+        "head": {"rotation": ["math.sin(v.wph * 2) * 2", "-math.sin(v.wph) * 5", 0]},
+        "tail": {"rotation": [0, "math.sin(v.wph) * 8", 0]}
+      }
+    },
+    "animation.zoocraft.soul_sloth.look_at_target": {
+      "loop": true,
+      "bones": {
+        "head": {
+          "rotation": [
+            "math.clamp(query.target_x_rotation, -25, 25) * 0.6",
+            "math.clamp(query.target_y_rotation, -45, 45) * 0.7",
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.soul_sloth.rake": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "body": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "0.75": [-24, 8, 0],
+            "0.85": [-24, 8, 0],
+            "0.95": [-4, -14, 0],
+            "1.15": [-4, -14, 0],
+            "1.5": [0, 0, 0]
+          }
+        },
+        "armR": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "0.75": [-150, 0, -16],
+            "0.85": [-150, 0, -16],
+            "0.95": [-30, 0, 14],
+            "1.15": [-30, 0, 14],
+            "1.5": [0, 0, 0]
+          }
+        },
+        "armL": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "0.75": [30, 0, 0],
+            "0.85": [30, 0, 0],
+            "0.95": [8, 0, 0],
+            "1.15": [8, 0, 0],
+            "1.5": [0, 0, 0]
+          }
+        },
+        "head": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "0.75": [10, -10, 0],
+            "0.85": [10, -10, 0],
+            "0.95": [6, 14, 0],
+            "1.15": [6, 14, 0],
+            "1.5": [0, 0, 0]
+          }
+        },
+        "jaw": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "0.75": [12, 0, 0],
+            "0.85": [12, 0, 0],
+            "0.95": [0, 0, 0],
+            "1.15": [0, 0, 0],
+            "1.5": [0, 0, 0]
+          }
+        }
+      },
+      "animation_length": 1.5
+    },
+    "animation.zoocraft.soul_sloth.wail": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "body": {"rotation": {"0.0": [0, 0, 0], "0.9": [-58, 0, 0], "1.6": [-58, 0, 0], "2": [0, 0, 0]}},
+        "armL": {"rotation": {"0.0": [0, 0, 0], "0.9": [-40, 0, -70], "1.6": [-40, 0, -70], "2": [0, 0, 0]}},
+        "armR": {"rotation": {"0.0": [0, 0, 0], "0.9": [-40, 0, 70], "1.6": [-40, 0, 70], "2": [0, 0, 0]}},
+        "head": {"rotation": {"0.0": [0, 0, 0], "0.9": [-24, 0, 0], "1.6": [-24, 0, 0], "2": [0, 0, 0]}},
+        "jaw": {"rotation": {"0.0": [0, 0, 0], "0.9": [34, 0, 0], "1.6": [34, 0, 0], "2": [0, 0, 0]}},
+        "legL": {"rotation": {"0.0": [0, 0, 0], "0.9": [-10, 0, 0], "1.6": [-10, 0, 0], "2": [0, 0, 0]}},
+        "legR": {"rotation": {"0.0": [0, 0, 0], "0.9": [-10, 0, 0], "1.6": [-10, 0, 0], "2": [0, 0, 0]}},
+        "tail": {"rotation": {"0.0": [0, 0, 0], "0.9": [40, 0, 0], "1.6": [40, 0, 0], "2": [0, 0, 0]}}
+      },
+      "animation_length": 2
+    },
+    "animation.zoocraft.soul_sloth.wail_shake": {
+      "loop": true,
+      "bones": {
+        "head": {
+          "rotation": ["math.sin(query.life_time * 1700) * 2", "math.sin(query.life_time * 1400) * 3", 0]
+        },
+        "jaw": {"rotation": ["math.sin(query.life_time * 2000) * 4", 0, 0]}
+      }
+    },
+    "animation.zoocraft.soul_sloth.lob": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "armL": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "0.4": [-40, 0, -6],
+            "0.85": [-96, 0, -14],
+            "0.95": [-96, 0, -14],
+            "1.1": [-58, 0, -8],
+            "1.5": [0, 0, 0]
+          }
+        },
+        "armR": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "0.4": [-40, 0, 6],
+            "0.85": [-96, 0, 14],
+            "0.95": [-96, 0, 14],
+            "1.1": [-58, 0, 8],
+            "1.5": [0, 0, 0]
+          }
+        },
+        "head": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "0.4": [26, 0, 0],
+            "0.85": [-6, 0, 0],
+            "0.95": [-6, 0, 0],
+            "1.1": [6, 0, 0],
+            "1.5": [0, 0, 0]
+          }
+        },
+        "body": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "0.4": [0, 0, 0],
+            "0.85": [-36, 0, 0],
+            "0.95": [-36, 0, 0],
+            "1.1": [-6, 0, 0],
+            "1.5": [0, 0, 0]
+          }
+        }
+      },
+      "animation_length": 1.5
+    },
+    "animation.zoocraft.soul_sloth.howl": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "armL": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "0.15": [-70, 0, 0],
+            "0.3": [-3, 0, 0],
+            "0.45": [-2, 0, 0],
+            "0.6": [-2, 0, 0],
+            "0.75": [-70, 0, 0],
+            "0.9": [-3, 0, 0],
+            "1.05": [8, 0, -8],
+            "1.9": [8, 0, -8],
+            "2.2": [0, 0, 0]
+          }
+        },
+        "armR": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "0.15": [-2, 0, 0],
+            "0.3": [-2, 0, 0],
+            "0.45": [-70, 0, 0],
+            "0.6": [-3, 0, 0],
+            "0.75": [-2, 0, 0],
+            "0.9": [-2, 0, 0],
+            "1.05": [8, 0, 8],
+            "1.9": [8, 0, 8],
+            "2.2": [0, 0, 0]
+          }
+        },
+        "body": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "0.15": [-10, 0, 0],
+            "0.3": [0, 0, 0],
+            "0.45": [-10, 0, 0],
+            "0.6": [0, 0, 0],
+            "0.75": [-10, 0, 0],
+            "0.9": [0, 0, 0],
+            "1.05": [-14, 0, 0],
+            "1.9": [-14, 0, 0],
+            "2.2": [0, 0, 0]
+          }
+        },
+        "head": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "0.15": [-10, 0, 0],
+            "0.3": [-10, 0, 0],
+            "0.45": [-10, 0, 0],
+            "0.6": [-10, 0, 0],
+            "0.75": [-10, 0, 0],
+            "0.9": [-10, 0, 0],
+            "1.05": [-38, 0, 0],
+            "1.9": [-38, 0, 0],
+            "2.2": [0, 0, 0]
+          }
+        },
+        "jaw": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "0.15": [0, 0, 0],
+            "0.3": [0, 0, 0],
+            "0.45": [0, 0, 0],
+            "0.6": [0, 0, 0],
+            "0.75": [0, 0, 0],
+            "0.9": [0, 0, 0],
+            "1.05": [36, 0, 0],
+            "1.9": [36, 0, 0],
+            "2.2": [0, 0, 0]
+          }
+        }
+      },
+      "animation_length": 2.2
+    },
+    "animation.zoocraft.soul_sloth.howl_shake": {
+      "loop": true,
+      "bones": {
+        "head": {
+          "rotation": ["math.sin(query.life_time * 1800) * 2", "math.sin(query.life_time * 1500) * 2", 0]
+        },
+        "jaw": {"rotation": ["math.sin(query.life_time * 2100) * 3", 0, 0]}
+      }
+    },
+    "animation.zoocraft.soul_sloth.eat": {
+      "loop": true,
+      "bones": {
+        "head": {"rotation": [36, 0, 0]},
+        "armL": {"rotation": [-4, 0, 0]},
+        "armR": {"rotation": ["-30 * (math.max(0, math.sin(query.life_time * 150)))", 0, 0]},
+        "jaw": {"rotation": ["6 + (math.sin(query.life_time * 500) * 6)", 0, 0]}
+      }
+    },
+    "animation.zoocraft.soul_sloth.yawn": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "head": {"rotation": {"0.0": [0, 0, 0], "0.6": [-36, 0, 0], "1.5": [-36, 0, 0], "2.2": [0, 0, 0]}},
+        "jaw": {"rotation": {"0.0": [0, 0, 0], "0.6": [40, 0, 0], "1.5": [40, 0, 0], "2.2": [0, 0, 0]}},
+        "armL": {"rotation": {"0.0": [0, 0, 0], "0.6": [-22, 0, 0], "1.5": [-22, 0, 0], "2.2": [0, 0, 0]}},
+        "armR": {"rotation": {"0.0": [0, 0, 0], "0.6": [-22, 0, 0], "1.5": [-22, 0, 0], "2.2": [0, 0, 0]}},
+        "body": {"rotation": {"0.0": [0, 0, 0], "0.6": [-6, 0, 0], "1.5": [-6, 0, 0], "2.2": [0, 0, 0]}}
+      },
+      "animation_length": 2.2
+    },
+    "animation.zoocraft.soul_sloth.rake_ground": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "armR": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "0.3": [-44, 0, 0],
+            "0.55": [3, 0, 0],
+            "0.8": [-44, 0, 0],
+            "1.05": [3, 0, 0],
+            "1.6": [0, 0, 0]
+          }
+        },
+        "head": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "0.3": [18, 0, 0],
+            "0.55": [22, 0, 0],
+            "0.8": [18, 0, 0],
+            "1.05": [22, 0, 0],
+            "1.6": [0, 0, 0]
+          }
+        }
+      },
+      "animation_length": 1.6
+    },
+    "animation.zoocraft.soul_sloth.sit": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "rotation": [-46, 0, 0],
+          "scale": [
+            "1 + (0.012 * (math.sin(query.life_time * 30 + variable.offset * 20)))",
+            "1 + (0.016 * (math.sin(query.life_time * 30 + variable.offset * 20)))",
+            1
+          ]
+        },
+        "legL": {"rotation": [-64, 0, -8]},
+        "legR": {"rotation": [-64, 0, 8]},
+        "armL": {"rotation": [40, 0, -6]},
+        "armR": {"rotation": [40, 0, 6]},
+        "head": {
+          "rotation": [
+            "24 + (math.sin(query.life_time * 10 + variable.offset) * 3)",
+            "math.sin(query.life_time * 6 + variable.offset) * 6",
+            0
+          ]
+        },
+        "tail": {"rotation": [60, 0, 0]},
+        "sloth": {"position": [0, -3.615, 0]}
+      }
+    },
+    "animation.zoocraft.soul_sloth.tired": {
+      "loop": true,
+      "bones": {
+        "flip": {"rotation": [0, 0, 80]},
+        "body": {
+          "rotation": [14, 0, 0],
+          "scale": [
+            "1 + (0.036 * (math.sin(query.life_time * 300 + variable.offset * 20)))",
+            "1 + (0.048 * (math.sin(query.life_time * 300 + variable.offset * 20)))",
+            1
+          ]
+        },
+        "head": {"rotation": [48, 0, 10]},
+        "armL": {"rotation": [-56, 0, 10]},
+        "armR": {"rotation": [-56, 0, -10]},
+        "legL": {"rotation": [-52, 0, 6]},
+        "legR": {"rotation": [-52, 0, -6]},
+        "tail": {"rotation": [-30, 0, 0]},
+        "sloth": {"position": [0, -8.225, 0]},
+        "jaw": {"rotation": ["10 + (math.sin(query.life_time * 300) * 6)", 0, 0]}
+      }
+    },
+    "animation.zoocraft.soul_sloth.curl_sleep": {
+      "loop": true,
+      "bones": {
+        "flip": {"rotation": [0, 0, 80]},
+        "body": {
+          "rotation": [14, 0, 0],
+          "scale": [
+            "1 + (0.019 * (math.sin(query.life_time * 18 + variable.offset * 20)))",
+            "1 + (0.026 * (math.sin(query.life_time * 18 + variable.offset * 20)))",
+            1
+          ]
+        },
+        "head": {"rotation": [48, 0, 10]},
+        "armL": {"rotation": [-56, 0, 10]},
+        "armR": {"rotation": [-56, 0, -10]},
+        "legL": {"rotation": [-52, 0, 6]},
+        "legR": {"rotation": [-52, 0, -6]},
+        "tail": {"rotation": [-30, 0, 0]},
+        "sloth": {"position": [0, -8.225, 0]}
+      }
+    },
+    "animation.zoocraft.soul_sloth.sit_down": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "armL": {
+          "rotation": [
+            "40 * (math.clamp(query.anim_time / 1.2, 0, 1))",
+            0,
+            "-6 * (math.clamp(query.anim_time / 1.2, 0, 1))"
+          ]
+        },
+        "armR": {
+          "rotation": [
+            "40 * (math.clamp(query.anim_time / 1.2, 0, 1))",
+            0,
+            "6 * (math.clamp(query.anim_time / 1.2, 0, 1))"
+          ]
+        },
+        "body": {"rotation": ["-46 * (math.clamp(query.anim_time / 1.2, 0, 1))", 0, 0]},
+        "head": {"rotation": ["24 * (math.clamp(query.anim_time / 1.2, 0, 1))", 0, 0]},
+        "legL": {
+          "rotation": [
+            "-64 * (math.clamp(query.anim_time / 1.2, 0, 1))",
+            0,
+            "-8 * (math.clamp(query.anim_time / 1.2, 0, 1))"
+          ]
+        },
+        "legR": {
+          "rotation": [
+            "-64 * (math.clamp(query.anim_time / 1.2, 0, 1))",
+            0,
+            "8 * (math.clamp(query.anim_time / 1.2, 0, 1))"
+          ]
+        },
+        "tail": {"rotation": ["60 * (math.clamp(query.anim_time / 1.2, 0, 1))", 0, 0]},
+        "sloth": {
+          "position": {
+            "0.0": [0, 0, 0],
+            "0.1": [0, 0.321, 0],
+            "0.2": [0, 0.524, 0],
+            "0.3": [0, 0.61, 0],
+            "0.4": [0, 0.577, 0],
+            "0.5": [0, 0.427, 0],
+            "0.6": [0, 0.162, 0],
+            "0.7": [0, -0.216, 0],
+            "0.8": [0, -0.702, 0],
+            "0.9": [0, -1.292, 0],
+            "1": [0, -1.979, 0],
+            "1.1": [0, -2.756, 0],
+            "1.2": [0, -3.615, 0]
+          }
+        }
+      },
+      "animation_length": 1.2
+    },
+    "animation.zoocraft.soul_sloth.tired_down": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "armL": {
+          "rotation": [
+            "-56 * (math.clamp(query.anim_time / 1.2, 0, 1))",
+            0,
+            "10 * (math.clamp(query.anim_time / 1.2, 0, 1))"
+          ]
+        },
+        "armR": {
+          "rotation": [
+            "-56 * (math.clamp(query.anim_time / 1.2, 0, 1))",
+            0,
+            "-10 * (math.clamp(query.anim_time / 1.2, 0, 1))"
+          ]
+        },
+        "body": {"rotation": ["14 * (math.clamp(query.anim_time / 1.2, 0, 1))", 0, 0]},
+        "flip": {"rotation": [0, 0, "80 * (math.clamp(query.anim_time / 1.2, 0, 1))"]},
+        "head": {
+          "rotation": [
+            "48 * (math.clamp(query.anim_time / 1.2, 0, 1))",
+            0,
+            "10 * (math.clamp(query.anim_time / 1.2, 0, 1))"
+          ]
+        },
+        "legL": {
+          "rotation": [
+            "-52 * (math.clamp(query.anim_time / 1.2, 0, 1))",
+            0,
+            "6 * (math.clamp(query.anim_time / 1.2, 0, 1))"
+          ]
+        },
+        "legR": {
+          "rotation": [
+            "-52 * (math.clamp(query.anim_time / 1.2, 0, 1))",
+            0,
+            "-6 * (math.clamp(query.anim_time / 1.2, 0, 1))"
+          ]
+        },
+        "tail": {"rotation": ["-30 * (math.clamp(query.anim_time / 1.2, 0, 1))", 0, 0]},
+        "sloth": {
+          "position": {
+            "0.0": [0, 0, 0],
+            "0.1": [0, 1.55, 0],
+            "0.2": [0, 2.67, 0],
+            "0.3": [0, 3.337, 0],
+            "0.4": [0, 3.541, 0],
+            "0.5": [0, 3.289, 0],
+            "0.6": [0, 2.598, 0],
+            "0.7": [0, 1.499, 0],
+            "0.8": [0, 0.032, 0],
+            "0.9": [0, -1.752, 0],
+            "1": [0, -3.799, 0],
+            "1.1": [0, -6.051, 0],
+            "1.2": [0, -8.225, 0]
+          }
+        }
+      },
+      "animation_length": 1.2
+    },
+    "animation.zoocraft.soul_sloth.curl_sleep_down": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "armL": {
+          "rotation": [
+            "-56 * (math.clamp(query.anim_time / 1.2, 0, 1))",
+            0,
+            "10 * (math.clamp(query.anim_time / 1.2, 0, 1))"
+          ]
+        },
+        "armR": {
+          "rotation": [
+            "-56 * (math.clamp(query.anim_time / 1.2, 0, 1))",
+            0,
+            "-10 * (math.clamp(query.anim_time / 1.2, 0, 1))"
+          ]
+        },
+        "body": {"rotation": ["14 * (math.clamp(query.anim_time / 1.2, 0, 1))", 0, 0]},
+        "flip": {"rotation": [0, 0, "80 * (math.clamp(query.anim_time / 1.2, 0, 1))"]},
+        "head": {
+          "rotation": [
+            "48 * (math.clamp(query.anim_time / 1.2, 0, 1))",
+            0,
+            "10 * (math.clamp(query.anim_time / 1.2, 0, 1))"
+          ]
+        },
+        "legL": {
+          "rotation": [
+            "-52 * (math.clamp(query.anim_time / 1.2, 0, 1))",
+            0,
+            "6 * (math.clamp(query.anim_time / 1.2, 0, 1))"
+          ]
+        },
+        "legR": {
+          "rotation": [
+            "-52 * (math.clamp(query.anim_time / 1.2, 0, 1))",
+            0,
+            "-6 * (math.clamp(query.anim_time / 1.2, 0, 1))"
+          ]
+        },
+        "tail": {"rotation": ["-30 * (math.clamp(query.anim_time / 1.2, 0, 1))", 0, 0]},
+        "sloth": {
+          "position": {
+            "0.0": [0, 0, 0],
+            "0.1": [0, 1.55, 0],
+            "0.2": [0, 2.67, 0],
+            "0.3": [0, 3.337, 0],
+            "0.4": [0, 3.541, 0],
+            "0.5": [0, 3.289, 0],
+            "0.6": [0, 2.598, 0],
+            "0.7": [0, 1.499, 0],
+            "0.8": [0, 0.032, 0],
+            "0.9": [0, -1.752, 0],
+            "1": [0, -3.799, 0],
+            "1.1": [0, -6.051, 0],
+            "1.2": [0, -8.225, 0]
+          }
+        }
+      },
+      "animation_length": 1.2
+    },
+    "animation.zoocraft.soul_sloth.get_up": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "armL": {
+          "rotation": [
+            "40 + (-40 * (math.clamp(query.anim_time / 1.2, 0, 1)))",
+            0,
+            "-6 + (6 * (math.clamp(query.anim_time / 1.2, 0, 1)))"
+          ]
+        },
+        "armR": {
+          "rotation": [
+            "40 + (-40 * (math.clamp(query.anim_time / 1.2, 0, 1)))",
+            0,
+            "6 + (-6 * (math.clamp(query.anim_time / 1.2, 0, 1)))"
+          ]
+        },
+        "body": {"rotation": ["-46 + (46 * (math.clamp(query.anim_time / 1.2, 0, 1)))", 0, 0]},
+        "head": {"rotation": ["24 + (-24 * (math.clamp(query.anim_time / 1.2, 0, 1)))", 0, 0]},
+        "legL": {
+          "rotation": [
+            "-64 + (64 * (math.clamp(query.anim_time / 1.2, 0, 1)))",
+            0,
+            "-8 + (8 * (math.clamp(query.anim_time / 1.2, 0, 1)))"
+          ]
+        },
+        "legR": {
+          "rotation": [
+            "-64 + (64 * (math.clamp(query.anim_time / 1.2, 0, 1)))",
+            0,
+            "8 + (-8 * (math.clamp(query.anim_time / 1.2, 0, 1)))"
+          ]
+        },
+        "tail": {"rotation": ["60 + (-60 * (math.clamp(query.anim_time / 1.2, 0, 1)))", 0, 0]},
+        "sloth": {
+          "position": {
+            "0.0": [0, -3.615, 0],
+            "0.1": [0, -2.756, 0],
+            "0.2": [0, -1.979, 0],
+            "0.3": [0, -1.292, 0],
+            "0.4": [0, -0.702, 0],
+            "0.5": [0, -0.216, 0],
+            "0.6": [0, 0.162, 0],
+            "0.7": [0, 0.427, 0],
+            "0.8": [0, 0.577, 0],
+            "0.9": [0, 0.61, 0],
+            "1": [0, 0.524, 0],
+            "1.1": [0, 0.321, 0],
+            "1.2": [0, 0, 0]
+          }
+        }
+      },
+      "animation_length": 1.2
+    },
+    "animation.zoocraft.soul_sloth.uncurl": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "armL": {
+          "rotation": [
+            "-56 + (56 * (math.clamp(query.anim_time / 1.2, 0, 1)))",
+            0,
+            "10 + (-10 * (math.clamp(query.anim_time / 1.2, 0, 1)))"
+          ]
+        },
+        "armR": {
+          "rotation": [
+            "-56 + (56 * (math.clamp(query.anim_time / 1.2, 0, 1)))",
+            0,
+            "-10 + (10 * (math.clamp(query.anim_time / 1.2, 0, 1)))"
+          ]
+        },
+        "body": {"rotation": ["14 + (-14 * (math.clamp(query.anim_time / 1.2, 0, 1)))", 0, 0]},
+        "flip": {"rotation": [0, 0, "80 + (-80 * (math.clamp(query.anim_time / 1.2, 0, 1)))"]},
+        "head": {
+          "rotation": [
+            "48 + (-48 * (math.clamp(query.anim_time / 1.2, 0, 1)))",
+            0,
+            "10 + (-10 * (math.clamp(query.anim_time / 1.2, 0, 1)))"
+          ]
+        },
+        "legL": {
+          "rotation": [
+            "-52 + (52 * (math.clamp(query.anim_time / 1.2, 0, 1)))",
+            0,
+            "6 + (-6 * (math.clamp(query.anim_time / 1.2, 0, 1)))"
+          ]
+        },
+        "legR": {
+          "rotation": [
+            "-52 + (52 * (math.clamp(query.anim_time / 1.2, 0, 1)))",
+            0,
+            "-6 + (6 * (math.clamp(query.anim_time / 1.2, 0, 1)))"
+          ]
+        },
+        "tail": {"rotation": ["-30 + (30 * (math.clamp(query.anim_time / 1.2, 0, 1)))", 0, 0]},
+        "sloth": {
+          "position": {
+            "0.0": [0, -8.225, 0],
+            "0.1": [0, -6.051, 0],
+            "0.2": [0, -3.799, 0],
+            "0.3": [0, -1.752, 0],
+            "0.4": [0, 0.032, 0],
+            "0.5": [0, 1.499, 0],
+            "0.6": [0, 2.598, 0],
+            "0.7": [0, 3.289, 0],
+            "0.8": [0, 3.541, 0],
+            "0.9": [0, 3.337, 0],
+            "1": [0, 2.67, 0],
+            "1.1": [0, 1.55, 0],
+            "1.2": [0, 0, 0]
+          }
+        }
+      },
+      "animation_length": 1.2
+    },
+    "animation.zoocraft.soul_sloth.hang": {
+      "loop": true,
+      "bones": {
+        "flip": {"rotation": [-180, 0, 0]},
+        "head": {
+          "rotation": [
+            "-34 + (math.sin(query.life_time * 9 + variable.offset) * 3)",
+            "math.sin(query.life_time * 6 + variable.offset) * 10",
+            0
+          ]
+        },
+        "tail": {"rotation": [-20, 0, 0]},
+        "sloth": {"position": [0, -13.651, 0]},
+        "body": {
+          "scale": [
+            "1 + (0.01 * (math.sin(query.life_time * 26 + variable.offset * 20)))",
+            "1 + (0.013 * (math.sin(query.life_time * 26 + variable.offset * 20)))",
+            1
+          ]
+        },
+        "armL": {"rotation": ["math.sin(query.life_time * 11 + variable.offset) * 2", 0, 0]},
+        "legR": {"rotation": ["math.sin(query.life_time * 9 + variable.offset + 90) * 2", 0, 0]}
+      }
+    },
+    "animation.zoocraft.soul_sloth.hang_sleep": {
+      "loop": true,
+      "bones": {
+        "flip": {"rotation": [-180, 0, 0]},
+        "head": {"rotation": [22, 0, 0]},
+        "tail": {"rotation": [-20, 0, 0]},
+        "sloth": {"position": [0, -13.651, 0]},
+        "body": {
+          "scale": [
+            "1 + (0.017 * (math.sin(query.life_time * 14 + variable.offset * 20)))",
+            "1 + (0.022 * (math.sin(query.life_time * 14 + variable.offset * 20)))",
+            1
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.soul_sloth.climb": {
+      "loop": true,
+      "bones": {
+        "flip": {"rotation": [-90, 0, 0]},
+        "head": {"rotation": [-16, "math.sin(query.life_time * 130) * 6", 0]},
+        "sloth": {"position": [0, -1, 0]},
+        "armL": {"rotation": ["math.sin(query.life_time * 260) * 14", 0, 0]},
+        "armR": {"rotation": ["-math.sin(query.life_time * 260) * 14", 0, 0]},
+        "legL": {"rotation": ["-math.sin(query.life_time * 260) * 10", 0, 0]},
+        "legR": {"rotation": ["math.sin(query.life_time * 260) * 10", 0, 0]}
+      }
+    },
+    "animation.zoocraft.soul_sloth.turn_up": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "flip": {"rotation": ["-90 + (-90 * (math.clamp(query.anim_time / 0.8, 0, 1)))", 0, 0]},
+        "head": {"rotation": ["-16 + (-18 * (math.clamp(query.anim_time / 0.8, 0, 1)))", 0, 0]},
+        "tail": {"rotation": ["-20 * (math.clamp(query.anim_time / 0.8, 0, 1))", 0, 0]},
+        "sloth": {
+          "position": {
+            "0.0": [0, -1, 0],
+            "0.0667": [0, -2.613, 0],
+            "0.1333": [0, -3.992, 0],
+            "0.2": [0, -4.911, 0],
+            "0.2667": [0, -5.457, 0],
+            "0.3333": [0, -7.958, 0],
+            "0.4": [0, -10.04, 0],
+            "0.4667": [0, -11.693, 0],
+            "0.5333": [0, -12.913, 0],
+            "0.6": [0, -13.704, 0],
+            "0.6667": [0, -14.077, 0],
+            "0.7333": [0, -14.051, 0],
+            "0.8": [0, -13.651, 0]
+          }
+        }
+      },
+      "animation_length": 0.8
+    },
+    "animation.zoocraft.soul_sloth.turn_down": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "flip": {"rotation": ["-180 + (90 * (math.clamp(query.anim_time / 0.8, 0, 1)))", 0, 0]},
+        "head": {"rotation": ["-34 + (18 * (math.clamp(query.anim_time / 0.8, 0, 1)))", 0, 0]},
+        "tail": {"rotation": ["-20 + (20 * (math.clamp(query.anim_time / 0.8, 0, 1)))", 0, 0]},
+        "sloth": {
+          "position": {
+            "0.0": [0, -13.651, 0],
+            "0.0667": [0, -14.051, 0],
+            "0.1333": [0, -14.077, 0],
+            "0.2": [0, -13.704, 0],
+            "0.2667": [0, -12.913, 0],
+            "0.3333": [0, -11.693, 0],
+            "0.4": [0, -10.04, 0],
+            "0.4667": [0, -7.958, 0],
+            "0.5333": [0, -5.457, 0],
+            "0.6": [0, -4.911, 0],
+            "0.6667": [0, -3.992, 0],
+            "0.7333": [0, -2.613, 0],
+            "0.8": [0, -1, 0]
+          }
+        }
+      },
+      "animation_length": 0.8
+    },
+    "animation.zoocraft.soul_sloth.drop": {
+      "loop": "hold_on_last_frame",
+      "bones": {
+        "flip": {"rotation": ["-180 + (180 * (math.clamp(query.anim_time / 0.5, 0, 1)))", 0, 0]},
+        "head": {"rotation": ["-34 + (34 * (math.clamp(query.anim_time / 0.5, 0, 1)))", 0, 0]},
+        "tail": {"rotation": ["-20 + (20 * (math.clamp(query.anim_time / 0.5, 0, 1)))", 0, 0]},
+        "sloth": {
+          "position": {
+            "0.0": [0, -13.651, 0],
+            "0.05": [0, -12.821, 0],
+            "0.1": [0, -9.344, 0],
+            "0.15": [0, -6.91, 0],
+            "0.2": [0, -3.518, 0],
+            "0.25": [0, -0.729, 0],
+            "0.3": [0, 1.27, 0],
+            "0.35": [0, 2.271, 0],
+            "0.4": [0, 3.528, 0],
+            "0.45": [0, 2.884, 0],
+            "0.5": [0, 0, 0]
+          }
+        }
+      },
+      "animation_length": 0.5
+    },
+    "animation.zoocraft.soul_sloth.clump": {"loop": true, "bones": {"clump": {"scale": ["v.clump", "v.clump", "v.clump"]}}},
+    "animation.zoocraft.soul_sloth.clump_spin": {
+      "loop": true,
+      "bones": {"clump": {"rotation": ["query.life_time * 480", "query.life_time * 260", 0]}}
+    },
+    "animation.zoocraft.soul_sloth.wisps": {
+      "loop": true,
+      "animation_length": 1.3,
+      "particle_effects": {"0.0": {"effect": "wisp", "locator": "back"}}
+    }
+  }
+}

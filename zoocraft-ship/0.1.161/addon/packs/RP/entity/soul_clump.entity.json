@@ -1,0 +1,14 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:soul_clump",
+      "materials": {"default": "entity_emissive_alpha"},
+      "textures": {"default": "textures/entity/zoocraft/soul_sloth"},
+      "geometry": {"default": "geometry.zoocraft.soul_clump"},
+      "animations": {"spin": "animation.zoocraft.soul_sloth.clump_spin"},
+      "scripts": {"animate": ["spin"]},
+      "render_controllers": ["controller.render.zoocraft.soul_sloth"]
+    }
+  }
+}

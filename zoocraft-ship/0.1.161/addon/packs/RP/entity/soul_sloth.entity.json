@@ -1,0 +1,68 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:soul_sloth",
+      "materials": {"default": "entity_emissive_alpha"},
+      "textures": {"default": "textures/entity/zoocraft/soul_sloth"},
+      "geometry": {"default": "geometry.zoocraft.soul_sloth"},
+      "animations": {
+        "idle": "animation.zoocraft.soul_sloth.idle",
+        "walk": "animation.zoocraft.soul_sloth.walk",
+        "look_at_target": "animation.zoocraft.soul_sloth.look_at_target",
+        "rake": "animation.zoocraft.soul_sloth.rake",
+        "wail": "animation.zoocraft.soul_sloth.wail",
+        "wail_shake": "animation.zoocraft.soul_sloth.wail_shake",
+        "lob": "animation.zoocraft.soul_sloth.lob",
+        "howl": "animation.zoocraft.soul_sloth.howl",
+        "howl_shake": "animation.zoocraft.soul_sloth.howl_shake",
+        "eat": "animation.zoocraft.soul_sloth.eat",
+        "yawn": "animation.zoocraft.soul_sloth.yawn",
+        "rake_ground": "animation.zoocraft.soul_sloth.rake_ground",
+        "sit": "animation.zoocraft.soul_sloth.sit",
+        "tired": "animation.zoocraft.soul_sloth.tired",
+        "curl_sleep": "animation.zoocraft.soul_sloth.curl_sleep",
+        "sit_down": "animation.zoocraft.soul_sloth.sit_down",
+        "tired_down": "animation.zoocraft.soul_sloth.tired_down",
+        "curl_sleep_down": "animation.zoocraft.soul_sloth.curl_sleep_down",
+        "get_up": "animation.zoocraft.soul_sloth.get_up",
+        "uncurl": "animation.zoocraft.soul_sloth.uncurl",
+        "hang": "animation.zoocraft.soul_sloth.hang",
+        "hang_sleep": "animation.zoocraft.soul_sloth.hang_sleep",
+        "climb": "animation.zoocraft.soul_sloth.climb",
+        "turn_up": "animation.zoocraft.soul_sloth.turn_up",
+        "turn_down": "animation.zoocraft.soul_sloth.turn_down",
+        "drop": "animation.zoocraft.soul_sloth.drop",
+        "clump": "animation.zoocraft.soul_sloth.clump",
+        "wisps": "animation.zoocraft.soul_sloth.wisps",
+        "move": "controller.animation.zoocraft.soul_sloth.move"
+      },
+      "particle_effects": {"wisp": "zoocraft:sloth_soul_wisp"},
+      "render_controllers": ["controller.render.zoocraft.soul_sloth"],
+      "scripts": {
+        "scale": "1.536",
+        "initialize": [
+          "variable.offset = math.random(0, 20);",
+          "v.st = 0;",
+          "v.act = 0;",
+          "v.last_act = 0;",
+          "v.act_t = 0;",
+          "v.at = 0;",
+          "v.moving = 0;",
+          "v.clump = 0;",
+          "v.wph = 0;"
+        ],
+        "pre_animation": [
+          "v.act = q.property('zoocraft:act');",
+          "v.act_t = (v.act != v.last_act) ? q.life_time : v.act_t;",
+          "v.last_act = v.act;",
+          "v.at = q.life_time - v.act_t;",
+          "v.clump = (v.act == 3 && v.at > 0.5 && v.at < 1.08) ? 1 : 0;",
+          "v.moving = q.modified_move_speed > 0.04;",
+          "v.wph = (v.act == 15) ? (q.life_time * 200) : (q.modified_distance_moved * 30);"
+        ],
+        "animate": ["move", "clump", "wisps"]
+      }
+    }
+  }
+}
