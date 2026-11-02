@@ -7,7 +7,7 @@ Checked 2026-10-06 against: `@minecraft/server` 2.10.0 typings, the 26.20, 26.30
 | Label | Meaning |
 |---|---|
 | **Stable** | Works with no experiment in game 26.52 with `@minecraft/server` 2.10.0 |
-| **Next stable** | In 26.60 Preview / `@minecraft/server` 2.11.0-rc; ships when 26.60 releases |
+| **Next stable** | In the current Preview / the `rc` module; ships with the next game release (26.60 shipped 2026-10-23 with `@minecraft/server` 2.11.0) |
 | **Beta API** | Needs the Beta APIs experiment and a `-beta` script module |
 | **Experimental** | Needs an experiment toggle (named when the source names it) |
 | unverified | The sources don't settle it; test in game |
@@ -65,7 +65,7 @@ Folder: `BP/dimensions/` (the folder the Learn page DataDrivenOverworldHeight.md
 | `components.minecraft:dimension_height.min_y` | int | **required** in the component. -512 to 512. Default -64 when the component is omitted | Stable |
 | `components.minecraft:dimension_height.height_range` | int | **required** in the component. 16 to 1024, multiple of 16. Default 384 | Stable |
 | `components.minecraft:default_biome.biome` | string | **required** in the component. Namespaced biome id used everywhere in the dimension. Default `minecraft:ocean`. Only allowed on custom dimensions (a content error on vanilla ones since 26.50) | Stable |
-| `components.minecraft:clouds.height` | int | **required** in the component. Y where clouds render, -512 to 512 | 26.60 Preview. Added under Experimental Technical Updates with no toggle named; the 26.60.28 fix is in a non-experimental section. Treat as **Next stable, unverified**. Not in the 26.52 schema, so leave it out of packs for 26.52 |
+| `components.minecraft:clouds.height` | int | **required** in the component. Y where clouds render, -512 to 512 | In the stable 26.60 game. Listed under Experimental Technical Updates with no toggle named; the -512 to 512 fix is in the normal Gameplay section. Treat as **stable, unverified**: test with no experiments. Not in the 26.52 schema, so leave it out of packs for 26.52 |
 
 Notes:
 - Keep the whole range inside -512..512 (26.50 fixed a cap that limited JSON heights to -64..320; that line sits in the Experimental Gameplay section of the 26.50 changelog). The schema doesn't say `min_y` must be a multiple of 16; the older `minecraft:dimension_bounds` format required it, so use multiples of 16 (unverified whether it matters now).

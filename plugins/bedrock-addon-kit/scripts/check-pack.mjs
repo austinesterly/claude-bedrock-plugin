@@ -323,7 +323,7 @@ function experimentCheck(file, id, comps) {
   if (be?.entity_storage) warn(file, `${id}: block_entity.entity_storage needs Upcoming Creator Features`);
   if (be?.container) warn(file, `${id}: block_entity.container needs Upcoming Creator Features`);
   const cb = comps?.["minecraft:collision_box"];
-  if ([cb].flat().some((b) => b && typeof b === "object" && ("min" in b || "max" in b))) warn(file, `${id}: collision_box min/max form needs Upcoming Creator Features; origin/size works without it`);
+  if ([cb].flat().some((b) => b && typeof b === "object" && ("min" in b || "max" in b))) warn(file, `${id}: collision_box min/max form needs Upcoming Creator Features in stable 26.60 (Preview 26.70.22 makes it standard only at format 1.26.70); origin/size works without it`);
 }
 function customComponentCheck(file, id, comps) {
   experimentCheck(file, id, comps);

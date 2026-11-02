@@ -24,7 +24,7 @@ Two custom dimensions, one custom biome with client visuals, and a script that m
    ```
 
    (after renaming it reads `import "./<yourns>_dimensions.js";`)
-3. The manifest needs a script module and `@minecraft/server` 2.8.0 or newer. The generator writes 2.10.0.
+3. The manifest needs a script module and `@minecraft/server` 2.8.0 or newer. The generator writes the current stable (2.11.0 since game 26.60).
 4. In game: `/give @s ns:dimension_key`, then use it. Or `/ns:travel skylands`, `/ns:travel void`, `/ns:travel home` (operator, cheats on).
 
 ## Notes

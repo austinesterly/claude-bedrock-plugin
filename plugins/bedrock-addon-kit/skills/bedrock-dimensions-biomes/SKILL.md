@@ -13,7 +13,7 @@ Checked 2026-10-06 against `@minecraft/server` 2.10.0 typings, Mojang bedrock-sa
 |---|---|---|
 | `dimensionRegistry.registerCustomDimension(id)` in `system.beforeEvents.startup` | **Stable** | Beta in 26.20; stable in 26.30, `@minecraft/server` 2.8.0 ("Released DimensionRegistry from beta to v2.8.0") |
 | JSON dimension `BP/dimensions/*.json`: `minecraft:dimension_height`, `minecraft:default_biome`, `minecraft:generation` (`void` only) | **Stable** | 26.50 ("Added support for defining custom dimensions with JSON and configuring custom dimension heights") |
-| `minecraft:clouds` (`height`) in dimension JSON | **Next stable**, unverified | 26.60.21, listed under Experimental Technical Updates with no toggle named; not in the 26.52 schema |
+| `minecraft:clouds` (`height`) in dimension JSON | **In stable 26.60**, unverified without experiments | The 26.60 release notes list it under Experimental Technical Updates with no toggle named; test in a world with no experiments |
 | `world.tickingAreaManager` | **Stable** | 26.10 (beta in 1.21.130) |
 | `DimensionTypes.get/getAll` include custom dimensions | **Stable** | 26.50 / 2.10.0 |
 | Custom biome via `minecraft:replace_biomes` (Overworld) | **Stable** | 1.21.110 ("available without experimental toggle in 1.21.110") |

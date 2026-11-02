@@ -7,7 +7,7 @@ description: Use when making a Minecraft Bedrock add-on or resource pack look go
 
 Checked 2026-10-06 against the Microsoft Learn creator docs (VibrantVisuals pages, texture set and deferred rendering references, client biome references, MCTools rules), Mojang bedrock-samples 1.26.50.4 (3,130 vanilla texture sets, `lighting/`, `atmospherics/`, `color_grading/`, `water/`, `fogs/`, `biomes/`), npm `@minecraft/server-graphics` 1.0.0, and the changelogs 1.21.70 to Preview 26.60.30. Target: stable game 26.52, no experiments.
 
-Labels: **Stable** = 26.52 with no experiment. **Next stable** = in 26.60 Preview. **Experimental** = needs the named world toggle.
+Labels: **Stable** = 26.52 with no experiment (still true in 26.60). **Next stable** = was in 26.60 Preview when checked, so stable since 26.60 shipped on 2026-10-23. **Experimental** = needs the named world toggle.
 
 ## Decide first
 

@@ -1,6 +1,6 @@
 # Script API code patterns
 
-Checked against the official `@minecraft/server` 2.10.0 and `@minecraft/server-ui` 2.2.0 typings (npm `latest` on 2026-10-06). `ns` = your namespace. Plain JS; the same code works as TypeScript.
+Checked against the official `@minecraft/server` 2.10.0 and `@minecraft/server-ui` 2.2.0 typings (npm `latest` on 2026-10-06). Current stable is 2.11.0 / 2.3.0 (game 26.60, 2026-10-23), which only added names, so everything here still works; manifests should now use 2.11.0 and 2.3.0. `ns` = your namespace. Plain JS; the same code works as TypeScript.
 
 ## 1. Entry point and load order
 

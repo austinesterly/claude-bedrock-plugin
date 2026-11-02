@@ -58,7 +58,7 @@ Default: script forms. Reach for JSON UI only for looks, and only with a working
 | Two systems writing the action bar (flicker) or every tick (spam) | One HUD module; send on change + 40-tick heartbeat |
 | Checking a DDUI result for `UserClosed` | DDUI has `ClientClosed`; `UserClosed` is classic only |
 | HUD left hidden after a crash mid-cutscene | `resetHudElementsVisibility()` and `camera.clear()` on `playerSpawn` |
-| Using `ButtonOptions.imageDetails` / control `tooltip` on server-ui 2.2.0 | rc-only until 2.3.0 is stable; use ActionFormData icons meanwhile |
+| Using `ButtonOptions.imageDetails` / control `tooltip` with a 2.2.0 dependency | Stable since `server-ui` 2.3.0 (game 26.60); raise the manifest dependency to 2.3.0 |
 | JSON UI file copied wholesale from vanilla | Override the one element you need, or add your own namespace |
 | Restyling `CustomForm` with JSON UI | DDUI screens aren't drawn by `server_form.json`; restyle classic ActionForms only |
 | Building a "chest GUI" from an entity inventory for a simple menu | Use an ActionForm with item icons; entity containers are for real storage |
@@ -78,7 +78,7 @@ Default: script forms. Reach for JSON UI only for looks, and only with a working
 | `npc-dialogue` | Two linked scenes, a button that calls script, `openScene` helper | `BP/dialogue/ns_guide.json`, `BP/scripts/npc.js`, `RP/texts/en_US.lang` |
 | `json-ui-form-layout` | Title-keyed wide ActionForm layout with vanilla fallback (read its README warning) | `README.md`, `RP/ui/_ui_defs.json`, `RP/ui/server_form.json`, `RP/ui/ns_forms.json`, `BP/scripts/wide_menu.js` |
 
-Replace `ns` with the project namespace. Manifests: BP depends on `@minecraft/server` 2.10.0 and `@minecraft/server-ui` 2.2.0 (see `bedrock-addon-conventions`).
+Replace `ns` with the project namespace. Manifests: BP depends on `@minecraft/server` 2.11.0 and `@minecraft/server-ui` 2.3.0 (stable since game 26.60; the templates were written against 2.10.0 / 2.2.0 and still work; see `bedrock-addon-conventions`).
 
 ## Pointers
 

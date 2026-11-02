@@ -39,7 +39,7 @@ if (!/^[a-z][a-z0-9_]{1,30}$/.test(ns) || ns === "minecraft" || ns === "minecraf
 if (existsSync(target) && readdirSync(target).length) { console.error(`${target} already exists and is not empty; pick a new folder.`); process.exit(2); }
 
 // Current stable module versions: from the plugin's last refresh if available.
-let serverV = "2.10.0", uiV = "2.2.0";
+let serverV = "2.11.0", uiV = "2.3.0";
 try {
   const snap = JSON.parse(readFileSync(join(here, "..", "skills", "bedrock-whats-new", "references", ".snapshot.json"), "utf8"));
   serverV = snap.tags?.["@minecraft/server"]?.latest ?? serverV;

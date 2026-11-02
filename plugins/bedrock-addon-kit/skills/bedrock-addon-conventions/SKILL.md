@@ -25,7 +25,7 @@ These are the baseline rules for any Bedrock add-on. The other skills in this pl
 
 Start a new add-on with `/bedrock-new` (or `node "${CLAUDE_PLUGIN_ROOT}/scripts/new-addon.mjs"`), which writes both packs with fresh UUIDs, the script entry, lang files and a deploy helper; check any pack with `/bedrock-check`, and build `.mcpack` / `.mcaddon` files with `npm run package` in a generated add-on (or `node "${CLAUDE_PLUGIN_ROOT}/scripts/package-addon.mjs" <packs dir>`; see `bedrock-shipping`).
 
-Version facts here were checked on 2026-10-06 (stable game 26.52, `@minecraft/server` 2.10.0, `@minecraft/server-ui` 2.2.0).
+Version facts here were checked on 2026-11-02 (stable game 26.60, `@minecraft/server` 2.11.0, `@minecraft/server-ui` 2.3.0).
 
 ## 1. Target platform
 
@@ -63,8 +63,8 @@ Manifest template (BP):
   ],
   "dependencies": [
     { "uuid": "<RP header uuid>", "version": [1, 0, 0] },
-    { "module_name": "@minecraft/server", "version": "2.10.0" },
-    { "module_name": "@minecraft/server-ui", "version": "2.2.0" }
+    { "module_name": "@minecraft/server", "version": "2.11.0" },
+    { "module_name": "@minecraft/server-ui", "version": "2.3.0" }
   ]
 }
 ```

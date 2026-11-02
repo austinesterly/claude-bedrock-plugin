@@ -19,7 +19,7 @@ Files in `references/`:
 1. Read `current-versions.md`. If its date is more than about 14 days old, or the user asks about something newer than it, refresh first: run `node "${CLAUDE_PLUGIN_ROOT}/scripts/fetch-updates.mjs"` (official sources only: npm registry, feedback.minecraft.net, Blockbench's GitHub) and read what it prints. If the plugin folder is read-only (an installed copy), pass `--out <some writable dir>` and read the files from there.
 2. For "is X stable?": search `api-surface.md` for the class or member. Stable means it's in the `latest` typings. In "Coming in the next stable" means wait for the next release or test in Preview. In "Beta-only" means it needs the Beta APIs experiment.
 3. For JSON components and features, use `changelog-digest.md` and `capabilities.md`, and then the official docs (Microsoft Learn) for exact field shapes.
-4. Say which version your answer is true for ("as of 26.52 stable, checked 2026-10-06"), and name anything that is only in Preview.
+4. Say which version your answer is true for ("as of 26.60 stable, checked 2026-11-02"), and name anything that is only in Preview.
 
 ## Keeping this current
 

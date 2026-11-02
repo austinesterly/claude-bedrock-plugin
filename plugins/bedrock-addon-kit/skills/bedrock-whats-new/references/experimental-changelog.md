@@ -1,6 +1,258 @@
 # Experimental and upcoming features in recent changelogs (generated)
 
-Generated on **2026-10-26** from feedback.minecraft.net (official Zendesk API). Each release lists its "Experimental ..." sections word for word, then other bullets that mention an experiment or beta (often a feature graduating out of an experiment). Newest first. Toggle names are as Mojang writes them in world settings > Experiments.
+Generated on **2026-11-02** from feedback.minecraft.net (official Zendesk API). Each release lists its "Experimental ..." sections word for word, then other bullets that mention an experiment or beta (often a feature graduating out of an experiment). Newest first. Toggle names are as Mojang writes them in world settings > Experiments.
+
+## Minecraft Beta & Preview - 26.70.22 (2026-10-28)
+
+Source: https://feedback.minecraft.net/hc/en-us/articles/49967647452685-Minecraft-Beta-Preview-26-70-22
+
+### Experimental Technical Updates
+
+#### API
+
+- Added class BlockItemFrameComponent to beta for inspecting, setting, replacing, and clearing the item displayed by item frames, with an option to drop the item when clearing
+- Added getRotation and setRotation methods to BlockItemFrameComponent in beta for inspecting and setting item frame rotation in 45-degree increments, from None through Clockwise315
+
+### Other experiment and beta mentions
+
+- 'min' and 'max' were removed from version 1.26.60. Their minimum version is now 1.26.70 and they no longer require the "UpcomingCreatorFeatures" experiment to use.
+
+## Minecraft: Bedrock Edition 26.60 Changelog (2026-10-23)
+
+Source: https://feedback.minecraft.net/hc/en-us/articles/49852828563853-Minecraft-Bedrock-Edition-26-60-Changelog
+
+### Experimental Game Drops Features
+
+#### Drop 4 of 2026
+
+##### Biomes
+
+- The Ice Cave is a new cave biome that generates under the colder biomes in the Overworld. It consists mainly of Packed Ice and Calcite
+  - Features terrain composed primarily of Packed Ice and Calcite
+  - Icicles generate hanging from the ceiling
+  - Large icicles made of Packed Ice generate on the ground and hanging from the ceiling
+  - Patches of Snow occasionally generates on the ground
+  - Ores generate embedded in pockets of Stone and Deepslate
+  - Dirt and Granite do not generate in this biome
+  - Glow Lichen does not generate in this biome
+  - In addition to the mobs that normally spawn in caves, Strays and Frostbites can also spawn here
+  - Ice Crystals occasionally generate on the ground
+  - Ice Caves appear under biomes with low temperature
+
+##### Blocks
+
+- Ice Crystals are the only light source found in Ice Caves, as there is no Glow Lichen there. They can generate naturally on top of Packed Ice blocks
+  - A new crystal-like block similar to Amethyst Clusters
+  - Breaks if the support block is removed
+  - It emits light and can be placed in any direction
+  - Known issue: Ice Crystals are currently smaller than intended
+- Icicles can be found all over the ceiling of ice caves. They generate under blocks of packed ice. If light levels are high enough, there is a chance they will drop and cause damage to anyone or anything unlucky enough to be hit by it
+  - A new speleothem-like block similar to Dripstone and Sulfur Spikes
+  - Can naturally grow up to 5 blocks long when pointing downward
+  - Only grows in areas without nearby light sources and outside the Nether
+  - Damages entities when it falls and deals extra damage to entities that land on it
+  - Breaks when exposed to nearby light sources or while in the Nether, except for its base block
+
+##### Freezing Mob Effect
+
+- The Freezing Effect will cause players to shake, reduce their jump height, and eventually deal damage
+  - Causes those affected to slowly become frozen as if in Powdered Snow for its duration
+  - Leather Armor will keep them from becoming freezing, just like with Powder Snow, but will not keep the effect from being applied and will not remove the effect
+  - Mobs will take additional damage from Freezing while they are affected by the mob effect
+    - Mobs that are vulnerable to freezing have a five times multiplier to the damage taken
+  - Lingering Potion, Splashing Potion, and Potion of Freezing can be brewed using Ice Balls
+  - Arrow of Freezing can be crafted by dipping Arrows into a Cauldron filled with Potion of Freezing
+
+##### Frostbite
+
+- The Frostbite is a zombie variant that can throw ice balls. However, what they really like is to get close to you and use melee attacks that cause the Freezing Effect
+  - A new Zombie variant
+  - Spawns in cold/icy biomes
+  - Switches between melee and ranged combat based on target distance and whether they have Ice Balls; melee attacks apply Freezing, while ranged attacks throw Ice Balls
+  - Uses Zombie-style melee animations and dedicated Ice Ball throwing animations for both adult and baby variants
+  - Transforms into a Zombie when underwater for long enough
+  - Drops Rotten Flesh and Ice Balls
+  - It can stand on top of Powder Snow
+  - It is immune to freezing and does not get slowed by the Freezing effect or Powder Snow
+  - Zombies and Husks now transform into Frostbites when inside Powder Snow
+
+##### Ice Ball
+
+- Ice balls are the projectile weapon of choice for the Frostbite. They deal a small amount of damage and have knockback
+  - A new projectile that can be thrown by the Frostbite
+  - Deals 4 damage to entities it hits, scaling down with velocity
+  - Breaks on impact with blocks or entities, creating a particle effect and sound
+
+##### Sounds
+
+- Added custom sounds for Ice block
+
+### Experimental Technical Updates
+
+#### API
+
+- Custom restart time set in WorldClockOnRestartBeforeEvent now properly overrides Overworld clock
+- Changes LevelStorage.saveHold() to return a Promise<void> which resolves when the hold has finished processing in @minecraft/server-admin in beta
+- Changes LevelStorage.saveQuery() to return a Promise<LevelStorageQuerySnapshotFile[]> which resolves when the query has finished processing in @minecraft/server-admin in beta
+- Changes LevelStorage.saveResume() to return a Promise<void> which resolves when the resume has finished processing in @minecraft/server-admin in beta
+- Added class PlayerCraftRecipeAfterEvent to beta
+- Added class PlayerCraftRecipeAfterEventSignal to beta
+- Added interface PlayerCraftRecipeEventOptions to beta
+- Added property WorldAfterEvents.playerCraftRecipe to beta
+- Added class BlockRecipeCraftingComponent to beta for accessing the slots/recipe relating to player crafting UIs (currently only minecraft:stonecutter_block)
+- Added class RecipeCraftingContext to beta
+- Added class InvalidRecipeError to beta
+- Added property hiddenFrom to DebugShape and PrimitiveShape.
+- Added property defaultVisibleToAll to DebugShape and PrimitiveShape.
+- Added the minecraft:entity_storage block component behind beta
+  - It is only present on blocks defined with a minecraft:block_entity component with entity_storage set to true
+  - It provides the methods store, transfer, release, getEntities and size
+  - Up to 4 entities can be stored in a single block
+  - Storage and API is compartmentalized per content pack, but the 4 entities limit applies globally
+- Added the world.beforeEvents.playerItemAttackEntity event in beta to let scripts cancel an attack initiated through a player item interaction before it causes authoritative attack effects
+- Added class BlockRecipeProcessingComponent to beta for accessing recipe processing inputs and output (initially supporting the crafter block)
+- Added beta Script API access to the minecraft:vibration_properties block component, including methods to read whether vibrations can be dampened or occluded
+- Added class PlayerCursorItemGrabAfterEventSignal to beta
+- Added class PlayerCursorItemGrabAfterEvent to beta
+- Added class PlayerCursorItemReleaseAfterEventSignal to beta
+- Added class PlayerCursorItemReleaseAfterEvent to beta
+- Added property WorldAfterEvents.playerCursorItemGrab to beta
+- Added property WorldAfterEvents.playerCursorItemRelease to beta
+
+##### DDUI
+
+- Fixed labels removing all whitespace adjacent to formatting codes.
+- Added support for multi button row at custom forms in beta.
+- New interface ButtonData.
+  - Field label: ObservableString | ObservableUIRawMessage | string | UIRawMessage. Text to display.
+  - Field onClick: () => void. Action to execute when button is pressed.
+  - Field options?: ButtonOptions. Additional configuration for the button.
+- Class CustomForm.
+  - New method multiButtonRow(buttons: ButtonData[], options?: MultiButtonRowOptions): CustomForm;. Adds a multi button row.'
+    - Parameter buttons is an array that allows maximum three elements.
+    - Parameter options contains additional configuration for the row, like visibility.
+- Added support for multi button row at message box in beta. Button layout could be vertical or horizontal.
+- New interface MessageBoxOptions.
+  - Field showHorizontalButtons: boolean;. Sets the desired layout for the buttons, true for horizontal, false for vertical. Default value is false.
+- Class MessageBox.
+  - New constructor optional parameter options?: MessageBoxOptions. '
+  - New method button3WithOptions(label: ObservableString | ObservableUIRawMessage | string | UIRawMessage, options?: MessageBoxButtonOptions): MessageBox. Allows to add a third button to the message box.
+
+##### Server-ui
+
+- Released version 2.3.0 of @minecraft/server-ui.
+- Added 2.4.0 beta of @minecraft/server-ui.
+
+#### Blocks
+
+- Introducing a new block event that custom components can listen to, onNamedTick
+  - A block can schedule a named tick with Block.scheduleNamedTick, which takes a name and tick delay as parameters.
+  - A block can check if at least one named tick is already scheduled with Block.hasScheduledNamedTick, which takes a name as sole parameter.
+  - A block can remove all scheduled named ticks matching a name with removeScheduledNamedTick, which takes a name as sole parameter.
+  - When handling the event from onNamedTick, BlockComponentNamedTickEvent.isName can be leveraged to filter out events based on their name.
+  - Named ticks are grouped by content packs, two content packs can schedule the same named tick, but BlockComponentNamedTickEvent.isName will return differently based on the content pack calling the method.
+  - Up to 4 named ticks can be scheduled at a given time on the same block position.
+  - The name of a scheduled named tick cannot be longer than 31 characters.
+  - Changing the block at a position wipes its scheduled named ticks.
+  - Changing the permutation at a position does not wipe its scheduled named ticks.
+  - The named tick API is behind beta.
+- minecraft:collision_box will no longer accept single box objects from v1.26.60 onwards in favor of only using arrays. For example, this component...
+{ "format_version": "1.26.20", "minecraft:block": { "description": { "identifier": "test:block_v1_26_20", }, "components": { "minecraft:collision_box": { "origin": [ 0, 0, 0 ], "size": [16, 24, 16] } } } }
+... needs to be transformed into this format:
+{ "format_version": "1.26.60", "minecraft:block": { "description": { "identifier": "test:block_v1_26_60", }, "components": { "minecraft:collision_box": [ { "origin": [ 0, 0, 0 ], "size": [16, 24, 16] } ] } } }
+- minecraft:collision_box now supports min/max coordinates in addition to origin/size with the "Upcoming Creator Features" experiment toggled.
+- The engine will upgrade any origin/size coordinates into min/max internally.
+{ "format_version": "1.26.60", "minecraft:block": { "description": { "identifier": "test:block_v1_26_60" }, "components": { "minecraft:collision_box": [ { "min": [ 4, 0, 0 ], "max": [16, 24, 8] } ] } } }
+- Added a new boolean field entity_storage inside the minecraft:block_entity component, only supported with Experimental Upcoming Creator Features toggled ON
+- Added an optional title field to container in the minecraft:block_entity block component, accepting literal text or localization keys of 1 to 256 characters with Upcoming Creator Features enabled; omitting the field leaves the container heading blank
+- Data-driven container titles now stay on one line and truncate with ... when needed in Classic and Pocket UI, including after localization
+- Added the experimental minecraft:enchantment_power_transmitter block component, which defines whether a block can transmit enchantment power. If set to true and a block with this component is placed in the 1 block gap between an enchantment table and a bookshelf, the enchantment table will remain powered by the bookshelf
+- Requires format version 1.26.60 and the Upcoming Creator Features experiment
+- Added the experimental minecraft:vibration_properties block component, which defines whether a custom block dampens or occludes vibrations through the dampen_vibrations and occlude_vibrations properties
+  - Requires format version 1.26.60 and the Upcoming Creator Features experiment
+- Added the experimental minecraft:neighbor_change block component, which lets creators configure which neighboring block changes trigger the neighbor change after event for block custom components. Requires format version 1.26.60 and Upcoming Creator Features
+{ "format_version": "1.26.60", "minecraft:block": { "description": { "identifier": "demo:neighbor_listener_all" }, "components": { "minecraft:neighbor_change": { "neighbor_directions": ["all"] // "up", "down", "north", "west", "east", "south" also acceptable }, "demo:neighbor_change_listener": {} } } }
+- Added the beta onNeighborChanged event for custom block components
+  - Use minecraft:neighbor_change.neighbor_directions to choose which neighboring directions trigger the event.
+  - Call BlockComponentNeighborChangedAfterEvent.getChanges to get the neighboring block changes.
+  - For each tick, the game queues one event for each listening block with neighbor changes. Changes from different ticks create separate events, even if delivery is delayed.
+  - Each chunk queues at most 4,096 events and delivers at most 100 events per tick. New events are dropped while the queue is full.
+  - BlockComponentNeighborChangedAfterEvent.getChanges returns one NeighborChange for each direction that changed during the tick.
+  - If one direction changes more than once during a tick, previousPermutation contains the permutation before the first change and blockPermutation contains the permutation after the last change. Intermediate permutations are not included.
+  - NeighborChange.direction points from the listening block to the neighbor that changed.
+  - BlockComponentNeighborChangedAfterEvent.block is a live handle to the listening block. The permutations returned by getChanges are snapshots of the changed neighbor.
+  - If the block does not have minecraft:neighbor_change, changes from all neighboring directions can trigger the event.
+
+###### Coordinate System Differences
+
+| | Origin/Size | Min/Max | | --- | --- | --- | | Reference point [0, 0, 0] | Bottom-middle on the front of the block | Bottom-left corner on the front of the block | | X and Z coordinate range | -8 to 8 | 0 to 16 | | Y coordinate range | 0 to 24 | 0 to 24 | | X-axis direction | Mirrored, follows geometry system | Not mirrored, follows voxel shape system |
+
+###### Manual Conversion
+
+- Center origin by shifting the original X and Z values by +8.
+- Add size to the adjusted origin, normalize the results, and calculate the min and max points between both corners.
+- The last step is to mirror both points on the X axis. a. Take the maximum X value from min and subtract it from 16. b. Take the minimum X value from max point and subtract it from 16.
+origin = [-8, 0, -8] size = [12, 24, 8] adjustedOrigin = origin + [8, 0, 8] = [0, 0, 0] tempMin = min(adjustedOrigin, adjustedOrigin + size) = [0, 0, 0] tempMax = max(adjustedOrigin, adjustedOrigin + size) = [12, 24, 8] min = [16 - tempMax.x, tempMin.y, tempMin.z] = [4, 0, 0] max = [16 - tempMin.x, tempMax.y, tempMax.z] = [16, 24, 8]
+To verify the conversion, check that subtracting min from max equals the absolute value of the original size on each axis.
+
+#### Commands
+
+- Added new overloads to the /time command for more control of the Overworld clock under the Creator World Clocks Features experiment
+  - /time pause - Pauses the Overworld clock
+  - /time resume - Resumes the Overworld clock
+  - /time query time - Outputs the Overworld clock's current time
+- Replaced /time set <TimeSpec> with /time set <TimeMarker> (next|previous|stay) under the Creator World Clocks Features experiment
+  - Sets the Overworld clock to the occurrence of the time marker. By default this is next and works the same as the old TimeSpec variation
+
+#### Custom Dimensions
+
+- Added the minecraft:clouds component, letting custom dimensions configure the height at which clouds render. No component means clouds do not render.
+
+### Other experiment and beta mentions
+
+- Added @minecraft/server version 2.12.0-beta
+- Releasing TextPrimitive.lineGapHeight from beta to 2.11.0.
+- Released Dimension.spawnXp from beta to scripts version 2.11.0
+- Released SoundInstance.setVolume, SoundInstance.setPitch, SoundInstance.fade, SoundInstance.seekTo, SoundInstance.pause, and SoundInstance.resume from beta to scripts version 2.11.0
+- Released the loopCount option on PlayerSoundOptions and WorldSoundOptions from beta to scripts version 2.11.0
+- Released server sound definitions from beta with format version 1.26.60
+- Released EntityIsTamedComponent.tamedToPlayer and EntityIsTamedComponent.tamedToPlayerId from beta to stable in @minecraft/server v2.11.0
+- Renamed PoiBlockType.has to PoiBlockType.hasTag in beta
+- Released WorldClockRegistry from beta to v2.11.0 in @minecraft/server
+- Released WorldClock from beta to v2.11.0 in @minecraft/server
+- Released TimeMarker from beta to v2.11.0 in @minecraft/server
+- Released WorldClockRegistrationOptions from beta to v2.11.0 in @minecraft/server
+- Released TimeMarkerOptions from beta to v2.11.0 in @minecraft/server
+- Released WorldClockOnTimeModifiedAfterEvent from beta to v2.11.0 in @minecraft/server
+- Released WorldClockOnTimeModifiedAfterEventSignal from beta to v2.11.0 in @minecraft/server
+- Released WorldClockOnPausedAfterEvent from beta to v2.11.0 in @minecraft/server
+- Released WorldClockOnPausedAfterEventSignal from beta to v2.11.0 in @minecraft/server
+- Released WorldClockOnResumedAfterEvent from beta to v2.11.0 in @minecraft/server
+- Released WorldClockOnResumedAfterEventSignal from beta to v2.11.0 in @minecraft/server
+- Released WorldClockOnTimeMarkerAfterEvent from beta to v2.11.0 in @minecraft/server
+- Released WorldClockOnTimeMarkerAfterEventSignal from beta to v2.11.0 in @minecraft/server
+- Released WorldClockOnRestartBeforeEvent from beta to v2.11.0 in @minecraft/server
+- Released WorldClockOnRestartBeforeEventSignal from beta to v2.11.0 in @minecraft/server
+- Released WorldClockEventOptions from beta to v2.11.0 in @minecraft/server
+- Released WorldClockTimeMarkerEventOptions from beta to v2.11.0 in @minecraft/server
+- Released WorldClockRegistrationError from beta to v2.11.0 in @minecraft/server
+- Released WorldClockReloadNewWorldClockError from beta to v2.11.0 in @minecraft/server
+- Released WorldClockReloadTimeMarkerError from beta to v2.11.0 in @minecraft/server
+- Released WorldClockInvalidRegistryError from beta to v2.11.0 in @minecraft/server
+- Released WorldClockNotFoundError from beta to v2.11.0 in @minecraft/server
+- Released WorldClockTimeMarkerNotFoundError from beta to v2.11.0 in @minecraft/server
+- Released WorldClockAddTimeMarkerError from beta to v2.11.0 in @minecraft/server
+- Released WorldClockRemoveMinecraftTimeMarkerError from beta to v2.11.0 in @minecraft/server
+- Released WorldClockInvalidTimeMarkerError from beta to v2.11.0 in @minecraft/server
+- Released WorldClockRewindError from beta to v2.11.0 in @minecraft/server
+- Released StartupEvent.worldClockRegistry from beta to v2.11.0 in @minecraft/server
+- Released World.getClock from beta to v2.11.0 in @minecraft/server
+- Removed the Creator World Clocks Features experiment
+- /time of commands no longer require the Creator World Clocks Features experiment
+- New /time commands no longer require the Creator World Clocks Features experiment
+- sound_event now accepts the name of any sound event defined in sound_definitions.json, in addition to the built-in sound event names, starting with format version 1.26.50 and no longer requires the Upcoming Creator Features experiment
+- attack_miss, attack_hit, and attack_critical_hit now accept the name of any sound event defined in sound_definitions.json, in addition to the built-in sound event names, starting with format version 1.26.50 and no longer requires the Upcoming Creator Features experiment
+- start_sound now accepts the name of any sound event defined in sound_definitions.json, in addition to the built-in sound event names, starting with format version 1.26.50 and no longer requires the Upcoming Creator Features experiment
 
 ## Minecraft Beta & Preview - 26.70.21 (2026-10-20)
 
@@ -1122,42 +1374,3 @@ Example:
 - Vanilla blocks defined with shapes in the shapes/ folder now use voxel-shape based culling without requiring the Voxel Shapes experiment. This will allow custom blocks using voxel-shapes to attempt to cull against any vanilla block with a voxel-shape
 - The component is no longer in Beta
 - Updated item schema validation so minecraft:item.components now requires at least one component entry for item documents in v1_26_30 and beta
-
-## Minecraft Beta & Preview - 26.50.22 (2026-07-28)
-
-Source: https://feedback.minecraft.net/hc/en-us/articles/47702557761805-Minecraft-Beta-Preview-26-50-22
-
-### Experimental Technical Updates
-
-#### API
-
-- Changed the following beta APIs in @minecraft/server-admin
-  - Changed arguments for AllowList.add() take an AllowListEntryNameInfo and boolean to allow this player to ignore player limits when joining the server.
-  - Changed arguments for AllowList.contains() to take an AllowListEntryNameInfo
-  - Changed arguments for AllowList.remove() to take an AllowListEntryNameInfo
-  - Added property ignoresPlayerLimit to AllowListEntry
-  - Added new AllowListEntryNameInfo
-
-##### ChatSendBeforeEvent
-
-- The targets property can now be modified to control which players receive the chat message
-
-##### DDUI
-
-- Fixed input and HUD delay after closing Data Driven UI screens
-
-### Other experiment and beta mentions
-
-- Removed the experimental toggle for Drop 3 2026 features and made them available by default
-- Released class EntityStartSneakingAfterEvent from beta to v2.10.0
-- Released class EntityStartSneakingAfterEventSignal from beta to v2.10.0
-- Released class EntityStopSneakingAfterEvent from beta to v2.10.0
-- Released class EntityStopSneakingAfterEventSignal from beta to v2.10.0
-- Released interface EntitySneakingChangedEventOptions from beta to v2.10.0
-- Released property WorldAfterEvents.entityStartSneaking from beta to v2.10.0
-- Released property WorldAfterEvents.entityStopSneaking from beta to v2.10.0
-- Released Player.fogSettings from beta to v2.10.0
-- Released class FogSettings from beta to v2.10.0
-- Released class FogSettingsError from beta to v2.10.0
-- Released class BlockDynamicPropertiesComponent from beta to V2.10.0.
-- Released class ItemBlockDynamicPropertiesComponent from beta to V2.10.0.

@@ -80,6 +80,20 @@ for (const p of PACKAGES) {
   try { snap.tags[p] = await getJson(`https://registry.npmjs.org/-/package/${p}/dist-tags`); }
   catch (e) { errors.push(String(e)); }
 }
+// Right after a release Mojang points the beta tags at betas for the stable game
+// (2.12.0-beta.1.26.61-stable). The plugin's "beta" means the Preview beta, so take the
+// beta built for the current Preview (the one @minecraft/server's rc names) and keep the
+// stable-game beta as betaStable.
+const currentPreview = snap.tags["@minecraft/server"]?.rc?.match(/-rc\.(.+-preview\.\d+)$/)?.[1];
+for (const p of PACKAGES) {
+  const t = snap.tags[p];
+  if (!t?.beta?.endsWith("-stable") || !currentPreview) continue;
+  try {
+    const vs = Object.keys((await getJson(`https://registry.npmjs.org/${p}`)).versions ?? {});
+    const pb = vs.filter((v) => v.endsWith(`-beta.${currentPreview}`)).pop();
+    if (pb) { t.betaStable = t.beta; t.beta = pb; }
+  } catch (e) { errors.push(String(e)); }
+}
 
 for (const [kind, id] of Object.entries(SECTIONS)) {
   try {
@@ -149,7 +163,9 @@ if (gameFromRc) cv.push(`- Preview is building ${gameFromRc} (from the \`@minecr
 cv.push("");
 cv.push("## Script modules (npm dist-tags)");
 cv.push("");
-cv.push("Use `latest` in shipped packs. `rc` = what the next game release will ship as stable. `beta` needs the Beta APIs experiment.");
+cv.push("Use `latest` in shipped packs. `rc` = what the next game release will ship as stable. `beta` needs the Beta APIs experiment and is the beta for the current Preview.");
+const bs = snap.tags["@minecraft/server"]?.betaStable, bsUi = snap.tags["@minecraft/server-ui"]?.betaStable;
+if (bs) cv.push("", `npm also has a beta built for the stable game: \`@minecraft/server\` ${bs}${bsUi ? `, \`server-ui\` ${bsUi}` : ""} (npm's own \`beta\` tag right now). Use it, with the Beta APIs experiment, for beta APIs in a stable-game test world; in the manifest write only the part up to \`-beta\`, such as \`${bs.match(/^\d+\.\d+\.\d+-beta/)?.[0]}\`.`);
 cv.push("");
 cv.push("| Package | latest (stable) | rc (next release) | beta |");
 cv.push("|---|---|---|---|");

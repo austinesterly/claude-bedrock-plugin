@@ -2,7 +2,7 @@
 
 Checked against the official stable typings: `@minecraft/server-ui` 2.2.0 and `@minecraft/server` 2.10.0 (npm `latest`, 2026-10-06). Data-Driven UI (`CustomForm`, `MessageBox`, observables) is in `ddui-customform.md`.
 
-Manifest dependency: `{ "module_name": "@minecraft/server-ui", "version": "2.2.0" }`.
+Manifest dependency: `{ "module_name": "@minecraft/server-ui", "version": "2.3.0" }` (stable since game 26.60; everything on this page also works on 2.2.0).
 
 ## The three classic forms
 

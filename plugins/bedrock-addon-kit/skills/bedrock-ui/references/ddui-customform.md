@@ -93,20 +93,20 @@ There is no `UserClosed` value here (that name belongs to classic `FormCancelati
 - An observable can be shared by several forms and several players. Per-player values need per-player observables.
 - `InvalidObservableError` is "thrown when an observable value is expected to be writable, but it is not": an input control given an observable without `clientWritable: true`.
 
-## Coming next (not in stable 2.2.0)
+## Newer than 2.2.0 (stable 2.3.0 since game 26.60) and coming next
 
 | Member | Channel | What it does |
 |---|---|---|
-| `ButtonOptions.imageDetails` (`ImageDetails` = `{ imageSrc, imagePackId }`) | rc 2.3.0 (game 26.60) | Icon on a CustomForm button |
-| `tooltip` on `DropdownOptions`, `SliderOptions`, `TextFieldOptions`, `TextOptions`, `ToggleOptions` | rc 2.3.0 | Hover tooltips on controls (buttons already have `tooltip` in 2.2.0) |
-| `MessageBox.button1WithOptions(label, options?: MessageBoxButtonOptions)`, `button2WithOptions` | rc 2.3.0 | `MessageBoxButtonOptions` = `{ tooltip?, imageDetails? }` |
+| `ButtonOptions.imageDetails` (`ImageDetails` = `{ imageSrc, imagePackId }`) | **stable 2.3.0** (game 26.60) | Icon on a CustomForm button |
+| `tooltip` on `DropdownOptions`, `SliderOptions`, `TextFieldOptions`, `TextOptions`, `ToggleOptions` | **stable 2.3.0** | Hover tooltips on controls (buttons already have `tooltip` in 2.2.0) |
+| `MessageBox.button1WithOptions(label, options?: MessageBoxButtonOptions)`, `button2WithOptions` | **stable 2.3.0** | `MessageBoxButtonOptions` = `{ tooltip?, imageDetails? }` |
 | `CustomForm.multiButtonRow(buttons: ButtonData[], options?: MultiButtonRowOptions)` (max 3), `ButtonData` = `{ label, onClick, options? }`, `MultiButtonRowOptions` = `{ visible? }` | rc 2.4.0 (game 26.70) | Row of buttons |
 | `CustomForm` constructor `options?: CustomFormOptions` (`topCloseButtonVisible`) | beta 2.5.0 | Hide the top close button |
 | `MessageBox` constructor `options?: MessageBoxOptions` (`showHorizontalButtons`), `button3WithOptions` | rc 2.4.0 (game 26.70) | Three-button, horizontal message boxes |
 | `body(body, options?: MessageBoxBodyOptions)` | beta 2.5.0 | |
 | `SliderOptions.fixedFormatDigits` | beta 2.5.0 | |
 
-The 2.3.0 members become stable when 26.60 ships with `@minecraft/server-ui` 2.3.0, and the 2.4.0 members when 26.70 ships with 2.4.0 (Preview 26.70.21 moved them out of beta). Until then, a pack pinned to 2.2.0 must not use them; check `../../bedrock-whats-new/references/current-versions.md` before raising the dependency.
+The 2.3.0 members are stable since game 26.60 (2026-10-23): use them with a 2.3.0 dependency. The 2.4.0 members become stable when 26.70 ships with 2.4.0 (Preview 26.70.21 moved them out of beta). A pack pinned to an older version must not use them; check `../../bedrock-whats-new/references/current-versions.md` before raising the dependency.
 
 ## Patterns
 

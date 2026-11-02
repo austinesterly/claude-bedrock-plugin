@@ -1,6 +1,6 @@
-# What creators can do (as of 26.52 stable, 26.60 in Preview)
+# What creators can do (as of 26.60 stable, 26.70 in Preview)
 
-Curated 2026-10-06. "Stable" = works in a world with no experiments. Check `api-surface.md` for exact Script API names.
+Curated 2026-10-06, updated 2026-11-02. "Stable" = works in a world with no experiments. Check `api-surface.md` for exact Script API names.
 
 ## Works with no experiments
 
@@ -28,7 +28,7 @@ Curated 2026-10-06. "Stable" = works in a world with no experiments. Check `api-
 | `world.beforeEvents.chatSend` (chat parsing) | Beta APIs | Beta only. Use slash commands |
 | Block containers (`block_entity.container`, up to 54 slots, `show_ui_on_interaction`) and `entity_storage` | Upcoming Creator Features | Experimental through Preview 26.70 |
 | Points of interest, `/locate poi` | Upcoming Creator Features | Experimental in stable; released in Preview 26.70.20, so stable when 26.70 ships |
-| `collision_box` min/max form | Upcoming Creator Features | Experimental in 26.60 |
+| `collision_box` min/max form | Upcoming Creator Features | Experimental in 26.60; standard with no toggle at format 1.26.70 in Preview 26.70.22 |
 | Debugger live diagnostics API, `server-admin`, `server-net`, `server-gametest` | Beta APIs | Beta / dedicated server only |
 | Biome `environment_attributes` | Beta biome schema only | Experimental (custom biomes themselves are stable via `minecraft:replace_biomes` and dimension `minecraft:default_biome`; see `bedrock-dimensions-biomes`) |
 | Some Vibrant Visuals / RenderDragon creator features | RenderDragon Features for Creators | Experimental |

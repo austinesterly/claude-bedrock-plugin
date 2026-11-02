@@ -1,10 +1,10 @@
 # Upcoming and beta Script APIs (generated)
 
-Generated on **2026-10-26** from the official `index.d.ts` typings on npm. Labels: **[next stable]** is in the `rc` build (ships in the next game release, works without experiments once it does); **[beta]** needs the Beta APIs experiment and a `-beta` module version in the manifest; **[beta module]** has no stable release at all. Search for `Type.member`.
+Generated on **2026-11-02** from the official `index.d.ts` typings on npm. Labels: **[next stable]** is in the `rc` build (ships in the next game release, works without experiments once it does); **[beta]** needs the Beta APIs experiment and a `-beta` module version in the manifest; **[beta module]** has no stable release at all. Search for `Type.member`.
 
 ## @minecraft/server
 
-Stable 2.10.0, rc 2.12.0-rc.1.26.70-preview.21, beta 2.13.0-beta.1.26.70-preview.21. 125 names coming in the next stable, 236 beta-only.
+Stable 2.11.0, rc 2.12.0-rc.1.26.70-preview.22, beta 2.13.0-beta.1.26.70-preview.22. 40 names coming in the next stable, 253 beta-only.
 
 ### BlockSearchOptions [next stable] (new type)
 
@@ -19,26 +19,12 @@ Options for finding blocks.
 A class that represents a particular dimension (e.g., The End) within a world.
 
 - `readonly poiManager: PoiManager`
-- `spawnXp(location: Vector3, amount: number): void`
-
-### EntityIsTamedComponent [next stable]
-
-When added, this component signifies that this entity is currently tamed.
-
-- `readonly tamedToPlayer?: Player`
-- `readonly tamedToPlayerId?: string`
 
 ### InputMode [next stable]
 
 Describes the type of input of a device.
 
 - `GamepadAndMouse = 'GamepadAndMouse'`
-
-### PlayerSoundOptions [next stable]
-
-Additional options for how a sound plays for a player.
-
-- `loopCount?: number`
 
 ### PoiBlockInstance [next stable] (new type)
 
@@ -95,164 +81,6 @@ The base class for a text primitive.
 - `defaultVisibleToAll: boolean`
 - `hiddenFrom: Player[]`
 
-### SoundInstance [next stable]
-
-Represents a handle to a sound that has been played.
-
-- `fade(duration: number, targetVolume: number): void`
-- `pause(): void`
-- `resume(): void`
-- `seekTo(seconds: number): void`
-- `setPitch(pitch: number): void`
-- `setVolume(volume: number): void`
-
-### StartupEvent [next stable]
-
-- `readonly worldClockRegistry: WorldClockRegistry`
-
-### TextPrimitive [next stable]
-
-A primitive shape class that represents a text label in the world with a background.
-
-- `lineGapHeight: number`
-
-### TimeMarker [next stable] (new type)
-
-- `readonly name: string` The identifier that represents this time marker.
-- `readonly period?: number` The interval (in ticks) at which the time marker repeats.
-- `readonly time: number` The time (in ticks) that the time marker occurs at on a world clock.
-
-### TimeMarkerOptions [next stable] (new type)
-
-- `name: string` The name that the time marker will have.
-- `period?: number` The optional repeat period (in ticks) that the time marker will have.
-- `time: number` The time (in ticks) that the time marker will occur at.
-
-### World [next stable]
-
-A class that wraps the state of a world - a set of dimensions and the environment of Minecraft.
-
-- `getClock(name: string): WorldClock`
-
-### WorldAfterEvents [next stable]
-
-Contains a set of events that are available across the scope of the World.
-
-- `readonly worldClockOnPaused: WorldClockOnPausedAfterEventSignal`
-- `readonly worldClockOnResumed: WorldClockOnResumedAfterEventSignal`
-- `readonly worldClockOnTimeMarker: WorldClockOnTimeMarkerAfterEventSignal`
-- `readonly worldClockOnTimeModified: WorldClockOnTimeModifiedAfterEventSignal`
-
-### WorldBeforeEvents [next stable]
-
-A set of events that fire before an actual action occurs.
-
-- `readonly worldClockOnRestart: WorldClockOnRestartBeforeEventSignal`
-
-### WorldClock [next stable] (new type)
-
-- `addTimeMarker(timeMarkerOptions: TimeMarkerOptions): void` Adds a new time marker to the world clock.
-- `isPaused: boolean` Retrieves or sets whether the world clock is currently paused.
-- `readonly name: string` The identifier that represents this world clock.
-- `removeTimeMarker(timeMarker: string | TimeMarker): void` Removes an existing time marker from the world clock.
-- `rewindTo(timeMarker: string | TimeMarker): void` Rewinds the world clock's time to the previous occurrence of the specified time marker.
-- `set(timeMarker: string | TimeMarker): void` Sets the world clock's time to the specified time marker.
-- `skipTo(timeMarker: string | TimeMarker): void` Skips the world clock's time to the next occurrence of the specified time marker.
-- `time: number` Retrieves or sets the current time (in ticks) of the world clock.
-- `readonly timeMarkers: TimeMarker[]` Retrieves the current time markers of the world clock.
-
-### WorldClockAddTimeMarkerError [next stable] (new type)
-
-### WorldClockEventOptions [next stable] (new type)
-
-- `clock: string` The name of the clock that this event should fire for.
-
-### WorldClockInvalidRegistryError [next stable] (new type)
-
-### WorldClockInvalidTimeMarkerError [next stable] (new type)
-
-### WorldClockNotFoundError [next stable] (new type)
-
-### WorldClockOnPausedAfterEvent [next stable] (new type)
-
-- `readonly clock: WorldClock` The world clock that was paused.
-
-### WorldClockOnPausedAfterEventSignal [next stable] (new type)
-
-- `subscribe(callback: (arg0: WorldClockOnPausedAfterEvent) => void, options?: WorldClockEventOptions): (arg0: WorldClockOnPausedAfterEvent) => void` Adds a callback that will be called when a world clock is paused.
-- `unsubscribe(callback: (arg0: WorldClockOnPausedAfterEvent) => void): void` Removes a callback from being called when a world clock is paused.
-
-### WorldClockOnRestartBeforeEvent [next stable] (new type)
-
-- `cancel: boolean` If set to true, cancels the world clock restart event.
-- `readonly clock: WorldClock` The world clock that is restarting.
-- `newTime: number` The time that the world clock will be set to after it restarts.
-
-### WorldClockOnRestartBeforeEventSignal [next stable] (new type)
-
-- `subscribe(callback: (arg0: WorldClockOnRestartBeforeEvent) => void, options?: WorldClockEventOptions): (arg0: WorldClockOnRestartBeforeEvent) => void` Adds a callback that will be called when a world clock is restarting.
-- `unsubscribe(callback: (arg0: WorldClockOnRestartBeforeEvent) => void): void` Removes a callback from being called when a world clock is restarting.
-
-### WorldClockOnResumedAfterEvent [next stable] (new type)
-
-- `readonly clock: WorldClock` The world clock that was resumed.
-
-### WorldClockOnResumedAfterEventSignal [next stable] (new type)
-
-- `subscribe(callback: (arg0: WorldClockOnResumedAfterEvent) => void, options?: WorldClockEventOptions): (arg0: WorldClockOnResumedAfterEvent) => void` Adds a callback that will be called when a world clock is resumed.
-- `unsubscribe(callback: (arg0: WorldClockOnResumedAfterEvent) => void): void` Removes a callback from being called when a world clock is resumed.
-
-### WorldClockOnTimeMarkerAfterEvent [next stable] (new type)
-
-- `readonly clock: WorldClock` The world clock that hit a time marker.
-- `readonly timeMarker: TimeMarker` The time marker that was hit by the world clock.
-
-### WorldClockOnTimeMarkerAfterEventSignal [next stable] (new type)
-
-- `subscribe(callback: (arg0: WorldClockOnTimeMarkerAfterEvent) => void, options?: WorldClockTimeMarkerEventOptions): (arg0: WorldClockOnTimeMarkerAfterEvent) => void` Adds a callback that will be called when a world clock's time hits a time marker.
-- `unsubscribe(callback: (arg0: WorldClockOnTimeMarkerAfterEvent) => void): void` Removes a callback from being called when a world clock's time hits a time marker.
-
-### WorldClockOnTimeModifiedAfterEvent [next stable] (new type)
-
-- `readonly clock: WorldClock` The world clock that had its time modified.
-
-### WorldClockOnTimeModifiedAfterEventSignal [next stable] (new type)
-
-- `subscribe(callback: (arg0: WorldClockOnTimeModifiedAfterEvent) => void, options?: WorldClockEventOptions): (arg0: WorldClockOnTimeModifiedAfterEvent) => void` Adds a callback that will be called when a world clock's time is modified.
-- `unsubscribe(callback: (arg0: WorldClockOnTimeModifiedAfterEvent) => void): void` Removes a callback from being called when a world clock's time is modified.
-
-### WorldClockRegistrationError [next stable] (new type)
-
-### WorldClockRegistrationOptions [next stable] (new type)
-
-- `timeMarkers?: TimeMarkerOptions[]` Set of options to include time markers during world clock registration.
-
-### WorldClockRegistry [next stable] (new type)
-
-- `registerClock(name: string, registrationOptions?: WorldClockRegistrationOptions): void` Registers a new custom world clock.
-
-### WorldClockReloadNewWorldClockError [next stable] (new type)
-
-### WorldClockReloadTimeMarkerError [next stable] (new type)
-
-### WorldClockRemoveMinecraftTimeMarkerError [next stable] (new type)
-
-### WorldClockRewindError [next stable] (new type)
-
-### WorldClockTimeMarkerEventOptions [next stable] (new type)
-
-- `clock: string` The name of the world clock that this event should fire for.
-- `timeMarker?: string` The name of the time marker that this event should fire for.
-
-### WorldClockTimeMarkerNotFoundError [next stable] (new type)
-
-### WorldSoundOptions [next stable]
-
-Contains additional options for a playSound occurrence.
-
-- `isBroadcast?: boolean`
-- `loopCount?: number`
-
 ### BannerPattern [beta] (new type)
 
 - `readonly color: string` The color to apply to this banner pattern.
@@ -306,6 +134,7 @@ Contains information regarding a specific block redstone update event.
 The types of block components that are accessible via function Block.getComponent.
 
 - `EntityStorage = 'minecraft:entity_storage'`
+- `ItemFrame = 'minecraft:item_frame'`
 - `RecipeCrafting = 'minecraft:recipe_crafting'`
 - `RecipeProcessing = 'minecraft:recipe_processing'`
 - `VibrationProperties = 'minecraft:vibration_properties'`
@@ -330,6 +159,15 @@ Contains a set of events that will be raised for a block.
 
 - `readonly definitionId: string` The entity's definition ID, such as `minecraft:pig`.
 - `readonly uniqueId: string` The unique ID of the stored entity.
+
+### BlockItemFrameComponent [beta] (new type)
+
+- `static readonly componentId = 'minecraft:item_frame'`
+- `dropFramedItem(): void` Removes the framed item and drops it into the world.
+- `getFramedItem(): ItemStack | undefined` Gets the item stack currently displayed in the frame.
+- `getRotation(): ItemFrameRotation` Gets the current rotation of the item frame.
+- `setFramedItem(itemStack?: ItemStack): void` Sets or replaces the item displayed in the frame.
+- `setRotation(rotation: ItemFrameRotation): void` Sets the rotation of the item frame.
 
 ### BlockLocationIterator [beta]
 
@@ -503,6 +341,17 @@ Represents the game rules for a world experience.
 The types of item components that are accessible via function ItemStack.getComponent.
 
 - `BlockEntityStorage = 'minecraft:block_entity_storage'`
+
+### ItemFrameRotation [beta] (new type)
+
+- `Clockwise135 = 'Clockwise135'` The displayed item is rotated 135 degrees clockwise.
+- `Clockwise180 = 'Clockwise180'` The displayed item is rotated 180 degrees clockwise.
+- `Clockwise225 = 'Clockwise225'` The displayed item is rotated 225 degrees clockwise.
+- `Clockwise270 = 'Clockwise270'` The displayed item is rotated 270 degrees clockwise.
+- `Clockwise315 = 'Clockwise315'` The displayed item is rotated 315 degrees clockwise.
+- `Clockwise45 = 'Clockwise45'` The displayed item is rotated 45 degrees clockwise.
+- `Clockwise90 = 'Clockwise90'` The displayed item is rotated 90 degrees clockwise.
+- `None = 'None'` The displayed item has no additional rotation.
 
 ### MessageReceiveAfterEvent [beta] (new type)
 
@@ -705,7 +554,7 @@ A set of events that fire before an actual action occurs.
 
 ## @minecraft/server-ui
 
-Stable 2.2.0, rc 2.4.0-rc.1.26.70-preview.21, beta 2.5.0-beta.1.26.70-preview.21. 24 names coming in the next stable, 4 beta-only.
+Stable 2.3.0, rc 2.4.0-rc.1.26.70-preview.22, beta 2.5.0-beta.1.26.70-preview.22. 10 names coming in the next stable, 4 beta-only.
 
 ### ButtonData [next stable] (new type)
 
@@ -713,41 +562,17 @@ Stable 2.2.0, rc 2.4.0-rc.1.26.70-preview.21, beta 2.5.0-beta.1.26.70-preview.21
 - `onClick: () => void` A callback function that is invoked when the player clicks the button.
 - `options?: ButtonOptions` Optional configuration for the button, such as a tooltip, disabled state, image, or visibility.
 
-### ButtonOptions [next stable]
-
-Options for configuring a button component.
-
-- `imageDetails?: ImageDetails`
-
 ### CustomForm [next stable]
 
 A customizable data driven (DDUI) form that lets you add buttons, labels, toggles, dropdowns, sliders, text fields, and more.
 
 - `multiButtonRow(buttons: ButtonData[], options?: MultiButtonRowOptions): CustomForm`
 
-### DropdownOptions [next stable]
-
-Options for configuring a dropdown component.
-
-- `tooltip?: ObservableString | ObservableUIRawMessage | string | UIRawMessage`
-
-### ImageDetails [next stable] (new type)
-
-- `imagePackId: ObservableString | string` Identifier of the resource pack that provides the imageSrc asset.
-- `imageSrc: ObservableString | string` Path to an image displayed.
-
 ### MessageBox [next stable]
 
 A simple message form with two buttons and a text body.
 
-- `button1WithOptions(label: ObservableString | ObservableUIRawMessage | string | UIRawMessage, options?: MessageBoxButtonOptions): MessageBox`
-- `button2WithOptions(label: ObservableString | ObservableUIRawMessage | string | UIRawMessage, options?: MessageBoxButtonOptions): MessageBox`
 - `button3WithOptions(label: ObservableString | ObservableUIRawMessage | string | UIRawMessage, options?: MessageBoxButtonOptions): MessageBox`
-
-### MessageBoxButtonOptions [next stable] (new type)
-
-- `imageDetails?: ImageDetails` Details of an image to display alongside the button label.
-- `tooltip?: ObservableString | ObservableUIRawMessage | string | UIRawMessage` Text shown in a tooltip when the player hovers over the button.
 
 ### MessageBoxOptions [next stable] (new type)
 
@@ -758,30 +583,6 @@ Options for configuring a message box.
 ### MultiButtonRowOptions [next stable] (new type)
 
 - `visible?: boolean | ObservableBoolean` When false or bound to a false, the entire row is hidden.
-
-### SliderOptions [next stable]
-
-Options for configuring a slider component.
-
-- `tooltip?: ObservableString | ObservableUIRawMessage | string | UIRawMessage`
-
-### TextFieldOptions [next stable]
-
-Options for configuring a text field component.
-
-- `tooltip?: ObservableString | ObservableUIRawMessage | string | UIRawMessage`
-
-### TextOptions [next stable]
-
-Options for configuring a text component (label or header).
-
-- `tooltip?: ObservableString | ObservableUIRawMessage | string | UIRawMessage`
-
-### ToggleOptions [next stable]
-
-Options for configuring a toggle component.
-
-- `tooltip?: ObservableString | ObservableUIRawMessage | string | UIRawMessage`
 
 ### CustomFormOptions [beta] (new type)
 
@@ -797,11 +598,11 @@ Options for configuring a slider component.
 
 ## @minecraft/server-graphics
 
-Stable 1.0.0, rc 1.0.0-rc.1.26.60-preview.23, beta 1.1.0-beta.1.26.70-preview.21. 0 names coming in the next stable, 0 beta-only.
+Stable 1.0.0, rc 1.0.0-rc.1.26.60-preview.23, beta 1.1.0-beta.1.26.70-preview.22. 0 names coming in the next stable, 0 beta-only.
 
 ## @minecraft/server-gametest
 
-No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.70-preview.21). For automated tests in test worlds.
+No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.70-preview.22). For automated tests in test worlds.
 
 ### FenceConnectivity [beta module] (new type)
 
@@ -1112,7 +913,7 @@ Main class for GameTest functions, with helpers and data for manipulating the re
 
 ## @minecraft/server-admin
 
-No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.70-preview.21). Bedrock Dedicated Server only.
+No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.70-preview.22). Bedrock Dedicated Server only.
 
 ### AdminBeforeEvents [beta module] (new type)
 
@@ -1281,7 +1082,7 @@ A globally available object that returns a list of dedicated-server configured v
 
 ## @minecraft/server-net
 
-No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.70-preview.21). Bedrock Dedicated Server only.
+No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.70-preview.22). Bedrock Dedicated Server only.
 
 ### beforeEvents [beta module] (new type)
 
@@ -1798,7 +1599,7 @@ An error thrown when attempting to use a WebSocket while the socket is not conne
 
 ## @minecraft/debug-utilities
 
-No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.70-preview.21). 
+No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.70-preview.22). 
 
 ### collectPluginStats [beta module] (new type)
 
