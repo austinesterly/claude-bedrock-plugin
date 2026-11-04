@@ -1,0 +1,8 @@
+e2e0ca5622df6b5181d5ca3db163063013ba53501c3d0368857ca2843e28663f  addon\docs\status.md
+be8c2adf40b3c21697bce349a0e6eb81ce57d94a6dcb829ecb228d8ac705aeb6  addon\packs\BP\scripts\data\balance.js
+add9a8c86e80b9bc5b23988f53cae2d1aff0826b1b2c61579d99858e8da7c727  addon\packs\BP\scripts\economy\ledger.js
+31f443b65567769aa3f4328a0e429dde2edd1c23e71737cc8be1563a8b670da5  addon\packs\BP\scripts\park\park.js
+a2c7766606412adfe95abd769a62fd29fbebb1b9c09bde78624973a539798d6c  addon\packs\BP\scripts\ui\parkMenu.js
+4946ccf2878f1b6778410c6f1144f283cbb26072339a31923443bd3fba0f51d8  addon\packs\BP\scripts\visitors\demand.js
+fb18070a963e30bae5cbc10df10381fc74835ac0ecaaa85c82f968dbed62971b  addon\packs\BP\scripts\visitors\visitors.js
+9583c317c37fcad18eb6ed5a0c7097ead1ff402b0fa392e55b04e026beabb2cc  addon\tests\logic.test.mjs
