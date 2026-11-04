@@ -1,0 +1,4 @@
+6639cf5cb6374fff3f261c44a52f3ed29047bb71d0415e717a6e753c617fc7c5  addon\docs\status.md
+8c69b5b52ac32d7716c3daa710de37a5dae4786d5116acbd008b6e66c529b633  addon\packs\BP\scripts\main.js
+1be041f9c84b7e362c8a6f731ab07425507294a180b7688d42368509fb929773  addon\packs\BP\scripts\starter\site.js
+8af0b2d903a1817a45e280cc744be557d48dd798390d51467860d5b5855f704a  addon\tests\logic.test.mjs

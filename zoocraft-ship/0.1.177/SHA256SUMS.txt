@@ -1,0 +1,5 @@
+a951e3f71a8b9b62484c1f8cccc6871ea57dfb1bfc1e4cbf31085d083341ef13  addon\docs\Starter_world_test_plan.md
+e2e0ca5622df6b5181d5ca3db163063013ba53501c3d0368857ca2843e28663f  addon\docs\status.md
+767e288b26db3415e1ba7d676942b2e9a8a63ef20a898a83669149e1154d1ad6  addon\packs\BP\scripts\main.js
+0227280e818f919afb0cc6f80d08498706f2702620171ad7e8412bccd51fb05a  addon\packs\BP\scripts\starter\site.js
+9583c317c37fcad18eb6ed5a0c7097ead1ff402b0fa392e55b04e026beabb2cc  addon\tests\logic.test.mjs
