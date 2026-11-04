@@ -1,0 +1,36 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "zoocraft:noticeboard"
+    },
+    "tags": [
+      "zoocraft_workshop"
+    ],
+    "pattern": [
+      "PAP",
+      "PAP",
+      "S S"
+    ],
+    "key": {
+      "P": {
+        "tag": "minecraft:planks"
+      },
+      "A": {
+        "item": "minecraft:paper"
+      },
+      "S": {
+        "item": "minecraft:stick"
+      }
+    },
+    "unlock": [
+      {
+        "item": "zoocraft:zoo_workshop"
+      }
+    ],
+    "result": {
+      "item": "zoocraft:noticeboard",
+      "count": 1
+    }
+  }
+}
