@@ -9,12 +9,15 @@ import { join, relative, resolve, dirname, basename, extname } from "node:path";
 
 const argv = process.argv.slice(2);
 const asJson = argv.includes("--json");
+const showNotes = argv.includes("--notes");
 const roots = argv.filter((a) => !a.startsWith("--")).map((a) => resolve(a));
-if (!roots.length) { console.error("Usage: node check-pack.mjs <pack or project dir> [...] [--json]"); process.exit(2); }
+if (!roots.length) { console.error("Usage: node check-pack.mjs <pack or project dir> [...] [--json] [--notes]"); process.exit(2); }
 
 const findings = [];
 const err = (file, msg) => findings.push({ level: "error", file, msg });
 const warn = (file, msg) => findings.push({ level: "warn", file, msg });
+// Notes: things that are usually on purpose but worth a look once. Counted, listed only with --notes.
+const note = (file, msg) => findings.push({ level: "note", file, msg });
 const rel = (f) => relative(process.cwd(), f) || f;
 
 // ---------- file helpers ----------
@@ -188,6 +191,11 @@ for (const bp of bps) {
     const j = readJson(f);
     const id = j?.["minecraft:entity"]?.description?.identifier;
     if (id) { if (bpEntities.has(id)) err(f, `duplicate BP entity ${id}`); bpEntities.set(id, f); }
+    // 1.26.10 split minecraft:pushable into pushable_by_entity / pushable_by_block and stopped parsing it:
+    // the whole entity then fails to load ("not present in the Schema").
+    const ent = j?.["minecraft:entity"];
+    if (ent) for (const [where, comps] of [["components", ent.components], ...Object.entries(ent.component_groups ?? {}).map(([g, c]) => [`component_groups.${g}`, c])])
+      if (comps?.["minecraft:pushable"] !== undefined) err(f, `${id}: ${where} has minecraft:pushable, which the game stopped parsing in 1.26.10 and the entity fails to load; use minecraft:pushable_by_entity (was is_pushable) and minecraft:pushable_by_block (was is_pushable_by_piston)`);
     if (id) entityChecks.push([f, id, j]);
   }
 }
@@ -213,6 +221,16 @@ const texRoots = rps.map((rp) => rp.dir);
 let VANILLA = { renderControllers: [], geometry: [], textures: [] };
 try { VANILLA = JSON.parse(readFileSync(new URL("./vanilla-ids.json", import.meta.url), "utf8")); } catch {}
 const vanillaRc = new Set(VANILLA.renderControllers), vanillaGeoIds = new Set(VANILLA.geometry), vanillaTex = new Set(VANILLA.textures);
+// The game's own animations and animation controllers (a client entity may name them without shipping them), and the
+// shapes of its controllers (initial state, each state and the animation keys it plays; see build-vanilla-ids.mjs).
+const vanillaAnims = new Set(VANILLA.animations ?? []), vanillaCtrls = new Set(VANILLA.animationControllers ?? []), vanillaShapes = new Set(VANILLA.controllerShapes ?? []);
+const haveVanillaAnims = vanillaAnims.size > 0;
+const controllerShape = (c) => {
+  const states = c?.states ?? {};
+  const init = c?.initial_state ?? "default";
+  const parts = Object.keys(states).sort().map((n) => `${n}:${(states[n]?.animations ?? []).map((a) => (typeof a === "string" ? a : Object.keys(a)[0])).sort().join(",")}`);
+  return `${init}|${parts.join(";")}`;
+};
 function textureExists(path) {
   if (vanillaTex.has(path)) return "(vanilla)";
   for (const root of texRoots) for (const ext of [".png", ".tga", ".jpg", ".jpeg"]) { const f = join(root, path + ext); if (existsExactCase(f)) return f; }
@@ -242,8 +260,13 @@ for (const ce of clientEntities) {
       for (const [tk, tp] of Object.entries(d.textures)) {
         const tf = textureExists(tp.replace(/\.(png|tga)$/i, ""));
         const sz = tf && tf !== "(vanilla)" && pngSize(tf);
-        if (sz && g.tw && g.th && (sz[0] !== g.tw || sz[1] !== g.th) && Object.keys(d.textures).length === 1)
-          warn(f, `${id}: ${tp} is ${sz[0]}x${sz[1]} but ${gid} declares texture_width/height ${g.tw}x${g.th}; UVs will rescale`);
+        if (sz && g.tw && g.th && (sz[0] !== g.tw || sz[1] !== g.th) && Object.keys(d.textures).length === 1) {
+          // The UVs are read in the geometry's texture_width/height, so a skin drawn at a whole multiple of that size in
+          // both directions (a 2x or 4x skin) lands where it should; any other size stretches or crops it.
+          const k = sz[0] / g.tw;
+          if (k >= 2 && Number.isInteger(k) && sz[1] / g.th === k) note(f, `${id}: ${tp} is ${sz[0]}x${sz[1]}, ${k}x the ${g.tw}x${g.th} that ${gid} declares (a hi-res skin: fine if its UVs were laid out at ${g.tw}x${g.th})`);
+          else warn(f, `${id}: ${tp} is ${sz[0]}x${sz[1]} but ${gid} declares texture_width/height ${g.tw}x${g.th}; UVs will rescale`);
+        }
       }
     }
   }
@@ -262,9 +285,9 @@ for (const ce of clientEntities) {
   for (const [k, aid] of Object.entries(d.animations ?? {})) {
     const own = aid.includes(id.split(":")[0]);
     if (aid.startsWith("controller.animation.")) {
-      if (!controllers.has(aid)) (own ? err : warn)(f, `${id}: animations.${k} = ${aid} is not defined in any animation_controllers file`);
-      else { if (!usedControllerBy.has(aid)) usedControllerBy.set(aid, []); usedControllerBy.get(aid).push({ entity: id, animKeys, file: f }); }
-    } else if (!anims.has(aid) && !/^animation\.(common|humanoid|quadruped|player|armor|agent|bow|crossbow|trident)\./.test(aid)) (own ? err : warn)(f, `${id}: animations.${k} = ${aid} is not defined in any .animation.json${own ? "" : " (fine if it is a vanilla animation)"}`);
+      if (!controllers.has(aid) && !vanillaCtrls.has(aid)) (own ? err : warn)(f, `${id}: animations.${k} = ${aid} is not defined in any animation_controllers file${own || !haveVanillaAnims ? "" : " or among the game's own controllers"}`);
+      else if (controllers.has(aid)) { if (!usedControllerBy.has(aid)) usedControllerBy.set(aid, []); usedControllerBy.get(aid).push({ entity: id, animKeys, file: f }); }
+    } else if (!anims.has(aid) && !vanillaAnims.has(aid) && !/^animation\.(common|humanoid|quadruped|player|armor|agent|bow|crossbow|trident)\./.test(aid)) (own ? err : warn)(f, `${id}: animations.${k} = ${aid} is not defined in any .animation.json${own ? "" : haveVanillaAnims ? " or among the game's own animations" : " (fine if it is a vanilla animation)"}`);
     // bones used by own animations must exist in the entity's geometry
     const a = anims.get(aid);
     if (a && own && geoIds.length) {
@@ -364,6 +387,13 @@ for (const bp of bps) for (const f of walk(bp.dir)) {
       }
       const cb = c["minecraft:collision_box"];
       if (cb && typeof cb === "object" && !Array.isArray(cb) && vnum(fv) >= vnum("1.26.60")) err(f, `${id}: at format ${fv} minecraft:collision_box must be an array of boxes`);
+      // The game refuses the whole block (its recipes and blocks.json entry then fail too) when a selection box leaves
+      // the block: "must be inside the following limit: Vec3(-8,0,-8) and Vec3(8,16,8)". Collision may reach 24 high.
+      const sb = c["minecraft:selection_box"];
+      if (sb && typeof sb === "object" && Array.isArray(sb.origin) && Array.isArray(sb.size)) {
+        const [x, y, z] = sb.origin, [w, h, d] = sb.size;
+        if (x < -8 || z < -8 || y < 0 || x + w > 8 || z + d > 8 || y + h > 16) err(f, `${id}: minecraft:selection_box ${JSON.stringify(sb)} leaves the block; origin + size must stay inside (-8,0,-8) to (8,16,8) or the game refuses the block`);
+      }
       customComponentCheck(f, id, c);
     }
     for (const comps of [bl.components, ...(bl.permutations ?? []).map((p) => p.components)]) {
@@ -435,11 +465,18 @@ if (bps.length) for (const rp of rps) for (const f of walk(rp.dir)) {
 // ---------- animation controllers ----------
 for (const [cid, c] of controllers) {
   const states = c.data.states ?? {};
+  // Most of the game's own controllers snap between states (80 of the 106 with more than one state in bedrock-samples
+  // v1.26.60.5 have no blend_transition), so a renamed copy of one keeps its snaps.
+  const gameShape = vanillaShapes.has(controllerShape(c.data));
   if (!c.data.initial_state && !states.default) err(c.file, `${cid}: no initial_state and no "default" state`);
   if (c.data.initial_state && !(c.data.initial_state in states)) err(c.file, `${cid}: initial_state "${c.data.initial_state}" is not a state`);
   for (const [sn, s] of Object.entries(states)) {
     for (const t of s.transitions ?? []) for (const target of Object.keys(t)) if (!(target in states)) err(c.file, `${cid}: state "${sn}" transitions to unknown state "${target}"`);
-    if (Object.keys(states).length > 1 && s.blend_transition === undefined) warn(c.file, `${cid}: state "${sn}" has no blend_transition, so it will snap`);
+    // A state that plays nothing (it only routes to the others) shows nothing to snap from.
+    const routing = !s.animations && (s.transitions ?? []).length > 0;
+    if (Object.keys(states).length > 1 && s.blend_transition === undefined && !routing && !gameShape) warn(c.file, `${cid}: state "${sn}" has no blend_transition, so it will snap`);
+    // The game rejects an empty list ("states | <state> | animations | Required child  not found" in the content log).
+    if (Array.isArray(s.animations) && s.animations.length === 0) err(c.file, `${cid}: state "${sn}" has an empty animations list; the game rejects it, so give it an animation`);
     for (const user of usedControllerBy.get(cid) ?? [])
       for (const an of s.animations ?? []) { const n = typeof an === "string" ? an : Object.keys(an)[0]; if (!user.animKeys.has(n)) err(c.file, `${cid}: state "${sn}" plays "${n}", which is not a key of ${user.entity}'s animations`); }
   }
@@ -453,8 +490,16 @@ for (const [aid, a] of anims) {
     for (const chan of ["rotation", "position", "scale"]) {
       const ch = b[chan];
       if (ch === undefined) continue;
-      if (chan === "scale" && typeof ch === "number") warn(a.file, `${aid}: ${bone}.scale is a bare number; write [x, y, z]`);
+      // A constant bare-number scale is a uniform scale: the game's own animations use it 59 times (bedrock-samples
+      // v1.26.60.5). Only a bare number inside keyframes is flagged (below).
       const ts = timesOf(ch);
+      // The game precomputes catmullrom curves, so their keys must be plain numbers; Molang there fails the whole
+      // animation ("Precomputed cubic interpolation requires keyframes have constant data").
+      if (ts.length) for (const [k, v] of Object.entries(ch)) {
+        if (v?.lerp_mode !== "catmullrom") continue;
+        const vals = ["pre", "post"].flatMap((p) => (v[p] === undefined ? [] : Array.isArray(v[p]) ? v[p] : [v[p]]));
+        if (vals.some((x) => typeof x !== "number")) err(a.file, `${aid}: ${bone}.${chan} key ${k} is catmullrom but holds Molang (catmullrom keys must be numbers; make it linear or fold the value in)`);
+      }
       if (ts.length && chan === "scale") for (const k of Object.keys(ch)) { const v = ch[k]; const val = v?.post ?? v; if (typeof val === "number") warn(a.file, `${aid}: ${bone}.scale key ${k} is a bare number; write [x, y, z]`); }
       if (A.loop === true && ts.length > 1 && typeof A.animation_length === "number") {
         const last = Math.max(...ts), first = Math.min(...ts);
@@ -470,12 +515,13 @@ for (const [aid, a] of anims) {
 }
 
 // ---------- report ----------
-const errors = findings.filter((x) => x.level === "error"), warns = findings.filter((x) => x.level === "warn");
-if (asJson) console.log(JSON.stringify({ packs: packs.map((p) => ({ dir: p.dir, kind: p.kind })), errors, warnings: warns }, null, 2));
+const errors = findings.filter((x) => x.level === "error"), warns = findings.filter((x) => x.level === "warn"), notes = findings.filter((x) => x.level === "note");
+if (asJson) console.log(JSON.stringify({ packs: packs.map((p) => ({ dir: p.dir, kind: p.kind })), errors, warnings: warns, notes }, null, 2));
 else {
   console.log(`Checked ${packs.map((p) => `${p.kind} ${rel(p.dir)}`).join(", ")}`);
   console.log(`${geos.size} geometries, ${clientEntities.length} client entities, ${bpEntities.size} BP entities, ${anims.size} animations, ${controllers.size} controllers`);
-  for (const x of [...errors, ...warns]) console.log(`${x.level === "error" ? "ERROR" : "warn "} ${rel(x.file)}: ${x.msg}`);
-  console.log(errors.length || warns.length ? `\n${errors.length} errors, ${warns.length} warnings` : "\nNo problems found.");
+  for (const x of [...errors, ...warns, ...(showNotes ? notes : [])]) console.log(`${x.level === "error" ? "ERROR" : x.level === "warn" ? "warn " : "note "} ${rel(x.file)}: ${x.msg}`);
+  const noteLine = notes.length ? `${notes.length} note${notes.length === 1 ? "" : "s"}${showNotes ? "" : " (--notes lists them)"}` : "";
+  console.log(errors.length || warns.length ? `\n${errors.length} errors, ${warns.length} warnings${noteLine ? `, ${noteLine}` : ""}` : `\nNo problems found.${noteLine ? ` ${noteLine}.` : ""}`);
 }
 process.exit(errors.length ? 1 : 0);

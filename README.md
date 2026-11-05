@@ -35,9 +35,9 @@ Commands:
 
 Scripts (Node 18+, no dependencies, nothing to install):
 - `scripts/new-addon.mjs <folder> --name <Name> --ns <namespace>`: the generator behind `/bedrock-new`. Writes only into the new folder.
-- `scripts/check-pack.mjs <folder>`: read-only checker for the links the game never reports (BP/RP ids, geometry, texture paths and sizes, bones, animation names, controller states, effects, manifests, UUIDs, BOMs, comment keys, loop seams, item icons, block textures and geometry, custom components that are never registered, attachables, lang keys, biome replacement targets and client biomes).
+- `scripts/check-pack.mjs <folder> [--json] [--notes]`: read-only checker for the links the game never reports (BP/RP ids, geometry, texture paths and sizes, bones, animation names, controller states, effects, manifests, UUIDs, BOMs, comment keys, loop seams, item icons, block textures and geometry, custom components that are never registered, attachables, lang keys, biome replacement targets and client biomes). It knows the game's own animations, animation controllers and controller layouts, so a pack that reuses them gets no warning; things that are fine on purpose (such as a 2x hi-res skin) are counted as notes, which `--notes` lists.
 - `scripts/package-addon.mjs <packs dir>`: builds `<name>_BP.mcpack`, `<name>_RP.mcpack` and `<name>.mcaddon` (also `npm run package` in a generated add-on).
-- `scripts/build-vanilla-ids.mjs <bedrock-samples>/resource_pack`: rebuilds the list of vanilla resources the checker accepts.
+- `scripts/build-vanilla-ids.mjs <bedrock-samples>/resource_pack [older resource_pack ...] [--label text]`: rebuilds the list of vanilla resources the checker accepts (render controllers, geometry, textures, biomes, animations, animation controllers). Older sample folders add only controller layouts, so add-ons copied from an older game version still match.
 - `scripts/build-json-reference.mjs <content/forms>`: rebuilds the JSON reference from the official Microsoft Learn docs repo.
 - `scripts/fetch-updates.mjs`: regenerates `current-versions.md`, `api-surface.md`, `preview-api.md` (beta and next-stable APIs with signatures) and `experimental-changelog.md` (experimental sections of Preview and release changelogs) from the npm registry (`@minecraft/*`), feedback.minecraft.net and Blockbench's GitHub.
 
@@ -51,7 +51,7 @@ You need Claude Code (the terminal app or the desktop app's Code tab). The plugi
 /plugin install bedrock-addon-kit@bedrock-creator-tools
 ```
 
-**From a folder:** download this whole `claude-bedrock-plugin` folder (or unzip `claude-bedrock-plugin-0.4.5.zip` from the project files) to somewhere like `C:\Users\<you>\claude-plugins\claude-bedrock-plugin`, then in Claude Code run
+**From a folder:** download this whole `claude-bedrock-plugin` folder (or unzip `claude-bedrock-plugin-0.4.6.zip` from the project files) to somewhere like `C:\Users\<you>\claude-plugins\claude-bedrock-plugin`, then in Claude Code run
 ```
 /plugin marketplace add C:\Users\<you>\claude-plugins\claude-bedrock-plugin
 /plugin install bedrock-addon-kit@bedrock-creator-tools
