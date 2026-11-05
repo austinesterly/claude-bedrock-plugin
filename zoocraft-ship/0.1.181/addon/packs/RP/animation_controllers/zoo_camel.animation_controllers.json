@@ -1,0 +1,97 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.zoocraft.zoo_camel.general": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "idling": "!variable.zoo_kneel"
+            },
+            {
+              "sitting": "variable.zoo_kneel"
+            }
+          ],
+          "blend_transition": 0.0
+        },
+        "idling": {
+          "transitions": [
+            {
+              "moving": "variable.moving"
+            },
+            {
+              "sit_down": "variable.zoo_kneel"
+            }
+          ],
+          "blend_transition": 0.5
+        },
+        "moving": {
+          "animations": [
+            {
+              "moving": "math.min(1.0, math.lerp(0.4, 1.25, query.modified_move_speed))"
+            }
+          ],
+          "transitions": [
+            {
+              "idling": "!variable.moving"
+            },
+            {
+              "sit_down": "variable.zoo_kneel"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "sitting": {
+          "animations": [
+            "sitting"
+          ],
+          "transitions": [
+            {
+              "stand_up": "!variable.zoo_kneel"
+            }
+          ],
+          "blend_transition": 0.5
+        },
+        "sit_down": {
+          "animations": [
+            "sit_down"
+          ],
+          "transitions": [
+            {
+              "stand_up": "!variable.zoo_kneel"
+            }
+          ],
+          "blend_transition": 0.5
+        },
+        "stand_up": {
+          "animations": [
+            "stand_up"
+          ],
+          "transitions": [
+            {
+              "sit_down": "variable.zoo_kneel"
+            },
+            {
+              "idling": "query.all_animations_finished"
+            },
+            {
+              "moving": "variable.moving"
+            }
+          ],
+          "blend_transition": 0.5
+        }
+      }
+    },
+    "controller.animation.zoocraft.zoo_camel.idle": {
+      "initial_state": "idling",
+      "states": {
+        "idling": {
+          "animations": [
+            "idle"
+          ]
+        }
+      }
+    }
+  }
+}
