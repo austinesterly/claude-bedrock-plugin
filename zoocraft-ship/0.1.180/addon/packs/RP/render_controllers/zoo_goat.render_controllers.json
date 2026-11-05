@@ -1,0 +1,24 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.zoocraft.zoo_goat": {
+      "geometry": "Geometry.default",
+      "part_visibility": [
+        {
+          "right_horn": true
+        },
+        {
+          "left_horn": true
+        }
+      ],
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Texture.default"
+      ]
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "format_version": "1.26.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:zoo_goat",
+      "materials": {
+        "default": "goat"
+      },
+      "textures": {
+        "default": "textures/entity/goat/goat"
+      },
+      "geometry": {
+        "default": "geometry.goat"
+      },
+      "animations": {
+        "walk": "animation.goat.walk",
+        "look_at_target": "animation.goat.look_at_target",
+        "butt": "animation.zoocraft.zoo_goat.butt"
+      },
+      "scripts": {
+        "pre_animation": [
+          "variable.zoo_bow = query.property('zoocraft:act') == 3;",
+          "variable.tcos_right_side = (Math.cos(query.modified_distance_moved * 38.17) * query.modified_move_speed / variable.gliding_speed_value) * 57.3;",
+          "variable.tcos_left_side = -variable.tcos_right_side;"
+        ],
+        "animate": [
+          "walk",
+          "look_at_target",
+          "butt"
+        ]
+      },
+      "render_controllers": [
+        "controller.render.zoocraft.zoo_goat"
+      ]
+    }
+  }
+}

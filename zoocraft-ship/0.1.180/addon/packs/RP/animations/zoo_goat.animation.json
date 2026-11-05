@@ -1,0 +1,37 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.zoocraft.zoo_goat.butt": {
+      "loop": true,
+      "anim_time_update": "Math.max(query.anim_time + (variable.zoo_bow ? query.delta_time : -query.delta_time * 4), 0)",
+      "bones": {
+        "head": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "2.0": [
+              60,
+              0,
+              0
+            ]
+          },
+          "position": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "2.0": [
+              0,
+              -8,
+              -3
+            ]
+          }
+        }
+      }
+    }
+  }
+}
