@@ -1,0 +1,83 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:block": {
+    "description": {
+      "identifier": "zoocraft:turtle_nest",
+      "menu_category": {
+        "category": "none"
+      },
+      "states": {
+        "zoocraft:eggs": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "zoocraft:stage": [
+          0,
+          1,
+          2
+        ]
+      }
+    },
+    "components": {
+      "minecraft:geometry": {
+        "identifier": "geometry.zoocraft.turtle_nest",
+        "bone_visibility": {
+          "egg1_0": "query.block_state('zoocraft:eggs') >= 1 && query.block_state('zoocraft:stage') == 0",
+          "egg1_1": "query.block_state('zoocraft:eggs') >= 1 && query.block_state('zoocraft:stage') == 1",
+          "egg1_2": "query.block_state('zoocraft:eggs') >= 1 && query.block_state('zoocraft:stage') == 2",
+          "egg2_0": "query.block_state('zoocraft:eggs') >= 2 && query.block_state('zoocraft:stage') == 0",
+          "egg2_1": "query.block_state('zoocraft:eggs') >= 2 && query.block_state('zoocraft:stage') == 1",
+          "egg2_2": "query.block_state('zoocraft:eggs') >= 2 && query.block_state('zoocraft:stage') == 2",
+          "egg3_0": "query.block_state('zoocraft:eggs') >= 3 && query.block_state('zoocraft:stage') == 0",
+          "egg3_1": "query.block_state('zoocraft:eggs') >= 3 && query.block_state('zoocraft:stage') == 1",
+          "egg3_2": "query.block_state('zoocraft:eggs') >= 3 && query.block_state('zoocraft:stage') == 2",
+          "egg4_0": "query.block_state('zoocraft:eggs') >= 4 && query.block_state('zoocraft:stage') == 0",
+          "egg4_1": "query.block_state('zoocraft:eggs') >= 4 && query.block_state('zoocraft:stage') == 1",
+          "egg4_2": "query.block_state('zoocraft:eggs') >= 4 && query.block_state('zoocraft:stage') == 2"
+        }
+      },
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "zoocraft_turtle_egg_0",
+          "render_method": "alpha_test"
+        },
+        "crack0": {
+          "texture": "zoocraft_turtle_egg_0",
+          "render_method": "alpha_test"
+        },
+        "crack1": {
+          "texture": "zoocraft_turtle_egg_1",
+          "render_method": "alpha_test"
+        },
+        "crack2": {
+          "texture": "zoocraft_turtle_egg_2",
+          "render_method": "alpha_test"
+        }
+      },
+      "minecraft:collision_box": false,
+      "minecraft:selection_box": {
+        "origin": [
+          -7,
+          0,
+          -5
+        ],
+        "size": [
+          14,
+          7,
+          10
+        ]
+      },
+      "minecraft:light_dampening": 0,
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 0.5
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 1
+      },
+      "minecraft:map_color": "#dfd9b9",
+      "minecraft:loot": "loot_tables/empty.json"
+    }
+  }
+}

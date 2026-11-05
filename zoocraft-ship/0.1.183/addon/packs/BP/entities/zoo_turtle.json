@@ -1,0 +1,292 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "zoocraft:zoo_turtle",
+      "spawn_category": "creature",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "properties": {
+        "zoocraft:act": {
+          "type": "int",
+          "range": [
+            0,
+            2
+          ],
+          "default": 0,
+          "client_sync": true
+        }
+      }
+    },
+    "component_groups": {
+      "zoocraft:home_4": {
+        "minecraft:home": {}
+      },
+      "zoocraft:home_8": {
+        "minecraft:home": {}
+      },
+      "zoocraft:home_16": {
+        "minecraft:home": {}
+      },
+      "zoocraft:home_32": {
+        "minecraft:home": {}
+      },
+      "zoocraft:juvenile": {
+        "minecraft:is_baby": {},
+        "minecraft:scale": {
+          "value": 0.3
+        },
+        "minecraft:behavior.move_to_water": {
+          "priority": 1,
+          "search_range": 15,
+          "search_height": 5,
+          "goal_radius": 0.1
+        }
+      },
+      "zoocraft:life": {
+        "minecraft:movement": {
+          "value": 0.1
+        },
+        "minecraft:underwater_movement": {
+          "value": 0.12
+        },
+        "minecraft:behavior.move_to_water": {
+          "priority": 4,
+          "search_range": 16,
+          "search_height": 5,
+          "goal_radius": 1.5
+        },
+        "minecraft:behavior.move_to_land": {
+          "priority": 6,
+          "search_range": 16,
+          "search_height": 5,
+          "goal_radius": 0.5
+        },
+        "minecraft:behavior.random_swim": {
+          "priority": 7,
+          "interval": 0,
+          "xz_dist": 30,
+          "y_dist": 15
+        },
+        "minecraft:behavior.random_stroll": {
+          "priority": 9,
+          "interval": 100
+        }
+      },
+      "zoocraft:led": {
+        "minecraft:movement": {
+          "value": 0.0
+        },
+        "minecraft:underwater_movement": {
+          "value": 0.0
+        }
+      },
+      "zoocraft:still": {
+        "minecraft:movement": {
+          "value": 0.0
+        },
+        "minecraft:underwater_movement": {
+          "value": 0.0
+        }
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": [
+          "zoocraft_animal",
+          "zoo_turtle",
+          "turtle",
+          "mob"
+        ]
+      },
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:breathable": {
+        "total_supply": 15,
+        "suffocate_time": 0,
+        "breathes_water": true,
+        "breathes_air": true,
+        "generates_bubbles": false
+      },
+      "minecraft:nameable": {
+        "always_show": false,
+        "allow_name_tag_renaming": true
+      },
+      "minecraft:health": {
+        "value": 30,
+        "max": 30
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "cause": "all",
+            "deals_damage": "no"
+          }
+        ]
+      },
+      "minecraft:collision_box": {
+        "width": 1.2,
+        "height": 0.4
+      },
+      "minecraft:movement": {
+        "value": 0.1
+      },
+      "minecraft:underwater_movement": {
+        "value": 0.12
+      },
+      "minecraft:water_movement": {
+        "drag_factor": 0.9
+      },
+      "minecraft:navigation.generic": {
+        "is_amphibious": true,
+        "can_path_over_water": false,
+        "can_swim": true,
+        "can_walk": true,
+        "can_sink": false,
+        "avoid_damage_blocks": true
+      },
+      "minecraft:movement.amphibious": {
+        "max_turn": 5.0
+      },
+      "minecraft:jump.static": {},
+      "minecraft:physics": {},
+      "minecraft:pushable_by_entity": {},
+      "minecraft:pushable_by_block": {},
+      "minecraft:persistent": {},
+      "minecraft:follow_range": {
+        "value": 32
+      },
+      "minecraft:behavior.tempt": {
+        "priority": 3,
+        "speed_multiplier": 1.1,
+        "can_tempt_vertically": true,
+        "items": [
+          "zoocraft:leafy_ration",
+          "seagrass"
+        ]
+      },
+      "minecraft:behavior.look_at_player": {
+        "priority": 8,
+        "look_distance": 6.0,
+        "probability": 0.02
+      },
+      "minecraft:conditional_bandwidth_optimization": {},
+      "minecraft:ambient_sound_interval": {
+        "event_name": "ambient",
+        "range": 16.0,
+        "value": 10.0
+      }
+    },
+    "events": {
+      "zoocraft:home_4": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:home_8",
+            "zoocraft:home_16",
+            "zoocraft:home_32"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:home_4"
+          ]
+        }
+      },
+      "zoocraft:home_8": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:home_4",
+            "zoocraft:home_16",
+            "zoocraft:home_32"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:home_8"
+          ]
+        }
+      },
+      "zoocraft:home_16": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:home_4",
+            "zoocraft:home_8",
+            "zoocraft:home_32"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:home_16"
+          ]
+        }
+      },
+      "zoocraft:home_32": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:home_4",
+            "zoocraft:home_8",
+            "zoocraft:home_16"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:home_32"
+          ]
+        }
+      },
+      "zoocraft:juvenile": {
+        "add": {
+          "component_groups": [
+            "zoocraft:juvenile"
+          ]
+        }
+      },
+      "zoocraft:lead": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:life",
+            "zoocraft:still"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:led"
+          ]
+        }
+      },
+      "zoocraft:dig": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:life",
+            "zoocraft:led"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:still"
+          ]
+        }
+      },
+      "zoocraft:settle": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:led",
+            "zoocraft:still"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:life"
+          ]
+        }
+      },
+      "minecraft:entity_spawned": {
+        "add": {
+          "component_groups": [
+            "zoocraft:home_8",
+            "zoocraft:life"
+          ]
+        }
+      }
+    }
+  }
+}

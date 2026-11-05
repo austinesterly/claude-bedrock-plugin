@@ -1,0 +1,1101 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.zoocraft.turtle_nest",
+        "texture_width": 16,
+        "texture_height": 16,
+        "visible_bounds_width": 1,
+        "visible_bounds_height": 1,
+        "visible_bounds_offset": [
+          0,
+          0.5,
+          0
+        ]
+      },
+      "bones": [
+        {
+          "name": "egg1_0",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -3,
+                0,
+                -4
+              ],
+              "size": [
+                4,
+                7,
+                4
+              ],
+              "uv": {
+                "north": {
+                  "uv": [
+                    1,
+                    4
+                  ],
+                  "uv_size": [
+                    4,
+                    7
+                  ],
+                  "material_instance": "crack0"
+                },
+                "south": {
+                  "uv": [
+                    1,
+                    4
+                  ],
+                  "uv_size": [
+                    4,
+                    7
+                  ],
+                  "material_instance": "crack0"
+                },
+                "east": {
+                  "uv": [
+                    1,
+                    4
+                  ],
+                  "uv_size": [
+                    4,
+                    7
+                  ],
+                  "material_instance": "crack0"
+                },
+                "west": {
+                  "uv": [
+                    1,
+                    4
+                  ],
+                  "uv_size": [
+                    4,
+                    7
+                  ],
+                  "material_instance": "crack0"
+                },
+                "up": {
+                  "uv": [
+                    0,
+                    0
+                  ],
+                  "uv_size": [
+                    4,
+                    4
+                  ],
+                  "material_instance": "crack0"
+                },
+                "down": {
+                  "uv": [
+                    0,
+                    0
+                  ],
+                  "uv_size": [
+                    4,
+                    4
+                  ],
+                  "material_instance": "crack0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "egg1_1",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -3,
+                0,
+                -4
+              ],
+              "size": [
+                4,
+                7,
+                4
+              ],
+              "uv": {
+                "north": {
+                  "uv": [
+                    1,
+                    4
+                  ],
+                  "uv_size": [
+                    4,
+                    7
+                  ],
+                  "material_instance": "crack1"
+                },
+                "south": {
+                  "uv": [
+                    1,
+                    4
+                  ],
+                  "uv_size": [
+                    4,
+                    7
+                  ],
+                  "material_instance": "crack1"
+                },
+                "east": {
+                  "uv": [
+                    1,
+                    4
+                  ],
+                  "uv_size": [
+                    4,
+                    7
+                  ],
+                  "material_instance": "crack1"
+                },
+                "west": {
+                  "uv": [
+                    1,
+                    4
+                  ],
+                  "uv_size": [
+                    4,
+                    7
+                  ],
+                  "material_instance": "crack1"
+                },
+                "up": {
+                  "uv": [
+                    0,
+                    0
+                  ],
+                  "uv_size": [
+                    4,
+                    4
+                  ],
+                  "material_instance": "crack1"
+                },
+                "down": {
+                  "uv": [
+                    0,
+                    0
+                  ],
+                  "uv_size": [
+                    4,
+                    4
+                  ],
+                  "material_instance": "crack1"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "egg1_2",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -3,
+                0,
+                -4
+              ],
+              "size": [
+                4,
+                7,
+                4
+              ],
+              "uv": {
+                "north": {
+                  "uv": [
+                    1,
+                    4
+                  ],
+                  "uv_size": [
+                    4,
+                    7
+                  ],
+                  "material_instance": "crack2"
+                },
+                "south": {
+                  "uv": [
+                    1,
+                    4
+                  ],
+                  "uv_size": [
+                    4,
+                    7
+                  ],
+                  "material_instance": "crack2"
+                },
+                "east": {
+                  "uv": [
+                    1,
+                    4
+                  ],
+                  "uv_size": [
+                    4,
+                    7
+                  ],
+                  "material_instance": "crack2"
+                },
+                "west": {
+                  "uv": [
+                    1,
+                    4
+                  ],
+                  "uv_size": [
+                    4,
+                    7
+                  ],
+                  "material_instance": "crack2"
+                },
+                "up": {
+                  "uv": [
+                    0,
+                    0
+                  ],
+                  "uv_size": [
+                    4,
+                    4
+                  ],
+                  "material_instance": "crack2"
+                },
+                "down": {
+                  "uv": [
+                    0,
+                    0
+                  ],
+                  "uv_size": [
+                    4,
+                    4
+                  ],
+                  "material_instance": "crack2"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "egg2_0",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -7,
+                0,
+                -1
+              ],
+              "size": [
+                4,
+                5,
+                4
+              ],
+              "uv": {
+                "north": {
+                  "uv": [
+                    10,
+                    10
+                  ],
+                  "uv_size": [
+                    4,
+                    5
+                  ],
+                  "material_instance": "crack0"
+                },
+                "south": {
+                  "uv": [
+                    10,
+                    10
+                  ],
+                  "uv_size": [
+                    4,
+                    5
+                  ],
+                  "material_instance": "crack0"
+                },
+                "east": {
+                  "uv": [
+                    10,
+                    10
+                  ],
+                  "uv_size": [
+                    4,
+                    5
+                  ],
+                  "material_instance": "crack0"
+                },
+                "west": {
+                  "uv": [
+                    10,
+                    10
+                  ],
+                  "uv_size": [
+                    4,
+                    5
+                  ],
+                  "material_instance": "crack0"
+                },
+                "up": {
+                  "uv": [
+                    6,
+                    7
+                  ],
+                  "uv_size": [
+                    4,
+                    4
+                  ],
+                  "material_instance": "crack0"
+                },
+                "down": {
+                  "uv": [
+                    6,
+                    7
+                  ],
+                  "uv_size": [
+                    4,
+                    4
+                  ],
+                  "material_instance": "crack0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "egg2_1",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -7,
+                0,
+                -1
+              ],
+              "size": [
+                4,
+                5,
+                4
+              ],
+              "uv": {
+                "north": {
+                  "uv": [
+                    10,
+                    10
+                  ],
+                  "uv_size": [
+                    4,
+                    5
+                  ],
+                  "material_instance": "crack1"
+                },
+                "south": {
+                  "uv": [
+                    10,
+                    10
+                  ],
+                  "uv_size": [
+                    4,
+                    5
+                  ],
+                  "material_instance": "crack1"
+                },
+                "east": {
+                  "uv": [
+                    10,
+                    10
+                  ],
+                  "uv_size": [
+                    4,
+                    5
+                  ],
+                  "material_instance": "crack1"
+                },
+                "west": {
+                  "uv": [
+                    10,
+                    10
+                  ],
+                  "uv_size": [
+                    4,
+                    5
+                  ],
+                  "material_instance": "crack1"
+                },
+                "up": {
+                  "uv": [
+                    6,
+                    7
+                  ],
+                  "uv_size": [
+                    4,
+                    4
+                  ],
+                  "material_instance": "crack1"
+                },
+                "down": {
+                  "uv": [
+                    6,
+                    7
+                  ],
+                  "uv_size": [
+                    4,
+                    4
+                  ],
+                  "material_instance": "crack1"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "egg2_2",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -7,
+                0,
+                -1
+              ],
+              "size": [
+                4,
+                5,
+                4
+              ],
+              "uv": {
+                "north": {
+                  "uv": [
+                    10,
+                    10
+                  ],
+                  "uv_size": [
+                    4,
+                    5
+                  ],
+                  "material_instance": "crack2"
+                },
+                "south": {
+                  "uv": [
+                    10,
+                    10
+                  ],
+                  "uv_size": [
+                    4,
+                    5
+                  ],
+                  "material_instance": "crack2"
+                },
+                "east": {
+                  "uv": [
+                    10,
+                    10
+                  ],
+                  "uv_size": [
+                    4,
+                    5
+                  ],
+                  "material_instance": "crack2"
+                },
+                "west": {
+                  "uv": [
+                    10,
+                    10
+                  ],
+                  "uv_size": [
+                    4,
+                    5
+                  ],
+                  "material_instance": "crack2"
+                },
+                "up": {
+                  "uv": [
+                    6,
+                    7
+                  ],
+                  "uv_size": [
+                    4,
+                    4
+                  ],
+                  "material_instance": "crack2"
+                },
+                "down": {
+                  "uv": [
+                    6,
+                    7
+                  ],
+                  "uv_size": [
+                    4,
+                    4
+                  ],
+                  "material_instance": "crack2"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "egg3_0",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                3,
+                0,
+                -1
+              ],
+              "size": [
+                3,
+                4,
+                3
+              ],
+              "uv": {
+                "north": {
+                  "uv": [
+                    8,
+                    3
+                  ],
+                  "uv_size": [
+                    3,
+                    4
+                  ],
+                  "material_instance": "crack0"
+                },
+                "south": {
+                  "uv": [
+                    8,
+                    3
+                  ],
+                  "uv_size": [
+                    3,
+                    4
+                  ],
+                  "material_instance": "crack0"
+                },
+                "east": {
+                  "uv": [
+                    8,
+                    3
+                  ],
+                  "uv_size": [
+                    3,
+                    4
+                  ],
+                  "material_instance": "crack0"
+                },
+                "west": {
+                  "uv": [
+                    8,
+                    3
+                  ],
+                  "uv_size": [
+                    3,
+                    4
+                  ],
+                  "material_instance": "crack0"
+                },
+                "up": {
+                  "uv": [
+                    5,
+                    0
+                  ],
+                  "uv_size": [
+                    3,
+                    3
+                  ],
+                  "material_instance": "crack0"
+                },
+                "down": {
+                  "uv": [
+                    5,
+                    0
+                  ],
+                  "uv_size": [
+                    3,
+                    3
+                  ],
+                  "material_instance": "crack0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "egg3_1",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                3,
+                0,
+                -1
+              ],
+              "size": [
+                3,
+                4,
+                3
+              ],
+              "uv": {
+                "north": {
+                  "uv": [
+                    8,
+                    3
+                  ],
+                  "uv_size": [
+                    3,
+                    4
+                  ],
+                  "material_instance": "crack1"
+                },
+                "south": {
+                  "uv": [
+                    8,
+                    3
+                  ],
+                  "uv_size": [
+                    3,
+                    4
+                  ],
+                  "material_instance": "crack1"
+                },
+                "east": {
+                  "uv": [
+                    8,
+                    3
+                  ],
+                  "uv_size": [
+                    3,
+                    4
+                  ],
+                  "material_instance": "crack1"
+                },
+                "west": {
+                  "uv": [
+                    8,
+                    3
+                  ],
+                  "uv_size": [
+                    3,
+                    4
+                  ],
+                  "material_instance": "crack1"
+                },
+                "up": {
+                  "uv": [
+                    5,
+                    0
+                  ],
+                  "uv_size": [
+                    3,
+                    3
+                  ],
+                  "material_instance": "crack1"
+                },
+                "down": {
+                  "uv": [
+                    5,
+                    0
+                  ],
+                  "uv_size": [
+                    3,
+                    3
+                  ],
+                  "material_instance": "crack1"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "egg3_2",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                3,
+                0,
+                -1
+              ],
+              "size": [
+                3,
+                4,
+                3
+              ],
+              "uv": {
+                "north": {
+                  "uv": [
+                    8,
+                    3
+                  ],
+                  "uv_size": [
+                    3,
+                    4
+                  ],
+                  "material_instance": "crack2"
+                },
+                "south": {
+                  "uv": [
+                    8,
+                    3
+                  ],
+                  "uv_size": [
+                    3,
+                    4
+                  ],
+                  "material_instance": "crack2"
+                },
+                "east": {
+                  "uv": [
+                    8,
+                    3
+                  ],
+                  "uv_size": [
+                    3,
+                    4
+                  ],
+                  "material_instance": "crack2"
+                },
+                "west": {
+                  "uv": [
+                    8,
+                    3
+                  ],
+                  "uv_size": [
+                    3,
+                    4
+                  ],
+                  "material_instance": "crack2"
+                },
+                "up": {
+                  "uv": [
+                    5,
+                    0
+                  ],
+                  "uv_size": [
+                    3,
+                    3
+                  ],
+                  "material_instance": "crack2"
+                },
+                "down": {
+                  "uv": [
+                    5,
+                    0
+                  ],
+                  "uv_size": [
+                    3,
+                    3
+                  ],
+                  "material_instance": "crack2"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "egg4_0",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -2,
+                0,
+                1
+              ],
+              "size": [
+                4,
+                4,
+                4
+              ],
+              "uv": {
+                "north": {
+                  "uv": [
+                    4,
+                    11
+                  ],
+                  "uv_size": [
+                    4,
+                    4
+                  ],
+                  "material_instance": "crack0"
+                },
+                "south": {
+                  "uv": [
+                    4,
+                    11
+                  ],
+                  "uv_size": [
+                    4,
+                    4
+                  ],
+                  "material_instance": "crack0"
+                },
+                "east": {
+                  "uv": [
+                    4,
+                    11
+                  ],
+                  "uv_size": [
+                    4,
+                    4
+                  ],
+                  "material_instance": "crack0"
+                },
+                "west": {
+                  "uv": [
+                    4,
+                    11
+                  ],
+                  "uv_size": [
+                    4,
+                    4
+                  ],
+                  "material_instance": "crack0"
+                },
+                "up": {
+                  "uv": [
+                    0,
+                    11
+                  ],
+                  "uv_size": [
+                    4,
+                    4
+                  ],
+                  "material_instance": "crack0"
+                },
+                "down": {
+                  "uv": [
+                    0,
+                    11
+                  ],
+                  "uv_size": [
+                    4,
+                    4
+                  ],
+                  "material_instance": "crack0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "egg4_1",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -2,
+                0,
+                1
+              ],
+              "size": [
+                4,
+                4,
+                4
+              ],
+              "uv": {
+                "north": {
+                  "uv": [
+                    4,
+                    11
+                  ],
+                  "uv_size": [
+                    4,
+                    4
+                  ],
+                  "material_instance": "crack1"
+                },
+                "south": {
+                  "uv": [
+                    4,
+                    11
+                  ],
+                  "uv_size": [
+                    4,
+                    4
+                  ],
+                  "material_instance": "crack1"
+                },
+                "east": {
+                  "uv": [
+                    4,
+                    11
+                  ],
+                  "uv_size": [
+                    4,
+                    4
+                  ],
+                  "material_instance": "crack1"
+                },
+                "west": {
+                  "uv": [
+                    4,
+                    11
+                  ],
+                  "uv_size": [
+                    4,
+                    4
+                  ],
+                  "material_instance": "crack1"
+                },
+                "up": {
+                  "uv": [
+                    0,
+                    11
+                  ],
+                  "uv_size": [
+                    4,
+                    4
+                  ],
+                  "material_instance": "crack1"
+                },
+                "down": {
+                  "uv": [
+                    0,
+                    11
+                  ],
+                  "uv_size": [
+                    4,
+                    4
+                  ],
+                  "material_instance": "crack1"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "egg4_2",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -2,
+                0,
+                1
+              ],
+              "size": [
+                4,
+                4,
+                4
+              ],
+              "uv": {
+                "north": {
+                  "uv": [
+                    4,
+                    11
+                  ],
+                  "uv_size": [
+                    4,
+                    4
+                  ],
+                  "material_instance": "crack2"
+                },
+                "south": {
+                  "uv": [
+                    4,
+                    11
+                  ],
+                  "uv_size": [
+                    4,
+                    4
+                  ],
+                  "material_instance": "crack2"
+                },
+                "east": {
+                  "uv": [
+                    4,
+                    11
+                  ],
+                  "uv_size": [
+                    4,
+                    4
+                  ],
+                  "material_instance": "crack2"
+                },
+                "west": {
+                  "uv": [
+                    4,
+                    11
+                  ],
+                  "uv_size": [
+                    4,
+                    4
+                  ],
+                  "material_instance": "crack2"
+                },
+                "up": {
+                  "uv": [
+                    0,
+                    11
+                  ],
+                  "uv_size": [
+                    4,
+                    4
+                  ],
+                  "material_instance": "crack2"
+                },
+                "down": {
+                  "uv": [
+                    0,
+                    11
+                  ],
+                  "uv_size": [
+                    4,
+                    4
+                  ],
+                  "material_instance": "crack2"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
