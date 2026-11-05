@@ -1,0 +1,32 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "zoocraft:resident_mailbox"
+    },
+    "tags": [
+      "zoocraft_workshop"
+    ],
+    "pattern": [
+      "C",
+      "F"
+    ],
+    "key": {
+      "C": {
+        "item": "minecraft:chest"
+      },
+      "F": {
+        "item": "minecraft:oak_fence"
+      }
+    },
+    "unlock": [
+      {
+        "item": "zoocraft:zoo_workshop"
+      }
+    ],
+    "result": {
+      "item": "zoocraft:resident_mailbox",
+      "count": 1
+    }
+  }
+}

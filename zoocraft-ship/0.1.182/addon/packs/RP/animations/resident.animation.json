@@ -1,0 +1,22 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.zoocraft.resident.sleep": {
+      "loop": true,
+      "bones": {
+        "waist": {
+          "rotation": [
+            -90,
+            0,
+            0
+          ],
+          "position": [
+            0,
+            -8,
+            0
+          ]
+        }
+      }
+    }
+  }
+}

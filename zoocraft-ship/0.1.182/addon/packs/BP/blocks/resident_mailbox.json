@@ -1,0 +1,120 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:block": {
+    "description": {
+      "identifier": "zoocraft:resident_mailbox",
+      "menu_category": {
+        "category": "items"
+      },
+      "traits": {
+        "minecraft:placement_direction": {
+          "enabled_states": [
+            "minecraft:cardinal_direction"
+          ],
+          "y_rotation_offset": 180.0
+        }
+      }
+    },
+    "components": {
+      "minecraft:geometry": "geometry.zoocraft.resident_mailbox",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "zoocraft_mailbox_side",
+          "render_method": "opaque"
+        },
+        "side": {
+          "texture": "zoocraft_mailbox_side",
+          "render_method": "opaque"
+        },
+        "front": {
+          "texture": "zoocraft_mailbox_front",
+          "render_method": "opaque"
+        },
+        "top": {
+          "texture": "zoocraft_mailbox_top",
+          "render_method": "opaque"
+        },
+        "flag": {
+          "texture": "zoocraft_mailbox_flag",
+          "render_method": "opaque"
+        },
+        "post": {
+          "texture": "zoocraft_viewpoint_post",
+          "render_method": "opaque"
+        }
+      },
+      "minecraft:collision_box": {
+        "origin": [
+          -3,
+          0,
+          -5
+        ],
+        "size": [
+          6,
+          16,
+          10
+        ]
+      },
+      "minecraft:selection_box": {
+        "origin": [
+          -3,
+          0,
+          -5
+        ],
+        "size": [
+          8,
+          16,
+          10
+        ]
+      },
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 1.0
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 3
+      },
+      "minecraft:map_color": "#3a6fb5",
+      "minecraft:loot": "loot_tables/blocks/zoocraft_resident_mailbox.json",
+      "minecraft:light_dampening": 0,
+      "zoocraft:resident_mailbox": {}
+    },
+    "permutations": [
+      {
+        "condition": "query.block_state('minecraft:cardinal_direction') == 'south'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              180,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('minecraft:cardinal_direction') == 'west'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              90,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('minecraft:cardinal_direction') == 'east'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              270,
+              0
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

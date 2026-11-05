@@ -1,0 +1,26 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.zoocraft.resident": {
+      "arrays": {
+        "textures": {
+          "Array.looks": [
+            "Texture.look0",
+            "Texture.look1",
+            "Texture.look2",
+            "Texture.look3"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Array.looks[math.min(query.property('zoocraft:who'), 3)]"
+      ]
+    }
+  }
+}
