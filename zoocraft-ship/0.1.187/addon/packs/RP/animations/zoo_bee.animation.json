@@ -1,0 +1,23 @@
+{
+  "format_version": "1.10.0",
+  "animations": {
+    "animation.zoocraft.zoo_bee.buzz": {
+      "loop": true,
+      "animation_length": 4.0,
+      "sound_effects": {
+        "0.0": {
+          "effect": "buzz"
+        }
+      }
+    },
+    "animation.zoocraft.zoo_bee.buzz_angry": {
+      "loop": true,
+      "animation_length": 3.8,
+      "sound_effects": {
+        "0.0": {
+          "effect": "buzz_angry"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.zoocraft.zoo_bee.general": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "animations": [
+            "flying",
+            "ctrl_drip",
+            "bee_fly_bobbing",
+            "bee_sting",
+            "ctrl_buzz"
+          ]
+        }
+      }
+    },
+    "controller.animation.zoocraft.zoo_bee.drip": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "dripping": "query.property('minecraft:has_nectar')"
+            }
+          ]
+        },
+        "dripping": {
+          "particle_effects": [
+            {
+              "effect": "nectar_dripping"
+            }
+          ],
+          "transitions": [
+            {
+              "default": "!query.property('minecraft:has_nectar')"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.zoocraft.zoo_bee.buzz": {
+      "initial_state": "calm",
+      "states": {
+        "calm": {
+          "animations": [
+            "buzz"
+          ],
+          "transitions": [
+            {
+              "angry": "query.is_angry"
+            }
+          ]
+        },
+        "angry": {
+          "animations": [
+            "buzz_angry"
+          ],
+          "transitions": [
+            {
+              "calm": "!query.is_angry"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
