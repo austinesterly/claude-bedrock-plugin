@@ -1,0 +1,29 @@
+{
+  "format_version": "1.26.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:zoo_tadpole",
+      "materials": {
+        "default": "tadpole"
+      },
+      "textures": {
+        "default": "textures/entity/tadpole/tadpole"
+      },
+      "geometry": {
+        "default": "geometry.tadpole"
+      },
+      "scripts": {
+        "animate": [
+          "ctrl_general"
+        ]
+      },
+      "animations": {
+        "swim": "animation.tadpole.swim",
+        "ctrl_general": "controller.animation.zoocraft.zoo_tadpole.general"
+      },
+      "render_controllers": [
+        "controller.render.zoocraft.zoo_tadpole"
+      ]
+    }
+  }
+}

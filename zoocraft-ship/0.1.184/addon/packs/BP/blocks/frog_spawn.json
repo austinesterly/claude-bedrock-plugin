@@ -1,0 +1,46 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:block": {
+    "description": {
+      "identifier": "zoocraft:frog_spawn",
+      "menu_category": {
+        "category": "none"
+      }
+    },
+    "components": {
+      "minecraft:geometry": {
+        "identifier": "geometry.zoocraft.frog_spawn"
+      },
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "zoocraft_frog_spawn",
+          "render_method": "blend",
+          "face_dimming": false,
+          "ambient_occlusion": 0.0
+        }
+      },
+      "minecraft:collision_box": false,
+      "minecraft:selection_box": {
+        "origin": [
+          -8,
+          0,
+          -8
+        ],
+        "size": [
+          16,
+          1.5,
+          16
+        ]
+      },
+      "minecraft:light_dampening": 0,
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 0.0
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 0
+      },
+      "minecraft:map_color": "#6b7a8a",
+      "minecraft:loot": "loot_tables/empty.json"
+    }
+  }
+}
