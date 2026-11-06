@@ -1,0 +1,670 @@
+{
+  "entity_sounds": {
+    "entities": {
+      "zoocraft:zoo_wolf": {
+        "events": {
+          "ambient": "mob.wolf.bark",
+          "death": "mob.wolf.death",
+          "eat": "",
+          "growl": "mob.wolf.growl",
+          "hurt": "mob.wolf.hurt",
+          "pant": "mob.wolf.panting",
+          "shake": "mob.wolf.shake",
+          "step": "mob.wolf.step",
+          "whine": "mob.wolf.whine"
+        },
+        "pitch": [
+          0.8,
+          1.2
+        ],
+        "volume": 1.0,
+        "__molang_version": 13,
+        "variants": {
+          "key": "query.is_baby ? 'baby' : 'grown'",
+          "map": {
+            "baby": {
+              "events": {
+                "ambient": {
+                  "pitch": 0.5,
+                  "sound": "mob.baby_wolf.bark",
+                  "volume": 1.0
+                },
+                "ambient.baby": {
+                  "pitch": 0.5,
+                  "sound": "mob.baby_wolf.bark",
+                  "volume": 1.0
+                },
+                "death": {
+                  "pitch": 0.5,
+                  "sound": "mob.baby_wolf.death",
+                  "volume": 1.0
+                },
+                "growl": "mob.baby_wolf.growl",
+                "hurt": "mob.baby_wolf.hurt",
+                "pant": {
+                  "pitch": 0.5,
+                  "sound": "mob.baby_wolf.panting",
+                  "volume": 1.0
+                },
+                "shake": "mob.baby_wolf.shake",
+                "step": "mob.baby_wolf.step",
+                "whine": "mob.baby_wolf.whine"
+              },
+              "pitch": 1.0,
+              "volume": 1.0
+            }
+          }
+        }
+      },
+      "zoocraft:zoo_fox": {
+        "events": {
+          "ambient": "mob.fox.ambient",
+          "attack": "mob.fox.bite",
+          "death": "mob.fox.death",
+          "eat": "mob.fox.eat",
+          "hurt": "mob.fox.hurt",
+          "mad": "mob.fox.aggro",
+          "screech": {
+            "sound": "mob.fox.screech",
+            "volume": 2
+          },
+          "sleep": "mob.fox.sleep",
+          "teleport": "entity.fox.teleport"
+        },
+        "pitch": [
+          0.8,
+          1.2
+        ],
+        "volume": 1.0
+      },
+      "zoocraft:zoo_rabbit": {
+        "events": {
+          "ambient": "mob.rabbit.idle",
+          "death": "mob.rabbit.death",
+          "eat": "",
+          "hurt": "mob.rabbit.hurt"
+        },
+        "pitch": [
+          0.8,
+          1.2
+        ],
+        "volume": 0.8
+      },
+      "zoocraft:zoo_sheep": {
+        "events": {
+          "ambient": "mob.sheep.say",
+          "death": "mob.sheep.say",
+          "eat": "",
+          "hurt": "mob.sheep.say",
+          "step": {
+            "pitch": 1.0,
+            "sound": "mob.sheep.step",
+            "volume": 0.4
+          }
+        },
+        "pitch": [
+          0.8,
+          1.2
+        ],
+        "volume": 1.0
+      },
+      "zoocraft:zoo_cow": {
+        "events": {
+          "ambient": {
+            "sound": "mob.cow.say",
+            "volume": 1.0
+          },
+          "death": {
+            "pitch": 0.9,
+            "sound": "mob.cow.hurt",
+            "volume": 0.5
+          },
+          "eat": "",
+          "hurt": {
+            "sound": "mob.cow.hurt"
+          },
+          "step": {
+            "pitch": [
+              0.9,
+              1.1
+            ],
+            "sound": "mob.cow.step",
+            "volume": 0.65
+          }
+        },
+        "pitch": [
+          0.8,
+          1.2
+        ],
+        "volume": 1.0
+      },
+      "zoocraft:zoo_pig": {
+        "events": {
+          "ambient": "mob.pig.say",
+          "death": {
+            "pitch": 0.9,
+            "sound": "mob.pig.death",
+            "volume": 0.5
+          },
+          "eat": "mob.pig.eat",
+          "hurt": "mob.pig.say",
+          "step": "mob.pig.step"
+        },
+        "pitch": [
+          0.8,
+          1.2
+        ],
+        "volume": 1.0,
+        "__molang_version": 13,
+        "variants": {
+          "key": "query.is_baby ? 'baby' : 'grown'",
+          "map": {
+            "baby": {
+              "events": {
+                "ambient": {
+                  "pitch": 0.5,
+                  "sound": "mob.baby_pig.ambient",
+                  "volume": 0.5
+                },
+                "ambient.baby": {
+                  "pitch": 0.5,
+                  "sound": "mob.baby_pig.ambient",
+                  "volume": 0.5
+                },
+                "boost": {
+                  "pitch": 1,
+                  "sound": "mob.pig.boost",
+                  "volume": 1.0
+                },
+                "death": {
+                  "pitch": 0.5,
+                  "sound": "mob.baby_pig.death",
+                  "volume": 1.0
+                },
+                "death.to.zombie": {
+                  "pitch": -0.05,
+                  "sound": "mob.baby_pig.death",
+                  "volume": 1.0
+                },
+                "eat": {
+                  "pitch": 1,
+                  "sound": "mob.baby_pig.eat",
+                  "volume": 1.0
+                },
+                "hurt": {
+                  "pitch": 0.5,
+                  "sound": "mob.baby_pig.hurt",
+                  "volume": 1.0
+                },
+                "step": {
+                  "pitch": 0.5,
+                  "sound": "mob.baby_pig.step",
+                  "volume": 0.3
+                }
+              },
+              "pitch": 1.0,
+              "volume": 1.0
+            }
+          }
+        }
+      },
+      "zoocraft:zoo_chicken": {
+        "events": {
+          "ambient": {
+            "sound": "mob.chicken.say",
+            "volume": 0.8
+          },
+          "death": {
+            "pitch": 0.9,
+            "sound": "mob.chicken.hurt",
+            "volume": 0.5
+          },
+          "eat": "",
+          "hurt": {
+            "sound": "mob.chicken.hurt"
+          },
+          "plop": "mob.chicken.plop",
+          "step": {
+            "pitch": 1.0,
+            "sound": "mob.chicken.step",
+            "volume": 0.1
+          }
+        },
+        "pitch": [
+          0.8,
+          1.2
+        ],
+        "volume": 1.0,
+        "__molang_version": 13,
+        "variants": {
+          "key": "query.is_baby ? 'baby' : 'grown'",
+          "map": {
+            "baby": {
+              "events": {
+                "ambient": {
+                  "pitch": 0.5,
+                  "sound": "mob.baby_chicken.ambient",
+                  "volume": 1.0
+                },
+                "ambient.baby": {
+                  "pitch": 0.5,
+                  "sound": "mob.baby_chicken.ambient",
+                  "volume": 1.0
+                },
+                "death": {
+                  "pitch": 0.5,
+                  "sound": "mob.baby_chicken.death",
+                  "volume": 1.0
+                },
+                "hurt": {
+                  "pitch": 0.5,
+                  "sound": "mob.baby_chicken.hurt",
+                  "volume": 1.0
+                },
+                "step": {
+                  "pitch": 0.5,
+                  "sound": "mob.baby_chicken.step",
+                  "volume": 1.0
+                }
+              },
+              "pitch": 1.0,
+              "volume": 1.0
+            }
+          }
+        }
+      },
+      "zoocraft:zoo_panda": {
+        "events": {
+          "ambient": "mob.panda.idle",
+          "ambient.aggressive": "mob.panda.idle.aggressive",
+          "ambient.baby": "mob.panda_baby.idle",
+          "ambient.worried": "mob.panda.idle.worried",
+          "attack": "mob.panda.bite",
+          "cant_breed": "mob.panda.cant_breed",
+          "death": {
+            "sound": "mob.panda.death",
+            "volume": 0.82
+          },
+          "eat": "mob.panda.eat",
+          "hurt": {
+            "sound": "mob.panda.hurt",
+            "volume": 0.82
+          },
+          "presneeze": "mob.panda.presneeze",
+          "sneeze": "mob.panda.sneeze",
+          "step": {
+            "sound": "mob.panda.step",
+            "volume": 0.4
+          }
+        },
+        "pitch": [
+          0.8,
+          1.2
+        ],
+        "volume": 1.0
+      },
+      "zoocraft:zoo_polar_bear": {
+        "events": {
+          "ambient": "mob.polarbear.idle",
+          "ambient.baby": "mob.polarbear_baby.idle",
+          "death": "mob.polarbear.death",
+          "hurt": {
+            "sound": "mob.polarbear.hurt",
+            "volume": 0.7
+          },
+          "mob.warning": {
+            "pitch": 1.0,
+            "sound": "mob.polarbear.warning",
+            "volume": 1.2
+          },
+          "step": {
+            "pitch": 1.0,
+            "sound": "mob.polarbear.step",
+            "volume": 0.7
+          }
+        },
+        "pitch": [
+          0.8,
+          1.2
+        ],
+        "volume": 1.0
+      },
+      "zoocraft:zoo_horse": {
+        "events": {
+          "add.chest": "mob.horse.armor",
+          "ambient": "mob.horse.idle",
+          "armor": "mob.horse.armor",
+          "armor.unequip_generic": "mob.horse.horse_armor_unequip",
+          "breathe": "mob.horse.breathe",
+          "death": "mob.horse.death",
+          "eat": "mob.horse.eat",
+          "hurt": "mob.horse.hit",
+          "jump": "mob.horse.jump",
+          "land": "mob.horse.land",
+          "mad": "mob.horse.angry",
+          "saddle": "mob.horse.leather",
+          "unsaddle": "mob.unsaddle"
+        },
+        "pitch": [
+          0.8,
+          1.2
+        ],
+        "variants": {
+          "key": "query.is_baby ? 'baby' : 'adult'",
+          "map": {
+            "adult": {
+              "events": {
+                "add.chest": {
+                  "pitch": [
+                    0.8,
+                    1.2
+                  ],
+                  "sound": "mob.horse.armor",
+                  "volume": 1.0
+                },
+                "ambient": {
+                  "sound": "mob.horse.idle",
+                  "volume": 1.0
+                },
+                "armor": {
+                  "pitch": 1.0,
+                  "sound": "mob.horse.armor",
+                  "volume": 0.6
+                },
+                "breathe": {
+                  "pitch": 1.0,
+                  "sound": "mob.horse.breathe",
+                  "volume": 1.0
+                },
+                "death": {
+                  "pitch": 0.9,
+                  "sound": "mob.horse.death",
+                  "volume": 0.5
+                },
+                "eat": {
+                  "pitch": [
+                    0.8,
+                    1.2
+                  ],
+                  "sound": "mob.horse.eat",
+                  "volume": [
+                    0.5,
+                    1.5
+                  ]
+                },
+                "hurt": {
+                  "sound": "mob.horse.hit",
+                  "volume": 0.45
+                },
+                "jump": {
+                  "pitch": 1.0,
+                  "sound": "mob.horse.jump",
+                  "volume": 0.4
+                },
+                "land": {
+                  "pitch": 1.0,
+                  "sound": "mob.horse.land",
+                  "volume": 0.4
+                },
+                "saddle": {
+                  "pitch": 1.0,
+                  "sound": "mob.horse.leather",
+                  "volume": 0.6
+                }
+              },
+              "pitch": 1.0,
+              "volume": 1.0
+            },
+            "baby": {
+              "events": {
+                "ambient": {
+                  "pitch": 0.5,
+                  "sound": "mob.baby_horse.ambient",
+                  "volume": 1.0
+                },
+                "ambient.baby": {
+                  "pitch": 0.5,
+                  "sound": "mob.baby_horse.ambient",
+                  "volume": 1.0
+                },
+                "angry": {
+                  "pitch": 0.0,
+                  "sound": "mob.baby_horse.angry",
+                  "volume": 1.0
+                },
+                "breathe": {
+                  "pitch": 0.0,
+                  "sound": "mob.baby_horse.breathe",
+                  "volume": 1.0
+                },
+                "death": {
+                  "pitch": 0.5,
+                  "sound": "mob.baby_horse.death",
+                  "volume": 1.0
+                },
+                "eat": {
+                  "pitch": 0.0,
+                  "sound": "mob.baby_horse.eat",
+                  "volume": 1.0
+                },
+                "hurt": {
+                  "pitch": 0.5,
+                  "sound": "mob.baby_horse.hurt",
+                  "volume": 1.0
+                },
+                "land": {
+                  "pitch": 0.0,
+                  "sound": "mob.baby_horse.land",
+                  "volume": 1.0
+                }
+              },
+              "pitch": 1.0,
+              "volume": 0.0
+            }
+          }
+        },
+        "volume": 0.8
+      },
+      "zoocraft:zoo_donkey": {
+        "events": {
+          "add.chest": {
+            "pitch": [
+              0.8,
+              1.2
+            ],
+            "sound": "mob.horse.armor",
+            "volume": 1.0
+          },
+          "ambient": "mob.horse.donkey.idle",
+          "armor": {
+            "pitch": 1.0,
+            "sound": "mob.horse.armor",
+            "volume": 0.6
+          },
+          "breathe": {
+            "pitch": 1.0,
+            "sound": "mob.horse.breathe",
+            "volume": 0.7
+          },
+          "death": "mob.horse.donkey.death",
+          "eat": {
+            "pitch": [
+              0.8,
+              1.2
+            ],
+            "sound": "mob.horse.eat",
+            "volume": [
+              0.5,
+              1.5
+            ]
+          },
+          "hurt": "mob.horse.donkey.hit",
+          "jump": {
+            "pitch": 1.0,
+            "sound": "mob.horse.jump",
+            "volume": 0.4
+          },
+          "land": {
+            "pitch": 1.0,
+            "sound": "mob.horse.land",
+            "volume": 0.4
+          },
+          "mad": "mob.horse.donkey.angry",
+          "saddle": {
+            "pitch": 1.0,
+            "sound": "mob.horse.leather",
+            "volume": 0.5
+          },
+          "unsaddle": "mob.unsaddle"
+        },
+        "pitch": [
+          0.8,
+          1.2
+        ],
+        "volume": 0.8
+      },
+      "zoocraft:zoo_goat": {
+        "events": {
+          "ambient": "mob.goat.ambient",
+          "ambient.screamer": "mob.goat.ambient.screamer",
+          "death": "mob.goat.death",
+          "death.screamer": "mob.goat.death.screamer",
+          "eat": "mob.goat.eat",
+          "hurt": "mob.goat.hurt",
+          "hurt.screamer": "mob.goat.hurt.screamer",
+          "step": "mob.goat.step"
+        },
+        "pitch": [
+          0.8,
+          1.2
+        ],
+        "volume": 1
+      },
+      "zoocraft:zoo_camel": {
+        "events": {
+          "ambient": "mob.camel.ambient",
+          "death": "mob.camel.death",
+          "eat": "mob.camel.eat",
+          "hurt": "mob.camel.hurt",
+          "step": "mob.camel.step",
+          "step_sand": "mob.camel.step_sand"
+        },
+        "pitch": [
+          0.8,
+          1.2
+        ],
+        "volume": 1
+      },
+      "zoocraft:zoo_turtle": {
+        "events": {
+          "ambient": "mob.turtle.ambient",
+          "born": {
+            "pitch": 1.0,
+            "sound": "mob.turtle_baby.born",
+            "volume": 1.0
+          },
+          "death": "mob.turtle.death",
+          "death.baby": "mob.turtle_baby.death",
+          "hurt": "mob.turtle.hurt",
+          "hurt.baby": "mob.turtle_baby.hurt",
+          "step": {
+            "pitch": 1.0,
+            "sound": "mob.turtle.step",
+            "volume": 1.0
+          },
+          "step.baby": {
+            "pitch": 1.0,
+            "sound": "mob.turtle_baby.step",
+            "volume": 1.0
+          },
+          "swim": {
+            "pitch": [
+              0.6,
+              1.4
+            ],
+            "sound": "mob.turtle.swim"
+          }
+        },
+        "pitch": [
+          0.8,
+          1.2
+        ],
+        "volume": 1.0
+      },
+      "zoocraft:zoo_frog": {
+        "events": {
+          "ambient": "mob.frog.ambient",
+          "death": "mob.frog.death",
+          "eat": "mob.frog.eat",
+          "hurt": "mob.frog.hurt",
+          "jump_to_block": "mob.frog.jump_to_block",
+          "step": "mob.frog.step"
+        },
+        "pitch": [
+          0.8,
+          1.2
+        ],
+        "volume": 1
+      },
+      "zoocraft:zoo_tadpole": {
+        "events": {
+          "death": "mob.tadpole.death",
+          "flop": {
+            "pitch": 1.0,
+            "sound": "mob.fish.flop",
+            "volume": 1.0
+          },
+          "hurt": "mob.tadpole.hurt"
+        },
+        "pitch": [
+          0.8,
+          1.2
+        ],
+        "volume": 1
+      },
+      "zoocraft:zoo_axolotl": {
+        "events": {
+          "ambient": "mob.axolotl.idle",
+          "ambient.in.water": "mob.axolotl.idle_water",
+          "death": "mob.axolotl.death",
+          "hurt": "mob.axolotl.hurt",
+          "splash": "mob.axolotl.splash",
+          "swim": "mob.axolotl.swim"
+        },
+        "pitch": [
+          0.8,
+          1.2
+        ],
+        "volume": 1.0
+      },
+      "zoocraft:zoo_dolphin": {
+        "events": {
+          "ambient": "mob.dolphin.idle",
+          "ambient.in.water": "mob.dolphin.idle_water",
+          "breathe": "mob.dolphin.blowhole",
+          "death": "mob.dolphin.death",
+          "death.in.water": "mob.dolphin.death",
+          "eat": {
+            "pitch": 1.0,
+            "sound": "mob.dolphin.eat",
+            "volume": 0.7
+          },
+          "hurt": "mob.dolphin.hurt",
+          "hurt.in.water": "mob.dolphin.hurt",
+          "jump": {
+            "pitch": 1.0,
+            "sound": "mob.dolphin.jump",
+            "volume": 0.7
+          },
+          "splash": "mob.dolphin.splash",
+          "swim": "mob.dolphin.swim"
+        },
+        "pitch": [
+          0.8,
+          1.2
+        ],
+        "volume": 1.0
+      }
+    }
+  }
+}

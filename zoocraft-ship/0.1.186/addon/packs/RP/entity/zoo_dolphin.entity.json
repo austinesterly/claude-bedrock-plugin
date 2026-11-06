@@ -1,0 +1,32 @@
+{
+  "format_version": "1.26.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:zoo_dolphin",
+      "materials": {
+        "default": "dolphin"
+      },
+      "textures": {
+        "default": "textures/entity/dolphin"
+      },
+      "geometry": {
+        "default": "geometry.dolphin"
+      },
+      "animations": {
+        "move": "animation.dolphin.move",
+        "ctrl_general": "controller.animation.zoocraft.zoo_dolphin.general"
+      },
+      "scripts": {
+        "animate": [
+          "ctrl_general"
+        ]
+      },
+      "particle_effects": {
+        "dolphin_move_particle": "minecraft:dolphin_move_particle"
+      },
+      "render_controllers": [
+        "controller.render.zoocraft.zoo_dolphin"
+      ]
+    }
+  }
+}
