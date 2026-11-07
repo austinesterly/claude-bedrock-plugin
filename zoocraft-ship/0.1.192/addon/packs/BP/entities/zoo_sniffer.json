@@ -1,0 +1,448 @@
+{
+  "format_version": "1.26.10",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "zoocraft:zoo_sniffer",
+      "spawn_category": "creature",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "properties": {
+        "zoocraft:sniffer_act": {
+          "type": "enum",
+          "values": [
+            "idle",
+            "sniffing",
+            "searching",
+            "digging",
+            "rising"
+          ],
+          "default": "idle",
+          "client_sync": false
+        }
+      }
+    },
+    "components": {
+      "minecraft:physics": {},
+      "minecraft:jump.static": {},
+      "minecraft:can_climb": {},
+      "minecraft:movement.basic": {},
+      "minecraft:navigation.walk": {
+        "can_path_over_water": true,
+        "avoid_water": true,
+        "avoid_damage_blocks": true
+      },
+      "minecraft:conditional_bandwidth_optimization": {},
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:breathable": {
+        "total_supply": 15,
+        "suffocate_time": 0
+      },
+      "minecraft:collision_box": {
+        "width": 1.9,
+        "height": 1.75
+      },
+      "minecraft:health": {
+        "value": 14
+      },
+      "minecraft:movement": {
+        "value": 0.09
+      },
+      "minecraft:follow_range": {
+        "value": 64.0
+      },
+      "minecraft:behavior.float": {
+        "priority": 0
+      },
+      "minecraft:behavior.panic": {
+        "priority": 1,
+        "speed_multiplier": 2
+      },
+      "minecraft:behavior.random_stroll": {
+        "priority": 7,
+        "speed_multiplier": 1
+      },
+      "minecraft:behavior.look_at_player": {
+        "priority": 8,
+        "look_distance": 6.0,
+        "probability": 0.02
+      },
+      "minecraft:behavior.random_look_around": {
+        "priority": 9
+      },
+      "minecraft:behavior.timer_flag_1": {
+        "priority": 6,
+        "control_flags": [
+          "move",
+          "look"
+        ],
+        "cooldown_range": {
+          "min": 400.0,
+          "max": 500.0
+        },
+        "duration_range": {
+          "min": 2.0,
+          "max": 2.0
+        },
+        "on_end": {
+          "event": "zoocraft:on_scenting_success",
+          "target": "self"
+        },
+        "on_start": {
+          "event": "zoocraft:on_scenting_start",
+          "target": "self"
+        }
+      },
+      "minecraft:behavior.tempt": {
+        "priority": 4,
+        "speed_multiplier": 1.25,
+        "items": [
+          "torchflower_seeds",
+          "zoocraft:grain_ration"
+        ]
+      },
+      "minecraft:type_family": {
+        "family": [
+          "zoocraft_animal",
+          "zoo_sniffer",
+          "sniffer",
+          "mob"
+        ]
+      },
+      "minecraft:persistent": {},
+      "minecraft:nameable": {
+        "always_show": false,
+        "allow_name_tag_renaming": true
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "cause": "all",
+            "deals_damage": "no"
+          }
+        ]
+      },
+      "minecraft:behavior.move_towards_home_restriction": {
+        "priority": 2,
+        "speed_multiplier": 0.8
+      },
+      "minecraft:ambient_sound_interval": {
+        "event_name": "ambient",
+        "range": 16.0,
+        "value": 8.0
+      }
+    },
+    "component_groups": {
+      "zoocraft:pushable": {
+        "minecraft:pushable_by_entity": {},
+        "minecraft:pushable_by_block": {}
+      },
+      "zoocraft:sniffer_search_and_dig": {
+        "minecraft:behavior.random_search_and_dig": {
+          "priority": 5,
+          "speed_multiplier": 1.25,
+          "find_valid_position_retries": 5,
+          "target_blocks": [
+            "minecraft:dirt",
+            "minecraft:coarse_dirt",
+            "minecraft:grass_block",
+            "minecraft:podzol",
+            "minecraft:dirt_with_roots",
+            "minecraft:moss_block",
+            "minecraft:pale_moss_block",
+            "minecraft:mud",
+            "minecraft:muddy_mangrove_roots"
+          ],
+          "goal_radius": 2.0,
+          "search_range_xz": 20,
+          "search_range_y": 3,
+          "cooldown_range": {
+            "min": 0.0,
+            "max": 0.0
+          },
+          "digging_duration_range": {
+            "min": 8.0,
+            "max": 10.0
+          },
+          "item_table": "loot_tables/gameplay/entities/sniffer_seeds.json",
+          "spawn_item_after_seconds": 6.0,
+          "spawn_item_pos_offset": 2.25,
+          "on_searching_start": {
+            "event": "zoocraft:on_searching_start",
+            "target": "self"
+          },
+          "on_fail_during_searching": {
+            "event": "zoocraft:on_fail_during_searching",
+            "target": "self"
+          },
+          "on_digging_start": {
+            "event": "zoocraft:on_digging_start",
+            "target": "self"
+          },
+          "on_item_found": {
+            "event": "zoocraft:on_item_found",
+            "target": "self"
+          },
+          "on_fail_during_digging": {
+            "event": "zoocraft:on_fail_during_digging",
+            "target": "self"
+          },
+          "on_success": {
+            "event": "zoocraft:on_search_and_digging_success",
+            "target": "self"
+          }
+        }
+      },
+      "zoocraft:feeling_happy": {
+        "minecraft:behavior.timer_flag_3": {
+          "priority": 5,
+          "cooldown_range": {
+            "min": 0.0,
+            "max": 0.0
+          },
+          "duration_range": {
+            "min": 2.0,
+            "max": 5.0
+          },
+          "on_end": {
+            "event": "zoocraft:on_feeling_happy_end",
+            "target": "self"
+          }
+        }
+      },
+      "zoocraft:stand_up": {
+        "minecraft:behavior.timer_flag_2": {
+          "priority": 2,
+          "control_flags": [
+            "move"
+          ],
+          "cooldown_range": {
+            "min": 0.0,
+            "max": 0.0
+          },
+          "duration_range": {
+            "min": 2.0,
+            "max": 5.0
+          },
+          "on_end": {
+            "event": "zoocraft:on_rising_end",
+            "target": "self"
+          }
+        }
+      },
+      "zoocraft:home_4": {
+        "minecraft:home": {
+          "restriction_type": "random_movement",
+          "restriction_radius": 4
+        }
+      },
+      "zoocraft:home_8": {
+        "minecraft:home": {
+          "restriction_type": "random_movement",
+          "restriction_radius": 8
+        }
+      },
+      "zoocraft:home_16": {
+        "minecraft:home": {
+          "restriction_type": "random_movement",
+          "restriction_radius": 16
+        }
+      },
+      "zoocraft:home_32": {
+        "minecraft:home": {
+          "restriction_type": "random_movement",
+          "restriction_radius": 32
+        }
+      },
+      "zoocraft:juvenile": {
+        "minecraft:is_baby": {},
+        "minecraft:scale": {
+          "value": 0.45
+        }
+      }
+    },
+    "events": {
+      "zoocraft:home_4": {
+        "add": {
+          "component_groups": [
+            "zoocraft:home_4"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "zoocraft:home_8",
+            "zoocraft:home_16",
+            "zoocraft:home_32"
+          ]
+        }
+      },
+      "zoocraft:home_8": {
+        "add": {
+          "component_groups": [
+            "zoocraft:home_8"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "zoocraft:home_4",
+            "zoocraft:home_16",
+            "zoocraft:home_32"
+          ]
+        }
+      },
+      "zoocraft:home_16": {
+        "add": {
+          "component_groups": [
+            "zoocraft:home_16"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "zoocraft:home_4",
+            "zoocraft:home_8",
+            "zoocraft:home_32"
+          ]
+        }
+      },
+      "zoocraft:home_32": {
+        "add": {
+          "component_groups": [
+            "zoocraft:home_32"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "zoocraft:home_4",
+            "zoocraft:home_8",
+            "zoocraft:home_16"
+          ]
+        }
+      },
+      "zoocraft:juvenile": {
+        "add": {
+          "component_groups": [
+            "zoocraft:juvenile"
+          ]
+        }
+      },
+      "minecraft:entity_spawned": {
+        "add": {
+          "component_groups": [
+            "zoocraft:pushable",
+            "zoocraft:home_8"
+          ]
+        }
+      },
+      "zoocraft:on_scenting_start": {
+        "set_property": {
+          "zoocraft:sniffer_act": "sniffing"
+        }
+      },
+      "zoocraft:on_scenting_success": {
+        "sequence": [
+          {
+            "set_property": {
+              "zoocraft:sniffer_act": "idle"
+            }
+          },
+          {
+            "filters": {
+              "test": "has_component",
+              "subject": "self",
+              "operator": "!=",
+              "value": "minecraft:is_baby"
+            },
+            "add": {
+              "component_groups": [
+                "zoocraft:sniffer_search_and_dig"
+              ]
+            }
+          }
+        ]
+      },
+      "zoocraft:on_searching_start": {
+        "set_property": {
+          "zoocraft:sniffer_act": "searching"
+        }
+      },
+      "zoocraft:on_digging_start": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:pushable"
+          ]
+        },
+        "set_property": {
+          "zoocraft:sniffer_act": "digging"
+        }
+      },
+      "zoocraft:on_item_found": {
+        "add": {
+          "component_groups": [
+            "zoocraft:feeling_happy"
+          ]
+        },
+        "set_property": {
+          "zoocraft:sniffer_act": "rising"
+        }
+      },
+      "zoocraft:on_feeling_happy_end": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:feeling_happy"
+          ]
+        }
+      },
+      "zoocraft:on_fail_during_searching": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:sniffer_search_and_dig"
+          ]
+        },
+        "set_property": {
+          "zoocraft:sniffer_act": "idle"
+        }
+      },
+      "zoocraft:on_fail_during_digging": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:sniffer_search_and_dig"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:pushable",
+            "zoocraft:stand_up"
+          ]
+        },
+        "set_property": {
+          "zoocraft:sniffer_act": "rising"
+        }
+      },
+      "zoocraft:on_search_and_digging_success": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:sniffer_search_and_dig"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:pushable",
+            "zoocraft:stand_up"
+          ]
+        },
+        "set_property": {
+          "zoocraft:sniffer_act": "rising"
+        }
+      },
+      "zoocraft:on_rising_end": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:stand_up"
+          ]
+        },
+        "set_property": {
+          "zoocraft:sniffer_act": "idle"
+        }
+      }
+    }
+  }
+}
