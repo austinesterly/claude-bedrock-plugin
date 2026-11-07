@@ -1,0 +1,33 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.zoocraft.witch_spell": {
+      "initial_state": "wait",
+      "states": {
+        "wait": {
+          "transitions": [
+            {
+              "spell": "query.life_time >= variable.spell_at"
+            }
+          ]
+        },
+        "spell": {
+          "on_entry": [
+            "variable.spell_t0 = query.life_time;",
+            "variable.spell_at = query.life_time + math.random(20, 110);"
+          ],
+          "particle_effects": [
+            {
+              "effect": "spell"
+            }
+          ],
+          "transitions": [
+            {
+              "wait": "query.life_time >= variable.spell_t0 + 1.5"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

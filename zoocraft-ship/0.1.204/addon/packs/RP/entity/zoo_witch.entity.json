@@ -1,0 +1,45 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:zoo_witch",
+      "min_engine_version": "1.8.0",
+      "materials": {
+        "default": "witch"
+      },
+      "textures": {
+        "default": "textures/entity/witch"
+      },
+      "geometry": {
+        "default": "geometry.villager.witch.v1.8"
+      },
+      "scripts": {
+        "scale": "0.9375",
+        "initialize": [
+          "variable.spell_t0 = 0;",
+          "variable.spell_at = math.random(5, 60);"
+        ],
+        "animate": [
+          "general_controller",
+          "move_controller",
+          "spell"
+        ]
+      },
+      "animations": {
+        "villager_general": "animation.villager.general",
+        "look_at_target": "animation.common.look_at_target",
+        "move": "animation.villager.move",
+        "general": "animation.witch.general",
+        "general_controller": "controller.animation.witch.general",
+        "move_controller": "controller.animation.villager.move",
+        "spell": "controller.animation.zoocraft.witch_spell"
+      },
+      "render_controllers": [
+        "controller.render.witch"
+      ],
+      "particle_effects": {
+        "spell": "zoocraft:witch_spell"
+      }
+    }
+  }
+}

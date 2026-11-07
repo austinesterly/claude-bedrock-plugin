@@ -1,0 +1,612 @@
+// Hostile mobs in the zoo (0.1.163, module 11: research/mobhouse_plan.md), pure: plain records in, plain answers out.
+// The world side is animals/mobs.js (the Passivity Serum, the zoo mobs' sounds, the spawn guard) and visitors/mobHouse.js
+// (the Mob House block: its hall, its entry price).
+//
+// A vanilla zombie or skeleton weakened to a quarter of its health or less turns into a calmed one (its own entity,
+// zoocraft:calm_zombie, the vanilla look, never hostile) when a Passivity Serum is used on it; a Mob Cage carries a calmed
+// one to a pen; in the pen it is the zoo's (zoocraft:zoo_zombie). A pen is an exhibit inside a Mob House: beside its
+// hall (the closed building round the Mob House block, where guests walk), shut in all round, roof included, and walled
+// off from the hall (glass, glass panes or iron bars to look through; tinted glass for the mobs that like the dark: in
+// Bedrock daylight comes into a hall through its door, even shut, and on through plain glass and iron bars, the 0.1.164
+// bench found, and tinted glass alone keeps it out of the pen while the guests still see in).
+
+// The vanilla mobs the serum calms, and what each becomes (0.1.164: the creeper and the spider too).
+import { UNDEAD_MOUNTS, MOUNT_SERUM, MOUNT_PEN_LIFE, MOUNT_FOOD, UNDEAD_STABLE } from "./undeadMountRules.js";
+
+export const MOB_KINDS = {
+  "minecraft:zombie": "zoocraft:calm_zombie",
+  "minecraft:skeleton": "zoocraft:calm_skeleton",
+  "minecraft:creeper": "zoocraft:calm_creeper",
+  "minecraft:spider": "zoocraft:calm_spider",
+  // The husk and the zombie villager (0.1.199).
+  "minecraft:husk": "zoocraft:calm_husk",
+  "minecraft:zombie_villager_v2": "zoocraft:calm_zombie_villager",
+  // The drowned (0.1.200).
+  "minecraft:drowned": "zoocraft:calm_drowned",
+  // The skeleton kin (0.1.201).
+  "minecraft:stray": "zoocraft:calm_stray",
+  "minecraft:bogged": "zoocraft:calm_bogged",
+  "minecraft:parched": "zoocraft:calm_parched",
+  "minecraft:wither_skeleton": "zoocraft:calm_wither_skeleton",
+  // The small arthropods (0.1.202).
+  "minecraft:cave_spider": "zoocraft:calm_cave_spider",
+  "minecraft:silverfish": "zoocraft:calm_silverfish",
+  "minecraft:endermite": "zoocraft:calm_endermite",
+  // The slime and the magma cube (0.1.203).
+  "minecraft:slime": "zoocraft:calm_slime",
+  "minecraft:magma_cube": "zoocraft:calm_magma_cube",
+  // The witch (0.1.204).
+  "minecraft:witch": "zoocraft:calm_witch",
+  // The Cyclops (0.1.165): a rare mob, worn down in a fight as the bosses are (animals/boss.js) till it sits down panting.
+  "zoocraft:wild_cyclops": "zoocraft:calm_cyclops",
+  // The Necromancer (0.1.166): the second rare mob, worn down the same way till it kneels down panting.
+  "zoocraft:wild_necromancer": "zoocraft:calm_necromancer",
+  // The Voidling (0.1.167): the third rare mob, worn down the same way till it crouches down panting.
+  "zoocraft:wild_voidling": "zoocraft:calm_voidling",
+};
+export const CALM_TYPES = new Set(Object.values(MOB_KINDS));
+// The zoo's mobs, calmed or in a pen: their sounds (played by script; the entities have none of their own). `say` now
+// and then (BALANCE.mobs.sayChance a second, times `chance`), at `volume` and about `pitch`; `hurt` when a player hits
+// one. A creeper has no sound of its own but its hurt one and its fuse: a zoo creeper hisses softly and seldom (the
+// fuse, quiet and low), and never swells.
+export const MOB_SOUNDS = {
+  "zoocraft:calm_zombie": { say: "mob.zombie.say", hurt: "mob.zombie.hurt" },
+  "zoocraft:zoo_zombie": { say: "mob.zombie.say", hurt: "mob.zombie.hurt" },
+  "zoocraft:calm_skeleton": { say: "mob.skeleton.say", hurt: "mob.skeleton.hurt" },
+  "zoocraft:zoo_skeleton": { say: "mob.skeleton.say", hurt: "mob.skeleton.hurt" },
+  // The husk's and the zombie villager's own (0.1.199: the game's sounds.json gives them these).
+  "zoocraft:calm_husk": { say: "mob.husk.ambient", hurt: "mob.husk.hurt" },
+  "zoocraft:zoo_husk": { say: "mob.husk.ambient", hurt: "mob.husk.hurt" },
+  "zoocraft:calm_zombie_villager": { say: "mob.zombie_villager.say", hurt: "mob.zombie_villager.hurt" },
+  "zoocraft:zoo_zombie_villager": { say: "mob.zombie_villager.say", hurt: "mob.zombie_villager.hurt" },
+  // The drowned's own (0.1.200), with its calls under water (`sayWater`, `hurtWater`: the game's say_water and hurt_water).
+  "zoocraft:calm_drowned": { say: "mob.drowned.say", hurt: "mob.drowned.hurt", sayWater: "mob.drowned.say_water", hurtWater: "mob.drowned.hurt_water" },
+  "zoocraft:zoo_drowned": { say: "mob.drowned.say", hurt: "mob.drowned.hurt", sayWater: "mob.drowned.say_water", hurtWater: "mob.drowned.hurt_water" },
+  // The skeleton kin's own (0.1.201: the game's sounds.json gives them these).
+  "zoocraft:calm_stray": { say: "mob.stray.ambient", hurt: "mob.stray.hurt" },
+  "zoocraft:zoo_stray": { say: "mob.stray.ambient", hurt: "mob.stray.hurt" },
+  "zoocraft:calm_bogged": { say: "mob.bogged.ambient", hurt: "mob.bogged.hurt" },
+  "zoocraft:zoo_bogged": { say: "mob.bogged.ambient", hurt: "mob.bogged.hurt" },
+  "zoocraft:calm_parched": { say: "mob.parched.ambient", hurt: "mob.parched.hurt" },
+  "zoocraft:zoo_parched": { say: "mob.parched.ambient", hurt: "mob.parched.hurt" },
+  "zoocraft:calm_wither_skeleton": { say: "entity.wither_skeleton.ambient", hurt: "entity.wither_skeleton.hurt" },
+  "zoocraft:zoo_wither_skeleton": { say: "entity.wither_skeleton.ambient", hurt: "entity.wither_skeleton.hurt" },
+  // The small arthropods' own (0.1.202: the game's sounds.json gives them these; the cave spider the spider's).
+  "zoocraft:calm_cave_spider": { say: "mob.spider.say", hurt: "mob.spider.say" },
+  "zoocraft:zoo_cave_spider": { say: "mob.spider.say", hurt: "mob.spider.say" },
+  "zoocraft:calm_silverfish": { say: "mob.silverfish.say", hurt: "mob.silverfish.hit" },
+  "zoocraft:zoo_silverfish": { say: "mob.silverfish.say", hurt: "mob.silverfish.hit" },
+  "zoocraft:calm_endermite": { say: "mob.endermite.say", hurt: "mob.endermite.hit" },
+  "zoocraft:zoo_endermite": { say: "mob.endermite.say", hurt: "mob.endermite.hit" },
+  // The witch's own (0.1.204: the game's sounds.json gives it these).
+  "zoocraft:calm_witch": { say: "mob.witch.ambient", hurt: "mob.witch.hurt" },
+  "zoocraft:zoo_witch": { say: "mob.witch.ambient", hurt: "mob.witch.hurt" },
+  "zoocraft:calm_creeper": { say: "random.fuse", hurt: "mob.creeper.say", volume: 0.3, pitch: 0.6, chance: 0.5 },
+  "zoocraft:zoo_creeper": { say: "random.fuse", hurt: "mob.creeper.say", volume: 0.3, pitch: 0.6, chance: 0.5 },
+  "zoocraft:calm_spider": { say: "mob.spider.say", hurt: "mob.spider.say" },
+  "zoocraft:zoo_spider": { say: "mob.spider.say", hurt: "mob.spider.say" },
+  "zoocraft:calm_cyclops": { say: "mob.ravager.ambient", hurt: "mob.hoglin.angry", volume: 0.6, pitch: 0.7, chance: 0.5 },
+  "zoocraft:zoo_cyclops": { say: "mob.ravager.ambient", hurt: "mob.hoglin.angry", volume: 0.6, pitch: 0.7, chance: 0.5 },
+  "zoocraft:calm_necromancer": { say: "mob.skeleton.say", hurt: "mob.skeleton.hurt", volume: 0.6, pitch: 0.7, chance: 0.5 },
+  "zoocraft:zoo_necromancer": { say: "mob.skeleton.say", hurt: "mob.skeleton.hurt", volume: 0.6, pitch: 0.7, chance: 0.5 },
+  "zoocraft:calm_voidling": { say: "mob.endermen.idle", hurt: "mob.endermen.hit", volume: 0.5, pitch: 0.6, chance: 0.5 },
+  "zoocraft:zoo_voidling": { say: "mob.endermen.idle", hurt: "mob.endermen.hit", volume: 0.5, pitch: 0.6, chance: 0.5 },
+};
+export const ZOO_MOB_FAMILY = "zoocraft_mob";
+
+// A calmed mob, as the serum's message names it, and the food it follows.
+export const MOB_INFO = {
+  "zoocraft:calm_zombie": { one: "zombie", bait: "a Meat Ration" },
+  "zoocraft:calm_skeleton": { one: "skeleton", bait: "a Bone Ration" },
+  "zoocraft:calm_husk": { one: "husk", bait: "a Meat Ration" },
+  "zoocraft:calm_zombie_villager": { one: "zombie villager", bait: "a Meat Ration", note: " (it keeps its job and its home's clothes)" },
+  "zoocraft:calm_drowned": { one: "drowned", bait: "a Meat Ration" },
+  "zoocraft:calm_stray": { one: "stray", bait: "a Bone Ration" },
+  "zoocraft:calm_bogged": { one: "bogged", bait: "a Bone Ration", note: " (it keeps its mushrooms, or its bare head if it was sheared)" },
+  "zoocraft:calm_parched": { one: "parched", bait: "a Bone Ration" },
+  "zoocraft:calm_wither_skeleton": { one: "wither skeleton", bait: "a Bone Ration", note: " (its sword never strikes)" },
+  "zoocraft:calm_cave_spider": { one: "cave spider", bait: "a Meat Ration", note: " (and it never climbs or bites)" },
+  "zoocraft:calm_silverfish": { one: "silverfish", bait: "a Grain Ration", note: " (and it never hides in the stone)" },
+  "zoocraft:calm_endermite": { one: "endermite", bait: "Chorus Browse", note: " (and it never vanishes)" },
+  "zoocraft:calm_slime": { one: "slime", bait: "a slimeball", note: " (and it keeps its size: small, medium or large)" },
+  "zoocraft:calm_magma_cube": { one: "magma cube", bait: "some magma cream", note: " (and it keeps its size: small, medium or large)" },
+  "zoocraft:calm_witch": { one: "witch", bait: "a Grain Ration", note: " (it never throws or drinks a potion)" },
+  "zoocraft:calm_creeper": { one: "creeper", bait: "a Grain Ration", note: " (it never swells or explodes)" },
+  "zoocraft:calm_spider": { one: "spider", bait: "a Meat Ration", note: " (and it never climbs)" },
+  "zoocraft:calm_cyclops": { one: "Cyclops", bait: "a Meat Ration", note: " (no more club, stomps or rocks)" },
+  "zoocraft:calm_necromancer": { one: "Necromancer", bait: "a Bone Ration", note: " (no more bolts, and it raises nothing)" },
+  "zoocraft:calm_voidling": { one: "Voidling", bait: "Chorus Browse", note: " (no more grabs, rakes or orbs)" },
+};
+
+export const SERUM_TEXT = {
+  research: "The Passivity Serum needs Mob Taming research at the Research Desk first.",
+  other: "For now the Passivity Serum works only on zombies, husks, zombie villagers, drowned, skeletons, strays, bogged, parched, wither skeletons, creepers, spiders, cave spiders, silverfish, endermites, slimes, magma cubes, witches, the Cyclops, the Necromancer and the Voidling.",
+  baby: "Leave the young ones be: the serum is too strong for a baby.",
+  strong: (calmAt) => `It shakes the serum off. Weaken it first (${Math.round(calmAt * 100) === 25 ? "a quarter" : `${Math.round(calmAt * 100)}%`} of its health or less).`,
+  aim: "Look at a weakened zombie, husk, zombie villager, drowned, skeleton, stray, bogged, parched, wither skeleton, creeper, spider, cave spider, silverfish, endermite, slime, magma cube, witch, Cyclops, Necromancer or Voidling up close, then use the serum.",
+};
+// A mob that shakes the serum off has its own words (the Cyclops: worn down in a fight till it sits down panting; the
+// Necromancer, till it kneels).
+const STRONG = {
+  "minecraft:witch": "It shakes the serum off. Weaken it first (a quarter of its health or less), and be quick: a hurt witch drinks a Potion of Healing.",
+  "zoocraft:wild_cyclops": "It shakes the serum off. Wear it down first, till it sits down panting (a quarter of its health).",
+  "zoocraft:wild_necromancer": "It shakes the serum off. Wear it down first, till it kneels down panting (a quarter of its health).",
+  "zoocraft:wild_voidling": "It shakes the serum off. Wear it down first, till it crouches down panting (a quarter of its health).",
+};
+
+// A calmed one keeps the wild one's look (0.1.199: a zombie villager's job, the game's minecraft:variant 0 to 14, and its
+// home's clothes, minecraft:mark_variant 0 to 6; 0.1.201 a bogged sheared of its mushrooms, the game's is_sheared): the
+// calmed mob's events for them (zoocraft:coat_N, zoocraft:mark_N), none for a mob of one look; anything out of range is
+// the first.
+// 0.1.203: a slime's or magma cube's size (the game's minecraft:variant 1, 2 or 4: coat 0, 1 or 2; `sizes`).
+export const MOB_LOOKS = { "zoocraft:calm_zombie_villager": { coats: 15, marks: 7 }, "zoocraft:calm_bogged": { coats: 2, sheared: true }, "zoocraft:calm_slime": { coats: 3, sizes: true }, "zoocraft:calm_magma_cube": { coats: 3, sizes: true } };
+// A slime's or magma cube's size from the game's variant (1 small, 2 medium, 4 large: coat 0, 1 or 2); none read, the
+// large one (the game's and the zoo copy's spawn without a size give it).
+/** @param {number | undefined} variant */
+export function sizeCoat(variant) {
+  const v = Number(variant);
+  if (!Number.isFinite(v)) return 2;
+  return v >= 3 ? 2 : v >= 2 ? 1 : 0;
+}
+/** @param {string} calmType @param {number | undefined} variant @param {number | undefined} mark @param {boolean} [sheared] @returns {string[]} */
+export function lookEvents(calmType, variant, mark, sheared = false) {
+  const L = /** @type {{ coats: number, marks?: number, sheared?: boolean, sizes?: boolean }} */ (MOB_LOOKS[calmType]);
+  if (!L) return [];
+  if (L.sizes) return [`zoocraft:coat_${sizeCoat(variant)}`]; // a slime or magma cube: its size (0.1.203)
+  if (L.sheared) return [`zoocraft:coat_${sheared ? 1 : 0}`]; // a bogged: bare or with its mushrooms
+  const pick = (/** @type {number | undefined} */ v, /** @type {number} */ n) => (Number.isInteger(v) && /** @type {number} */ (v) >= 0 && /** @type {number} */ (v) < n ? /** @type {number} */ (v) : 0);
+  return [`zoocraft:coat_${pick(variant, L.coats)}`, `zoocraft:mark_${pick(mark, /** @type {number} */ (L.marks))}`];
+}
+
+// The serum's message once a mob is calmed.
+/** @param {string} calmType */
+export function calmedText(calmType) {
+  const m = MOB_INFO[calmType] ?? { one: "mob", bait: "its food" };
+  return `§aThe ${m.one} sparkles green and calms down. §fIt never attacks now${m.note ?? ""}. Bring it to a pen in a Mob House: a Mob Cage carries it (with ${m.bait} in your inventory), or lead it holding one.`;
+}
+
+/**
+ * What the Passivity Serum does to a mob: `{ calm: typeId }` when it works (the calmed mob's type), `{ why }` when it
+ * doesn't (the serum is kept), undefined for anything that isn't a monster (nothing happens).
+ * @param {{ typeId: string, hostile: boolean, baby: boolean, hp: number, max: number }} m @param {number} calmAt
+ */
+export function serumCheck(m, calmAt) {
+  if (UNDEAD_MOUNTS[m.typeId]) return { why: MOUNT_SERUM[m.typeId] }; // the undead mounts (0.1.198): calm on their own
+  const calm = MOB_KINDS[m.typeId];
+  if (!calm) return m.hostile ? { why: SERUM_TEXT.other } : undefined;
+  if (m.baby) return { why: SERUM_TEXT.baby };
+  // A quarter of its health or less, or 1 health (0.1.203: a small slime or magma cube has 1 at most, and no hit leaves it weaker).
+  if (!(m.max > 0) || m.hp > Math.max(m.max * calmAt, 1) + 1e-9) return { why: STRONG[m.typeId] ?? SERUM_TEXT.strong(calmAt) };
+  return { calm };
+}
+
+// ---------------- boxes ----------------
+
+/** @typedef {{ min: { x: number, y: number, z: number }, max: { x: number, y: number, z: number } }} Box */
+
+// The gap in blocks between two boxes of cells (0 when they touch or overlap).
+/** @param {Box} a @param {Box} b */
+export function boxGap(a, b) {
+  const dx = Math.max(0, a.min.x - b.max.x, b.min.x - a.max.x);
+  const dy = Math.max(0, a.min.y - b.max.y, b.min.y - a.max.y);
+  const dz = Math.max(0, a.min.z - b.max.z, b.min.z - a.max.z);
+  return Math.max(dx, dy, dz);
+}
+
+/** @param {Box} b @param {number} n @returns {Box} */
+export function grow(b, n) {
+  return { min: { x: b.min.x - n, y: b.min.y - n, z: b.min.z - n }, max: { x: b.max.x + n, y: b.max.y + n, z: b.max.z + n } };
+}
+
+/** @param {{ x: number, y: number, z: number }} p @param {Box} b */
+export function inBox(p, b) {
+  return p.x >= b.min.x && p.x < b.max.x + 1 && p.y >= b.min.y && p.y < b.max.y + 1 && p.z >= b.min.z && p.z < b.max.z + 1;
+}
+
+// ---------------- the pen ----------------
+
+/**
+ * The working Mob Houses (their hall measured closed: room "ok") whose hall a pen's walking box is beside, within
+ * `reach` blocks (a wall or two between them), nearest first.
+ * @template {{ id: string, dimension: string, room?: string, bbox?: Box }} H
+ * @param {H[]} houses @param {string} dimension @param {Box | undefined} box @param {number} reach @returns {H[]}
+ */
+export function housesNear(houses, dimension, box, reach) {
+  if (!box) return [];
+  return houses
+    .filter((h) => h.dimension === dimension && h.room === "ok" && h.bbox && boxGap(box, h.bbox) <= reach)
+    .sort((a, b) => boxGap(box, /** @type {Box} */ (a.bbox)) - boxGap(box, /** @type {Box} */ (b.bbox)));
+}
+
+const SIDES = [[1, 0, 0], [-1, 0, 0], [0, 1, 0], [0, -1, 0], [0, 0, 1], [0, 0, -1]];
+
+/**
+ * The pen measure: the pen's air flood (closed all round, roof included, or where it leads out), the Mob House it is
+ * beside, and whether its air is the hall's (it opens into the hall: every open block beside the Mob House block is in
+ * the pen's air too).
+ * @param {{ enclosed: boolean, escape?: { x: number, y: number, z: number } }} room
+ * @param {{ id: string, pos: { x: number, y: number, z: number } }[]} houses (housesNear's, nearest first)
+ * @param {(x: number, y: number, z: number) => boolean} open a block guests or mobs can stand in (air)
+ * @param {(x: number, y: number, z: number) => boolean} inPen in the pen's air flood
+ */
+export function penReport(room, houses, open, inPen) {
+  const house = houses[0];
+  let leaks = false;
+  if (house) {
+    const airy = SIDES.map(([dx, dy, dz]) => [house.pos.x + dx, house.pos.y + dy, house.pos.z + dz]).filter(([x, y, z]) => open(x, y, z));
+    leaks = airy.length > 0 && airy.every(([x, y, z]) => inPen(x, y, z));
+  }
+  return { enclosed: Boolean(room.enclosed), escape: room.escape, houseId: house?.id, leaks };
+}
+
+export const PEN_HOW = "a pen beside a Mob House's hall (the closed building round the Mob House block, where guests walk), its walls touching the hall's, shut in all round with a roof, and walled off from the hall with glass, glass panes or iron bars to look through (tinted glass for mobs that like the dark: daylight comes into the hall through its door, even shut, and on through plain glass and bars)";
+
+/**
+ * Why mobs can't live in this pen (fitFor, and an issue while they live there), or undefined.
+ * @param {{ enclosed: boolean, escape?: { x: number, y: number, z: number }, houseId?: string, leaks: boolean } | undefined} pen
+ * @param {string} plural @param {boolean} houseWorks the pen's Mob House still has its hall
+ */
+export function mobPenProblem(pen, plural, houseWorks) {
+  if (!pen) return `${plural} live only in ${PEN_HOW}. Build it, then use the Habitat Marker on the ground inside again.`;
+  if (!pen.houseId) return `${plural} live only in a pen beside a Mob House's hall, and no working Mob House is beside this one: put a Mob House block inside a closed hall (walls, floor and roof, at least 3 x 3 x 3 inside) whose walls touch the pen's, then use the Habitat Marker on the ground inside again.`;
+  if (!houseWorks) return "The Mob House beside this pen is closed: use the Mob House block to see why, then use the Habitat Marker on the ground inside again.";
+  if (pen.leaks) return "The pen opens into the Mob House's hall: wall it off (glass, glass panes or iron bars to look through), then use the Habitat Marker on the ground inside again.";
+  if (!pen.enclosed) return `${plural} must be shut in all round, roof included: the pen's air leads out${pen.escape ? ` near ${pen.escape.x} ${pen.escape.y} ${pen.escape.z}` : ""}. Close the walls and the roof, then use the Habitat Marker on the ground inside again.`;
+  return undefined;
+}
+
+// ---------------- the floor they like ----------------
+
+// The sea floor (0.1.200): what a column of water holds above it, and how far down it is looked for (the stingrays' sand
+// count's, exhibits/geometry.js SAND_DEPTH).
+const WATERY = new Set(["minecraft:water", "minecraft:flowing_water", "minecraft:seagrass", "minecraft:kelp", "minecraft:bubble_column"]);
+const FOOT_DEPTH = 24;
+
+export function newMobFloorResult() {
+  return { cells: 0, ids: /** @type {Record<string, number>} */ ({}) };
+}
+
+/**
+ * The floor blocks under the pen's floor cells that a mob living here likes (`opts.ids`), counted by id. With
+ * `opts.water` (0.1.200, a mob that walks the bottom of its water: species.mobFloor.underWater) the foot of the water is
+ * floor too: the block under each column of it (the flood keeps to the top of the water), seagrass and kelp passed.
+ * @param {(x: number, y: number, z: number) => (string | undefined)} idAt
+ * @param {Map<string, string>} cells @param {{ cellsPerYield: number, ids: Set<string>, water?: boolean }} opts
+ * @param {{ cells: number, ids: Record<string, number> }} out
+ */
+export function* measureMobFloor(idAt, cells, opts, out) {
+  let work = 0;
+  for (const [k, kind] of cells) {
+    if (kind !== "land" && !(opts.water && kind === "water")) continue;
+    if (++work % opts.cellsPerYield === 0) yield;
+    const [x, y, z] = k.split(",").map(Number);
+    let fy = y - 1;
+    if (kind === "water") while (fy > y - 1 - FOOT_DEPTH && WATERY.has(idAt(x, fy, z) ?? "")) fy--;
+    out.cells++;
+    const id = idAt(x, fy, z) ?? "";
+    if (opts.ids.has(id)) out.ids[id] = (out.ids[id] ?? 0) + 1;
+  }
+  return out;
+}
+
+// The share of the floor a species likes (0..1), from the floor measure; undefined not measured.
+/** @param {{ mobFloor?: { ids: string[] } }} species @param {{ mobFloor?: { cells: number, ids: Record<string, number> } }} ex */
+export function mobFloorShare(species, ex) {
+  const t = ex.mobFloor;
+  if (!species.mobFloor || !t) return undefined;
+  const n = species.mobFloor.ids.reduce((s, id) => s + (t.ids[id] ?? 0), 0);
+  return t.cells ? n / t.cells : 0;
+}
+
+// ---------------- what they like in the pen (0.1.164) ----------------
+
+export function newMobDecorResult() {
+  return { ids: /** @type {Record<string, number>} */ ({}) };
+}
+
+const AROUND = [[0, 0, 0], ...SIDES];
+
+/**
+ * The blocks in the pen's air and round it (its walls, floor and roof) that a mob living here likes (`opts.ids`),
+ * counted by id, each block once: cobwebs hung in the corners (they stand in the air), leaves in a wall or as a bush on
+ * the floor, ferns on the grass.
+ * @param {(x: number, y: number, z: number) => (string | undefined)} idAt
+ * @param {Map<string, string>} cells the pen's air flood @param {{ cellsPerYield: number, ids: Set<string> }} opts
+ * @param {{ ids: Record<string, number> }} out
+ */
+export function* measureMobDecor(idAt, cells, opts, out) {
+  const seen = new Set();
+  let work = 0;
+  for (const k of cells.keys()) {
+    const [x, y, z] = k.split(",").map(Number);
+    for (const [dx, dy, dz] of AROUND) {
+      const p = `${x + dx},${y + dy},${z + dz}`;
+      if (seen.has(p)) continue;
+      seen.add(p);
+      if (++work % opts.cellsPerYield === 0) yield;
+      const id = idAt(x + dx, y + dy, z + dz) ?? "";
+      if (opts.ids.has(id)) out.ids[id] = (out.ids[id] ?? 0) + 1;
+    }
+  }
+  return out;
+}
+
+// How many of what a species likes are in its pen (species.mobDecor: Creepers' leaves or ferns, Spiders' cobwebs);
+// undefined not measured.
+/** @param {{ mobDecor?: { ids: string[] } }} species @param {{ mobFloor?: { decor?: { ids: Record<string, number> } } }} ex */
+export function mobDecorCount(species, ex) {
+  const d = ex.mobFloor?.decor;
+  if (!species.mobDecor || !d) return undefined;
+  return species.mobDecor.ids.reduce((s, id) => s + (d.ids[id] ?? 0), 0);
+}
+
+// Enough of the floor they like and of what they like in the pen (cause "mobfloor"). False caps comfort. Not measured
+// yet: passes.
+/** @param {{ mobFloor?: { ids: string[], share: number }, mobDecor?: { ids: string[], min: number } }} species @param {any} ex */
+export function hasMobFloor(species, ex) {
+  const share = mobFloorShare(species, ex);
+  const floor = share === undefined || share >= /** @type {{ share: number }} */ (species.mobFloor).share - 1e-9;
+  const n = mobDecorCount(species, ex);
+  return floor && (n === undefined || n >= /** @type {{ min: number }} */ (species.mobDecor).min);
+}
+
+// What a mob wants in its pen, in words (the comfort cause's text): its floor, and what it likes in the pen.
+/** @param {any} s */
+export function mobLikesText(s) {
+  const parts = [];
+  if (s?.mobFloor) parts.push(`${s.mobFloor.how} under ${Math.round(s.mobFloor.share * 100)}% of the floor or more`);
+  if (s?.mobDecor) parts.push(`${s.mobDecor.min} or more ${s.mobDecor.how} in the pen`);
+  return parts.join(", and ") || "the floor they like";
+}
+
+// ---------------- the dark (zombies, spiders) ----------------
+
+// The brightest light a mob that likes the dark allows on its floor: the Nocturnal Lamps' (7), or its own (Spiders: 4).
+/** @param {{ darkLight?: number }} species @param {any} balance */
+export function darkLimit(species, balance) {
+  return species.darkLight ?? balance.nocturnal.maxLight;
+}
+
+// How to light a pen for mobs that like the dark, to `max`.
+/** @param {number} max @param {number} lamps the Nocturnal Lamps' light */
+export function darkHow(max, lamps) {
+  return max >= lamps ? `Nocturnal Lamps or glow lichen at most (nothing brighter than light ${max})` : `nothing brighter than light ${max} on the floor: a Nocturnal Lamp hung 3 blocks above the floor gives ${lamps - 3} right under it (torches and lanterns are far too bright)`;
+}
+
+/**
+ * The Exhibit Clipboard's dark line for mobs that like the dark (species.lowLight), or undefined.
+ * @param {any} ex @param {any[]} living the mob species living here
+ * @param {{ house: boolean, problems: string[] }} h is it a nocturnal house, and why not (animals/nightRules.js)
+ * @param {any} balance
+ */
+export function mobDarkLine(ex, living, h, balance) {
+  const dark = living.filter((sp) => sp.lowLight);
+  if (!dark.length) return undefined;
+  const who = dark.map((sp) => sp.plural ?? `${sp.displayName}s`).join(" and ");
+  if (!ex.house) return "§fDark: §7not measured yet: use the Habitat Marker on the ground inside again";
+  const max = Math.min(...dark.map((sp) => darkLimit(sp, balance)));
+  const lamps = balance.nocturnal.maxLight;
+  const own = `too bright, brightest spot ${ex.house.brightest} of ${max} allowed (${darkHow(max, lamps)})`;
+  // A mob with its own darker dark (spiders, cave spiders: 4): the house's "too bright" says its own limit (0.1.202).
+  const problems = h.house ? [] : h.problems.map((p) => (max < lamps && p.startsWith("too bright") ? own : p));
+  if (!problems.length && ex.house.brightest > max) problems.push(own);
+  if (!problems.length) return `§fDark: §ayes§7 (${who.toLowerCase()} like it; Nocturnal Lamps let the guests see them)`;
+  return `§fDark: §cno§7: ${problems.join("; ")}. ${who.endsWith("s") ? `${who}'` : `${who}'s`} comfort can't rise above ${balance.chorusMoth.dimComfortCap}`;
+}
+
+/** The care warning for mobs that like the dark, out of it. @param {any} species @param {string} plural @param {any} balance */
+export function mobDarkWarning(species, plural, balance) {
+  return { severity: 2, text: `${plural} like the dark: roof the pen, wall it with solid blocks and use tinted glass to the hall (daylight comes into the hall through its door, even shut, and on through plain glass, glass panes and iron bars; tinted glass keeps it out and the guests still see in), and light it with ${darkHow(darkLimit(species, balance), balance.nocturnal.maxLight)}. In daylight comfort can't rise above ${balance.chorusMoth.dimComfortCap}. Measure again with the Habitat Marker after.` };
+}
+
+// ---------------- the clipboard, the warnings, the journal ----------------
+
+const pluralOf = (/** @type {any} */ sp) => sp.plural ?? `${sp.displayName}s`;
+// "Zombies'", "Drowned's" (0.1.200: a plural without an s).
+const possessive = (/** @type {string} */ p) => (p.endsWith("s") ? `${p}'` : `${p}'s`);
+
+/**
+ * The Exhibit Clipboard's lines for mobs: the pen, the floor they like and what they like in the pen (each species
+ * living here), the dark (zombies, spiders).
+ * @param {any} ex @param {any[]} living the mob species living here @param {boolean} houseWorks @param {{ dark?: string, floorCap: number }} o
+ */
+export function mobLines(ex, living, houseWorks, o) {
+  const lines = [];
+  const plural = living.length === 1 ? pluralOf(living[0]) : "Mobs";
+  const problem = mobPenProblem(ex.mobPen, plural, houseWorks);
+  lines.push(problem ? `§fMob pen: §c${problem}` : "§fMob pen: §abeside a working Mob House§7, shut in all round and walled off from its hall. The house keeps wild monsters from spawning inside it");
+  for (const sp of living) {
+    if (sp.mobFloor) {
+      const share = mobFloorShare(sp, ex);
+      const want = Math.round(sp.mobFloor.share * 100);
+      if (share === undefined) lines.push(`§f${possessive(pluralOf(sp))} floor: §7not measured yet: use the Habitat Marker on the ground inside again`);
+      else lines.push(`§f${possessive(pluralOf(sp))} floor: ${share >= sp.mobFloor.share - 1e-9 ? "§a" : "§c"}${Math.round(share * 100)}%§7 of it ${sp.mobFloor.how} (${want}% wanted; below it comfort can't rise above ${o.floorCap})`);
+    }
+    if (sp.mobDecor) {
+      const n = mobDecorCount(sp, ex);
+      const what = sp.mobDecor.how.charAt(0).toUpperCase() + sp.mobDecor.how.slice(1);
+      if (n === undefined) lines.push(`§f${what}: §7not measured yet: use the Habitat Marker on the ground inside again`);
+      else lines.push(`§f${what}: ${n >= sp.mobDecor.min ? "§a" : "§c"}${n}§7 in the pen (${sp.mobDecor.min} or more for ${pluralOf(sp).toLowerCase()}; fewer and comfort can't rise above ${o.floorCap})`);
+    }
+  }
+  if (o.dark) lines.push(o.dark);
+  return lines;
+}
+
+/** Care warnings for mobs: the floor they like, and what they like in the pen. @param {any} ex @param {string} plural @param {any} species @param {number} cap */
+export function mobWarnings(ex, plural, species, cap) {
+  const out = [];
+  const share = mobFloorShare(species, ex);
+  if (species.mobFloor && share !== undefined && share < species.mobFloor.share - 1e-9) out.push({ severity: 2, text: `${plural} want ${species.mobFloor.how} under ${Math.round(species.mobFloor.share * 100)}% of their floor or more (${Math.round(share * 100)}% now). Without it comfort can't rise above ${cap}.` });
+  const n = mobDecorCount(species, ex);
+  if (species.mobDecor && n !== undefined && n < species.mobDecor.min) out.push({ severity: 2, text: `${plural} want ${species.mobDecor.min} or more ${species.mobDecor.how} in their pen (${n} now)${species.mobDecor.where ? `: ${species.mobDecor.where}` : ""}. Without them comfort can't rise above ${cap}.` });
+  return out;
+}
+
+// How each one lives in the wild, and how it lives in a pen (the Field Journal).
+const WILD_HOW = {
+  "minecraft:witch": "they come one at a time anywhere dark in the Overworld (not mushroom fields, the deep dark, rivers or snowy plains), live in swamp huts, come with raids, and a villager struck by lightning turns into one. They throw splash potions at you (harming, poison, slowness and weakness) and drink potions to heal, to breathe under water, against fire and to run, so weaken one and use the serum quickly, before it drinks a Potion of Healing",
+  "minecraft:slime": "they come out in swamps on dark nights (most on a full moon) and deep underground in slime chunks in any light, hop straight at you and hurt you by touch; killed, a large one splits into medium ones and a medium one into small ones (the small ones are harmless). Punch a medium one down (a sword splits it); a small one has 1 health and calms as it is",
+  "minecraft:magma_cube": "they hop about the Nether in any light, most in the basalt deltas, leap high and straight at you and hurt you by touch; fire, lava and falls never hurt them. Killed, a large one splits into medium ones and a medium one into small ones. Punch a medium one down (a sword splits it); a small one has 1 health and calms as it is",
+  "minecraft:cave_spider": "they come from the monster spawners of abandoned mineshafts, among the cobwebs, and in sulfur caves every spider is one. Smaller than a spider, they slip through gaps a block wide, climb walls and their bite poisons you. A skeleton riding one jumps off when it is calmed",
+  "minecraft:silverfish": "they hide in infested stone, cobblestone, deepslate and stone bricks (in strongholds, under mountains and windswept hills, in igloo basements and woodland mansions) and break out when the block is mined; hit one and more break out round it, and idle ones creep back into the stone. Punch one down: a sword kills it",
+  "minecraft:endermite": "now and then one comes out where an ender pearl a player throws lands, goes for you, and vanishes after two minutes unless it is named; endermen hunt them. Punch one down: a sword kills it",
+  "minecraft:stray": "they spawn in snowy places at night, out under the open sky, in place of most of the skeletons there, and shoot arrows that slow you; a skeleton kept in powder snow shakes and becomes one",
+  "minecraft:bogged": "they spawn in swamps and mangrove swamps at night, in place of some of the skeletons there, and shoot poison arrows; mushrooms grow on their heads (shears take them off for good, and a calmed one keeps its look)",
+  "minecraft:parched": "they spawn in deserts at night, out under the open sky, in place of a third of the skeletons there, never burn in the sun, and shoot arrows that weaken you. One riding behind a husk on a camel husk comes down off it when it is calmed",
+  "minecraft:wither_skeleton": "they spawn in Nether fortresses, two or three at a time, and strike with a stone sword whose hits wither you; fire and lava don't hurt them",
+  "minecraft:drowned": "they spawn in water in the dark (block light 0), in oceans, rivers and dripstone caves, keep to the bottom by day and come out to hunt at night; some carry a trident to throw. A zombie that stays under water too long becomes one. One riding a zombie nautilus comes off it when it is calmed",
+  "minecraft:husk": "they spawn in deserts at night (most of the zombies there are husks), never burn in the sun, and a hit from one leaves you hungry. One riding a camel husk comes down off it when it is calmed",
+  "minecraft:zombie_villager_v2": "now and then a group of them comes in place of zombies in the dark (block light 0), and they live in abandoned villages; a villager a zombie kills may rise as one (half the time on Normal, always on Hard). Each wears the clothes of its job and of the place it came from, and a calmed one keeps them. Cured instead (a golden apple while it has Weakness) it turns back into a villager",
+  "minecraft:creeper": "they spawn in the dark (block light 0) and creep up on you to explode. Use the serum from a few blocks away: within about 2.5 blocks one hisses and explodes a moment later (step back and it stops)",
+  "minecraft:spider": "they spawn in the dark (block light 0), climb walls and hunt you at night (by day they leave you be unless you hit them). A skeleton riding one jumps off when it is calmed",
+  "zoocraft:wild_cyclops": "one lives alone in a camp of boulders round a campfire in the windswept hills or the stony peaks, very rarely (once Mob Taming is done the first walk there finds one, then only far from it). It goes for anyone who comes within 12 blocks (sneaking, 4): it smashes its club down in front, stomps the ground to throw you up and back, and throws rocks from far off (step aside). It can't be killed: worn down to a quarter of its health it sits down panting, and then the serum takes",
+  "zoocraft:wild_necromancer": "one lives alone in a crypt of soul soil and blackstone in the Nether, in a soul sand valley or beside a fortress, very rarely (once Mob Taming is done the first walk there finds one, then only far from it). It goes for anyone who comes within 12 blocks (sneaking, 4): it swings its staff, strikes the ground for a ring of soul fire that slows you, throws soul bolts from far off (step aside: they set you alight) and raises skeletons from the ground, three at most, that crumble when the fight is over. It can't be killed: worn down to a quarter of its health it kneels down panting on its staff, and then the serum takes",
+  "zoocraft:wild_voidling": "one lives alone in a rift of end stone and obsidian on the outer End islands, by an island's edge, very rarely (once Mob Taming is done the first walk out there finds one, then only far from it). It is very slow, but it goes for anyone who comes within 10 blocks (sneaking, 4): it rakes with its long arms, throws slow void orbs that blind you, and when you are close it shrieks for a second and grabs you, then walks you to the island's edge and drops you into the void. Step back out of its reach when it shrieks; held, hit it and it lets go (an ender pearl or a chorus fruit gets you free too). It can't be killed: worn down to a quarter of its health it crouches down panting, and then the serum takes",
+};
+const PEN_LIFE = {
+  "zoocraft:zoo_zombie": "they shamble about with their arms out, groaning now and then",
+  "zoocraft:zoo_skeleton": "they wander about rattling now and then",
+  "zoocraft:zoo_husk": "they shamble about with their arms out, rasping now and then; dry as the desert, they never burn in the sun",
+  "zoocraft:zoo_zombie_villager": "they shamble about with their arms out in their old work clothes, groaning and snorting now and then",
+  "zoocraft:zoo_drowned": "they walk slowly along the bottom of their water with their arms out, gurgling now and then, and wade out onto the bank",
+  "zoocraft:zoo_stray": "they wander about in their ragged frosted clothes, rattling with an icy echo now and then",
+  "zoocraft:zoo_bogged": "they wander about rattling softly, moss and mushrooms on their bones",
+  "zoocraft:zoo_parched": "they wander about rattling dryly; bleached by the sun, they never burn in it",
+  "zoocraft:zoo_wither_skeleton": "they stalk about their pen, tall and black, a stone sword in hand; fire never hurts them",
+  "zoocraft:zoo_creeper": "they creep about on their four short legs and hiss softly now and then, but never swell or explode",
+  "zoocraft:zoo_spider": "they scuttle about the floor, eyes glowing red; in the zoo they never climb",
+  "zoocraft:zoo_cave_spider": "they scuttle about the floor, small and blue, eyes glowing red; in the zoo they never climb or bite",
+  "zoocraft:zoo_silverfish": "they wriggle about the floor, hissing softly now and then; in the zoo they never creep into the stone",
+  "zoocraft:zoo_endermite": "they skitter about the floor, purple and twitchy, chittering now and then; in the zoo they never vanish",
+  "zoocraft:zoo_slime": "they hop about the pen with a squelch, stretching as they leave the ground and squashing flat as they land; in the zoo they never chase anyone or split",
+  "zoocraft:zoo_witch": "they wander about cackling now and then, their noses twitching, and now and then purple sparkles rise over their hats; in the zoo they never throw or drink a potion",
+  "zoocraft:zoo_magma_cube": "they wait, then spring up high (the large ones 4 blocks), their layers pulling apart over the glowing core, and land with a squelch; fire never hurts them, and in the zoo they never chase anyone or split",
+  "zoocraft:zoo_cyclops": "it stomps about its pen, eats at its feeder, picks up a rock and tosses it up to catch it, bellows now and then, sits down to rest and sleeps sitting at night; it never smashes, stomps or throws at anyone",
+  "zoocraft:zoo_necromancer": "it paces its pen, eats at its feeder, holds its staff up and lets a soul flame float off it, chants softly now and then, kneels to rest and kneels head bowed at night; it never strikes, throws bolts or raises anything",
+  "zoocraft:zoo_voidling": "it wanders slowly round its pen, eats at its feeder, stretches its long arms up and lets a violet wisp float off its fingers, hums now and then, crouches to rest and crouches head bowed at night; it never grabs, rakes or throws anything",
+};
+const CRYPT = "Zombies, zombie villagers and skeletons share a pen"; // the Crypt (exhibits/mixing.js; 0.1.199 the zombie villagers)
+const SUNKEN = "Drowned and zombie nautiluses share a pen"; // the Sunken Crypt (exhibits/mixing.js, 0.1.200)
+const DESERT_TOMB = "Husks and parched share a pen"; // the Desert Tomb (exhibits/mixing.js, 0.1.201)
+const SPIDER_DEN = "Spiders and cave spiders share a pen"; // the Spider Den (exhibits/mixing.js, 0.1.202)
+const MATES = {
+  "zoocraft:zoo_zombie": CRYPT,
+  "zoocraft:zoo_skeleton": CRYPT,
+  "zoocraft:zoo_zombie_villager": CRYPT,
+  "zoocraft:zoo_skeleton_horse": UNDEAD_STABLE,
+  "zoocraft:zoo_zombie_horse": UNDEAD_STABLE,
+  "zoocraft:zoo_drowned": SUNKEN,
+  "zoocraft:zoo_zombie_nautilus": SUNKEN,
+  "zoocraft:zoo_husk": DESERT_TOMB,
+  "zoocraft:zoo_parched": DESERT_TOMB,
+  "zoocraft:zoo_spider": SPIDER_DEN,
+  "zoocraft:zoo_cave_spider": SPIDER_DEN,
+};
+const FOOD = { "zoocraft:bone_ration": "Bone Rations (bones and bone meal)", "zoocraft:grain_ration": "Grain Rations", "zoocraft:meat_ration": "Meat Rations", "zoocraft:chorus_browse": "Chorus Browse (crafted from chorus fruit)", "minecraft:slime_ball": "slimeballs", "minecraft:magma_cream": "magma cream (a slimeball and blaze powder)", ...MOUNT_FOOD };
+const BAIT = { "zoocraft:bone_ration": "a Bone Ration or a bone", "zoocraft:grain_ration": "a Grain Ration", "zoocraft:meat_ration": "a Meat Ration", "zoocraft:chorus_browse": "Chorus Browse", "minecraft:slime_ball": "a slimeball", "minecraft:magma_cream": "some magma cream" };
+
+// The Field Journal's line on wild ones and on calming them.
+/** @param {any} species @param {number} calmAt */
+export function mobWildLine(species, calmAt) {
+  const one = species.displayName.toLowerCase();
+  return `In the wild ${pluralOf(species).toLowerCase()} are monsters: ${WILD_HOW[species.mobSource] ?? "they spawn in the dark (block light 0) and hunt you"}. To take one for the zoo: weaken it to ${Math.round(calmAt * 100) === 25 ? "a quarter" : `${Math.round(calmAt * 100)}%`} of its health or less, then use a Passivity Serum on it (Mob Taming research). It sparkles green, stands dazed a moment and is calm from then on: it never attacks, never burns in the sun and never despawns. A calmed ${one} follows someone holding ${BAIT[species.baitItem] ?? "its food"}; a Mob Cage carries it to its pen`;
+}
+
+/**
+ * The Field Journal's lines on a mob in the zoo: the pen, what it likes there (its floor, what it likes in the pen, the
+ * dark), how it lives there and its food. `prof`: its habitat profile (the Cyclops's pen is bigger and taller: 0.1.165; a
+ * water pen's space is its water, 0.1.200).
+ * @param {any} sp @param {any} balance @param {{ baseArea: number, extraArea: number, minHeight: number, aquatic?: boolean, minDeepWater?: number }} [prof]
+ */
+export function mobJournalLines(sp, balance, prof = { baseArea: 25, extraArea: 10, minHeight: 3 }) {
+  const side = Math.round(Math.sqrt(prof.baseArea));
+  const room = prof.aquatic
+    ? `a pool in it: at least ${prof.baseArea} blocks of water for the first (${prof.extraArea} more for each more), ${prof.minDeepWater === prof.baseArea ? "all of them" : `${prof.minDeepWater} of them`} 2 deep or more, and a bank beside the water inside to use the Habitat Marker on, ${prof.minHeight} blocks of headroom over it`
+    : `At least ${side} x ${side} of floor for the first (${prof.extraArea} more blocks for each more), ${prof.minHeight} blocks of headroom`;
+  const out = [`§7The pen: ${PEN_HOW}${prof.aquatic ? `, with ${room}` : `. ${room}`}. Guests pay the Mob House's entry price to go into its hall once they can see a mob in a pen from a Viewing Point standing in the hall (a guest path through the hall's door to it). No wild monster spawns in the hall or the pens`];
+  const likes = [];
+  if (sp.mobFloor) likes.push(`${sp.mobFloor.how} under ${Math.round(sp.mobFloor.share * 100)}% of the floor${sp.mobFloor.underWater ? " (the bottom of the water and the bank)" : ""} or more`);
+  if (sp.mobDecor) likes.push(`${sp.mobDecor.min} or more ${sp.mobDecor.how} in the pen${sp.mobDecor.where ? ` (${sp.mobDecor.where})` : ""}`);
+  // A mob that likes nothing but the dark (0.1.200, the zombie nautilus): the dark's line alone.
+  let line = likes.length ? `§7${sp.mobFloor ? "The floor" : "The pen"}: ${likes.join(", and ")}. Without ${sp.mobFloor && !sp.mobDecor ? "it" : "them"} comfort can't rise above ${balance.mobs.floorComfortCap}` : "";
+  if (sp.lowLight) line += `${line ? ". And the dark" : "§7The dark"}: no daylight in the pen and nothing brighter than light ${darkLimit(sp, balance)}${sp.darkLight !== undefined ? ` on the floor (a Nocturnal Lamp hung 3 blocks above the floor gives ${balance.nocturnal.maxLight - 3} right under it, and lets the guests see them)` : " (Nocturnal Lamps for the guests to see them by)"}; tinted glass to the hall keeps the daylight out (it comes in through the hall's door, even shut, and on through plain glass and iron bars); in light comfort can't rise above ${balance.chorusMoth.dimComfortCap}`;
+  if (line) out.push(line);
+  out.push(`§7In the pen: ${PEN_LIFE[sp.id] ?? MOUNT_PEN_LIFE[sp.id] ?? "they wander about"}. They never attack, never burn in the sun and never despawn, and nothing hurts them but a player's hits. Food: ${FOOD[sp.baitItem] ?? "their food"} in ${sp.aquariumFeeder ? "an Aquarium Feeder over the water" : "a Basic Feeder"}; a Hanging Food Basket gives them something to forage. ${MATES[sp.id] ?? `${pluralOf(sp)} keep a pen to themselves`}`);
+  if (MOB_LOOKS[sp.wildSource]?.sizes) out.push(`§7Size: each keeps the size it had in the wild (small, medium or large) once calmed and caught; in the zoo it never grows or splits`); // slimes and magma cubes (0.1.203)
+  if (MOB_LOOKS[sp.wildSource]?.sheared) out.push("§7Looks: a bogged sheared of its mushrooms in the wild stays bare once calmed and caught; the rest keep their mushrooms"); // bogged (0.1.201)
+  if (sp.markNames) out.push(`§7Looks: each keeps the job it had as a villager (its clothes show which of the ${sp.coats.length}) and the clothes of where it came from (${sp.markNames.join(", ")}). Calmed and caught, it keeps both`); // zombie villagers (0.1.199)
+  return out;
+}
+
+// ---------------- the Mob House's entry price ----------------
+
+// The share of the guests who go into the Mob House at this price (a mob pen on view from its hall).
+/** @param {number} price @param {any} balance */
+export function mobHouseShare(price, balance) {
+  const g = balance.mobHouse;
+  const share = price <= g.fair ? g.shareAtFair + (g.fair - price) * g.sharePerCoinUnder : g.shareAtFair - (price - g.fair) * g.sharePerCoinOver;
+  return Math.max(0, Math.min(g.shareMax, share));
+}
+
+/**
+ * One visitor step at one Mob House: how many of `guests` go in and pay (none with no mob pen on view from its hall;
+ * a second pen on view draws a few more), the coins, and the part of a guest carried to the next step.
+ * @param {{ guests: number, price: number, carry?: number, pens: number }} s @param {any} balance
+ */
+export function mobHouseSales({ guests, price, carry = 0, pens }, balance) {
+  if (pens <= 0 || guests <= 0) return { paid: 0, revenue: 0, carry: 0 };
+  const g = balance.mobHouse;
+  const variety = Math.min(1, g.varietyBase + g.varietyPerPen * pens);
+  const expected = carry + guests * mobHouseShare(price, balance) * variety;
+  const paid = Math.max(0, Math.floor(expected + 1e-9));
+  return { paid, revenue: paid * price, carry: Math.max(0, expected - paid) };
+}
+
+export const MOB_HOUSE_TEXT = {
+  outside: "It's outside the park. Guests only visit inside the park boundary.",
+  inside: "It's inside an exhibit. The Mob House block goes in the hall, on the guests' side.",
+  open: "It isn't in a hall yet. Build the hall: walls, a floor and a roof all round with no gaps (doors count as wall), at least 3 x 3 x 3 inside, then put the Mob House block inside it. Mob pens go beside the hall.",
+  small: "The hall is too small: it needs open space at least 3 x 3 x 3 inside (furniture takes up space).",
+  unloaded: "Part of the hall isn't loaded. Come closer and try again.",
+  path: "No guest path reaches it. Lay a path (gravel, bricks, planks...) from the Park Entrance Gate, through the hall's door, to right beside the Mob House block.",
+  unchecked: "Checking the paths... use it again in a moment. Is there a Park Entrance Gate yet?",
+};
+
+/**
+ * The pens a Mob House shows: exhibits with mobs living in them, beside this house, that a viewed Viewing Point standing
+ * in its hall looks into.
+ * @param {{ id: string, dimension: string, bbox?: Box }} house
+ * @param {{ dimension: string, pos: { x: number, y: number, z: number }, viewed?: boolean, exhibitId?: string }[]} points
+ * @param {(id: string) => ({ mobPen?: { houseId?: string } } | undefined)} penOf an exhibit with mobs living in it, else undefined
+ */
+export function pensOnView(house, points, penOf) {
+  if (!house.bbox) return [];
+  const hall = grow(house.bbox, 1);
+  const out = new Set();
+  for (const p of points) {
+    if (!p.viewed || !p.exhibitId || p.dimension !== house.dimension || !inBox(p.pos, hall)) continue;
+    if (penOf(p.exhibitId)?.mobPen?.houseId === house.id) out.add(p.exhibitId);
+  }
+  return [...out];
+}
+
+// ---------------- the spawn guard ----------------
+
+/**
+ * Where wild monsters may not spawn: each working Mob House's hall and each mob pen, a block round them.
+ * @param {{ type: string, dimension: string, room?: string, bbox?: Box }[]} equipment
+ * @param {{ dimension: string, bbox?: Box, mobPen?: { houseId?: string } }[]} exhibits
+ * @returns {{ dimension: string, box: Box }[]}
+ */
+export function guardBoxes(equipment, exhibits) {
+  const out = [];
+  for (const r of equipment) if (r.type === "mobhouse" && r.room === "ok" && r.bbox) out.push({ dimension: r.dimension, box: grow(r.bbox, 1) });
+  for (const ex of exhibits) if (ex.mobPen?.houseId && ex.bbox) out.push({ dimension: ex.dimension, box: grow(ex.bbox, 1) });
+  return out;
+}
+
+/** @param {{ dimension: string, box: Box }[]} boxes @param {string} dimension @param {{ x: number, y: number, z: number }} pos */
+export function guarded(boxes, dimension, pos) {
+  return boxes.some((b) => b.dimension === dimension && inBox(pos, b.box));
+}
