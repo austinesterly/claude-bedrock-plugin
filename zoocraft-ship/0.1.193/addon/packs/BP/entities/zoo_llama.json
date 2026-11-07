@@ -1,0 +1,1162 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "zoocraft:zoo_llama",
+      "spawn_category": "creature",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "properties": {
+        "zoocraft:decor": {
+          "type": "int",
+          "range": [
+            0,
+            16
+          ],
+          "default": 0,
+          "client_sync": true
+        }
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": [
+          "zoocraft_animal",
+          "zoo_llama",
+          "llama",
+          "mob"
+        ]
+      },
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:breathable": {
+        "total_supply": 15,
+        "suffocate_time": 0
+      },
+      "minecraft:mark_variant": {
+        "value": 0
+      },
+      "minecraft:health": {
+        "value": {
+          "range_min": 15,
+          "range_max": 30
+        }
+      },
+      "minecraft:collision_box": {
+        "width": 0.9,
+        "height": 1.87
+      },
+      "minecraft:movement": {
+        "value": 0.25
+      },
+      "minecraft:movement.basic": {},
+      "minecraft:navigation.walk": {
+        "can_path_over_water": true,
+        "avoid_damage_blocks": true
+      },
+      "minecraft:jump.static": {},
+      "minecraft:follow_range": {
+        "value": 40,
+        "max": 40
+      },
+      "minecraft:shooter": {
+        "def": "minecraft:llama_spit"
+      },
+      "minecraft:physics": {},
+      "minecraft:pushable_by_block": {},
+      "minecraft:conditional_bandwidth_optimization": {},
+      "minecraft:behavior.float": {
+        "priority": 0
+      },
+      "minecraft:behavior.panic": {
+        "priority": 4,
+        "speed_multiplier": 1.2
+      },
+      "minecraft:behavior.random_stroll": {
+        "priority": 7,
+        "speed_multiplier": 0.7
+      },
+      "minecraft:behavior.look_at_player": {
+        "priority": 8,
+        "look_distance": 6.0,
+        "probability": 0.02
+      },
+      "minecraft:behavior.random_look_around": {
+        "priority": 9
+      },
+      "minecraft:nameable": {
+        "always_show": false,
+        "allow_name_tag_renaming": true
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "cause": "all",
+            "deals_damage": "no"
+          }
+        ]
+      },
+      "minecraft:persistent": {},
+      "minecraft:pushable_by_entity": {},
+      "minecraft:behavior.move_towards_home_restriction": {
+        "priority": 2,
+        "speed_multiplier": 0.8
+      },
+      "minecraft:behavior.tempt": {
+        "priority": 6,
+        "speed_multiplier": 1.2,
+        "items": [
+          "zoocraft:grain_ration",
+          "hay_block",
+          "wheat"
+        ]
+      },
+      "minecraft:behavior.nearest_attackable_target": {
+        "priority": 2,
+        "attack_interval": {
+          "min": 0,
+          "max": 16
+        },
+        "entity_types": [
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "wolf"
+                },
+                {
+                  "test": "has_component",
+                  "subject": "other",
+                  "operator": "!=",
+                  "value": "minecraft:is_tamed"
+                }
+              ]
+            },
+            "max_dist": 10
+          }
+        ],
+        "must_see": false,
+        "must_reach": true
+      },
+      "minecraft:on_target_acquired": {
+        "filters": {
+          "all_of": [
+            {
+              "test": "is_family",
+              "subject": "target",
+              "value": "wolf"
+            },
+            {
+              "test": "has_component",
+              "subject": "target",
+              "operator": "!=",
+              "value": "minecraft:is_tamed"
+            }
+          ]
+        },
+        "event": "zoocraft:mad_at_wolf",
+        "target": "self"
+      },
+      "minecraft:on_target_escape": {
+        "filters": {
+          "all_of": [
+            {
+              "test": "is_family",
+              "subject": "target",
+              "value": "wolf"
+            },
+            {
+              "test": "has_component",
+              "subject": "target",
+              "operator": "!=",
+              "value": "minecraft:is_tamed"
+            }
+          ]
+        },
+        "event": "zoocraft:on_calm",
+        "target": "self"
+      },
+      "minecraft:ambient_sound_interval": {
+        "event_name": "ambient",
+        "range": 16.0,
+        "value": 8.0
+      },
+      "minecraft:interact": {
+        "interactions": [
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "domain": "hand",
+                    "subject": "other",
+                    "value": "minecraft:white_carpet"
+                  },
+                  {
+                    "test": "has_component",
+                    "subject": "self",
+                    "operator": "!=",
+                    "value": "minecraft:is_baby"
+                  },
+                  {
+                    "test": "int_property",
+                    "subject": "self",
+                    "domain": "zoocraft:decor",
+                    "operator": "!=",
+                    "value": 1
+                  }
+                ]
+              },
+              "event": "zoocraft:decor_1",
+              "target": "self"
+            },
+            "use_item": true,
+            "swing": true,
+            "play_sounds": [
+              "armor.equip_generic"
+            ],
+            "interact_text": "action.interact.equipcarpet"
+          },
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "domain": "hand",
+                    "subject": "other",
+                    "value": "minecraft:orange_carpet"
+                  },
+                  {
+                    "test": "has_component",
+                    "subject": "self",
+                    "operator": "!=",
+                    "value": "minecraft:is_baby"
+                  },
+                  {
+                    "test": "int_property",
+                    "subject": "self",
+                    "domain": "zoocraft:decor",
+                    "operator": "!=",
+                    "value": 2
+                  }
+                ]
+              },
+              "event": "zoocraft:decor_2",
+              "target": "self"
+            },
+            "use_item": true,
+            "swing": true,
+            "play_sounds": [
+              "armor.equip_generic"
+            ],
+            "interact_text": "action.interact.equipcarpet"
+          },
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "domain": "hand",
+                    "subject": "other",
+                    "value": "minecraft:magenta_carpet"
+                  },
+                  {
+                    "test": "has_component",
+                    "subject": "self",
+                    "operator": "!=",
+                    "value": "minecraft:is_baby"
+                  },
+                  {
+                    "test": "int_property",
+                    "subject": "self",
+                    "domain": "zoocraft:decor",
+                    "operator": "!=",
+                    "value": 3
+                  }
+                ]
+              },
+              "event": "zoocraft:decor_3",
+              "target": "self"
+            },
+            "use_item": true,
+            "swing": true,
+            "play_sounds": [
+              "armor.equip_generic"
+            ],
+            "interact_text": "action.interact.equipcarpet"
+          },
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "domain": "hand",
+                    "subject": "other",
+                    "value": "minecraft:light_blue_carpet"
+                  },
+                  {
+                    "test": "has_component",
+                    "subject": "self",
+                    "operator": "!=",
+                    "value": "minecraft:is_baby"
+                  },
+                  {
+                    "test": "int_property",
+                    "subject": "self",
+                    "domain": "zoocraft:decor",
+                    "operator": "!=",
+                    "value": 4
+                  }
+                ]
+              },
+              "event": "zoocraft:decor_4",
+              "target": "self"
+            },
+            "use_item": true,
+            "swing": true,
+            "play_sounds": [
+              "armor.equip_generic"
+            ],
+            "interact_text": "action.interact.equipcarpet"
+          },
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "domain": "hand",
+                    "subject": "other",
+                    "value": "minecraft:yellow_carpet"
+                  },
+                  {
+                    "test": "has_component",
+                    "subject": "self",
+                    "operator": "!=",
+                    "value": "minecraft:is_baby"
+                  },
+                  {
+                    "test": "int_property",
+                    "subject": "self",
+                    "domain": "zoocraft:decor",
+                    "operator": "!=",
+                    "value": 5
+                  }
+                ]
+              },
+              "event": "zoocraft:decor_5",
+              "target": "self"
+            },
+            "use_item": true,
+            "swing": true,
+            "play_sounds": [
+              "armor.equip_generic"
+            ],
+            "interact_text": "action.interact.equipcarpet"
+          },
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "domain": "hand",
+                    "subject": "other",
+                    "value": "minecraft:lime_carpet"
+                  },
+                  {
+                    "test": "has_component",
+                    "subject": "self",
+                    "operator": "!=",
+                    "value": "minecraft:is_baby"
+                  },
+                  {
+                    "test": "int_property",
+                    "subject": "self",
+                    "domain": "zoocraft:decor",
+                    "operator": "!=",
+                    "value": 6
+                  }
+                ]
+              },
+              "event": "zoocraft:decor_6",
+              "target": "self"
+            },
+            "use_item": true,
+            "swing": true,
+            "play_sounds": [
+              "armor.equip_generic"
+            ],
+            "interact_text": "action.interact.equipcarpet"
+          },
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "domain": "hand",
+                    "subject": "other",
+                    "value": "minecraft:pink_carpet"
+                  },
+                  {
+                    "test": "has_component",
+                    "subject": "self",
+                    "operator": "!=",
+                    "value": "minecraft:is_baby"
+                  },
+                  {
+                    "test": "int_property",
+                    "subject": "self",
+                    "domain": "zoocraft:decor",
+                    "operator": "!=",
+                    "value": 7
+                  }
+                ]
+              },
+              "event": "zoocraft:decor_7",
+              "target": "self"
+            },
+            "use_item": true,
+            "swing": true,
+            "play_sounds": [
+              "armor.equip_generic"
+            ],
+            "interact_text": "action.interact.equipcarpet"
+          },
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "domain": "hand",
+                    "subject": "other",
+                    "value": "minecraft:gray_carpet"
+                  },
+                  {
+                    "test": "has_component",
+                    "subject": "self",
+                    "operator": "!=",
+                    "value": "minecraft:is_baby"
+                  },
+                  {
+                    "test": "int_property",
+                    "subject": "self",
+                    "domain": "zoocraft:decor",
+                    "operator": "!=",
+                    "value": 8
+                  }
+                ]
+              },
+              "event": "zoocraft:decor_8",
+              "target": "self"
+            },
+            "use_item": true,
+            "swing": true,
+            "play_sounds": [
+              "armor.equip_generic"
+            ],
+            "interact_text": "action.interact.equipcarpet"
+          },
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "domain": "hand",
+                    "subject": "other",
+                    "value": "minecraft:light_gray_carpet"
+                  },
+                  {
+                    "test": "has_component",
+                    "subject": "self",
+                    "operator": "!=",
+                    "value": "minecraft:is_baby"
+                  },
+                  {
+                    "test": "int_property",
+                    "subject": "self",
+                    "domain": "zoocraft:decor",
+                    "operator": "!=",
+                    "value": 9
+                  }
+                ]
+              },
+              "event": "zoocraft:decor_9",
+              "target": "self"
+            },
+            "use_item": true,
+            "swing": true,
+            "play_sounds": [
+              "armor.equip_generic"
+            ],
+            "interact_text": "action.interact.equipcarpet"
+          },
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "domain": "hand",
+                    "subject": "other",
+                    "value": "minecraft:cyan_carpet"
+                  },
+                  {
+                    "test": "has_component",
+                    "subject": "self",
+                    "operator": "!=",
+                    "value": "minecraft:is_baby"
+                  },
+                  {
+                    "test": "int_property",
+                    "subject": "self",
+                    "domain": "zoocraft:decor",
+                    "operator": "!=",
+                    "value": 10
+                  }
+                ]
+              },
+              "event": "zoocraft:decor_10",
+              "target": "self"
+            },
+            "use_item": true,
+            "swing": true,
+            "play_sounds": [
+              "armor.equip_generic"
+            ],
+            "interact_text": "action.interact.equipcarpet"
+          },
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "domain": "hand",
+                    "subject": "other",
+                    "value": "minecraft:purple_carpet"
+                  },
+                  {
+                    "test": "has_component",
+                    "subject": "self",
+                    "operator": "!=",
+                    "value": "minecraft:is_baby"
+                  },
+                  {
+                    "test": "int_property",
+                    "subject": "self",
+                    "domain": "zoocraft:decor",
+                    "operator": "!=",
+                    "value": 11
+                  }
+                ]
+              },
+              "event": "zoocraft:decor_11",
+              "target": "self"
+            },
+            "use_item": true,
+            "swing": true,
+            "play_sounds": [
+              "armor.equip_generic"
+            ],
+            "interact_text": "action.interact.equipcarpet"
+          },
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "domain": "hand",
+                    "subject": "other",
+                    "value": "minecraft:blue_carpet"
+                  },
+                  {
+                    "test": "has_component",
+                    "subject": "self",
+                    "operator": "!=",
+                    "value": "minecraft:is_baby"
+                  },
+                  {
+                    "test": "int_property",
+                    "subject": "self",
+                    "domain": "zoocraft:decor",
+                    "operator": "!=",
+                    "value": 12
+                  }
+                ]
+              },
+              "event": "zoocraft:decor_12",
+              "target": "self"
+            },
+            "use_item": true,
+            "swing": true,
+            "play_sounds": [
+              "armor.equip_generic"
+            ],
+            "interact_text": "action.interact.equipcarpet"
+          },
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "domain": "hand",
+                    "subject": "other",
+                    "value": "minecraft:brown_carpet"
+                  },
+                  {
+                    "test": "has_component",
+                    "subject": "self",
+                    "operator": "!=",
+                    "value": "minecraft:is_baby"
+                  },
+                  {
+                    "test": "int_property",
+                    "subject": "self",
+                    "domain": "zoocraft:decor",
+                    "operator": "!=",
+                    "value": 13
+                  }
+                ]
+              },
+              "event": "zoocraft:decor_13",
+              "target": "self"
+            },
+            "use_item": true,
+            "swing": true,
+            "play_sounds": [
+              "armor.equip_generic"
+            ],
+            "interact_text": "action.interact.equipcarpet"
+          },
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "domain": "hand",
+                    "subject": "other",
+                    "value": "minecraft:green_carpet"
+                  },
+                  {
+                    "test": "has_component",
+                    "subject": "self",
+                    "operator": "!=",
+                    "value": "minecraft:is_baby"
+                  },
+                  {
+                    "test": "int_property",
+                    "subject": "self",
+                    "domain": "zoocraft:decor",
+                    "operator": "!=",
+                    "value": 14
+                  }
+                ]
+              },
+              "event": "zoocraft:decor_14",
+              "target": "self"
+            },
+            "use_item": true,
+            "swing": true,
+            "play_sounds": [
+              "armor.equip_generic"
+            ],
+            "interact_text": "action.interact.equipcarpet"
+          },
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "domain": "hand",
+                    "subject": "other",
+                    "value": "minecraft:red_carpet"
+                  },
+                  {
+                    "test": "has_component",
+                    "subject": "self",
+                    "operator": "!=",
+                    "value": "minecraft:is_baby"
+                  },
+                  {
+                    "test": "int_property",
+                    "subject": "self",
+                    "domain": "zoocraft:decor",
+                    "operator": "!=",
+                    "value": 15
+                  }
+                ]
+              },
+              "event": "zoocraft:decor_15",
+              "target": "self"
+            },
+            "use_item": true,
+            "swing": true,
+            "play_sounds": [
+              "armor.equip_generic"
+            ],
+            "interact_text": "action.interact.equipcarpet"
+          },
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "domain": "hand",
+                    "subject": "other",
+                    "value": "minecraft:black_carpet"
+                  },
+                  {
+                    "test": "has_component",
+                    "subject": "self",
+                    "operator": "!=",
+                    "value": "minecraft:is_baby"
+                  },
+                  {
+                    "test": "int_property",
+                    "subject": "self",
+                    "domain": "zoocraft:decor",
+                    "operator": "!=",
+                    "value": 16
+                  }
+                ]
+              },
+              "event": "zoocraft:decor_16",
+              "target": "self"
+            },
+            "use_item": true,
+            "swing": true,
+            "play_sounds": [
+              "armor.equip_generic"
+            ],
+            "interact_text": "action.interact.equipcarpet"
+          },
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "domain": "hand",
+                    "subject": "other",
+                    "value": "minecraft:shears"
+                  },
+                  {
+                    "test": "int_property",
+                    "subject": "self",
+                    "domain": "zoocraft:decor",
+                    "operator": "!=",
+                    "value": 0
+                  }
+                ]
+              },
+              "event": "zoocraft:undress",
+              "target": "self"
+            },
+            "hurt_item": 1,
+            "swing": true,
+            "play_sounds": [
+              "armor.unequip_generic"
+            ],
+            "interact_text": "action.interact.removecarpet"
+          }
+        ]
+      }
+    },
+    "component_groups": {
+      "zoocraft:home_4": {
+        "minecraft:home": {
+          "restriction_type": "random_movement",
+          "restriction_radius": 4
+        }
+      },
+      "zoocraft:home_8": {
+        "minecraft:home": {
+          "restriction_type": "random_movement",
+          "restriction_radius": 8
+        }
+      },
+      "zoocraft:home_16": {
+        "minecraft:home": {
+          "restriction_type": "random_movement",
+          "restriction_radius": 16
+        }
+      },
+      "zoocraft:home_32": {
+        "minecraft:home": {
+          "restriction_type": "random_movement",
+          "restriction_radius": 32
+        }
+      },
+      "zoocraft:juvenile": {
+        "minecraft:is_baby": {},
+        "minecraft:scale": {
+          "value": 0.5
+        }
+      },
+      "zoocraft:coat_0": {
+        "minecraft:variant": {
+          "value": 0
+        }
+      },
+      "zoocraft:coat_1": {
+        "minecraft:variant": {
+          "value": 1
+        }
+      },
+      "zoocraft:coat_2": {
+        "minecraft:variant": {
+          "value": 2
+        }
+      },
+      "zoocraft:coat_3": {
+        "minecraft:variant": {
+          "value": 3
+        }
+      },
+      "zoocraft:angry_wolf": {
+        "minecraft:angry": {
+          "duration": -1,
+          "broadcast_anger": false,
+          "calm_event": {
+            "event": "zoocraft:on_calm",
+            "target": "self"
+          }
+        },
+        "minecraft:behavior.ranged_attack": {
+          "priority": 2,
+          "attack_range": {
+            "max": 64.0
+          },
+          "charge_shoot_trigger": 2,
+          "charge_charged_trigger": 1
+        }
+      }
+    },
+    "events": {
+      "zoocraft:home_4": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:home_8",
+            "zoocraft:home_16",
+            "zoocraft:home_32"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:home_4"
+          ]
+        }
+      },
+      "zoocraft:home_8": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:home_4",
+            "zoocraft:home_16",
+            "zoocraft:home_32"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:home_8"
+          ]
+        }
+      },
+      "zoocraft:home_16": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:home_4",
+            "zoocraft:home_8",
+            "zoocraft:home_32"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:home_16"
+          ]
+        }
+      },
+      "zoocraft:home_32": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:home_4",
+            "zoocraft:home_8",
+            "zoocraft:home_16"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:home_32"
+          ]
+        }
+      },
+      "zoocraft:juvenile": {
+        "add": {
+          "component_groups": [
+            "zoocraft:juvenile"
+          ]
+        }
+      },
+      "zoocraft:coat_0": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:coat_1",
+            "zoocraft:coat_2",
+            "zoocraft:coat_3"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:coat_0"
+          ]
+        }
+      },
+      "zoocraft:coat_1": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:coat_0",
+            "zoocraft:coat_2",
+            "zoocraft:coat_3"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:coat_1"
+          ]
+        }
+      },
+      "zoocraft:coat_2": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:coat_0",
+            "zoocraft:coat_1",
+            "zoocraft:coat_3"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:coat_2"
+          ]
+        }
+      },
+      "zoocraft:coat_3": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:coat_0",
+            "zoocraft:coat_1",
+            "zoocraft:coat_2"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:coat_3"
+          ]
+        }
+      },
+      "zoocraft:mad_at_wolf": {
+        "add": {
+          "component_groups": [
+            "zoocraft:angry_wolf"
+          ]
+        }
+      },
+      "zoocraft:on_calm": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:angry_wolf"
+          ]
+        }
+      },
+      "zoocraft:decor_1": {
+        "set_property": {
+          "zoocraft:decor": 1
+        }
+      },
+      "zoocraft:decor_2": {
+        "set_property": {
+          "zoocraft:decor": 2
+        }
+      },
+      "zoocraft:decor_3": {
+        "set_property": {
+          "zoocraft:decor": 3
+        }
+      },
+      "zoocraft:decor_4": {
+        "set_property": {
+          "zoocraft:decor": 4
+        }
+      },
+      "zoocraft:decor_5": {
+        "set_property": {
+          "zoocraft:decor": 5
+        }
+      },
+      "zoocraft:decor_6": {
+        "set_property": {
+          "zoocraft:decor": 6
+        }
+      },
+      "zoocraft:decor_7": {
+        "set_property": {
+          "zoocraft:decor": 7
+        }
+      },
+      "zoocraft:decor_8": {
+        "set_property": {
+          "zoocraft:decor": 8
+        }
+      },
+      "zoocraft:decor_9": {
+        "set_property": {
+          "zoocraft:decor": 9
+        }
+      },
+      "zoocraft:decor_10": {
+        "set_property": {
+          "zoocraft:decor": 10
+        }
+      },
+      "zoocraft:decor_11": {
+        "set_property": {
+          "zoocraft:decor": 11
+        }
+      },
+      "zoocraft:decor_12": {
+        "set_property": {
+          "zoocraft:decor": 12
+        }
+      },
+      "zoocraft:decor_13": {
+        "set_property": {
+          "zoocraft:decor": 13
+        }
+      },
+      "zoocraft:decor_14": {
+        "set_property": {
+          "zoocraft:decor": 14
+        }
+      },
+      "zoocraft:decor_15": {
+        "set_property": {
+          "zoocraft:decor": 15
+        }
+      },
+      "zoocraft:decor_16": {
+        "set_property": {
+          "zoocraft:decor": 16
+        }
+      },
+      "zoocraft:undress": {
+        "set_property": {
+          "zoocraft:decor": "query.property('zoocraft:decor')"
+        }
+      },
+      "minecraft:entity_spawned": {
+        "add": {
+          "component_groups": [
+            "zoocraft:home_8"
+          ]
+        }
+      }
+    }
+  }
+}
