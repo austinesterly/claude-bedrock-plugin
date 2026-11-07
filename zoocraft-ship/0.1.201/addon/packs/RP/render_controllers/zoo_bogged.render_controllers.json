@@ -1,0 +1,78 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.zoocraft.zoo_bogged_clothes": {
+      "rebuild_animation_matrices": true,
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.overlay"
+        }
+      ],
+      "textures": [
+        "Texture.overlay"
+      ],
+      "part_visibility": [
+        {
+          "*": false
+        },
+        {
+          "clothes_body": true
+        },
+        {
+          "clothes_head": true
+        },
+        {
+          "clothes_rightArm": true
+        },
+        {
+          "clothes_leftArm": true
+        },
+        {
+          "clothes_rightLeg": true
+        },
+        {
+          "clothes_leftLeg": true
+        }
+      ]
+    },
+    "controller.render.zoocraft.zoo_bogged": {
+      "rebuild_animation_matrices": true,
+      "geometry": "Geometry.default",
+      "part_visibility": [
+        {
+          "*": true
+        },
+        {
+          "clothes_body": false
+        },
+        {
+          "clothes_head": false
+        },
+        {
+          "clothes_rightArm": false
+        },
+        {
+          "clothes_leftArm": false
+        },
+        {
+          "clothes_rightLeg": false
+        },
+        {
+          "clothes_leftLeg": false
+        },
+        {
+          "mushrooms": "!query.is_sheared"
+        }
+      ],
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Texture.default"
+      ]
+    }
+  }
+}
