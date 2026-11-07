@@ -1,0 +1,32 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:zoo_blaze",
+      "min_engine_version": "1.8.0",
+      "materials": {
+        "body": "blaze_body",
+        "head": "blaze_head"
+      },
+      "textures": {
+        "default": "textures/entity/blaze"
+      },
+      "geometry": {
+        "default": "geometry.blaze"
+      },
+      "animations": {
+        "look_at_target": "animation.common.look_at_target",
+        "move": "animation.blaze.move"
+      },
+      "render_controllers": [
+        "controller.render.blaze"
+      ],
+      "scripts": {
+        "animate": [
+          "move",
+          "look_at_target"
+        ]
+      }
+    }
+  }
+}

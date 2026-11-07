@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:zoo_ghast",
+      "materials": {
+        "default": "ghast"
+      },
+      "textures": {
+        "default": "textures/entity/ghast/ghast"
+      },
+      "geometry": {
+        "default": "geometry.ghast"
+      },
+      "animations": {
+        "move": "animation.ghast.move"
+      },
+      "render_controllers": [
+        "controller.render.zoocraft.zoo_ghast"
+      ],
+      "scripts": {
+        "animate": [
+          "move"
+        ]
+      }
+    }
+  }
+}

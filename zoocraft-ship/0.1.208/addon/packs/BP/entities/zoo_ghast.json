@@ -1,0 +1,181 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "zoocraft:zoo_ghast",
+      "spawn_category": "creature",
+      "is_spawnable": false,
+      "is_summonable": true
+    },
+    "component_groups": {
+      "zoocraft:home_4": {
+        "minecraft:home": {
+          "restriction_type": "random_movement",
+          "restriction_radius": 4
+        }
+      },
+      "zoocraft:home_8": {
+        "minecraft:home": {
+          "restriction_type": "random_movement",
+          "restriction_radius": 8
+        }
+      },
+      "zoocraft:home_16": {
+        "minecraft:home": {
+          "restriction_type": "random_movement",
+          "restriction_radius": 16
+        }
+      },
+      "zoocraft:home_32": {
+        "minecraft:home": {
+          "restriction_type": "random_movement",
+          "restriction_radius": 32
+        }
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": [
+          "zoocraft_animal",
+          "zoocraft_mob",
+          "zoo_ghast",
+          "mob"
+        ]
+      },
+      "minecraft:health": {
+        "value": 10,
+        "max": 10
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "cause": "all",
+            "deals_damage": "no"
+          }
+        ]
+      },
+      "minecraft:nameable": {},
+      "minecraft:persistent": {},
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:breathable": {
+        "suffocate_time": 0,
+        "total_supply": 15
+      },
+      "minecraft:collision_box": {
+        "width": 4.02,
+        "height": 4
+      },
+      "minecraft:movement": {
+        "value": 0.023
+      },
+      "minecraft:jump.static": {},
+      "minecraft:physics": {
+        "has_gravity": false
+      },
+      "minecraft:pushable_by_entity": {},
+      "minecraft:pushable_by_block": {},
+      "minecraft:conditional_bandwidth_optimization": {},
+      "minecraft:behavior.float": {
+        "priority": 0
+      },
+      "minecraft:behavior.look_at_player": {
+        "priority": 8,
+        "look_distance": 6,
+        "probability": 0.02
+      },
+      "minecraft:behavior.random_look_around": {
+        "priority": 9
+      },
+      "minecraft:fire_immune": {},
+      "minecraft:can_fly": {},
+      "minecraft:navigation.float": {
+        "can_path_over_water": true,
+        "avoid_damage_blocks": true
+      },
+      "minecraft:behavior.float_wander": {
+        "float_duration": {
+          "min": 2,
+          "max": 7
+        },
+        "float_wander_has_move_control": false,
+        "random_reselect": true,
+        "must_reach": true,
+        "priority": 7
+      },
+      "minecraft:behavior.float_tempt": {
+        "priority": 3,
+        "can_tempt_vertically": true,
+        "items": [
+          "zoocraft:meat_ration"
+        ],
+        "within_radius": 16,
+        "stop_distance": 4
+      }
+    },
+    "events": {
+      "zoocraft:home_4": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:home_8",
+            "zoocraft:home_16",
+            "zoocraft:home_32"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:home_4"
+          ]
+        }
+      },
+      "zoocraft:home_8": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:home_4",
+            "zoocraft:home_16",
+            "zoocraft:home_32"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:home_8"
+          ]
+        }
+      },
+      "zoocraft:home_16": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:home_4",
+            "zoocraft:home_8",
+            "zoocraft:home_32"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:home_16"
+          ]
+        }
+      },
+      "zoocraft:home_32": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:home_4",
+            "zoocraft:home_8",
+            "zoocraft:home_16"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:home_32"
+          ]
+        }
+      },
+      "minecraft:entity_spawned": {
+        "add": {
+          "component_groups": [
+            "zoocraft:home_8"
+          ]
+        }
+      }
+    }
+  }
+}

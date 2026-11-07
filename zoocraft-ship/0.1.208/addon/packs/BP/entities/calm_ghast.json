@@ -1,0 +1,99 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "zoocraft:calm_ghast",
+      "spawn_category": "creature",
+      "is_spawnable": false,
+      "is_summonable": true
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": [
+          "zoocraft_mob",
+          "calm_ghast",
+          "mob"
+        ]
+      },
+      "minecraft:health": {
+        "value": 10,
+        "max": 10
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "on_damage": {
+              "filters": {
+                "test": "is_family",
+                "subject": "other",
+                "value": "player"
+              }
+            },
+            "deals_damage": "yes"
+          },
+          {
+            "cause": "all",
+            "deals_damage": "no"
+          }
+        ]
+      },
+      "minecraft:nameable": {},
+      "minecraft:persistent": {},
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:breathable": {
+        "suffocate_time": 0,
+        "total_supply": 15
+      },
+      "minecraft:collision_box": {
+        "width": 4.02,
+        "height": 4
+      },
+      "minecraft:movement": {
+        "value": 0.021
+      },
+      "minecraft:jump.static": {},
+      "minecraft:physics": {
+        "has_gravity": false
+      },
+      "minecraft:pushable_by_entity": {},
+      "minecraft:pushable_by_block": {},
+      "minecraft:conditional_bandwidth_optimization": {},
+      "minecraft:behavior.float": {
+        "priority": 0
+      },
+      "minecraft:behavior.look_at_player": {
+        "priority": 7,
+        "look_distance": 8,
+        "probability": 0.04
+      },
+      "minecraft:behavior.random_look_around": {
+        "priority": 8
+      },
+      "minecraft:fire_immune": {},
+      "minecraft:can_fly": {},
+      "minecraft:navigation.float": {
+        "can_path_over_water": true,
+        "avoid_damage_blocks": true
+      },
+      "minecraft:behavior.float_wander": {
+        "float_duration": {
+          "min": 2,
+          "max": 7
+        },
+        "float_wander_has_move_control": false,
+        "random_reselect": true,
+        "must_reach": true,
+        "priority": 6
+      },
+      "minecraft:behavior.float_tempt": {
+        "priority": 4,
+        "can_tempt_vertically": true,
+        "items": [
+          "zoocraft:meat_ration"
+        ],
+        "within_radius": 16,
+        "stop_distance": 4
+      }
+    }
+  }
+}
