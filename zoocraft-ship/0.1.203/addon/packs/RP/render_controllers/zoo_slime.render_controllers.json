@@ -1,0 +1,43 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.zoocraft.zoo_slime": {
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Texture.default"
+      ],
+      "part_visibility": [
+        {
+          "*": true
+        },
+        {
+          "outer": false
+        }
+      ]
+    },
+    "controller.render.zoocraft.zoo_slime_outer": {
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.outer"
+        }
+      ],
+      "textures": [
+        "Texture.default"
+      ],
+      "part_visibility": [
+        {
+          "*": false
+        },
+        {
+          "outer": true
+        }
+      ]
+    }
+  }
+}

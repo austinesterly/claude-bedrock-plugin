@@ -1,0 +1,71 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.zoocraft.cube_squish": {
+      "initial_state": "start",
+      "states": {
+        "start": {
+          "transitions": [
+            {
+              "air": "!query.is_on_ground && query.variant > 1"
+            },
+            {
+              "air_tiny": "!query.is_on_ground && query.variant <= 1"
+            }
+          ]
+        },
+        "ground": {
+          "on_entry": [
+            "variable.sq_t0 = query.life_time;",
+            "variable.sq_a = -0.5;"
+          ],
+          "sound_effects": [
+            {
+              "effect": "land"
+            }
+          ],
+          "transitions": [
+            {
+              "air": "!query.is_on_ground && query.variant > 1"
+            },
+            {
+              "air_tiny": "!query.is_on_ground && query.variant <= 1"
+            }
+          ]
+        },
+        "air": {
+          "on_entry": [
+            "variable.sq_t0 = query.life_time;",
+            "variable.sq_a = 1.0;"
+          ],
+          "sound_effects": [
+            {
+              "effect": "jump"
+            }
+          ],
+          "transitions": [
+            {
+              "ground": "query.is_on_ground"
+            }
+          ]
+        },
+        "air_tiny": {
+          "on_entry": [
+            "variable.sq_t0 = query.life_time;",
+            "variable.sq_a = 1.0;"
+          ],
+          "sound_effects": [
+            {
+              "effect": "jump_tiny"
+            }
+          ],
+          "transitions": [
+            {
+              "ground": "query.is_on_ground"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

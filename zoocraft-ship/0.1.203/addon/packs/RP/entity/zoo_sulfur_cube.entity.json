@@ -1,0 +1,63 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:zoo_sulfur_cube",
+      "materials": {
+        "default": "sulfur_cube",
+        "outer": "sulfur_cube_outer"
+      },
+      "textures": {
+        "default": "textures/entity/sulfur_cube/sulfur_cube_inner",
+        "outer": "textures/entity/sulfur_cube/sulfur_cube_outer"
+      },
+      "geometry": {
+        "default": "geometry.sulfur_cube"
+      },
+      "animations": {
+        "sulfur_cube_offset": "animation.sulfur_cube.offset",
+        "sulfur_cube_offset_controller": "controller.animation.sulfur_cube.offset",
+        "sulfur_cube_swelling": "animation.sulfur_cube.swelling",
+        "sulfur_cube_swelling_controller": "controller.animation.sulfur_cube.swelling",
+        "cube_squish": "controller.animation.zoocraft.cube_squish"
+      },
+      "scripts": {
+        "pre_animation": [
+          "variable.sq_n = math.max(0, (query.life_time - variable.sq_t0) * 20);",
+          "variable.squish_factor = (query.current_squish_value != 0 || query.previous_squish_value != 0) ? (query.previous_squish_value + (query.current_squish_value - query.previous_squish_value) * query.frame_alpha) : variable.sq_a * 5 * (math.pow(0.6, variable.sq_n) - math.pow(0.5, variable.sq_n));",
+          "variable.bounce = 1 / ((variable.squish_factor / (query.variant * 0.5 + 1)) + 1);",
+          "variable.horizontal_scale_amount = variable.bounce;",
+          "variable.vertical_scale_amount = 1 / variable.bounce;",
+          "variable.has_absorbed_block = query.property('zoocraft:sulfur_cube_archetype') != 'none';",
+          "variable.is_primed = query.fuse_time >= 0;",
+          "variable.fuse_time = query.fuse_time - query.frame_alpha + 1;",
+          "variable.swelling_scale = variable.is_primed ? (1 + math.pow(math.clamp(1 - (variable.fuse_time / 10), 0, 1), 4) * 0.3) : 1;",
+          "variable.is_flashing = variable.is_primed && math.mod(math.floor(query.fuse_time / 5), 2) == 0;",
+          "variable.y_offset = query.is_invisible ? -1.05 : 0.0;"
+        ],
+        "animate": [
+          "sulfur_cube_offset_controller",
+          "sulfur_cube_swelling_controller",
+          "cube_squish"
+        ],
+        "scaleX": "variable.horizontal_scale_amount",
+        "scaleY": "variable.vertical_scale_amount",
+        "scaleZ": "variable.horizontal_scale_amount",
+        "initialize": [
+          "variable.sq_t0 = 0;",
+          "variable.sq_a = 0;"
+        ]
+      },
+      "held_item_scale": 2.678,
+      "render_controllers": [
+        "controller.render.zoocraft.zoo_sulfur_cube",
+        "controller.render.zoocraft.zoo_sulfur_cube_outer"
+      ],
+      "sound_effects": {
+        "jump": "mob.sulfur_cube.jump",
+        "jump_tiny": "mob.sulfur_cube.jump",
+        "land": "mob.sulfur_cube.landing"
+      }
+    }
+  }
+}

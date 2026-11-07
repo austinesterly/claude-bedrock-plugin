@@ -1,0 +1,50 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:zoo_magma_cube",
+      "materials": {
+        "default": "magma_cube"
+      },
+      "textures": {
+        "default": "textures/entity/slime/magmacube_v2"
+      },
+      "geometry": {
+        "default": "geometry.magma_cube_v2"
+      },
+      "scripts": {
+        "pre_animation": [
+          "variable.sq_n = math.max(0, (query.life_time - variable.sq_t0) * 20);",
+          "variable.slime_squish_factor = (query.current_squish_value != 0 || query.previous_squish_value != 0) ? (query.previous_squish_value + (query.current_squish_value - query.previous_squish_value) * query.frame_alpha) : variable.sq_a * 5 * (math.pow(0.6, variable.sq_n) - math.pow(0.5, variable.sq_n));",
+          "variable.bounce = 1 / ((variable.slime_squish_factor / (query.variant * 0.5 + 1)) + 1);",
+          "variable.horizontal_scale_amount = variable.bounce * query.variant;",
+          "variable.vertical_scale_amount = (1 / variable.bounce) * query.variant;"
+        ],
+        "scaleX": "variable.horizontal_scale_amount",
+        "scaleY": "variable.vertical_scale_amount",
+        "scaleZ": "variable.horizontal_scale_amount",
+        "initialize": [
+          "variable.sq_t0 = 0;",
+          "variable.sq_a = 0;"
+        ],
+        "animate": [
+          "general",
+          "cube_squish"
+        ]
+      },
+      "animations": {
+        "move": "animation.magma_cube.move",
+        "cube_squish": "controller.animation.zoocraft.cube_squish",
+        "general": "controller.animation.magma_cube.general"
+      },
+      "render_controllers": [
+        "controller.render.magma_cube"
+      ],
+      "sound_effects": {
+        "jump": "mob.magmacube.big",
+        "jump_tiny": "mob.magmacube.small",
+        "land": "mob.magmacube.big"
+      }
+    }
+  }
+}
