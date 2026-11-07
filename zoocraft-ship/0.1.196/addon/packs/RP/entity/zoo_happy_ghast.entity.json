@@ -1,0 +1,39 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:zoo_happy_ghast",
+      "materials": {
+        "default": "ghast"
+      },
+      "textures": {
+        "default": "textures/entity/happy_ghast/happy_ghast"
+      },
+      "geometry": {
+        "default": "geometry.happy_ghast"
+      },
+      "animations": {
+        "move": "animation.happy_ghast.move",
+        "move_controller": "controller.animation.happy_ghast.move",
+        "scale": "animation.happy_ghast.scale",
+        "scale_controller": "controller.animation.happy_ghast.scale"
+      },
+      "scripts": {
+        "pre_animation": [
+          "variable.is_harnessed = query.equipment_count > 0;",
+          "variable.shrink_scalar_to_avoid_z_fighting = 3.975f / 4.0f;",
+          "variable.shrink_scalar_when_harnessed = variable.is_harnessed ? (16.0f / 17.0f) : 1.0f;",
+          "variable.scale = variable.shrink_scalar_to_avoid_z_fighting * variable.shrink_scalar_when_harnessed;"
+        ],
+        "animate": [
+          "move_controller",
+          "scale_controller"
+        ],
+        "should_update_effects_offscreen": "1.0"
+      },
+      "render_controllers": [
+        "controller.render.zoocraft.zoo_happy_ghast"
+      ]
+    }
+  }
+}

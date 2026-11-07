@@ -1,0 +1,350 @@
+{
+  "format_version": "1.26.30",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "zoocraft:zoo_happy_ghast",
+      "spawn_category": "creature",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "properties": {
+        "zoocraft:can_move": {
+          "type": "bool",
+          "default": true,
+          "client_sync": true
+        }
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": [
+          "zoocraft_animal",
+          "zoo_happy_ghast",
+          "happy_ghast",
+          "mob"
+        ]
+      },
+      "minecraft:collision_box": {
+        "width": 4.0,
+        "height": 4.0
+      },
+      "minecraft:physics": {
+        "has_gravity": false
+      },
+      "minecraft:can_fly": {},
+      "minecraft:jump.static": {},
+      "minecraft:follow_range": {
+        "value": 16,
+        "max": 16
+      },
+      "minecraft:nameable": {
+        "always_show": false,
+        "allow_name_tag_renaming": true
+      },
+      "minecraft:hurt_on_condition": {
+        "damage_conditions": [
+          {
+            "filters": {
+              "test": "in_lava"
+            },
+            "cause": "lava",
+            "damage_per_tick": 4
+          }
+        ]
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "cause": "all",
+            "deals_damage": "no"
+          }
+        ]
+      },
+      "minecraft:conditional_bandwidth_optimization": {},
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:renders_when_invisible": {},
+      "minecraft:behavior.float": {
+        "priority": 0
+      },
+      "minecraft:body_rotation_always_follows_head": {},
+      "minecraft:health": {
+        "value": 20,
+        "max": 20
+      },
+      "minecraft:breathable": {
+        "total_supply": 5,
+        "suffocate_time": 0,
+        "breathes_air": true,
+        "breathes_water": false
+      },
+      "minecraft:navigation.float": {
+        "can_path_over_water": true,
+        "avoid_damage_blocks": true,
+        "avoid_water": true
+      },
+      "minecraft:entity_sensor": {
+        "find_players_only": true,
+        "relative_range": false,
+        "subsensors": [
+          {
+            "event": "minecraft:become_mobile",
+            "cooldown": 0.0,
+            "y_offset": 4.5,
+            "range": [
+              3.5,
+              2.0
+            ],
+            "minimum_count": 0,
+            "maximum_count": 0,
+            "event_filters": {
+              "all_of": [
+                {
+                  "test": "is_vehicle_family",
+                  "subject": "other",
+                  "operator": "not",
+                  "value": "happy_ghast"
+                },
+                {
+                  "test": "actor_health",
+                  "operator": ">",
+                  "value": 0
+                }
+              ]
+            }
+          },
+          {
+            "event": "minecraft:become_immobile",
+            "cooldown": 0.0,
+            "y_offset": 4.5,
+            "range": [
+              3.0,
+              1.5
+            ],
+            "minimum_count": 1,
+            "event_filters": {
+              "all_of": [
+                {
+                  "test": "is_vehicle_family",
+                  "subject": "other",
+                  "operator": "not",
+                  "value": "happy_ghast"
+                },
+                {
+                  "test": "actor_health",
+                  "operator": ">",
+                  "value": 0
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "minecraft:behavior.float_tempt": {
+        "priority": 4,
+        "can_tempt_vertically": true,
+        "items": [
+          "minecraft:snowball"
+        ],
+        "within_radius": 16,
+        "stop_distance": 7
+      },
+      "minecraft:ambient_sound_interval": {
+        "value": 5.0
+      },
+      "minecraft:persistent": {}
+    },
+    "component_groups": {
+      "minecraft:adult_mobile": {
+        "minecraft:movement": {
+          "value": 0.016
+        },
+        "minecraft:flying_speed": {
+          "value": 0.016
+        },
+        "minecraft:knockback_resistance": {
+          "value": 0.0
+        },
+        "minecraft:pushable_by_entity": {
+          "presets": [
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "sulfur_cube"
+                  },
+                  {
+                    "test": "enum_property",
+                    "subject": "other",
+                    "domain": "minecraft:sulfur_cube_archetype",
+                    "operator": "not",
+                    "value": "none"
+                  },
+                  {
+                    "test": "is_controlling_passenger_family",
+                    "subject": "self",
+                    "value": "player"
+                  }
+                ]
+              },
+              "push_mode": "none"
+            }
+          ]
+        },
+        "minecraft:pushable_by_block": {},
+        "minecraft:behavior.float_wander": {
+          "priority": 7,
+          "must_reach": true,
+          "random_reselect": true,
+          "navigate_around_surface": true,
+          "additional_collision_buffer": true,
+          "allow_navigating_through_liquids": false,
+          "use_home_position_restriction": true,
+          "surface_xz_dist": 16,
+          "surface_y_dist": 16,
+          "float_duration": [
+            2.0,
+            7.0
+          ]
+        }
+      },
+      "minecraft:adult_immobile": {
+        "minecraft:movement": {
+          "value": 0.0
+        },
+        "minecraft:flying_speed": {
+          "value": 0.0
+        },
+        "minecraft:knockback_resistance": {
+          "value": 1.0
+        },
+        "minecraft:pushable_by_block": {},
+        "minecraft:body_rotation_blocked": {},
+        "minecraft:rotation_axis_aligned": {},
+        "minecraft:is_collidable": {}
+      },
+      "zoocraft:home_4": {
+        "minecraft:home": {}
+      },
+      "zoocraft:home_8": {
+        "minecraft:home": {}
+      },
+      "zoocraft:home_16": {
+        "minecraft:home": {}
+      },
+      "zoocraft:home_32": {
+        "minecraft:home": {}
+      }
+    },
+    "events": {
+      "minecraft:become_immobile": {
+        "filters": {
+          "test": "bool_property",
+          "domain": "zoocraft:can_move",
+          "value": true
+        },
+        "add": {
+          "component_groups": [
+            "minecraft:adult_immobile"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "minecraft:adult_mobile"
+          ]
+        },
+        "set_property": {
+          "zoocraft:can_move": false
+        },
+        "stop_movement": {}
+      },
+      "minecraft:become_mobile": {
+        "filters": {
+          "test": "bool_property",
+          "domain": "zoocraft:can_move",
+          "value": false
+        },
+        "add": {
+          "component_groups": [
+            "minecraft:adult_mobile"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "minecraft:adult_immobile"
+          ]
+        },
+        "set_property": {
+          "zoocraft:can_move": true
+        }
+      },
+      "zoocraft:home_4": {
+        "add": {
+          "component_groups": [
+            "zoocraft:home_4"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "zoocraft:home_8",
+            "zoocraft:home_16",
+            "zoocraft:home_32"
+          ]
+        }
+      },
+      "zoocraft:home_8": {
+        "add": {
+          "component_groups": [
+            "zoocraft:home_8"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "zoocraft:home_4",
+            "zoocraft:home_16",
+            "zoocraft:home_32"
+          ]
+        }
+      },
+      "zoocraft:home_16": {
+        "add": {
+          "component_groups": [
+            "zoocraft:home_16"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "zoocraft:home_4",
+            "zoocraft:home_8",
+            "zoocraft:home_32"
+          ]
+        }
+      },
+      "zoocraft:home_32": {
+        "add": {
+          "component_groups": [
+            "zoocraft:home_32"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "zoocraft:home_4",
+            "zoocraft:home_8",
+            "zoocraft:home_16"
+          ]
+        }
+      },
+      "minecraft:entity_spawned": {
+        "add": {
+          "component_groups": [
+            "minecraft:adult_mobile",
+            "zoocraft:home_8"
+          ]
+        },
+        "set_property": {
+          "zoocraft:can_move": true
+        }
+      }
+    }
+  }
+}
