@@ -1,0 +1,10 @@
+49f055233993a7df77e67d2b0c4feeda0cc71a7b47fef4f0c9a59850c8ef2e82  addon\docs\status.md
+75c0b2a239470280a1c5295e371dbe61f488582210edf8d4a759a82f8f14eb0f  addon\packs\BP\scripts\animals\mobRules.js
+592b2e753abff904858a74dfdfbb645f623060e90ef28c552b02f78b03a29a69  addon\packs\BP\scripts\bench\parkPlan.js
+d9be2a0af0ed227da05002892a428522b38ca0adfc8021223f9cbcd05d61294d  addon\packs\BP\scripts\data\profiles.js
+39bfa8efbba3a60c4e74b3fae5b4ca848560faa098e66469e7b64f71a3d4aa19  addon\packs\BP\scripts\data\species.js
+d8255282bdd9f9afbd8f0001dca73da057d3c09edf8626531d51165aaa952dbe  addon\packs\BP\scripts\data\validate.js
+5e4676c1cbe05a65b1fad3ee4593d7ddc8601c59ab444f48b0c92bd0b4287a99  addon\packs\BP\scripts\exhibits\exhibits.js
+2ded778ff114e05a531c4da9bb954793d53210a5781b2e992afac5ac5a10840d  addon\packs\BP\scripts\main.js
+0f23c2eead4a7e66d929b55faf7cd7a2083a181a1f003e840bab4173bc68b573  addon\packs\RP\texts\en_US.lang
+0402b9afcbb4e01594488b3d66e5cff0dfc4e19800415f79fa442262c5ad3d83  addon\tests\logic.test.mjs
