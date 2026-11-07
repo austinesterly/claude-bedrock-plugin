@@ -1,0 +1,3153 @@
+// The benchmark park (0.1.96, spec 21: "Profile all script loops with a full park"), pure: where every block of a
+// full park goes, as a list of operations the builder (bench/benchmark.js) carries out a slice a tick. 20 exhibits
+// with 100 animals of the 20 script-steered species, each built the way its test plan says a good exhibit is built
+// (walls, floor, pools, roofs, dens, the double Keeper Gate, feeders, troughs, heaters, enrichment), Viewing Points
+// on the paths, guest services, 5 Staff Rooms, the Park Entrance Gate and (bench 2, 0.1.101) an Aluminum Fence round it
+// all with a gate in its south side, so the park is the fenced area as a new park's is. No world access: `planPark(origin, groundY)`
+// returns { ops, exhibits, rooms, services, entrance, view, bbox }. The test zoo (0.1.104, /zoocraft:build) lays every
+// species' exhibit out the same way inside an Aluminum Fence ring: planZoo(center, G, size).
+//
+// The layout: a central avenue (x -1..1) running north to south through the park, four rows of exhibits west and east
+// of it with their glass fronts on a common line, a 3-wide path along each row's front, and behind each row a service
+// strip (controllers, keeper corridors, the backs of the Holding Dens). South of the last row: the Staff Rooms and the
+// entrance. Local exhibit coordinates: the floor is x 0..w-1, z 0..d-1 at y 0 (the ground block), the animals stand at
+// y 1; the walls are at x -1 and w, z -1 (the back, north) and d (the front, south, facing the path).
+//
+// Ops: { op: "fill", from, to, block, states? } (a box of one block), { op: "set", pos, block, states? }, and
+// { op: "place", pos, block, states?, stock? } for ZooCraft blocks that keep a record (the builder registers each one
+// and fills it: stock { item?, units }), { op: "controller", pos, exhibit } for an exhibit's controller.
+
+import { ringPlan, ringBox, linkStates } from "./zooPlan.js";
+
+export const BENCH_VERSION = 3; // 2 (0.1.101): the Aluminum Fence round the park; 3 (0.1.179): the Soul Moths' lantern hangs over their campfire, the Chorus Moths' lamp stands up (the same 922 operations)
+
+const STONE = "minecraft:stone_bricks";
+const GLASS = "minecraft:glass";
+const TINTED = "minecraft:tinted_glass"; // see-through, keeps the daylight out (the dark houses)
+const SAND = "minecraft:sand";
+const GRAVEL = "minecraft:gravel";
+const SEAGRASS = "minecraft:seagrass";
+const END_STONE = "minecraft:end_stone";
+const END_BRICKS = "minecraft:end_bricks";
+const AIR = "minecraft:air";
+const WATER = "minecraft:water";
+const LAVA = "minecraft:lava";
+const PATH = "minecraft:gravel";
+const LEAVES = "minecraft:oak_leaves";
+const LEAF_STATES = { persistent_bit: true };
+const SOUTH = { "minecraft:cardinal_direction": "south" };
+const NORTH = { "minecraft:cardinal_direction": "north" };
+
+const FEED = {
+  basic: "zoocraft:basic_feeder",
+  puzzle: "zoocraft:puzzle_feeder",
+  rack: "zoocraft:hay_rack",
+  insect: "zoocraft:insect_feeder",
+  nectar: "zoocraft:nectar_feeder",
+  mineral: "zoocraft:mineral_feeder",
+  elevated: "zoocraft:elevated_feeder",
+  thermal: "zoocraft:thermal_feeder",
+  aquarium: "zoocraft:aquarium_feeder",
+};
+const R = {
+  meat: "zoocraft:meat_ration",
+  grain: "zoocraft:grain_ration",
+  leafy: "zoocraft:leafy_ration",
+  fruit: "zoocraft:fruit_ration",
+  pellets: "zoocraft:flamingo_pellets",
+  fungal: "zoocraft:fungal_ration",
+  ember: "zoocraft:ember_ration",
+  insect: "zoocraft:insect_ration",
+  nectar: "zoocraft:nectar_ration",
+  mineral: "zoocraft:mineral_pellets",
+  chorus: "zoocraft:chorus_browse",
+  flakes: "zoocraft:fish_flakes",
+  fish: "zoocraft:fish_ration",
+  bone: "zoocraft:bone_ration",
+};
+// What the Staff Rooms are stocked with: every ration the park's animals eat.
+export const STAFF_RATIONS = Object.values(R);
+// The test zoo's animals (0.1.104) eat these too: fish (otters, penguins), Molten Plankton Feed (Lava Rays) and warped
+// fungus (Striders), all rations a feeder and a Staff Room take.
+const FISH = "zoocraft:fish_ration";
+const PLANKTON = "zoocraft:molten_plankton";
+const FUNGUS = "minecraft:warped_fungus";
+// The golems' (0.1.195): iron and copper nuggets, snowballs.
+const IRON = "minecraft:iron_nugget";
+const COPPER = "minecraft:copper_nugget";
+const SNOWBALL = "minecraft:snowball";
+const SLIMEBALL = "minecraft:slime_ball"; // sulfur cubes' (0.1.197) and slimes' (0.1.203)
+const MAGMA_CREAM = "minecraft:magma_cream"; // magma cubes' (0.1.203)
+const RED_MUSHROOM = "minecraft:red_mushroom"; // zombie horses' (0.1.198)
+export const ZOO_RATIONS = [...STAFF_RATIONS, FISH, PLANKTON, FUNGUS, IRON, COPPER, SNOWBALL, SLIMEBALL, RED_MUSHROOM, MAGMA_CREAM];
+
+// One exhibit's builder: local coordinates in, world coordinates out.
+function plot(ox, oz, G, w, d) {
+  const ops = [];
+  const W = (x, y, z) => ({ x: ox + x, y: G + y, z: oz + z });
+  const p = {
+    w,
+    d,
+    ops,
+    at: W,
+    fill(x0, y0, z0, x1, y1, z1, block, states) {
+      ops.push({ op: "fill", from: W(Math.min(x0, x1), Math.min(y0, y1), Math.min(z0, z1)), to: W(Math.max(x0, x1), Math.max(y0, y1), Math.max(z0, z1)), block, states });
+    },
+    set(x, y, z, block, states) {
+      ops.push({ op: "set", pos: W(x, y, z), block, states });
+    },
+    place(x, y, z, block, extra = {}) {
+      ops.push({ op: "place", pos: W(x, y, z), block, ...extra });
+    },
+    // The floor (y 0) of the whole exhibit, or a part of it.
+    floor(block, x0 = 0, z0 = 0, x1 = w - 1, z1 = d - 1) {
+      p.fill(x0, 0, z0, x1, 0, z1, block);
+    },
+    // Walls h high all round (y 1..h) on the ground; the front (z d) in `front`.
+    walls(h, block = STONE, front = GLASS) {
+      p.fill(-1, 1, -1, w, h, -1, block);
+      p.fill(-1, 1, 0, -1, h, d, block);
+      p.fill(w, 1, 0, w, h, d, block);
+      p.fill(0, 1, d, w - 1, h, d, front);
+    },
+    // A roof over the walls at height y.
+    roof(y, block) {
+      p.fill(-1, y, -1, w, y, d, block);
+    },
+    // A pool: water from the floor down (depth 1: the ground right under it; depth 2: deep).
+    pool(x0, z0, x1, z1, depth) {
+      p.fill(x0, 1 - depth, z0, x1, 0, z1, WATER);
+    },
+    // A feeder, filled.
+    feeder(x, y, z, kind, item) {
+      p.place(x, y, z, FEED[kind], { stock: { item, full: "feeder" } });
+    },
+    trough(x, z, y = 1) {
+      p.place(x, y, z, "zoocraft:water_trough", { states: SOUTH, stock: { full: "trough" } });
+    },
+    heater(x, z, y = 1) {
+      p.place(x, y, z, "zoocraft:thermal_regulator", { stock: { full: "heater" } });
+    },
+    basket(x, y, z, item) {
+      p.place(x, y, z, "zoocraft:hanging_food_basket", { stock: { item, full: "basket" } });
+    },
+    fixture(x, y, z, block, states) {
+      p.place(x, y, z, block, states ? { states } : {});
+    },
+    // A chest (the game's) with items put in it once it's built: items [[id, count], ...] (0.1.195).
+    chest(x, y, z, block, items = []) {
+      ops.push({ op: "set", pos: W(x, y, z), block, items });
+    },
+    // A Floating Toy on the water at (x, y, z), a water block (0.1.186).
+    toy(x, y, z) {
+      ops.push({ op: "toy", pos: W(x, y, z) });
+    },
+    // A Climbing Frame: three blocks tall, each part placed.
+    frame(x, z) {
+      p.place(x, 1, z, "zoocraft:climbing_frame", { states: { "minecraft:multi_block_part": 0 } });
+      p.set(x, 2, z, "zoocraft:climbing_frame", { "minecraft:multi_block_part": 1 });
+      p.set(x, 3, z, "zoocraft:climbing_frame", { "minecraft:multi_block_part": 2 });
+    },
+    // Holding Dens in the back wall (z -1), each door facing into the exhibit (south), two blocks tall.
+    dens(xs) {
+      for (const x of xs) {
+        p.set(x, 2, -1, AIR);
+        p.place(x, 1, -1, "zoocraft:holding_den", { states: SOUTH });
+      }
+    },
+    // The double Keeper Gate: the inner gate in the back wall at x, a passage 2 long walled and roofed, the outer gate
+    // 3 blocks behind the inner one (BALANCE.predators.gates: 2 to 4 apart, in a row).
+    keeperGates(x) {
+      p.fill(x - 1, 1, -4, x - 1, 3, -2, STONE);
+      p.fill(x + 1, 1, -4, x + 1, 3, -2, STONE);
+      p.fill(x, 3, -4, x, 3, -2, STONE);
+      p.fill(x, 1, -3, x, 2, -2, AIR);
+      p.set(x, 2, -1, AIR);
+      p.set(x, 2, -4, AIR);
+      p.place(x, 1, -1, "zoocraft:keeper_gate", { states: SOUTH });
+      p.place(x, 1, -4, "zoocraft:keeper_gate", { states: SOUTH });
+    },
+    // A lava pool (Lava Rays, Striders; 0.1.104): lava from the floor down, as pool() is water.
+    lavaPool(x0, z0, x1, z1, depth) {
+      p.fill(x0, 1 - depth, z0, x1, 0, z1, LAVA);
+    },
+    lavaTrough(x, z, y = 1) {
+      p.place(x, y, z, "zoocraft:lava_trough", { states: SOUTH, stock: { full: "trough" } });
+    },
+    cooler(x, z, y = 1) {
+      p.place(x, y, z, "zoocraft:cooling_unit", { stock: { full: "cooler" } });
+    },
+    anchor(x, z, y = 1) {
+      p.place(x, y, z, "zoocraft:containment_anchor", { stock: { full: "anchor" } });
+    },
+    // An Elevated Browse Feeder (giraffes): two parts, the record on the lower one.
+    elevated(x, z, item) {
+      p.place(x, 1, z, FEED.elevated, { states: { "minecraft:multi_block_part": 0 }, stock: { item, full: "feeder" } });
+      p.set(x, 2, z, FEED.elevated, { "minecraft:multi_block_part": 1 });
+    },
+    // A Thermal Feeder (Lava Rays): set into the bank level with the lava, so it's reached from the lava.
+    thermal(x, z, item) {
+      p.place(x, 0, z, FEED.thermal, { stock: { item, full: "feeder" } });
+    },
+    // A Nocturnal Lamp hung from the roof (the hedgehogs' house): a plain block, nothing to register.
+    lamp(x, y, z, block = "zoocraft:red_night_lamp") {
+      p.set(x, y, z, block, { "minecraft:block_face": "down" });
+    },
+    // A Nocturnal Lamp standing on the floor (0.1.179: the hedgehogs' house, the Chorus Moths'), the right way up.
+    floorLamp(x, z, block = "zoocraft:red_night_lamp") {
+      p.set(x, 1, z, block, { "minecraft:block_face": "up" });
+    },
+  };
+  return p;
+}
+
+// Every species' exhibit (spec section 5, each test plan's "good exhibit"): size, walls, what's inside, the animals.
+// sexes: one letter each (m, f, h). Coats are picked by the builder (lions: coat 1 is a male's).
+// A Mob House (0.1.163) in an 11 by 11 blueprint: the pen z 0..6 (its floor `floor`, with `patch` in a block of it), the
+// inner wall at z 7 (`inner`: glass or iron bars), the hall z 8..10 with a gravel path floor, a stone front (z 11) with an
+// oak door at x 5 (the path under it; a player opens it, iron would need redstone), the Mob House block in the hall's
+// corner, and a stone roof over it all at 5. A bigger blueprint (the Cyclops's, 0.1.165: `h` its walls' height) keeps
+// the same shape: the pen the back rows, the inner wall, a hall 3 deep, the door in the middle of the front.
+const DOOR = { "minecraft:cardinal_direction": "north", door_hinge_bit: false, open_bit: false };
+function mobHouse(p, floor, patch, inner, h = 4) {
+  const W = p.w - 1, D = p.d;
+  const mid = Math.floor(p.w / 2);
+  p.walls(h, STONE, STONE);
+  p.roof(h + 1, STONE);
+  p.floor(floor, 0, 0, W, D - 5);
+  p.fill(2, 0, 1, 5, 0, 4, patch);
+  p.fill(0, 1, D - 4, W, h, D - 4, inner);
+  p.floor(PATH, 0, D - 3, W, D - 1);
+  p.set(mid, 0, D, PATH);
+  p.set(mid, 1, D, "minecraft:wooden_door", { ...DOOR, upper_block_bit: false });
+  p.set(mid, 2, D, "minecraft:wooden_door", { ...DOOR, upper_block_bit: true });
+  p.place(0, 1, D - 1, "zoocraft:mob_house");
+}
+
+// A Mob House water pen (0.1.200, the drowned's and the zombie nautilus's): the zombies' Mob House with walls 5 high, its
+// pen (z 0..6) a tank: water 3 deep (y -1..1) over a sand bed with a gravel patch (y -2, on the world's bedrock), a sand
+// bank a block high along the back (z 0, y 1: the Habitat Marker's), tinted glass to the hall, a Nocturnal Lamp hung from
+// the roof, a Water Filter on the bank.
+function waterPen(p) {
+  mobHouse(p, "minecraft:sand", "minecraft:sand", TINTED, 5);
+  p.fill(0, -2, 1, p.w - 1, -2, 6, "minecraft:sand");
+  p.fill(2, -2, 2, 5, -2, 5, "minecraft:gravel");
+  p.fill(0, -1, 1, p.w - 1, 1, 6, WATER);
+  p.fill(0, 1, 0, p.w - 1, 1, 0, "minecraft:sand");
+  p.lamp(5, 5, 3);
+  p.fixture(1, 2, 0, "zoocraft:water_filter");
+}
+
+// A farmyard's ground and barn (0.1.168): grass, walls 3 high, an oak plank roof `roof` blocks up (5; a paddock's stable
+// 6, 0.1.175) over the back `rows` rows and `bales` hay bales along the back wall under it.
+function barn(p, w, rows, bales, roof = 5) {
+  p.floor("minecraft:grass_block");
+  p.walls(3);
+  p.fill(0, roof, 0, w - 1, roof, rows - 1, "minecraft:oak_planks");
+  p.fill(1, 1, 0, bales, 1, 0, "minecraft:hay_block");
+}
+
+export const BLUEPRINTS = [
+  // Wolves and foxes (0.1.169). Wolves: a den corner (an oak plank roof 5 blocks up over 6 by 6 at the back: 36 blocks, they
+  // need 23), three Scent Posts spread round the run for a scent trail, a Basic Feeder of Meat Rations with a basket over it,
+  // a Water Trough. Foxes: cover over the back corner (5 by 4, 20 blocks; they need 17) to nap under, 4 blocks of Burrow
+  // Soil in the floor to dig in, a Puzzle Feeder of Fruit Rations to find their food in, a Water Trough.
+  {
+    id: "zoo_wolf",
+    name: "Wolves",
+    species: "zoocraft:zoo_wolf",
+    w: 15,
+    d: 15,
+    sexes: "mfff",
+    seed: [7, 9],
+    controller: 3,
+    build(p) {
+      p.walls(3);
+      p.fill(0, 5, 0, 5, 5, 5, "minecraft:oak_planks"); // the den
+      for (const [x, z] of [[12, 2], [2, 12], [9, 9]]) p.fixture(x, 1, z, "zoocraft:scent_post");
+      p.feeder(14, 1, 7, "basic", R.meat);
+      p.basket(14, 2, 7, R.meat);
+      p.trough(13, 13);
+    },
+  },
+  {
+    id: "zoo_fox",
+    name: "Foxes",
+    species: "zoocraft:zoo_fox",
+    w: 9,
+    d: 9,
+    sexes: "mf",
+    seed: [4, 6],
+    controller: 2,
+    build(p) {
+      p.walls(3);
+      p.fill(0, 5, 0, 4, 5, 3, "minecraft:oak_planks"); // cover to nap under
+      p.floor("zoocraft:burrow_soil", 6, 6, 7, 7); // to dig in
+      p.feeder(8, 1, 0, "puzzle", R.fruit);
+      p.trough(0, 8);
+    },
+  },
+  // Pandas (0.1.170): grass along the back with a bamboo grove growing in it (8 stalks, 3 tall), an oak plank roof 5 blocks
+  // up over the back corner for shade (7 by 5: 31 floor blocks under it beside the stalks; they need 22), a Basic Feeder of
+  // Leafy Rations with a basket over it, a Climbing Frame, a Water Trough.
+  {
+    id: "zoo_panda",
+    name: "Pandas",
+    species: "zoocraft:zoo_panda",
+    w: 13,
+    d: 12,
+    sexes: "mf",
+    seed: [6, 8],
+    controller: 3,
+    build(p) {
+      p.walls(3);
+      p.floor("minecraft:grass_block", 0, 0, 12, 2);
+      for (const x of [1, 3, 5, 7, 9, 11]) for (let y = 1; y <= 3; y++) p.set(x, y, 0, "minecraft:bamboo");
+      for (const x of [2, 10]) for (let y = 1; y <= 3; y++) p.set(x, y, 2, "minecraft:bamboo");
+      p.fill(6, 5, 0, 12, 5, 4, "minecraft:oak_planks"); // shade
+      p.feeder(0, 1, 6, "basic", R.leafy);
+      p.basket(0, 2, 6, R.leafy);
+      p.frame(6, 6);
+      p.trough(12, 11);
+    },
+  },
+  // Polar bears (0.1.174): snow over the front half by the glass (they need a quarter), a pool in the middle, 2 deep with a
+  // shallow edge to wade (64 spots: 16% of the floor, they need a seventh; 36 deep, 28 shallow), a Cooling Unit in the
+  // corner, a Holding Den each and the double Keeper Gate in the back wall, a Basic Feeder of Fish Rations with a basket
+  // and a Puzzle Feeder (forage).
+  {
+    id: "zoo_polar_bear",
+    name: "Polar Bears",
+    species: "zoocraft:zoo_polar_bear",
+    w: 20,
+    d: 20,
+    sexes: "mf",
+    seed: [4, 4],
+    controller: 7,
+    corridor: 3,
+    build(p) {
+      p.walls(3);
+      p.floor("minecraft:snow", 0, 10, 19, 19); // the front half snow (Bedrock's full snow block is minecraft:snow)
+      p.pool(6, 6, 13, 13, 1); // the shallow edge to wade in
+      p.pool(7, 7, 12, 12, 2); // 36 spots 2 deep to swim
+      p.fixture(5, 1, 9, "zoocraft:water_filter");
+      p.cooler(19, 0); // the Cooling Unit in the corner, stocked with ice
+      p.dens([10, 12]);
+      p.keeperGates(3);
+      p.feeder(16, 1, 2, "basic", FISH);
+      p.basket(16, 2, 2, FISH);
+      p.feeder(18, 1, 2, "puzzle", FISH);
+    },
+  },
+  // Sea turtles (0.1.183): a turtle beach, a pool 2 deep along the left (9 by 12: 108 blocks of water, 64% of the floor)
+  // over sand with a seagrass meadow on its floor (16 columns), a sand beach 5 wide along the right (its 4 columns 2 to 5
+  // blocks from the water to nest in), walls 3 high (a Water Filter against a wall 2 high is a step over it), a Water
+  // Filter at the water's edge, an Aquarium Feeder of Leafy Rations over the water.
+  {
+    id: "zoo_turtle",
+    name: "Turtle Beach",
+    species: "zoocraft:zoo_turtle",
+    w: 14,
+    d: 12,
+    sexes: "mf",
+    seed: [11, 6],
+    controller: 12,
+    build(p) {
+      p.floor("minecraft:sand");
+      p.walls(3);
+      p.fill(0, -2, 0, 8, -2, 11, SAND); // the sandy floor under the water
+      p.pool(0, 0, 8, 11, 2);
+      p.fill(2, -1, 4, 5, -1, 7, SEAGRASS); // seagrass on the floor of the pool, 16 columns
+      p.fixture(9, 1, 0, "zoocraft:water_filter");
+      p.feeder(4, 1, 0, "aquarium", R.leafy); // over the water against the back wall
+    },
+  },
+  // Frogs (0.1.184): a frog pond, a pool 1 deep (5 by 5: 25 blocks of water, 31% of the floor) kept a block off the walls,
+  // two lily pads on it (one for every 2 frogs) away from the walls, walls 6 high (they leap 4 up onto the top of anything
+  // a few blocks off, so 5 over the Water Filter and the feeder they sit on: the test server's frogs got over walls 4 high
+  // from the floor, not 5), an oak canopy 6 blocks up over a back corner for cover (out of a leap's reach) on a trunk, a
+  // Water Filter at the water's edge and a Basic Feeder of Insect Rations on the land, and a Hanging Food Basket of them
+  // hung under the canopy for enrichment (not on the feeder: a frog on a basket there would sit a block higher).
+  {
+    id: "zoo_frog",
+    name: "Frog Pond",
+    species: "zoocraft:zoo_frog",
+    w: 10,
+    d: 8,
+    sexes: "mf",
+    seed: [7, 5],
+    controller: 2,
+    build(p) {
+      p.walls(6);
+      p.pool(1, 1, 5, 5, 1);
+      for (const [x, z] of [[2, 2], [4, 4]]) p.set(x, 1, z, "minecraft:waterlily");
+      p.fill(6, 6, 0, 9, 6, 3, LEAVES, LEAF_STATES);
+      p.fill(8, 1, 2, 8, 5, 2, "minecraft:oak_log");
+      p.fixture(6, 1, 4, "zoocraft:water_filter");
+      p.feeder(7, 1, 6, "basic", R.insect);
+      p.basket(7, 5, 1, R.insect);
+    },
+  },
+  // Axolotls (0.1.185): an axolotl tank, water 2 deep across the floor (10 by 7: 70 blocks, 88% of the exhibit; a pair
+  // needs 20) with a bank along the back, sand under the water (never gravel), seagrass growing in 8 of its columns (a pair
+  // needs 4, 5 with a young one), walls 3 high (a Water Filter against a wall 2 high is a step over it), a Water Filter on
+  // the bank and an Aquarium Feeder of Insect Rations over the water.
+  {
+    id: "zoo_axolotl",
+    name: "Axolotl Tank",
+    species: "zoocraft:zoo_axolotl",
+    w: 10,
+    d: 8,
+    sexes: "mf",
+    seed: [5, 0],
+    controller: 3,
+    build(p) {
+      p.walls(3);
+      p.fill(0, -2, 1, 9, -2, 7, SAND); // the sandy floor under the water
+      p.pool(0, 1, 9, 7, 2);
+      p.fill(2, -1, 4, 5, -1, 5, SEAGRASS); // seagrass on the floor of the tank, 8 columns
+      p.fixture(2, 1, 0, "zoocraft:water_filter");
+      p.feeder(5, 1, 1, "aquarium", R.insect); // over the water: Insect Rations, sunk for them
+    },
+  },
+  // Dolphins (0.1.186): a dolphin pool 18 by 16 of water 4 deep (288 cells: up to five need 275), so the whole pool is the
+  // stretch to dive and turn in (8 by 8 and 4 deep needed), open to the sky. In a flat world the ground is 3 over the
+  // bedrock, so the water is dug 3 deep and stands a block over the ground, held in by the walls, with the bank along the
+  // back raised to it (the test server's first pool, dug 4 deep, had nothing under it: the game's dolphins swam down and
+  // out of the world). Walls 3 over the water, a Water Filter on the bank, an Aquarium Feeder of Fish Rations over the
+  // water. A Floating Toy on the water and a Hanging Food Basket of Fish Rations on the bank (their enrichment). A pair. (seed: the Habitat Marker on the raised bank, 2 up.)
+  {
+    id: "zoo_dolphin",
+    name: "Dolphin Pool",
+    species: "zoocraft:zoo_dolphin",
+    w: 18,
+    d: 17,
+    sexes: "mf",
+    seed: [9, 0, 2],
+    controller: 3,
+    build(p) {
+      p.walls(4);
+      p.fill(0, 1, 0, 17, 1, 0, STONE); // the bank, raised to the water's top
+      p.fill(0, -2, 1, 17, 1, 16, WATER); // 4 deep: 3 dug into the ground and 1 over it
+      p.fixture(2, 2, 0, "zoocraft:water_filter");
+      p.feeder(9, 2, 1, "aquarium", R.fish); // over the water: Fish Rations
+      p.toy(9, 1, 9); // a Floating Toy on the water: their enrichment
+      p.basket(14, 2, 0, R.fish); // and a Hanging Food Basket of Fish Rations on the bank
+    },
+  },
+  // Bees (0.1.187): a bee garden 9 by 9 of grass under a glass roof 4 blocks up (81 blocks: three need 25), glass walls,
+  // ten of the game's bee flowers (a peony among them, counted once; three bees need 6), a Beehive against the back wall
+  // facing into the garden (one for each 3), a Water Trough. No Nectar Feeder: with flowers enough they need none.
+  // Three. (seed: the Habitat Marker on the grass in the middle.)
+  {
+    id: "zoo_bee",
+    name: "Bee Garden",
+    species: "zoocraft:zoo_bee",
+    w: 9,
+    d: 9,
+    sexes: "mff",
+    seed: [4, 4],
+    controller: 4,
+    build(p) {
+      p.floor("minecraft:grass_block");
+      p.walls(4, GLASS, GLASS);
+      p.roof(5, GLASS);
+      const flowers = [[1, 1, "poppy"], [7, 1, "dandelion"], [1, 4, "blue_orchid"], [7, 4, "cornflower"], [2, 7, "allium"], [6, 7, "oxeye_daisy"], [4, 6, "red_tulip"], [3, 3, "azure_bluet"], [5, 3, "lily_of_the_valley"]];
+      for (const [x, z, f] of flowers) p.set(x, 1, z, `minecraft:${f}`);
+      p.set(1, 1, 7, "minecraft:peony", { upper_block_bit: false });
+      p.set(1, 2, 7, "minecraft:peony", { upper_block_bit: true });
+      p.set(4, 1, 0, "minecraft:beehive", { direction: 0 }); // its front (south) opens into the garden
+      p.trough(8, 7);
+    },
+  },
+  // Parrots (0.1.188): an aviary 7 by 7 (49 blocks: three need 33) under a glass roof 4 blocks up, glass walls; Perches at
+  // three heights (the floor, a log, two logs), a jukebox (the bench plays it), a Nest Box, a Basic Feeder, a Hanging Food
+  // Basket and a Puzzle Feeder of Fruit Rations (what the Staff Rooms hold; forage and manipulate), a Water Trough. Three.
+  {
+    id: "zoo_parrot",
+    name: "Parrot Aviary",
+    species: "zoocraft:zoo_parrot",
+    w: 7,
+    d: 7,
+    sexes: "mff",
+    seed: [3, 3],
+    controller: 2,
+    build(p) {
+      p.walls(4, GLASS, GLASS);
+      p.roof(5, GLASS);
+      p.fixture(1, 1, 5, "zoocraft:perch", SOUTH); // a low perch
+      p.set(1, 1, 1, "minecraft:oak_log");
+      p.fixture(1, 2, 1, "zoocraft:perch", SOUTH); // one on a log
+      p.fill(5, 1, 1, 5, 2, 1, "minecraft:oak_log");
+      p.fixture(5, 3, 1, "zoocraft:perch", SOUTH); // a high one, on a post
+      p.set(3, 1, 6, "minecraft:jukebox");
+      p.fixture(6, 1, 6, "zoocraft:nest_box", SOUTH);
+      p.feeder(6, 1, 3, "basic", R.fruit);
+      p.basket(6, 2, 3, R.fruit);
+      p.feeder(0, 1, 3, "puzzle", R.fruit);
+      p.trough(0, 6);
+    },
+  },
+  // Ocelots (0.1.189): a jungle exhibit, grass underfoot, a jungle tree's canopy of leaves 5 up over the back corner for
+  // cover (24 of the 61 floor blocks they can stand on; they want three tenths) on a trunk, three logs on the floor to rest on (a lying log
+  // two long and one upright; they need one each), a Scent Post, a Puzzle Feeder of Meat Rations, a Basic Feeder of Fish
+  // Rations with a Hanging Food Basket of them over it, a Water Trough. A pair.
+  {
+    id: "zoo_ocelot",
+    name: "Ocelots",
+    species: "zoocraft:zoo_ocelot",
+    w: 8,
+    d: 8,
+    sexes: "mf",
+    seed: [3, 6],
+    controller: 2,
+    build(p) {
+      p.floor("minecraft:grass_block");
+      p.walls(3);
+      p.fill(2, 1, 2, 2, 4, 2, "minecraft:jungle_log"); // the trunk
+      p.fill(0, 5, 0, 4, 5, 4, "minecraft:jungle_leaves", LEAF_STATES); // its canopy
+      p.fill(5, 1, 6, 6, 1, 6, "minecraft:jungle_log", { pillar_axis: "x" }); // a lying log, two long
+      p.set(6, 1, 2, "minecraft:jungle_log"); // and one upright
+      p.fixture(7, 1, 4, "zoocraft:scent_post");
+      p.feeder(0, 1, 7, "puzzle", R.meat);
+      p.feeder(7, 1, 7, "basic", R.fish);
+      p.basket(7, 2, 7, R.fish);
+      p.trough(0, 6);
+    },
+  },
+  // Cats (0.1.189): a Cat House, its walls 3 high, an oak plank roof 4 up over the back corner (a sheltered corner to sleep
+  // in: 13 of the 39 floor blocks they can stand on; they want a quarter), a bed and a chest to sit on (they need one for each 2), a Climbing
+  // Frame (a cat tree), a Puzzle Feeder of Fish Rations, a Basic Feeder of Meat Rations with a Hanging Food Basket of them
+  // over it, a Water Trough. Three.
+  {
+    id: "zoo_cat",
+    name: "Cat House",
+    species: "zoocraft:zoo_cat",
+    w: 7,
+    d: 6,
+    sexes: "mff",
+    seed: [3, 4],
+    controller: 2,
+    build(p) {
+      p.walls(3);
+      p.fill(-1, 4, -1, 4, 4, 2, "minecraft:oak_planks"); // the sheltered corner
+      p.set(5, 1, 1, "minecraft:bed", { direction: 2, head_piece_bit: false }); // a bed, its foot here
+      p.set(5, 1, 0, "minecraft:bed", { direction: 2, head_piece_bit: true }); // and its head against the back wall
+      p.set(1, 1, 4, "minecraft:chest");
+      p.frame(3, 1);
+      p.feeder(0, 1, 5, "puzzle", R.fish);
+      p.feeder(6, 1, 5, "basic", R.meat);
+      p.basket(6, 2, 5, R.meat);
+      p.trough(0, 0);
+    },
+  },
+  // Armadillos (0.1.190): a savanna corner, sand underfoot with a strip of coarse dirt along the back (the sand: 25 of the 35
+  // floor blocks they can stand on, as the test server measured it; they want three tenths), Burrow Soil in the front corner to dig in, a Burrow Shelter to
+  // sleep in, a Puzzle Feeder of Insect Rations, a Basic Feeder of them with a Hanging Food Basket over it, a Water Trough.
+  // A pair.
+  {
+    id: "zoo_armadillo",
+    name: "Armadillos",
+    species: "zoocraft:zoo_armadillo",
+    w: 6,
+    d: 6,
+    sexes: "mf",
+    seed: [2, 3],
+    controller: 2,
+    build(p) {
+      p.floor(SAND);
+      p.floor("minecraft:coarse_dirt", 0, 0, 5, 0);
+      p.floor("zoocraft:burrow_soil", 4, 4, 5, 5); // to dig in
+      p.walls(3);
+      p.fixture(0, 1, 4, "zoocraft:burrow_shelter", SOUTH); // a burrow to sleep in
+      p.feeder(5, 1, 0, "puzzle", R.insect);
+      p.feeder(0, 1, 0, "basic", R.insect);
+      p.basket(0, 2, 0, R.insect);
+      p.trough(0, 5);
+    },
+  },
+  // Sniffers (0.1.192): a paddock of ground they dig: grass, a moss bed along the back, a strip of dirt and coarse dirt
+  // along the front; walls 3 high; a Basic Feeder of Grain Rations with a Hanging Food Basket of them over it, a Water
+  // Trough. A pair.
+  {
+    id: "zoo_sniffer",
+    name: "Sniffers",
+    species: "zoocraft:zoo_sniffer",
+    w: 12,
+    d: 12,
+    sexes: "mf",
+    seed: [6, 6],
+    controller: 2,
+    build(p) {
+      p.floor("minecraft:grass_block");
+      p.floor("minecraft:moss_block", 0, 0, 11, 3); // the moss bed
+      p.floor("minecraft:dirt", 0, 10, 5, 11);
+      p.floor("minecraft:coarse_dirt", 6, 10, 11, 11);
+      p.walls(3);
+      p.feeder(11, 1, 0, "basic", R.grain);
+      p.basket(11, 2, 0, R.grain);
+      p.trough(0, 0);
+    },
+  },
+  // Camels (0.1.181): a desert exhibit, sand underfoot (a strip of grass along the front, so sand is most but not all of the
+  // floor), walls 3 high (a Hay Rack against a 2-high wall is a step over it), an oak plank roof on the walls over the back
+  // 4 rows for shade, a Hay Rack of Leafy Rations with a Hanging Food Basket of them over it (under the roof), a Water Trough.
+  {
+    id: "zoo_camel",
+    name: "Camels",
+    species: "zoocraft:zoo_camel",
+    w: 16,
+    d: 14,
+    sexes: "mff",
+    seed: [8, 11],
+    controller: 2,
+    build(p) {
+      p.floor("minecraft:sand");
+      p.fill(0, 0, 12, 15, 0, 13, "minecraft:grass_block");
+      p.walls(3);
+      p.fill(0, 4, 0, 15, 4, 3, "minecraft:oak_planks");
+      p.place(12, 1, 0, FEED.rack, { states: SOUTH, stock: { item: R.leafy, full: "feeder" } });
+      p.basket(12, 2, 0, R.leafy);
+      p.trough(3, 9);
+    },
+  },
+  // Goats (0.1.180): a mountain exhibit, walls 4 high (they leap 3 up), grass underfoot, three stone outcrops to leap onto
+  // (2, 4 and 3 blocks high: the 4 high one beside the 2 high one, from which they reach its top, a lookout), a shelter at
+  // the back (an oak plank roof 5 blocks up over the back 3 rows, 2 hay bales under it for the 4 goats), a Hay Rack of
+  // Grain Rations with a Hanging Food Basket of them over it (both under the roof), a Water Trough away from the walls (a
+  // goat standing on it would be a block nearer their top).
+  {
+    id: "zoo_goat",
+    name: "Goats",
+    species: "zoocraft:zoo_goat",
+    w: 14,
+    d: 12,
+    sexes: "mfff",
+    seed: [7, 10],
+    controller: 2,
+    build(p) {
+      p.floor("minecraft:grass_block");
+      p.walls(4);
+      p.fill(0, 5, 0, 13, 5, 2, "minecraft:oak_planks");
+      p.fill(1, 1, 0, 2, 1, 0, "minecraft:hay_block");
+      p.fill(3, 1, 6, 4, 2, 7, STONE);
+      p.fill(5, 1, 6, 6, 4, 7, STONE);
+      p.fill(9, 1, 7, 10, 3, 8, STONE);
+      p.place(11, 1, 0, FEED.rack, { states: SOUTH, stock: { item: R.grain, full: "feeder" } });
+      p.basket(11, 2, 0, R.grain);
+      p.trough(2, 10);
+    },
+  },
+  // Horses and donkeys (0.1.175): grass underfoot (30 blocks each for horses, 16 for donkeys), walls 3 high, a stable
+  // corner at the back (an oak plank roof 6 blocks up over the back rows, so one standing on a hay bale under it has its 4
+  // blocks of headroom; hay bales along the back wall under it, 1 for each horse and 1 for every 2 donkeys), a Hay Rack of
+  // Grain Rations with a Hanging Food Basket of them over it (their foraging), a Water Trough, and open floor down the
+  // middle for the run (24 blocks for horses, who need 20; 16 for donkeys, who need 12).
+  {
+    id: "zoo_horse",
+    name: "Horses",
+    species: "zoocraft:zoo_horse",
+    w: 24,
+    d: 12,
+    sexes: "mf",
+    seed: [12, 7],
+    controller: 2,
+    build(p) {
+      barn(p, 24, 3, 2, 6);
+      p.place(11, 1, 0, FEED.rack, { states: SOUTH, stock: { item: R.grain, full: "feeder" } });
+      p.basket(11, 2, 0, R.grain);
+      p.trough(0, 11);
+    },
+  },
+  {
+    id: "zoo_donkey",
+    name: "Donkeys",
+    species: "zoocraft:zoo_donkey",
+    w: 16,
+    d: 11,
+    sexes: "mf",
+    seed: [8, 6],
+    controller: 2,
+    build(p) {
+      barn(p, 16, 3, 1, 6);
+      p.place(8, 1, 0, FEED.rack, { states: SOUTH, stock: { item: R.grain, full: "feeder" } });
+      p.basket(8, 2, 0, R.grain);
+      p.trough(0, 10);
+    },
+  },
+  // Llamas and mules (0.1.193): the donkeys' paddock bigger (150 blocks for the first and 50 for each more), grass underfoot
+  // (20 each), the stable corner's hay at the back (1 for every 2 llamas, 1 for each mule), a Hay Rack of Grain Rations with a
+  // Hanging Food Basket of them over it, a Water Trough, and open floor down the middle (the mules' run: 18, they need 12).
+  {
+    id: "zoo_llama",
+    name: "Llamas",
+    species: "zoocraft:zoo_llama",
+    w: 18,
+    d: 12,
+    sexes: "mf",
+    seed: [9, 7],
+    controller: 2,
+    build(p) {
+      barn(p, 18, 3, 1, 6);
+      p.place(9, 1, 0, FEED.rack, { states: SOUTH, stock: { item: R.grain, full: "feeder" } });
+      p.basket(9, 2, 0, R.grain);
+      p.trough(0, 11);
+    },
+  },
+  {
+    id: "zoo_trader_llama",
+    name: "Trader Llamas",
+    species: "zoocraft:zoo_trader_llama",
+    w: 18,
+    d: 12,
+    sexes: "mf",
+    seed: [9, 7],
+    controller: 2,
+    build(p) {
+      barn(p, 18, 3, 1, 6);
+      p.place(9, 1, 0, FEED.rack, { states: SOUTH, stock: { item: R.grain, full: "feeder" } });
+      p.basket(9, 2, 0, R.grain);
+      p.trough(0, 11);
+    },
+  },
+  {
+    id: "zoo_mule",
+    name: "Mules",
+    species: "zoocraft:zoo_mule",
+    w: 18,
+    d: 12,
+    sexes: "mf",
+    seed: [9, 7],
+    controller: 2,
+    build(p) {
+      barn(p, 18, 3, 2, 6);
+      p.place(9, 1, 0, FEED.rack, { states: SOUTH, stock: { item: R.grain, full: "feeder" } });
+      p.basket(9, 2, 0, R.grain);
+      p.trough(0, 11);
+    },
+  },
+  // The sulfur cube (0.1.197): a Sulfur Cave 7 by 7 (49 blocks of floor; two need 36) of sulfur with a strip of cinnabar
+  // along the back (their caves' ground), stone-brick walls 3 high with glass, a Puzzle Feeder of slimeballs and a Hanging
+  // Food Basket of them (their enrichment), a Water Trough. A pair.
+  {
+    id: "zoo_sulfur_cube",
+    name: "Sulfur Cave",
+    species: "zoocraft:zoo_sulfur_cube",
+    w: 7,
+    d: 7,
+    sexes: "nn",
+    seed: [3, 3],
+    controller: 2,
+    build(p) {
+      p.floor("minecraft:sulfur");
+      p.floor("minecraft:cinnabar", 0, 6, 6, 6);
+      p.walls(3, STONE, GLASS);
+      p.feeder(6, 1, 0, "puzzle", SLIMEBALL);
+      p.basket(0, 1, 0, SLIMEBALL);
+      p.trough(0, 6);
+    },
+  },
+  // The happy ghast (0.1.196): a Sky Pen 17 by 17 (289 blocks of floor; one needs 256) under 12 blocks of air, glass walls
+  // 12 high and a glass roof over all of it (the open sky), a Water Trough, a Puzzle Feeder of snowballs and a Hanging Food
+  // Basket of them in a corner (their enrichment), a dried ghast on the floor in another (so the pen, emptied, is still
+  // measured a Sky Pen: the bench's first run caught its ghast out and the empty pen was a walking one). One.
+  {
+    id: "zoo_happy_ghast",
+    name: "Sky Pen",
+    species: "zoocraft:zoo_happy_ghast",
+    w: 17,
+    d: 17,
+    sexes: "n",
+    seed: [8, 8],
+    controller: 2,
+    build(p) {
+      p.floor("minecraft:grass_block");
+      p.walls(12, GLASS, GLASS);
+      p.roof(13, GLASS);
+      p.feeder(16, 1, 0, "puzzle", SNOWBALL);
+      p.trough(0, 0);
+      p.basket(0, 1, 16, SNOWBALL);
+      p.set(16, 1, 16, "minecraft:dried_ghast");
+    },
+  },
+  // The nautilus (0.1.196): a Nautilus Tank, 8 by 5 of water 2 deep (40 cells; two need 24, all of the first's 16 deep)
+  // behind a bank, roofed and dim (purple Nocturnal Lamps, as the Anglerfish Tank), an Aquarium Feeder of Fish Rations, a
+  // Hanging Food Basket of them on the bank (their enrichment, as the dolphins'). A pair.
+  {
+    id: "zoo_nautilus",
+    name: "Nautilus Tank",
+    species: "zoocraft:zoo_nautilus",
+    w: 8,
+    d: 6,
+    sexes: "mf",
+    seed: [4, 0],
+    controller: 3,
+    build(p) {
+      p.walls(3, STONE, TINTED);
+      p.roof(4, STONE);
+      p.pool(0, 1, 7, 5, 2);
+      for (const [x, z] of [[2, 3], [5, 3]]) p.lamp(x, 3, z, "zoocraft:purple_night_lamp");
+      p.fixture(1, 1, 0, "zoocraft:water_filter");
+      p.feeder(4, 1, 1, "aquarium", R.fish);
+      p.basket(6, 1, 0, R.fish);
+    },
+  },
+  // Golems (0.1.195). An Iron Golem Yard 10 by 8 (80 blocks of floor; one needs 64), walls 3 high: a dirt path across it
+  // and cobblestone down one side (more than a quarter of the floor: the paving), a Puzzle Feeder of iron nuggets (food,
+  // and something to work). No trough: golems drink nothing.
+  {
+    id: "zoo_iron_golem",
+    name: "Iron Golem Yard",
+    species: "zoocraft:zoo_iron_golem",
+    w: 10,
+    d: 8,
+    sexes: "n",
+    seed: [5, 5],
+    controller: 2,
+    build(p) {
+      p.floor("minecraft:grass_block");
+      p.floor("minecraft:grass_path", 0, 3, 9, 4);
+      p.floor("minecraft:cobblestone", 0, 0, 1, 7);
+      p.walls(3);
+      p.feeder(5, 1, 0, "puzzle", IRON);
+    },
+  },
+  // A Copper Golem Yard 6 by 5 (30 blocks; two need 24), walls 3 high (the chests and the feeder stand against the walls: a
+  // golem up on one would step over a wall 2 high), a copper chest with cobblestone and poppies in it and two empty chests
+  // (they carry from the copper chest to a chest holding the same item, or an empty one: the game's; with one chest the
+  // poppies would stay in a golem's hand once the cobblestone was in it), a Basic Feeder of copper nuggets. Two.
+  {
+    id: "zoo_copper_golem",
+    name: "Copper Golem Yard",
+    species: "zoocraft:zoo_copper_golem",
+    w: 6,
+    d: 5,
+    sexes: "nn",
+    seed: [3, 2],
+    controller: 2,
+    build(p) {
+      p.walls(3);
+      p.chest(0, 1, 0, "minecraft:copper_chest", [["minecraft:cobblestone", 16], ["minecraft:poppy", 4]]);
+      p.chest(5, 1, 4, "minecraft:chest");
+      p.chest(0, 1, 4, "minecraft:chest");
+      p.feeder(5, 1, 0, "basic", COPPER);
+    },
+  },
+  // A Snow Golem Yard 6 by 5 (30 blocks; two need 24), walls and a stone roof over all of it (rain melts them), 3 blocks of
+  // air under it; a Puzzle Feeder of snowballs. Two.
+  {
+    id: "zoo_snow_golem",
+    name: "Snow Golem Yard",
+    species: "zoocraft:zoo_snow_golem",
+    w: 6,
+    d: 5,
+    sexes: "nn",
+    seed: [3, 2],
+    controller: 2,
+    build(p) {
+      p.walls(3);
+      p.roof(4, STONE);
+      p.feeder(5, 1, 0, "puzzle", SNOWBALL);
+    },
+  },
+  // Bats (0.1.194): a dark house 10 by 5 (50 blocks of floor; three need 40) of stone, stone walls 4 high and a stone roof
+  // over them (a block of it over every block of air to hang from), a tinted glass front the guests see through (no
+  // daylight gets in), lit by Nocturnal Lamps on the floor. A straight 10 blocks of air along it. A Basic Feeder of Fruit
+  // Rations with a Hanging Food Basket of them over it, a Water Trough. Three.
+  {
+    id: "zoo_bat",
+    name: "Bat House",
+    species: "zoocraft:zoo_bat",
+    w: 10,
+    d: 5,
+    sexes: "mff",
+    seed: [5, 2],
+    controller: 2,
+    build(p) {
+      p.floor("minecraft:stone");
+      p.walls(4, STONE, TINTED);
+      p.roof(5, STONE);
+      p.floorLamp(0, 2);
+      p.floorLamp(9, 4, "zoocraft:purple_night_lamp");
+      p.feeder(9, 1, 0, "basic", R.fruit);
+      p.basket(9, 2, 0, R.fruit);
+      p.trough(0, 0);
+    },
+  },
+  // Allays (0.1.194): a room 6 by 6 (36 blocks; two need 25) under a glass roof 4 blocks up, glass walls; a note block and
+  // a jukebox (the bench plays it), a Basic Feeder of Fruit Rations with a Hanging Food Basket of them over it, a Water
+  // Trough. Two.
+  {
+    id: "zoo_allay",
+    name: "Allay Room",
+    species: "zoocraft:zoo_allay",
+    w: 6,
+    d: 6,
+    sexes: "nn",
+    seed: [3, 3],
+    controller: 2,
+    build(p) {
+      p.walls(4, GLASS, GLASS);
+      p.roof(5, GLASS);
+      p.set(0, 1, 5, "minecraft:noteblock");
+      p.set(5, 1, 5, "minecraft:jukebox");
+      p.feeder(5, 1, 0, "basic", R.fruit);
+      p.basket(5, 2, 0, R.fruit);
+      p.trough(0, 0);
+    },
+  },
+  // The farmyard four (0.1.168): grass underfoot (sheep and cows graze it, 12 blocks each), walls 3 high (a hay bale
+  // against a 2-high wall is a step over it), a barn corner at the back (an oak plank roof 5 blocks up over the back rows,
+  // hay bales along the back wall under it: 1 for every 2, 2 at least), a Hay Rack of Grain Rations (a Basic Feeder for
+  // pigs and chickens), a Water Trough; mud for the pigs.
+  {
+    id: "zoo_sheep",
+    name: "Sheep",
+    species: "zoocraft:zoo_sheep",
+    w: 12,
+    d: 10,
+    sexes: "mff",
+    seed: [6, 6],
+    controller: 2,
+    build(p) {
+      barn(p, 12, 3, 3);
+      p.place(11, 1, 0, FEED.rack, { states: SOUTH, stock: { item: R.grain, full: "feeder" } });
+      p.basket(11, 2, 0, R.grain); // enrichment (0.1.179)
+      p.trough(0, 9);
+    },
+  },
+  {
+    id: "zoo_cow",
+    name: "Cows",
+    species: "zoocraft:zoo_cow",
+    w: 12,
+    d: 10,
+    sexes: "mff",
+    seed: [6, 6],
+    controller: 2,
+    build(p) {
+      barn(p, 12, 3, 3);
+      p.place(11, 1, 0, FEED.rack, { states: SOUTH, stock: { item: R.grain, full: "feeder" } });
+      p.basket(11, 2, 0, R.grain); // enrichment (0.1.179)
+      p.trough(0, 9);
+    },
+  },
+  // Mooshrooms (0.1.191): the cows' yard on mycelium, the Mushroom Fields' floor (they need 12 blocks each), the barn
+  // corner's hay, a red and a brown mushroom on the floor (they grow on mycelium in any light); a bull and two cows, red,
+  // brown, red.
+  {
+    id: "zoo_mooshroom",
+    name: "Mooshrooms",
+    species: "zoocraft:zoo_mooshroom",
+    w: 12,
+    d: 10,
+    sexes: "mff",
+    seed: [6, 6],
+    controller: 2,
+    build(p) {
+      barn(p, 12, 3, 3);
+      p.floor("minecraft:mycelium");
+      p.place(11, 1, 0, FEED.rack, { states: SOUTH, stock: { item: R.grain, full: "feeder" } });
+      p.basket(11, 2, 0, R.grain);
+      p.trough(0, 9);
+      p.set(3, 1, 7, "minecraft:red_mushroom");
+      p.set(8, 1, 5, "minecraft:brown_mushroom");
+    },
+  },
+  {
+    id: "zoo_pig",
+    name: "Pigs",
+    species: "zoocraft:zoo_pig",
+    w: 12,
+    d: 10,
+    sexes: "mff",
+    seed: [6, 6],
+    controller: 2,
+    build(p) {
+      barn(p, 12, 3, 3);
+      p.floor("minecraft:mud", 8, 6, 9, 7); // the wallow: 4 blocks of mud
+      p.feeder(11, 1, 0, "basic", R.grain);
+      p.basket(11, 2, 0, R.grain); // enrichment (0.1.179)
+      p.trough(0, 9);
+    },
+  },
+  {
+    id: "zoo_chicken",
+    name: "Chickens",
+    species: "zoocraft:zoo_chicken",
+    w: 7,
+    d: 7,
+    sexes: "mfff",
+    seed: [3, 4],
+    controller: 2,
+    build(p) {
+      barn(p, 7, 2, 2);
+      p.feeder(6, 1, 0, "basic", R.grain);
+      p.basket(6, 2, 0, R.grain); // enrichment (0.1.179)
+      p.trough(0, 6);
+    },
+  },
+  // The Voidlings (0.1.167): the 11 by 11 Mob House with a glass wall and walls 5 high, its floor end stone with a patch
+  // of end stone bricks and a crying obsidian set in it, a Basic Feeder of Chorus Browse with the basket over it, a Water
+  // Trough. A pair.
+  {
+    id: "voidling",
+    name: "Voidlings",
+    species: "zoocraft:zoo_voidling",
+    w: 11,
+    d: 11,
+    sexes: "mf",
+    seed: [5, 3],
+    controller: 3,
+    points: [[5, 8]],
+    build(p) {
+      mobHouse(p, "minecraft:end_stone", "minecraft:end_bricks", GLASS, 5);
+      p.set(5, 0, 3, "minecraft:crying_obsidian");
+      p.feeder(10, 1, 0, "basic", R.chorus);
+      p.basket(10, 2, 0, R.chorus);
+      p.trough(0, 0);
+    },
+  },
+  // The Necromancers (0.1.166): the 11 by 11 Mob House with a glass wall and walls 5 high (the roof at 6: 2 blocks of air
+  // over the Hanging Food Basket too, so no floor block is too low), its floor soul soil with a patch of soul sand, a soul
+  // lantern hung from the roof over the middle of the pen, a Basic Feeder of Bone Rations with the basket over it, a Water
+  // Trough. A pair.
+  {
+    id: "necromancer",
+    name: "Necromancers",
+    species: "zoocraft:zoo_necromancer",
+    w: 11,
+    d: 11,
+    sexes: "mf",
+    seed: [5, 3],
+    controller: 3,
+    points: [[5, 8]],
+    build(p) {
+      mobHouse(p, "minecraft:soul_soil", "minecraft:soul_sand", GLASS, 5);
+      p.set(5, 5, 3, "minecraft:soul_lantern", { hanging: true });
+      p.feeder(10, 1, 0, "basic", R.bone);
+      p.basket(10, 2, 0, R.bone);
+      p.trough(0, 0);
+    },
+  },
+  // The Cyclopes (0.1.165): a tall Mob House 13 by 14 (walls 8 high, the stone roof at 9: a Cyclops needs 6 blocks of
+  // air over every floor block it can stand on, the tops of the boulders and the Hanging Food Basket too), its pen the
+  // back 10 rows (130 blocks of floor; a pair needs 74) of stone with a gravel patch, a pile of mossy cobblestone
+  // boulders in the corner (9 of them, two 2 high), a glass wall to the hall, a Basic Feeder of Meat Rations with a
+  // Hanging Food Basket over it, a Water Trough, and two lanterns hung from the roof (they don't mind the light). A pair.
+  {
+    id: "cyclops",
+    name: "Cyclopes",
+    species: "zoocraft:zoo_cyclops",
+    w: 13,
+    d: 14,
+    sexes: "mf",
+    seed: [6, 5],
+    controller: 3,
+    points: [[6, 11]],
+    build(p) {
+      mobHouse(p, "minecraft:stone", "minecraft:gravel", GLASS, 8);
+      p.fill(1, 1, 1, 3, 1, 2, "minecraft:mossy_cobblestone");
+      p.fill(1, 2, 1, 2, 2, 1, "minecraft:mossy_cobblestone");
+      p.set(1, 1, 3, "minecraft:mossy_cobblestone");
+      p.set(4, 8, 6, "minecraft:lantern", { hanging: true });
+      p.set(8, 8, 6, "minecraft:lantern", { hanging: true });
+      p.feeder(12, 1, 0, "basic", R.meat);
+      p.basket(12, 2, 0, R.meat);
+      p.trough(11, 0);
+    },
+  },
+  // Creepers (0.1.164): the Mob House with a glass wall, a grass floor with a coarse dirt patch, three oak leaf bushes
+  // and three ferns on the grass, two Nocturnal Lamps for the guests to see them by, a Basic Feeder of Grain Rations
+  // with a Hanging Food Basket over it, a Water Trough. A pair.
+  {
+    id: "creeper",
+    name: "Creepers",
+    species: "zoocraft:zoo_creeper",
+    w: 11,
+    d: 11,
+    sexes: "mf",
+    seed: [5, 3],
+    controller: 3,
+    points: [[5, 8]],
+    build(p) {
+      mobHouse(p, "minecraft:grass_block", "minecraft:coarse_dirt", GLASS);
+      for (const [x, z] of [[1, 5], [8, 1], [9, 5]]) p.set(x, 1, z, LEAVES, LEAF_STATES);
+      for (const [x, z] of [[1, 1], [7, 4], [6, 1]]) p.set(x, 1, z, "minecraft:fern");
+      p.lamp(3, 4, 3);
+      p.lamp(7, 4, 3);
+      p.feeder(10, 1, 0, "basic", R.grain);
+      p.basket(10, 2, 0, R.grain);
+      p.trough(0, 0);
+    },
+  },
+  // Spiders (0.1.164): the Mob House with a tinted glass wall (the guests see through it, and it keeps out the daylight
+  // that comes in through the hall's door: a shut door, plain glass and iron bars all let it through) and a stone floor
+  // with a gravel patch, four cobwebs hung in the corners under the roof, two Nocturnal Lamps hung 3 blocks above the
+  // floor (light 4 right under each, darker round them), a Basic Feeder of Meat Rations with a Hanging Food Basket over
+  // it, a Water Trough. A pair.
+  {
+    id: "spider",
+    name: "Spiders",
+    species: "zoocraft:zoo_spider",
+    w: 11,
+    d: 11,
+    sexes: "mf",
+    seed: [5, 3],
+    controller: 3,
+    points: [[5, 8]],
+    build(p) {
+      mobHouse(p, "minecraft:stone", "minecraft:gravel", TINTED);
+      for (const [x, z] of [[0, 0], [10, 0], [0, 6], [10, 6]]) p.set(x, 4, z, "minecraft:web");
+      p.lamp(3, 4, 3);
+      p.lamp(7, 4, 3);
+      p.feeder(10, 1, 0, "basic", R.meat);
+      p.basket(10, 2, 0, R.meat);
+      p.trough(0, 0);
+    },
+  },
+  // Zombies (0.1.163, the Hostile Mob House): 11 by 11 inside the walls. The pen is the back 7 rows (77 blocks of floor; a
+  // pair needs 35) of coarse dirt and podzol, an inner tinted glass wall, and the hall the front 3 rows (11 x 3 x 4
+  // inside) behind a stone front with an oak door: a gravel path floor through the door to the Mob House block and a
+  // Viewing Point at the glass. A stone roof over it all; the tinted glass keeps out the daylight that comes in through
+  // the hall's door (a shut door lets it through, and so do plain glass and iron bars: 0.1.164), a Nocturnal Lamp hung in
+  // the pen (light 7 or less), a Basic Feeder of Meat Rations with a Hanging Food Basket over it, a Water Trough. A pair.
+  {
+    id: "zombie",
+    name: "Zombies",
+    species: "zoocraft:zoo_zombie",
+    w: 11,
+    d: 11,
+    sexes: "mf",
+    seed: [5, 3],
+    controller: 3,
+    points: [[5, 8]],
+    build(p) {
+      mobHouse(p, "minecraft:coarse_dirt", "minecraft:podzol", TINTED);
+      p.lamp(5, 4, 3);
+      p.feeder(10, 1, 0, "basic", R.meat);
+      p.basket(10, 2, 0, R.meat);
+      p.trough(0, 0);
+    },
+  },
+  // Skeletons (0.1.163): the same Mob House with an iron bars wall and a crypt floor of bone blocks and cobblestone, a
+  // Basic Feeder of Bone Rations with a Hanging Food Basket over it, a Water Trough. A pair.
+  {
+    id: "skeleton",
+    name: "Skeletons",
+    species: "zoocraft:zoo_skeleton",
+    w: 11,
+    d: 11,
+    sexes: "mf",
+    seed: [5, 3],
+    controller: 3,
+    points: [[5, 8]],
+    build(p) {
+      mobHouse(p, "minecraft:cobblestone", "minecraft:bone_block", "minecraft:iron_bars");
+      p.feeder(10, 1, 0, "basic", R.bone);
+      p.basket(10, 2, 0, R.bone);
+      p.trough(0, 0);
+    },
+  },
+  // The undead mounts (0.1.198): Mob House stables 16 by 15 inside the walls, 5 high under a stone roof. The pen is the back
+  // 11 rows (176 blocks of floor; a pair needs 160), the inner wall at row 11, the hall the front 3 rows behind a stone
+  // front with an oak door: a gravel path through the door to the Mob House block and a Viewing Point at the inner wall. A
+  // Basic Feeder with a Hanging Food Basket over it and a Water Trough in the pen's back corners. A pair each.
+  // Skeleton horses: a crypt floor of cobblestone with a bone block patch, an iron bars wall, Bone Rations.
+  {
+    id: "skeleton_horse",
+    name: "Skeleton Horses",
+    species: "zoocraft:zoo_skeleton_horse",
+    w: 16,
+    d: 15,
+    sexes: "mf",
+    seed: [8, 5],
+    controller: 3,
+    points: [[8, 12]],
+    build(p) {
+      mobHouse(p, "minecraft:cobblestone", "minecraft:bone_block", "minecraft:iron_bars", 5);
+      p.feeder(15, 1, 0, "basic", R.bone);
+      p.basket(15, 2, 0, R.bone);
+      p.trough(0, 0);
+    },
+  },
+  // Zombie horses: graveyard earth (coarse dirt, a podzol patch), tinted glass to the hall and two Nocturnal Lamps hung from
+  // the roof (light 7 or less: they like the dark), red mushrooms.
+  {
+    id: "zombie_horse",
+    name: "Zombie Horses",
+    species: "zoocraft:zoo_zombie_horse",
+    w: 16,
+    d: 15,
+    sexes: "mf",
+    seed: [8, 5],
+    controller: 3,
+    points: [[8, 12]],
+    build(p) {
+      mobHouse(p, "minecraft:coarse_dirt", "minecraft:podzol", TINTED, 5);
+      p.lamp(5, 5, 5);
+      p.lamp(10, 5, 5);
+      p.feeder(15, 1, 0, "basic", RED_MUSHROOM);
+      p.basket(15, 2, 0, RED_MUSHROOM);
+      p.trough(0, 0);
+    },
+  },
+  // Camel husks: desert ground (sand, a cut sandstone patch), glass to the hall, Meat Rations.
+  {
+    id: "camel_husk",
+    name: "Camel Husks",
+    species: "zoocraft:zoo_camel_husk",
+    w: 16,
+    d: 15,
+    sexes: "mf",
+    seed: [8, 5],
+    controller: 3,
+    points: [[8, 12]],
+    build(p) {
+      mobHouse(p, "minecraft:sand", "minecraft:cut_sandstone", GLASS, 5);
+      p.feeder(15, 1, 0, "basic", R.meat);
+      p.basket(15, 2, 0, R.meat);
+      p.trough(0, 0);
+    },
+  },
+  // Husks and zombie villagers (0.1.199): the zombies' Mob House (11 by 11, a pen of 7 rows, the hall the front 3), a
+  // Basic Feeder of Meat Rations with a Hanging Food Basket over it and a Water Trough. A pair each. Husks: desert ground
+  // (sand, a cut sandstone patch), glass to the hall, no lamp (they never burn). Zombie villagers: graveyard earth (coarse
+  // dirt, a podzol patch), tinted glass and a Nocturnal Lamp (the dark).
+  {
+    id: "husk",
+    name: "Husks",
+    species: "zoocraft:zoo_husk",
+    w: 11,
+    d: 11,
+    sexes: "mf",
+    seed: [5, 3],
+    controller: 3,
+    points: [[5, 8]],
+    build(p) {
+      mobHouse(p, "minecraft:sand", "minecraft:cut_sandstone", GLASS);
+      p.feeder(10, 1, 0, "basic", R.meat);
+      p.basket(10, 2, 0, R.meat);
+      p.trough(0, 0);
+    },
+  },
+  {
+    id: "zombie_villager",
+    name: "Zombie Villagers",
+    species: "zoocraft:zoo_zombie_villager",
+    w: 11,
+    d: 11,
+    sexes: "mf",
+    seed: [5, 3],
+    controller: 3,
+    points: [[5, 8]],
+    build(p) {
+      mobHouse(p, "minecraft:coarse_dirt", "minecraft:podzol", TINTED);
+      p.lamp(5, 4, 3);
+      p.feeder(10, 1, 0, "basic", R.meat);
+      p.basket(10, 2, 0, R.meat);
+      p.trough(0, 0);
+    },
+  },
+  // The drowned and the zombie nautilus (0.1.200): the zombies' Mob House (11 by 11, the hall the front 3) with walls 5
+  // high, its pen a tank: 11 by 6 of water 3 deep (198 blocks; two need 35, all of the first's 25 deep) over sand with a
+  // gravel patch, under a sand bank a block high along the back (the Habitat Marker's), tinted glass to the hall, a
+  // Nocturnal Lamp, a Water Filter, a Hanging Food Basket. The drowned's Meat Rations in a Basic Feeder on the bank; the
+  // zombie nautiluses' Fish Rations in an Aquarium Feeder over the water. A pair each, the zombie nautiluses one plain, one
+  // coral (the builder's coats in turn).
+  {
+    id: "drowned",
+    name: "Drowned",
+    species: "zoocraft:zoo_drowned",
+    w: 11,
+    d: 11,
+    sexes: "mf",
+    seed: [5, 0, 2],
+    controller: 3,
+    points: [[5, 8]],
+    build(p) {
+      waterPen(p);
+      p.feeder(10, 2, 0, "basic", R.meat);
+      p.basket(10, 3, 0, R.meat);
+    },
+  },
+  {
+    id: "zombie_nautilus",
+    name: "Zombie Nautiluses",
+    species: "zoocraft:zoo_zombie_nautilus",
+    w: 11,
+    d: 11,
+    sexes: "mf",
+    seed: [5, 0, 2],
+    controller: 3,
+    points: [[5, 8]],
+    build(p) {
+      waterPen(p);
+      p.feeder(5, 2, 1, "aquarium", R.fish);
+      p.basket(10, 2, 0, R.fish);
+    },
+  },
+  // The skeleton kin (0.1.201): the skeletons' Mob House (11 by 11, a pen of 7 rows, the hall the front 3), a Basic Feeder
+  // of Bone Rations with a Hanging Food Basket over it and a Water Trough. A pair each. Strays: frozen ground (snow, a
+  // packed ice patch) behind glass. Bogged: swamp ground (mud, a clay patch) and four mushrooms behind tinted glass under a
+  // Nocturnal Lamp. Parched: desert ground (sand, a smooth sandstone patch) behind glass.
+  // Wither skeletons: a fortress floor (nether bricks, a red nether brick patch) behind tinted glass under a Nocturnal Lamp.
+  {
+    id: "stray",
+    name: "Strays",
+    species: "zoocraft:zoo_stray",
+    w: 11,
+    d: 11,
+    sexes: "mf",
+    seed: [5, 3],
+    controller: 3,
+    points: [[5, 8]],
+    build(p) {
+      mobHouse(p, "minecraft:snow", "minecraft:packed_ice", GLASS);
+      p.feeder(10, 1, 0, "basic", R.bone);
+      p.basket(10, 2, 0, R.bone);
+      p.trough(0, 0);
+    },
+  },
+  {
+    id: "bogged",
+    name: "Bogged",
+    species: "zoocraft:zoo_bogged",
+    w: 11,
+    d: 11,
+    sexes: "mf",
+    seed: [5, 3],
+    controller: 3,
+    points: [[5, 8]],
+    build(p) {
+      mobHouse(p, "minecraft:mud", "minecraft:clay", TINTED);
+      p.lamp(5, 4, 3);
+      p.set(7, 1, 1, "minecraft:brown_mushroom");
+      p.set(9, 1, 4, "minecraft:red_mushroom");
+      p.set(1, 1, 6, "minecraft:brown_mushroom");
+      p.set(6, 1, 6, "minecraft:red_mushroom");
+      p.feeder(10, 1, 0, "basic", R.bone);
+      p.basket(10, 2, 0, R.bone);
+      p.trough(0, 0);
+    },
+  },
+  {
+    id: "parched",
+    name: "Parched",
+    species: "zoocraft:zoo_parched",
+    w: 11,
+    d: 11,
+    sexes: "mf",
+    seed: [5, 3],
+    controller: 3,
+    points: [[5, 8]],
+    build(p) {
+      mobHouse(p, "minecraft:sand", "minecraft:smooth_sandstone", GLASS);
+      p.feeder(10, 1, 0, "basic", R.bone);
+      p.basket(10, 2, 0, R.bone);
+      p.trough(0, 0);
+    },
+  },
+  {
+    id: "wither_skeleton",
+    name: "Wither Skeletons",
+    species: "zoocraft:zoo_wither_skeleton",
+    w: 11,
+    d: 11,
+    sexes: "mf",
+    seed: [5, 3],
+    controller: 3,
+    points: [[5, 8]],
+    build(p) {
+      mobHouse(p, "minecraft:nether_brick", "minecraft:red_nether_brick", TINTED);
+      p.lamp(5, 4, 3);
+      p.feeder(10, 1, 0, "basic", R.bone);
+      p.basket(10, 2, 0, R.bone);
+      p.trough(0, 0);
+    },
+  },
+  // The small arthropods (0.1.202): the Mob House (11 by 11, a pen of 7 rows, the hall the front 3), a Basic Feeder with a
+  // Hanging Food Basket over it and a Water Trough. A pair each. Cave spiders: a mineshaft (oak planks, a gravel patch)
+  // behind tinted glass, four cobwebs hung in the corners and two Nocturnal Lamps 3 above the floor, as the spiders',
+  // Meat Rations. Silverfish: stone bricks with a mossy patch behind glass, Grain Rations. Endermites: end stone with an
+  // end stone brick patch behind glass, Chorus Browse.
+  {
+    id: "cave_spider",
+    name: "Cave Spiders",
+    species: "zoocraft:zoo_cave_spider",
+    w: 11,
+    d: 11,
+    sexes: "mf",
+    seed: [5, 3],
+    controller: 3,
+    points: [[5, 8]],
+    build(p) {
+      mobHouse(p, "minecraft:oak_planks", "minecraft:gravel", TINTED);
+      for (const [x, z] of [[0, 0], [10, 0], [0, 6], [10, 6]]) p.set(x, 4, z, "minecraft:web");
+      p.lamp(3, 4, 3);
+      p.lamp(7, 4, 3);
+      p.feeder(10, 1, 0, "basic", R.meat);
+      p.basket(10, 2, 0, R.meat);
+      p.trough(0, 0);
+    },
+  },
+  {
+    id: "silverfish",
+    name: "Silverfish",
+    species: "zoocraft:zoo_silverfish",
+    w: 11,
+    d: 11,
+    sexes: "mf",
+    seed: [5, 3],
+    controller: 3,
+    points: [[5, 8]],
+    build(p) {
+      mobHouse(p, "minecraft:stone_bricks", "minecraft:mossy_stone_bricks", GLASS);
+      p.feeder(10, 1, 0, "basic", R.grain);
+      p.basket(10, 2, 0, R.grain);
+      p.trough(0, 0);
+    },
+  },
+  {
+    id: "endermite",
+    name: "Endermites",
+    species: "zoocraft:zoo_endermite",
+    w: 11,
+    d: 11,
+    sexes: "mf",
+    seed: [5, 3],
+    controller: 3,
+    points: [[5, 8]],
+    build(p) {
+      mobHouse(p, "minecraft:end_stone", "minecraft:end_bricks", GLASS);
+      p.feeder(10, 1, 0, "basic", R.chorus);
+      p.basket(10, 2, 0, R.chorus);
+      p.trough(0, 0);
+    },
+  },
+  // The slime and the magma cube (0.1.203): the Mob House (11 by 11, a pen of 7 rows, the hall the front 3), a Basic Feeder
+  // with a Hanging Food Basket over it and a Water Trough. Three each, one of each size (the builder's coats in turn).
+  // Slimes: mud with a clay patch behind glass, slimeballs. Magma cubes: basalt with a blackstone patch behind glass,
+  // walls 6 high (a large one jumps 4 blocks), magma cream.
+  {
+    id: "slime",
+    name: "Slimes",
+    species: "zoocraft:zoo_slime",
+    w: 11,
+    d: 11,
+    sexes: "mfm",
+    seed: [5, 3],
+    controller: 3,
+    points: [[5, 8]],
+    build(p) {
+      mobHouse(p, "minecraft:mud", "minecraft:clay", GLASS);
+      p.feeder(10, 1, 0, "basic", SLIMEBALL);
+      p.basket(10, 2, 0, SLIMEBALL);
+      p.trough(0, 0);
+    },
+  },
+  {
+    id: "magma_cube",
+    name: "Magma Cubes",
+    species: "zoocraft:zoo_magma_cube",
+    w: 11,
+    d: 11,
+    sexes: "mfm",
+    seed: [5, 3],
+    controller: 3,
+    points: [[5, 8]],
+    build(p) {
+      mobHouse(p, "minecraft:basalt", "minecraft:blackstone", GLASS, 6);
+      p.feeder(10, 1, 0, "basic", MAGMA_CREAM);
+      p.basket(10, 2, 0, MAGMA_CREAM);
+      p.trough(0, 0);
+    },
+  },
+  // The witch (0.1.204): the Mob House (11 by 11, a pen of 7 rows, the hall the front 3), a swamp hut's spruce plank floor
+  // with a mud patch behind glass, a cauldron against the back wall, a Basic Feeder of Grain Rations with a Hanging Food
+  // Basket over it and a Water Trough. A pair.
+  {
+    id: "witch",
+    name: "Witches",
+    species: "zoocraft:zoo_witch",
+    w: 11,
+    d: 11,
+    sexes: "mf",
+    seed: [5, 3],
+    controller: 3,
+    points: [[5, 8]],
+    build(p) {
+      mobHouse(p, "minecraft:spruce_planks", "minecraft:mud", GLASS);
+      p.set(5, 1, 0, "minecraft:cauldron");
+      p.feeder(10, 1, 0, "basic", R.grain);
+      p.basket(10, 2, 0, R.grain);
+      p.trough(0, 0);
+    },
+  },
+  // The phantom (0.1.205): a tall Mob House (11 by 13, walls 8 high: a pen of 9 rows with 8 blocks of air over the floor,
+  // the hall the front 3), a stone floor with a coarse dirt patch, tinted glass to the hall (the dark), a Nocturnal Lamp
+  // hung from the middle of the roof for the guests to see them by, a Basic Feeder of Meat Rations with a Hanging Food
+  // Basket over it and a Water Trough. A pair.
+  {
+    id: "phantom",
+    name: "Phantoms",
+    species: "zoocraft:zoo_phantom",
+    w: 11,
+    d: 13,
+    sexes: "mf",
+    seed: [5, 4],
+    controller: 3,
+    points: [[5, 11]],
+    build(p) {
+      mobHouse(p, "minecraft:stone", "minecraft:coarse_dirt", TINTED, 8);
+      p.lamp(5, 8, 4);
+      p.feeder(10, 1, 0, "basic", R.meat);
+      p.basket(10, 2, 0, R.meat);
+      p.trough(0, 0);
+    },
+  },
+  // The piglins (0.1.206): Mob Houses (11 by 11, a pen of 7 rows, the hall the front 3) behind glass. Piglins on
+  // polished blackstone bricks with a crimson nylium patch and a block of gold against the back wall; brutes on polished
+  // blackstone bricks with a gilded blackstone patch; zombified piglins on netherrack with a nether gold ore patch. Each a
+  // Basic Feeder of Meat Rations with a Hanging Food Basket over it and a Water Trough. A pair each.
+  {
+    id: "piglin",
+    name: "Piglins",
+    species: "zoocraft:zoo_piglin",
+    w: 11,
+    d: 11,
+    sexes: "mf",
+    seed: [5, 3],
+    controller: 3,
+    points: [[5, 8]],
+    build(p) {
+      mobHouse(p, "minecraft:polished_blackstone_bricks", "minecraft:crimson_nylium", GLASS);
+      p.set(5, 1, 0, "minecraft:gold_block");
+      p.feeder(10, 1, 0, "basic", R.meat);
+      p.basket(10, 2, 0, R.meat);
+      p.trough(0, 0);
+    },
+  },
+  {
+    id: "piglin_brute",
+    name: "Piglin Brutes",
+    species: "zoocraft:zoo_piglin_brute",
+    w: 11,
+    d: 11,
+    sexes: "mf",
+    seed: [5, 3],
+    controller: 3,
+    points: [[5, 8]],
+    build(p) {
+      mobHouse(p, "minecraft:polished_blackstone_bricks", "minecraft:gilded_blackstone", GLASS);
+      p.feeder(10, 1, 0, "basic", R.meat);
+      p.basket(10, 2, 0, R.meat);
+      p.trough(0, 0);
+    },
+  },
+  {
+    id: "zombified_piglin",
+    name: "Zombified Piglins",
+    species: "zoocraft:zoo_zombified_piglin",
+    w: 11,
+    d: 11,
+    sexes: "mf",
+    seed: [5, 3],
+    controller: 3,
+    points: [[5, 8]],
+    build(p) {
+      mobHouse(p, "minecraft:netherrack", "minecraft:nether_gold_ore", GLASS);
+      p.feeder(10, 1, 0, "basic", R.meat);
+      p.basket(10, 2, 0, R.meat);
+      p.trough(0, 0);
+    },
+  },
+  // The hoglin and the zoglin (0.1.207): Mob Houses (11 by 11, a pen of 7 rows, the hall the front 3) behind glass.
+  // Hoglins on crimson nylium with a netherrack patch and two crimson fungi growing against the back wall, a Basic
+  // Feeder of Fungal Rations with a Hanging Food Basket over it; zoglins on netherrack with a crimson nylium patch, Meat
+  // Rations. Each a Water Trough, and a pair.
+  {
+    id: "hoglin",
+    name: "Hoglins",
+    species: "zoocraft:zoo_hoglin",
+    w: 11,
+    d: 11,
+    sexes: "mf",
+    seed: [5, 3],
+    controller: 3,
+    points: [[5, 8]],
+    build(p) {
+      mobHouse(p, "minecraft:crimson_nylium", "minecraft:netherrack", GLASS);
+      p.set(3, 1, 0, "minecraft:crimson_fungus");
+      p.set(7, 1, 0, "minecraft:crimson_fungus");
+      p.feeder(10, 1, 0, "basic", R.fungal);
+      p.basket(10, 2, 0, R.fungal);
+      p.trough(0, 0);
+    },
+  },
+  {
+    id: "zoglin",
+    name: "Zoglins",
+    species: "zoocraft:zoo_zoglin",
+    w: 11,
+    d: 11,
+    sexes: "mf",
+    seed: [5, 3],
+    controller: 3,
+    points: [[5, 8]],
+    build(p) {
+      mobHouse(p, "minecraft:netherrack", "minecraft:crimson_nylium", GLASS);
+      p.feeder(10, 1, 0, "basic", R.meat);
+      p.basket(10, 2, 0, R.meat);
+      p.trough(0, 0);
+    },
+  },
+  // The blaze and the ghast (0.1.208): Mob Houses behind glass. Blazes (11 by 11, a pen of 7 rows, the hall the front 3)
+  // on nether bricks with a netherrack patch, a Basic Feeder of Ember Rations with a Hanging Food Basket over it, a Lava
+  // Trough; a pair. Ghasts (17 by 20, walls 12: a pen 17 by 16 with 12 blocks of air over it, the hall the front 3) on
+  // netherrack with a soul sand patch, a Basic Feeder of Meat Rations with a basket, a Water Trough; one.
+  {
+    id: "blaze",
+    name: "Blazes",
+    species: "zoocraft:zoo_blaze",
+    w: 11,
+    d: 11,
+    sexes: "mf",
+    seed: [5, 3],
+    controller: 3,
+    points: [[5, 8]],
+    build(p) {
+      mobHouse(p, "minecraft:nether_brick", "minecraft:netherrack", GLASS);
+      p.feeder(10, 1, 0, "basic", R.ember);
+      p.basket(10, 2, 0, R.ember);
+      p.lavaTrough(0, 0);
+    },
+  },
+  {
+    id: "ghast",
+    name: "Ghasts",
+    species: "zoocraft:zoo_ghast",
+    w: 17,
+    d: 20,
+    sexes: "f",
+    seed: [8, 8],
+    controller: 3,
+    points: [[8, 18]],
+    build(p) {
+      mobHouse(p, "minecraft:netherrack", "minecraft:soul_sand", GLASS, 12);
+      p.feeder(16, 1, 0, "basic", R.meat);
+      p.basket(16, 2, 0, R.meat);
+      p.trough(0, 0);
+    },
+  },
+  // The enderman and the shulker (0.1.209): Mob Houses behind glass (11 by 11, a pen of 7 rows, the hall the front 3), a
+  // Basic Feeder of Chorus Browse with a Hanging Food Basket over it, a Water Trough; a pair each. Endermen on end stone
+  // with an obsidian patch; shulkers on purpur with an end stone brick patch (one undyed, one lime).
+  {
+    id: "enderman",
+    name: "Endermen",
+    species: "zoocraft:zoo_enderman",
+    w: 11,
+    d: 11,
+    sexes: "mf",
+    seed: [5, 3],
+    controller: 3,
+    points: [[5, 8]],
+    build(p) {
+      mobHouse(p, "minecraft:end_stone", "minecraft:obsidian", GLASS);
+      p.feeder(10, 1, 0, "basic", R.chorus);
+      p.basket(10, 2, 0, R.chorus);
+      p.trough(0, 0);
+    },
+  },
+  {
+    id: "shulker",
+    name: "Shulkers",
+    species: "zoocraft:zoo_shulker",
+    w: 11,
+    d: 11,
+    sexes: "mf",
+    seed: [5, 3],
+    controller: 3,
+    points: [[5, 8]],
+    build(p) {
+      mobHouse(p, "minecraft:purpur_block", "minecraft:end_bricks", GLASS);
+      p.feeder(10, 1, 0, "basic", R.chorus);
+      p.basket(10, 2, 0, R.chorus);
+      p.trough(0, 0);
+    },
+  },
+  // The Baby Dragon (0.1.162): a great hall 31 by 31 (961 blocks; one needs 900) floored with end stone (two patches of
+  // end stone bricks), walls 16 high under a glass roof as the Dragons' hall, a Basic Feeder of Meat Rations with a
+  // Hanging Food Basket over it, and a Water Trough. One.
+  {
+    id: "baby_dragon",
+    name: "Baby Dragon",
+    species: "zoocraft:baby_dragon",
+    w: 31,
+    d: 31,
+    sexes: "m",
+    seed: [15, 15],
+    controller: 3,
+    build(p) {
+      p.walls(16);
+      p.roof(17, GLASS);
+      p.floor("minecraft:end_stone");
+      p.fill(4, 0, 4, 8, 0, 8, "minecraft:end_bricks");
+      p.fill(21, 0, 20, 25, 0, 24, "minecraft:end_bricks");
+      p.feeder(29, 1, 1, "basic", R.meat);
+      p.basket(29, 2, 1, R.meat);
+      p.trough(26, 1);
+    },
+  },
+  // The Soul Sloths (0.1.161): 26 by 25 (650 blocks: a pair needs 600), walls 4 high, a soul soil floor with a patch of
+  // soul sand, two fossil posts of bone block 7 high near the back, each with a beam of 5 bone blocks running out from
+  // its top toward the middle (6 blocks over the floor), a Thermal Regulator, a Basic Feeder of Fungal Rations and a
+  // Water Trough. A pair.
+  {
+    id: "sloth",
+    name: "Soul Sloths",
+    species: "zoocraft:soul_sloth",
+    w: 26,
+    d: 25,
+    sexes: "mf",
+    seed: [12, 16],
+    controller: 3,
+    build(p) {
+      p.walls(4);
+      p.floor("minecraft:soul_soil");
+      p.fill(14, 0, 14, 19, 0, 19, "minecraft:soul_sand");
+      p.fill(4, 1, 6, 4, 7, 6, "minecraft:bone_block", { pillar_axis: "y" });
+      p.fill(5, 7, 6, 9, 7, 6, "minecraft:bone_block", { pillar_axis: "x" });
+      p.fill(21, 1, 6, 21, 7, 6, "minecraft:bone_block", { pillar_axis: "y" });
+      p.fill(16, 7, 6, 20, 7, 6, "minecraft:bone_block", { pillar_axis: "x" });
+      p.heater(25, 0);
+      p.feeder(25, 1, 24, "basic", R.fungal);
+      p.basket(25, 2, 24, R.fungal); // enrichment (0.1.179)
+      p.trough(21, 24);
+    },
+  },
+  // The Giant Yetis (0.1.159): 26 by 25 (650 blocks: a pair needs 600), walls 4 high, snow over the back half of the
+  // floor (52%) with a patch of packed ice, a den in the back corner (a stone side wall, roofed 6 up over 7 by 6 of the
+  // floor: 7%, headroom 5), a Cooling Unit with ice, a Basic Feeder of Fruit Rations with a Hanging Food Basket over it,
+  // and a Water Trough. A pair.
+  {
+    id: "yeti",
+    name: "Giant Yetis",
+    species: "zoocraft:giant_yeti",
+    w: 26,
+    d: 25,
+    sexes: "mf",
+    seed: [12, 18],
+    controller: 3,
+    build(p) {
+      p.walls(4);
+      p.floor("minecraft:snow", 0, 0, 25, 12);
+      p.fill(16, 0, 3, 20, 0, 7, "minecraft:packed_ice");
+      p.fill(7, 1, 0, 7, 5, 5, STONE);
+      p.fill(-1, 5, -1, -1, 5, 5, STONE);
+      p.fill(-1, 6, -1, 7, 6, 5, STONE);
+      p.cooler(25, 0);
+      p.feeder(25, 1, 24, "basic", R.fruit);
+      p.basket(25, 2, 24, R.fruit);
+      p.trough(21, 24);
+    },
+  },
+  // The Glowhorn Stags (0.1.152): 18 by 17 on the grass (306 blocks; three need 256), walls 3 high, two oak trees in
+  // the floor (trunks 4 logs high under a cap of leaves) with open floor all round to rub their antlers from, a Hay
+  // Rack and a Basic Feeder of Leafy Rations with a Hanging Food Basket over it, and a Water Trough. A stag and two
+  // hinds.
+  {
+    id: "glowhorn",
+    name: "Glowhorn Stags",
+    species: "zoocraft:glowhorn_stag",
+    w: 18,
+    d: 17,
+    sexes: "mff",
+    seed: [9, 12],
+    controller: 3,
+    build(p) {
+      p.walls(3);
+      for (const [x, z] of [[5, 6], [12, 9]]) {
+        p.fill(x - 2, 5, z - 2, x + 2, 6, z + 2, LEAVES, LEAF_STATES);
+        p.fill(x, 1, z, x, 5, z, "minecraft:oak_log");
+      }
+      p.place(8, 1, 0, FEED.rack, { states: SOUTH, stock: { item: R.leafy, full: "feeder" } });
+      p.feeder(16, 1, 15, "basic", R.leafy);
+      p.basket(16, 2, 15, R.leafy);
+      p.trough(16, 12);
+    },
+  },
+  // The Griffins (0.1.151): a hall 38 by 38 (a pair needs 1,200 blocks of floor, with a chick 1,350) with walls 16 high
+  // and a glass roof over 16 blocks of air, a hoard of four blocks of gold on the floor to guard, a Basic Feeder of Meat
+  // Rations with a Hanging Food Basket over it, and a Water Trough. A pair.
+  {
+    id: "griffin",
+    name: "Griffins",
+    species: "zoocraft:griffin",
+    w: 38,
+    d: 38,
+    sexes: "mf",
+    seed: [19, 19],
+    controller: 3,
+    build(p) {
+      p.walls(16);
+      p.roof(17, GLASS);
+      for (const [x, z] of [[9, 9], [10, 9], [9, 10], [10, 10]]) p.set(x, 1, z, "minecraft:gold_block");
+      p.feeder(36, 1, 1, "basic", R.meat);
+      p.basket(36, 2, 1, R.meat);
+      p.trough(33, 1);
+    },
+  },
+  // The Dragons (0.1.150): a hall 38 by 38 (1,444 blocks of floor; a pair needs 1,200, with a hatchling 1,350) with walls
+  // 16 high and a glass roof over 16 blocks of air, two lit campfires on the floor to bask by, a Basic Feeder of Meat
+  // Rations with a Hanging Food Basket over it, and a Water Trough. A pair.
+  {
+    id: "dragon",
+    name: "Dragons",
+    species: "zoocraft:dragon",
+    w: 38,
+    d: 38,
+    sexes: "mf",
+    seed: [19, 19],
+    controller: 3,
+    build(p) {
+      p.walls(16);
+      p.roof(17, GLASS);
+      p.set(9, 1, 9, "minecraft:campfire");
+      p.set(28, 1, 28, "minecraft:campfire");
+      p.feeder(36, 1, 1, "basic", R.meat);
+      p.basket(36, 2, 1, R.meat);
+      p.trough(33, 1);
+    },
+  },
+  // The Unicorns (0.1.149): 16 by 15 on the grass (240 blocks; a pair needs 208), walls 3 high, eight glowing flowers on
+  // the floor (a pair needs 6: three of each kind but two Wisp Ferns), a Hay Rack and a Basic Feeder of Grain Rations
+  // with a Hanging Food Basket over it, and a Water Trough by the front to dip their horns in. A pair.
+  {
+    id: "unicorn",
+    name: "Unicorns",
+    species: "zoocraft:unicorn",
+    w: 16,
+    d: 15,
+    sexes: "mf",
+    seed: [8, 8],
+    controller: 3,
+    build(p) {
+      p.walls(3);
+      for (const [x, z, f] of [[3, 3, "moonbloom"], [12, 4, "starpetal"], [5, 9, "wisp_fern"], [10, 10, "moonbloom"], [2, 12, "starpetal"], [13, 12, "moonbloom"], [7, 6, "starpetal"], [8, 12, "wisp_fern"]]) p.set(x, 1, z, `zoocraft:${f}`);
+      p.place(6, 1, 0, FEED.rack, { states: SOUTH, stock: { item: R.grain, full: "feeder" } });
+      p.feeder(10, 1, 0, "basic", R.grain);
+      p.basket(10, 2, 0, R.grain);
+      p.trough(15, 14);
+    },
+  },
+  // The Skulkers (0.1.139): a dark house 12 by 12 (144 blocks of floor; a pair needs 130) with a sculk floor (they need
+  // 8), stone walls 4 high and a stone roof over them, a tinted glass front the guests see through (no daylight gets
+  // in), lit only by a sculk catalyst in a corner (light 6; they need 7 or less) and their own glow. A sculk sensor (they
+  // don't mind one). Insect Rations; a pair.
+  {
+    id: "skulker",
+    name: "Skulkers",
+    species: "zoocraft:skulker",
+    w: 12,
+    d: 12,
+    sexes: "mf",
+    seed: [6, 6],
+    controller: 3,
+    build(p) {
+      p.floor("minecraft:sculk");
+      p.walls(4, STONE, TINTED);
+      p.roof(5, STONE);
+      p.set(11, 1, 0, "minecraft:sculk_catalyst");
+      p.set(0, 1, 0, "minecraft:sculk_sensor");
+      p.feeder(11, 1, 11, "basic", R.insect);
+      p.basket(11, 2, 11, R.insect); // enrichment (0.1.179)
+      p.trough(0, 11);
+    },
+  },
+  // The Earth Molebears (0.1.138; twice the size since 0.1.140): 20 by 19 (348 blocks of floor beside the bank; a pair
+  // needs 336), walls 4 high, and a bank of Burrow Soil along the back wall, 8 wide, 4 deep and 3 high (96 blocks; 42 of
+  // them beside the floor, they need 12): five faces 2 wide to dig into from the floor in front, each 3 blocks deep,
+  // and two from each end. Insect Rations; a pair.
+  {
+    id: "molebear",
+    name: "Earth Molebears",
+    species: "zoocraft:molebear",
+    w: 20,
+    d: 19,
+    sexes: "mf",
+    seed: [10, 11],
+    controller: 3,
+    build(p) {
+      p.walls(4);
+      p.fill(6, 1, 0, 13, 3, 3, "zoocraft:burrow_soil");
+      p.feeder(19, 1, 18, "basic", R.insect);
+      p.basket(19, 2, 18, R.insect); // enrichment (0.1.179)
+      p.trough(0, 18);
+    },
+  },
+  // The Lush Okapis (0.1.137): 13 by 12 (156 blocks of floor; a pair needs 130), walls 4 high, a moss floor in the back
+  // corner (36 blocks; they need 8) under a moss roof resting on the walls (4 blocks of headroom, cover over 25 blocks)
+  // with glow berry vines hanging from it, two azalea bushes, a big dripleaf, an oak trunk to rub on under azalea leaves
+  // (two flowering ones hanging beside it), two clay blocks to lick, and Leafy Rations; a pair (6 lush plants; they need 4).
+  {
+    id: "okapi",
+    name: "Lush Okapis",
+    species: "zoocraft:okapi",
+    w: 13,
+    d: 12,
+    sexes: "mf",
+    seed: [7, 6],
+    controller: 3,
+    build(p) {
+      p.walls(4);
+      p.floor("minecraft:moss_block", 0, 0, 5, 5);
+      p.fill(-1, 5, -1, 4, 5, 4, "minecraft:moss_block");
+      p.set(1, 4, 1, "minecraft:cave_vines_body_with_berries");
+      p.set(1, 3, 1, "minecraft:cave_vines_head_with_berries");
+      p.set(9, 0, 9, "minecraft:clay");
+      p.set(10, 0, 9, "minecraft:clay");
+      p.set(2, 1, 9, "minecraft:azalea");
+      p.set(5, 1, 10, "minecraft:flowering_azalea");
+      p.set(10, 1, 4, "minecraft:big_dripleaf", { big_dripleaf_head: true });
+      p.fill(10, 1, 2, 10, 3, 2, "minecraft:oak_log");
+      p.fill(9, 4, 1, 11, 4, 3, "minecraft:azalea_leaves", LEAF_STATES);
+      p.set(9, 3, 2, "minecraft:azalea_leaves_flowered", LEAF_STATES);
+      p.set(11, 3, 2, "minecraft:azalea_leaves_flowered", LEAF_STATES);
+      p.feeder(12, 1, 11, "basic", R.leafy);
+      p.basket(12, 2, 11, R.leafy);
+      p.trough(0, 11);
+    },
+  },
+  {
+    id: "lion",
+    name: "Lions",
+    species: "zoocraft:lion",
+    w: 24,
+    d: 24,
+    sexes: "mffff",
+    seed: [12, 5],
+    controller: 7,
+    corridor: 3,
+    build(p) {
+      p.walls(3);
+      p.fill(8, 1, 10, 13, 1, 11, "minecraft:stone"); // a stone shelf to rest on (12 blocks of ledge, 2 a lion)
+      p.fill(0, 5, 0, 7, 5, 7, STONE); // shade over a corner
+      p.dens([10, 12, 14, 16, 18, 20]); // one each and a spare
+      p.keeperGates(3);
+      p.feeder(20, 1, 21, "basic", R.meat);
+      p.basket(20, 2, 21, R.meat);
+      p.feeder(22, 1, 21, "puzzle", R.meat);
+      p.trough(22, 23);
+      p.fixture(12, 1, 18, "zoocraft:scent_post");
+    },
+  },
+  {
+    id: "tiger",
+    name: "Tigers",
+    species: "zoocraft:tiger",
+    w: 20,
+    d: 20,
+    sexes: "mf",
+    seed: [9, 9],
+    controller: 7,
+    corridor: 3,
+    build(p) {
+      p.walls(3);
+      p.pool(12, 12, 17, 17, 1); // the shallows round the edge
+      p.pool(13, 13, 16, 16, 2); // 16 spots 2 deep
+      p.fixture(11, 1, 14, "zoocraft:water_filter");
+      p.fill(2, 1, 8, 6, 2, 8, "minecraft:mossy_cobblestone"); // rocks to lie up behind, out of sight
+      p.fill(2, 1, 9, 2, 2, 12, "minecraft:mossy_cobblestone");
+      p.fill(0, 5, 0, 6, 5, 6, STONE); // shade
+      p.dens([10, 12]);
+      p.keeperGates(3);
+      p.feeder(16, 1, 2, "basic", R.meat);
+      p.basket(16, 2, 2, R.meat);
+      p.feeder(18, 1, 2, "puzzle", R.meat);
+      p.fixture(10, 1, 6, "zoocraft:scent_post");
+    },
+  },
+  {
+    id: "crocodile",
+    name: "Crocodiles",
+    species: "zoocraft:crocodile",
+    w: 18,
+    d: 18,
+    sexes: "mmff",
+    seed: [12, 12],
+    controller: 12,
+    corridor: 15,
+    build(p) {
+      p.walls(3);
+      p.pool(0, 0, 8, 17, 1);
+      p.pool(0, 0, 7, 17, 2); // deep water to go under, a shallow edge along the bank
+      p.fixture(3, -1, 12, "zoocraft:water_filter"); // on the bottom: keepers need a clear shore to see into the water
+      p.floor("minecraft:sand", 11, 6, 13, 10); // sand 3 to 5 blocks from the water, to nest in
+      p.fill(9, 3, 0, 13, 3, 6, STONE); // shade by the water
+      p.dens([9, 10, 11, 12]);
+      p.keeperGates(15); // the inner gate 7 blocks from the water
+      p.feeder(16, 1, 16, "basic", R.meat);
+      p.basket(16, 2, 16, R.meat);
+    },
+  },
+  {
+    id: "gorilla",
+    name: "Gorillas",
+    species: "zoocraft:gorilla",
+    w: 21,
+    d: 21,
+    sexes: "mffff",
+    seed: [10, 5],
+    controller: 7,
+    corridor: 3,
+    build(p) {
+      p.walls(5); // they pull themselves up 3.5 blocks
+      p.frame(10, 11);
+      p.dens([9, 11, 13, 15, 17]);
+      p.keeperGates(3);
+      p.feeder(18, 1, 18, "basic", R.leafy);
+      p.basket(18, 2, 18, R.fruit);
+      p.feeder(16, 1, 18, "puzzle", R.fruit);
+      p.trough(20, 18);
+    },
+  },
+  {
+    id: "zebra",
+    name: "Zebras",
+    species: "zoocraft:zebra",
+    w: 21,
+    d: 21,
+    sexes: "mfffff",
+    seed: [10, 10],
+    controller: 3,
+    build(p) {
+      p.walls(3); // a Hay Rack against a 2-high wall is a step over it
+      p.place(8, 1, 0, FEED.rack, { states: SOUTH, stock: { item: R.grain, full: "feeder" } }); // stood on the floor: room for 4 each
+      p.place(12, 1, 0, FEED.rack, { states: SOUTH, stock: { item: R.grain, full: "feeder" } });
+      p.feeder(16, 1, 0, "puzzle", R.grain);
+      p.basket(16, 2, 0, R.grain);
+      p.trough(20, 20);
+    },
+  },
+  {
+    id: "flamingo",
+    name: "Flamingos",
+    species: "zoocraft:flamingo",
+    w: 14,
+    d: 14,
+    sexes: "mmmmmfffff",
+    seed: [10, 8],
+    controller: 3,
+    build(p) {
+      p.walls(2);
+      p.pool(0, 3, 7, 10, 1); // shallows to wade in
+      p.fixture(3, 1, 11, "zoocraft:water_filter");
+      p.floor("minecraft:mud", 8, 4, 8, 7); // mud at the water's edge to nest on
+      p.feeder(12, 1, 1, "basic", R.pellets);
+      p.basket(12, 2, 1, R.pellets);
+    },
+  },
+  {
+    id: "raccoon",
+    name: "Raccoons",
+    species: "zoocraft:raccoon",
+    w: 10,
+    d: 10,
+    sexes: "mmff",
+    seed: [4, 2],
+    controller: 2,
+    build(p) {
+      p.walls(3, GLASS); // they can't grip glass
+      p.frame(5, 5);
+      p.pool(1, 7, 2, 8, 1); // water to wash their food in
+      p.fixture(3, 1, 8, "zoocraft:water_filter");
+      p.feeder(8, 1, 1, "puzzle", R.fruit);
+      p.basket(8, 2, 1, R.fruit);
+    },
+  },
+  {
+    id: "red_panda",
+    name: "Red Pandas",
+    species: "zoocraft:red_panda",
+    w: 10,
+    d: 10,
+    sexes: "mff",
+    seed: [8, 1],
+    controller: 2,
+    build(p) {
+      p.walls(7, GLASS);
+      // Two oak trees whose leaves touch, back from the walls.
+      p.fill(2, 4, 2, 4, 4, 4, LEAVES, LEAF_STATES);
+      p.fill(5, 4, 5, 7, 4, 7, LEAVES, LEAF_STATES);
+      p.fill(2, 5, 2, 7, 5, 7, LEAVES, LEAF_STATES);
+      p.fill(3, 1, 3, 3, 4, 3, "minecraft:oak_log");
+      p.fill(6, 1, 6, 6, 4, 6, "minecraft:oak_log");
+      for (const z of [4, 6, 8]) p.fixture(8, 1, z, "zoocraft:nest_box", SOUTH); // one each, on the floor
+      p.feeder(1, 1, 8, "basic", R.leafy);
+      p.basket(1, 2, 8, R.leafy);
+      p.trough(1, 6);
+    },
+  },
+  {
+    id: "owl",
+    name: "Owls",
+    species: "zoocraft:owl",
+    w: 7,
+    d: 7,
+    sexes: "mmff",
+    seed: [3, 3],
+    controller: 2,
+    build(p) {
+      p.walls(4, GLASS);
+      p.roof(5, GLASS);
+      p.fixture(1, 1, 5, "zoocraft:perch", SOUTH); // a low perch
+      p.fill(5, 1, 1, 5, 2, 1, "minecraft:oak_log");
+      p.fixture(5, 3, 1, "zoocraft:perch", SOUTH); // a high one, on a post
+      p.fixture(6, 1, 6, "zoocraft:nest_box", SOUTH);
+      p.feeder(6, 1, 3, "basic", R.meat);
+      p.basket(6, 2, 3, R.meat);
+      p.trough(0, 0);
+    },
+  },
+  {
+    id: "crimson_grazer",
+    name: "Crimson Grazers",
+    species: "zoocraft:crimson_grazer",
+    w: 20,
+    d: 19,
+    sexes: "mmfff",
+    seed: [8, 8],
+    controller: 4,
+    build(p) {
+      p.floor("minecraft:crimson_nylium");
+      p.walls(3); // the Thermal Regulator in the corner would be a step over a 2-high wall
+      p.fill(10, 1, 4, 10, 2, 4, "minecraft:crimson_stem"); // stems to rub on
+      p.fill(4, 1, 12, 4, 2, 12, "minecraft:crimson_stem");
+      p.fill(13, 5, 0, 19, 5, 5, STONE); // the herd's shelter
+      p.heater(0, 0);
+      p.feeder(18, 1, 17, "basic", R.fungal);
+      p.basket(18, 2, 17, R.fungal);
+      p.trough(16, 17);
+    },
+  },
+  {
+    id: "warped_gecko",
+    name: "Warped Geckos",
+    species: "zoocraft:warped_gecko",
+    w: 6,
+    d: 6,
+    sexes: "mff",
+    seed: [2, 2],
+    controller: 2,
+    build(p) {
+      p.floor("minecraft:warped_nylium");
+      p.walls(4, GLASS);
+      p.roof(5, GLASS); // they climb glass
+      // Two cracks at head height in the west wall, closed behind.
+      for (const z of [2, 4]) {
+        p.set(-1, 2, z, AIR);
+        p.set(-2, 2, z, STONE);
+      }
+      p.fixture(5, 1, 5, "zoocraft:burrow_shelter", SOUTH);
+      p.heater(0, 5);
+      p.feeder(5, 1, 0, "insect", R.insect);
+      p.basket(5, 2, 0, R.insect);
+      p.trough(0, 0);
+    },
+  },
+  {
+    id: "cinder_boar",
+    name: "Cinder Boars",
+    species: "zoocraft:cinder_boar",
+    w: 16,
+    d: 16,
+    sexes: "mffff",
+    seed: [8, 5],
+    controller: 4,
+    build(p) {
+      p.floor("minecraft:netherrack");
+      p.walls(3); // stone: they break wood
+      p.floor("zoocraft:warm_ash", 2, 2, 5, 3);
+      p.floor("zoocraft:thermal_mud", 10, 10, 11, 11);
+      p.set(12, 1, 10, "minecraft:basalt"); // a rock to rub on by the mud
+      p.heater(0, 15);
+      p.feeder(15, 1, 15, "basic", R.ember);
+      p.basket(15, 2, 15, R.ember);
+      p.trough(13, 15);
+    },
+  },
+  {
+    id: "soul_moth",
+    name: "Soul Moths",
+    species: "zoocraft:soul_moth",
+    w: 6,
+    d: 6,
+    sexes: "mmmmffff",
+    seed: [2, 3],
+    controller: 2,
+    build(p) {
+      p.floor("minecraft:soul_soil");
+      p.walls(4, STONE, TINTED);
+      p.roof(5, STONE);
+      p.set(3, 4, 1, "minecraft:soul_lantern", { hanging: true }); // over the campfire, out of the floor's headroom
+      p.set(0, 2, 2, "minecraft:soul_torch", { torch_facing_direction: "east" });
+      p.set(3, 1, 1, "minecraft:soul_campfire");
+      for (const [x, z] of [[1, 4], [2, 5], [4, 4]]) p.set(x, 1, z, "minecraft:crimson_roots");
+      p.set(5, 1, 2, "minecraft:warped_roots");
+      p.feeder(5, 1, 5, "nectar", R.nectar);
+      p.basket(5, 2, 5, R.nectar);
+      p.heater(0, 5);
+      p.trough(5, 0);
+    },
+  },
+  {
+    id: "quartz_beetle",
+    name: "Quartz Beetles",
+    species: "zoocraft:quartz_beetle",
+    w: 6,
+    d: 6,
+    sexes: "mmmfff",
+    seed: [3, 4],
+    controller: 2,
+    build(p) {
+      p.floor("minecraft:netherrack");
+      p.walls(2, STONE, TINTED);
+      p.roof(3, STONE); // the cave roof
+      p.floor("zoocraft:mineral_substrate", 1, 1, 3, 2);
+      p.set(0, 2, 4, "minecraft:torch", { torch_facing_direction: "east" });
+      p.heater(0, 5);
+      p.feeder(5, 1, 0, "basic", R.mineral);
+      p.basket(5, 2, 0, R.mineral);
+      p.trough(5, 2);
+    },
+  },
+  {
+    id: "end_hopper",
+    name: "End Hoppers",
+    species: "zoocraft:end_hopper",
+    w: 10,
+    d: 10,
+    sexes: "mmmfff",
+    seed: [5, 5],
+    controller: 2,
+    build(p) {
+      p.floor(END_STONE);
+      p.walls(5, GLASS);
+      p.roof(6, GLASS); // they leap 3 blocks high
+      p.fixture(2, 1, 2, "zoocraft:landing_pad");
+      p.fixture(2, 1, 7, "zoocraft:landing_pad");
+      p.fixture(7, 1, 2, "zoocraft:landing_pad");
+      p.set(7, 1, 7, END_STONE);
+      p.fixture(7, 2, 7, "zoocraft:landing_pad"); // a high one, 2 over the floor
+      p.fixture(5, 1, 1, "zoocraft:landing_pad");
+      p.fixture(5, 1, 8, "zoocraft:landing_pad");
+      p.feeder(9, 1, 9, "basic", R.chorus);
+      p.basket(9, 2, 9, R.chorus);
+      p.trough(0, 9);
+    },
+  },
+  {
+    id: "shimmer_snail",
+    name: "Shimmer Snails",
+    species: "zoocraft:shimmer_snail",
+    w: 6,
+    d: 6,
+    sexes: "hhhhhh",
+    seed: [3, 4],
+    controller: 2,
+    margin: 1, // the crevice walls are 2 thick
+    build(p) {
+      p.floor(END_STONE);
+      p.walls(3, GLASS); // the trough and feeder by the walls would be steps over 2-high ones
+      // Crevice walls west and east: end stone bricks 2 thick, a block left out at the foot on the inside, 3 a side.
+      p.fill(-2, 1, -1, -1, 3, 6, END_BRICKS);
+      p.fill(6, 1, -1, 7, 3, 6, END_BRICKS);
+      for (const z of [0, 2, 4]) {
+        p.set(-1, 1, z, AIR);
+        p.set(6, 1, z, AIR);
+      }
+      p.fill(0, 3, 0, 5, 3, 1, END_BRICKS); // shade over a third of the floor
+      p.floor("zoocraft:mineral_substrate", 2, 2, 3, 3);
+      p.feeder(5, 1, 5, "basic", R.mineral);
+      p.basket(5, 2, 5, R.mineral);
+      p.trough(0, 5);
+    },
+  },
+  {
+    id: "obsidian_crab",
+    name: "Obsidian Crabs",
+    species: "zoocraft:obsidian_crab",
+    w: 7,
+    d: 7,
+    sexes: "mmff",
+    seed: [3, 3],
+    controller: 3,
+    build(p) {
+      p.floor(END_STONE);
+      p.walls(2, GLASS);
+      p.fill(-1, 1, -1, 7, 2, -1, "minecraft:obsidian"); // a rock wall along the back
+      p.set(2, 1, 2, "minecraft:obsidian");
+      p.set(5, 1, 2, "minecraft:obsidian");
+      p.roof(3, END_BRICKS); // the cave roof
+      p.floor("zoocraft:mineral_substrate", 1, 5, 4, 6);
+      p.feeder(6, 1, 6, "mineral", R.mineral);
+      p.basket(6, 2, 6, R.mineral);
+      p.trough(0, 6);
+    },
+  },
+  {
+    id: "chorus_moth",
+    name: "Chorus Moths",
+    species: "zoocraft:chorus_moth",
+    w: 7,
+    d: 7,
+    sexes: "mmmmffff",
+    seed: [2, 2],
+    controller: 3,
+    build(p) {
+      p.floor(END_STONE);
+      p.walls(4, END_BRICKS, TINTED);
+      p.roof(5, END_BRICKS);
+      for (const [x, z] of [[1, 1], [5, 1], [1, 5], [5, 5]]) {
+        p.set(x, 1, z, "minecraft:chorus_plant");
+        p.set(x, 2, z, "minecraft:chorus_flower");
+      }
+      for (const [x, z] of [[3, 1], [1, 3], [5, 3], [3, 5]]) p.set(x, 1, z, "minecraft:chorus_flower");
+      p.floorLamp(6, 6, "zoocraft:purple_night_lamp");
+      p.feeder(0, 1, 6, "nectar", R.nectar);
+      p.basket(0, 2, 6, R.nectar);
+      p.trough(6, 0);
+    },
+  },
+  {
+    id: "starback_tortoise",
+    name: "Starback Tortoises",
+    species: "zoocraft:starback_tortoise",
+    w: 8,
+    d: 8,
+    sexes: "mmff",
+    seed: [5, 3],
+    controller: 5,
+    build(p) {
+      p.floor(END_STONE);
+      p.walls(3, END_BRICKS, GLASS); // the chorus plants by the walls would be steps over 2-high ones
+      p.fill(0, 3, 0, 3, 3, 2, END_BRICKS); // the lean-to: 12 blocks of floor under a low roof
+      p.set(5, 0, 5, "zoocraft:warm_pad");
+      p.set(6, 0, 5, "zoocraft:warm_pad");
+      p.floor("zoocraft:mineral_substrate", 2, 4, 4, 4);
+      for (const [x, z] of [[1, 6], [2, 7], [4, 7], [6, 7], [7, 5]]) p.set(x, 1, z, "minecraft:chorus_plant");
+      for (const [x, z] of [[0, 7], [7, 3], [5, 2]]) p.set(x, 1, z, "minecraft:chorus_flower");
+      p.feeder(7, 1, 0, "basic", R.chorus);
+      p.basket(7, 2, 0, R.chorus);
+      p.trough(0, 4);
+    },
+  },
+  {
+    id: "void_ray",
+    name: "Void Rays",
+    species: "zoocraft:void_ray",
+    w: 24,
+    d: 24,
+    sexes: "mf",
+    seed: [12, 12],
+    controller: 3,
+    build(p) {
+      p.floor(END_STONE);
+      p.walls(15, GLASS);
+      p.roof(16, GLASS); // 15 blocks of flight room
+      for (const [x, y, z] of [[6, 8, 6], [17, 10, 17], [6, 12, 17]]) p.fixture(x, y, z, "zoocraft:void_perch", SOUTH);
+      p.feeder(22, 1, 22, "basic", R.chorus);
+      p.basket(22, 2, 22, R.chorus);
+      p.trough(22, 20);
+    },
+  },
+  // The 14 other species (0.1.104, the test zoo: "Make an exhibit for all of our current species in it"), each from
+  // its test plan's good exhibit and its habitat profile (data/profiles.js) and care rules (data/species.js).
+  {
+    id: "zoo_rabbit",
+    name: "Rabbits",
+    species: "zoocraft:zoo_rabbit",
+    w: 10,
+    d: 10,
+    sexes: "mmff",
+    seed: [5, 5],
+    controller: 2,
+    build(p) {
+      p.walls(2);
+      p.feeder(8, 1, 1, "basic", R.leafy);
+      p.basket(8, 2, 1, R.leafy);
+      p.trough(1, 8);
+    },
+  },
+  {
+    id: "otter",
+    name: "Otters",
+    species: "zoocraft:otter",
+    w: 12,
+    d: 12,
+    sexes: "mmf",
+    seed: [8, 8],
+    controller: 3,
+    build(p) {
+      p.walls(3); // the Water Filter against the back wall would be a step over a 2-high wall
+      p.pool(0, 0, 5, 11, 1); // half the floor water (they need 35%), a dry bank the other half
+      p.pool(1, 2, 4, 7, 2); // 24 spots 2 deep to dive in (they need 4)
+      p.fixture(6, 1, 0, "zoocraft:water_filter"); // at the pool's edge
+      p.feeder(10, 1, 1, "puzzle", FISH); // they work a puzzle for their fish
+      p.basket(10, 2, 1, FISH);
+      p.feeder(10, 1, 10, "basic", FISH);
+    },
+  },
+  // Aquariums (0.1.119): a glass tank 2 deep behind a dry bank, measured from the bank; the Aquarium Feeder hangs over
+  // the water a block in, the Water Filter stands on the bank. A school of 12 of each fish.
+  {
+    id: "cod",
+    name: "Cod Tank",
+    species: "zoocraft:zoo_cod",
+    w: 10,
+    d: 8,
+    sexes: "",
+    school: 12,
+    seed: [4, 0],
+    controller: 3,
+    build(p) {
+      p.walls(3);
+      p.pool(0, 1, 9, 7, 2); // 70 water cells, all 2 deep; the bank (z 0) stays dry
+      p.fixture(2, 1, 0, "zoocraft:water_filter"); // on the bank, beside the water
+      p.feeder(5, 1, 1, "aquarium", R.flakes); // over the water
+    },
+  },
+  {
+    id: "salmon",
+    name: "Salmon Tank",
+    species: "zoocraft:zoo_salmon",
+    w: 10,
+    d: 8,
+    sexes: "",
+    school: 12,
+    seed: [4, 0],
+    controller: 3,
+    build(p) {
+      p.walls(3);
+      p.pool(0, 1, 9, 7, 2); // 70 water cells, all 2 deep; the bank (z 0) stays dry
+      p.fixture(2, 1, 0, "zoocraft:water_filter"); // on the bank, beside the water
+      p.feeder(5, 1, 1, "aquarium", R.flakes); // over the water
+    },
+  },
+  {
+    id: "tropical",
+    name: "Tropical Fish Tank",
+    species: "zoocraft:zoo_tropical_fish",
+    w: 10,
+    d: 8,
+    sexes: "",
+    school: 12,
+    seed: [4, 0],
+    controller: 3,
+    build(p) {
+      p.walls(3);
+      p.pool(0, 1, 9, 7, 2); // 70 water cells, all 2 deep; the bank (z 0) stays dry
+      p.fixture(2, 1, 0, "zoocraft:water_filter"); // on the bank, beside the water
+      p.feeder(5, 1, 1, "aquarium", R.flakes); // over the water
+    },
+  },
+  {
+    id: "pufferfish",
+    name: "Pufferfish Tank",
+    species: "zoocraft:zoo_pufferfish",
+    w: 10,
+    d: 8,
+    sexes: "",
+    school: 12,
+    seed: [4, 0],
+    controller: 3,
+    build(p) {
+      p.walls(3);
+      p.pool(0, 1, 9, 7, 2); // 70 water cells, all 2 deep; the bank (z 0) stays dry
+      p.fixture(2, 1, 0, "zoocraft:water_filter"); // on the bank, beside the water
+      p.feeder(5, 1, 1, "aquarium", R.flakes); // over the water
+    },
+  },
+  {
+    id: "squid",
+    name: "Squid Tank",
+    species: "zoocraft:zoo_squid",
+    w: 10,
+    d: 8,
+    sexes: "",
+    school: 6,
+    seed: [4, 0],
+    controller: 3,
+    build(p) {
+      p.walls(3);
+      p.pool(0, 1, 9, 7, 2); // 70 water cells, all 2 deep; the bank (z 0) stays dry
+      p.fixture(2, 1, 0, "zoocraft:water_filter"); // on the bank, beside the water
+      p.feeder(5, 1, 1, "aquarium", R.flakes); // over the water
+    },
+  },
+  {
+    id: "glow_squid",
+    name: "Glow Squid Tank",
+    species: "zoocraft:zoo_glow_squid",
+    w: 10,
+    d: 8,
+    sexes: "",
+    school: 6,
+    seed: [4, 0],
+    controller: 3,
+    build(p) {
+      p.walls(3);
+      p.pool(0, 1, 9, 7, 2); // 70 water cells, all 2 deep; the bank (z 0) stays dry
+      p.fixture(2, 1, 0, "zoocraft:water_filter"); // on the bank, beside the water
+      p.feeder(5, 1, 1, "aquarium", R.flakes); // over the water
+    },
+  },
+  // The Whale Shark Tank (0.1.124, module 6b): the giant tank, the largest exhibit in the zoo: 32 by 21 of water 2 deep
+  // (672 cells, 600 needed) behind a bank of 32 along the glass front, one whale shark.
+  {
+    id: "whale_shark",
+    name: "Whale Shark Tank",
+    species: "zoocraft:whale_shark",
+    w: 32,
+    d: 22,
+    sexes: "f",
+    seed: [15, 0],
+    controller: 3,
+    build(p) {
+      p.walls(4);
+      p.pool(0, 1, 31, 21, 2); // 672 water cells, all 2 deep; the bank (z 0) stays dry
+      p.fixture(2, 1, 0, "zoocraft:water_filter"); // on the bank, beside the water
+      p.feeder(15, 1, 1, "aquarium", R.flakes); // over the water
+    },
+  },
+  // The shark tanks (0.1.125): large tanks, 20 by 15 of water 2 deep (300 cells, 256 needed) behind a bank, Fish Rations
+  // in the Aquarium Feeder; one great white, two hammerheads.
+  {
+    id: "great_white",
+    name: "Great White Tank",
+    species: "zoocraft:great_white",
+    w: 20,
+    d: 16,
+    sexes: "f",
+    seed: [9, 0],
+    controller: 3,
+    build(p) {
+      p.walls(3);
+      p.pool(0, 1, 19, 15, 2); // 300 water cells, all 2 deep; the bank (z 0) stays dry
+      p.fixture(2, 1, 0, "zoocraft:water_filter"); // on the bank, beside the water
+      p.feeder(9, 1, 1, "aquarium", R.fish); // over the water
+    },
+  },
+  {
+    id: "hammerhead",
+    name: "Hammerhead Tank",
+    species: "zoocraft:hammerhead",
+    w: 22,
+    d: 16,
+    sexes: "fm",
+    seed: [10, 0],
+    controller: 3,
+    build(p) {
+      p.walls(3);
+      p.pool(0, 1, 21, 15, 2); // 330 water cells, all 2 deep (320 needed for two: 256 + 64)
+      p.fixture(2, 1, 0, "zoocraft:water_filter");
+      p.feeder(10, 1, 1, "aquarium", R.fish);
+    },
+  },
+  // The trench tanks (0.1.126): water 2 deep behind a bank under a solid roof, tinted glass to the front (the guests see
+  // through it; no daylight gets in), lit by Nocturnal Lamps hung from the roof (light 7, the most allowed): a goblin
+  // shark's (18 by 13 of water: 234 cells, 200 needed) and an anglerfish's (10 by 8: 80 cells, 64 needed).
+  {
+    id: "goblin_shark",
+    name: "Goblin Shark Tank",
+    species: "zoocraft:goblin_shark",
+    w: 18,
+    d: 14,
+    sexes: "f",
+    seed: [8, 0],
+    controller: 3,
+    build(p) {
+      p.walls(3, STONE, TINTED);
+      p.roof(4, STONE);
+      p.pool(0, 1, 17, 13, 2);
+      for (const [x, z] of [[3, 3], [9, 3], [14, 3], [3, 10], [9, 10], [14, 10]]) p.lamp(x, 3, z);
+      p.lamp(9, 3, 7, "zoocraft:purple_night_lamp");
+      p.fixture(2, 1, 0, "zoocraft:water_filter"); // on the bank, beside the water
+      p.feeder(8, 1, 1, "aquarium", R.fish); // over the water
+    },
+  },
+  {
+    id: "anglerfish",
+    name: "Anglerfish Tank",
+    species: "zoocraft:anglerfish",
+    w: 10,
+    d: 9,
+    sexes: "f",
+    seed: [4, 0],
+    controller: 3,
+    build(p) {
+      p.walls(3, STONE, TINTED);
+      p.roof(4, STONE);
+      p.pool(0, 1, 9, 8, 2);
+      for (const [x, z] of [[2, 3], [7, 3], [4, 7]]) p.lamp(x, 3, z, "zoocraft:purple_night_lamp");
+      p.fixture(1, 1, 0, "zoocraft:water_filter");
+      p.feeder(4, 1, 1, "aquarium", R.fish);
+    },
+  },
+  // The Stingray Tank (0.1.127): 16 by 12 of water 2 deep (192 cells, 144 needed) over a floor of sand (all 192 over sand,
+  // 96 needed), behind a bank; one giant stingray. The Jellyfish Tank: 12 by 9 of water 3 deep (108 cells; a school of 6
+  // needs 78), a school of six in their three colours.
+  {
+    id: "giant_stingray",
+    name: "Stingray Tank",
+    species: "zoocraft:giant_stingray",
+    w: 16,
+    d: 13,
+    sexes: "f",
+    seed: [7, 0],
+    controller: 3,
+    build(p) {
+      p.walls(3);
+      p.fill(0, -2, 1, 15, -2, 12, SAND); // the sand floor under the water
+      p.pool(0, 1, 15, 12, 2);
+      p.fixture(2, 1, 0, "zoocraft:water_filter"); // on the bank, beside the water
+      p.feeder(7, 1, 1, "aquarium", R.fish); // over the water
+    },
+  },
+  {
+    id: "jellyfish",
+    name: "Jellyfish Tank",
+    species: "zoocraft:jellyfish",
+    w: 12,
+    d: 10,
+    sexes: "",
+    school: 6,
+    seed: [5, 0],
+    controller: 3,
+    build(p) {
+      p.walls(3);
+      p.pool(0, 1, 11, 9, 3);
+      p.fixture(2, 1, 0, "zoocraft:water_filter");
+      p.feeder(5, 1, 1, "aquarium", R.flakes);
+    },
+  },
+  // The Catfish Tank (0.1.129): 12 by 9 of water 2 deep (108 cells; a school of 6 needs 21) over a gravel floor, a
+  // school of six. The Manatee Lagoon: 20 by 14 of water 3 deep (280 cells; a pair needs 220, and 250 with a calf), sand
+  // on the floor and seagrass growing on it in 32 columns (a pair needs 12, 15 with a calf), Leafy Rations in the
+  // Aquarium Feeder; a pair.
+  {
+    id: "catfish",
+    name: "Catfish Tank",
+    species: "zoocraft:catfish",
+    w: 12,
+    d: 10,
+    sexes: "",
+    school: 6,
+    seed: [5, 0],
+    controller: 3,
+    build(p) {
+      p.walls(3);
+      p.fill(0, -2, 1, 11, -2, 9, GRAVEL); // the floor under the water
+      p.pool(0, 1, 11, 9, 2);
+      p.fixture(2, 1, 0, "zoocraft:water_filter");
+      p.feeder(5, 1, 1, "aquarium", R.flakes);
+    },
+  },
+  {
+    id: "manatee",
+    name: "Manatee Lagoon",
+    species: "zoocraft:manatee",
+    w: 20,
+    d: 15,
+    sexes: "mf",
+    seed: [9, 0],
+    controller: 3,
+    build(p) {
+      p.walls(3);
+      p.fill(0, -3, 1, 19, -3, 14, SAND); // the sandy floor under the water
+      p.pool(0, 1, 19, 14, 3);
+      p.fill(2, -2, 6, 9, -2, 9, SEAGRASS); // a meadow of seagrass on the floor, 32 columns
+      p.fixture(2, 1, 0, "zoocraft:water_filter");
+      p.feeder(10, 1, 1, "aquarium", R.leafy); // over the water: Leafy Rations, floated for them
+    },
+  },
+  {
+    id: "capybara",
+    name: "Capybaras",
+    species: "zoocraft:capybara",
+    w: 14,
+    d: 14,
+    sexes: "mmff",
+    seed: [7, 4],
+    controller: 3,
+    build(p) {
+      p.walls(2);
+      p.pool(0, 9, 7, 13, 1); // a pool over a fifth of the floor to wade and swim in; the rest grazing bank
+      p.pool(1, 11, 2, 12, 2); // 4 spots 2 deep (they need 2)
+      p.fixture(8, 1, 12, "zoocraft:water_filter");
+      p.feeder(12, 1, 1, "basic", R.leafy);
+      p.basket(12, 2, 1, R.leafy);
+      p.trough(1, 1);
+    },
+  },
+  {
+    id: "deer",
+    name: "Deer",
+    species: "zoocraft:deer",
+    w: 15,
+    d: 15,
+    sexes: "mfff",
+    seed: [7, 9],
+    controller: 3,
+    build(p) {
+      p.walls(3); // a Hay Rack against a 2-high wall is a step over it
+      // Quiet cover over a corner (they want 10% of the ground under leaves or a roof): an oak canopy on two trunks.
+      p.fill(0, 5, 0, 6, 5, 6, LEAVES, LEAF_STATES);
+      p.fill(2, 1, 2, 2, 4, 2, "minecraft:oak_log");
+      p.fill(5, 1, 5, 5, 4, 5, "minecraft:oak_log");
+      p.place(9, 1, 0, FEED.rack, { states: SOUTH, stock: { item: R.leafy, full: "feeder" } }); // stood on the floor
+      p.feeder(13, 1, 13, "basic", R.leafy);
+      p.basket(13, 2, 13, R.leafy);
+      p.trough(13, 11);
+    },
+  },
+  {
+    id: "penguin",
+    name: "Penguins",
+    species: "zoocraft:penguin",
+    w: 13,
+    d: 12,
+    sexes: "mmmfff",
+    seed: [9, 6],
+    controller: 3,
+    build(p) {
+      p.walls(3); // the Cooling Unit in the corner and the filter by the front would be steps over 2-high walls
+      p.floor("minecraft:snow", 6, 0, 12, 11); // the colony's bank (Bedrock's full snow block is minecraft:snow; snow_block is the Java name: 0.1.105)
+      p.pool(0, 0, 5, 11, 1); // the pool: 46% of the floor (they need 40%)
+      p.pool(1, 1, 4, 10, 2); // 40 spots 2 deep to dive in (they need 4)
+      p.fixture(6, 1, 11, "zoocraft:water_filter");
+      p.cooler(12, 0); // the Cooling Unit beside the floor, stocked with ice
+      p.feeder(11, 1, 10, "basic", FISH);
+      p.basket(11, 2, 10, FISH);
+    },
+  },
+  {
+    id: "giraffe",
+    name: "Giraffes",
+    species: "zoocraft:giraffe",
+    w: 19,
+    d: 18,
+    sexes: "mff",
+    seed: [9, 9],
+    controller: 4,
+    build(p) {
+      p.walls(3); // 7 blocks of headroom over the floor: no roof
+      p.elevated(4, 2, R.leafy); // they browse high
+      p.elevated(14, 2, R.leafy);
+      p.feeder(17, 1, 16, "basic", R.leafy);
+      p.basket(17, 2, 16, R.leafy);
+      p.trough(1, 16);
+    },
+  },
+  {
+    id: "elephant",
+    name: "Elephants",
+    species: "zoocraft:elephant",
+    w: 22,
+    d: 20,
+    sexes: "mff",
+    seed: [11, 10],
+    controller: 5,
+    build(p) {
+      p.walls(3);
+      p.floor("minecraft:mud", 3, 3, 5, 5); // the mud wallow: 9 blocks (they need 6)
+      p.place(10, 1, 0, FEED.rack, { states: SOUTH, stock: { item: R.leafy, full: "feeder" } });
+      p.feeder(20, 1, 18, "puzzle", R.leafy); // they work a puzzle with their trunks
+      p.basket(20, 2, 18, R.leafy);
+      p.feeder(18, 1, 18, "basic", R.leafy);
+      p.trough(1, 18);
+    },
+  },
+  {
+    id: "hedgehog",
+    name: "Hedgehogs",
+    species: "zoocraft:hedgehog",
+    w: 9,
+    d: 9,
+    sexes: "mff",
+    seed: [4, 4],
+    controller: 2,
+    build(p) {
+      // The nocturnal house: closed walls and a solid roof, a tinted front the guests see through, lit only by
+      // Nocturnal Lamps (light 7, the most allowed), so they're up by day for the guests. The lamps stand on the floor
+      // by the walls (0.1.179: hung from the roof 3 blocks up they were in the hedgehogs' headroom, 3 blocks).
+      p.walls(3, STONE, TINTED);
+      p.roof(4, STONE);
+      for (const [x, z] of [[0, 4], [8, 4], [4, 0]]) p.floorLamp(x, z);
+      p.floorLamp(0, 8, "zoocraft:purple_night_lamp");
+      p.fixture(7, 1, 7, "zoocraft:burrow_shelter", SOUTH); // a burrow to sleep in
+      p.feeder(7, 1, 1, "basic", R.insect);
+      p.basket(7, 2, 1, R.insect);
+      p.trough(1, 7);
+    },
+  },
+  {
+    id: "basalt_tortoise",
+    name: "Basalt Tortoises",
+    species: "zoocraft:basalt_tortoise",
+    w: 12,
+    d: 12,
+    sexes: "mf",
+    seed: [6, 6],
+    controller: 3,
+    build(p) {
+      p.floor("minecraft:basalt");
+      p.walls(3); // the Thermal Regulator in the corner would be a step over a 2-high wall
+      p.floor("minecraft:magma", 2, 2, 4, 3); // 6 basking pads (they need 4)
+      p.heater(0, 11);
+      p.lavaTrough(11, 11); // they drink lava
+      p.feeder(11, 1, 0, "basic", R.mineral);
+      p.basket(11, 2, 0, R.mineral);
+    },
+  },
+  {
+    id: "ember_fox",
+    name: "Ember Foxes",
+    species: "zoocraft:ember_fox",
+    w: 9,
+    d: 9,
+    sexes: "mff",
+    seed: [4, 4],
+    controller: 3,
+    build(p) {
+      p.floor("minecraft:soul_soil");
+      p.walls(3);
+      p.floor("zoocraft:warm_ash", 1, 1, 2, 3); // the ash bed: 6 blocks (they need 4)
+      p.fixture(6, 1, 7, "zoocraft:ember_den", SOUTH); // the den to curl up in
+      p.heater(0, 8);
+      p.lavaTrough(8, 6);
+      p.feeder(8, 1, 8, "basic", R.ember);
+      p.basket(8, 2, 8, R.ember);
+    },
+  },
+  {
+    id: "lava_ray",
+    name: "Lava Rays",
+    species: "zoocraft:lava_ray",
+    w: 12,
+    d: 12,
+    sexes: "mf",
+    seed: [0, 6], // on the bank
+    controller: 3,
+    build(p) {
+      p.walls(2); // stone, never wood: lava sets wooden fences alight
+      p.lavaPool(2, 0, 11, 11, 1); // the pool: 83% lava (they need 60%), a 2-wide bank for the keepers
+      p.lavaPool(4, 3, 8, 8, 2); // 30 spots 2 deep to turn in (they need 8)
+      p.thermal(1, 5, PLANKTON); // in the bank, level with the lava
+      p.basket(1, 2, 8, PLANKTON);
+    },
+  },
+  {
+    id: "zoo_strider",
+    name: "Striders",
+    species: "zoocraft:zoo_strider",
+    w: 12,
+    d: 12,
+    sexes: "mmf",
+    seed: [1, 1], // on the bank
+    controller: 2,
+    build(p) {
+      p.walls(2);
+      p.lavaPool(4, 0, 11, 11, 1); // lava over two thirds of the floor (they need 40%), a 4-wide bank (they need 20%)
+      p.floor("minecraft:magma", 1, 4, 2, 6); // 6 warm spots on the bank to rest on (they need 4)
+      p.feeder(2, 1, 10, "basic", FUNGUS); // on the bank, back from the walls (a feeder in a corner is a step over them)
+      p.basket(2, 2, 10, FUNGUS);
+    },
+  },
+  {
+    id: "chorus_deer",
+    name: "Chorus Deer",
+    species: "zoocraft:chorus_deer",
+    w: 15,
+    d: 15,
+    sexes: "mmff",
+    seed: [7, 9],
+    controller: 3,
+    build(p) {
+      p.floor(END_STONE); // End ground underfoot (they need 8 blocks)
+      p.walls(3, END_BRICKS);
+      p.fill(0, 5, 0, 6, 5, 6, END_BRICKS); // quiet cover over a corner (10% of the ground)
+      p.feeder(13, 1, 13, "basic", R.chorus);
+      p.basket(13, 2, 13, R.chorus);
+      p.trough(13, 11);
+    },
+  },
+  {
+    id: "rift_ferret",
+    name: "Rift Ferrets",
+    species: "zoocraft:rift_ferret",
+    w: 9,
+    d: 9,
+    sexes: "mmf",
+    seed: [4, 4],
+    controller: 2,
+    build(p) {
+      p.floor(END_STONE); // End ground underfoot (they need 6 blocks)
+      p.walls(3, END_BRICKS); // the anchor, the feeder and the trough by the walls would be steps over 2-high ones
+      p.anchor(0, 8); // the Containment Anchor beside the floor, charged
+      p.fixture(2, 1, 2, "zoocraft:rift_tunnel", SOUTH); // two tunnels to blink between
+      p.fixture(6, 1, 6, "zoocraft:rift_tunnel", SOUTH);
+      p.feeder(8, 1, 0, "basic", R.chorus);
+      p.basket(8, 2, 0, R.chorus);
+      p.trough(8, 8);
+    },
+  },
+];
+
+// The rows, north to south: west of the avenue (from the avenue outward) and east of it.
+export const ROWS = [
+  { west: ["void_ray", "lion"], east: ["zebra", "raccoon", "red_panda"] },
+  { west: ["gorilla", "crocodile"], east: ["tiger", "crimson_grazer"] },
+  { west: ["cinder_boar", "flamingo", "owl"], east: ["end_hopper", "starback_tortoise", "obsidian_crab", "soul_moth"] },
+  { west: ["quartz_beetle", "warped_gecko", "shimmer_snail"], east: ["chorus_moth"] },
+];
+
+const GAP = 3; // blocks between two exhibits' walls
+const SERVICE = 5; // the strip behind a row: controllers, keeper corridors
+const PATH_W = 3;
+const ROW_EXTRA = SERVICE + 1 + 1 + PATH_W; // a row's depth beyond its deepest exhibit: the strip, two walls, the path
+const RING_TOP = 2; // rows start this far inside the ring's north side
+const RING_BOTTOM = 8; // room south of the last row's path for the Staff Rooms and the Ticket Booth
+
+/**
+ * The whole park around `origin` (the avenue's middle; x and z) on ground at y `G` (the top block of a flat world).
+ * @param {{ x: number, z: number }} origin
+ * @param {number} G
+ */
+export function planPark(origin, G) {
+  return layout(origin, G, ROWS, undefined);
+}
+
+/**
+ * The test zoo (0.1.104): every species' exhibit, packed in rows inside an Aluminum Fence ring of at least `size`
+ * columns a side round `center` (the Park Deed's spot), with a gate in the middle of the north, east and west sides
+ * and the Park Entrance Gate in the middle of the south side (bench/zooPlan.js ringPlan). The ring grows past
+ * `size` when the exhibits need more room; the result's `size` says what it is.
+ * @param {{ x: number, z: number }} center
+ * @param {number} G
+ * @param {number} size
+ */
+export function planZoo(center, G, size) {
+  const fit = fitRing(BLUEPRINTS, size);
+  return { ...layout(center, G, fit.rows, fit.size), size: fit.size, asked: size };
+}
+
+// The width an exhibit takes along its row: the floor, the walls and the margin either side.
+const spanOf = (b) => b.w + 2 * (b.margin ?? 0) + 2;
+
+/**
+ * Rows for `blueprints` either side of the avenue, each side at most `side` wide: the deepest first, each put on the
+ * first side with room for it (west before east, earlier rows before later), so the rows come out with exhibits of
+ * about one depth and the fewest rows. Pure; the same input gives the same rows.
+ */
+export function packRows(blueprints, side) {
+  const order = [...blueprints].sort((a, b) => b.d - a.d || a.id.localeCompare(b.id));
+  const rows = [];
+  const width = (ids) => ids.reduce((n, id, i) => n + spanOf(byIdOf(blueprints, id)) + (i ? GAP : 0), 0);
+  for (const b of order) {
+    let put = false;
+    for (const row of rows) {
+      for (const s of ["west", "east"]) {
+        if (width([...row[s], b.id]) <= side) {
+          row[s].push(b.id);
+          put = true;
+          break;
+        }
+      }
+      if (put) break;
+    }
+    if (!put) rows.push({ west: [b.id], east: [] });
+  }
+  return rows;
+}
+
+function byIdOf(blueprints, id) {
+  const b = blueprints.find((x) => x.id === id);
+  if (!b) throw new Error(`no blueprint ${id}`);
+  return b;
+}
+
+/** The smallest ring of at least `size` columns a side that holds `blueprints` in packed rows, and those rows. */
+export function fitRing(blueprints, size) {
+  const byId = Object.fromEntries(blueprints.map((b) => [b.id, b]));
+  for (let S = Math.max(10, size); S <= 1000; S++) {
+    const half = Math.floor(S / 2);
+    // Each exhibit fits one side on its own (0.1.175: the Horses' 24 wide paddock alone ran past a small ring's fence).
+    if (blueprints.some((b) => spanOf(b) > half - 4)) continue;
+    const rows = packRows(blueprints, half - 4); // a clear column inside the fence, the wall, the avenue's 3
+    const depth = rows.reduce((n, row) => n + ROW_EXTRA + Math.max(...[...row.west, ...row.east].map((id) => byId[id].d)), 0);
+    if (RING_TOP + depth + RING_BOTTOM <= S) return { size: S, rows };
+  }
+  throw new Error("the exhibits don't fit a ring");
+}
+
+// The park's blocks: `rows` of exhibits either side of the avenue, paths, the entrance, the Staff Rooms, the services
+// and the fence. With `ring`, the fence is an Aluminum Fence ring that many columns a side round the origin (the
+// test zoo) and the entrance sits in its south side; without, the benchmark's fence round the park's box.
+function layout(origin, G, rows, ring) {
+  const byId = Object.fromEntries(BLUEPRINTS.map((b) => [b.id, b]));
+  const ops = [];
+  const exhibits = [];
+  const viewing = [];
+  const pathBoxes = [];
+  const reserved = new Set(); // columns "x,z" a service may not take
+  const reserve = (x0, z0, x1, z1) => {
+    for (let x = x0; x <= x1; x++) for (let z = z0; z <= z1; z++) reserved.add(`${x},${z}`);
+  };
+  // Lay out in local park coordinates (the avenue at x -1..1), then shift by the origin at the end.
+  const depthOf = (row) => Math.max(...[...row.west, ...row.east].map((id) => byId[id].d));
+  const totalDepth = rows.reduce((n, row) => n + ROW_EXTRA + depthOf(row), 0) + 10;
+  const box = ring ? ringBox({ x: 0, z: 0 }, ring) : undefined; // the ring, in local coordinates
+  let rowStart = box ? box.min.z + RING_TOP : -Math.floor(totalDepth / 2);
+  const north = rowStart;
+  let minX = 0;
+  let maxX = 0;
+  const rowPaths = [];
+  for (const row of rows) {
+    const D = depthOf(row);
+    const front = rowStart + SERVICE + 1 + D; // the z of the front walls
+    for (const side of ["west", "east"]) {
+      let cursor = side === "west" ? -2 : 2; // the wall next to the avenue
+      for (const id of row[side]) {
+        const b = byId[id];
+        const m = b.margin ?? 0;
+        const ox = side === "west" ? cursor - m - b.w : cursor + m + 1;
+        const oz = front - b.d;
+        const p = plot(origin.x + ox, origin.z + oz, G, b.w, b.d);
+        b.build(p);
+        ops.push(...p.ops);
+        // The controller: behind the back wall, out of reach.
+        const cx = b.controller;
+        ops.push({ op: "controller", pos: p.at(cx, 1, -2), exhibit: exhibits.length });
+        reserve(origin.x + ox - 1 - m, origin.z + oz - SERVICE, origin.x + ox + b.w + m, origin.z + front);
+        // Viewing Points on the path in front of the glass: one for a small exhibit, two for a wide one.
+        // A Mob House's (0.1.163, b.points): in its hall instead, looking into the pen.
+        const vps = b.w >= 16 ? [Math.floor(b.w / 4), Math.floor((3 * b.w) / 4)] : [Math.floor(b.w / 2)];
+        for (const [vx, vz] of b.points ?? vps.map((x) => [x, b.d + 1])) {
+          const pos = p.at(vx, 1, vz);
+          viewing.push(pos);
+          ops.push({ op: "place", pos, block: "zoocraft:viewing_point", states: NORTH });
+        }
+        // A school of fish (0.1.119, b.school): one record of that many.
+        const animals = b.school ? [{ sex: "female", school: b.school, n: 0 }] : [...b.sexes].map((s, i) => ({ sex: s === "m" ? "male" : s === "f" ? "female" : s === "n" ? "none" : "hermaphrodite", n: i }));
+        exhibits.push({ id: b.id, name: b.name, species: b.species, seed: p.at(b.seed[0], b.seed[2] ?? 1, b.seed[1]), animals, box: { min: p.at(-1 - m, 0, -1), max: p.at(b.w + m, 0, b.d) } });
+        minX = Math.min(minX, ox - 1 - m);
+        maxX = Math.max(maxX, ox + b.w + m);
+        cursor = side === "west" ? ox - m - 1 - GAP - 1 : ox + b.w + m + GAP + 1;
+      }
+    }
+    rowPaths.push({ z0: front + 1, z1: front + PATH_W });
+    rowStart = front + PATH_W + 1;
+  }
+  // Paths: along each row's front, the full width, and the avenue from the first row's back to the entrance (in the
+  // ring's south side, or 4 beyond the last path).
+  const last = rowPaths[rowPaths.length - 1];
+  const gateZ = box ? box.max.z : last.z1 + 4; // the entrance threshold, on the avenue
+  const south = box ? gateZ - 1 : gateZ + 3;
+  for (const rp of rowPaths) pathBoxes.push({ x0: minX, z0: rp.z0, x1: maxX, z1: rp.z1 });
+  pathBoxes.push({ x0: -1, z0: north, x1: 1, z1: south });
+  for (const b of pathBoxes) ops.push({ op: "fill", from: { x: origin.x + b.x0, y: G, z: origin.z + b.z0 }, to: { x: origin.x + b.x1, y: G, z: origin.z + b.z1 }, block: PATH });
+  // The entrance arch (5 wide: the avenue and a pillar each side) and the Ticket Booth beside it. In a ring the arch
+  // is placed with the ring (below).
+  const entrance = { x: origin.x, y: G + 1, z: origin.z + gateZ };
+  if (!box) ops.push({ op: "place", pos: entrance, block: "zoocraft:park_entrance_gate", states: NORTH });
+  ops.push({ op: "fill", from: { x: origin.x + 2, y: G, z: origin.z + gateZ - 2 }, to: { x: origin.x + 3, y: G, z: origin.z + gateZ - 2 }, block: PATH });
+  const booth = { x: origin.x + 3, y: G + 1, z: origin.z + gateZ - 3 };
+  ops.push({ op: "place", pos: booth, block: "zoocraft:ticket_booth", states: SOUTH });
+  reserve(booth.x - 1, booth.z, booth.x + 1, booth.z + 1);
+  // Staff Rooms south of the last row's path, either side of the entrance: closed huts with 3 x 3 x 3 of room inside,
+  // the Staff Room block against the north wall outside, by the path.
+  const rooms = [];
+  const hutZ = last.z1 + 2; // the huts' north walls
+  for (const hx of [-30, -22, -14, 10, 18]) {
+    const x0 = origin.x + hx;
+    const z0 = origin.z + hutZ;
+    reserve(x0 - 1, z0 - 1, x0 + 5, z0 + 5);
+    ops.push({ op: "fill", from: { x: x0, y: G + 1, z: z0 }, to: { x: x0 + 4, y: G + 4, z: z0 + 4 }, block: STONE });
+    ops.push({ op: "fill", from: { x: x0 + 1, y: G + 1, z: z0 + 1 }, to: { x: x0 + 3, y: G + 3, z: z0 + 3 }, block: AIR });
+    ops.push({ op: "set", pos: { x: x0 + 2, y: G + 2, z: z0 }, block: GLASS }); // a window onto the path
+    const pos = { x: x0 + 2, y: G + 1, z: z0 - 1 };
+    rooms.push(pos);
+    ops.push({ op: "place", pos, block: "zoocraft:staff_room" });
+  }
+  // Guest services along the paths' south edges, where nothing else stands: Snack Stands, Benches, Litter Bins,
+  // Donation Boxes, Restrooms, Water Fountains, Path Lamps and Planters (0.1.100), a few to each row.
+  const services = [];
+  const free = (x, z, w = 1, dz = 1) => {
+    for (let i = 0; i < w; i++) for (let j = 0; j < dz; j++) if (reserved.has(`${x + i},${z + j}`)) return false;
+    return true;
+  };
+  // Each with the states its block has: the Litter Bin has no facing (0.1.97: the game refused one with
+  // "Failed to resolve block", so the build stopped at the first bin).
+  const kinds = [
+    { block: "zoocraft:snack_stand", w: 2, d: 2, states: NORTH },
+    { block: "zoocraft:bench", w: 2, d: 1, states: NORTH },
+    { block: "zoocraft:litter_bin", w: 1, d: 1 },
+    { block: "zoocraft:donation_box", w: 1, d: 1, states: NORTH },
+    { block: "zoocraft:bench", w: 2, d: 1, states: NORTH },
+    { block: "zoocraft:litter_bin", w: 1, d: 1 },
+    { block: "zoocraft:path_lamp", w: 1, d: 1, states: NORTH },
+    { block: "zoocraft:restroom", w: 1, d: 1, states: NORTH },
+    { block: "zoocraft:planter", w: 1, d: 1 },
+    { block: "zoocraft:water_fountain", w: 1, d: 1 },
+    { block: "zoocraft:path_lamp", w: 1, d: 1, states: NORTH },
+    { block: "zoocraft:planter", w: 1, d: 1 },
+  ];
+  rowPaths.forEach((rp, r) => {
+    const z = origin.z + rp.z1 + 1;
+    let k = 0;
+    for (let x = origin.x + minX + 2; x <= origin.x + maxX - 2 && k < kinds.length; x += 3) {
+      const kind = kinds[(k + r) % kinds.length];
+      if (Math.abs(x - origin.x) <= 3 || Math.abs(x + kind.w - 1 - origin.x) <= 3) continue; // keep the avenue clear
+      if (!free(x, z, kind.w, kind.d) || !free(x - 1, z, kind.w + 2, 1)) continue;
+      reserve(x - 1, z, x + kind.w, z + kind.d - 1);
+      // The stand and bench parts run along +x from the main block when it faces north.
+      const pos = { x, y: G + 1, z };
+      services.push({ pos, block: kind.block });
+      ops.push({ op: "place", pos, block: kind.block, states: kind.states });
+      k++;
+      x += kind.w;
+    }
+  });
+  const bbox = box ? { min: { x: origin.x + box.min.x, z: origin.z + box.min.z }, max: { x: origin.x + box.max.x, z: origin.z + box.max.z } } : { min: { x: origin.x + minX - 2, z: origin.z + north - 1 }, max: { x: origin.x + maxX + 2, z: origin.z + south + 1 } };
+  // The park's fence (0.1.101): Aluminum Fence all along the edge of the park's box, a gate where the avenue ends; or
+  // the test zoo's ring (0.1.104) with its gates and the Park Entrance Gate.
+  const fence = [];
+  if (box) {
+    for (const c of ringPlan(origin, ring)) {
+      fence.push({ x: c.x, z: c.z });
+      if (c.block) ops.push({ op: "place", pos: { x: c.x, y: G + 1, z: c.z }, block: c.block, states: c.states });
+    }
+  } else {
+    for (let x = bbox.min.x; x <= bbox.max.x; x++) {
+      fence.push({ x, z: bbox.min.z });
+      fence.push({ x, z: bbox.max.z });
+    }
+    for (let z = bbox.min.z + 1; z < bbox.max.z; z++) {
+      fence.push({ x: bbox.min.x, z });
+      fence.push({ x: bbox.max.x, z });
+    }
+    // Each fence lands with its link states set from the edge itself (0.1.115; see zooPlan.js ringPlan).
+    const onEdge = new Set(fence.map((c) => `${c.x},${c.z}`));
+    const has = (x, z) => onEdge.has(`${x},${z}`);
+    for (const { x, z } of fence) {
+      const gate = z === bbox.max.z && x === origin.x;
+      ops.push({ op: "place", pos: { x, y: G + 1, z }, block: gate ? "zoocraft:aluminum_fence_gate" : "zoocraft:aluminum_fence", states: gate ? NORTH : linkStates(has, x, z) });
+    }
+  }
+  // Where the player watches from: the avenue in the middle of the park.
+  const view = { x: origin.x + 0.5, y: G + 1, z: origin.z + 0.5 };
+  return { ops, exhibits, rooms, services, entrance, booth, viewing, view, bbox, fence };
+}
