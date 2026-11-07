@@ -1,0 +1,52 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:zoo_zombie_nautilus",
+      "min_engine_version": "1.12.0",
+      "materials": {
+        "default": "nautilus"
+      },
+      "textures": {
+        "default": "textures/entity/nautilus/zombie_nautilus",
+        "coral": "textures/entity/nautilus/zombie_nautilus_coral"
+      },
+      "geometry": {
+        "default": "geometry.zoocraft.zoo_zombie_nautilus"
+      },
+      "animations": {
+        "breathe": "animation.nautilus.breathe",
+        "swim": "animation.nautilus.swim",
+        "look_at_target": "animation.nautilus.look_at_target",
+        "dashing": "animation.nautilus.dashing",
+        "sound_controller": "controller.animation.nautilus.sound",
+        "general_controller": "controller.animation.nautilus.general"
+      },
+      "scripts": {
+        "pre_animation": [
+          "variable.variant_index = query.variant == 1 ? 1 : 0;",
+          "variable.dash_cooldown = (!(variable.last_dash_cooldown ?? true) && query.has_dash_cooldown) ? 2 : ( variable.dash_cooldown ?? 0 );",
+          "variable.dash_cooldown = math.max(0, variable.dash_cooldown-query.delta_time);",
+          "variable.dash_cooldown_progress = (2 - variable.dash_cooldown) / 2;",
+          "variable.xTargetRot = math.clamp(query.target_x_rotation, -10, 10);",
+          "variable.xHeadRot = variable.dash_cooldown_progress > 0 ? math.clamp(variable.xTargetRot + (45 * (1 - variable.dash_cooldown_progress)), -25, 70) : variable.xTargetRot;",
+          "variable.yHeadRot = math.clamp(query.target_y_rotation, -10, 10);"
+        ],
+        "animate": [
+          "general_controller",
+          "sound_controller"
+        ],
+        "should_update_effects_offscreen": "1.0"
+      },
+      "particle_effects": {
+        "bubbles": "minecraft:nautilus_bubbles_particle"
+      },
+      "sound_effects": {
+        "dash": "mob.zombie_nautilus.dash"
+      },
+      "render_controllers": [
+        "controller.render.zoocraft.zoo_zombie_nautilus"
+      ]
+    }
+  }
+}

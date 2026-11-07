@@ -1,0 +1,32 @@
+{
+  "format_version": "1.10.0",
+  "render_controllers": {
+    "controller.render.zoocraft.zoo_zombie_nautilus": {
+      "arrays": {
+        "textures": {
+          "Array.textures": [
+            "Texture.default",
+            "Texture.coral"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Array.textures[v.variant_index]"
+      ],
+      "part_visibility": [
+        {
+          "yellow_coral": "v.variant_index == 1",
+          "pink_coral": "v.variant_index == 1",
+          "blue_coral": "v.variant_index == 1",
+          "red_coral": "v.variant_index == 1"
+        }
+      ]
+    }
+  }
+}

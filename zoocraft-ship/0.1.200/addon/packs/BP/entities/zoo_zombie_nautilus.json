@@ -1,0 +1,275 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "zoocraft:zoo_zombie_nautilus",
+      "spawn_category": "water_creature",
+      "is_spawnable": false,
+      "is_summonable": true
+    },
+    "components": {
+      "minecraft:ambient_sound_interval": {
+        "event_name": "ambient",
+        "event_names": [
+          {
+            "condition": "query.head_is_in_water",
+            "event_name": "ambient.in.water"
+          }
+        ],
+        "range": 16.0,
+        "value": 8.0
+      },
+      "minecraft:behavior.random_swim": {
+        "interval": 0,
+        "xz_dist": 16,
+        "priority": 5,
+        "speed_multiplier": 1.5,
+        "y_dist": 4
+      },
+      "minecraft:behavior.swim_idle": {
+        "priority": 7
+      },
+      "minecraft:behavior.swim_wander": {
+        "interval": 10,
+        "look_ahead": 2,
+        "speed_multiplier": 1.5,
+        "priority": 6
+      },
+      "minecraft:breathable": {
+        "breathes_air": true,
+        "breathes_water": true,
+        "suffocate_time": 0,
+        "total_supply": 15
+      },
+      "minecraft:collision_box": {
+        "height": 0.95,
+        "width": 0.875
+      },
+      "minecraft:health": {
+        "max": 15,
+        "value": 15
+      },
+      "minecraft:hurt_on_condition": {
+        "damage_conditions": [
+          {
+            "cause": "lava",
+            "damage_per_tick": 4,
+            "filters": {
+              "test": "in_lava"
+            }
+          }
+        ]
+      },
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:knockback_resistance": {
+        "value": 0.3
+      },
+      "minecraft:mob_effect_immunity": {
+        "mob_effects": [
+          "poison"
+        ]
+      },
+      "minecraft:movement.sway": {
+        "sway_amplitude": 0
+      },
+      "minecraft:nameable": {
+        "always_show": false,
+        "allow_name_tag_renaming": true
+      },
+      "minecraft:navigation.generic": {
+        "can_breach": false,
+        "can_walk": false,
+        "can_path_over_water": false,
+        "can_sink": false,
+        "can_swim": true,
+        "is_amphibious": false,
+        "using_door_annotation": true
+      },
+      "minecraft:physics": {},
+      "minecraft:pushable_by_entity": {
+        "presets": [
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "sulfur_cube"
+                },
+                {
+                  "test": "enum_property",
+                  "subject": "other",
+                  "domain": "minecraft:sulfur_cube_archetype",
+                  "operator": "not",
+                  "value": "none"
+                },
+                {
+                  "test": "is_controlling_passenger_family",
+                  "subject": "self",
+                  "value": "player"
+                }
+              ]
+            },
+            "push_mode": "none",
+            "require_collision_overlap": false
+          }
+        ]
+      },
+      "minecraft:pushable_by_block": {},
+      "minecraft:type_family": {
+        "family": [
+          "zoocraft_animal",
+          "zoocraft_mob",
+          "zoo_zombie_nautilus",
+          "aquatic",
+          "mob"
+        ]
+      },
+      "minecraft:movement": {
+        "value": 0.15
+      },
+      "minecraft:underwater_movement": {
+        "value": 0.1
+      },
+      "minecraft:behavior.tempt": {
+        "items": [
+          "pufferfish_bucket",
+          "cod_bucket",
+          "salmon_bucket",
+          "tropical_fish_bucket",
+          "pufferfish",
+          "fish",
+          "salmon",
+          "clownfish",
+          "cooked_fish",
+          "cooked_salmon"
+        ],
+        "priority": 3,
+        "speed_multiplier": 1.3
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "cause": "all",
+            "deals_damage": "no"
+          }
+        ]
+      },
+      "minecraft:persistent": {}
+    },
+    "component_groups": {
+      "zoocraft:home_4": {
+        "minecraft:home": {}
+      },
+      "zoocraft:home_8": {
+        "minecraft:home": {}
+      },
+      "zoocraft:home_16": {
+        "minecraft:home": {}
+      },
+      "zoocraft:home_32": {
+        "minecraft:home": {}
+      },
+      "zoocraft:coat_0": {
+        "minecraft:variant": {
+          "value": 0
+        }
+      },
+      "zoocraft:coat_1": {
+        "minecraft:variant": {
+          "value": 1
+        }
+      }
+    },
+    "events": {
+      "zoocraft:home_4": {
+        "add": {
+          "component_groups": [
+            "zoocraft:home_4"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "zoocraft:home_8",
+            "zoocraft:home_16",
+            "zoocraft:home_32"
+          ]
+        }
+      },
+      "zoocraft:home_8": {
+        "add": {
+          "component_groups": [
+            "zoocraft:home_8"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "zoocraft:home_4",
+            "zoocraft:home_16",
+            "zoocraft:home_32"
+          ]
+        }
+      },
+      "zoocraft:home_16": {
+        "add": {
+          "component_groups": [
+            "zoocraft:home_16"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "zoocraft:home_4",
+            "zoocraft:home_8",
+            "zoocraft:home_32"
+          ]
+        }
+      },
+      "zoocraft:home_32": {
+        "add": {
+          "component_groups": [
+            "zoocraft:home_32"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "zoocraft:home_4",
+            "zoocraft:home_8",
+            "zoocraft:home_16"
+          ]
+        }
+      },
+      "zoocraft:coat_0": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:coat_1"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:coat_0"
+          ]
+        }
+      },
+      "zoocraft:coat_1": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:coat_0"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:coat_1"
+          ]
+        }
+      },
+      "minecraft:entity_spawned": {
+        "add": {
+          "component_groups": [
+            "zoocraft:home_8",
+            "zoocraft:coat_0"
+          ]
+        }
+      }
+    }
+  }
+}
