@@ -1,0 +1,47 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:zoo_mooshroom",
+      "materials": {
+        "default": "mooshroom",
+        "mushrooms": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/cow/mooshroom_v2",
+        "brown": "textures/entity/cow/brown_mooshroom_v2",
+        "shroom_red": "textures/blocks/mushroom_red",
+        "shroom_brown": "textures/blocks/mushroom_brown"
+      },
+      "geometry": {
+        "default": "geometry.zoocraft.zoo_mooshroom"
+      },
+      "animations": {
+        "setup": "animation.mooshroom.setup",
+        "walk": "animation.quadruped.walk",
+        "look_at_target": "animation.common.look_at_target",
+        "mushroom_look": "animation.zoocraft.zoo_mooshroom.mushroom_look",
+        "baby_transform": "animation.mooshroom.baby_transform"
+      },
+      "scripts": {
+        "animate": [
+          "setup",
+          {
+            "walk": "query.modified_move_speed"
+          },
+          "look_at_target",
+          "mushroom_look",
+          {
+            "baby_transform": "query.is_baby"
+          }
+        ]
+      },
+      "render_controllers": [
+        "controller.render.zoocraft.zoo_mooshroom",
+        {
+          "controller.render.zoocraft.zoo_mooshroom_mushrooms": "!query.is_baby"
+        }
+      ]
+    }
+  }
+}

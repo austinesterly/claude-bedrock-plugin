@@ -1,0 +1,65 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.zoocraft.zoo_mooshroom": {
+      "arrays": {
+        "textures": {
+          "Array.skins": [
+            "Texture.default",
+            "Texture.brown"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Array.skins[query.variant]"
+      ],
+      "part_visibility": [
+        {
+          "*": true
+        },
+        {
+          "shroom_back": false
+        },
+        {
+          "shroom_head": false
+        }
+      ]
+    },
+    "controller.render.zoocraft.zoo_mooshroom_mushrooms": {
+      "arrays": {
+        "textures": {
+          "Array.shrooms": [
+            "Texture.shroom_red",
+            "Texture.shroom_brown"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.mushrooms"
+        }
+      ],
+      "textures": [
+        "Array.shrooms[query.variant]"
+      ],
+      "part_visibility": [
+        {
+          "*": false
+        },
+        {
+          "shroom_back": true
+        },
+        {
+          "shroom_head": true
+        }
+      ]
+    }
+  }
+}
