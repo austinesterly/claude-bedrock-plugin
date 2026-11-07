@@ -1,0 +1,27 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.zoocraft.zoo_camel_husk": {
+      "geometry": "Geometry.default",
+      "part_visibility": [
+        {
+          "saddle": false
+        },
+        {
+          "bridle": false
+        },
+        {
+          "reins*": false
+        }
+      ],
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Texture.default"
+      ]
+    }
+  }
+}

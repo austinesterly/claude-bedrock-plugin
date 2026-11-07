@@ -1,0 +1,50 @@
+{
+  "format_version": "1.26.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:zoo_camel_husk",
+      "materials": {
+        "default": "camel"
+      },
+      "textures": {
+        "default": "textures/entity/camel_husk/camel_husk"
+      },
+      "geometry": {
+        "default": "geometry.camel_husk"
+      },
+      "animations": {
+        "moving": "animation.camel.walk",
+        "sit_down": "animation.camel.sit_down",
+        "sitting": "animation.camel.sit",
+        "stand_up": "animation.camel.stand_up",
+        "idle": "animation.camel.idle",
+        "ctrl_general": "controller.animation.zoocraft.zoo_camel.general",
+        "ctrl_idle": "controller.animation.zoocraft.zoo_camel.idle"
+      },
+      "sound_effects": {
+        "sit_down": "mob.camel_husk.sit",
+        "stand_up": "mob.camel_husk.stand"
+      },
+      "scripts": {
+        "pre_animation": [
+          "variable.zoo_kneel = query.is_sitting || query.property('zoocraft:act') >= 1;",
+          "variable.dash_cooldown = (!(variable.last_dash_cooldown ?? true) && query.has_dash_cooldown) ? 2.75 : ( variable.dash_cooldown ?? 0 );",
+          "variable.dash_cooldown = math.max(0, variable.dash_cooldown-query.delta_time);",
+          "variable.dash_cooldown_progress = (2.75 - variable.dash_cooldown) / 2.75;",
+          "variable.last_dash_cooldown = query.has_dash_cooldown;",
+          "variable.moving = query.modified_move_speed > 0.05 || query.vertical_speed > 0.05;",
+          "variable.xTargetRot = math.clamp(query.target_x_rotation, -30, 30);",
+          "variable.xHeadRot = variable.dash_cooldown_progress > 0 ? math.clamp(variable.xTargetRot + (45 * (1 - variable.dash_cooldown_progress)), -25, 70) : variable.xTargetRot;",
+          "variable.yHeadRot = math.clamp(query.target_y_rotation, -30, 30);"
+        ],
+        "animate": [
+          "ctrl_general",
+          "ctrl_idle"
+        ]
+      },
+      "render_controllers": [
+        "controller.render.zoocraft.zoo_camel_husk"
+      ]
+    }
+  }
+}
