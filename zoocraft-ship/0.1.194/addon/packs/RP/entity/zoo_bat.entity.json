@@ -1,0 +1,33 @@
+{
+  "format_version": "1.8.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:zoo_bat",
+      "min_engine_version": "1.8.0",
+      "materials": {
+        "default": "bat_v2"
+      },
+      "textures": {
+        "default": "textures/entity/bat_v2"
+      },
+      "geometry": {
+        "default": "geometry.bat_v2"
+      },
+      "scripts": {
+        "scale": "1.0"
+      },
+      "animations": {
+        "resting": "animation.bat.resting",
+        "flying": "animation.bat.flying"
+      },
+      "animation_controllers": [
+        {
+          "move": "controller.animation.zoocraft.zoo_bat.move"
+        }
+      ],
+      "render_controllers": [
+        "controller.render.zoocraft.zoo_bat"
+      ]
+    }
+  }
+}
