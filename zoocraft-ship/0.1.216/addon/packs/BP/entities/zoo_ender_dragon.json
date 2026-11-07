@@ -1,0 +1,163 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "zoocraft:zoo_ender_dragon",
+      "spawn_category": "creature",
+      "is_spawnable": false,
+      "is_summonable": true
+    },
+    "component_groups": {
+      "zoocraft:home_4": {
+        "minecraft:home": {
+          "restriction_type": "random_movement",
+          "restriction_radius": 4
+        }
+      },
+      "zoocraft:home_8": {
+        "minecraft:home": {
+          "restriction_type": "random_movement",
+          "restriction_radius": 8
+        }
+      },
+      "zoocraft:home_16": {
+        "minecraft:home": {
+          "restriction_type": "random_movement",
+          "restriction_radius": 16
+        }
+      },
+      "zoocraft:home_32": {
+        "minecraft:home": {
+          "restriction_type": "random_movement",
+          "restriction_radius": 32
+        }
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": [
+          "zoocraft_animal",
+          "zoocraft_mob",
+          "zoo_ender_dragon",
+          "mob"
+        ]
+      },
+      "minecraft:health": {
+        "max": 200,
+        "value": 200
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "cause": "all",
+            "deals_damage": "no"
+          }
+        ]
+      },
+      "minecraft:nameable": {},
+      "minecraft:persistent": {},
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:breathable": {
+        "breathes_air": true,
+        "breathes_water": true,
+        "suffocate_time": 0,
+        "total_supply": 15
+      },
+      "minecraft:collision_box": {
+        "height": 4,
+        "width": 13
+      },
+      "minecraft:movement": {
+        "value": 0.0
+      },
+      "minecraft:physics": {
+        "has_gravity": false,
+        "has_collision": true
+      },
+      "minecraft:conditional_bandwidth_optimization": {},
+      "minecraft:navigation.hover": {
+        "can_path_over_water": true,
+        "can_sink": false,
+        "can_pass_doors": false,
+        "can_path_from_air": true,
+        "avoid_water": true,
+        "avoid_damage_blocks": true
+      },
+      "minecraft:movement.hover": {},
+      "minecraft:game_event_movement_tracking": {
+        "emit_flap": true
+      },
+      "minecraft:knockback_resistance": {
+        "max": 100,
+        "value": 100
+      },
+      "minecraft:fire_immune": {},
+      "minecraft:dimension_bound": {}
+    },
+    "events": {
+      "zoocraft:home_4": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:home_8",
+            "zoocraft:home_16",
+            "zoocraft:home_32"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:home_4"
+          ]
+        }
+      },
+      "zoocraft:home_8": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:home_4",
+            "zoocraft:home_16",
+            "zoocraft:home_32"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:home_8"
+          ]
+        }
+      },
+      "zoocraft:home_16": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:home_4",
+            "zoocraft:home_8",
+            "zoocraft:home_32"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:home_16"
+          ]
+        }
+      },
+      "zoocraft:home_32": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:home_4",
+            "zoocraft:home_8",
+            "zoocraft:home_16"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:home_32"
+          ]
+        }
+      },
+      "minecraft:entity_spawned": {
+        "add": {
+          "component_groups": [
+            "zoocraft:home_8"
+          ]
+        }
+      }
+    }
+  }
+}
