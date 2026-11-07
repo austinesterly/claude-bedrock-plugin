@@ -1,0 +1,422 @@
+{
+  "format_version": "1.26.10",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "zoocraft:zoo_ocelot",
+      "spawn_category": "creature",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "properties": {
+        "zoocraft:trusts": {
+          "type": "bool",
+          "client_sync": false,
+          "default": false
+        }
+      }
+    },
+    "component_groups": {
+      "zoocraft:wary": {
+        "minecraft:trusting": {
+          "probability": 0.33,
+          "trust_items": [
+            "fish",
+            "salmon"
+          ],
+          "trust_event": {
+            "event": "zoocraft:on_trust",
+            "target": "self"
+          }
+        },
+        "minecraft:behavior.tempt": {
+          "priority": 5,
+          "speed_multiplier": 0.5,
+          "within_radius": 16,
+          "can_get_scared": true,
+          "items": [
+            "fish",
+            "salmon"
+          ]
+        },
+        "minecraft:behavior.avoid_mob_type": {
+          "priority": 6,
+          "max_dist": 10,
+          "max_flee": 16,
+          "entity_types": [
+            {
+              "filters": {
+                "test": "is_family",
+                "subject": "other",
+                "value": "player"
+              },
+              "max_dist": 10,
+              "walk_speed_multiplier": 0.8,
+              "sprint_speed_multiplier": 1.33
+            }
+          ]
+        }
+      },
+      "zoocraft:trusting": {
+        "minecraft:behavior.tempt": {
+          "priority": 5,
+          "speed_multiplier": 0.5,
+          "within_radius": 16,
+          "items": [
+            "fish",
+            "salmon"
+          ]
+        }
+      },
+      "zoocraft:roam": {
+        "minecraft:behavior.random_stroll": {
+          "priority": 9,
+          "speed_multiplier": 0.8
+        },
+        "minecraft:behavior.nap": {
+          "priority": 8,
+          "cooldown_min": 2.0,
+          "cooldown_max": 7.0,
+          "mob_detect_dist": 6.0,
+          "mob_detect_height": 4.0,
+          "can_nap_filters": {
+            "all_of": [
+              {
+                "test": "in_water",
+                "subject": "self",
+                "operator": "==",
+                "value": false
+              },
+              {
+                "test": "on_ground",
+                "subject": "self",
+                "operator": "==",
+                "value": true
+              },
+              {
+                "test": "is_daytime",
+                "value": true
+              }
+            ]
+          },
+          "wake_mob_exceptions": {
+            "any_of": [
+              {
+                "test": "is_family",
+                "subject": "other",
+                "value": "zoocraft_staff"
+              },
+              {
+                "test": "is_family",
+                "subject": "other",
+                "value": "zoocraft_guest"
+              },
+              {
+                "test": "is_family",
+                "subject": "other",
+                "value": "zoocraft_animal"
+              },
+              {
+                "test": "is_sneaking",
+                "subject": "other",
+                "value": true
+              },
+              {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "test": "bool_property",
+                    "subject": "self",
+                    "domain": "zoocraft:trusts"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "minecraft:behavior.move_to_block": {
+          "priority": 7,
+          "tick_interval": 20,
+          "start_chance": 0.05,
+          "search_range": 8,
+          "search_height": 3,
+          "goal_radius": 0.7,
+          "stay_duration": 60.0,
+          "target_selection_method": "random",
+          "target_offset": [
+            0,
+            1,
+            0
+          ],
+          "target_blocks": [
+            "minecraft:oak_log",
+            "minecraft:spruce_log",
+            "minecraft:birch_log",
+            "minecraft:jungle_log",
+            "minecraft:acacia_log",
+            "minecraft:dark_oak_log",
+            "minecraft:mangrove_log",
+            "minecraft:cherry_log",
+            "minecraft:pale_oak_log",
+            "minecraft:stripped_oak_log",
+            "minecraft:stripped_spruce_log",
+            "minecraft:stripped_birch_log",
+            "minecraft:stripped_jungle_log",
+            "minecraft:stripped_acacia_log",
+            "minecraft:stripped_dark_oak_log",
+            "minecraft:stripped_mangrove_log",
+            "minecraft:stripped_cherry_log",
+            "minecraft:stripped_pale_oak_log"
+          ]
+        }
+      },
+      "zoocraft:coat_0": {
+        "minecraft:variant": {
+          "value": 0
+        }
+      },
+      "zoocraft:juvenile": {
+        "minecraft:is_baby": {},
+        "minecraft:scale": {
+          "value": 0.5
+        },
+        "minecraft:collision_box": {
+          "width": 0.3,
+          "height": 0.35
+        }
+      },
+      "zoocraft:home_4": {
+        "minecraft:home": {
+          "restriction_type": "random_movement",
+          "restriction_radius": 4
+        }
+      },
+      "zoocraft:home_8": {
+        "minecraft:home": {
+          "restriction_type": "random_movement",
+          "restriction_radius": 8
+        }
+      },
+      "zoocraft:home_16": {
+        "minecraft:home": {
+          "restriction_type": "random_movement",
+          "restriction_radius": 16
+        }
+      },
+      "zoocraft:home_32": {
+        "minecraft:home": {
+          "restriction_type": "random_movement",
+          "restriction_radius": 32
+        }
+      }
+    },
+    "components": {
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:health": {
+        "value": 10,
+        "max": 10
+      },
+      "minecraft:hurt_on_condition": {
+        "damage_conditions": [
+          {
+            "filters": {
+              "test": "in_lava",
+              "subject": "self",
+              "operator": "==",
+              "value": true
+            },
+            "cause": "lava",
+            "damage_per_tick": 4
+          }
+        ]
+      },
+      "minecraft:nameable": {
+        "always_show": false,
+        "allow_name_tag_renaming": true
+      },
+      "minecraft:type_family": {
+        "family": [
+          "zoocraft_animal",
+          "zoo_ocelot",
+          "ocelot",
+          "mob"
+        ]
+      },
+      "minecraft:breathable": {
+        "total_supply": 15,
+        "suffocate_time": 0
+      },
+      "minecraft:collision_box": {
+        "width": 0.6,
+        "height": 0.7
+      },
+      "minecraft:movement": {
+        "value": 0.3
+      },
+      "minecraft:navigation.walk": {
+        "can_path_over_water": true,
+        "avoid_water": true,
+        "avoid_damage_blocks": true
+      },
+      "minecraft:movement.basic": {},
+      "minecraft:jump.static": {},
+      "minecraft:can_climb": {},
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "cause": "all",
+            "deals_damage": "no"
+          }
+        ]
+      },
+      "minecraft:physics": {},
+      "minecraft:pushable_by_entity": {},
+      "minecraft:pushable_by_block": {},
+      "minecraft:conditional_bandwidth_optimization": {},
+      "minecraft:behavior.float": {
+        "priority": 0
+      },
+      "minecraft:behavior.panic": {
+        "priority": 1,
+        "speed_multiplier": 1.25
+      },
+      "minecraft:behavior.look_at_player": {
+        "priority": 10,
+        "look_distance": 8
+      },
+      "minecraft:persistent": {},
+      "minecraft:behavior.move_towards_home_restriction": {
+        "priority": 2,
+        "speed_multiplier": 0.8
+      },
+      "minecraft:behavior.random_look_around": {
+        "priority": 11
+      },
+      "minecraft:ambient_sound_interval": {
+        "event_name": "ambient",
+        "range": 16.0,
+        "value": 8.0
+      }
+    },
+    "events": {
+      "zoocraft:home_4": {
+        "add": {
+          "component_groups": [
+            "zoocraft:home_4"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "zoocraft:home_8",
+            "zoocraft:home_16",
+            "zoocraft:home_32"
+          ]
+        }
+      },
+      "zoocraft:home_8": {
+        "add": {
+          "component_groups": [
+            "zoocraft:home_8"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "zoocraft:home_4",
+            "zoocraft:home_16",
+            "zoocraft:home_32"
+          ]
+        }
+      },
+      "zoocraft:home_16": {
+        "add": {
+          "component_groups": [
+            "zoocraft:home_16"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "zoocraft:home_4",
+            "zoocraft:home_8",
+            "zoocraft:home_32"
+          ]
+        }
+      },
+      "zoocraft:home_32": {
+        "add": {
+          "component_groups": [
+            "zoocraft:home_32"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "zoocraft:home_4",
+            "zoocraft:home_8",
+            "zoocraft:home_16"
+          ]
+        }
+      },
+      "zoocraft:on_trust": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:wary"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:trusting"
+          ]
+        },
+        "set_property": {
+          "zoocraft:trusts": true
+        }
+      },
+      "zoocraft:trust": {
+        "sequence": [
+          {
+            "filters": {
+              "none_of": [
+                {
+                  "test": "bool_property",
+                  "subject": "self",
+                  "domain": "zoocraft:trusts"
+                }
+              ]
+            },
+            "remove": {
+              "component_groups": [
+                "zoocraft:wary"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "zoocraft:trusting"
+              ]
+            },
+            "set_property": {
+              "zoocraft:trusts": true
+            }
+          }
+        ]
+      },
+      "zoocraft:juvenile": {
+        "add": {
+          "component_groups": [
+            "zoocraft:juvenile"
+          ]
+        }
+      },
+      "minecraft:entity_spawned": {
+        "add": {
+          "component_groups": [
+            "zoocraft:wary",
+            "zoocraft:roam",
+            "zoocraft:home_8",
+            "zoocraft:coat_0"
+          ]
+        }
+      }
+    }
+  }
+}
