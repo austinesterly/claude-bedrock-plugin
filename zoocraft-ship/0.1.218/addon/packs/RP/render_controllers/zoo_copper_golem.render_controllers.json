@@ -1,0 +1,135 @@
+{
+  "format_version": "1.10.0",
+  "render_controllers": {
+    "controller.render.zoocraft.zoo_copper_golem": {
+      "arrays": {
+        "textures": {
+          "Array.textures": [
+            "Texture.default",
+            "Texture.exposed",
+            "Texture.weathered",
+            "Texture.oxidized"
+          ]
+        },
+        "geometries": {
+          "Array.geos": [
+            "Geometry.standing",
+            "Geometry.sitting",
+            "Geometry.running",
+            "Geometry.star"
+          ]
+        }
+      },
+      "geometry": "Array.geos[v.geo]",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Array.textures[v.index]"
+      ],
+      "part_visibility": [
+        {
+          "*": true
+        },
+        {
+          "root": "v.geo != 1"
+        },
+        {
+          "body": "v.geo != 1"
+        },
+        {
+          "head": "v.geo != 1"
+        },
+        {
+          "right_arm": "v.geo != 1"
+        },
+        {
+          "left_arm": "v.geo != 1"
+        },
+        {
+          "right_leg": "v.geo != 1"
+        },
+        {
+          "left_leg": "v.geo != 1"
+        }
+      ]
+    },
+    "controller.render.zoocraft.zoo_copper_golem_eyes": {
+      "arrays": {
+        "textures": {
+          "Array.textures": [
+            "Texture.eyes_default",
+            "Texture.eyes_exposed",
+            "Texture.eyes_weathered",
+            "Texture.eyes_oxidized"
+          ]
+        },
+        "geometries": {
+          "Array.geos": [
+            "Geometry.standing",
+            "Geometry.sitting",
+            "Geometry.running",
+            "Geometry.star"
+          ]
+        }
+      },
+      "geometry": "Array.geos[v.geo]",
+      "materials": [
+        {
+          "*": "Material.eyes"
+        }
+      ],
+      "textures": [
+        "Array.textures[v.index]"
+      ],
+      "ignore_lighting": true,
+      "part_visibility": [
+        {
+          "*": true
+        },
+        {
+          "root": "v.geo != 1"
+        },
+        {
+          "body": "v.geo != 1"
+        },
+        {
+          "head": "v.geo != 1"
+        },
+        {
+          "right_arm": "v.geo != 1"
+        },
+        {
+          "left_arm": "v.geo != 1"
+        },
+        {
+          "right_leg": "v.geo != 1"
+        },
+        {
+          "left_leg": "v.geo != 1"
+        }
+      ]
+    },
+    "controller.render.zoocraft.zoo_copper_golem_flower": {
+      "geometry": "Geometry.flower",
+      "materials": [
+        {
+          "*": "Material.flower"
+        }
+      ],
+      "textures": [
+        "Texture.flower"
+      ],
+      "part_visibility": [
+        {
+          "*": "false"
+        },
+        {
+          "flower": "query.property('zoocraft:has_flower') && !query.property('zoocraft:statue')"
+        }
+      ]
+    }
+  }
+}
