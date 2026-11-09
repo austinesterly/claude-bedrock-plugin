@@ -1,0 +1,595 @@
+// The residents (0.1.182, module 6c: research/npc_plan.md section 4; since 0.1.220 Austin's own, from his spec:
+// research/ZooCraft_Tycoon_Custom_NPC_Spec.md and research/npc_spec_plan.md): everyone who can move into a home the
+// players build. Each is one entry: id (saved, never changed), name, look (the zoocraft:who skin, RP
+// textures/entity/zoocraft/resident_<look>), the zoo goal that unlocks them, his own words for them (`spec`), the tags
+// among their likes and dislikes the zoo can see, traits (what the add-on does with an attribute), a one-line bio for the
+// mailbox, and their lines. Add more residents by adding entries: nothing else needs to change.
+// 0.1.217 (research/npc_plan.md section 9) makes likes and dislikes count: what they come across each visit
+// (residentRules.js arrivalTags, stopTags) sets their mood, steers where they go, what they tip and what they say.
+
+export const LIKE_NAMES = {
+  planters: "planters",
+  birds: "birds",
+  litter: "litter",
+  fish: "fish and tanks",
+  benches: "benches",
+  high_admission: "high prices at the gate",
+  big_cats: "big cats",
+  snacks: "snack stands",
+  quiet: "quiet days",
+  nether: "Nether animals",
+  end: "End animals",
+  crowds: "crowds",
+  // 0.1.217: the rest of the tags the game can see (research/npc_plan.md section 9).
+  reptiles: "reptiles",
+  mythical: "mythical animals",
+  bosses: "boss animals",
+  mob_house: "the Mob House",
+  farm: "farm animals",
+  restrooms: "restrooms",
+  fountains: "water fountains",
+  lamps: "path lamps",
+  clean: "clean paths",
+  low_admission: "a bargain at the gate",
+  // 0.1.220: Austin's residents' likes and dislikes the zoo can see (research/npc_spec_plan.md section 5).
+  cats: "cats",
+  bunnies: "rabbits",
+  small_animals: "small animals",
+  small_mammals: "small mammals",
+  fliers: "animals that fly",
+  bats: "bats",
+  insects: "insects",
+  predators: "predators",
+  sharks: "sharks",
+  snails: "snails",
+  crocodiles: "crocodiles",
+  pufferfish: "pufferfish",
+  wardens: "Wardens",
+  elephants: "elephants",
+  pandas: "pandas",
+  cave: "cave animals",
+  creepers: "creepers",
+  fire: "fiery animals",
+  babies: "baby animals",
+  // 0.1.222: what the way to the zoo is like (residentRules.js arrivalTags): out after dark with too few Path Lamps,
+  // out under a clear sky by day, and a long path from home.
+  darkness: "the dark",
+  sunlight: "bright sunshine",
+  long_walks: "long walks",
+};
+
+// The animal kinds a Viewing Point can show (0.1.217, residentRules.js kindsOf): named species, and the rules for the
+// rest (fish: every animal in a tank or pool but the Mob House's; nether and end: every species from there, as the
+// themed visitors count them; bosses: species.boss and the game's two; mob_house: every Mob House mob).
+export const KIND_TAGS = ["big_cats", "birds", "reptiles", "fish", "nether", "end", "mythical", "bosses", "mob_house", "farm",
+  // 0.1.220 (babies: an exhibit with a young animal in it, residentRules.js stopTags)
+  "cats", "bunnies", "small_animals", "small_mammals", "fliers", "bats", "insects", "predators", "sharks", "snails", "crocodiles", "pufferfish", "wardens", "elephants", "pandas", "cave", "creepers", "fire", "babies"];
+const Z = (...ids) => ids.map((id) => `zoocraft:${id}`);
+export const KIND_SPECIES = {
+  big_cats: Z("lion", "tiger"),
+  birds: Z("penguin", "flamingo", "owl", "zoo_parrot", "zoo_chicken"),
+  reptiles: Z("crocodile", "warped_gecko", "basalt_tortoise", "starback_tortoise", "zoo_turtle"),
+  mythical: Z("unicorn", "dragon", "griffin", "glowhorn_stag"),
+  bosses: Z("zoo_wither", "zoo_ender_dragon"),
+  farm: Z("zoo_sheep", "zoo_cow", "zoo_pig", "zoo_chicken", "zoo_mooshroom", "zoo_horse", "zoo_donkey", "zoo_mule", "zoo_llama", "zoo_trader_llama", "zoo_goat", "zoo_rabbit"),
+  // 0.1.220: the species behind Austin's residents' likes and dislikes (research/npc_spec_plan.md section 5).
+  cats: Z("zoo_cat", "zoo_ocelot", "lion", "tiger"),
+  bunnies: Z("zoo_rabbit"),
+  small_animals: Z("zoo_rabbit", "hedgehog", "raccoon", "rift_ferret", "zoo_armadillo", "otter", "red_panda", "zoo_cat", "zoo_ocelot"),
+  small_mammals: Z("zoo_rabbit", "hedgehog", "raccoon", "rift_ferret", "zoo_armadillo", "otter", "red_panda"),
+  fliers: Z("flamingo", "owl", "zoo_parrot", "zoo_bat", "zoo_bee", "zoo_allay", "zoo_phantom", "zoo_ghast", "zoo_happy_ghast", "zoo_vex", "zoo_blaze", "dragon", "baby_dragon", "griffin", "soul_moth", "chorus_moth", "void_ray", "zoo_ender_dragon", "zoo_wither"),
+  bats: Z("zoo_bat"),
+  insects: Z("zoo_bee", "quartz_beetle", "soul_moth", "chorus_moth", "zoo_silverfish", "zoo_endermite"),
+  predators: Z("lion", "tiger", "crocodile", "zoo_wolf", "zoo_polar_bear", "great_white", "hammerhead", "goblin_shark"),
+  sharks: Z("whale_shark", "great_white", "hammerhead", "goblin_shark"),
+  snails: Z("shimmer_snail"),
+  crocodiles: Z("crocodile"),
+  pufferfish: Z("zoo_pufferfish"),
+  wardens: Z("zoo_warden"),
+  elephants: Z("elephant"),
+  pandas: Z("zoo_panda"),
+  cave: Z("zoo_bat", "zoo_axolotl", "zoo_glow_squid", "zoo_cave_spider", "zoo_silverfish", "zoo_warden", "okapi", "molebear", "skulker"),
+  creepers: Z("zoo_creeper"),
+  fire: Z("zoo_blaze", "zoo_magma_cube", "lava_ray", "zoo_strider", "cinder_boar", "ember_fox", "dragon"),
+};
+// The amenities a resident walks up to (visitors/services.js WALK_TO), by their tag.
+export const SERVICE_TAGS = { bench: "benches", stand: "snacks", restroom: "restrooms", fountain: "fountains" };
+
+// What a trait does (0.1.217; 0.1.220: a resident's `traits`, apart from Austin's own words for them, `spec.attributes`:
+// Sheila's "Talkative" makes her chatty).
+export const ATTRIBUTE_NAMES = { generous: "generous", chatty: "chatty", early_riser: "an early riser" };
+
+/** Hearts out of 5 in words (0.1.217). */
+export const MOOD_WORDS = ["miserable", "unhappy", "a bit glum", "fine", "happy", "delighted"];
+
+// What a resident says about their day when they have no line of their own for it (0.1.217): pleased by a like they came
+// across, bothered by a dislike.
+export const PLEASED = {
+  planters: "The planters along the paths look lovely.",
+  birds: "I saw the birds today. Wonderful!",
+  fish: "I could watch the fish all day.",
+  benches: "There's always a bench when I need one.",
+  big_cats: "The big cats were out today!",
+  snacks: "I had a snack at the stand. Delicious!",
+  quiet: "Nice and quiet today.",
+  nether: "The Nether animals were fascinating today.",
+  end: "The End animals were wonderful today.",
+  crowds: "What a crowd! I love a busy day.",
+  reptiles: "The reptiles were basking today.",
+  mythical: "I saw a mythical animal today. Magical!",
+  bosses: "I saw a real boss animal today!",
+  mob_house: "The Mob House gave me a thrill.",
+  farm: "The farm animals were sweet today.",
+  restrooms: "Clean restrooms. That's a good zoo.",
+  fountains: "A drink at the fountain went down nicely.",
+  lamps: "The path lamps make it all so pretty.",
+  clean: "Not a scrap of litter anywhere.",
+  low_admission: "What a bargain at the gate!",
+  litter: "I don't mind a bit of mess.",
+  high_admission: "Worth every coin at the gate.",
+  cats: "The cats were lovely today.",
+  bunnies: "I saw the rabbits today. So fluffy!",
+  small_animals: "The little animals were adorable today.",
+  small_mammals: "The little furry ones were sweet today.",
+  fliers: "I watched something take off and fly. Wonderful!",
+  bats: "The bats were fascinating today.",
+  insects: "The insects were busy today. Fascinating!",
+  predators: "The hunters were out today. Thrilling!",
+  sharks: "The sharks were magnificent today.",
+  snails: "The snail was taking its time today. Charming.",
+  crocodiles: "The crocodiles were basking today.",
+  pufferfish: "The pufferfish puffed up today!",
+  wardens: "I saw the Warden today!",
+  elephants: "The elephants were wonderful today.",
+  pandas: "The pandas were munching away today.",
+  cave: "The cave animals were brilliant today.",
+  creepers: "The creepers behaved themselves today.",
+  fire: "The fiery animals were glowing today.",
+  babies: "There were baby animals today!",
+  darkness: "A walk in the dark. Lovely and peaceful.",
+  sunlight: "What a sunny day for the zoo!",
+  long_walks: "A good long walk to the zoo. Just what I needed.",
+};
+export const BOTHERED = {
+  planters: "The planters are in my way.",
+  birds: "Those birds are so noisy.",
+  fish: "Fish tanks give me the creeps.",
+  benches: "Benches everywhere. Nobody sits on them.",
+  big_cats: "Those big cats frighten me.",
+  snacks: "Snack stands just make litter.",
+  quiet: "It's too quiet. Where is everybody?",
+  nether: "The Nether animals give me the shivers.",
+  end: "The End animals give me the shivers.",
+  crowds: "Far too many people about today.",
+  reptiles: "I can't stand reptiles.",
+  mythical: "Mythical animals? Silly, if you ask me.",
+  bosses: "Those boss animals are far too big.",
+  mob_house: "The Mob House gave me a fright.",
+  farm: "I didn't come to the zoo to see farm animals.",
+  restrooms: "The restrooms could be cleaner.",
+  fountains: "The fountains splashed me.",
+  lamps: "Those lamps are too bright.",
+  clean: "It's all a bit too tidy here.",
+  low_admission: "So cheap at the gate. Is something wrong?",
+  litter: "Litter on the paths spoils everything.",
+  high_admission: "They charge a fortune at that gate.",
+  cats: "Cats everywhere today. Not for me.",
+  bunnies: "Too many rabbits today.",
+  small_animals: "Little animals everywhere today.",
+  small_mammals: "Little furry things everywhere today.",
+  fliers: "Things flying about over my head all day.",
+  bats: "There were bats today. Ugh!",
+  insects: "Creepy crawlies everywhere today.",
+  predators: "Those hunters were looking at me today.",
+  sharks: "Those sharks give me the shivers.",
+  snails: "A snail exhibit. Really?",
+  crocodiles: "Those crocodiles were staring at me.",
+  pufferfish: "Those pufferfish give me the creeps.",
+  wardens: "The Warden gave me a fright.",
+  elephants: "The elephants were far too big.",
+  pandas: "Pandas just sit there all day.",
+  cave: "The cave animals give me the shivers.",
+  creepers: "A creeper. At a zoo. Why?",
+  fire: "Fire at a zoo? It made me nervous.",
+  babies: "Baby animals everywhere today. So noisy!",
+  darkness: "It was far too dark out there. More lamps, please!",
+  sunlight: "Far too bright out there today.",
+  long_walks: "That walk to the zoo is far too long.",
+};
+
+// 0.1.222 (stage B, research/npc_spec_plan.md section 6): each one's `routine`: how often they visit (`visits`: "every
+// day", "most days", "some days"; balance.js residents.visitWords), what rain and a thunderstorm do (`rain`,
+// `thunder`: "go", "sometimes" (half the days they stay in) or "stay"), and `walk`, their pace against everyone
+// else's (Sheila's slow walk, from the spec). `favourites`: the exhibits they make for first and stay at longest (the
+// spec's section 10: Carrot rabbits, Amanda pandas, Ron fliers, Jared crocodiles and pufferfish, Paola babies, Dave
+// cave animals; Sheila's cats from her own entry). `homeLikes`: what they'd love in their house (homeRules.js
+// FURNISHINGS), from their likes: music for the singers, a kitchen for Sheila (food), a fireplace for Ron and Dave
+// (fire), books for Amanda (school) and Teddy. These are our defaults; Austin may change any of them.
+// Their jobs (`occupation`) are Austin's (his message of 2026-11-09: Austin a zoo influencer, Zach and Jared singers,
+// Sheila retired, Carrot a bunny rehabilitator, Ron a farmer, Amanda a geologist, Paola a tree chopper, Dave a miner,
+// Teddy the mayor); he left who works by day or by night (`shift`) to us: the singers and Dave (who dislikes
+// sunlight) work nights, the rest days, Sheila none (stage B makes the shifts count).
+// Austin's residents (0.1.220: his spec, research/ZooCraft_Tycoon_Custom_NPC_Spec.md section 2; the plan
+// research/npc_spec_plan.md). `spec` keeps his words as he wrote them: the unlock, the looks, likes, dislikes, attributes
+// and the personality direction. Missing ones are left out, never made up. `likes` and `dislikes` are the tags the zoo
+// can see among them (research/npc_spec_plan.md section 5); the rest count in talk and gifts (stage C). `traits` are
+// what the add-on does with an attribute (ATTRIBUTE_NAMES). `unlock` is the zoo goal that lets them move in
+// (residentRules.js unlockProgress): "species" different species on display, "animals" animals on display, "of" animals
+// of the listed species (`plural` names them), "young" young animals at once, "kind" different species of a KIND_SPECIES tag, "exhibits"
+// exhibits with animals in them (`unique`: different species instead). The lines are drafts in each one's voice
+// (the spec leaves the final writing for later).
+export const RESIDENTS = [
+  {
+    id: "austin",
+    name: "Austin",
+    look: 0,
+    occupation: "zoo influencer",
+    shift: "day",
+    bio: "A playful zoo influencer with a tall tale for every exhibit.",
+    unlock: { kind: "species", count: 2 },
+    spec: {
+      unlock: "Have 2 distinct animal/exhibit species represented by unique exhibits on display (not two copies of the same species).",
+      looks: "'Australian' appears as a notebook margin note; complete visual design/reference still to come.",
+      likes: ["Talking about animals", "enjoys jokingly gaslighting/teasing players"],
+      attributes: ["Egotistical", "funny", "nice", "daring", "loyal", "high-spirited"],
+      personality: "Playful, animal-obsessed, prone to tall tales; never let jokes produce false gameplay instructions.",
+    },
+    likes: [],
+    dislikes: [],
+    traits: [],
+    routine: { visits: "every day", rain: "go", thunder: "go" },
+    lines: {
+      hello: ["G'day! Did you know a giraffe can lick its own ears? Probably.", "Oh, it's you! I was just telling everyone about the animals."],
+      home: ["Best house on the street. You built it, but I made it famous.", "Just resting up before the zoo."],
+      leaving: ["Off to see the animals! They'll be thrilled.", "Zoo time. The animals miss me, I can tell."],
+      visiting: ["That one winked at me. True story.", "I could talk about animals all day. I usually do."],
+      returning: ["What a day! I taught a penguin to wave. Maybe.", "Heading home. The animals will be lost without me."],
+      asleep: ["Zzz... no, I'M the zookeeper... zzz..."],
+      waiting: ["Hey! Who moved my house? Was it you? It was you.", "I can't get in. Very funny, mate."],
+      likes: ["Ask me anything about animals. Anything!", "Two different animals in this zoo, and I've named them both. Wrong, probably."],
+    },
+  },
+  {
+    id: "zach",
+    name: "Zach",
+    look: 1,
+    occupation: "singer",
+    shift: "night",
+    bio: "A singer who hears a song in every animal's call.",
+    unlock: { kind: "species", count: 3 },
+    spec: {
+      unlock: "3 unique exhibits on display.",
+      looks: "Inspired by Zac Brown from the Zac Brown Band; creator will supply reference.",
+      likes: ["Talking about how his musical inspiration comes from animal noises", "claims to be 'one with nature.'"],
+      attributes: ["Musical", "erratic", "crazy", "sophisticated", "passionate"],
+      personality: "Eccentric naturalist/musician. Animal sounds and music should color dialogue, not require copyrighted music playback.",
+    },
+    likes: [],
+    dislikes: [],
+    traits: [],
+    routine: { visits: "some days", rain: "go", thunder: "sometimes" },
+    homeLikes: ["music"],
+    lines: {
+      hello: ["Hey, friend. Hear that? Every animal's got a rhythm.", "Shh... listen. The zoo is humming in a minor key."],
+      home: ["Working on a new tune. It starts with a goat's bleat.", "Home. Even the floorboards have a beat."],
+      leaving: ["Off to the zoo to find my next chorus.", "Nature's calling. Literally, it's a bird."],
+      visiting: ["That roar? That's a bassline, man.", "I'm one with nature. Nature hasn't decided about me yet."],
+      returning: ["Got three new songs and a sunburn.", "Heading home to write it all down."],
+      asleep: ["Zzz... hum... hmm-hmm... zzz..."],
+      waiting: ["My house fell out of tune! Can you fix it?"],
+      likes: ["Every animal noise is a song waiting to happen.", "A wolf howl and a frog croak. Now that's a duet."],
+    },
+  },
+  {
+    id: "sheila",
+    name: "Sheila",
+    look: 2,
+    occupation: "retired",
+    bio: "A chatty retired grandmother who loves cats, food and a good joke.",
+    unlock: { kind: "animals", count: 7 },
+    spec: {
+      unlock: "7 animals of any kind on display (total individual animals; not necessarily seven species).",
+      looks: "Short, elderly woman with short gray hair who walks slowly.",
+      likes: ["Talking", "friends", "cats", "food", "jokes"],
+      dislikes: ["Silence", "bats and insects", "school", "technology"],
+      attributes: ["Talkative", "overbearing", "active", "sentimental"],
+      personality: "Longer chat lines, eager social interaction, affinity for cat exhibits; slower walk speed.",
+    },
+    likes: ["cats"],
+    dislikes: ["quiet", "bats", "insects"],
+    traits: ["chatty"],
+    routine: { visits: "every day", rain: "sometimes", thunder: "stay", walk: 0.7 },
+    favourites: ["cats"],
+    homeLikes: ["kitchen"],
+    lines: {
+      hello: ["Oh, hello, dear! Come here, let me tell you about my morning. It was very long.", "There you are! Have you eaten? You look thin."],
+      home: ["I've baked too much again. I always bake too much. Do you want some?", "Sit down, sit down, I'll tell you all about my cousin's knee."],
+      leaving: ["I'm off to the zoo, dear. I'll take my time, these legs aren't what they were.", "Off to see the kitties! The big ones and the little ones."],
+      visiting: ["Did I tell you about the time I met a lion? Well, it was a cat. A big cat.", "Isn't this lovely? Everyone should come. I'll tell them."],
+      returning: ["What a day! I talked to everybody. Twice.", "Home for a cup of something warm and a sit down."],
+      asleep: ["Zzz... and then she said... zzz..."],
+      waiting: ["Oh dear, oh dear, my house! Who did this? I need to sit down."],
+      likes: ["Cats are the best company. They never interrupt.", "Do you know any good jokes? I know hundreds. Here's one..."],
+      dislikes: ["All this quiet makes me nervous. Say something!", "Bats! Bugs! Keep them away from me, dear."],
+      pleased: { cats: ["The kitties were out today. I could have stayed all afternoon!"] },
+      bothered: { quiet: ["Not a soul to talk to today. Not one!"], bats: ["There was a bat. A BAT, dear!"], insects: ["Creepy crawlies everywhere. I didn't like it one bit."] },
+    },
+  },
+  {
+    id: "carrot",
+    name: "Carrot",
+    look: 3,
+    occupation: "bunny rehabilitator",
+    shift: "day",
+    bio: "A bouncy, bunny-suited bunny rehabilitator who loves anything small and fluffy.",
+    unlock: { kind: "of", species: ["zoocraft:zoo_rabbit"], plural: "rabbits", count: 4 },
+    spec: {
+      unlock: "4 bunnies/rabbits on display.",
+      looks: "Middle-aged woman wearing a complete gray bunny suit.",
+      likes: ["Bunnies", "small animals", "carrots", "diamonds/gold"],
+      dislikes: ["Predator animals", "weapons", "darkness"],
+      attributes: ["Spontaneous", "crazy", "jittery", "energetic", "happy"],
+      personality: "Animated movement, enthusiasm around rabbit exhibits, avoids predator areas where reasonably possible.",
+    },
+    likes: ["bunnies", "small_animals"],
+    dislikes: ["predators", "darkness"],
+    traits: [],
+    routine: { visits: "every day", rain: "sometimes", thunder: "stay" },
+    favourites: ["bunnies"],
+    lines: {
+      hello: ["Hi! Hi! Hello! Hop hop!", "Ooh, you again! Do you have a carrot? No? That's fine! Hi!"],
+      home: ["Can't sit still! Can't sit still!", "My burrow, I mean my house, is the cosiest."],
+      leaving: ["Bunny time! Bunny time!", "Hop, hop, hop to the zoo!"],
+      visiting: ["Look at their little noses! Wiggle wiggle!", "Is that a carrot over there? No. Okay! Still happy!"],
+      returning: ["Best day! Best day ever! Again!", "Hopping home. My ears are tired."],
+      asleep: ["Zzz... hop... zzz..."],
+      waiting: ["Eek! My house! Where did my house go?!"],
+      likes: ["Bunnies! Did somebody say bunnies?", "Small and fluffy is the best size there is!"],
+      dislikes: ["Big teeth and claws? No thank you!", "I don't like the dark. Not one little bit."],
+      pleased: { bunnies: ["I saw the bunnies! All of them! Twice!"] },
+      bothered: { darkness: ["It was so dark out there! I hopped the whole way home."], predators: ["Those big hunters were looking at me. I hopped right past."] },
+    },
+  },
+  {
+    id: "ron",
+    name: "Ron",
+    look: 4,
+    occupation: "farmer",
+    shift: "day",
+    bio: "A kind old farmer who knows every bird by its call.",
+    unlock: { kind: "species", count: 5 },
+    spec: {
+      unlock: "5 unique exhibits on display.",
+      looks: "Older wrinkly man with white hair, blue eyes, and a great smile.",
+      likes: ["Birds", "everything that flies", "meat", "fires", "the outdoors"],
+      dislikes: ["Technology", "mining", "loud people"],
+      attributes: ["Easygoing", "knowledgeable", "kindhearted", "friendly", "outdoorsy"],
+      personality: "Peaceful, friendly nature enthusiast; may favor outdoor aviaries and nature trails.",
+    },
+    likes: ["birds", "fliers", "fire"],
+    dislikes: ["crowds"],
+    traits: [],
+    routine: { visits: "most days", rain: "go", thunder: "stay" },
+    favourites: ["fliers"],
+    homeLikes: ["fireplace"],
+    lines: {
+      hello: ["Well, hello there. Fine day to be outside.", "Howdy, friend. Hear that? That's an owl, if I'm not mistaken."],
+      home: ["Nothing like a warm fire and a quiet evening.", "I'll head out soon. No rush."],
+      leaving: ["Off to watch the birds. They don't wait for anybody.", "Time for a walk in the fresh air."],
+      visiting: ["Look at that wingspan. Beautiful.", "You learn a lot by just sitting still and watching."],
+      returning: ["Good day. Saw some fine fliers.", "Heading home before it gets dark. Old habits."],
+      asleep: ["Zzz..."],
+      waiting: ["Somebody's taken my cabin apart. Mind fixing it, friend?"],
+      likes: ["If it flies, I want to see it.", "Give me the outdoors and a campfire any day."],
+      dislikes: ["Too much noise these days. Folks shout too much.", "All these gadgets. Give me a good pair of boots."],
+      pleased: { birds: ["The birds were singing their hearts out today."], fliers: ["Watched something take off and soar. Never gets old."], fire: ["Those fiery critters kept me warm."] },
+      bothered: { crowds: ["Loud folks everywhere today. Couldn't hear a single bird."] },
+    },
+  },
+  {
+    id: "jared",
+    name: "Jared",
+    look: 5,
+    occupation: "singer",
+    shift: "night",
+    bio: "A cool, calm singer with a soft spot for strange creatures.",
+    unlock: { kind: "species", count: 7 },
+    spec: {
+      unlock: "7 unique exhibits on display.",
+      looks: "Inspired by Juice WRLD; creator will supply reference/skin direction.",
+      likes: ["Music", "diamonds/gold", "crocodiles", "jokes", "pufferfish", "Wardens"],
+      dislikes: ["Snakes", "scary things", "farming", "reading"],
+      attributes: ["Alert", "calm", "passionate", "innovative", "dishonest"],
+      personality: "Cool-headed but sometimes unreliable storyteller; affection for unusual/exotic creatures and music. Avoid treating dishonesty as permission to give incorrect player-critical UI information.",
+    },
+    likes: ["crocodiles", "pufferfish", "wardens"],
+    dislikes: ["bosses", "mob_house", "farm"],
+    traits: [],
+    routine: { visits: "most days", rain: "sometimes", thunder: "stay" },
+    favourites: ["crocodiles", "pufferfish"],
+    homeLikes: ["music"],
+    lines: {
+      hello: ["Yo. Chill day, right?", "Hey. I was just about to come find you. Probably."],
+      home: ["Got a beat stuck in my head. Can't shake it.", "Just vibing at home for a bit."],
+      leaving: ["Heading to the zoo. Gonna check on the crocs.", "Off to see something weird. The weirder the better."],
+      visiting: ["That pufferfish? Totally looked at me. We're tight now.", "I raced a crocodile once. I won. Don't check."],
+      returning: ["Good day. Heading back to make some music.", "Home time. Gotta write this down."],
+      asleep: ["Zzz... drop the beat... zzz..."],
+      waiting: ["My place got wrecked. Wasn't me. I think."],
+      likes: ["Crocs are the coolest animals here. Facts.", "Wardens are misunderstood. I get them."],
+      dislikes: ["Scary stuff? Nah. I'm not scared. I just don't like it.", "Farming? Too much work, man."],
+      pleased: { crocodiles: ["The crocs were chilling today. Respect."], pufferfish: ["The pufferfish puffed up for me. Big moment."], wardens: ["Saw the Warden. Total legend."] },
+      bothered: { bosses: ["That big boss thing was too much, man."], mob_house: ["The Mob House? I wasn't scared. I just left early."], farm: ["Too many farm animals. Reminds me of chores."] },
+    },
+  },
+  {
+    id: "amanda",
+    name: "Amanda",
+    look: 6,
+    occupation: "geologist",
+    shift: "day",
+    bio: "A brilliant geologist and know-it-all who loves pandas, rocks and a good lesson.",
+    unlock: { kind: "of", species: ["zoocraft:zoo_panda"], plural: "giant pandas", count: 4 },
+    spec: {
+      unlock: "4 pandas on display.",
+      looks: "'MandaPanda' design/reference from creator.",
+      likes: ["Rocks", "pandas", "elephants", "school", "water animals"],
+      dislikes: ["Insects", "stupid people", "creepers"],
+      attributes: ["Nerdy", "know-it-all", "brilliant", "supportive"],
+      personality: "Informative, educational, helpful; enjoys explaining exhibits and discoveries.",
+    },
+    likes: ["pandas", "elephants", "fish"],
+    dislikes: ["insects", "creepers"],
+    traits: [],
+    routine: { visits: "most days", rain: "go", thunder: "stay" },
+    favourites: ["pandas"],
+    homeLikes: ["books"],
+    lines: {
+      hello: ["Hi! Did you know pandas spend most of the day eating bamboo? Most of it!", "Oh good, you're here. I've got so much to explain."],
+      home: ["I'm reading about rocks. Igneous ones. Ask me anything.", "Just finishing my notes before the zoo."],
+      leaving: ["Off to the zoo! I've prepared a few facts. Forty, roughly.", "Time to learn something new."],
+      visiting: ["Elephants can recognise themselves in a mirror. Isn't that amazing?", "Look at the water animals! Every one of them is perfectly adapted."],
+      returning: ["I learned three new things today. Well, I taught three.", "Home to look up what I didn't know. Which wasn't much."],
+      asleep: ["Zzz... technically... zzz..."],
+      waiting: ["My house is broken. I can explain exactly how, if that helps."],
+      likes: ["Pandas, elephants and anything that swims. Best exhibits here.", "I love a good rock. Seriously, ask me about rocks."],
+      dislikes: ["Bugs. No thank you.", "Creepers are the worst. Zero stars."],
+      pleased: { pandas: ["The pandas were munching away. Textbook pandas!"], elephants: ["The elephants were wonderful. Such clever animals."], fish: ["The water animals were fascinating today."] },
+      bothered: { insects: ["Too many bugs about today."], creepers: ["A creeper. At a zoo. Why?"] },
+    },
+  },
+  {
+    id: "paola",
+    name: "Paola",
+    look: 7,
+    occupation: "tree chopper",
+    shift: "day",
+    bio: "A blunt, sharp-tongued tree chopper with a soft spot for babies and anything small.",
+    unlock: { kind: "young", count: 2 },
+    spec: {
+      unlock: "2 baby animals on display at the same time.",
+      looks: "Young Mexican woman; visual reference to follow.",
+      likes: ["Babies", "small animals", "entertainment", "sitting"],
+      dislikes: ["Long walks", "Nether animals", "fire", "fighting"],
+      attributes: ["Aggressive", "serious", "eloquent", "realistic"],
+      personality: "Blunt and expressive yet fond of baby animals; may prefer short, nearby trips and rest breaks. 'Aggressive' is a personality trait, not a requirement for unsolicited combat.",
+    },
+    likes: ["babies", "small_animals", "benches"],
+    dislikes: ["nether", "fire", "long_walks"],
+    traits: [],
+    routine: { visits: "some days", rain: "stay", thunder: "stay" },
+    favourites: ["babies"],
+    lines: {
+      hello: ["Hi. Let's keep this short.", "Oh, it's you. Fine. Hello."],
+      home: ["I'm sitting down. Don't ask me to get up.", "Honestly? Home is the best part of the day."],
+      leaving: ["Off to the zoo. Hopefully the walk isn't too long.", "Let's go see the babies. Then I'm sitting down."],
+      visiting: ["The little ones are the only reason I came, and they're worth it.", "A bench and a baby animal. That's a perfect afternoon."],
+      returning: ["Home. Finally. My feet are done.", "That was good. Not great. Good."],
+      asleep: ["Zzz..."],
+      waiting: ["My house is in pieces. Fix it, please. Today."],
+      likes: ["Babies are the best part of any zoo. Don't argue.", "Small animals. Short walks. A nice bench. That's all I want."],
+      dislikes: ["Fire, Nether things, fighting. No. No. And no.", "Long walks are a punishment, not a hobby."],
+      pleased: { babies: ["There were babies today. Tiny ones. I'm not crying, you're crying."], small_animals: ["The little ones were adorable today."], benches: ["Found a good bench. Didn't move for an hour."] },
+      bothered: { long_walks: ["That walk to the zoo is far too long. My feet are done."], nether: ["Those Nether animals are too much for me."], fire: ["Fire. Why is there fire at a zoo?"] },
+    },
+  },
+  {
+    id: "dave",
+    name: "Dave",
+    look: 8,
+    occupation: "miner",
+    shift: "night",
+    bio: "A scruffy, cheerful miner who'd rather be underground.",
+    unlock: { kind: "kind", tag: "cave", count: 2 },
+    spec: {
+      unlock: "2 distinct cave-dwelling animal species on display.",
+      looks: "Disheveled ginger miner in overalls and a hard hat.",
+      likes: ["Rocks", "ores", "cave animals", "fire", "weapons/tools"],
+      dislikes: ["Sunlight", "water", "farming", "small mammals"],
+      attributes: ["Funny", "chaotic", "smelly", "humble", "genuine"],
+      occupation: "Miner is confirmed (the creator already envisioned a miner NPC, and Dave is the character designed as a miner).",
+      personality: "Likes dim cave environments and discussing ore finds; strongly mining-themed gifts and dialogue.",
+    },
+    likes: ["cave", "fire"],
+    dislikes: ["farm", "small_mammals", "sunlight"],
+    traits: [],
+    routine: { visits: "most days", rain: "stay", thunder: "stay" },
+    favourites: ["cave"],
+    homeLikes: ["fireplace"],
+    lines: {
+      hello: ["Heh, hello! Mind the dust. And the smell.", "Oi! Found any good ores lately?"],
+      home: ["Polishing my pickaxe. Again.", "Bit bright out there. I'll wait a minute."],
+      leaving: ["Off to see the cave critters. My kind of animals.", "Right, zoo time. Where's my hard hat?"],
+      visiting: ["Now that's a proper cave animal. Lives in the dark, like me.", "Smells like a mine in here. Lovely."],
+      returning: ["Back to the burrow. Er, house.", "Good day. Didn't find a single diamond, mind."],
+      asleep: ["Zzz... iron... gold... zzz..."],
+      waiting: ["Somebody's dug out my house! That's my job!"],
+      likes: ["Give me a dark cave and a good lantern any day.", "Rocks, ores, a warm fire. What more do you need?"],
+      dislikes: ["Too much sunlight. Makes me squint.", "Water. Can't stand getting wet."],
+      pleased: { cave: ["The cave animals were brilliant today. Proper dark-dwellers."], fire: ["The fiery ones kept me nice and toasty."] },
+      bothered: { sunlight: ["Far too bright out today. I was squinting the whole time."], farm: ["Farm animals. Reminds me of farming. Ugh."], small_mammals: ["Little furry things everywhere. Not for me."] },
+    },
+  },
+  {
+    id: "teddy",
+    name: "Teddy",
+    look: 9,
+    occupation: "mayor",
+    shift: "day",
+    bio: "The grand, formal mayor, who loves books, sharks and a tidy park.",
+    unlock: { kind: "exhibits", count: 10, unique: false },
+    spec: {
+      unlock: "10 exhibits on display. Treat as ten qualifying exhibits; whether these must be unique species is not specified and should be configurable rather than silently changed.",
+      looks: "Resembles Theodore ('Teddy') Roosevelt.",
+      likes: ["Books", "public speaking", "clean places", "sharks", "copper"],
+      dislikes: ["Socialism", "foolish people", "garbage/litter", "snails"],
+      attributes: ["Formal", "innovative", "organized", "traditional", "fancy"],
+      personality: "Grand formal speech, cleanliness preferences, bookish and organized demeanor. Political views are characterization, not a mod-wide viewpoint.",
+    },
+    likes: ["clean", "sharks"],
+    dislikes: ["litter", "snails"],
+    traits: [],
+    routine: { visits: "every day", rain: "sometimes", thunder: "stay" },
+    homeLikes: ["books"],
+    lines: {
+      hello: ["Good day to you! A splendid day for an outing!", "Ah, my friend! Bully to see you!"],
+      home: ["I am arranging my library. Alphabetically, of course.", "A gentleman is never late. I shall leave shortly."],
+      leaving: ["To the zoo! Onward!", "Forward to the zoo, and to the sharks!"],
+      visiting: ["Magnificent! Simply magnificent!", "A well-kept park is the mark of a well-kept mind."],
+      returning: ["A most rewarding expedition. Home to my books.", "The day is done, and well done."],
+      asleep: ["Zzz... bully... zzz..."],
+      waiting: ["My residence has been dismantled! This will not stand!"],
+      likes: ["A clean park and a good book. Civilisation!", "The shark! A creature of purpose and power."],
+      dislikes: ["Litter is an insult to the whole park.", "Snails. Slow, slimy and entirely without ambition."],
+      pleased: { clean: ["Not a scrap of litter anywhere. Splendid!"], sharks: ["The sharks were in fine form today. Magnificent beasts!"] },
+      bothered: { litter: ["Litter on the paths! Disgraceful!"], snails: ["A snail exhibit. I shall say no more."] },
+    },
+  },
+];
+
+/** The skins the resident body has (RP textures/entity/zoocraft/resident_<n>, zoocraft:who 0..63). */
+export const RESIDENT_LOOKS = 10;
+
+export function residentById(id) {
+  return RESIDENTS.find((r) => r.id === id);
+}
+
+/** "4 rabbits on display" and the like: a resident's zoo goal in words (0.1.220). */
+export function unlockWords(u) {
+  switch (u.kind) {
+    case "species":
+      return `${u.count} different species on display`;
+    case "animals":
+      return `${u.count} animals on display`;
+    case "of":
+      return `${u.count} ${u.plural} on display`;
+    case "young":
+      return `${u.count} young animals on display at once`;
+    case "kind":
+      return `${u.count} different ${LIKE_NAMES[u.tag] ?? u.tag} on display`;
+    case "exhibits":
+      return u.unique ? `${u.count} exhibits of different species` : `${u.count} exhibits with animals in them`;
+    default:
+      return "";
+  }
+}
