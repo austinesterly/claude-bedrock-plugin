@@ -1,0 +1,37 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:block": {
+    "description": {
+      "identifier": "zoocraft:work_anchor",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:geometry": "minecraft:geometry.full_block",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "zoocraft_work_anchor_side",
+          "render_method": "opaque"
+        },
+        "up": {
+          "texture": "zoocraft_work_anchor_top",
+          "render_method": "opaque"
+        },
+        "down": {
+          "texture": "zoocraft_planks",
+          "render_method": "opaque"
+        }
+      },
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 1.5
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 3
+      },
+      "minecraft:map_color": "#9a6d40",
+      "minecraft:loot": "loot_tables/blocks/zoocraft_work_anchor.json",
+      "zoocraft:work_anchor": {}
+    }
+  }
+}
