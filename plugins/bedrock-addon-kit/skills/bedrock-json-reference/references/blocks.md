@@ -1,6 +1,6 @@
 # Block components
 
-Generated 2026-11-02 by `scripts/build-json-reference.mjs` from Mojang's official form definitions in the Microsoft Learn docs repo (content/forms/block). Search for the component id. Field types come from the schema; when a type is blank, check the example or the linked sub-object.
+Generated 2026-11-09 by `scripts/build-json-reference.mjs` from Mojang's official form definitions in the Microsoft Learn docs repo (content/forms/block). Search for the component id. Field types come from the schema; when a type is blank, check the example or the linked sub-object.
 
 ## Components (37)
 
@@ -44,18 +44,18 @@ Defines the area of the block that collides with entities. If set to true, defau
 
 | Field | Type | Default | Notes |
 |---|---|---|---|
-| `max` | point3 | `[16,24,16]` | Maximum position of the bounds of the collision box. "max" is specified as [x, y, z] and must be in the range (0, 0, 0) to (16, 24, 16), inclusive. |
-| `min` | point3 | `[0,0,0]` | Minimal position of the bounds of the collision box. "min" is specified as [x, y, z] and must be in the range (0, 0, 0) to (16, 24, 16), inclusive. |
+| `Using a voxel shape` | string | `"custom:shape_name"` | Currently only available with the VoxelShape experiment on. When using the minecraft namespace, the only currently available collision shapes are: "minecraft:empty" or "minecraft:unit_cube". When using no namespaces or a custom one, the names must start and e… |
+| `Using custom boxes` | objectArray |  | An array of boxes that define the area of the block that collides with entities. |
 
 Example (JSON (object)):
 ```json
 {
- "origin": [
-  -8,
+ "min": [
   0,
-  -8
+  0,
+  0
  ],
- "size": [
+ "max": [
   16,
   16,
   16
@@ -142,6 +142,7 @@ Describes the destructible by mining properties for this block. If set to true, 
 
 | Field | Type | Default | Notes |
 |---|---|---|---|
+| `base_time_to_destroy` | float | `0` | Sets the number of server simulation ticks it takes to mine the block with base equipment. Greater numbers result in greater mining times. A negative number means the block can't be mined. |
 | `item_specific_speeds` | objectArray |  | Optional array of objects to describe item specific block destroy speeds, each object contains an 'item' ItemDescriptor and a 'destroy_speed' float. This array currently requires UpcomingFeatures experiment to be enabled. |
 | `seconds_to_destroy` | float | `0` | Sets the number of seconds it takes to destroy the block with base equipment. Greater numbers result in greater mining times. |
 
@@ -288,6 +289,11 @@ Example (default):
 The amount that light will be dampened when it passes through the block, in a range of 0-15. Higher value means the light will be dampened more. A value of 15 means fully opaque (like stone), while 0 means fully transparent (like glass). Leaves use 1, water uses 2.
 
 > In format version 1.26.20, validation strictly enforces that the value must be an integer between 0 and 15 inclusive; out-of-range values are rejected at load time.
+
+Example (/minecraft:block/components/minecraft:light_dampening/):
+```json
+15
+```
 
 ### minecraft:light_emission
 
@@ -509,7 +515,7 @@ _**deprecated**_
 
 Specifies that a unit cube is to be used with tessellation.
 
-## Documents and sub-objects (56)
+## Documents and sub-objects (57)
 
 ### block_behavior_document (block_behavior_document)
 
@@ -623,7 +629,7 @@ Container for all components that define custom block behavior and properties. C
 | `minecraft:block_entity` | object |  | Adds per-instance metadata for this block. See `block/minecraft_block_entity`. |
 | `minecraft:breathability` | object |  | deprecated. Minecraft Breathability |
 | `minecraft:chest_obstruction` | object |  | This defines how a block reacts to a chest being opened underneath it. See `block/minecraft_chest_obstruction`. |
-| `minecraft:collision_box` | boolean |  | Defines the area of the block that collides with entities. If set to true, default values are used. If set to false, the block's collision with entities is disabled. If this component is omitted, default values are used. |
+| `minecraft:collision_box` | boolean |  | Defines the area of the block that collides with entities. If set to true, default values are used. If set to false, the block's collision with entities is disabled. If this component is omitted, default values are used.Using a collision shape identifier requ… |
 | `minecraft:connection_rule` | object |  | Defines whether other blocks such as fences, walls, bars, and glass panes are allowed to connect to this block. See `block/minecraft_connection_rule`. |
 | `minecraft:crafting_table` | object |  | Makes your block into a custom crafting table which enables the crafting table UI and the ability to craft recipes. See `block/minecraft_crafting_table`. |
 | `minecraft:destructible_by_explosion` | boolean |  | Describes the destructible by explosion properties for this block. If set to true, the block will have the default explosion resistance. If set to false, this block is indestructible by explosion. If the component is omitted, the block will have the default e… |
@@ -631,6 +637,7 @@ Container for all components that define custom block behavior and properties. C
 | `minecraft:destruction_particles` | object |  | Sets the particles that will be used when block is destroyed. This component can be omitted. See `block/minecraft_destruction_particles`. |
 | `minecraft:display_name` | string |  | Specifies the language file key that maps to what text will be displayed when you hover over the block in your inventory and hotbar. If the string given can not be resolved as a loc string, the raw string given will be displayed. If this component is omitted,… |
 | `minecraft:embedded_visual` | object |  | This defines how a block embedded into an other block renders. Eg. a block in a flowerpot. See `block/minecraft_embedded_visual`. |
+| `minecraft:enchantment_power_transmitter` | boolean |  | Describes the enchantment power transmission properties of this block. If set to true and this block is placed in the 1 block gap between an enchantment table and a bookshelf, the enchantment table will remain powered by the bookshelf. |
 | `minecraft:entity_fall_on` | object |  | Configures the behavior of an entity falling on this block. The minimum distance in blocks that an actor needs to fall before events are triggered. See `block/minecraft_entity_fall_on`. |
 | `minecraft:flammable` | boolean |  | Describes the flammable properties for this block. If set to true, default values are used. If set to false, or if this component is omitted, the block will not be able to catch on fire naturally from neighbors, but it can still be directly ignited. |
 | `minecraft:flower_pottable` | object |  | This component allows the held item version of this block to be interacted with an empty flowerpot to place the block in it. |
@@ -638,6 +645,7 @@ Container for all components that define custom block behavior and properties. C
 | `minecraft:geometry` | string |  | The component that describes the geometry to use to render this block. It can be specified as a JSON object with the following fields, or simply as a string containing the description identifier of the geometry to use to render this block. This identifier mus… |
 | `minecraft:instrument_sound` | object |  | This defines what sound will play based on above or below relative position to a note block. An instrument can be assigned to the "up" and "down" faces where at least one face needs to be defined for the component to be valid. If either face is undefined, or … |
 | `minecraft:item_visual` | object |  | The "minecraft:geometry" component and "minecraft:material_instances" component of an item. Can be used instead of having separated component for each. See `block/minecraft_item_visual`. |
+| `minecraft:jukebox_playlist_source` | object |  | Allows a jukebox directly below this block to use its existing container as a playlist source. This component is an empty object. It does not create a container and has no effect without one. Requires format_version 1.26.70 or later and the Upcoming Creator F… |
 | `minecraft:leashable` | object |  | Allows a block to have a lead tied to it. See `block/leashable`. |
 | `minecraft:light_dampening` | int |  | The amount that light will be dampened when it passes through the block. Higher value means the light will be dampened more. |
 | `minecraft:light_emission` | int |  | The amount of light this block will emit. Higher value means more light will be emitted. |
@@ -646,6 +654,7 @@ Container for all components that define custom block behavior and properties. C
 | `minecraft:map_color` | string |  | Sets the color of the block when rendered to a map.Can be a direct color representation or an object with a "color" and "tint_method" field. |
 | `minecraft:material_instances` | object |  | The material instances for a block. Maps face or material_instance names in a geometry file to an actual material instance. Material instance can either be a full material instance or a name to another already defined instance. Limited to 64 instances. |
 | `minecraft:movable` | object |  | This defines how a block reacts to being moved by another block like a piston. See `block/minecraft_movable`. |
+| `minecraft:neighbor_change` | object |  | Configures which neighboring block changes can trigger a block custom component event. See `block/neighbor_change`. |
 | `minecraft:on_fall_on` | object |  | deprecated. Minecraft On Fall On |
 | `minecraft:on_interact` | object |  | deprecated. Minecraft On Interact |
 | `minecraft:on_placed` | object |  | deprecated. Minecraft On Placed |
@@ -689,7 +698,9 @@ Adds connection states to the block. The values of these states are updated when
 
 | Field | Type | Default | Notes |
 |---|---|---|---|
+| `show_ui_on_interaction` | boolean | `true` | Determines whether interacting with this block opens its container UI. Defaults to true. When false, normal block interaction events can run instead. |
 | `slot_count` | int |  | **required**. Sets the number of slots in the container. |
+| `title` | string |  | Optional container title, stored as a language file key or raw text. Must be nonempty and at most 256 characters. |
 
 ### culling_layer (culling_layer)
 
@@ -1019,6 +1030,14 @@ Adds the "minecraft:multi_block_part" state and multi block functionality to the
 | `enabled_states` | stringArray |  | **required**. Which state to enable. Must specify at least one. Options: ["minecraft:multi_block_part"]. Values: `minecraft:multi_block_part`. |
 | `parts` | int | `2` | The number of block parts, this sets the value for state 'minecraft:multi_block_part'. Default value is '2'. |
 
+### Neighbor Change (neighbor_change)
+
+Configures which neighboring block changes can trigger a block custom component event.
+
+| Field | Type | Default | Notes |
+|---|---|---|---|
+| `neighbor_directions` | stringArray | `["all"]` | The directions to observe: all, up, down, north, south, west, or east. The all value must be used alone. Values: `all`, `down`, `east`, `north`, `south`, `up`, `west`. |
+
 ### NWayVisualRotation (nwayvisualrotation)
 
 | Field | Type | Default | Notes |
@@ -1152,5 +1171,5 @@ Must be assigned an array or a "range"
 
 | Field | Type | Default | Notes |
 |---|---|---|---|
-| `damper_vibrations` | boolean | `false` | Damper Vibrations |
+| `dampen_vibrations` | boolean | `false` | Dampen Vibrations |
 | `occlude_vibrations` | boolean | `false` | Occlude Vibrations |

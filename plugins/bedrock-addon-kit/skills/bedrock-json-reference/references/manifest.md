@@ -1,6 +1,6 @@
 # Pack manifest
 
-Generated 2026-11-02 by `scripts/build-json-reference.mjs` from Mojang's official form definitions in the Microsoft Learn docs repo (content/forms/packmanifest). Search for the component id. Field types come from the schema; when a type is blank, check the example or the linked sub-object.
+Generated 2026-11-09 by `scripts/build-json-reference.mjs` from Mojang's official form definitions in the Microsoft Learn docs repo (content/forms/packmanifest). Search for the component id. Field types come from the schema; when a type is blank, check the example or the linked sub-object.
 
 ## Documents and sub-objects (15)
 
@@ -94,6 +94,7 @@ Declares a module within the pack. Modules define what the pack contains: 'data'
 | `defaults` | stringArray |  | **required**. Defaults |
 | `name` | string |  | **required**. Name |
 | `options` | objectArray |  | **required**. Options See `packmanifest/dropdownoption`. |
+| `selection_text` | string | `""` | Selection Text |
 | `text` | string |  | **required**. Text |
 | `type` | stringEnum |  | **required**. Type Values: `dropdown`, `label`, `multiselect`, `slider`, `toggle`. |
 

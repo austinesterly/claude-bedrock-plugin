@@ -1,10 +1,10 @@
 # Features, biomes, jigsaw, structures, dimensions
 
-Generated 2026-11-02 by `scripts/build-json-reference.mjs` from Mojang's official form definitions in the Microsoft Learn docs repo (content/forms/features, biome, client_biome, jigsaw, structure, dimension, world). Search for the component id. Field types come from the schema; when a type is blank, check the example or the linked sub-object.
+Generated 2026-11-09 by `scripts/build-json-reference.mjs` from Mojang's official form definitions in the Microsoft Learn docs repo (content/forms/features, biome, client_biome, jigsaw, structure, dimension, world). Search for the component id. Field types come from the schema; when a type is blank, check the example or the linked sub-object.
 
-## Components (70)
+## Components (71)
 
-`minecraft:aggregate_feature`, `minecraft:ambient_sounds`, `minecraft:atmosphere_identifier`, `minecraft:beards_and_shavers`, `minecraft:biome_music`, `minecraft:capped`, `minecraft:cave_carver_feature`, `minecraft:climate`, `minecraft:color_grading_identifier`, `minecraft:conditional_list`, `minecraft:creature_spawn_probability`, `minecraft:cubemap_identifier`, `minecraft:dry_foliage_color`, `minecraft:fog_appearance`, `minecraft:foliage_appearance`, `minecraft:fossil_feature`, `minecraft:frozen_ocean`, `minecraft:geode_feature`, `minecraft:grass_appearance`, `minecraft:growing_plant_feature`, `minecraft:height_difference_filter_feature`, `minecraft:horizontal_tree_decoration_feature`, `minecraft:humidity`, `minecraft:jigsaw_structure_metadata`, `minecraft:lighting_identifier`, `minecraft:map_tints`, `minecraft:mesa`, `minecraft:mountain_parameters`, `minecraft:multi_block_feature`, `minecraft:multiface_feature`, `minecraft:multinoise_generation_rules`, `minecraft:multipart_block_column_feature`, `minecraft:nether_cave_carver_feature`, `minecraft:noise_gradient`, `minecraft:ore_feature`, `minecraft:overworld`, `minecraft:overworld_generation_rules`, `minecraft:overworld_height`, `minecraft:partially_exposed_blob_feature`, `minecraft:partially_frozen`, `minecraft:poi_block`, `minecraft:poi_description`, `minecraft:poi_tag`, `minecraft:poi_tag_description`, `minecraft:precipitation`, `minecraft:rect_layout`, `minecraft:replace_biomes`, `minecraft:scan_surface`, `minecraft:scatter_feature`, `minecraft:sculk_patch_feature`, `minecraft:search_feature`, `minecraft:sequence_feature`, `minecraft:single_block_feature`, `minecraft:sky_color`, `minecraft:snap_to_surface_feature`, `minecraft:structure_template_feature`, `minecraft:subsurface_builder`, `minecraft:surface_builder`, `minecraft:surface_material_adjustments`, `minecraft:surface_relative_threshold_feature`, `minecraft:swamp`, `minecraft:tags`, `minecraft:the_end`, `minecraft:tree_feature`, `minecraft:underwater_cave_carver_feature`, `minecraft:vegetation_patch_feature`, `minecraft:village_type`, `minecraft:water_appearance`, `minecraft:water_identifier`, `minecraft:weighted_random_feature`
+`minecraft:aggregate_feature`, `minecraft:ambient_sounds`, `minecraft:atmosphere_identifier`, `minecraft:beards_and_shavers`, `minecraft:biome_music`, `minecraft:capped`, `minecraft:cave_carver_feature`, `minecraft:climate`, `minecraft:color_grading_identifier`, `minecraft:conditional_list`, `minecraft:creature_spawn_probability`, `minecraft:crevasse_feature`, `minecraft:cubemap_identifier`, `minecraft:dry_foliage_color`, `minecraft:fog_appearance`, `minecraft:foliage_appearance`, `minecraft:fossil_feature`, `minecraft:frozen_ocean`, `minecraft:geode_feature`, `minecraft:grass_appearance`, `minecraft:growing_plant_feature`, `minecraft:height_difference_filter_feature`, `minecraft:horizontal_tree_decoration_feature`, `minecraft:humidity`, `minecraft:jigsaw_structure_metadata`, `minecraft:lighting_identifier`, `minecraft:map_tints`, `minecraft:mesa`, `minecraft:mountain_parameters`, `minecraft:multi_block_feature`, `minecraft:multiface_feature`, `minecraft:multinoise_generation_rules`, `minecraft:multipart_block_column_feature`, `minecraft:nether_cave_carver_feature`, `minecraft:noise_gradient`, `minecraft:ore_feature`, `minecraft:overworld`, `minecraft:overworld_generation_rules`, `minecraft:overworld_height`, `minecraft:partially_exposed_blob_feature`, `minecraft:partially_frozen`, `minecraft:poi_block`, `minecraft:poi_description`, `minecraft:poi_tag`, `minecraft:poi_tag_description`, `minecraft:precipitation`, `minecraft:rect_layout`, `minecraft:replace_biomes`, `minecraft:scan_surface`, `minecraft:scatter_feature`, `minecraft:sculk_patch_feature`, `minecraft:search_feature`, `minecraft:sequence_feature`, `minecraft:single_block_feature`, `minecraft:sky_color`, `minecraft:snap_to_surface_feature`, `minecraft:structure_template_feature`, `minecraft:subsurface_builder`, `minecraft:surface_builder`, `minecraft:surface_material_adjustments`, `minecraft:surface_relative_threshold_feature`, `minecraft:swamp`, `minecraft:tags`, `minecraft:the_end`, `minecraft:tree_feature`, `minecraft:underwater_cave_carver_feature`, `minecraft:vegetation_patch_feature`, `minecraft:village_type`, `minecraft:water_appearance`, `minecraft:water_identifier`, `minecraft:weighted_random_feature`
 
 ### minecraft:aggregate_feature
 
@@ -155,6 +155,15 @@ Probability that creatures will spawn within the biome when a chunk is generated
 | Field | Type | Default | Notes |
 |---|---|---|---|
 | `probability` | float |  | Probability between [0.0, 0.75] of creatures spawning within the biome on chunk generation. |
+
+### minecraft:crevasse_feature
+
+| Field | Type | Default | Notes |
+|---|---|---|---|
+| `description` | object |  | **required**. Description |
+| `max_length` | int |  | Maximum end-to-end length of the crevasse, in blocks. |
+| `max_width` | int |  | Maximum width of the crevasse cross-section, in blocks. |
+| `min_footprint` | int |  | Minimum connected horizontal footprint required before carving begins, in blocks. |
 
 ### minecraft:cubemap_identifier
 
@@ -464,6 +473,10 @@ Noise parameters used to drive mountain terrain generation in Overworld.
 | `top_slide` | object |  | Controls the density tapering that happens at the top of the world to prevent terrain from reaching too high |
 
 ### minecraft:multi_block_feature
+
+Places a multi-block in the world as a biome decoration feature. A multi-block must be defined with the `minecraft:multi_block` trait. The required `places_block` field supports a single block, it must be a multi-block and it must be be the first part of a multi-block i.e. the `minecraft:multi_block_part` state must have a value of 0. The optional `may_replace` field is an allowlists which specifies what blocks each part of the multi-block can replace. If this field is omitted, the multi-block parts can be placed anywhere. However, they may not replace other multi-block parts. The optional `randomize_rotation` field will randomize the multi-blocks cardinal orientation. If this field is enabled then the multi-block must have the cardinal direction state. The optional `enforce_placement_rules` field will check if each part of the multi-block may be placed on top of existing blocks. If the multi-block defines a `minecraft:placement_filter` component then each part is also checked against the blocks defined in that component.
+
+> This item requires a format version of at least 1.26.50.
 
 | Field | Type | Default | Notes |
 |---|---|---|---|
@@ -1354,6 +1367,7 @@ Defines a world generation feature document and its feature-specific properties.
 | `minecraft:underwater_cave_carver_feature` | object |  | Underwater Cave Carver Feature |
 | `minecraft:vegetation_patch_feature` | object |  | Vegetation Patch Feature |
 | `minecraft:weighted_random_feature` | keyedObjectCollection |  | Weighted Random Feature |
+| `minecraft:crevasse_feature` | object |  | Crevasse Feature |
 | `minecraft:multi_block_feature` | object |  | Multi Block Feature |
 | `minecraft:multipart_block_column_feature` | object |  | Multipart Block Column Feature |
 

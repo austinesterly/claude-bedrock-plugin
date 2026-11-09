@@ -1,6 +1,72 @@
 # Experimental and upcoming features in recent changelogs (generated)
 
-Generated on **2026-11-02** from feedback.minecraft.net (official Zendesk API). Each release lists its "Experimental ..." sections word for word, then other bullets that mention an experiment or beta (often a feature graduating out of an experiment). Newest first. Toggle names are as Mojang writes them in world settings > Experiments.
+Generated on **2026-11-09** from feedback.minecraft.net (official Zendesk API). Each release lists its "Experimental ..." sections word for word, then other bullets that mention an experiment or beta (often a feature graduating out of an experiment). Newest first. Toggle names are as Mojang writes them in world settings > Experiments.
+
+## Minecraft Beta & Preview - 26.70.23 (2026-11-03)
+
+Source: https://feedback.minecraft.net/hc/en-us/articles/50103892132365-Minecraft-Beta-Preview-26-70-23
+
+### Experimental Technical Updates
+
+#### API
+
+- Added includeNamespace and excludeNamespace to BiomeFilter
+  - If a namespace is added to includeNamespace, a biome using that namespace can be found
+  - If a namespace is added to excludeNamespace, a biome using that namespace cannot be found
+- Added includeNamespace and excludeNamespace to BlockFilter
+  - If a namespace is added to includeNamespace, a block using that namespace can be found
+  - If a namespace is added to excludeNamespace, a block using that namespace cannot be found
+- Added namespaces and excludeNamespaces to EntityFilter
+  - If a namespace is added to namespaces, an entity using that namespace can be found
+  - If a namespace is added to excludeNamespaces, an entity using that namespace cannot be found
+- Added world.afterEvents.portalActivate, PortalActivateAfterEvent, and PortalActivateAfterEventSignal to @minecraft/server in beta to notify scripts after a Nether portal is activated, providing its dimension, ignition location, and initiating player when known
+- Added property ItemCustomComponent.onReleaseUse to beta
+- Added two new methods to BlockEntityStorageComponent and ItemBlockEntityStorageComponent, still behind beta:
+  - remove removes a stored entity from the current content pack's storage without releasing it into the world. No entity, experience, or item drops are spawned.
+  - totalSize returns the total number of entities stored in this block's entity storage across all content packs.
+
+#### Actor
+
+- Passenger of block will now take into account the rotation limit they were given
+- Passenger of block will stop being passenger when their supporting block is removed or replaced with a different block type
+
+##### PlayerDimensionChangeAfterEvent
+
+- Added the beta read-only source property, which reports what caused the player to change dimensions using the new PlayerDimensionChangeSource enum
+
+##### PlayerDimensionChangeSource
+
+- Added the beta PlayerDimensionChangeSource enum with the values Portal, TeleportCommand, PlayerRespawn, and Unknown
+
+#### Blocks
+
+- minecraft:collision_box has been updated to support voxel shape identifiers as a collision shape from 1.26.70 and onwards:
+  - Requires the "Voxel Shapes" experiment. Using the component as a 'bool' or a box array remains non-experimental.
+  - Identifiers can be a custom voxel shape, minecraft:unit_cube, or minecraft:empty.
+  - Voxel shapes that exceed the collision bounds of [0,0,0] to [16,24,16] will be clamped and registered with a warning. "format_version": "1.26.70", "identifier": "test:block_v1_26_70" "minecraft:collision_box": "custom:collision_shape"
+
+#### Ore UI Emoji
+
+- Support existing custom Minecraft emoji Unicode code points in Ore UI screens
+
+### Other experiment and beta mentions
+
+- When claiming beta or preview realm, if there is only one realm to choose from, it will now auto select that realm
+- Released class BlockComponentNeighborChangedAfterEvent from beta to v2.12.0
+- Released interface NeighborChange from beta to v2.12.0
+- Released BlockComponentNamedTickEvent from beta to v2.12.0 in @minecraft/server
+- Released ScriptBlock.scheduleNamedTick from beta to v2.12.0 in @minecraft/server
+- Released ScriptBlock.hasScheduledNamedTick from beta to v2.12.0 in @minecraft/server
+- Released ScriptBlock.removeScheduledNamedTicks from beta to v2.12.0 in @minecraft/server
+- Released ScriptBlock.getScheduledNamedTickCount from beta to v2.12.0 in @minecraft/server
+- Released ScriptBlock.getAllScheduledNamedTicks from beta to v2.12.0 in @minecraft/server
+- Custom blocks whose minecraft:block_entity component declares a container now provide BlockInventoryComponent without requiring any experiments
+- Released the container field from experimental, so custom blocks using format_version 1.26.20 or later no longer need the Upcoming Creator Features experiment to declare a container with slot_count (1 to 54) and the optional title and show_ui_on_interaction fields
+- Released the minecraft:neighbor_change block component from the Upcoming Creator Features experiment. It requires format version 1.26.60 or later
+- Released the minecraft:enchantment_power_transmitter block component from the Upcoming Creator Features experiment. It requires format version 1.26.60 or later
+- Added the Beta-only field to an entity's description field clear_behaviors_on_component_changes to opt into clearing a mob's existing AI components when any component changes occur; it defaults to false for Beta documents
+- Added a new minecraft:entity_rotation_always_follows_head entity component, available to entity definitions using the beta format version, which keeps the entity's rotation aligned with its head after look behaviors run
+- Only available to entity definitions using the beta format version
 
 ## Minecraft Beta & Preview - 26.70.22 (2026-10-28)
 
@@ -1016,49 +1082,6 @@ Source: https://feedback.minecraft.net/hc/en-us/articles/48053406322829-Minecraf
 - `world.getPackSettings()` now can return an array of strings for multiselect options in `@minecraft/server` beta
 - `PackSettingsChangeAfterEvent.settingValue` now can be an array of strings for multiselect options in `@minecraft/server` beta
 - Released horizontal multi-blocks, these are blocks defined with the `minecraft:multi_block` trait with a `direction` field that is horizontal. Upcoming Creator Features experiment is still required for them if `format_version` is less than 1.26.50
-
-## Minecraft Beta & Preview - 26.50.24 (2026-08-05)
-
-Source: https://feedback.minecraft.net/hc/en-us/articles/47907593889677-Minecraft-Beta-Preview-26-50-24
-
-### Experimental Technical Updates
-
-#### API
-
-- Added new tech and support for using scripting to interface with the VS Code debugger live diagnostics:
-  - Added class DiagnosticsManager to access the new debugger diagnostics tech.
-  - Added class DiagnosticsTab, used to represent a tab view in the debugger live diagnostics page.
-  - Added class DiagnosticsView, used to represent a single display view within a tab.
-  - Added class DiagnosticsStat for representing data to be used with the live diagnostics.
-  - Added class DiagnosticsError for diagnostics related errors.
-- Added WorldClock class to @minecraft/server in beta
-  - Has properties for name, time, and isPaused to retrieve state of the world clock
-- Added WorldClockRegistry class to @minecraft/server in beta
-  - Has a registerClock function to allow registrations of new world clocks during startup
-- Added WorldClockRegistrationError class to @minecraft/server in beta. This is thrown by WorldClockRegistry.registerClock when registration of a world clock fails
-- Added WorldClockReloadNewWorldClockError class to @minecraft/server in beta. This is thrown when trying to register a new world clock after reloading scripts
-- Added WorldClockInvalidRegistryError class to @minecraft/server in beta. This is thrown when trying to register world clocks outside of the BeforeStartupEvent
-- Added WorldClockNotFoundError class to @minecraft/server in beta. This is thrown by World.getClock when a world clock does not exist
-- Added WorldClockRegistry to BeforeStartupEvent in beta
-- Added getClock function to the World class in beta
-
-##### BlockUtilityTasks
-
-- Added the optional directionMask parameter to floodSearch for restricting traversal directions
-
-#### Features
-
-- Add scripting API to query Points of Interest (POI) in the current dimension
-
-#### Graphical
-
-- Fixed Book and Quill's lighting value when on a Lectern when Block Light Quality is set to Volumetric Lights or above
-  - Fixed an issue that caused the brightness of some point lights to oscillate
-
-### Other experiment and beta mentions
-
-- The block component minecraft:block_entity no longer requires the experimental toggle from format version 1.26.20 onward.
-- Released minecaft:sound block component out of experimental
 
 ## Minecraft: Bedrock Edition 26.40 (2026-07-31)
 

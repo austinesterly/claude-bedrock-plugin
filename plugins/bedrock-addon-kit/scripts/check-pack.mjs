@@ -333,19 +333,22 @@ const vanillaGeo = new Set(["minecraft:geometry.full_block", "minecraft:geometry
 // Components that only work with an experiment on (as of Preview 26.60; keep in sync with
 // skills/bedrock-experimental/references/experiments.md).
 const EXPERIMENTAL = {
-  "minecraft:enchantment_power_transmitter": "Upcoming Creator Features (format 1.26.60)",
-  "minecraft:vibration_properties": "Upcoming Creator Features (format 1.26.60)",
-  "minecraft:neighbor_change": "Upcoming Creator Features (format 1.26.60)",
+  "minecraft:enchantment_power_transmitter": "Upcoming Creator Features in stable 26.60 (released with no toggle in Preview 26.70.23, so stable once 26.70 ships)",
+  "minecraft:vibration_properties": "Upcoming Creator Features in stable 26.60 (released with no toggle in Preview 26.70.23, so stable once 26.70 ships)",
+  "minecraft:neighbor_change": "Upcoming Creator Features in stable 26.60 (released with no toggle in Preview 26.70.23, so stable once 26.70 ships)",
   "minecraft:storage_item": "an experiment (marked [EXPERIMENTAL] in Mojang's definitions)",
   "minecraft:bundle_interaction": "an experiment (marked [EXPERIMENTAL] in Mojang's definitions)",
   "minecraft:time_marker_sensor": "Upcoming Creator Features and the beta entity format version (Preview 26.70.20)",
+  "minecraft:entity_rotation_always_follows_head": "the beta entity format version (Preview 26.70.23)",
+  "minecraft:spherical_look_control": "the beta entity format version (Preview 26.70.23)",
 };
 function experimentCheck(file, id, comps) {
   for (const [k, toggle] of Object.entries(EXPERIMENTAL)) if (comps?.[k] !== undefined) warn(file, `${id}: ${k} needs ${toggle}; keep it out of release builds`);
   const be = comps?.["minecraft:block_entity"];
   if (be?.entity_storage) warn(file, `${id}: block_entity.entity_storage needs Upcoming Creator Features`);
-  if (be?.container) warn(file, `${id}: block_entity.container needs Upcoming Creator Features`);
+  if (be?.container) warn(file, `${id}: block_entity.container needs Upcoming Creator Features in stable 26.60 (no toggle from Preview 26.70.23 at format 1.26.20+)`);
   const cb = comps?.["minecraft:collision_box"];
+  if (typeof cb === "string") warn(file, `${id}: collision_box naming a voxel shape needs the Voxel Shapes experiment and format 1.26.70 (Preview 26.70.23); use an array of boxes in shipped packs`);
   if ([cb].flat().some((b) => b && typeof b === "object" && ("min" in b || "max" in b))) warn(file, `${id}: collision_box min/max form needs Upcoming Creator Features in stable 26.60 (Preview 26.70.22 makes it standard only at format 1.26.70); origin/size works without it`);
 }
 function customComponentCheck(file, id, comps) {

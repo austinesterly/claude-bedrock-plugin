@@ -1,10 +1,42 @@
 # Upcoming and beta Script APIs (generated)
 
-Generated on **2026-11-02** from the official `index.d.ts` typings on npm. Labels: **[next stable]** is in the `rc` build (ships in the next game release, works without experiments once it does); **[beta]** needs the Beta APIs experiment and a `-beta` module version in the manifest; **[beta module]** has no stable release at all. Search for `Type.member`.
+Generated on **2026-11-09** from the official `index.d.ts` typings on npm. Labels: **[next stable]** is in the `rc` build (ships in the next game release, works without experiments once it does); **[beta]** needs the Beta APIs experiment and a `-beta` module version in the manifest; **[beta module]** has no stable release at all. Search for `Type.member`.
 
 ## @minecraft/server
 
-Stable 2.11.0, rc 2.12.0-rc.1.26.70-preview.22, beta 2.13.0-beta.1.26.70-preview.22. 40 names coming in the next stable, 253 beta-only.
+Stable 2.11.0, rc 2.12.0-rc.1.26.70-preview.23, beta 2.13.0-beta.1.26.70-preview.23. 64 names coming in the next stable, 258 beta-only.
+
+### Block [next stable]
+
+Represents a block in a dimension.
+
+- `getAllScheduledNamedTicks(): ScheduledNamedTick[]`
+- `getScheduledNamedTickCount(): number`
+- `hasScheduledNamedTick(eventName: string): boolean`
+- `removeScheduledNamedTicks(eventName: string): void`
+- `scheduleNamedTick(eventName: string, tickDelay: number): void`
+
+### BlockComponentNamedTickEvent [next stable] (new type)
+
+- `isMine(): boolean` Checks whether this named tick event was scheduled by this pack.
+- `readonly name: string` Name of the named tick event.
+
+### BlockComponentNeighborChangedAfterEvent [next stable] (new type)
+
+- `getChanges(): NeighborChange[]` Returns the neighboring block changes for this event.
+
+### BlockComponentTypes [next stable]
+
+The types of block components that are accessible via function Block.getComponent.
+
+- `VibrationProperties = 'minecraft:vibration_properties'`
+
+### BlockCustomComponent [next stable]
+
+Contains a set of events that will be raised for a block.
+
+- `onNamedTick?: (arg0: BlockComponentNamedTickEvent, arg1: CustomComponentParameters) => void`
+- `onNeighborChanged?: (arg0: BlockComponentNeighborChangedAfterEvent, arg1: CustomComponentParameters) => void`
 
 ### BlockSearchOptions [next stable] (new type)
 
@@ -13,6 +45,12 @@ Options for finding blocks.
 - `includeLiquidBlocks?: boolean` When true, includes liquid blocks.
 - `includePassableBlocks?: boolean` When true, includes passable blocks, such as vines and flowers.
 - `maxDistance?: number` Maximum search distance, in blocks.
+
+### BlockVibrationPropertiesComponent [next stable] (new type)
+
+- `static readonly componentId = 'minecraft:vibration_properties'`
+- `getCanDampenVibrations(): boolean` Gets whether this block can dampen vibrations.
+- `getCanOccludeVibrations(): boolean` Gets whether this block can occlude vibrations.
 
 ### Dimension [next stable]
 
@@ -25,6 +63,12 @@ A class that represents a particular dimension (e.g., The End) within a world.
 Describes the type of input of a device.
 
 - `GamepadAndMouse = 'GamepadAndMouse'`
+
+### NeighborChange [next stable] (new type)
+
+- `blockPermutation: BlockPermutation` The permutation of the neighboring block after its last change during the tick.
+- `direction: Direction` Direction from the block receiving the event to the neighboring block that changed.
+- `previousPermutation: BlockPermutation` The permutation of the neighboring block before its first change during the tick.
 
 ### PoiBlockInstance [next stable] (new type)
 
@@ -81,23 +125,30 @@ The base class for a text primitive.
 - `defaultVisibleToAll: boolean`
 - `hiddenFrom: Player[]`
 
+### ScheduledNamedTick [next stable] (new type)
+
+- `eventName: string`
+- `tickDelay: number`
+
 ### BannerPattern [beta] (new type)
 
 - `readonly color: string` The color to apply to this banner pattern.
 - `readonly pattern: string` The pattern type (e.g.
+
+### BiomeFilter [beta]
+
+Options to include or exclude biomes based on biome names, tags, or namespaces.
+
+- `excludeNamespaces?: string[]`
+- `includeNamespaces?: string[]`
 
 ### Block [beta]
 
 Represents a block in a dimension.
 
 - `canPlace(blockToPlace: BlockPermutation | BlockType | string, faceToPlaceOn?: Direction): boolean`
-- `getAllScheduledNamedTicks(): ScheduledNamedTick[]`
 - `getMapColor(): RGBA`
-- `getScheduledNamedTickCount(): number`
-- `hasScheduledNamedTick(eventName: string): boolean`
 - `readonly isSolid: boolean`
-- `removeScheduledNamedTicks(eventName: string): void`
-- `scheduleNamedTick(eventName: string, tickDelay: number): void`
 - `trySetPermutation(permutation: BlockPermutation): boolean`
 
 ### BlockBoundingBoxUtils [beta] (new type)
@@ -114,15 +165,6 @@ Represents a block in a dimension.
 - `static isValid(box: BlockBoundingBox): boolean` Check to see if a BlockBoundingBox is valid (i.e.
 - `static translate(box: BlockBoundingBox, delta: Vector3): BlockBoundingBox` Move a BlockBoundingBox by a given amount
 
-### BlockComponentNamedTickEvent [beta] (new type)
-
-- `isMine(): boolean` Checks whether this named tick event was scheduled by this pack.
-- `readonly name: string` Name of the named tick event.
-
-### BlockComponentNeighborChangedAfterEvent [beta] (new type)
-
-- `getChanges(): NeighborChange[]` Returns the neighboring block changes for this event.
-
 ### BlockComponentRedstoneUpdateEvent [beta]
 
 Contains information regarding a specific block redstone update event.
@@ -137,28 +179,29 @@ The types of block components that are accessible via function Block.getComponen
 - `ItemFrame = 'minecraft:item_frame'`
 - `RecipeCrafting = 'minecraft:recipe_crafting'`
 - `RecipeProcessing = 'minecraft:recipe_processing'`
-- `VibrationProperties = 'minecraft:vibration_properties'`
-
-### BlockCustomComponent [beta]
-
-Contains a set of events that will be raised for a block.
-
-- `onNamedTick?: (arg0: BlockComponentNamedTickEvent, arg1: CustomComponentParameters) => void`
-- `onNeighborChanged?: (arg0: BlockComponentNeighborChangedAfterEvent, arg1: CustomComponentParameters) => void`
 
 ### BlockEntityStorageComponent [beta] (new type)
 
 - `static readonly componentId = 'minecraft:entity_storage'`
 - `getEntities(): BlockEntityStorageInfo[]` Returns information about the entities stored in this block's entity storage.
 - `release(entityId: string): Entity` Releases a stored entity from this block's entity storage and spawns it back into the world, at the same location it was when stored.
+- `remove(entityId: string): void` Permanently removes a stored entity from the current content pack's storage without releasing it into the world.
 - `size(): number` Returns the number of entities stored in this block's entity storage by the current content pack.
 - `store(entity: Entity): string` Serializes and stores an entity in this block's entity storage.
+- `totalSize(): number` Returns the total number of entities stored in this block's entity storage across all content packs.
 - `transfer(entityId: string, targetBlock: Block): void` Moves a stored entity from this block's entity storage to the target block's entity storage without releasing it into the world.
 
 ### BlockEntityStorageInfo [beta] (new type)
 
 - `readonly definitionId: string` The entity's definition ID, such as `minecraft:pig`.
 - `readonly uniqueId: string` The unique ID of the stored entity.
+
+### BlockFilter [beta]
+
+Options to include or exclude blocks based on type, tag, permutation, or namespaces.
+
+- `excludeNamespaces?: string[]`
+- `includeNamespaces?: string[]`
 
 ### BlockItemFrameComponent [beta] (new type)
 
@@ -196,12 +239,6 @@ Contains additional options for configuring a block raycast query.
 - `readonly inputSlotCount: number` The number of addressable input slots for getInputItem, setInputItem, setInputSlotEnabled, and getInputSlotEnabled.
 - `setInputItem(slot: number, item?: ItemStack): void` Sets or clears an item in an input slot.
 - `setInputSlotEnabled(slot: number, enabled: boolean): void`
-
-### BlockVibrationPropertiesComponent [beta] (new type)
-
-- `static readonly componentId = 'minecraft:vibration_properties'`
-- `getCanDampenVibrations(): boolean` Gets whether this block can dampen vibrations.
-- `getCanOccludeVibrations(): boolean` Gets whether this block can occlude vibrations.
 
 ### BlockVolumeBase [beta]
 
@@ -292,6 +329,13 @@ The types of entity components that are accessible via function Entity.getCompon
 
 - `Npc = 'minecraft:npc'`
 
+### EntityFilter [beta]
+
+Contains options for filtering entities.
+
+- `excludeNamespaces?: string[]`
+- `namespaces?: string[]`
+
 ### EntityNpcComponent [beta] (new type)
 
 - `static readonly componentId = 'minecraft:npc'`
@@ -332,15 +376,29 @@ Represents the game rules for a world experience.
 - `static readonly componentId = 'minecraft:block_entity_storage'`
 - `getEntities(): BlockEntityStorageInfo[]` Inspects the serialized entities in the calling pack's manifest UUID bucket without loading or spawning them.
 - `release(entityId: string, location: DimensionLocation): Entity` Releases a stored mob at the supplied dimension and world position.
+- `remove(entityId: string): void` Permanently removes a stored entity from the calling pack's bucket without releasing it into the world.
 - `size(): number` Returns the number of serialized entities in the calling pack's manifest UUID bucket.
 - `store(entity: Entity): string` Serializes and despawns a non-player mob into the calling pack's item storage.
+- `totalSize(): number` Returns the total number of entities stored on this item stack across all content packs.
 - `transfer(entityId: string, targetBlock: Block): void` Moves serialized ownership from the calling pack's item bucket into the same bucket of a block's entity-storage without loading or spawning the entity.
+
+### ItemComponentReleaseUseEvent [beta] (new type)
+
+- `readonly itemStack: ItemStack` The item stack that was released.
+- `readonly remainingUseDuration: number` The remaining use duration, in ticks, when the item was released.
+- `readonly source: Player` The player who released the item.
 
 ### ItemComponentTypes [beta]
 
 The types of item components that are accessible via function ItemStack.getComponent.
 
 - `BlockEntityStorage = 'minecraft:block_entity_storage'`
+
+### ItemCustomComponent [beta]
+
+Contains a set of events that will be raised for an item.
+
+- `onReleaseUse?: (arg0: ItemComponentReleaseUseEvent, arg1: CustomComponentParameters) => void`
 
 ### ItemFrameRotation [beta] (new type)
 
@@ -358,12 +416,6 @@ The types of item components that are accessible via function ItemStack.getCompo
 - `readonly id: string` The message identifier.
 - `readonly message: string` The message.
 - `readonly player: Player` The player who sent the message.
-
-### NeighborChange [beta] (new type)
-
-- `blockPermutation: BlockPermutation` The permutation of the neighboring block after its last change during the tick.
-- `direction: Direction` Direction from the block receiving the event to the neighboring block that changed.
-- `previousPermutation: BlockPermutation` The permutation of the neighboring block before its first change during the tick.
 
 ### PackSettingChangeAfterEvent [beta] (new type)
 
@@ -434,6 +486,19 @@ Represents a player within the world.
 - `subscribe(callback: (arg0: PlayerCursorItemReleaseAfterEvent) => void): (arg0: PlayerCursorItemReleaseAfterEvent) => void` Adds a callback that is called when a player releases an item from their cursor to a container.
 - `unsubscribe(callback: (arg0: PlayerCursorItemReleaseAfterEvent) => void): void` Removes a previously registered event callback.
 
+### PlayerDimensionChangeAfterEvent [beta]
+
+Contains information related to changes to a player's dimension having been changed.
+
+- `readonly source: PlayerDimensionChangeSource`
+
+### PlayerDimensionChangeSource [beta] (new type)
+
+- `PlayerRespawn = 'PlayerRespawn'` The player respawned in another dimension after dying.
+- `Portal = 'Portal'` The player changed dimensions through a portal.
+- `TeleportCommand = 'TeleportCommand'` The player was teleported to another dimension by a command, such as /tp or /execute, or by a script teleport.
+- `Unknown = 'Unknown'` The cause of the dimension change is not known.
+
 ### PlayerItemAttackEntityBeforeEvent [beta] (new type)
 
 - `readonly aimDirection?: Vector3` The normalized world-space direction used for the attack.
@@ -477,6 +542,17 @@ Represents a player within the world.
 - `Everyone = 'Everyone'`
 - `Off = 'Off'`
 
+### PortalActivateAfterEvent [beta] (new type)
+
+- `readonly dimension: Dimension` The dimension in which the portal was activated, not its destination dimension.
+- `readonly location: Vector3` The coordinates of the ignition position used to activate the portal.
+- `readonly player?: Player` The player who directly activated the portal using an item, if known.
+
+### PortalActivateAfterEventSignal [beta] (new type)
+
+- `subscribe(callback: (arg0: PortalActivateAfterEvent) => void): (arg0: PortalActivateAfterEvent) => void`
+- `unsubscribe(callback: (arg0: PortalActivateAfterEvent) => void): void`
+
 ### RecipeCraftingContext [beta] (new type)
 
 - `getInputItem(slot: number): ItemStack | undefined` Gets the item in the provided input slot.
@@ -486,11 +562,6 @@ Represents a player within the world.
 - `setInputItem(slot: number, item?: ItemStack): void` Sets or clears an item in an input slot.
 - `setSelectedRecipe(recipeId: string): void` Selects a recipe for the current crafting operation.
 - `readonly validRecipes: string[]` The identifiers of the recipes that are valid for the current input items.
-
-### ScheduledNamedTick [beta] (new type)
-
-- `eventName: string`
-- `tickDelay: number`
 
 ### ServerMessageAfterEventSignal [beta] (new type)
 
@@ -543,6 +614,7 @@ Contains a set of events that are available across the scope of the World.
 - `readonly playerCursorItemGrab: PlayerCursorItemGrabAfterEventSignal`
 - `readonly playerCursorItemRelease: PlayerCursorItemReleaseAfterEventSignal`
 - `readonly playerUseNameTag: PlayerUseNameTagAfterEventSignal`
+- `readonly portalActivate: PortalActivateAfterEventSignal`
 
 ### WorldBeforeEvents [beta]
 
@@ -554,7 +626,7 @@ A set of events that fire before an actual action occurs.
 
 ## @minecraft/server-ui
 
-Stable 2.3.0, rc 2.4.0-rc.1.26.70-preview.22, beta 2.5.0-beta.1.26.70-preview.22. 10 names coming in the next stable, 4 beta-only.
+Stable 2.3.0, rc 2.4.0-rc.1.26.70-preview.23, beta 2.5.0-beta.1.26.70-preview.23. 10 names coming in the next stable, 4 beta-only.
 
 ### ButtonData [next stable] (new type)
 
@@ -598,11 +670,11 @@ Options for configuring a slider component.
 
 ## @minecraft/server-graphics
 
-Stable 1.0.0, rc 1.0.0-rc.1.26.60-preview.23, beta 1.1.0-beta.1.26.70-preview.22. 0 names coming in the next stable, 0 beta-only.
+Stable 1.0.0, rc 1.0.0-rc.1.26.60-preview.23, beta 1.1.0-beta.1.26.70-preview.23. 0 names coming in the next stable, 0 beta-only.
 
 ## @minecraft/server-gametest
 
-No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.70-preview.22). For automated tests in test worlds.
+No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.70-preview.23). For automated tests in test worlds.
 
 ### FenceConnectivity [beta module] (new type)
 
@@ -913,7 +985,7 @@ Main class for GameTest functions, with helpers and data for manipulating the re
 
 ## @minecraft/server-admin
 
-No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.70-preview.22). Bedrock Dedicated Server only.
+No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.70-preview.23). Bedrock Dedicated Server only.
 
 ### AdminBeforeEvents [beta module] (new type)
 
@@ -1076,13 +1148,25 @@ Options when transferring a player to a server that supports NetherNet connectio
 
 - `netherNetId: string` NetherNet ID of the destination server.
 
+### TransferPlayerUIOptions [beta module] (new type)
+
+Customizes the progress screen shown while transferring a player to another server.
+
+- `bodyText?: minecraftserver.RawMessage | string` Custom body text for the transfer progress screen.
+- `bodyVisible?: boolean` Boolean to determine if the body text is visible on the server transfer loading screen.
+- `cancelButtonDelaySeconds?: number` A delay in seconds before the cancel button is made visible on the server transfer loading screen.
+- `cancelButtonText?: minecraftserver.RawMessage | string` Custom label for the transfer progress screen's cancel button.
+- `cancelButtonVisible?: boolean` Boolean to determine if the cance button text is visible on the server transfer loading screen.
+- `titleText?: minecraftserver.RawMessage | string` Custom title for the transfer progress screen.
+- `titleVisible?: boolean` Boolean to determine if the title text is visible on the server transfer loading screen.
+
 ### variables [beta module] (new type)
 
 A globally available object that returns a list of dedicated-server configured variables.
 
 ## @minecraft/server-net
 
-No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.70-preview.22). Bedrock Dedicated Server only.
+No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.70-preview.23). Bedrock Dedicated Server only.
 
 ### beforeEvents [beta module] (new type)
 
@@ -1303,6 +1387,7 @@ Represents the unique type of network packet.
 - `ClientboundDebugRendererPacket = 'ClientboundDebugRendererPacket'`
 - `ClientboundMapItemDataPacket = 'ClientboundMapItemDataPacket'`
 - `ClientboundMatchmakingStatePacket = 'ClientboundMatchmakingStatePacket'`
+- `ClientboundMusicPlaybackFailurePacket = 'ClientboundMusicPlaybackFailurePacket'`
 - `ClientboundOnlineMusicPlaybackResponsePacket = 'ClientboundOnlineMusicPlaybackResponsePacket'`
 - `ClientboundPlayAudioContentPacket = 'ClientboundPlayAudioContentPacket'`
 - `ClientboundStonecutterSetRecipePacket = 'ClientboundStonecutterSetRecipePacket'`
@@ -1393,6 +1478,7 @@ Represents the unique type of network packet.
 - `PlayerLocationPacket = 'PlayerLocationPacket'`
 - `PlayerSkinPacket = 'PlayerSkinPacket'`
 - `PlayerStartItemCooldownPacket = 'PlayerStartItemCooldownPacket'`
+- `PlayerToggleArmorVisibilityRequestPacket = 'PlayerToggleArmorVisibilityRequestPacket'`
 - `PlayerToggleCrafterSlotRequestPacket = 'PlayerToggleCrafterSlotRequestPacket'`
 - `PlayerUpdateEntityOverridesPacket = 'PlayerUpdateEntityOverridesPacket'`
 - `PositionTrackingDBClientRequestPacket = 'PositionTrackingDBClientRequestPacket'`
@@ -1599,7 +1685,7 @@ An error thrown when attempting to use a WebSocket while the socket is not conne
 
 ## @minecraft/debug-utilities
 
-No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.70-preview.22). 
+No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.70-preview.23). 
 
 ### collectPluginStats [beta module] (new type)
 

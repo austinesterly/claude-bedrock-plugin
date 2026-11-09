@@ -1,6 +1,6 @@
 # Molang queries and functions
 
-Generated 2026-11-02 by `scripts/build-json-reference.mjs` from Mojang's official form definitions in the Microsoft Learn docs repo (content/forms/molang). Search for the component id. Field types come from the schema; when a type is blank, check the example or the linked sub-object.
+Generated 2026-11-09 by `scripts/build-json-reference.mjs` from Mojang's official form definitions in the Microsoft Learn docs repo (content/forms/molang). Search for the component id. Field types come from the schema; when a type is blank, check the example or the linked sub-object.
 
 ## Documents and sub-objects (380)
 
@@ -1006,7 +1006,7 @@ Returns 1.0 if the entity is immune to fire (has the `fire_immune` component), e
 
 ### query.is_first_person (query_is_first_person)
 
-Returns 1.0 if the entity is being rendered in first person mode, else it returns 0.0.
+DEPRECATED (Use 'variable.is_first_person'): Always returns 0.0.
 
 ### query.is_ghost (query_is_ghost)
 
@@ -1176,7 +1176,7 @@ Returns 1.0 if the entity is resting, else it returns 0.0. Applies generally to 
 
 ### query.is_riding (query_is_riding)
 
-Returns 1.0 if the entity is riding, else it returns 0.0.
+Returns 1.0 if the entity is riding a vehicle or sitting on a block, else it returns 0.0.
 
 ### query.is_riding_any_entity_of_type (query_is_riding_any_entity_of_type)
 
@@ -1330,25 +1330,25 @@ Returns the ratio between the previous and next key frames.
 
 _since 1.21.130_
 
-Returns the "max_duration" value of "damage_conditions" from the main-hand item's "minecraft:kinetic_weapon" component, or 0 if the component is not present.
+Returns the "max_duration" value of "damage_conditions" from the active-hand item's "minecraft:kinetic_weapon" component. Returns 0 if the component is not present.
 
 ### query.kinetic_weapon_delay (query_kinetic_weapon_delay)
 
 _since 1.21.130_
 
-Returns the "delay" value from the main-hand item's "minecraft:kinetic_weapon" component, or 0 if the component is not present.
+Returns the "delay" value from the active-hand item's "minecraft:kinetic_weapon" component. Returns 0 if the component is not present.
 
 ### query.kinetic_weapon_dismount_duration (query_kinetic_weapon_dismount_duration)
 
 _since 1.21.130_
 
-Returns the "max_duration" value of "dismount_conditions" from the main-hand item's "minecraft:kinetic_weapon" component, or 0 if the component is not present.
+Returns the "max_duration" value of "dismount_conditions" from the active-hand item's "minecraft:kinetic_weapon" component. Returns 0 if the component is not present.
 
 ### query.kinetic_weapon_knockback_duration (query_kinetic_weapon_knockback_duration)
 
 _since 1.21.130_
 
-Returns the "max_duration" value of "knockback_conditions" from the main-hand item's "minecraft:kinetic_weapon" component, or 0 if the component is not present.
+Returns the "max_duration" value of "knockback_conditions" from the active-hand item's "minecraft:kinetic_weapon" component. Returns 0 if the component is not present.
 
 ### query.last_frame_time (query_last_frame_time)
 

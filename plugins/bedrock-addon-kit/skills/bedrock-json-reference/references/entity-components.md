@@ -1,10 +1,10 @@
 # Entity components (non-AI)
 
-Generated 2026-11-02 by `scripts/build-json-reference.mjs` from Mojang's official form definitions in the Microsoft Learn docs repo (content/forms/entity). Search for the component id. Field types come from the schema; when a type is blank, check the example or the linked sub-object.
+Generated 2026-11-09 by `scripts/build-json-reference.mjs` from Mojang's official form definitions in the Microsoft Learn docs repo (content/forms/entity). Search for the component id. Field types come from the schema; when a type is blank, check the example or the linked sub-object.
 
-## Components (212)
+## Components (213)
 
-`minecraft:addrider`, `minecraft:admire_item`, `minecraft:ageable`, `minecraft:ambient_sound_interval`, `minecraft:anger_level`, `minecraft:angry`, `minecraft:annotation.break_door`, `minecraft:annotation.open_door`, `minecraft:apply_knockback_rules`, `minecraft:apply_knockback_rules_instance`, `minecraft:area_attack`, `minecraft:attack`, `minecraft:attack_cooldown`, `minecraft:barter`, `minecraft:block_climber`, `minecraft:block_movement_slowdown_immunity`, `minecraft:block_sensor`, `minecraft:body_rotation_always_follows_head`, `minecraft:body_rotation_axis_aligned`, `minecraft:body_rotation_blocked`, `minecraft:body_rotation_locked_to_vehicle`, `minecraft:boostable`, `minecraft:boss`, `minecraft:break_blocks`, `minecraft:breathable`, `minecraft:breedable`, `minecraft:bribeable`, `minecraft:buoyant`, `minecraft:burns_in_daylight`, `minecraft:can_climb`, `minecraft:can_fly`, `minecraft:can_join_raid`, `minecraft:can_power_jump`, `minecraft:cannot_be_attacked`, `minecraft:celebrate_hunt`, `minecraft:collision_box`, `minecraft:color`, `minecraft:color2`, `minecraft:combat_regeneration`, `minecraft:conditional_bandwidth_optimization`, `minecraft:custom_hit_test`, `minecraft:damage_over_time`, `minecraft:damage_sensor`, `minecraft:dash`, `minecraft:dash_action`, `minecraft:default_look_angle`, `minecraft:despawn`, `minecraft:dimension_bound`, `minecraft:drying_out_timer`, `minecraft:dweller`, `minecraft:economy_trade_table`, `minecraft:entity_armor_equipment_slot_mapping`, `minecraft:entity_sensor`, `minecraft:environment_sensor`, `minecraft:equip_item`, `minecraft:equipment`, `minecraft:equippable`, `minecraft:exhaustion_values`, `minecraft:experience_reward`, `minecraft:explode`, `minecraft:fire_immune`, `minecraft:floats_in_liquid`, `minecraft:flocking`, `minecraft:flying_speed`, `minecraft:follow_range`, `minecraft:free_camera_controlled`, `minecraft:friction_modifier`, `minecraft:game_event_movement_tracking`, `minecraft:genetics`, `minecraft:giveable`, `minecraft:ground_offset`, `minecraft:group_size`, `minecraft:grows_crop`, `minecraft:healable`, `minecraft:heartbeat`, `minecraft:hide`, `minecraft:home`, `minecraft:horse.jump_strength`, `minecraft:hurt_on_condition`, `minecraft:ignore_cannot_be_attacked`, `minecraft:input_air_controlled`, `minecraft:input_ground_controlled`, `minecraft:inside_block_notifier`, `minecraft:insomnia`, `minecraft:instant_despawn`, `minecraft:interact`, `minecraft:inventory`, `minecraft:is_baby`, `minecraft:is_charged`, `minecraft:is_chested`, `minecraft:is_collidable`, `minecraft:is_dyeable`, `minecraft:is_hidden_when_invisible`, `minecraft:is_ignited`, `minecraft:is_illager_captain`, `minecraft:is_pregnant`, `minecraft:is_saddled`, `minecraft:is_shaking`, `minecraft:is_sheared`, `minecraft:is_stackable`, `minecraft:is_stunned`, `minecraft:is_tamed`, `minecraft:item_controllable`, `minecraft:item_hopper`, `minecraft:jump.dynamic`, `minecraft:jump.static`, `minecraft:knockback_resistance`, `minecraft:lava_movement`, `minecraft:leashable`, `minecraft:leashable_to`, `minecraft:looked_at`, `minecraft:loot`, `minecraft:managed_wandering_trader`, `minecraft:mark_variant`, `minecraft:memory_behavior.melee_attack`, `minecraft:memory_behavior.move_to_position`, `minecraft:mob_effect`, `minecraft:mob_effect_immunity`, `minecraft:movement`, `minecraft:movement_sound_distance_offset`, `minecraft:movement.amphibious`, `minecraft:movement.basic`, `minecraft:movement.fly`, `minecraft:movement.generic`, `minecraft:movement.glide`, `minecraft:movement.hover`, `minecraft:movement.jump`, `minecraft:movement.skip`, `minecraft:movement.sway`, `minecraft:nameable`, `minecraft:navigation.climb`, `minecraft:navigation.float`, `minecraft:navigation.fly`, `minecraft:navigation.generic`, `minecraft:navigation.hover`, `minecraft:navigation.swim`, `minecraft:navigation.walk`, `minecraft:offspring`, `minecraft:on_death`, `minecraft:on_equipment_changed`, `minecraft:on_friendly_anger`, `minecraft:on_hurt`, `minecraft:on_hurt_by_player`, `minecraft:on_ignite`, `minecraft:on_start_landing`, `minecraft:on_start_takeoff`, `minecraft:on_target_acquired`, `minecraft:on_target_escape`, `minecraft:on_wake_with_owner`, `minecraft:out_of_control`, `minecraft:peek`, `minecraft:persistent`, `minecraft:physics`, `minecraft:player.exhaustion`, `minecraft:player.experience`, `minecraft:player.level`, `minecraft:player.saturation`, `minecraft:preferred_path`, `minecraft:projectile`, `minecraft:push_through`, `minecraft:pushable`, `minecraft:pushable_by_block`, `minecraft:pushable_by_entity`, `minecraft:raid_trigger`, `minecraft:rail_movement`, `minecraft:rail_sensor`, `minecraft:ravager_blocked`, `minecraft:reflect_projectiles`, `minecraft:remove_in_peaceful`, `minecraft:renders_when_invisible`, `minecraft:rideable`, `minecraft:rotation_axis_aligned`, `minecraft:rotation_locked_to_vehicle`, `minecraft:scaffolding_climber`, `minecraft:scale`, `minecraft:scale_by_age`, `minecraft:scheduler`, `minecraft:shareables`, `minecraft:shooter`, `minecraft:sittable`, `minecraft:skin_id`, `minecraft:sound_volume`, `minecraft:spawn_egg_interaction`, `minecraft:spawn_entity`, `minecraft:spawn_on_death`, `minecraft:spell_effects`, `minecraft:strength`, `minecraft:suspect_tracking`, `minecraft:tameable`, `minecraft:tamemount`, `minecraft:target_nearby_sensor`, `minecraft:teleport`, `minecraft:tick_world`, `minecraft:timer`, `minecraft:trade_table`, `minecraft:trail`, `minecraft:transformation`, `minecraft:transient`, `minecraft:trusting`, `minecraft:type_family`, `minecraft:underwater_mount_breathing`, `minecraft:underwater_movement`, `minecraft:uses_legacy_friction`, `minecraft:variable_max_auto_step`, `minecraft:variant`, `minecraft:vertical_movement_action`, `minecraft:vibration_damper`, `minecraft:vibration_listener`, `minecraft:walk_animation_speed`, `minecraft:wants_jockey`, `minecraft:water_movement`, `minecraft:wither_target_highest_damage`
+`minecraft:addrider`, `minecraft:admire_item`, `minecraft:ageable`, `minecraft:ambient_sound_interval`, `minecraft:anger_level`, `minecraft:angry`, `minecraft:annotation.break_door`, `minecraft:annotation.open_door`, `minecraft:apply_knockback_rules`, `minecraft:apply_knockback_rules_instance`, `minecraft:area_attack`, `minecraft:attack`, `minecraft:attack_cooldown`, `minecraft:barter`, `minecraft:block_climber`, `minecraft:block_movement_slowdown_immunity`, `minecraft:block_sensor`, `minecraft:body_rotation_always_follows_head`, `minecraft:body_rotation_axis_aligned`, `minecraft:body_rotation_blocked`, `minecraft:body_rotation_locked_to_vehicle`, `minecraft:boostable`, `minecraft:boss`, `minecraft:break_blocks`, `minecraft:breathable`, `minecraft:breedable`, `minecraft:bribeable`, `minecraft:buoyant`, `minecraft:burns_in_daylight`, `minecraft:can_climb`, `minecraft:can_fly`, `minecraft:can_join_raid`, `minecraft:can_power_jump`, `minecraft:cannot_be_attacked`, `minecraft:celebrate_hunt`, `minecraft:collision_box`, `minecraft:color`, `minecraft:color2`, `minecraft:combat_regeneration`, `minecraft:conditional_bandwidth_optimization`, `minecraft:custom_hit_test`, `minecraft:damage_over_time`, `minecraft:damage_sensor`, `minecraft:dash`, `minecraft:dash_action`, `minecraft:default_look_angle`, `minecraft:despawn`, `minecraft:dimension_bound`, `minecraft:drying_out_timer`, `minecraft:dweller`, `minecraft:economy_trade_table`, `minecraft:entity_armor_equipment_slot_mapping`, `minecraft:entity_sensor`, `minecraft:environment_sensor`, `minecraft:equip_item`, `minecraft:equipment`, `minecraft:equippable`, `minecraft:exhaustion_values`, `minecraft:experience_reward`, `minecraft:explode`, `minecraft:fire_immune`, `minecraft:floats_in_liquid`, `minecraft:flocking`, `minecraft:flying_speed`, `minecraft:follow_range`, `minecraft:free_camera_controlled`, `minecraft:friction_modifier`, `minecraft:game_event_movement_tracking`, `minecraft:genetics`, `minecraft:giveable`, `minecraft:ground_offset`, `minecraft:group_size`, `minecraft:grows_crop`, `minecraft:healable`, `minecraft:heartbeat`, `minecraft:hide`, `minecraft:home`, `minecraft:horse.jump_strength`, `minecraft:hurt_on_condition`, `minecraft:ignore_cannot_be_attacked`, `minecraft:input_air_controlled`, `minecraft:input_ground_controlled`, `minecraft:inside_block_notifier`, `minecraft:insomnia`, `minecraft:instant_despawn`, `minecraft:interact`, `minecraft:inventory`, `minecraft:is_baby`, `minecraft:is_charged`, `minecraft:is_chested`, `minecraft:is_collidable`, `minecraft:is_dyeable`, `minecraft:is_hidden_when_invisible`, `minecraft:is_ignited`, `minecraft:is_illager_captain`, `minecraft:is_pregnant`, `minecraft:is_saddled`, `minecraft:is_shaking`, `minecraft:is_sheared`, `minecraft:is_stackable`, `minecraft:is_stunned`, `minecraft:is_tamed`, `minecraft:item_controllable`, `minecraft:item_hopper`, `minecraft:jump.dynamic`, `minecraft:jump.static`, `minecraft:knockback_resistance`, `minecraft:lava_movement`, `minecraft:leashable`, `minecraft:leashable_to`, `minecraft:looked_at`, `minecraft:loot`, `minecraft:managed_wandering_trader`, `minecraft:mark_variant`, `minecraft:memory_behavior.melee_attack`, `minecraft:memory_behavior.move_to_position`, `minecraft:mob_effect`, `minecraft:mob_effect_immunity`, `minecraft:movement`, `minecraft:movement_sound_distance_offset`, `minecraft:movement.amphibious`, `minecraft:movement.basic`, `minecraft:movement.fly`, `minecraft:movement.generic`, `minecraft:movement.glide`, `minecraft:movement.hover`, `minecraft:movement.jump`, `minecraft:movement.skip`, `minecraft:movement.sway`, `minecraft:nameable`, `minecraft:navigation.climb`, `minecraft:navigation.float`, `minecraft:navigation.fly`, `minecraft:navigation.generic`, `minecraft:navigation.hover`, `minecraft:navigation.swim`, `minecraft:navigation.walk`, `minecraft:offspring`, `minecraft:on_death`, `minecraft:on_equipment_changed`, `minecraft:on_friendly_anger`, `minecraft:on_hurt`, `minecraft:on_hurt_by_player`, `minecraft:on_ignite`, `minecraft:on_start_landing`, `minecraft:on_start_takeoff`, `minecraft:on_target_acquired`, `minecraft:on_target_escape`, `minecraft:on_wake_with_owner`, `minecraft:out_of_control`, `minecraft:peek`, `minecraft:persistent`, `minecraft:physics`, `minecraft:player.exhaustion`, `minecraft:player.experience`, `minecraft:player.level`, `minecraft:player.saturation`, `minecraft:preferred_path`, `minecraft:projectile`, `minecraft:push_through`, `minecraft:pushable`, `minecraft:pushable_by_block`, `minecraft:pushable_by_entity`, `minecraft:raid_trigger`, `minecraft:rail_movement`, `minecraft:rail_sensor`, `minecraft:ravager_blocked`, `minecraft:reflect_projectiles`, `minecraft:remove_in_peaceful`, `minecraft:renders_when_invisible`, `minecraft:rideable`, `minecraft:rotation_axis_aligned`, `minecraft:rotation_locked_to_vehicle`, `minecraft:scaffolding_climber`, `minecraft:scale`, `minecraft:scale_by_age`, `minecraft:scheduler`, `minecraft:shareables`, `minecraft:shooter`, `minecraft:sittable`, `minecraft:skin_id`, `minecraft:sound_volume`, `minecraft:spawn_egg_interaction`, `minecraft:spawn_entity`, `minecraft:spawn_on_death`, `minecraft:spell_effects`, `minecraft:strength`, `minecraft:suspect_tracking`, `minecraft:tameable`, `minecraft:tamemount`, `minecraft:target_nearby_sensor`, `minecraft:teleport`, `minecraft:tick_world`, `minecraft:timer`, `minecraft:trade_table`, `minecraft:trail`, `minecraft:trail placement_conditions entry`, `minecraft:transformation`, `minecraft:transient`, `minecraft:trusting`, `minecraft:type_family`, `minecraft:underwater_mount_breathing`, `minecraft:underwater_movement`, `minecraft:uses_legacy_friction`, `minecraft:variable_max_auto_step`, `minecraft:variant`, `minecraft:vertical_movement_action`, `minecraft:vibration_damper`, `minecraft:vibration_listener`, `minecraft:walk_animation_speed`, `minecraft:wants_jockey`, `minecraft:water_movement`, `minecraft:wither_target_highest_damage`
 
 ### minecraft:addrider
 
@@ -1008,6 +1008,12 @@ Example (/minecraft:entity/components/minecraft:equip_item/):
  "excluded_items": [
   {
    "item": "minecraft:banner:15"
+  },
+  {
+   "item": "minecraft:wolf_armor"
+  },
+  {
+   "tags": "q.any_tag('minecraft:horse_armor', 'minecraft:nautilus_armor')"
   }
  ]
 }
@@ -1658,7 +1664,7 @@ Example (/minecraft:entity/component_groups/minecraft:pig_saddled/minecraft:is_s
 
 Sets that this entity is currently shaking.
 
-Example (/minecraft:entity/component_groups/in_powder_snow/minecraft:is_shaking/):
+Example (/minecraft:entity/component_groups/minecraft:convert_to_zombie/minecraft:is_shaking/):
 ```json
 {}
 ```
@@ -2613,7 +2619,7 @@ Turns the entity into a projectile: a thrown or shot entity that flies along a b
 | `hit_ground_sound` | string | `""` | Identifier of the sound to play when the projectile hits a block. Defaults to `hit_sound` when empty. |
 | `hit_nearest_passenger` | boolean | `false` | If `true`, when the projectile hits a vehicle with at least one passenger, the on-hit behavior is applied to the passenger closest to the impact point instead of the vehicle itself. |
 | `hit_sound` | string | `""` | Identifier of the sound to play when the projectile hits an entity. Also used for block hits when `hit_ground_sound` is not specified. |
-| `hit_water` | boolean | `false` | If `true`, the projectile treats water as a hit surface and stops on contact. |
+| `hit_water` | boolean | `false` | If `true`, the projectile treats water as a hit surface and stops on contact. (Education Edition chemistry feature) |
 | `homing` | boolean | `false` | If `true`, the projectile steers towards an active target while in flight. |
 | `ignored_entities` | stringArray | `[]` | Array of entity identifiers that the projectile will pass through without registering a hit. |
 | `inertia` | float | `0.9900000095367432` | Fraction of the projectile's velocity preserved each tick while traveling through air. Values below `1.0` cause it to slow down over time. |
@@ -3119,7 +3125,9 @@ Example (/minecraft:entity/component_groups/minecraft:add_raid_omen/minecraft:sp
    "effect": "raid_omen"
   }
  ],
- "remove_effects": "bad_omen"
+ "remove_effects": [
+  "bad_omen"
+ ]
 }
 ```
 
@@ -3248,16 +3256,20 @@ Defines an entity's teleporting behavior.
 
 | Field | Type | Default | Notes |
 |---|---|---|---|
-| `dark_teleport_chance` | float | `0.009999999776482582` | Modifies the chance that the entity will teleport if the entity is in darkness |
-| `light_teleport_chance` | float | `0.009999999776482582` | Modifies the chance that the entity will teleport if the entity is in daylight |
-| `max_random_teleport_time` | float | `20` | Maximum amount of time in seconds between random teleports |
-| `min_random_teleport_time` | float | `0` | Minimum amount of time in seconds between random teleports |
-| `projectile_filter` | object |  | Conditions that determine which projectiles cause the entity to attempt to teleport. If omitted, all projectiles cause a teleport attempt |
-| `random_teleport_cube` | numberArray | `[32,16,32]` | Entity will teleport to a random position within the area defined by this cube |
-| `random_teleports` | boolean | `true` | If true, the entity will teleport randomly |
-| `target_distance` | float | `16` | Maximum distance the entity will teleport when chasing a target |
-| `target_teleport_chance` | float | `1` | The chance that the entity will teleport between 0.0 and 1.0. 1.0 means 100% |
-| `teleports_on_projectile_hit` | boolean | `false` | If true, the entity will attempt to teleport away from projectiles about to hit it |
+| `can_teleport_into_liquid` | boolean | `false` | If set to true, the entity can teleport into blocks that contain liquids, such as water. |
+| `dark_teleport_chance` | float | `0.009999999776482582` | Modifies the chance that the entity will teleport if the entity is in darkness. |
+| `light_teleport_chance` | float | `0.009999999776482582` | Modifies the chance that the entity will teleport if the entity is in daylight. |
+| `max_random_teleport_time` | float | `20` | Maximum amount of time in seconds between random teleports. |
+| `min_random_teleport_time` | float | `0` | Minimum amount of time in seconds between random teleports. |
+| `on_teleport_sound` | stringEnum | `"teleport"` | The level sound event which is played after a successful teleportation. Entities without a sound bound to this event play the default teleport sound. Values: `absorb_block`, `activate`, `add.chest`, `admire`, `agitated`, `ambient`, `ambient.aggressive`, `ambient.baby`, `ambient.basalt_deltas.additions`, `ambient.basalt_deltas.loop`, `ambient.basalt_deltas.mood`, `ambient.candle`, `ambient.cave`, `ambient.crimson_forest.additions`, `ambient.crimson_forest.loop`, `ambient.crimson_forest.mood`, `ambient.in.air`, `ambient.in.raid`, `ambient.in.water`, `ambient.nether_wastes.additions`, `ambient.nether_wastes.loop`, `ambient.nether_wastes.mood`, `ambient.pollinate`, `ambient.screamer`, …. |
+| `projectile_filter` | object |  | Conditions that determine which projectiles cause the entity to attempt to teleport. If omitted, all projectiles cause a teleport attempt. |
+| `random_teleport_cube` | numberArray | `[32,16,32]` | Entity will teleport to a random position within the area defined by this cube. |
+| `random_teleports` | boolean | `true` | If true, the entity will teleport randomly. |
+| `target_distance` | float | `16` | Minimum distance the entity needs to be from the target to start teleporting towards it. |
+| `target_teleport_chance` | float | `1` | The chance that the entity will teleport between 0.0 and 1.0. 1.0 means 100%. |
+| `target_teleport_distance` | object | `{"max":16,"min":16}` | The minimum and maximum distance the entity can teleport toward the target. Negative values teleport away from the target. Values need to be between -32 and 32. See `legacy/floatrange`. |
+| `target_teleport_offset` | numberArray | `[4,8,4]` | The maximum random offset, on each axis and in either direction, added to the teleport directional vector. The y offset is rounded down to whole blocks. Values need to be between 0 and 32. |
+| `teleports_on_projectile_hit` | boolean | `false` | If true, the entity will attempt to teleport away from projectiles about to hit it. |
 
 ### minecraft:tick_world
 
@@ -3299,12 +3311,21 @@ Causes an entity to leave a trail of blocks as it moves about the world. Obeys M
 
 | Field | Type | Default | Notes |
 |---|---|---|---|
-| `block_type` | string | `"air"` | The type of block that is spawned as a trail behind the entity. Solid blocks cannot be spawned at an offset of (0, 0, 0). |
-| `force_replace_matched_blocks` | boolean | `false` | When true, the trail will replace blocks that match the replaceable blocks list even if normal placement rules prevent it. |
-| `radius` | int | `-1` | When provided, the trail spawns blocks across a (2 * radius + 1) by (2 * radius + 1) horizontal area centered on the spawn offset. Uses the legacy four-corner sampling when omitted. |
-| `replaceable_blocks` | objectArray | `[]` | A list of blocks that can be replaced by the trail block. If the block at the spawn offset is not in this list, the trail block will not spawn. If omitted it will default to only air blocks. |
-| `spawn_filter` | object | `{"AND":null,"NOT":null,"OR":null,"all":null,"all_of":null,"…` | One or more conditions that must be met in order to cause the chosen block type to spawn. |
-| `spawn_offset` | numberArray | `[0,0,0]` | The offset from the entity's current position at which to spawn the block, capped at 16 blocks away. |
+| `block_type` | string | `"air"` | The type of block that is placed. Solid blocks cannot be placed at the entity's position when offset is [0, 0, 0]. |
+| `extent` | int | `0` | Maximum horizontal distance from the center at which blocks can be placed. |
+| `offset` | numberArray | `[0,0,0]` | Offset from the entity's position used to determine where trail blocks are placed and placement checks are applied, capped at 16 blocks away. X and Z are relative to the entity's orientation and rotate to its nearest cardinal facing; Y is a vertical offset. |
+| `place_only_on_block_position_change` | boolean | `false` | When true, trail blocks are only placed on ticks where the bottom of the entity moves into a different block position, or where the entity lands (goes from airborne to grounded). Standing still or moving within the same block does not place blocks. Defaults t… |
+| `placement_checks` | stringEnum | `"block"` | Controls the checks applied at each trail block placement position before placing the trail block. 'none' applies no placement checks, 'block' applies block placement conditions, and 'standard' applies standard block placement rules, including clearance from … Values: `block`, `none`, `standard`. |
+| `placement_conditions` | objectArray | `[{"block_types":[{"name":"minecraft:air","states":{},"tags"…` | Conditions that must all be satisfied relative to the trail block placement position. Block types within one condition are alternatives. When omitted, defaults to [{ "y_offset": 0, "block_types": ["minecraft:air"] }]. See `entity/minecraft_trail_placement_conditions_entry`. |
+| `placement_filter` | object | `{"AND":null,"NOT":null,"OR":null,"all":null,"all_of":null,"…` | One or more conditions that must be met in order to cause the chosen block type to be placed. |
+| `shape` | stringEnum | `"corners"` | Controls the horizontal placement pattern. 'corners' places four corner blocks, 'square' fills a square, and 'circle' fills a circular disk. Defaults to 'corners'. Values: `circle`, `corners`, `square`. |
+
+### minecraft:trail placement_conditions entry
+
+| Field | Type | Default | Notes |
+|---|---|---|---|
+| `block_types` | objectArray | `[]` | Block types that satisfy this condition at its vertical offset from the placement position. |
+| `y_offset` | int | `0` | Vertical offset from the trail block placement position. Defaults to 0. |
 
 ### minecraft:transformation
 
@@ -3323,12 +3344,17 @@ Defines an entity's transformation from the current definition into another
 | `preserve_equipment` | boolean | `false` | Cause the entity to keep equipment after going through transformation |
 | `transformation_sound` | stringArray | `[]` | Sound to play when the entity is done transforming Values: `absorb_block`, `activate`, `add.chest`, `admire`, `agitated`, `ambient`, `ambient.aggressive`, `ambient.baby`, `ambient.basalt_deltas.additions`, `ambient.basalt_deltas.loop`, `ambient.basalt_deltas.mood`, `ambient.candle`, `ambient.cave`, `ambient.crimson_forest.additions`, `ambient.crimson_forest.loop`, `ambient.crimson_forest.mood`, `ambient.in.air`, `ambient.in.raid`, `ambient.in.water`, `ambient.nether_wastes.additions`, `ambient.nether_wastes.loop`, `ambient.nether_wastes.mood`, `ambient.pollinate`, `ambient.screamer`, …. |
 
-Example (/minecraft:entity/component_groups/minecraft:pig_transform/minecraft:transformation/):
+Example (/minecraft:entity/component_groups/minecraft:convert_to_zombie/minecraft:transformation/):
 ```json
 {
- "into": "minecraft:pig_zombie",
- "transformation_sound": "mob.pig.death",
- "delay": 0.5
+ "delay": {
+  "value": 15
+ },
+ "preserve_equipment": true,
+ "into": "minecraft:zombie<minecraft:as_adult>",
+ "transformation_sound": [
+  "convert_to_zombie"
+ ]
 }
 ```
 
@@ -3878,6 +3904,7 @@ Registry of all available entity components that define mob capabilities. Compon
 | `minecraft:can_fly` | object |  | Dynamic value See `entity/minecraft_can_fly`. |
 | `minecraft:can_join_raid` | object |  | Dynamic value See `entity/minecraft_can_join_raid`. |
 | `minecraft:can_power_jump` | object |  | Dynamic value See `entity/minecraft_can_power_jump`. |
+| `minecraft:can_stand_on_brittle_ice` | object |  | Defines whether a mob can stand on brittle ice without it cracking. |
 | `minecraft:can_stand_on_powder_snow` | object |  | Defines whether an entity can stand on powder snow without sinking. |
 | `minecraft:cannot_be_attacked` | object |  | Dynamic value See `entity/minecraft_cannot_be_attacked`. |
 | `minecraft:celebrate_hunt` | object |  | Dynamic value See `entity/minecraft_celebrate_hunt`. |
@@ -3911,7 +3938,7 @@ Registry of all available entity components that define mob capabilities. Compon
 | `minecraft:flying_speed` | object |  | Dynamic value See `entity/minecraft_flying_speed`. |
 | `minecraft:follow_range` | object |  | Dynamic value See `entity/minecraft_follow_range`. |
 | `minecraft:free_camera_controlled` | object |  | Dynamic value |
-| `minecraft:freezing_immune` | object |  | Defines whether an entity should be affected by freezing. |
+| `minecraft:freezing_immune` | object |  | Prevents freezing buildup from powder snow and the Freezing mob effect, but does not prevent the mob effect from being applied or displaying particles. Use minecraft:mob_effect_immunity to block the Freezing mob effect. |
 | `minecraft:freezing_vulnerable` | object |  | Defines whether an entity should take increased damage from freezing. |
 | `minecraft:friction_modifier` | object |  | Dynamic value See `entity/minecraft_friction_modifier`. |
 | `minecraft:game_event_movement_tracking` | object |  | Dynamic value See `entity/minecraft_game_event_movement_tracking`. |
@@ -4157,8 +4184,6 @@ Damages the projectile's owner when the projectile lands.
 
 ### ImpactDamageSubcomponentDefinition (impactdamagesubcomponentdefinition)
 
-Deals damage to the entity that was hit and optionally applies knockback, fire, channeling, and critical-hit scaling.
-
 | Field | Type | Default | Notes |
 |---|---|---|---|
 | `apply_knockback_to_blocking_targets` | boolean | `false` | If `true`, knockback is still applied to targets that successfully blocked the hit. |
@@ -4166,6 +4191,7 @@ Deals damage to the entity that was hit and optionally applies knockback, fire, 
 | `ceil_pre_critical_damage` | boolean | `false` | If `true`, rounds the projectile's damage up to the next integer before the critical-hit multiplier is applied. |
 | `channeling` | boolean | `false` | If `true`, the projectile can call down a lightning bolt on the entity hit during a thunderstorm. |
 | `damage` | object | `{"max":0,"min":0}` | Range of damage to apply on impact. A random value in `[min, max]` is rolled per hit and the velocity-scaled `power_multiplier` term is added to it to define the projectile's base damage. See `legacy/floatrange`. |
+| `death_message_override` | string |  | A localization key to use as the death message when the impact damage kills an entity. If omitted, the default death message for projectiles is used. `%1$s` is the name of the killed entity and `%2$s` is the name of the projectile's owner, or of the projectil… |
 | `destroy_on_hit` | boolean | `false` | If `true`, the projectile is removed when it deals damage to an entity. |
 | `destroy_on_hit_requires_damage` | boolean | `true` | If `true`, `destroy_on_hit` only triggers when at least one point of damage is actually dealt (targets that fully absorb damage will not destroy the projectile). |
 | `difficulty_randomization` | stringEnum | `"none"` | Controls how world difficulty contributes to the rolled damage. `none` ignores difficulty, `additive` adds a difficulty-driven term on top of the base damage, and `multiplicative` folds the difficulty term into `power_multiplier` before scaling by velocity. Values: `additive`, `multiplicative`, `none`. |
@@ -4174,6 +4200,7 @@ Deals damage to the entity that was hit and optionally applies knockback, fire, 
 | `max_critical_damage` | int | `2147483647` | If specified, sets the maximum damage after critical damage has been applied. Enchantments have already been applied at this point, so this clamps the final damage value of critical hits. |
 | `min_critical_damage` | int | `0` | If specified, sets the minimum damage after critical damage has been applied. Enchantments have already been applied at this point, so this clamps the final damage value of critical hits. |
 | `power_multiplier` | float | `0` | Multiplied by the projectile's velocity and added to the rolled `damage` to define the projectile's base damage, so it can be used on its own to scale damage by the projectile's velocity. |
+| `scale_damage_with_difficulty` | boolean | `true` | If `true`, scales impact damage with the world's difficulty. |
 | `set_last_hurt_requires_damage` | boolean | `true` | If `true`, the projectile only registers as the last hurt-by source on the target when at least one point of damage is actually dealt. |
 
 ### instance (instance)
@@ -4517,7 +4544,7 @@ Applies one or more mob effects to the entity hit. Effects are described with an
 | `grant_xp` | object |  | Drops experience orbs at the impact location. See `entity/grantxpsubcomponentdefinition`. |
 | `hurt_owner` | object |  | Damages the projectile's owner when the projectile lands. See `entity/hurtownersubcomponentdefinition`. |
 | `ignite` | object |  | Triggers the entity's `on_ignite` definition when the projectile hits. |
-| `impact_damage` | object |  | Deals damage to the entity that was hit and optionally applies knockback, fire, channeling, and critical-hit scaling. See `entity/impactdamagesubcomponentdefinition`. |
+| `impact_damage` | object |  | Impact Damage See `entity/impactdamagesubcomponentdefinition`. |
 | `mob_effect` | object |  | Applies one or more mob effects to the entity hit. Effects are described with an `effects` array of effect objects. See `entity/mobeffectsubcomponentdefinition`. |
 | `particle_on_hit` | object |  | Emits a particle effect at the impact location, optionally only for entity hits or only for non-entity hits. See `entity/particleonhitsubcomponentdefinition`. |
 | `remove_on_hit` | object |  | Removes the projectile from the world when it hits a block, entity, or (if `hit_water` is set) water. |

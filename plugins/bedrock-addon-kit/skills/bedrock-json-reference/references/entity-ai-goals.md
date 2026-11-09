@@ -1,6 +1,6 @@
 # Entity AI goals (minecraft:behavior.*)
 
-Generated 2026-11-02 by `scripts/build-json-reference.mjs` from Mojang's official form definitions in the Microsoft Learn docs repo (content/forms/entity). Search for the component id. Field types come from the schema; when a type is blank, check the example or the linked sub-object.
+Generated 2026-11-09 by `scripts/build-json-reference.mjs` from Mojang's official form definitions in the Microsoft Learn docs repo (content/forms/entity). Search for the component id. Field types come from the schema; when a type is blank, check the example or the linked sub-object.
 
 ## Components (194)
 
@@ -2923,7 +2923,6 @@ Allows an entity to attack by using ranged shots. "charge_shoot_trigger" must be
 | `target_in_sight_time` | float | `1` | Minimum amount of time (in seconds) the attacking entity needs to see the target before moving toward it. |
 | `x_max_rotation` | float | `30` | Maximum rotation (in degrees), on the X-axis, this entity can rotate while trying to look at the target. |
 | `y_max_head_rotation` | float | `30` | Maximum rotation (in degrees), on the Y-axis, this entity can rotate its head while trying to look at the target. |
-| `attack_radius` | number |  | Attack Radius |
 
 Example (/minecraft:entity/component_groups/ranged_mode/minecraft:behavior.ranged_attack/):
 ```json

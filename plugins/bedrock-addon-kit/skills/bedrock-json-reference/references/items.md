@@ -1,6 +1,6 @@
 # Item components
 
-Generated 2026-11-02 by `scripts/build-json-reference.mjs` from Mojang's official form definitions in the Microsoft Learn docs repo (content/forms/item). Search for the component id. Field types come from the schema; when a type is blank, check the example or the linked sub-object.
+Generated 2026-11-09 by `scripts/build-json-reference.mjs` from Mojang's official form definitions in the Microsoft Learn docs repo (content/forms/item). Search for the component id. Field types come from the schema; when a type is blank, check the example or the linked sub-object.
 
 ## Components (51)
 
@@ -788,9 +788,7 @@ Makes an item throwable by the player, similar to a snowball or ender pearl. Use
 Example (/minecraft:item/components/minecraft:throwable/):
 ```json
 {
- "do_swing_animation": true,
- "launch_power_scale": 1.5,
- "max_launch_power": 1.5
+ "do_swing_animation": true
 }
 ```
 

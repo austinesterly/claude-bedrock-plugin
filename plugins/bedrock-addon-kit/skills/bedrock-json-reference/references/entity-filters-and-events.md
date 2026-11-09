@@ -1,8 +1,8 @@
 # Entity filters, events and actions
 
-Generated 2026-11-02 by `scripts/build-json-reference.mjs` from Mojang's official form definitions in the Microsoft Learn docs repo (content/forms/entityfilters, entityevents, action, action_set). Search for the component id. Field types come from the schema; when a type is blank, check the example or the linked sub-object.
+Generated 2026-11-09 by `scripts/build-json-reference.mjs` from Mojang's official form definitions in the Microsoft Learn docs repo (content/forms/entityfilters, entityevents, action, action_set). Search for the component id. Field types come from the schema; when a type is blank, check the example or the linked sub-object.
 
-## Documents and sub-objects (145)
+## Documents and sub-objects (148)
 
 ### actor_has_item_with_enchantment_in_slot (actor_has_item_with_enchantment_in_slot)
 
@@ -477,6 +477,21 @@ Example (Full..):
 "{ \"test\": \"home_distance\", \"subject\": \"self\", \"operator\": \"equals\", \"value\": \"0.00\" }"
 ```
 
+### horizontal_speed (horizontal_speed)
+
+Tests the subject entity's horizontal speed in meters per second.
+
+| Field | Type | Default | Notes |
+|---|---|---|---|
+| `operator` | string | `"equals"` | (Optional) The comparison to apply with 'value'. Values: `!=`, `<`, `<=`, `<>`, `=`, `==`, `>`, `>=`, `equals`, `not`. |
+| `subject` | string | `"self"` | (Optional) The subject of this filter test. Values: `block`, `damager`, `other`, `parent`, `player`, `self`, `target`. |
+| `value` | float |  | (Required) A floating point value. |
+
+Example (Full..):
+```json
+"{ \"test\": \"horizontal_speed\", \"subject\": \"self\", \"operator\": \"equals\", \"value\": \"0.00\" }"
+```
+
 ### hourly_clock_time (hourly_clock_time)
 
 Compares the current 24 hour time with an int value in the range[0, 24000]
@@ -503,7 +518,6 @@ Returns true when the subject entity is inside a specified Block type.
 | `operator` | string | `"equals"` | (Optional) The comparison to apply with 'value'. Values: `!=`, `<`, `<=`, `<>`, `=`, `==`, `>`, `>=`, `equals`, `not`. |
 | `subject` | string | `"self"` | (Optional) The subject of this filter test. Values: `block`, `damager`, `other`, `parent`, `player`, `self`, `target`. |
 | `value` | string |  | (Optional) A string value. |
-| `test` | string |  | Test |
 
 Example (Full..):
 ```json
@@ -1639,6 +1653,21 @@ Example (Full..):
 "{ \"test\": \"rider_count\", \"subject\": \"self\", \"operator\": \"equals\", \"value\": \"0\" }"
 ```
 
+### speed (speed)
+
+Tests the subject entity's speed in meters per second.
+
+| Field | Type | Default | Notes |
+|---|---|---|---|
+| `operator` | string | `"equals"` | (Optional) The comparison to apply with 'value'. Values: `!=`, `<`, `<=`, `<>`, `=`, `==`, `>`, `>=`, `equals`, `not`. |
+| `subject` | string | `"self"` | (Optional) The subject of this filter test. Values: `block`, `damager`, `other`, `parent`, `player`, `self`, `target`. |
+| `value` | float |  | (Required) A floating point value. |
+
+Example (Full..):
+```json
+"{ \"test\": \"speed\", \"subject\": \"self\", \"operator\": \"equals\", \"value\": \"0.00\" }"
+```
+
 ### surface_mob (surface_mob)
 
 Tests if the subject is a surface mob.
@@ -1701,6 +1730,21 @@ Returns true if the subject is trusted by entity.
 Example (Full..):
 ```json
 "{ \"test\": \"trusts\", \"subject\": \"self\", \"operator\": \"equals\", \"value\": \"true\" }"
+```
+
+### vertical_speed (vertical_speed)
+
+Tests the subject entity's signed vertical speed in meters per second.
+
+| Field | Type | Default | Notes |
+|---|---|---|---|
+| `operator` | string | `"equals"` | (Optional) The comparison to apply with 'value'. Values: `!=`, `<`, `<=`, `<>`, `=`, `==`, `>`, `>=`, `equals`, `not`. |
+| `subject` | string | `"self"` | (Optional) The subject of this filter test. Values: `block`, `damager`, `other`, `parent`, `player`, `self`, `target`. |
+| `value` | float |  | (Required) A floating point value. |
+
+Example (Full..):
+```json
+"{ \"test\": \"vertical_speed\", \"subject\": \"self\", \"operator\": \"equals\", \"value\": \"0.00\" }"
 ```
 
 ### was_last_hurt_by (was_last_hurt_by)
