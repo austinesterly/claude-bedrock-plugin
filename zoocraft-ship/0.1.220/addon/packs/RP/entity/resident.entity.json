@@ -1,0 +1,47 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:resident",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "look0": "textures/entity/zoocraft/resident_0",
+        "look1": "textures/entity/zoocraft/resident_1",
+        "look2": "textures/entity/zoocraft/resident_2",
+        "look3": "textures/entity/zoocraft/resident_3",
+        "look4": "textures/entity/zoocraft/resident_4",
+        "look5": "textures/entity/zoocraft/resident_5",
+        "look6": "textures/entity/zoocraft/resident_6",
+        "look7": "textures/entity/zoocraft/resident_7",
+        "look8": "textures/entity/zoocraft/resident_8",
+        "look9": "textures/entity/zoocraft/resident_9"
+      },
+      "geometry": {
+        "default": "geometry.zoocraft.guest"
+      },
+      "animations": {
+        "walk": "animation.zoocraft.guest.walk",
+        "look_at_target": "animation.zoocraft.guest.look_at_target",
+        "sleep": "animation.zoocraft.resident.sleep"
+      },
+      "scripts": {
+        "animate": [
+          {
+            "walk": "!query.property('zoocraft:sleeping')"
+          },
+          {
+            "look_at_target": "!query.property('zoocraft:sleeping')"
+          },
+          {
+            "sleep": "query.property('zoocraft:sleeping')"
+          }
+        ]
+      },
+      "render_controllers": [
+        "controller.render.zoocraft.resident"
+      ]
+    }
+  }
+}
