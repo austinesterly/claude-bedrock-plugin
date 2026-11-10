@@ -1,0 +1,22 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:aggregate_feature": {
+    "description": {
+      "identifier": "zoocraft:formation_vine"
+    },
+    "features": [
+      "zoocraft:formation_vine_0",
+      "zoocraft:formation_vine_1",
+      "zoocraft:formation_vine_2",
+      "zoocraft:formation_vine_3",
+      "zoocraft:formation_vine_4",
+      "zoocraft:formation_vine_5",
+      "zoocraft:formation_vine_6",
+      "zoocraft:formation_vine_7",
+      "zoocraft:formation_vine_8",
+      "zoocraft:formation_vine_9",
+      "zoocraft:formation_vine_10",
+      "zoocraft:formation_vine_11"
+    ]
+  }
+}

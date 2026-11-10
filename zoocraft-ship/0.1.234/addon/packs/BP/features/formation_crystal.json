@@ -1,0 +1,17 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:ore_feature": {
+    "description": {
+      "identifier": "zoocraft:formation_crystal"
+    },
+    "count": 6,
+    "replace_rules": [
+      {
+        "places_block": "zoocraft:azure_crystal",
+        "may_replace": [
+          "zoocraft:exotic_stone"
+        ]
+      }
+    ]
+  }
+}

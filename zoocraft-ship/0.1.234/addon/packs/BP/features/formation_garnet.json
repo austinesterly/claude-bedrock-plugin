@@ -1,0 +1,17 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:ore_feature": {
+    "description": {
+      "identifier": "zoocraft:formation_garnet"
+    },
+    "count": 5,
+    "replace_rules": [
+      {
+        "places_block": "zoocraft:spessartine_garnet_ore",
+        "may_replace": [
+          "zoocraft:exotic_stone"
+        ]
+      }
+    ]
+  }
+}

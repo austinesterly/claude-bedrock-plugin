@@ -1,0 +1,24 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "conditions": [
+        {
+          "condition": "match_tool",
+          "minecraft:match_tool_filter_any": [
+            "minecraft:iron_tier",
+            "minecraft:diamond_tier",
+            "minecraft:netherite_tier"
+          ]
+        }
+      ],
+      "entries": [
+        {
+          "type": "item",
+          "name": "zoocraft:spessartine_garnet",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}

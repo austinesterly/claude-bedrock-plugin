@@ -1,0 +1,14 @@
+{
+  "format_version": "1.21.40",
+  "minecraft:single_block_feature": {
+    "description": {
+      "identifier": "zoocraft:formation_sunset_fern"
+    },
+    "places_block": "zoocraft:sunset_fern",
+    "enforce_placement_rules": false,
+    "enforce_survivability_rules": false,
+    "may_replace": [
+      "minecraft:air"
+    ]
+  }
+}
