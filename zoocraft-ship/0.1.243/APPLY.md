@@ -1,12 +1,12 @@
 # ZooCraft 0.1.243: four new residents (Ailing Bot, Terra, Jaylen, Sophia) and Sophia's book
 
 Apply on 0.1.242 as built. Everything under `addon\` in this folder is the exact file the add-on should hold
-(38 files: 23 new: the scripts data\lore.js, residents\rewardRules.js and residents\rewards.js, 4 skins
+(36 files: 23 new: the scripts data\lore.js, residents\rewardRules.js and residents\rewards.js, 4 skins
 (resident_10 to resident_13) and 16 talk-screen portraits (ailing_bot, terra, jaylen, sophia: plain, happy, cross,
-creeped); 15 replacing ones 0.1.242 has: 8 scripts (bench\streetPlan.js, commands.js, data\residentChats.js,
+creeped); 13 replacing ones 0.1.242 has: 8 scripts (bench\streetPlan.js, commands.js, data\residentChats.js,
 data\residentCreeped.js, data\residents.js, data\workGifts.js, ui\mailboxMenu.js, ui\residentMenu.js), the RP's
 resident.entity.json and resident.render_controllers.json, the test file, status.md and the residents' test plan; no manifests).
-`SHA256SUMS.txt` has the SHA-256 of each one; `BEFORE.txt` has the SHA-256 of the 15 files it replaces, as the laptop
+`SHA256SUMS.txt` has the SHA-256 of each one; `BEFORE.txt` has the SHA-256 of the 13 files it replaces, as the laptop
 has them. Paths in both are relative to the folder that holds `addon\` (this folder, and the
 ZooCraft Tychoon folder on the laptop).
 
