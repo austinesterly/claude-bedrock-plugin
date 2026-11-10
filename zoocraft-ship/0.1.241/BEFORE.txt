@@ -1,0 +1,6 @@
+1a97bcd2fa8b3cd04a09e756fdceb5183216a7404e3b813574f99e9f7dda40b5  addon\docs\Exotic_formation_test_plan.md
+b9ccb1fc4caf5cde30ea28327917bfe038637a632d5d5922529abfa5a88dd17d  addon\docs\status.md
+798b89c7d078460d3aa755d8714c8461adf9fc8ca08e954de166c813f2e2715b  addon\packs\BP\scripts\commands.js
+31099a3267ed35d15601854c491eaff3d6a0136e3b58e17947b9af53e29f7ba9  addon\packs\BP\scripts\data\balance.js
+fe2ac694be2c4c3e623c1221b2a64e97627855fd92ef334fac0b73ce9f43f46a  addon\packs\BP\scripts\world\sharkPeople.js
+faf4febf4a7cd328c40af41f2e3928d865396769330cec0eb21e87126e841f88  addon\tests\logic.test.mjs

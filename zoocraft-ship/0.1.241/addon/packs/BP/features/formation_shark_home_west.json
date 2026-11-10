@@ -1,0 +1,36 @@
+{
+  "format_version": "1.26.10",
+  "minecraft:structure_template_feature": {
+    "description": {
+      "identifier": "zoocraft:formation_shark_home_west"
+    },
+    "structure_name": "zoocraft:shark_home_west",
+    "adjustment_radius": 0,
+    "ground_level": 3,
+    "rotate_around_center": true,
+    "facing_direction": "south",
+    "constraints": {
+      "block_intersection": {
+        "only_check_intersection_for_motion_blocking_blocks": false,
+        "block_allowlist": [
+          "minecraft:air",
+          "zoocraft:exotic_stone",
+          "zoocraft:spessartine_garnet_ore",
+          "zoocraft:azure_crystal",
+          "zoocraft:sunset_vine",
+          "zoocraft:goo_bloom",
+          "zoocraft:sunset_fern",
+          "zoocraft:midnight_cap",
+          "minecraft:stone",
+          "minecraft:deepslate",
+          "minecraft:tuff",
+          "minecraft:granite",
+          "minecraft:diorite",
+          "minecraft:andesite",
+          "minecraft:gravel",
+          "minecraft:dirt"
+        ]
+      }
+    }
+  }
+}
