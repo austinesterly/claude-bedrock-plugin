@@ -1,0 +1,32 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "zoocraft:leather_gauntlets"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "L L",
+      "LSL"
+    ],
+    "key": {
+      "L": {
+        "item": "minecraft:leather"
+      },
+      "S": {
+        "item": "minecraft:string"
+      }
+    },
+    "unlock": [
+      {
+        "item": "minecraft:leather"
+      }
+    ],
+    "result": {
+      "item": "zoocraft:leather_gauntlets",
+      "count": 1
+    }
+  }
+}
