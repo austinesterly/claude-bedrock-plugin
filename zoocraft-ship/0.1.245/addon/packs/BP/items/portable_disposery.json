@@ -1,0 +1,25 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "zoocraft:portable_disposery",
+      "menu_category": {
+        "category": "equipment"
+      }
+    },
+    "components": {
+      "minecraft:icon": {
+        "textures": {
+          "default": "zoocraft:portable_disposery"
+        }
+      },
+      "minecraft:display_name": {
+        "value": "item.zoocraft:portable_disposery.name"
+      },
+      "minecraft:max_stack_size": {
+        "value": 1
+      },
+      "zoocraft:portable_disposery": {}
+    }
+  }
+}

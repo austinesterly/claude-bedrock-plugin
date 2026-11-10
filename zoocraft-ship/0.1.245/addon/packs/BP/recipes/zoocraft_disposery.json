@@ -1,0 +1,39 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "zoocraft:disposery"
+    },
+    "tags": [
+      "zoocraft_workshop"
+    ],
+    "pattern": [
+      "IPI",
+      "ICI",
+      "IUI"
+    ],
+    "key": {
+      "P": {
+        "item": "zoocraft:disposery_plans"
+      },
+      "I": {
+        "item": "minecraft:iron_ingot"
+      },
+      "C": {
+        "item": "minecraft:cauldron"
+      },
+      "U": {
+        "item": "minecraft:furnace"
+      }
+    },
+    "unlock": [
+      {
+        "item": "zoocraft:disposery_plans"
+      }
+    ],
+    "result": {
+      "item": "zoocraft:disposery",
+      "count": 1
+    }
+  }
+}

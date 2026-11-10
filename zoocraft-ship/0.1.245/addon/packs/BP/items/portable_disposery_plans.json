@@ -1,0 +1,24 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "zoocraft:portable_disposery_plans",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:icon": {
+        "textures": {
+          "default": "zoocraft:portable_disposery_plans"
+        }
+      },
+      "minecraft:display_name": {
+        "value": "item.zoocraft:portable_disposery_plans.name"
+      },
+      "minecraft:max_stack_size": {
+        "value": 16
+      }
+    }
+  }
+}

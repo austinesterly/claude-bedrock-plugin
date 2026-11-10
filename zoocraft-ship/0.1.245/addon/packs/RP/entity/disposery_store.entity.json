@@ -1,0 +1,20 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:disposery_store",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/zoocraft/disposery_store"
+      },
+      "geometry": {
+        "default": "geometry.zoocraft.disposery_store"
+      },
+      "render_controllers": [
+        "controller.render.zoocraft.disposery_store"
+      ]
+    }
+  }
+}
