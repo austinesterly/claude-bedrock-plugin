@@ -1,0 +1,29 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "zoocraft:garnet_helmet"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "GGG",
+      "G G"
+    ],
+    "key": {
+      "G": {
+        "item": "zoocraft:spessartine_garnet"
+      }
+    },
+    "unlock": [
+      {
+        "item": "zoocraft:spessartine_garnet"
+      }
+    ],
+    "result": {
+      "item": "zoocraft:garnet_helmet",
+      "count": 1
+    }
+  }
+}

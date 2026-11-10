@@ -1,0 +1,33 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "zoocraft:garnet_axe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "GG",
+      "GS",
+      " S"
+    ],
+    "key": {
+      "G": {
+        "item": "zoocraft:spessartine_garnet"
+      },
+      "S": {
+        "item": "minecraft:stick"
+      }
+    },
+    "unlock": [
+      {
+        "item": "zoocraft:spessartine_garnet"
+      }
+    ],
+    "result": {
+      "item": "zoocraft:garnet_axe",
+      "count": 1
+    }
+  }
+}

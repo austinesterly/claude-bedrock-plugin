@@ -1,0 +1,30 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "zoocraft:garnet_chestplate"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "G G",
+      "GGG",
+      "GGG"
+    ],
+    "key": {
+      "G": {
+        "item": "zoocraft:spessartine_garnet"
+      }
+    },
+    "unlock": [
+      {
+        "item": "zoocraft:spessartine_garnet"
+      }
+    ],
+    "result": {
+      "item": "zoocraft:garnet_chestplate",
+      "count": 1
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "zoocraft:garnet_leggings",
+      "menu_category": {
+        "category": "equipment",
+        "group": "minecraft:itemGroup.name.leggings"
+      }
+    },
+    "components": {
+      "minecraft:icon": {
+        "textures": {
+          "default": "zoocraft:garnet_leggings"
+        }
+      },
+      "minecraft:display_name": {
+        "value": "item.zoocraft:garnet_leggings.name"
+      },
+      "minecraft:max_stack_size": {
+        "value": 1
+      },
+      "minecraft:wearable": {
+        "slot": "slot.armor.legs",
+        "protection": 6
+      },
+      "minecraft:durability": {
+        "max_durability": 495
+      },
+      "minecraft:enchantable": {
+        "slot": "armor_legs",
+        "value": 10
+      },
+      "minecraft:repairable": {
+        "repair_items": [
+          {
+            "items": [
+              "zoocraft:garnet_leggings"
+            ],
+            "repair_amount": "context.other->query.remaining_durability"
+          },
+          {
+            "items": [
+              "zoocraft:spessartine_garnet"
+            ],
+            "repair_amount": "query.max_durability * 0.25"
+          }
+        ]
+      },
+      "minecraft:tags": {
+        "tags": [
+          "minecraft:is_armor",
+          "minecraft:diamond_tier"
+        ]
+      }
+    }
+  }
+}
