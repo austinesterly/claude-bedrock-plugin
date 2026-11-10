@@ -1,0 +1,578 @@
+{
+  "namespace": "server_form",
+  "main_screen_content": {
+    "modifications": [
+      {
+        "array_name": "controls",
+        "operation": "insert_back",
+        "value": [
+          {
+            "resident_form_factory": {
+              "type": "panel",
+              "factory": {
+                "name": "server_form_factory",
+                "control_ids": {
+                  "long_form": "@server_form.resident_long_form"
+                }
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "long_form": {
+    "modifications": [
+      {
+        "array_name": "bindings",
+        "operation": "insert_back",
+        "value": [
+          {
+            "binding_name": "#title_text"
+          },
+          {
+            "binding_type": "view",
+            "source_property_name": "((#title_text - '§t§a§l§k§r') = #title_text)",
+            "target_property_name": "#visible"
+          }
+        ]
+      }
+    ]
+  },
+  "resident_long_form": {
+    "type": "panel",
+    "size": [
+      316,
+      212
+    ],
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "layer": 2,
+    "bindings": [
+      {
+        "binding_name": "#title_text"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(not ((#title_text - '§t§a§l§k§r') = #title_text))",
+        "target_property_name": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "resident_choices_frame@server_form.resident_choices_frame": {}
+      },
+      {
+        "resident_dialogue_box@server_form.resident_dialogue_box": {}
+      }
+    ]
+  },
+  "resident_choices_frame": {
+    "type": "image",
+    "texture": "textures/ui/zoocraft/talk/choices_frame",
+    "anchor_from": "bottom_right",
+    "anchor_to": "bottom_right",
+    "size": [
+      150,
+      "100%c + 8px"
+    ],
+    "offset": [
+      0,
+      -98
+    ],
+    "layer": 1,
+    "controls": [
+      {
+        "resident_choices@server_form.resident_choices": {}
+      }
+    ]
+  },
+  "resident_choices": {
+    "type": "stack_panel",
+    "orientation": "vertical",
+    "size": [
+      "100% - 10px",
+      "100%c"
+    ],
+    "layer": 1,
+    "factory": {
+      "name": "buttons",
+      "control_ids": {
+        "button": "server_form.resident_choice",
+        "label": "@server_form.resident_skip",
+        "header": "@server_form.resident_skip",
+        "divider": "@server_form.resident_skip"
+      }
+    },
+    "collection_name": "form_buttons",
+    "bindings": [
+      {
+        "binding_name": "#form_button_contents",
+        "binding_name_override": "#collection_length"
+      }
+    ]
+  },
+  "resident_skip": {
+    "type": "panel",
+    "size": [
+      0,
+      0
+    ]
+  },
+  "resident_choice": {
+    "type": "panel",
+    "size": [
+      "100%",
+      15
+    ],
+    "controls": [
+      {
+        "form_button@common_buttons.light_text_button": {
+          "$pressed_button_name": "button.form_button_click",
+          "size": [
+            "100%",
+            14
+          ],
+          "$button_text": "#form_button_text",
+          "$button_text_binding_type": "collection",
+          "$button_text_grid_collection_name": "form_buttons",
+          "$button_text_max_size": [
+            "100%",
+            10
+          ],
+          "$default_button_texture": "textures/ui/zoocraft/talk/choice_default",
+          "$hover_button_texture": "textures/ui/zoocraft/talk/choice_hover",
+          "$pressed_button_texture": "textures/ui/zoocraft/talk/choice_pressed",
+          "bindings": [
+            {
+              "binding_type": "collection_details",
+              "binding_collection_name": "form_buttons"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "resident_dialogue_box": {
+    "type": "image",
+    "texture": "textures/ui/zoocraft/talk/dialogue_box",
+    "anchor_from": "bottom_middle",
+    "anchor_to": "bottom_middle",
+    "size": [
+      "100%",
+      96
+    ],
+    "layer": 1,
+    "controls": [
+      {
+        "resident_text_area": {
+          "type": "panel",
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "size": [
+            "100% - 94px",
+            "100% - 30px"
+          ],
+          "offset": [
+            12,
+            10
+          ],
+          "clips_children": true,
+          "controls": [
+            {
+              "resident_body": {
+                "type": "label",
+                "anchor_from": "top_left",
+                "anchor_to": "top_left",
+                "size": [
+                  "100%",
+                  "default"
+                ],
+                "color": [
+                  0.28,
+                  0.16,
+                  0.07
+                ],
+                "shadow": false,
+                "layer": 2,
+                "text": "#form_text"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "resident_heart_0": {
+          "type": "image",
+          "texture": "textures/ui/heart_background",
+          "anchor_from": "bottom_left",
+          "anchor_to": "bottom_left",
+          "size": [
+            9,
+            9
+          ],
+          "offset": [
+            12,
+            -8
+          ],
+          "layer": 3,
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(not (((((((#title_text - '§t§a§l§k§r§0§r') - '§t§a§l§k§r§1§r') - '§t§a§l§k§r§2§r') - '§t§a§l§k§r§3§r') - '§t§a§l§k§r§4§r') - '§t§a§l§k§r§5§r') = #title_text))",
+              "target_property_name": "#visible"
+            }
+          ],
+          "controls": [
+            {
+              "resident_heart_full": {
+                "type": "image",
+                "texture": "textures/ui/heart",
+                "size": [
+                  9,
+                  9
+                ],
+                "layer": 1,
+                "bindings": [
+                  {
+                    "binding_name": "#title_text"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "(not ((((((#title_text - '§t§a§l§k§r§1§r') - '§t§a§l§k§r§2§r') - '§t§a§l§k§r§3§r') - '§t§a§l§k§r§4§r') - '§t§a§l§k§r§5§r') = #title_text))",
+                    "target_property_name": "#visible"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "resident_heart_1": {
+          "type": "image",
+          "texture": "textures/ui/heart_background",
+          "anchor_from": "bottom_left",
+          "anchor_to": "bottom_left",
+          "size": [
+            9,
+            9
+          ],
+          "offset": [
+            22,
+            -8
+          ],
+          "layer": 3,
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(not (((((((#title_text - '§t§a§l§k§r§0§r') - '§t§a§l§k§r§1§r') - '§t§a§l§k§r§2§r') - '§t§a§l§k§r§3§r') - '§t§a§l§k§r§4§r') - '§t§a§l§k§r§5§r') = #title_text))",
+              "target_property_name": "#visible"
+            }
+          ],
+          "controls": [
+            {
+              "resident_heart_full": {
+                "type": "image",
+                "texture": "textures/ui/heart",
+                "size": [
+                  9,
+                  9
+                ],
+                "layer": 1,
+                "bindings": [
+                  {
+                    "binding_name": "#title_text"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "(not (((((#title_text - '§t§a§l§k§r§2§r') - '§t§a§l§k§r§3§r') - '§t§a§l§k§r§4§r') - '§t§a§l§k§r§5§r') = #title_text))",
+                    "target_property_name": "#visible"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "resident_heart_2": {
+          "type": "image",
+          "texture": "textures/ui/heart_background",
+          "anchor_from": "bottom_left",
+          "anchor_to": "bottom_left",
+          "size": [
+            9,
+            9
+          ],
+          "offset": [
+            32,
+            -8
+          ],
+          "layer": 3,
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(not (((((((#title_text - '§t§a§l§k§r§0§r') - '§t§a§l§k§r§1§r') - '§t§a§l§k§r§2§r') - '§t§a§l§k§r§3§r') - '§t§a§l§k§r§4§r') - '§t§a§l§k§r§5§r') = #title_text))",
+              "target_property_name": "#visible"
+            }
+          ],
+          "controls": [
+            {
+              "resident_heart_full": {
+                "type": "image",
+                "texture": "textures/ui/heart",
+                "size": [
+                  9,
+                  9
+                ],
+                "layer": 1,
+                "bindings": [
+                  {
+                    "binding_name": "#title_text"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "(not ((((#title_text - '§t§a§l§k§r§3§r') - '§t§a§l§k§r§4§r') - '§t§a§l§k§r§5§r') = #title_text))",
+                    "target_property_name": "#visible"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "resident_heart_3": {
+          "type": "image",
+          "texture": "textures/ui/heart_background",
+          "anchor_from": "bottom_left",
+          "anchor_to": "bottom_left",
+          "size": [
+            9,
+            9
+          ],
+          "offset": [
+            42,
+            -8
+          ],
+          "layer": 3,
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(not (((((((#title_text - '§t§a§l§k§r§0§r') - '§t§a§l§k§r§1§r') - '§t§a§l§k§r§2§r') - '§t§a§l§k§r§3§r') - '§t§a§l§k§r§4§r') - '§t§a§l§k§r§5§r') = #title_text))",
+              "target_property_name": "#visible"
+            }
+          ],
+          "controls": [
+            {
+              "resident_heart_full": {
+                "type": "image",
+                "texture": "textures/ui/heart",
+                "size": [
+                  9,
+                  9
+                ],
+                "layer": 1,
+                "bindings": [
+                  {
+                    "binding_name": "#title_text"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "(not (((#title_text - '§t§a§l§k§r§4§r') - '§t§a§l§k§r§5§r') = #title_text))",
+                    "target_property_name": "#visible"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "resident_heart_4": {
+          "type": "image",
+          "texture": "textures/ui/heart_background",
+          "anchor_from": "bottom_left",
+          "anchor_to": "bottom_left",
+          "size": [
+            9,
+            9
+          ],
+          "offset": [
+            52,
+            -8
+          ],
+          "layer": 3,
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(not (((((((#title_text - '§t§a§l§k§r§0§r') - '§t§a§l§k§r§1§r') - '§t§a§l§k§r§2§r') - '§t§a§l§k§r§3§r') - '§t§a§l§k§r§4§r') - '§t§a§l§k§r§5§r') = #title_text))",
+              "target_property_name": "#visible"
+            }
+          ],
+          "controls": [
+            {
+              "resident_heart_full": {
+                "type": "image",
+                "texture": "textures/ui/heart",
+                "size": [
+                  9,
+                  9
+                ],
+                "layer": 1,
+                "bindings": [
+                  {
+                    "binding_name": "#title_text"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "(not ((#title_text - '§t§a§l§k§r§5§r') = #title_text))",
+                    "target_property_name": "#visible"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "resident_portrait_column": {
+          "type": "panel",
+          "anchor_from": "right_middle",
+          "anchor_to": "right_middle",
+          "size": [
+            60,
+            74
+          ],
+          "offset": [
+            -10,
+            0
+          ],
+          "controls": [
+            {
+              "resident_portrait_frame": {
+                "type": "image",
+                "texture": "textures/ui/zoocraft/talk/portrait_frame",
+                "anchor_from": "top_middle",
+                "anchor_to": "top_middle",
+                "size": [
+                  60,
+                  60
+                ],
+                "layer": 2,
+                "controls": [
+                  {
+                    "resident_portrait_source": {
+                      "type": "stack_panel",
+                      "orientation": "horizontal",
+                      "size": [
+                        56,
+                        56
+                      ],
+                      "collection_name": "form_buttons",
+                      "controls": [
+                        {
+                          "resident_portrait": {
+                            "type": "image",
+                            "size": [
+                              56,
+                              56
+                            ],
+                            "layer": 3,
+                            "collection_index": 0,
+                            "allow_debug_missing_texture": false,
+                            "bindings": [
+                              {
+                                "binding_name": "#form_button_texture",
+                                "binding_name_override": "#texture",
+                                "binding_type": "collection",
+                                "binding_collection_name": "form_buttons"
+                              },
+                              {
+                                "binding_name": "#form_button_texture_file_system",
+                                "binding_name_override": "#texture_file_system",
+                                "binding_type": "collection",
+                                "binding_collection_name": "form_buttons"
+                              },
+                              {
+                                "binding_type": "view",
+                                "source_property_name": "(not ((#texture = '') or (#texture = 'loading')))",
+                                "target_property_name": "#visible"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "resident_name_plate": {
+                "type": "image",
+                "texture": "textures/ui/zoocraft/talk/name_plate",
+                "anchor_from": "bottom_middle",
+                "anchor_to": "bottom_middle",
+                "size": [
+                  "100%",
+                  13
+                ],
+                "layer": 2,
+                "controls": [
+                  {
+                    "resident_name": {
+                      "type": "label",
+                      "size": [
+                        "default",
+                        10
+                      ],
+                      "max_size": [
+                        "100% - 4px",
+                        10
+                      ],
+                      "color": [
+                        0.28,
+                        0.16,
+                        0.07
+                      ],
+                      "shadow": false,
+                      "layer": 3,
+                      "text": "#text",
+                      "bindings": [
+                        {
+                          "binding_name": "#title_text"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_property_name": "(#title_text - '§t§a§l§k§r')",
+                          "target_property_name": "#text"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

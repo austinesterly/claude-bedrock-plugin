@@ -1,0 +1,6 @@
+ed6665ef871328fa02fc88e3f5b4f712874bc0595c34ffa90d8d3e149e9138f4  addon\docs\Residents_test_plan.md
+60922494dc0fc729dcce23d901cf0acbd91fb39478007c4128cb1e3a7fb7b84f  addon\docs\status.md
+8fb9d47553d0128e474a4ba9219c8bc1d4339844f0269ab97a3a277f22990ca3  addon\packs\BP\scripts\ui\residentMenu.js
+d3264787a78542f67eadab6b97522216e5e2eec4c4fa124f5f4aa062fbdc6be4  addon\packs\BP\scripts\ui\talkRules.js
+74261019fd57650bd329728925fbd1586aff8781ad88800d61cfd91f29d736cc  addon\packs\RP\ui\server_form.json
+6a7d7f56f5d1aeeab9328dc0f608f890d21ef5c723119b617a056e3a3158cfeb  addon\tests\logic.test.mjs
