@@ -1,0 +1,7 @@
+ed6665ef871328fa02fc88e3f5b4f712874bc0595c34ffa90d8d3e149e9138f4  addon\docs\Residents_test_plan.md
+60922494dc0fc729dcce23d901cf0acbd91fb39478007c4128cb1e3a7fb7b84f  addon\docs\status.md
+4726298854d092dbe3466f91ce09ea4a29bcffbc484779ffefb264cb1f268ccf  addon\packs\RP\textures\entity\zoocraft\resident_6.png
+35a430609eee2184c55ebd23a4f49cb12e61bdc564c47465c4cc97a5b67829ba  addon\packs\RP\textures\entity\zoocraft\resident_7.png
+627a7965f821265e646d8206ebb603d4a28fc221cd5d61a7df19dc4978769cf5  addon\packs\RP\textures\ui\zoocraft\talk\portraits\amanda.png
+2d22a24edffb26deb8bdfd1e0c5ea3369db92a2d8c4c2806e7ac9850fd1434b7  addon\packs\RP\textures\ui\zoocraft\talk\portraits\paola.png
+6a7d7f56f5d1aeeab9328dc0f608f890d21ef5c723119b617a056e3a3158cfeb  addon\tests\logic.test.mjs
