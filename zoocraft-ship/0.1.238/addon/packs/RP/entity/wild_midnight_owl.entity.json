@@ -1,0 +1,47 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:wild_midnight_owl",
+      "materials": {
+        "default": "entity_alphatest",
+        "glow": "warden_bioluminescent_layer"
+      },
+      "textures": {
+        "default": "textures/entity/zoocraft/midnight_owl",
+        "eyes": "textures/entity/zoocraft/midnight_owl_eyes"
+      },
+      "geometry": {
+        "default": "geometry.zoocraft.midnight_owl"
+      },
+      "animations": {
+        "idle": "animation.zoocraft.midnight_owl.idle",
+        "walk": "animation.zoocraft.midnight_owl.walk",
+        "fly": "animation.zoocraft.midnight_owl.fly",
+        "look_at_target": "animation.zoocraft.midnight_owl.look_at_target",
+        "move": "controller.animation.zoocraft.midnight_owl.move"
+      },
+      "render_controllers": [
+        "controller.render.zoocraft.midnight_owl",
+        "controller.render.zoocraft.midnight_owl_eyes"
+      ],
+      "scripts": {
+        "initialize": [
+          "variable.offset = math.random(0, 20);",
+          "v.eyes = 1;"
+        ],
+        "pre_animation": [
+          "v.eyes = math.mod(q.life_time + v.offset, 5.3) < 0.18 ? 0.0 : (0.9 + 0.1 * math.sin(q.life_time * 120 + v.offset * 30));"
+        ],
+        "animate": [
+          "move",
+          "look_at_target"
+        ]
+      },
+      "spawn_egg": {
+        "base_color": "#0d0e13",
+        "overlay_color": "#3992ff"
+      }
+    }
+  }
+}

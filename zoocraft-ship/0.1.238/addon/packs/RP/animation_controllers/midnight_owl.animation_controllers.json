@@ -1,0 +1,49 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.zoocraft.midnight_owl.move": {
+      "initial_state": "idle",
+      "states": {
+        "idle": {
+          "animations": [
+            "idle"
+          ],
+          "transitions": [
+            {
+              "fly": "!q.is_on_ground"
+            },
+            {
+              "walk": "q.modified_move_speed > 0.05"
+            }
+          ],
+          "blend_transition": 0.25
+        },
+        "walk": {
+          "animations": [
+            "walk"
+          ],
+          "transitions": [
+            {
+              "fly": "!q.is_on_ground"
+            },
+            {
+              "idle": "q.modified_move_speed <= 0.05"
+            }
+          ],
+          "blend_transition": 0.25
+        },
+        "fly": {
+          "animations": [
+            "fly"
+          ],
+          "transitions": [
+            {
+              "idle": "q.is_on_ground"
+            }
+          ],
+          "blend_transition": 0.3
+        }
+      }
+    }
+  }
+}
