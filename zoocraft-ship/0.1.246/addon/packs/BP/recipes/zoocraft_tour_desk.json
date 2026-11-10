@@ -1,0 +1,42 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "zoocraft:tour_desk"
+    },
+    "tags": [
+      "zoocraft_workshop"
+    ],
+    "pattern": [
+      "PCP",
+      "WRW",
+      "WXW"
+    ],
+    "key": {
+      "P": {
+        "item": "minecraft:paper"
+      },
+      "C": {
+        "item": "minecraft:compass"
+      },
+      "W": {
+        "tag": "minecraft:planks"
+      },
+      "R": {
+        "item": "minecraft:red_wool"
+      },
+      "X": {
+        "item": "zoocraft:lesson_notes_visitors"
+      }
+    },
+    "unlock": [
+      {
+        "item": "zoocraft:zoo_workshop"
+      }
+    ],
+    "result": {
+      "item": "zoocraft:tour_desk",
+      "count": 1
+    }
+  }
+}

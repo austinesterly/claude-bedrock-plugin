@@ -1,0 +1,42 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "zoocraft:donation_box"
+    },
+    "tags": [
+      "zoocraft_workshop"
+    ],
+    "pattern": [
+      "PGP",
+      "PRP",
+      "XS "
+    ],
+    "key": {
+      "P": {
+        "tag": "minecraft:planks"
+      },
+      "G": {
+        "item": "minecraft:gold_nugget"
+      },
+      "R": {
+        "item": "minecraft:red_dye"
+      },
+      "S": {
+        "item": "minecraft:stick"
+      },
+      "X": {
+        "item": "zoocraft:lesson_notes_revenue"
+      }
+    },
+    "unlock": [
+      {
+        "item": "zoocraft:zoo_workshop"
+      }
+    ],
+    "result": {
+      "item": "zoocraft:donation_box",
+      "count": 1
+    }
+  }
+}

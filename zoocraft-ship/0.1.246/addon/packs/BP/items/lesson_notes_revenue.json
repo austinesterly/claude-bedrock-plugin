@@ -1,0 +1,24 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "zoocraft:lesson_notes_revenue",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:icon": {
+        "textures": {
+          "default": "zoocraft:lesson_notes_revenue"
+        }
+      },
+      "minecraft:display_name": {
+        "value": "item.zoocraft:lesson_notes_revenue.name"
+      },
+      "minecraft:max_stack_size": {
+        "value": 16
+      }
+    }
+  }
+}

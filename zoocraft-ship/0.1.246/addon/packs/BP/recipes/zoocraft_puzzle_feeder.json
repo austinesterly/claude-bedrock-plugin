@@ -1,0 +1,41 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "zoocraft:puzzle_feeder"
+    },
+    "tags": [
+      "zoocraft_workshop"
+    ],
+    "pattern": [
+      "LNH",
+      "XB "
+    ],
+    "key": {
+      "L": {
+        "item": "minecraft:lever"
+      },
+      "N": {
+        "item": "minecraft:iron_nugget"
+      },
+      "H": {
+        "item": "minecraft:tripwire_hook"
+      },
+      "B": {
+        "item": "zoocraft:basic_feeder"
+      },
+      "X": {
+        "item": "zoocraft:lesson_notes_enrichment"
+      }
+    },
+    "unlock": [
+      {
+        "item": "zoocraft:zoo_workshop"
+      }
+    ],
+    "result": {
+      "item": "zoocraft:puzzle_feeder",
+      "count": 1
+    }
+  }
+}
