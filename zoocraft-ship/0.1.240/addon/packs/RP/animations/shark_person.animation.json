@@ -1,0 +1,170 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.zoocraft.shark_person.idle": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "scale": [
+            "1",
+            "1 + math.sin(q.life_time * 70 + v.offset * 20) * 0.012",
+            "1"
+          ]
+        },
+        "tail": {
+          "rotation": [
+            0,
+            "math.sin(q.life_time * 90 + v.offset * 20) * 12",
+            0
+          ]
+        },
+        "jaw": {
+          "rotation": [
+            "math.max(0, math.sin(q.life_time * 40 + v.offset * 10) - 0.8) * 90",
+            0,
+            0
+          ]
+        },
+        "armL": {
+          "rotation": [
+            0,
+            0,
+            "-2 - math.sin(q.life_time * 70 + v.offset * 20) * 2"
+          ]
+        },
+        "armR": {
+          "rotation": [
+            0,
+            0,
+            "2 + math.sin(q.life_time * 70 + v.offset * 20) * 2"
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.shark_person.walk": {
+      "loop": true,
+      "bones": {
+        "legL": {
+          "rotation": [
+            "math.cos(q.life_time * 520) * 36",
+            0,
+            0
+          ]
+        },
+        "legR": {
+          "rotation": [
+            "-math.cos(q.life_time * 520) * 36",
+            0,
+            0
+          ]
+        },
+        "armL": {
+          "rotation": [
+            "-math.cos(q.life_time * 520) * 24",
+            0,
+            0
+          ]
+        },
+        "armR": {
+          "rotation": [
+            "math.cos(q.life_time * 520) * 24",
+            0,
+            0
+          ]
+        },
+        "tail": {
+          "rotation": [
+            0,
+            "math.sin(q.life_time * 520) * 20",
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.shark_person.hunt": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "rotation": [
+            "q.has_target ? 8 : 0",
+            0,
+            0
+          ]
+        },
+        "head": {
+          "rotation": [
+            "q.has_target ? -8 : 0",
+            0,
+            0
+          ]
+        },
+        "armL": {
+          "rotation": [
+            "q.has_target ? -58 + math.sin(q.life_time * 300) * 6 : 0",
+            0,
+            0
+          ]
+        },
+        "armR": {
+          "rotation": [
+            "q.has_target ? -58 - math.sin(q.life_time * 300) * 6 : 0",
+            0,
+            0
+          ]
+        },
+        "jaw": {
+          "rotation": [
+            "q.has_target ? 14 + math.sin(q.life_time * 600) * 10 : 0",
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.shark_person.attack": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "rotation": [
+            "math.sin(variable.attack_time * 180) * 14",
+            0,
+            0
+          ]
+        },
+        "armL": {
+          "rotation": [
+            "-math.sin(variable.attack_time * 180) * 60",
+            0,
+            "math.sin(variable.attack_time * 180) * 20"
+          ]
+        },
+        "armR": {
+          "rotation": [
+            "-math.sin(variable.attack_time * 180) * 60",
+            0,
+            "-math.sin(variable.attack_time * 180) * 20"
+          ]
+        },
+        "jaw": {
+          "rotation": [
+            "math.sin(variable.attack_time * 180) * 30",
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.shark_person.look_at_target": {
+      "loop": true,
+      "bones": {
+        "head": {
+          "rotation": [
+            "math.clamp(q.target_x_rotation, -35, 35)",
+            "math.clamp(q.target_y_rotation, -70, 70)",
+            0
+          ]
+        }
+      }
+    }
+  }
+}

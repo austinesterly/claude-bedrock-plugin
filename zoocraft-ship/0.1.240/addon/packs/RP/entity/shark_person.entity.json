@@ -1,0 +1,43 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:shark_person",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/zoocraft/shark_person"
+      },
+      "geometry": {
+        "default": "geometry.zoocraft.shark_person"
+      },
+      "animations": {
+        "idle": "animation.zoocraft.shark_person.idle",
+        "walk": "animation.zoocraft.shark_person.walk",
+        "hunt": "animation.zoocraft.shark_person.hunt",
+        "attack": "animation.zoocraft.shark_person.attack",
+        "look_at_target": "animation.zoocraft.shark_person.look_at_target",
+        "move": "controller.animation.zoocraft.shark_person.move"
+      },
+      "render_controllers": [
+        "controller.render.zoocraft.shark_person"
+      ],
+      "scripts": {
+        "initialize": [
+          "variable.offset = math.random(0, 20);"
+        ],
+        "animate": [
+          "move",
+          "hunt",
+          "attack",
+          "look_at_target"
+        ]
+      },
+      "spawn_egg": {
+        "base_color": "#46629a",
+        "overlay_color": "#f18611"
+      }
+    }
+  }
+}
