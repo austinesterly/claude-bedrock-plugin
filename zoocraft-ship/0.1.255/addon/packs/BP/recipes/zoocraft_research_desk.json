@@ -1,0 +1,35 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "zoocraft:research_desk"
+    },
+    "tags": [
+      "zoocraft_workshop"
+    ],
+    "pattern": [
+      "BBB",
+      "PCP"
+    ],
+    "key": {
+      "B": {
+        "item": "minecraft:book"
+      },
+      "P": {
+        "tag": "minecraft:planks"
+      },
+      "C": {
+        "item": "minecraft:crafting_table"
+      }
+    },
+    "unlock": [
+      {
+        "item": "zoocraft:zoo_workshop"
+      }
+    ],
+    "result": {
+      "item": "zoocraft:research_desk",
+      "count": 1
+    }
+  }
+}
