@@ -1,0 +1,19 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:scatter_feature": {
+    "description": {
+      "identifier": "zoocraft:formation_prime"
+    },
+    "places_feature": "zoocraft:formation_air",
+    "iterations": 16,
+    "x": {
+      "distribution": "fixed_grid",
+      "extent": [
+        0,
+        15
+      ]
+    },
+    "z": 0,
+    "y": "t.bx = math.clamp((variable.worldx) + 5 * query.noise((variable.worldx) / 11 + 41.3, (variable.worldz) / 11 + 23.7), math.floor((variable.worldx) / 16) * 16, math.floor((variable.worldx) / 16) * 16 + 15); t.bz = math.clamp((variable.worldz) + 5 * query.noise((variable.worldx) / 11 + 67.9, (variable.worldz) / 11 + 12.1), math.floor((variable.worldz) / 16) * 16, math.floor((variable.worldz) / 16) * 16 + 15); t.in = ((query.has_biome_tag('zoocraft_exotic', t.bx, -30, t.bz) || query.has_biome_tag('zoocraft_exotic', t.bx, -15, t.bz) || query.has_biome_tag('zoocraft_exotic', t.bx, 0, t.bz)) && !query.has_biome_tag('deep_dark', variable.worldx, -45, variable.worldz) && !query.has_biome_tag('zoocraft_trench', variable.worldx, 40, variable.worldz)); return t.in ? 400 : 400;"
+  }
+}

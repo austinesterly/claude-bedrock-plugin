@@ -1,0 +1,13 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:scatter_feature": {
+    "description": {
+      "identifier": "zoocraft:formation_vine_6"
+    },
+    "places_feature": "zoocraft:formation_vine_block_6",
+    "iterations": "t.s = 0; t.h = 0; t.f = 0; t.c = 0; t.p = 0; t.g = 0; t.l = 0; t.y = 0; t.tn = 0; t.pa = 9; t.bx = math.clamp((variable.originx) + 5 * query.noise((variable.originx) / 11 + 41.3, (variable.originz) / 11 + 23.7), math.floor((variable.originx) / 16) * 16, math.floor((variable.originx) / 16) * 16 + 15); t.bz = math.clamp((variable.originz) + 5 * query.noise((variable.originx) / 11 + 67.9, (variable.originz) / 11 + 12.1), math.floor((variable.originz) / 16) * 16, math.floor((variable.originz) / 16) * 16 + 15); t.in = ((query.has_biome_tag('zoocraft_exotic', t.bx, -30, t.bz) || query.has_biome_tag('zoocraft_exotic', t.bx, -15, t.bz) || query.has_biome_tag('zoocraft_exotic', t.bx, 0, t.bz)) && !query.has_biome_tag('deep_dark', variable.originx, -45, variable.originz) && !query.has_biome_tag('zoocraft_trench', variable.originx, 40, variable.originz)); t.in ? { t.y = math.floor(-31 + 4 * query.noise((variable.originx) / 170 + 3.1, (variable.originz) / 170 + 7.7) + 0.5); t.q = 0.8 * query.noise((variable.originx) / 62 + 1.7, (variable.originz) / 62 + 9.2) + 0.25 * query.noise((variable.originx) / 21 + 5.5, (variable.originz) / 21 + 2.9) + 0.22; t.s = math.clamp(t.q / 0.3, 0, 1); t.s = t.s * t.s * (3 - 2 * t.s); t.f = math.floor(t.y - 5 * t.s + 1.2 * query.noise((variable.originx) / 13 + 4.4, (variable.originz) / 13 + 8.1) + 0.5); t.h = math.floor(t.s * (30 + 8 * query.noise((variable.originx) / 34 + 2.2, (variable.originz) / 34 + 6.6) + 2.5 * query.noise((variable.originx) / 6 + 7.1, (variable.originz) / 6 + 1.3))); t.h = math.max(0, t.h); t.c = t.f + t.h - 1; t.p = (t.s > 0.5 && query.noise((variable.originx) / 14 + 12.5, (variable.originz) / 14 + 3.5) > 0.6); t.l = t.y - 7; t.g = (!t.p && t.s > 0.8 && query.noise((variable.originx) / 15 + 20.3, (variable.originz) / 15 + 14.9) > 0.4); t.pa = math.abs(query.noise((variable.originx) / 75 + 31.3, (variable.originz) / 75 + 17.9)); t.tn = (t.pa < 0.035 + 0.03 + 0.012 * query.noise((variable.originx) / 5 + 3.3, (variable.originz) / 5 + 8.8)); }; return ((2 + math.mod(math.mod(variable.originx * 31 + variable.originz * 17, 11) + 11, 11)) > 6 && t.h - 6 > 3 && !t.p) ? 1 : 0;",
+    "x": 0,
+    "z": 0,
+    "y": -6
+  }
+}

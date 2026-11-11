@@ -1,0 +1,13 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:scatter_feature": {
+    "description": {
+      "identifier": "zoocraft:formation_shark_home_north_at"
+    },
+    "places_feature": "zoocraft:formation_shark_home_north",
+    "iterations": 1,
+    "x": 0,
+    "z": 0,
+    "y": "t.s = 0; t.h = 0; t.f = 0; t.c = 0; t.p = 0; t.g = 0; t.l = 0; t.y = 0; t.tn = 0; t.pa = 9; t.bx = math.clamp((variable.worldx) + 5 * query.noise((variable.worldx) / 11 + 41.3, (variable.worldz) / 11 + 23.7), math.floor((variable.worldx) / 16) * 16, math.floor((variable.worldx) / 16) * 16 + 15); t.bz = math.clamp((variable.worldz) + 5 * query.noise((variable.worldx) / 11 + 67.9, (variable.worldz) / 11 + 12.1), math.floor((variable.worldz) / 16) * 16, math.floor((variable.worldz) / 16) * 16 + 15); t.in = ((query.has_biome_tag('zoocraft_exotic', t.bx, -30, t.bz) || query.has_biome_tag('zoocraft_exotic', t.bx, -15, t.bz) || query.has_biome_tag('zoocraft_exotic', t.bx, 0, t.bz)) && !query.has_biome_tag('deep_dark', variable.worldx, -45, variable.worldz) && !query.has_biome_tag('zoocraft_trench', variable.worldx, 40, variable.worldz)); t.in ? { t.y = math.floor(-31 + 4 * query.noise((variable.worldx) / 170 + 3.1, (variable.worldz) / 170 + 7.7) + 0.5); t.q = 0.8 * query.noise((variable.worldx) / 62 + 1.7, (variable.worldz) / 62 + 9.2) + 0.25 * query.noise((variable.worldx) / 21 + 5.5, (variable.worldz) / 21 + 2.9) + 0.22; t.s = math.clamp(t.q / 0.3, 0, 1); t.s = t.s * t.s * (3 - 2 * t.s); t.f = math.floor(t.y - 5 * t.s + 1.2 * query.noise((variable.worldx) / 13 + 4.4, (variable.worldz) / 13 + 8.1) + 0.5); t.h = math.floor(t.s * (30 + 8 * query.noise((variable.worldx) / 34 + 2.2, (variable.worldz) / 34 + 6.6) + 2.5 * query.noise((variable.worldx) / 6 + 7.1, (variable.worldz) / 6 + 1.3))); t.h = math.max(0, t.h); t.c = t.f + t.h - 1; t.p = (t.s > 0.5 && query.noise((variable.worldx) / 14 + 12.5, (variable.worldz) / 14 + 3.5) > 0.6); t.l = t.y - 7; t.g = (!t.p && t.s > 0.8 && query.noise((variable.worldx) / 15 + 20.3, (variable.worldz) / 15 + 14.9) > 0.4); t.pa = math.abs(query.noise((variable.worldx) / 75 + 31.3, (variable.worldz) / 75 + 17.9)); t.tn = (t.pa < 0.035 + 0.03 + 0.012 * query.noise((variable.worldx) / 5 + 3.3, (variable.worldz) / 5 + 8.8)); }; t.i = math.floor((variable.worldx) / 160); t.j = math.floor((variable.worldz) / 160); t.ux = math.floor((variable.worldx) / 16) - (t.i * 10 + 2 + math.mod(math.mod(t.i * 5 + t.j * 3, 6) + 6, 6)); t.uz = math.floor((variable.worldz) / 16) - (t.j * 10 + 2 + math.mod(math.mod(t.i * 3 + t.j * 7 + 1, 6) + 6, 6)); t.store = math.mod(math.mod(t.i * 3 + t.j * 5, 4) + 4, 4); return (t.s > 0 && !t.p && t.h >= 9 && t.ux == 0 && t.uz == -1 && t.store != 2) ? t.f : 400;"
+  }
+}

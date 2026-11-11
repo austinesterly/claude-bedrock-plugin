@@ -1,0 +1,18 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:aggregate_feature": {
+    "description": {
+      "identifier": "zoocraft:formation_dig"
+    },
+    "features": [
+      "zoocraft:formation_prime",
+      "zoocraft:formation_body",
+      "zoocraft:formation_floor",
+      "zoocraft:formation_open",
+      "zoocraft:formation_pit",
+      "zoocraft:formation_pit_rim",
+      "zoocraft:formation_tunnel_body",
+      "zoocraft:formation_tunnel_open"
+    ]
+  }
+}
