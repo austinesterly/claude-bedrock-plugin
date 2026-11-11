@@ -1,0 +1,39 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "zoocraft:full_healing_serum"
+    },
+    "tags": [
+      "zoocraft_workshop"
+    ],
+    "pattern": [
+      " F ",
+      "MAM",
+      " B "
+    ],
+    "key": {
+      "F": {
+        "item": "zoocraft:full_healing_serum_formula"
+      },
+      "M": {
+        "item": "minecraft:glistering_melon_slice"
+      },
+      "A": {
+        "item": "minecraft:golden_apple"
+      },
+      "B": {
+        "item": "minecraft:glass_bottle"
+      }
+    },
+    "unlock": [
+      {
+        "item": "zoocraft:full_healing_serum_formula"
+      }
+    ],
+    "result": {
+      "item": "zoocraft:full_healing_serum",
+      "count": 1
+    }
+  }
+}
