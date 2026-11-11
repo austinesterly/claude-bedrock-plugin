@@ -1,0 +1,78 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "zoocraft:netherite_garnet_axe",
+      "menu_category": {
+        "category": "equipment",
+        "group": "minecraft:itemGroup.name.axe"
+      }
+    },
+    "components": {
+      "minecraft:icon": {
+        "textures": {
+          "default": "zoocraft:netherite_garnet_axe"
+        }
+      },
+      "minecraft:display_name": {
+        "value": "item.zoocraft:netherite_garnet_axe.name"
+      },
+      "minecraft:max_stack_size": {
+        "value": 1
+      },
+      "minecraft:hand_equipped": {
+        "value": true
+      },
+      "minecraft:damage": {
+        "value": 9
+      },
+      "minecraft:durability": {
+        "max_durability": 3122
+      },
+      "minecraft:enchantable": {
+        "slot": "axe",
+        "value": 26
+      },
+      "minecraft:repairable": {
+        "repair_items": [
+          {
+            "items": [
+              "zoocraft:netherite_garnet_axe"
+            ],
+            "repair_amount": "context.other->query.remaining_durability"
+          },
+          {
+            "items": [
+              "zoocraft:spessartine_garnet",
+              "minecraft:netherite_ingot"
+            ],
+            "repair_amount": "query.max_durability * 0.25"
+          }
+        ]
+      },
+      "minecraft:digger": {
+        "use_efficiency": true,
+        "destroy_speeds": [
+          {
+            "block": {
+              "tags": "query.any_tag('minecraft:is_axe_item_destructible')"
+            },
+            "speed": 13
+          }
+        ]
+      },
+      "minecraft:tags": {
+        "tags": [
+          "minecraft:is_axe",
+          "minecraft:is_tool",
+          "minecraft:digger",
+          "minecraft:netherite_tier"
+        ]
+      },
+      "zoocraft:garnet_tool": {},
+      "minecraft:fire_resistant": {
+        "value": true
+      }
+    }
+  }
+}

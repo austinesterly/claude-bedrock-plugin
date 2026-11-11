@@ -1,0 +1,156 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "zoocraft:netherite_garnet_sword",
+      "menu_category": {
+        "category": "equipment",
+        "group": "minecraft:itemGroup.name.sword"
+      }
+    },
+    "components": {
+      "minecraft:icon": {
+        "textures": {
+          "default": "zoocraft:netherite_garnet_sword"
+        }
+      },
+      "minecraft:display_name": {
+        "value": "item.zoocraft:netherite_garnet_sword.name"
+      },
+      "minecraft:max_stack_size": {
+        "value": 1
+      },
+      "minecraft:hand_equipped": {
+        "value": true
+      },
+      "minecraft:damage": {
+        "value": 10
+      },
+      "minecraft:durability": {
+        "max_durability": 3122
+      },
+      "minecraft:enchantable": {
+        "slot": "sword",
+        "value": 26
+      },
+      "minecraft:repairable": {
+        "repair_items": [
+          {
+            "items": [
+              "zoocraft:netherite_garnet_sword"
+            ],
+            "repair_amount": "context.other->query.remaining_durability"
+          },
+          {
+            "items": [
+              "zoocraft:spessartine_garnet",
+              "minecraft:netherite_ingot"
+            ],
+            "repair_amount": "query.max_durability * 0.25"
+          }
+        ]
+      },
+      "minecraft:can_destroy_in_creative": {
+        "value": false
+      },
+      "minecraft:digger": {
+        "use_efficiency": false,
+        "destroy_speeds": [
+          {
+            "block": "minecraft:bamboo",
+            "speed": 100
+          },
+          {
+            "block": "minecraft:oak_leaves",
+            "speed": 2
+          },
+          {
+            "block": "minecraft:spruce_leaves",
+            "speed": 2
+          },
+          {
+            "block": "minecraft:birch_leaves",
+            "speed": 2
+          },
+          {
+            "block": "minecraft:jungle_leaves",
+            "speed": 2
+          },
+          {
+            "block": "minecraft:acacia_leaves",
+            "speed": 2
+          },
+          {
+            "block": "minecraft:dark_oak_leaves",
+            "speed": 2
+          },
+          {
+            "block": "minecraft:mangrove_leaves",
+            "speed": 2
+          },
+          {
+            "block": "minecraft:cherry_leaves",
+            "speed": 2
+          },
+          {
+            "block": "minecraft:pale_oak_leaves",
+            "speed": 2
+          },
+          {
+            "block": "minecraft:azalea_leaves",
+            "speed": 2
+          },
+          {
+            "block": "minecraft:azalea_leaves_flowered",
+            "speed": 2
+          },
+          {
+            "block": "minecraft:vine",
+            "speed": 2
+          },
+          {
+            "block": "minecraft:cocoa",
+            "speed": 2
+          },
+          {
+            "block": "minecraft:pumpkin",
+            "speed": 2
+          },
+          {
+            "block": "minecraft:carved_pumpkin",
+            "speed": 2
+          },
+          {
+            "block": "minecraft:lit_pumpkin",
+            "speed": 2
+          },
+          {
+            "block": "minecraft:melon_block",
+            "speed": 2
+          },
+          {
+            "block": "minecraft:glow_lichen",
+            "speed": 2
+          },
+          {
+            "block": {
+              "tags": "query.any_tag('minecraft:is_sword_item_destructible')"
+            },
+            "speed": 15
+          }
+        ]
+      },
+      "minecraft:tags": {
+        "tags": [
+          "minecraft:is_sword",
+          "minecraft:is_tool",
+          "minecraft:netherite_tier"
+        ]
+      },
+      "zoocraft:garnet_tool": {},
+      "minecraft:fire_resistant": {
+        "value": true
+      }
+    }
+  }
+}

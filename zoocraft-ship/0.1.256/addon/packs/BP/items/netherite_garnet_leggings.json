@@ -1,0 +1,62 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "zoocraft:netherite_garnet_leggings",
+      "menu_category": {
+        "category": "equipment",
+        "group": "minecraft:itemGroup.name.leggings"
+      }
+    },
+    "components": {
+      "minecraft:icon": {
+        "textures": {
+          "default": "zoocraft:netherite_garnet_leggings"
+        }
+      },
+      "minecraft:display_name": {
+        "value": "item.zoocraft:netherite_garnet_leggings.name"
+      },
+      "minecraft:max_stack_size": {
+        "value": 1
+      },
+      "minecraft:wearable": {
+        "slot": "slot.armor.legs",
+        "protection": 6
+      },
+      "minecraft:durability": {
+        "max_durability": 990
+      },
+      "minecraft:enchantable": {
+        "slot": "armor_legs",
+        "value": 26
+      },
+      "minecraft:repairable": {
+        "repair_items": [
+          {
+            "items": [
+              "zoocraft:netherite_garnet_leggings"
+            ],
+            "repair_amount": "context.other->query.remaining_durability"
+          },
+          {
+            "items": [
+              "zoocraft:spessartine_garnet",
+              "minecraft:netherite_ingot"
+            ],
+            "repair_amount": "query.max_durability * 0.25"
+          }
+        ]
+      },
+      "minecraft:tags": {
+        "tags": [
+          "minecraft:is_armor",
+          "minecraft:netherite_tier"
+        ]
+      },
+      "minecraft:fire_resistant": {
+        "value": true
+      }
+    }
+  }
+}

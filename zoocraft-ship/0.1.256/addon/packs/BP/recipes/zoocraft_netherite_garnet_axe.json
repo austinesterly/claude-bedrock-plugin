@@ -1,0 +1,15 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_smithing_transform": {
+    "description": {
+      "identifier": "zoocraft:netherite_garnet_axe"
+    },
+    "tags": [
+      "smithing_table"
+    ],
+    "template": "minecraft:netherite_upgrade_smithing_template",
+    "base": "zoocraft:garnet_axe",
+    "addition": "minecraft:netherite_ingot",
+    "result": "zoocraft:netherite_garnet_axe"
+  }
+}
