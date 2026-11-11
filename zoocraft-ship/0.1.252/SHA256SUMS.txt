@@ -1,0 +1,7 @@
+11828e4cfc9e6bcabe8268298581269685656473c489152ec07cd6463baf13f0  addon\docs\Exotic_formation_test_plan.md
+d6ee72aa4ea9ce55f37fe66aa8f934a2a46c312c07c0fb43c3aabd8f51dda3b4  addon\docs\status.md
+0dcc2e05d56165c13d48f81c52d79a901b4a53a68027169904b9e81455abcac3  addon\packs\BP\scripts\data\balance.js
+e98aedd2416c14b714232b7dc7dc8e112898283651b3b4b00f537a7d9a6140d7  addon\packs\BP\scripts\main.js
+8b7477d188dc77f9f354e74d6f4c235979ede58c70d88d1b84a4c81535477622  addon\packs\BP\scripts\world\goo.js
+443807cf68802b4b006299a206d6f399fc8a6527757c9b530537b005e33469e6  addon\packs\BP\scripts\world\gooRules.js
+3d5e6fb17b8ff45dafe687e547f1a60ad2126be5442bf98245a8e4aefb03f17d  addon\tests\logic.test.mjs
