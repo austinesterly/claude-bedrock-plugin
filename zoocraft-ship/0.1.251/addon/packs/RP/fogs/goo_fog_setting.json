@@ -1,0 +1,22 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:fog_settings": {
+    "description": {
+      "identifier": "zoocraft:fog_goo"
+    },
+    "distance": {
+      "air": {
+        "fog_start": 0.0,
+        "fog_end": 2.5,
+        "fog_color": "#1868d6",
+        "render_distance_type": "fixed"
+      },
+      "weather": {
+        "fog_start": 0.0,
+        "fog_end": 2.5,
+        "fog_color": "#1868d6",
+        "render_distance_type": "fixed"
+      }
+    }
+  }
+}
