@@ -1,0 +1,35 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "zoocraft:spotless_boots"
+    },
+    "tags": [
+      "zoocraft_workshop"
+    ],
+    "pattern": [
+      "W W",
+      "IPI"
+    ],
+    "key": {
+      "P": {
+        "item": "zoocraft:spotless_armor_pattern"
+      },
+      "W": {
+        "item": "minecraft:white_wool"
+      },
+      "I": {
+        "item": "minecraft:iron_ingot"
+      }
+    },
+    "unlock": [
+      {
+        "item": "zoocraft:spotless_armor_pattern"
+      }
+    ],
+    "result": {
+      "item": "zoocraft:spotless_boots",
+      "count": 1
+    }
+  }
+}
