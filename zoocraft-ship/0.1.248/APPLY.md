@@ -2,7 +2,7 @@
 
 Apply on 0.1.247 as built. Everything under `addon\` in this folder is the exact file the add-on should hold
 (18 files: 13 replacing ones 0.1.247 has (8 scripts: commands.js, bench\streetPlan.js, data\residentChats.js,
-data\residentCreeped.js, data\residents.js, residents\residentRules.js, residents\unlocks.js, residents\workGifts.js;
+data\residentCreeped.js, data\residents.js, data\workGifts.js, residents\residentRules.js, residents\unlocks.js;
 the residents' client entity and render controller under RP; the test file, status.md and the residents' test plan)
 and 5 new pictures under RP: Dr. Pollo's skin resident_14.png and his four talk portraits; no manifests).
 `SHA256SUMS.txt` has the SHA-256 of each one; `BEFORE.txt` has the SHA-256 of the 13 files it replaces, as the laptop
