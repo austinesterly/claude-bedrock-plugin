@@ -1,0 +1,51 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "identifier": "zoocraft:ballista_bow",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "enchanted": "entity_alphatest_glint"
+      },
+      "textures": {
+        "default": "textures/entity/zoocraft/bows/held/ballista_bow",
+        "enchanted": "textures/misc/enchanted_item_glint"
+      },
+      "geometry": {
+        "default": "geometry.zoocraft.held.ballista_bow"
+      },
+      "animations": {
+        "first_person": "animation.zoocraft.held.ballista_bow.first_person",
+        "third_person": "animation.zoocraft.held.ballista_bow.third_person",
+        "draw": "animation.zoocraft.held.ballista_bow.draw"
+      },
+      "scripts": {
+        "pre_animation": [
+          "variable.using = 1.0;",
+          "variable.elapsed = 0.0;",
+          "variable.draw = 1.0;",
+          "variable.draw = math.clamp(1.0 - query.cooldown_time_remaining('slot.weapon.mainhand', 0) / 0.75, 0.0, 1.0);",
+          "variable.pull = variable.draw;",
+          "variable.ready = variable.draw >= 1.0;",
+          "variable.nocked = variable.draw >= 0.3;",
+          "variable.raise = 0.0;",
+          "variable.split = 1.0 - math.pow(1.0 - math.clamp(variable.draw / 0.25, 0.0, 1.0), 2.0);",
+          "variable.cock = math.clamp((variable.draw - 0.25) / 0.75, 0.0, 1.0) * 4.0;",
+          "variable.pull = (math.floor(variable.cock) + math.clamp(math.mod(variable.cock, 1.0) / 0.4, 0.0, 1.0)) / 4.0;"
+        ],
+        "animate": [
+          {
+            "first_person": "c.is_first_person"
+          },
+          {
+            "third_person": "!c.is_first_person"
+          },
+          "draw"
+        ]
+      },
+      "render_controllers": [
+        "controller.render.zoocraft.held_bow"
+      ]
+    }
+  }
+}

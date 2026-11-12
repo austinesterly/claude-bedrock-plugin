@@ -1,0 +1,79 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "zoocraft:bow_vex",
+      "spawn_category": "creature",
+      "is_spawnable": false,
+      "is_summonable": true
+    },
+    "components": {
+      "minecraft:collision_box": {
+        "height": 0.8,
+        "width": 0.4
+      },
+      "minecraft:conditional_bandwidth_optimization": {},
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "cause": "all",
+            "deals_damage": "no"
+          }
+        ]
+      },
+      "minecraft:equipment": {
+        "table": "loot_tables/entities/zoocraft_vex_sword.json",
+        "slot_drop_chance": [
+          {
+            "slot": "slot.weapon.mainhand",
+            "drop_chance": 0
+          }
+        ]
+      },
+      "minecraft:fire_immune": {},
+      "minecraft:game_event_movement_tracking": {
+        "emit_move": false,
+        "emit_swim": false
+      },
+      "minecraft:health": {
+        "max": 14,
+        "value": 14
+      },
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:knockback_resistance": {
+        "value": 1.0
+      },
+      "minecraft:physics": {
+        "has_collision": false,
+        "has_gravity": false
+      },
+      "minecraft:timer": {
+        "looping": false,
+        "time": 30,
+        "time_down_event": {
+          "event": "zoocraft:vex_fades"
+        }
+      },
+      "minecraft:type_family": {
+        "family": [
+          "zoocraft_bow_vex",
+          "mob"
+        ]
+      }
+    },
+    "component_groups": {
+      "zoocraft:faded": {
+        "minecraft:instant_despawn": {}
+      }
+    },
+    "events": {
+      "zoocraft:vex_fades": {
+        "add": {
+          "component_groups": [
+            "zoocraft:faded"
+          ]
+        }
+      }
+    }
+  }
+}

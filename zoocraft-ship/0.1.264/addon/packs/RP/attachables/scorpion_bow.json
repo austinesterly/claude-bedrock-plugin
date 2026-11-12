@@ -1,0 +1,51 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "identifier": "zoocraft:scorpion_bow",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "enchanted": "entity_alphatest_glint"
+      },
+      "textures": {
+        "default": "textures/entity/zoocraft/bows/held/scorpion_bow",
+        "enchanted": "textures/misc/enchanted_item_glint"
+      },
+      "geometry": {
+        "default": "geometry.zoocraft.held.scorpion_bow"
+      },
+      "animations": {
+        "first_person": "animation.zoocraft.held.scorpion_bow.first_person",
+        "third_person": "animation.zoocraft.held.scorpion_bow.third_person",
+        "draw": "animation.zoocraft.held.scorpion_bow.draw"
+      },
+      "scripts": {
+        "pre_animation": [
+          "variable.draw_ticks = 26.0;",
+          "variable.using = query.main_hand_item_use_duration > 0.0;",
+          "variable.elapsed = variable.using ? (query.main_hand_item_max_duration - query.main_hand_item_use_duration + query.frame_alpha) : 0.0;",
+          "variable.draw = math.clamp(variable.elapsed / variable.draw_ticks, 0.0, 1.0);",
+          "variable.pull = variable.draw;",
+          "variable.ready = variable.using && variable.draw >= 1.0;",
+          "variable.nocked = variable.using;",
+          "variable.raise = variable.using ? math.clamp(variable.elapsed / 4.0, 0.0, 1.0) : 0.0;",
+          "variable.dripping = variable.using && variable.draw > 0.08 ? 1.0 : 0.0;",
+          "variable.drip_t = variable.elapsed / 20.0;",
+          "variable.drip = variable.drip_t * (1.1 + 0.9 * variable.draw);"
+        ],
+        "animate": [
+          {
+            "first_person": "c.is_first_person"
+          },
+          {
+            "third_person": "!c.is_first_person"
+          },
+          "draw"
+        ]
+      },
+      "render_controllers": [
+        "controller.render.zoocraft.held_bow"
+      ]
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "identifier": "zoocraft:vexcaller_bow",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "enchanted": "entity_alphatest_glint"
+      },
+      "textures": {
+        "default": "textures/entity/zoocraft/bows/held/vexcaller_bow",
+        "enchanted": "textures/misc/enchanted_item_glint"
+      },
+      "geometry": {
+        "default": "geometry.zoocraft.held.vexcaller_bow"
+      },
+      "animations": {
+        "first_person": "animation.zoocraft.held.vexcaller_bow.first_person",
+        "third_person": "animation.zoocraft.held.vexcaller_bow.third_person",
+        "draw": "animation.zoocraft.held.vexcaller_bow.draw"
+      },
+      "scripts": {
+        "pre_animation": [
+          "variable.draw_ticks = 24.0;",
+          "variable.using = query.main_hand_item_use_duration > 0.0;",
+          "variable.elapsed = variable.using ? (query.main_hand_item_max_duration - query.main_hand_item_use_duration + query.frame_alpha) : 0.0;",
+          "variable.draw = math.clamp(variable.elapsed / variable.draw_ticks, 0.0, 1.0);",
+          "variable.pull = variable.draw;",
+          "variable.ready = variable.using && variable.draw >= 1.0;",
+          "variable.nocked = variable.using;",
+          "variable.raise = variable.using ? math.clamp(variable.elapsed / 4.0, 0.0, 1.0) : 0.0;",
+          "variable.charge = variable.using ? variable.draw : 0.0;",
+          "variable.pulse = 1.0 + variable.ready * 0.18 * math.sin(query.life_time * 1500.0);",
+          "variable.fill = math.clamp(variable.charge / 0.4, 0.0, 1.0);",
+          "variable.aura_fill = math.clamp((variable.charge - 0.4) / 0.45, 0.0, 1.0);",
+          "variable.glow = variable.using ? (0.6 + 0.4 * variable.charge) * variable.pulse : 0.0;",
+          "variable.bead = variable.using ? (0.5 + 0.5 * variable.charge) * variable.pulse : 0.0;",
+          "variable.aura = variable.aura_fill > 0.0 ? variable.pulse : 0.0;",
+          "variable.flow_t = variable.elapsed / 20.0;",
+          "variable.flow_c = math.min(variable.flow_t, 1.20);",
+          "variable.flow = 1.4 * variable.flow_t + 1.1 * variable.flow_c * variable.flow_c + 2.64 * (variable.flow_t - variable.flow_c);"
+        ],
+        "animate": [
+          {
+            "first_person": "c.is_first_person"
+          },
+          {
+            "third_person": "!c.is_first_person"
+          },
+          "draw"
+        ]
+      },
+      "render_controllers": [
+        "controller.render.zoocraft.held_bow"
+      ]
+    }
+  }
+}
