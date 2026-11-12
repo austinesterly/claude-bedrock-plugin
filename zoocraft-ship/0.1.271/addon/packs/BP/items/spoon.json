@@ -1,0 +1,24 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "zoocraft:spoon",
+      "menu_category": {
+        "category": "equipment"
+      }
+    },
+    "components": {
+      "minecraft:icon": {
+        "textures": {
+          "default": "zoocraft:spoon"
+        }
+      },
+      "minecraft:display_name": {
+        "value": "item.zoocraft:spoon.name"
+      },
+      "minecraft:max_stack_size": {
+        "value": 16
+      }
+    }
+  }
+}

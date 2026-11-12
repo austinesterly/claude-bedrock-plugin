@@ -1,0 +1,37 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "zoocraft:deep_sea_rod"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "zoocraft:steel_rod"
+      },
+      {
+        "item": "minecraft:nautilus_shell"
+      },
+      {
+        "item": "minecraft:prismarine_shard"
+      },
+      {
+        "item": "minecraft:prismarine_shard"
+      }
+    ],
+    "unlock": [
+      {
+        "item": "zoocraft:steel_rod"
+      },
+      {
+        "item": "minecraft:nautilus_shell"
+      }
+    ],
+    "result": {
+      "item": "zoocraft:deep_sea_rod",
+      "count": 1
+    }
+  }
+}

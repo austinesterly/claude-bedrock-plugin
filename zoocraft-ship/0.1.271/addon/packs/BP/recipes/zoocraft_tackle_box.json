@@ -1,0 +1,38 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "zoocraft:tackle_box"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      " I ",
+      "GCG"
+    ],
+    "key": {
+      "I": {
+        "item": "minecraft:iron_ingot"
+      },
+      "G": {
+        "item": "minecraft:green_dye"
+      },
+      "C": {
+        "item": "minecraft:chest"
+      }
+    },
+    "unlock": [
+      {
+        "item": "zoocraft:steel_rod"
+      },
+      {
+        "item": "minecraft:fishing_rod"
+      }
+    ],
+    "result": {
+      "item": "zoocraft:tackle_box",
+      "count": 1
+    }
+  }
+}

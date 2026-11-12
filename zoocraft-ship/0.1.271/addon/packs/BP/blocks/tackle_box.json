@@ -1,0 +1,116 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:block": {
+    "description": {
+      "identifier": "zoocraft:tackle_box",
+      "menu_category": {
+        "category": "items"
+      },
+      "traits": {
+        "minecraft:placement_direction": {
+          "enabled_states": [
+            "minecraft:cardinal_direction"
+          ],
+          "y_rotation_offset": 180.0
+        }
+      }
+    },
+    "components": {
+      "minecraft:geometry": "geometry.zoocraft.tackle_box",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "zoocraft_tackle_box_side",
+          "render_method": "opaque"
+        },
+        "side": {
+          "texture": "zoocraft_tackle_box_side",
+          "render_method": "opaque"
+        },
+        "front": {
+          "texture": "zoocraft_tackle_box_front",
+          "render_method": "opaque"
+        },
+        "top": {
+          "texture": "zoocraft_tackle_box_top",
+          "render_method": "opaque"
+        },
+        "handle": {
+          "texture": "zoocraft_tackle_box_handle",
+          "render_method": "opaque"
+        }
+      },
+      "minecraft:collision_box": {
+        "origin": [
+          -6,
+          0,
+          -4
+        ],
+        "size": [
+          12,
+          6,
+          8
+        ]
+      },
+      "minecraft:selection_box": {
+        "origin": [
+          -6,
+          0,
+          -4
+        ],
+        "size": [
+          12,
+          9,
+          8
+        ]
+      },
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 0.75
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 3
+      },
+      "minecraft:light_dampening": 0,
+      "minecraft:map_color": "#3f8a3c",
+      "minecraft:loot": "loot_tables/blocks/zoocraft_tackle_box.json",
+      "zoocraft:tackle_box": {}
+    },
+    "permutations": [
+      {
+        "condition": "query.block_state('minecraft:cardinal_direction') == 'south'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              180,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('minecraft:cardinal_direction') == 'west'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              90,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('minecraft:cardinal_direction') == 'east'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              270,
+              0
+            ]
+          }
+        }
+      }
+    ]
+  }
+}
