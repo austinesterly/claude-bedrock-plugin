@@ -1,0 +1,25 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "zoocraft:small_red_amethyst_bud",
+      "menu_category": {
+        "category": "nature"
+      }
+    },
+    "components": {
+      "minecraft:icon": {
+        "textures": {
+          "default": "zoocraft:small_red_amethyst_bud"
+        }
+      },
+      "minecraft:display_name": {
+        "value": "tile.zoocraft:small_red_amethyst_bud.name"
+      },
+      "minecraft:block_placer": {
+        "block": "zoocraft:small_red_amethyst_bud",
+        "replace_block_item": true
+      }
+    }
+  }
+}

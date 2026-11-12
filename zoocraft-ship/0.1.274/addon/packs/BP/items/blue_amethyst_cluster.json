@@ -1,0 +1,25 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "zoocraft:blue_amethyst_cluster",
+      "menu_category": {
+        "category": "nature"
+      }
+    },
+    "components": {
+      "minecraft:icon": {
+        "textures": {
+          "default": "zoocraft:blue_amethyst_cluster"
+        }
+      },
+      "minecraft:display_name": {
+        "value": "tile.zoocraft:blue_amethyst_cluster.name"
+      },
+      "minecraft:block_placer": {
+        "block": "zoocraft:blue_amethyst_cluster",
+        "replace_block_item": true
+      }
+    }
+  }
+}

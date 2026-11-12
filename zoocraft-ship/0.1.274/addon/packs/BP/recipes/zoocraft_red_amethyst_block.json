@@ -1,0 +1,29 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "zoocraft:red_amethyst_block"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "##",
+      "##"
+    ],
+    "key": {
+      "#": {
+        "item": "zoocraft:red_amethyst_shard"
+      }
+    },
+    "result": {
+      "item": "zoocraft:red_amethyst_block",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "zoocraft:red_amethyst_shard"
+      }
+    ]
+  }
+}

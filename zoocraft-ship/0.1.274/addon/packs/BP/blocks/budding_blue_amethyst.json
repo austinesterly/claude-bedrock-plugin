@@ -1,0 +1,36 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:block": {
+    "description": {
+      "identifier": "zoocraft:budding_blue_amethyst",
+      "menu_category": {
+        "category": "nature"
+      }
+    },
+    "components": {
+      "minecraft:geometry": "minecraft:geometry.full_block",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "zoocraft_budding_blue_amethyst",
+          "render_method": "opaque"
+        }
+      },
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 1.5
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 1.5
+      },
+      "minecraft:tags": [
+        "minecraft:is_pickaxe_item_destructible"
+      ],
+      "minecraft:map_color": "#3b6cc0",
+      "minecraft:loot": "loot_tables/empty.json",
+      "zoocraft:amethyst": {},
+      "zoocraft:budding_amethyst": {},
+      "minecraft:movable": {
+        "movement_type": "popped"
+      }
+    }
+  }
+}
