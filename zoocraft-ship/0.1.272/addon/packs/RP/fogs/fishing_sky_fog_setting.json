@@ -1,0 +1,16 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:fog_settings": {
+    "description": {
+      "identifier": "zoocraft:fog_fishing_sky"
+    },
+    "distance": {
+      "air": {
+        "fog_start": 0.75,
+        "fog_end": 1.0,
+        "fog_color": "#cde8ff",
+        "render_distance_type": "render"
+      }
+    }
+  }
+}

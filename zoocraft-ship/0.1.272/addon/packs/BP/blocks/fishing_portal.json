@@ -1,0 +1,66 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:block": {
+    "description": {
+      "identifier": "zoocraft:fishing_portal",
+      "menu_category": {
+        "category": "none"
+      },
+      "states": {
+        "zoocraft:axis": [
+          "x",
+          "z"
+        ]
+      }
+    },
+    "components": {
+      "minecraft:geometry": "geometry.zoocraft.fishing_portal",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "zoocraft_fishing_portal",
+          "render_method": "blend",
+          "ambient_occlusion": 0.0,
+          "face_dimming": false
+        }
+      },
+      "minecraft:collision_box": false,
+      "minecraft:selection_box": {
+        "origin": [
+          -8,
+          0,
+          -2
+        ],
+        "size": [
+          16,
+          16,
+          4
+        ]
+      },
+      "minecraft:light_emission": 11,
+      "minecraft:light_dampening": 0,
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 0
+      },
+      "minecraft:destructible_by_explosion": false,
+      "minecraft:movable": {
+        "movement_type": "immovable"
+      },
+      "minecraft:map_color": "#3fbfa8",
+      "minecraft:loot": "loot_tables/empty.json"
+    },
+    "permutations": [
+      {
+        "condition": "q.block_state('zoocraft:axis') == 'z'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              90,
+              0
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

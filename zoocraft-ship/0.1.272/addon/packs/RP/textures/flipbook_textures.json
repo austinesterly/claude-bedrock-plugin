@@ -1,0 +1,17 @@
+[
+  {
+    "flipbook_texture": "textures/blocks/zoocraft/clear_lava",
+    "atlas_tile": "zoocraft_clear_lava",
+    "ticks_per_frame": 5
+  },
+  {
+    "flipbook_texture": "textures/blocks/zoocraft/goo",
+    "atlas_tile": "zoocraft_goo",
+    "ticks_per_frame": 8
+  },
+  {
+    "flipbook_texture": "textures/blocks/zoocraft/fishing_portal",
+    "atlas_tile": "zoocraft_fishing_portal",
+    "ticks_per_frame": 2
+  }
+]
