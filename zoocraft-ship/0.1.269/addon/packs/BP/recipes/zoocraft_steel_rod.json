@@ -1,0 +1,36 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "zoocraft:steel_rod"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "  I",
+      " IS",
+      "I S"
+    ],
+    "key": {
+      "I": {
+        "item": "minecraft:iron_ingot"
+      },
+      "S": {
+        "item": "minecraft:string"
+      }
+    },
+    "unlock": [
+      {
+        "item": "minecraft:fishing_rod"
+      },
+      {
+        "item": "minecraft:iron_ingot"
+      }
+    ],
+    "result": {
+      "item": "zoocraft:steel_rod",
+      "count": 1
+    }
+  }
+}

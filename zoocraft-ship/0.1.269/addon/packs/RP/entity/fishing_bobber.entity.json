@@ -1,0 +1,46 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:fishing_bobber",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/zoocraft/fishing_bobber"
+      },
+      "geometry": {
+        "default": "geometry.zoocraft.fishing_bobber"
+      },
+      "animations": {
+        "line": "animation.zoocraft.fishing_bobber.line",
+        "float": "animation.zoocraft.fishing_bobber.float",
+        "bite": "animation.zoocraft.fishing_bobber.bite"
+      },
+      "scripts": {
+        "initialize": [
+          "v.dx = 0; v.dy = 0; v.dz = 0; v.h = 0; v.len = 0;"
+        ],
+        "pre_animation": [
+          "v.dx = q.property('zoocraft:tip_x') - q.position(0);",
+          "v.dy = q.property('zoocraft:tip_y') - q.position(1) - 0.125;",
+          "v.dz = q.property('zoocraft:tip_z') - q.position(2);",
+          "v.h = math.sqrt(v.dx * v.dx + v.dz * v.dz);",
+          "v.len = math.sqrt(v.h * v.h + v.dy * v.dy);"
+        ],
+        "animate": [
+          "line",
+          {
+            "float": "q.property('zoocraft:floating') && !q.property('zoocraft:bite')"
+          },
+          {
+            "bite": "q.property('zoocraft:bite')"
+          }
+        ]
+      },
+      "render_controllers": [
+        "controller.render.zoocraft.fishing_bobber"
+      ]
+    }
+  }
+}

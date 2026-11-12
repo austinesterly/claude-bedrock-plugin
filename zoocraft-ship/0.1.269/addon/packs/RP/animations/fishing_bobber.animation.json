@@ -1,0 +1,62 @@
+{
+  "format_version": "1.10.0",
+  "animations": {
+    "animation.zoocraft.fishing_bobber.line": {
+      "loop": true,
+      "bones": {
+        "line_root": {
+          "rotation": [
+            0,
+            "180 - q.body_y_rotation",
+            0
+          ]
+        },
+        "line_yaw": {
+          "rotation": [
+            0,
+            "-math.atan2(v.dx, v.dz)",
+            0
+          ]
+        },
+        "line_pitch": {
+          "rotation": [
+            "math.atan2(v.dy, v.h)",
+            0,
+            0
+          ]
+        },
+        "line": {
+          "scale": [
+            1,
+            1,
+            "v.len"
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.fishing_bobber.float": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "position": [
+            0,
+            "math.sin(q.life_time * 120) * 0.25",
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.fishing_bobber.bite": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "position": [
+            "math.sin(q.life_time * 1800) * 0.3",
+            "-2.5 + math.sin(q.life_time * 900) * 0.4",
+            0
+          ]
+        }
+      }
+    }
+  }
+}

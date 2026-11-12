@@ -1,0 +1,54 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "zoocraft:steel_rod",
+      "menu_category": {
+        "category": "equipment"
+      }
+    },
+    "components": {
+      "minecraft:icon": {
+        "textures": {
+          "default": "zoocraft:steel_rod"
+        }
+      },
+      "minecraft:display_name": {
+        "value": "item.zoocraft:steel_rod.name"
+      },
+      "minecraft:max_stack_size": {
+        "value": 1
+      },
+      "minecraft:hand_equipped": {
+        "value": true
+      },
+      "minecraft:durability": {
+        "max_durability": 1155
+      },
+      "minecraft:enchantable": {
+        "slot": "fishing_rod",
+        "value": 1
+      },
+      "minecraft:repairable": {
+        "repair_items": [
+          {
+            "items": [
+              "zoocraft:steel_rod"
+            ],
+            "repair_amount": "context.other->query.remaining_durability"
+          },
+          {
+            "items": [
+              "minecraft:iron_ingot"
+            ],
+            "repair_amount": "query.max_durability * 0.25"
+          }
+        ]
+      },
+      "minecraft:can_destroy_in_creative": {
+        "value": false
+      },
+      "zoocraft:rod": {}
+    }
+  }
+}
