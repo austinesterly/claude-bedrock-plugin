@@ -1,0 +1,5 @@
+ccbc3db01aec4e8889c5e6907311529acd6c8ae11171363fdefb40f1abdda148  addon\docs\Residents_test_plan.md
+157262410cb84ee84ba14ee4964f86f824f4098106c3e7e804460f59c9dda211  addon\docs\status.md
+c21878330304c41c84783ee8b07e825f0e1244e47cb2344ec66718936ae622f8  addon\packs\BP\scripts\disposery\disposery.js
+7f0ed7d2e582d666cf11b92d9292ed3a85f3b2bd540d890b45d1bc1e519af3c0  addon\packs\BP\scripts\disposery\disposeryRules.js
+6bb923aaa341b09acc4977d082afa93478e406cdd167d7ff99255968f0bdb530  addon\tests\logic.test.mjs
