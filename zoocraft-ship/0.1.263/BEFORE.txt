@@ -1,0 +1,9 @@
+585e08adce37e60cd70670309944d6cafafd77ba3c76b22f3f336b9a30268313  addon\docs\Residents_test_plan.md
+10aa4cf4ec8e109c44bfe5c1be77e5e65d36d78fbe4548728d4c74062699b40f  addon\docs\status.md
+6f163f795f286e89142f7605f4278998ef34dea6c3076e2dc287c452826a2092  addon\packs\BP\scripts\data\balance.js
+266f450d226e863339c7bed34ecec61791ef144f212d3e0f6350dc8e98282124  addon\packs\BP\scripts\data\bows.js
+7979fa1ac1061d66874b2c3caa2ef2061042a7efd10ac6d8afc0ed891072cbc8  addon\packs\BP\scripts\data\items.js
+cb2db697c2b1d7c486abd0418acfc097c837a95cca52781cef09a4e1a6b71c0e  addon\packs\BP\scripts\guido\bowRules.js
+a999c29c1f643451dd269aff1cd5f0a92fe00c2676a0ee099993c97a79f7297d  addon\packs\BP\scripts\guido\bowShots.js
+749dd8da05607af4975ebec119781483972a0e1083d1d6ae3e5147c7f455a445  addon\packs\RP\texts\en_US.lang
+f5d8a2ce5dbac6e9348bd52d9f45c8fd6de72f964de9f13e5e10a6729e3c6307  addon\tests\logic.test.mjs

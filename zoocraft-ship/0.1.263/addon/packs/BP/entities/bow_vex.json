@@ -1,0 +1,169 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "zoocraft:bow_vex",
+      "spawn_category": "creature",
+      "is_spawnable": false,
+      "is_summonable": true
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": [
+          "zoocraft_bow_vex",
+          "mob"
+        ]
+      },
+      "minecraft:attack": {
+        "damage": 3
+      },
+      "minecraft:behavior.charge_attack": {
+        "priority": 4
+      },
+      "minecraft:behavior.float": {
+        "priority": 0
+      },
+      "minecraft:behavior.hurt_by_target": {
+        "priority": 1,
+        "entity_types": {
+          "filters": {
+            "all_of": [
+              {
+                "test": "is_family",
+                "subject": "other",
+                "value": "monster"
+              },
+              {
+                "test": "is_family",
+                "subject": "other",
+                "operator": "!=",
+                "value": "zoocraft_mob"
+              }
+            ]
+          }
+        }
+      },
+      "minecraft:behavior.look_at_entity": {
+        "look_time": {
+          "min": 1,
+          "max": 2
+        },
+        "look_distance": 6,
+        "priority": 9
+      },
+      "minecraft:behavior.nearest_attackable_target": {
+        "priority": 3,
+        "must_see": false,
+        "reselect_targets": true,
+        "entity_types": [
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "monster"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "operator": "!=",
+                  "value": "zoocraft_mob"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "operator": "!=",
+                  "value": "zoocraft_animal"
+                }
+              ]
+            },
+            "max_dist": 16
+          }
+        ]
+      },
+      "minecraft:can_climb": {},
+      "minecraft:collision_box": {
+        "height": 0.8,
+        "width": 0.4
+      },
+      "minecraft:conditional_bandwidth_optimization": {},
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "on_damage": {
+              "filters": {
+                "any_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "zoocraft_bow_vex"
+                  }
+                ]
+              }
+            },
+            "deals_damage": "no"
+          }
+        ]
+      },
+      "minecraft:equipment": {
+        "table": "loot_tables/entities/zoocraft_vex_sword.json",
+        "slot_drop_chance": [
+          {
+            "slot": "slot.weapon.mainhand",
+            "drop_chance": 0
+          }
+        ]
+      },
+      "minecraft:fire_immune": {},
+      "minecraft:game_event_movement_tracking": {
+        "emit_move": false,
+        "emit_swim": false
+      },
+      "minecraft:health": {
+        "max": 14,
+        "value": 14
+      },
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:jump.static": {},
+      "minecraft:movement": {
+        "value": 1.0
+      },
+      "minecraft:movement.basic": {},
+      "minecraft:navigation.walk": {
+        "can_path_over_water": true,
+        "using_door_annotation": true
+      },
+      "minecraft:physics": {
+        "has_collision": false,
+        "has_gravity": false
+      },
+      "minecraft:timer": {
+        "looping": false,
+        "time": 20,
+        "time_down_event": {
+          "event": "zoocraft:vex_fades"
+        }
+      }
+    },
+    "component_groups": {
+      "zoocraft:faded": {
+        "minecraft:instant_despawn": {}
+      }
+    },
+    "events": {
+      "zoocraft:vex_fades": {
+        "add": {
+          "component_groups": [
+            "zoocraft:faded"
+          ]
+        }
+      }
+    }
+  }
+}
