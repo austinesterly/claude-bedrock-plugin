@@ -1,0 +1,8 @@
+4629b694a9c1642613deb753c1e0b36df6d56e33f4f2a43471d027af116d5fe3  addon\docs\Residents_test_plan.md
+a2d7be200efcfe4d26d677ba0271508f8058b44e8c62154bee729ec40b15e6a0  addon\docs\status.md
+4a8298abcb0cf1a93c1f3d28bab367cf090f1e5d585291e4f468b7a3bcf6c23f  addon\packs\RP\textures\entity\zoocraft\resident_20.png
+d305fcf2d92da89c58deec8d4d1bd9fb7e1da5d35401f1b0d9d1095e32141171  addon\packs\RP\textures\ui\zoocraft\talk\portraits\jack.png
+18a0646b429e2f8cd6164e6d87f9af3f569c13d99474ccb5e60b34a57d5e3e9a  addon\packs\RP\textures\ui\zoocraft\talk\portraits\jack_creeped.png
+855f4c80d8f21864555b938df6be04aa4fe46bbb7cdc60423304db2c423e81c1  addon\packs\RP\textures\ui\zoocraft\talk\portraits\jack_cross.png
+3d0eade5f1f924a185dfa820c0b73f61811ae182db0cbea62c4572cefc100244  addon\packs\RP\textures\ui\zoocraft\talk\portraits\jack_happy.png
+06435440e67ace6fb0c6fa6b4b52dc6fa6af6bf031d74a2801242a689a45de94  addon\tests\logic.test.mjs
