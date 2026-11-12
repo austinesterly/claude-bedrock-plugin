@@ -1,0 +1,95 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "name": "minecraft:gold_ingot",
+          "weight": 12,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 3
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:gilded_blackstone",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:crying_obsidian",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:golden_carrot",
+          "weight": 8,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 2,
+                "max": 4
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:golden_apple",
+          "weight": 8
+        },
+        {
+          "type": "item",
+          "name": "minecraft:gold_block",
+          "weight": 5
+        },
+        {
+          "type": "item",
+          "name": "minecraft:netherite_scrap",
+          "weight": 4
+        },
+        {
+          "type": "item",
+          "name": "minecraft:music_disc_pigstep",
+          "weight": 2
+        },
+        {
+          "type": "item",
+          "name": "minecraft:enchanted_golden_apple",
+          "weight": 1
+        },
+        {
+          "type": "loot_table",
+          "name": "loot_tables/gameplay/fishing/treasure.json",
+          "weight": 40
+        }
+      ]
+    }
+  ]
+}

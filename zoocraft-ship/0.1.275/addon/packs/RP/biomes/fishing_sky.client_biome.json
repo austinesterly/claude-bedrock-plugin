@@ -1,0 +1,38 @@
+{
+  "format_version": "1.21.130",
+  "minecraft:client_biome": {
+    "description": {
+      "identifier": "zoocraft:fishing_sky"
+    },
+    "components": {
+      "minecraft:sky_color": {
+        "sky_color": "#8fcbff"
+      },
+      "minecraft:fog_appearance": {
+        "fog_identifier": "zoocraft:fog_fishing_sky"
+      },
+      "minecraft:water_appearance": {
+        "surface_color": "#44aff5",
+        "surface_opacity": 0.4
+      },
+      "minecraft:grass_appearance": {
+        "color": "#91bd59"
+      },
+      "minecraft:foliage_appearance": {
+        "color": "#77ab2f"
+      },
+      "minecraft:atmosphere_identifier": {
+        "atmosphere_identifier": "minecraft:default_atmospherics"
+      },
+      "minecraft:color_grading_identifier": {
+        "color_grading_identifier": "minecraft:default_color_grading"
+      },
+      "minecraft:lighting_identifier": {
+        "lighting_identifier": "minecraft:default_lighting"
+      },
+      "minecraft:water_identifier": {
+        "water_identifier": "minecraft:default_water"
+      }
+    }
+  }
+}
