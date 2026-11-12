@@ -1,0 +1,69 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.zoocraft.fishing_bobber": {
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Texture.default"
+      ],
+      "part_visibility": [
+        {
+          "*": true
+        },
+        {
+          "line0": "q.property('zoocraft:line')"
+        },
+        {
+          "line1": "q.property('zoocraft:line')"
+        },
+        {
+          "line2": "q.property('zoocraft:line')"
+        },
+        {
+          "line3": "q.property('zoocraft:line')"
+        },
+        {
+          "line4": "q.property('zoocraft:line')"
+        },
+        {
+          "line5": "q.property('zoocraft:line')"
+        },
+        {
+          "line6": "q.property('zoocraft:line')"
+        },
+        {
+          "line7": "q.property('zoocraft:line')"
+        },
+        {
+          "line8": "q.property('zoocraft:line')"
+        },
+        {
+          "line9": "q.property('zoocraft:line')"
+        },
+        {
+          "line10": "q.property('zoocraft:line')"
+        },
+        {
+          "line11": "q.property('zoocraft:line')"
+        },
+        {
+          "line12": "q.property('zoocraft:line')"
+        },
+        {
+          "line13": "q.property('zoocraft:line')"
+        },
+        {
+          "line14": "q.property('zoocraft:line')"
+        },
+        {
+          "line15": "q.property('zoocraft:line')"
+        }
+      ]
+    }
+  }
+}

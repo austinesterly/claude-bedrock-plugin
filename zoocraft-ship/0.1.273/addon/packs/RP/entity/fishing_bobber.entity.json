@@ -1,0 +1,78 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:fishing_bobber",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/zoocraft/fishing_bobber"
+      },
+      "geometry": {
+        "default": "geometry.zoocraft.fishing_bobber"
+      },
+      "animations": {
+        "line": "animation.zoocraft.fishing_bobber.line",
+        "float": "animation.zoocraft.fishing_bobber.float",
+        "bite": "animation.zoocraft.fishing_bobber.bite"
+      },
+      "scripts": {
+        "initialize": [
+          "v.dx = 0; v.dy = 0; v.dz = 0; v.h = 0;"
+        ],
+        "pre_animation": [
+          "v.sx = q.property('zoocraft:tip_x') - q.position(0);",
+          "v.sy = q.property('zoocraft:tip_y') - q.position(1) - 0.125;",
+          "v.sz = q.property('zoocraft:tip_z') - q.position(2);",
+          "v.cd = q.distance_from_camera;",
+          "v.cp = q.rotation_to_camera(0);",
+          "v.cyaw = q.rotation_to_camera(1);",
+          "v.cx = -v.cd * math.cos(v.cp) * math.sin(v.cyaw);",
+          "v.cy = -v.cd * math.sin(v.cp) - 0.125;",
+          "v.cz = v.cd * math.cos(v.cp) * math.cos(v.cyaw);",
+          "v.lp = q.camera_rotation(0);",
+          "v.ly = q.camera_rotation(1);",
+          "v.ox = -math.sin(v.ly) * math.cos(v.lp) * 0.8 - math.cos(v.ly) * 0.35;",
+          "v.oy = -math.sin(v.lp) * 0.8 - 0.25;",
+          "v.oz = math.cos(v.ly) * math.cos(v.lp) * 0.8 - math.sin(v.ly) * 0.35;",
+          "v.e = math.sqrt(math.pow(v.cx + v.ox - v.sx, 2) + math.pow(v.cy + v.oy - v.sy, 2) + math.pow(v.cz + v.oz - v.sz, 2));",
+          "v.w = math.clamp((2.5 - v.e) / 1.5, 0, 1);",
+          "v.k = math.clamp(v.cd / 4, 1, 1.5);",
+          "v.dx = v.sx + (v.cx + v.ox * v.k - v.sx) * v.w;",
+          "v.dy = v.sy + (v.cy + v.oy * v.k - v.sy) * v.w;",
+          "v.dz = v.sz + (v.cz + v.oz * v.k - v.sz) * v.w;",
+          "v.h = math.sqrt(v.dx * v.dx + v.dz * v.dz);",
+          "v.a0 = math.atan2(v.dy * 17, v.h * 32); v.l0 = math.sqrt(v.h * v.h / 256 + v.dy * v.dy * 289 / 262144);",
+          "v.a1 = math.atan2(v.dy * 19, v.h * 32); v.l1 = math.sqrt(v.h * v.h / 256 + v.dy * v.dy * 361 / 262144);",
+          "v.a2 = math.atan2(v.dy * 21, v.h * 32); v.l2 = math.sqrt(v.h * v.h / 256 + v.dy * v.dy * 441 / 262144);",
+          "v.a3 = math.atan2(v.dy * 23, v.h * 32); v.l3 = math.sqrt(v.h * v.h / 256 + v.dy * v.dy * 529 / 262144);",
+          "v.a4 = math.atan2(v.dy * 25, v.h * 32); v.l4 = math.sqrt(v.h * v.h / 256 + v.dy * v.dy * 625 / 262144);",
+          "v.a5 = math.atan2(v.dy * 27, v.h * 32); v.l5 = math.sqrt(v.h * v.h / 256 + v.dy * v.dy * 729 / 262144);",
+          "v.a6 = math.atan2(v.dy * 29, v.h * 32); v.l6 = math.sqrt(v.h * v.h / 256 + v.dy * v.dy * 841 / 262144);",
+          "v.a7 = math.atan2(v.dy * 31, v.h * 32); v.l7 = math.sqrt(v.h * v.h / 256 + v.dy * v.dy * 961 / 262144);",
+          "v.a8 = math.atan2(v.dy * 33, v.h * 32); v.l8 = math.sqrt(v.h * v.h / 256 + v.dy * v.dy * 1089 / 262144);",
+          "v.a9 = math.atan2(v.dy * 35, v.h * 32); v.l9 = math.sqrt(v.h * v.h / 256 + v.dy * v.dy * 1225 / 262144);",
+          "v.a10 = math.atan2(v.dy * 37, v.h * 32); v.l10 = math.sqrt(v.h * v.h / 256 + v.dy * v.dy * 1369 / 262144);",
+          "v.a11 = math.atan2(v.dy * 39, v.h * 32); v.l11 = math.sqrt(v.h * v.h / 256 + v.dy * v.dy * 1521 / 262144);",
+          "v.a12 = math.atan2(v.dy * 41, v.h * 32); v.l12 = math.sqrt(v.h * v.h / 256 + v.dy * v.dy * 1681 / 262144);",
+          "v.a13 = math.atan2(v.dy * 43, v.h * 32); v.l13 = math.sqrt(v.h * v.h / 256 + v.dy * v.dy * 1849 / 262144);",
+          "v.a14 = math.atan2(v.dy * 45, v.h * 32); v.l14 = math.sqrt(v.h * v.h / 256 + v.dy * v.dy * 2025 / 262144);",
+          "v.a15 = math.atan2(v.dy * 47, v.h * 32); v.l15 = math.sqrt(v.h * v.h / 256 + v.dy * v.dy * 2209 / 262144);"
+        ],
+        "animate": [
+          "line",
+          {
+            "float": "q.property('zoocraft:floating') && !q.property('zoocraft:bite')"
+          },
+          {
+            "bite": "q.property('zoocraft:bite')"
+          }
+        ]
+      },
+      "render_controllers": [
+        "controller.render.zoocraft.fishing_bobber"
+      ]
+    }
+  }
+}

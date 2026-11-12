@@ -1,0 +1,29 @@
+{
+  "format_version": "1.10.0",
+  "animations": {
+    "animation.zoocraft.rod.swing": {
+      "animation_length": 0.3,
+      "bones": {
+        "body": {
+          "rotation": [
+            0,
+            "v.is_first_person ? 0 : math.sin(360 * math.sqrt((q.anim_time / 0.3))) * 5",
+            0
+          ]
+        },
+        "rightarm": {
+          "rotation": [
+            "v.is_first_person ? math.sin(math.sin((1 - (q.anim_time / 0.3)) * 180) * (1 - (q.anim_time / 0.3)) * (1 - (q.anim_time / 0.3)) * 280) * -60 : -(math.sin((1 - math.pow(1 - (q.anim_time / 0.3), 4)) * 180) * 1.2 + math.sin((q.anim_time / 0.3) * 180)) * 30",
+            "v.is_first_person ? math.sin(math.sin((1 - (q.anim_time / 0.3)) * 180) * (1 - (q.anim_time / 0.3)) * (1 - (q.anim_time / 0.3)) * 280) * 40 : (90 * math.sin((1 - math.pow(1 - (q.anim_time / 0.3), 4)) * 180) - 30) * math.sin((q.anim_time / 0.3) * 180)",
+            "v.is_first_person ? math.sin(math.sin((1 - (q.anim_time / 0.3)) * 180) * (1 - (q.anim_time / 0.3)) * (1 - (q.anim_time / 0.3)) * 280) * 20 : 0"
+          ],
+          "position": [
+            "v.is_first_person ? math.clamp(-15.5 * math.sin(math.sin((1 - (q.anim_time / 0.3)) * 180) * (q.anim_time / 0.3) * 112), -7, 999) * math.sin(math.sin((1 - (q.anim_time / 0.3)) * 180) * (q.anim_time / 0.3) * 112) : 0",
+            "v.is_first_person ? math.sin(math.sin((1 - (q.anim_time / 0.3)) * 180) * (1 - (q.anim_time / 0.3)) * (1 - (q.anim_time / 0.3)) * 200) * 7.5 - math.sin((1 - (q.anim_time / 0.3)) * 180) * (q.anim_time / 0.3) * 15 : 0",
+            "v.is_first_person ? math.sin(math.sin((1 - (q.anim_time / 0.3)) * 180) * (q.anim_time / 0.3) * 120) * 1.75 : 0"
+          ]
+        }
+      }
+    }
+  }
+}

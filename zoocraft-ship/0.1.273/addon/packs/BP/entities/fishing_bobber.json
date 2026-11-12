@@ -1,0 +1,125 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "zoocraft:fishing_bobber",
+      "spawn_category": "misc",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "properties": {
+        "zoocraft:line": {
+          "type": "bool",
+          "default": false,
+          "client_sync": true
+        },
+        "zoocraft:floating": {
+          "type": "bool",
+          "default": false,
+          "client_sync": true
+        },
+        "zoocraft:bite": {
+          "type": "bool",
+          "default": false,
+          "client_sync": true
+        },
+        "zoocraft:tip_x": {
+          "type": "float",
+          "range": [
+            -30000000.0,
+            30000000.0
+          ],
+          "default": 0.0,
+          "client_sync": true
+        },
+        "zoocraft:tip_y": {
+          "type": "float",
+          "range": [
+            -2048.0,
+            2048.0
+          ],
+          "default": 0.0,
+          "client_sync": true
+        },
+        "zoocraft:tip_z": {
+          "type": "float",
+          "range": [
+            -30000000.0,
+            30000000.0
+          ],
+          "default": 0.0,
+          "client_sync": true
+        }
+      }
+    },
+    "component_groups": {
+      "zoocraft:flying": {
+        "minecraft:physics": {},
+        "minecraft:projectile": {
+          "power": 1,
+          "gravity": 0.1656,
+          "inertia": 0.911,
+          "liquid_inertia": 0.5,
+          "uncertainty_base": 0,
+          "uncertainty_multiplier": 0,
+          "on_hit": {
+            "stick_in_ground": {}
+          }
+        }
+      },
+      "zoocraft:floating": {
+        "minecraft:physics": {
+          "has_gravity": false,
+          "has_collision": false
+        }
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": [
+          "zoocraft_bobber",
+          "inanimate"
+        ]
+      },
+      "minecraft:collision_box": {
+        "width": 0.15,
+        "height": 0.15
+      },
+      "minecraft:damage_sensor": {
+        "triggers": {
+          "cause": "all",
+          "deals_damage": "no"
+        }
+      },
+      "minecraft:dimension_bound": {},
+      "minecraft:transient": {},
+      "minecraft:conditional_bandwidth_optimization": {
+        "default_values": {
+          "max_dropped_ticks": 0,
+          "max_optimized_distance": 80.0,
+          "use_motion_prediction_hints": true
+        }
+      }
+    },
+    "events": {
+      "minecraft:entity_spawned": {
+        "add": {
+          "component_groups": [
+            "zoocraft:flying"
+          ]
+        }
+      },
+      "zoocraft:float": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:flying"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:floating"
+          ]
+        }
+      }
+    }
+  }
+}

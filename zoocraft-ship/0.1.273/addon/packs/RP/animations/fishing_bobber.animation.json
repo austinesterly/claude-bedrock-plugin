@@ -1,0 +1,347 @@
+{
+  "format_version": "1.10.0",
+  "animations": {
+    "animation.zoocraft.fishing_bobber.line": {
+      "loop": true,
+      "bones": {
+        "line_root": {
+          "rotation": [
+            0,
+            "180 - q.body_y_rotation",
+            0
+          ]
+        },
+        "line_yaw": {
+          "rotation": [
+            0,
+            "-math.atan2(v.dx, v.dz)",
+            0
+          ]
+        },
+        "seg0": {
+          "rotation": [
+            "v.a0",
+            0,
+            0
+          ]
+        },
+        "line0": {
+          "scale": [
+            1,
+            1,
+            "v.l0"
+          ]
+        },
+        "seg1": {
+          "position": [
+            0,
+            0,
+            "v.l0 * 16"
+          ],
+          "rotation": [
+            "v.a1 - v.a0",
+            0,
+            0
+          ]
+        },
+        "line1": {
+          "scale": [
+            1,
+            1,
+            "v.l1"
+          ]
+        },
+        "seg2": {
+          "position": [
+            0,
+            0,
+            "v.l1 * 16"
+          ],
+          "rotation": [
+            "v.a2 - v.a1",
+            0,
+            0
+          ]
+        },
+        "line2": {
+          "scale": [
+            1,
+            1,
+            "v.l2"
+          ]
+        },
+        "seg3": {
+          "position": [
+            0,
+            0,
+            "v.l2 * 16"
+          ],
+          "rotation": [
+            "v.a3 - v.a2",
+            0,
+            0
+          ]
+        },
+        "line3": {
+          "scale": [
+            1,
+            1,
+            "v.l3"
+          ]
+        },
+        "seg4": {
+          "position": [
+            0,
+            0,
+            "v.l3 * 16"
+          ],
+          "rotation": [
+            "v.a4 - v.a3",
+            0,
+            0
+          ]
+        },
+        "line4": {
+          "scale": [
+            1,
+            1,
+            "v.l4"
+          ]
+        },
+        "seg5": {
+          "position": [
+            0,
+            0,
+            "v.l4 * 16"
+          ],
+          "rotation": [
+            "v.a5 - v.a4",
+            0,
+            0
+          ]
+        },
+        "line5": {
+          "scale": [
+            1,
+            1,
+            "v.l5"
+          ]
+        },
+        "seg6": {
+          "position": [
+            0,
+            0,
+            "v.l5 * 16"
+          ],
+          "rotation": [
+            "v.a6 - v.a5",
+            0,
+            0
+          ]
+        },
+        "line6": {
+          "scale": [
+            1,
+            1,
+            "v.l6"
+          ]
+        },
+        "seg7": {
+          "position": [
+            0,
+            0,
+            "v.l6 * 16"
+          ],
+          "rotation": [
+            "v.a7 - v.a6",
+            0,
+            0
+          ]
+        },
+        "line7": {
+          "scale": [
+            1,
+            1,
+            "v.l7"
+          ]
+        },
+        "seg8": {
+          "position": [
+            0,
+            0,
+            "v.l7 * 16"
+          ],
+          "rotation": [
+            "v.a8 - v.a7",
+            0,
+            0
+          ]
+        },
+        "line8": {
+          "scale": [
+            1,
+            1,
+            "v.l8"
+          ]
+        },
+        "seg9": {
+          "position": [
+            0,
+            0,
+            "v.l8 * 16"
+          ],
+          "rotation": [
+            "v.a9 - v.a8",
+            0,
+            0
+          ]
+        },
+        "line9": {
+          "scale": [
+            1,
+            1,
+            "v.l9"
+          ]
+        },
+        "seg10": {
+          "position": [
+            0,
+            0,
+            "v.l9 * 16"
+          ],
+          "rotation": [
+            "v.a10 - v.a9",
+            0,
+            0
+          ]
+        },
+        "line10": {
+          "scale": [
+            1,
+            1,
+            "v.l10"
+          ]
+        },
+        "seg11": {
+          "position": [
+            0,
+            0,
+            "v.l10 * 16"
+          ],
+          "rotation": [
+            "v.a11 - v.a10",
+            0,
+            0
+          ]
+        },
+        "line11": {
+          "scale": [
+            1,
+            1,
+            "v.l11"
+          ]
+        },
+        "seg12": {
+          "position": [
+            0,
+            0,
+            "v.l11 * 16"
+          ],
+          "rotation": [
+            "v.a12 - v.a11",
+            0,
+            0
+          ]
+        },
+        "line12": {
+          "scale": [
+            1,
+            1,
+            "v.l12"
+          ]
+        },
+        "seg13": {
+          "position": [
+            0,
+            0,
+            "v.l12 * 16"
+          ],
+          "rotation": [
+            "v.a13 - v.a12",
+            0,
+            0
+          ]
+        },
+        "line13": {
+          "scale": [
+            1,
+            1,
+            "v.l13"
+          ]
+        },
+        "seg14": {
+          "position": [
+            0,
+            0,
+            "v.l13 * 16"
+          ],
+          "rotation": [
+            "v.a14 - v.a13",
+            0,
+            0
+          ]
+        },
+        "line14": {
+          "scale": [
+            1,
+            1,
+            "v.l14"
+          ]
+        },
+        "seg15": {
+          "position": [
+            0,
+            0,
+            "v.l14 * 16"
+          ],
+          "rotation": [
+            "v.a15 - v.a14",
+            0,
+            0
+          ]
+        },
+        "line15": {
+          "scale": [
+            1,
+            1,
+            "v.l15"
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.fishing_bobber.float": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "position": [
+            0,
+            "math.sin(q.life_time * 120) * 0.25",
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.fishing_bobber.bite": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "position": [
+            "math.sin(q.life_time * 1800) * 0.3",
+            "-2.5 + math.sin(q.life_time * 900) * 0.4",
+            0
+          ]
+        }
+      }
+    }
+  }
+}
