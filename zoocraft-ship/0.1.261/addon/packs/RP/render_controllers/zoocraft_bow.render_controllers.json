@@ -1,0 +1,35 @@
+{
+  "format_version": "1.10.0",
+  "render_controllers": {
+    "controller.render.zoocraft.bow": {
+      "arrays": {
+        "textures": {
+          "array.bow_frames": [
+            "texture.frame_0",
+            "texture.frame_1",
+            "texture.frame_2",
+            "texture.frame_3"
+          ]
+        },
+        "geometries": {
+          "array.bow_geos": [
+            "geometry.frame_0",
+            "geometry.frame_1",
+            "geometry.frame_2",
+            "geometry.frame_3"
+          ]
+        }
+      },
+      "geometry": "array.bow_geos[variable.bow_frame]",
+      "materials": [
+        {
+          "*": "variable.is_enchanted ? material.enchanted : material.default"
+        }
+      ],
+      "textures": [
+        "array.bow_frames[variable.bow_frame]",
+        "texture.enchanted"
+      ]
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:block": {
+    "description": {
+      "identifier": "zoocraft:bow_case",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:geometry": "geometry.zoocraft.bow_case",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "zoocraft_bow_case_side",
+          "render_method": "opaque"
+        },
+        "side": {
+          "texture": "zoocraft_bow_case_side",
+          "render_method": "opaque"
+        },
+        "top": {
+          "texture": "zoocraft_bow_case_top",
+          "render_method": "opaque"
+        },
+        "bottom": {
+          "texture": "zoocraft_bow_case_bottom",
+          "render_method": "opaque"
+        }
+      },
+      "minecraft:collision_box": {
+        "origin": [
+          -7,
+          0,
+          -7
+        ],
+        "size": [
+          14,
+          15,
+          14
+        ]
+      },
+      "minecraft:selection_box": {
+        "origin": [
+          -7,
+          0,
+          -7
+        ],
+        "size": [
+          14,
+          15,
+          14
+        ]
+      },
+      "minecraft:light_dampening": 0,
+      "minecraft:destructible_by_mining": false,
+      "minecraft:destructible_by_explosion": false,
+      "minecraft:movable": {
+        "movement_type": "immovable"
+      },
+      "minecraft:map_color": "#4f3418",
+      "minecraft:loot": "loot_tables/blocks/zoocraft_bow_case.json",
+      "zoocraft:bow_case": {}
+    }
+  }
+}

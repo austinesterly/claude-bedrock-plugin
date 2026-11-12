@@ -1,0 +1,27 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "zoocraft:bow_case",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:icon": {
+        "textures": {
+          "default": "zoocraft:bow_case"
+        }
+      },
+      "minecraft:display_name": {
+        "value": "tile.zoocraft:bow_case.name"
+      },
+      "minecraft:max_stack_size": {
+        "value": 1
+      },
+      "minecraft:block_placer": {
+        "block": "zoocraft:bow_case"
+      }
+    }
+  }
+}
