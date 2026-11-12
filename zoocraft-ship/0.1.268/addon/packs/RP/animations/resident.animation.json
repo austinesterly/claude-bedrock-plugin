@@ -1,0 +1,74 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.zoocraft.resident.sleep": {
+      "loop": true,
+      "bones": {
+        "waist": {
+          "rotation": [
+            -90,
+            0,
+            0
+          ],
+          "position": [
+            0,
+            -8,
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.resident.work": {
+      "loop": true,
+      "bones": {
+        "rightArm": {
+          "rotation": [
+            "-70 + math.sin(query.life_time * 360) * 40",
+            0,
+            0
+          ]
+        },
+        "head": {
+          "rotation": [
+            15,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.resident.fish": {
+      "loop": true,
+      "bones": {
+        "rightArm": {
+          "rotation": [
+            "-35 + math.sin(query.life_time * 40) * 3",
+            0,
+            0
+          ]
+        },
+        "line": {
+          "rotation": [
+            "35 - math.sin(query.life_time * 40) * 3",
+            0,
+            0
+          ]
+        },
+        "bobber": {
+          "position": [
+            0,
+            "math.sin(query.life_time * 120) * 0.4",
+            0
+          ]
+        },
+        "head": {
+          "rotation": [
+            12,
+            0,
+            0
+          ]
+        }
+      }
+    }
+  }
+}
