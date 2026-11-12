@@ -1,5 +1,8 @@
 # ZooCraft 0.1.261: Guido's Bow Case and ZooCraft's fifteen bows
 
+**Fixed by 0.1.262:** this version's build.cmd stops at the build check (30 errors about the bows' animations). Do
+steps 1 to 6 here, skip step 7, then apply `zoocraft-ship\0.1.262\` and run build.cmd after that.
+
 Apply on 0.1.260 as built. Everything under `addon\` in this folder is the exact file the add-on should hold
 (136 files: 122 new ones (the 15 bows: items, attachables, icons and drawing pictures; the Bow Case block, its
 item, store entity, recipe, model and pictures; 4 scripts) and 14 replacing ones 0.1.260 has (scripts, the lists of

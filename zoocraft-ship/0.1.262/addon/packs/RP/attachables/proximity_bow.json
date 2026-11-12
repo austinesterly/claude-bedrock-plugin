@@ -1,0 +1,44 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "identifier": "zoocraft:proximity_bow",
+      "materials": {
+        "default": "entity_alphatest",
+        "enchanted": "entity_alphatest_glint"
+      },
+      "textures": {
+        "frame_0": "textures/entity/zoocraft/bows/proximity_bow_0",
+        "frame_1": "textures/entity/zoocraft/bows/proximity_bow_1",
+        "frame_2": "textures/entity/zoocraft/bows/proximity_bow_2",
+        "frame_3": "textures/entity/zoocraft/bows/proximity_bow_3",
+        "enchanted": "textures/misc/enchanted_item_glint"
+      },
+      "geometry": {
+        "frame_0": "geometry.zoocraft.bow_frame_0",
+        "frame_1": "geometry.zoocraft.bow_frame_1",
+        "frame_2": "geometry.zoocraft.bow_frame_2",
+        "frame_3": "geometry.zoocraft.bow_frame_3"
+      },
+      "animations": {
+        "wield": "animation.zoocraft.bow.wield",
+        "wield_first_person_pull": "animation.zoocraft.bow.wield_first_person_pull"
+      },
+      "scripts": {
+        "pre_animation": [
+          "variable.charge_amount = math.clamp((query.main_hand_item_max_duration - (query.main_hand_item_use_duration - query.frame_alpha + 1.0)) / 17.0, 0.0, 1.0);",
+          "variable.bow_frame = query.main_hand_item_use_duration == 0.0 ? 0 : math.min(3, math.floor(variable.charge_amount * 2.0) + 1);"
+        ],
+        "animate": [
+          "wield",
+          {
+            "wield_first_person_pull": "query.main_hand_item_use_duration > 0.0 && context.is_first_person"
+          }
+        ]
+      },
+      "render_controllers": [
+        "controller.render.zoocraft.bow"
+      ]
+    }
+  }
+}
