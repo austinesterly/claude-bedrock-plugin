@@ -1,0 +1,21 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_furnace": {
+    "description": {
+      "identifier": "zoocraft:furnace_willow_bass"
+    },
+    "unlock": [
+      {
+        "item": "zoocraft:willow_bass"
+      }
+    ],
+    "tags": [
+      "furnace",
+      "smoker",
+      "campfire",
+      "soul_campfire"
+    ],
+    "input": "zoocraft:willow_bass",
+    "output": "zoocraft:cooked_willow_bass"
+  }
+}

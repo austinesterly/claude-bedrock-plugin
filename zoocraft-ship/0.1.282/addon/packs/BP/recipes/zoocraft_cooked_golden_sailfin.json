@@ -1,0 +1,21 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_furnace": {
+    "description": {
+      "identifier": "zoocraft:furnace_golden_sailfin"
+    },
+    "unlock": [
+      {
+        "item": "zoocraft:golden_sailfin"
+      }
+    ],
+    "tags": [
+      "furnace",
+      "smoker",
+      "campfire",
+      "soul_campfire"
+    ],
+    "input": "zoocraft:golden_sailfin",
+    "output": "zoocraft:cooked_golden_sailfin"
+  }
+}

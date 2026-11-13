@@ -1,0 +1,21 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_furnace": {
+    "description": {
+      "identifier": "zoocraft:furnace_amethyst_trout"
+    },
+    "unlock": [
+      {
+        "item": "zoocraft:amethyst_trout"
+      }
+    ],
+    "tags": [
+      "furnace",
+      "smoker",
+      "campfire",
+      "soul_campfire"
+    ],
+    "input": "zoocraft:amethyst_trout",
+    "output": "zoocraft:cooked_amethyst_trout"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_furnace": {
+    "description": {
+      "identifier": "zoocraft:furnace_sky_perch"
+    },
+    "unlock": [
+      {
+        "item": "zoocraft:sky_perch"
+      }
+    ],
+    "tags": [
+      "furnace",
+      "smoker",
+      "campfire",
+      "soul_campfire"
+    ],
+    "input": "zoocraft:sky_perch",
+    "output": "zoocraft:cooked_sky_perch"
+  }
+}

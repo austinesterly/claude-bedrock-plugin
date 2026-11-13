@@ -1,0 +1,33 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "zoocraft:harbour_herring",
+      "menu_category": {
+        "category": "nature"
+      }
+    },
+    "components": {
+      "minecraft:icon": {
+        "textures": {
+          "default": "zoocraft:harbour_herring"
+        }
+      },
+      "minecraft:display_name": {
+        "value": "item.zoocraft:harbour_herring.name"
+      },
+      "minecraft:max_stack_size": {
+        "value": 64
+      },
+      "minecraft:food": {
+        "nutrition": 2,
+        "saturation_modifier": 0.1
+      },
+      "minecraft:use_animation": "eat",
+      "minecraft:use_modifiers": {
+        "use_duration": 1.6,
+        "movement_modifier": 0.35
+      }
+    }
+  }
+}
