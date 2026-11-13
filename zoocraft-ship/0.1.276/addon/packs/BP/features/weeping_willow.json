@@ -1,0 +1,121 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:tree_feature": {
+    "description": {
+      "identifier": "zoocraft:weeping_willow"
+    },
+    "cherry_trunk": {
+      "trunk_block": {
+        "name": "minecraft:oak_log"
+      },
+      "trunk_height": {
+        "base": 7,
+        "intervals": [
+          2,
+          2
+        ]
+      },
+      "branches": {
+        "tree_type_weights": {
+          "one_branch": 0,
+          "two_branches": 5,
+          "two_branches_and_trunk": 10
+        },
+        "branch_horizontal_length": {
+          "range_min": 3,
+          "range_max": 5
+        },
+        "branch_start_offset_from_top": {
+          "range_min": -5,
+          "range_max": -4
+        },
+        "branch_end_offset_from_top": {
+          "range_min": -1,
+          "range_max": 0
+        },
+        "branch_canopy": {
+          "cherry_canopy": {
+            "leaf_block": {
+              "name": "zoocraft:weeping_willow_leaves"
+            },
+            "height": 5,
+            "radius": {
+              "range_min": 4,
+              "range_max": 5
+            },
+            "wide_bottom_layer_hole_chance": 15,
+            "corner_hole_chance": 50,
+            "hanging_leaves_chance": 65,
+            "hanging_leaves_extension_chance": 70
+          }
+        }
+      }
+    },
+    "cherry_canopy": {
+      "leaf_block": {
+        "name": "zoocraft:weeping_willow_leaves"
+      },
+      "height": 5,
+      "radius": {
+        "range_min": 5,
+        "range_max": 5
+      },
+      "wide_bottom_layer_hole_chance": 15,
+      "corner_hole_chance": 50,
+      "hanging_leaves_chance": 65,
+      "hanging_leaves_extension_chance": 70
+    },
+    "may_grow_on": [
+      {
+        "tags": "query.any_tag('dirt')"
+      },
+      "minecraft:moss_block"
+    ],
+    "base_block": [
+      "minecraft:dirt"
+    ],
+    "may_grow_through": [
+      {
+        "tags": "query.any_tag('dirt')"
+      },
+      "minecraft:moss_block"
+    ],
+    "may_replace": [
+      "minecraft:air",
+      {
+        "tags": "query.any_tag('minecraft:leaves')"
+      },
+      "zoocraft:weeping_willow_strands",
+      "minecraft:short_grass",
+      "minecraft:tall_grass",
+      "minecraft:fern",
+      "minecraft:large_fern",
+      "minecraft:pink_petals",
+      "minecraft:moss_carpet",
+      "minecraft:wildflowers",
+      "minecraft:leaf_litter",
+      "minecraft:snow_layer",
+      "minecraft:allium",
+      "minecraft:azure_bluet",
+      "minecraft:blue_orchid",
+      "minecraft:cornflower",
+      "minecraft:lily_of_the_valley",
+      "minecraft:oxeye_daisy",
+      "minecraft:pink_tulip",
+      "minecraft:red_tulip",
+      "minecraft:white_tulip",
+      "minecraft:orange_tulip",
+      "minecraft:poppy",
+      "minecraft:dandelion",
+      "minecraft:peony",
+      "minecraft:rose_bush",
+      "minecraft:lilac",
+      "minecraft:azalea",
+      "minecraft:flowering_azalea",
+      "minecraft:firefly_bush",
+      "minecraft:bush",
+      "minecraft:reeds",
+      "minecraft:spore_blossom"
+    ]
+  }
+}

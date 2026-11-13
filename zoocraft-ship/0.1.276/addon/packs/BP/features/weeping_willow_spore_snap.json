@@ -1,0 +1,16 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:snap_to_surface_feature": {
+    "description": {
+      "identifier": "zoocraft:weeping_willow_spore_snap"
+    },
+    "feature_to_snap": "zoocraft:weeping_willow_spore_blossom",
+    "vertical_search_range": 24,
+    "surface": "ceiling",
+    "allowed_surface_blocks": [
+      {
+        "name": "zoocraft:weeping_willow_leaves"
+      }
+    ]
+  }
+}

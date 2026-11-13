@@ -1,0 +1,15 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:aggregate_feature": {
+    "description": {
+      "identifier": "zoocraft:fishing_sky_trees"
+    },
+    "early_out": "none",
+    "features": [
+      "zoocraft:weeping_willow_great_with_strands",
+      "zoocraft:weeping_willow_with_strands",
+      "zoocraft:azalea_round",
+      "zoocraft:azalea_round_flowering"
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:aggregate_feature": {
+    "description": {
+      "identifier": "zoocraft:weeping_willow_with_strands"
+    },
+    "early_out": "none",
+    "features": [
+      "zoocraft:weeping_willow",
+      "zoocraft:weeping_willow_strands_all",
+      "zoocraft:weeping_willow_spores"
+    ]
+  }
+}

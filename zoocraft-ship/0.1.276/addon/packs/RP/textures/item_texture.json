@@ -1,0 +1,435 @@
+{
+  "resource_pack_name": "zoocraft",
+  "texture_name": "atlas.items",
+  "texture_data": {
+    "zoocraft:park_deed": {
+      "textures": "textures/items/zoocraft/park_deed"
+    },
+    "zoocraft:habitat_marker": {
+      "textures": "textures/items/zoocraft/habitat_marker"
+    },
+    "zoocraft:exhibit_clipboard": {
+      "textures": "textures/items/zoocraft/exhibit_clipboard"
+    },
+    "zoocraft:hairline_lineup_black": {
+      "textures": "textures/items/zoocraft/hairline_lineup_black"
+    },
+    "zoocraft:hairline_lineup_brown": {
+      "textures": "textures/items/zoocraft/hairline_lineup_brown"
+    },
+    "zoocraft:hairline_lineup_red": {
+      "textures": "textures/items/zoocraft/hairline_lineup_red"
+    },
+    "zoocraft:hairline_lineup_white": {
+      "textures": "textures/items/zoocraft/hairline_lineup_white"
+    },
+    "zoocraft:hairline_lineup_diamond": {
+      "textures": "textures/items/zoocraft/hairline_lineup_diamond"
+    },
+    "zoocraft:hairline_round_black": {
+      "textures": "textures/items/zoocraft/hairline_round_black"
+    },
+    "zoocraft:hairline_round_brown": {
+      "textures": "textures/items/zoocraft/hairline_round_brown"
+    },
+    "zoocraft:hairline_round_red": {
+      "textures": "textures/items/zoocraft/hairline_round_red"
+    },
+    "zoocraft:hairline_round_white": {
+      "textures": "textures/items/zoocraft/hairline_round_white"
+    },
+    "zoocraft:hairline_round_diamond": {
+      "textures": "textures/items/zoocraft/hairline_round_diamond"
+    },
+    "zoocraft:hairline_peak_black": {
+      "textures": "textures/items/zoocraft/hairline_peak_black"
+    },
+    "zoocraft:hairline_peak_brown": {
+      "textures": "textures/items/zoocraft/hairline_peak_brown"
+    },
+    "zoocraft:hairline_peak_red": {
+      "textures": "textures/items/zoocraft/hairline_peak_red"
+    },
+    "zoocraft:hairline_peak_white": {
+      "textures": "textures/items/zoocraft/hairline_peak_white"
+    },
+    "zoocraft:hairline_peak_diamond": {
+      "textures": "textures/items/zoocraft/hairline_peak_diamond"
+    },
+    "zoocraft:hairline_bolt_black": {
+      "textures": "textures/items/zoocraft/hairline_bolt_black"
+    },
+    "zoocraft:hairline_bolt_brown": {
+      "textures": "textures/items/zoocraft/hairline_bolt_brown"
+    },
+    "zoocraft:hairline_bolt_red": {
+      "textures": "textures/items/zoocraft/hairline_bolt_red"
+    },
+    "zoocraft:hairline_bolt_white": {
+      "textures": "textures/items/zoocraft/hairline_bolt_white"
+    },
+    "zoocraft:hairline_bolt_diamond": {
+      "textures": "textures/items/zoocraft/hairline_bolt_diamond"
+    },
+    "zoocraft:full_healing_serum": {
+      "textures": "textures/items/zoocraft/full_healing_serum"
+    },
+    "zoocraft:full_healing_serum_formula": {
+      "textures": "textures/items/zoocraft/full_healing_serum_formula"
+    },
+    "zoocraft:portable_disposery": {
+      "textures": "textures/items/zoocraft/portable_disposery"
+    },
+    "zoocraft:bow_case": {
+      "textures": "textures/items/zoocraft/bow_case"
+    },
+    "zoocraft:short_bow": {
+      "textures": "textures/items/zoocraft/bows/short_bow"
+    },
+    "zoocraft:scrap_bow": {
+      "textures": "textures/items/zoocraft/bows/scrap_bow"
+    },
+    "zoocraft:needle_bow": {
+      "textures": "textures/items/zoocraft/bows/needle_bow"
+    },
+    "zoocraft:classic_bow": {
+      "textures": "textures/items/zoocraft/bows/classic_bow"
+    },
+    "zoocraft:flurry_bow": {
+      "textures": "textures/items/zoocraft/bows/flurry_bow"
+    },
+    "zoocraft:longbow": {
+      "textures": "textures/items/zoocraft/bows/longbow"
+    },
+    "zoocraft:proximity_bow": {
+      "textures": "textures/items/zoocraft/bows/proximity_bow"
+    },
+    "zoocraft:twin_fang_bow": {
+      "textures": "textures/items/zoocraft/bows/twin_fang_bow"
+    },
+    "zoocraft:vexcaller_bow": {
+      "textures": "textures/items/zoocraft/bows/vexcaller_bow"
+    },
+    "zoocraft:sonic_bow": {
+      "textures": "textures/items/zoocraft/bows/sonic_bow"
+    },
+    "zoocraft:blightbloom_bow": {
+      "textures": "textures/items/zoocraft/bows/blightbloom_bow"
+    },
+    "zoocraft:blaze_bow": {
+      "textures": "textures/items/zoocraft/bows/blaze_bow"
+    },
+    "zoocraft:panda_bow": {
+      "textures": "textures/items/zoocraft/bows/panda_bow"
+    },
+    "zoocraft:scorpion_bow": {
+      "textures": "textures/items/zoocraft/bows/scorpion_bow"
+    },
+    "zoocraft:ballista_bow": {
+      "textures": "textures/items/zoocraft/bows/ballista_bow"
+    },
+    "zoocraft:portable_disposery_plans": {
+      "textures": "textures/items/zoocraft/portable_disposery_plans"
+    },
+    "zoocraft:disposery_plans": {
+      "textures": "textures/items/zoocraft/disposery_plans"
+    },
+    "zoocraft:cleaning_rake": {
+      "textures": "textures/items/zoocraft/cleaning_rake"
+    },
+    "zoocraft:leafy_ration": {
+      "textures": "textures/items/zoocraft/leafy_ration"
+    },
+    "zoocraft:small_carrier": {
+      "textures": "textures/items/zoocraft/small_carrier"
+    },
+    "zoocraft:small_carrier_occupied": {
+      "textures": "textures/items/zoocraft/small_carrier_occupied"
+    },
+    "zoocraft:livestock_crate": {
+      "textures": "textures/items/zoocraft/livestock_crate"
+    },
+    "zoocraft:livestock_crate_occupied": {
+      "textures": "textures/items/zoocraft/livestock_crate_occupied"
+    },
+    "zoocraft:fish_ration": {
+      "textures": "textures/items/zoocraft/fish_ration"
+    },
+    "zoocraft:floating_toy": {
+      "textures": "textures/items/zoocraft/floating_toy"
+    },
+    "zoocraft:reinforced_crate": {
+      "textures": "textures/items/zoocraft/reinforced_crate"
+    },
+    "zoocraft:reinforced_crate_occupied": {
+      "textures": "textures/items/zoocraft/reinforced_crate_occupied"
+    },
+    "zoocraft:enrichment_ball": {
+      "textures": "textures/items/zoocraft/enrichment_ball"
+    },
+    "zoocraft:mineral_pellets": {
+      "textures": "textures/items/zoocraft/mineral_pellets"
+    },
+    "zoocraft:thermal_carrier": {
+      "textures": "textures/items/zoocraft/thermal_carrier"
+    },
+    "zoocraft:thermal_carrier_occupied": {
+      "textures": "textures/items/zoocraft/thermal_carrier_occupied"
+    },
+    "zoocraft:ember_ration": {
+      "textures": "textures/items/zoocraft/ember_ration"
+    },
+    "zoocraft:molten_plankton": {
+      "textures": "textures/items/zoocraft/molten_plankton"
+    },
+    "zoocraft:blaze_bone": {
+      "textures": "textures/items/zoocraft/blaze_bone"
+    },
+    "zoocraft:wither_skull_ball": {
+      "textures": "textures/items/zoocraft/wither_skull_ball"
+    },
+    "zoocraft:clear_lava_bucket": {
+      "textures": "textures/items/zoocraft/clear_lava_bucket"
+    },
+    "zoocraft:chorus_browse": {
+      "textures": "textures/items/zoocraft/chorus_browse"
+    },
+    "zoocraft:stabilized_carrier": {
+      "textures": "textures/items/zoocraft/stabilized_carrier"
+    },
+    "zoocraft:stabilized_carrier_occupied": {
+      "textures": "textures/items/zoocraft/stabilized_carrier_occupied"
+    },
+    "zoocraft:insect_ration": {
+      "textures": "textures/items/zoocraft/insect_ration"
+    },
+    "zoocraft:fruit_ration": {
+      "textures": "textures/items/zoocraft/fruit_ration"
+    },
+    "zoocraft:bin_latch": {
+      "textures": "textures/items/zoocraft/bin_latch"
+    },
+    "zoocraft:flamingo_pellets": {
+      "textures": "textures/items/zoocraft/flamingo_pellets"
+    },
+    "zoocraft:grain_ration": {
+      "textures": "textures/items/zoocraft/grain_ration"
+    },
+    "zoocraft:meat_ration": {
+      "textures": "textures/items/zoocraft/meat_ration"
+    },
+    "zoocraft:fungal_ration": {
+      "textures": "textures/items/zoocraft/fungal_ration"
+    },
+    "zoocraft:nectar_ration": {
+      "textures": "textures/items/zoocraft/nectar_ration"
+    },
+    "zoocraft:transport_tank": {
+      "textures": "textures/items/zoocraft/transport_tank"
+    },
+    "zoocraft:transport_tank_occupied": {
+      "textures": "textures/items/zoocraft/transport_tank_occupied"
+    },
+    "zoocraft:fish_flakes": {
+      "textures": "textures/items/zoocraft/fish_flakes"
+    },
+    "zoocraft:large_tank": {
+      "textures": "textures/items/zoocraft/large_tank"
+    },
+    "zoocraft:large_tank_occupied": {
+      "textures": "textures/items/zoocraft/large_tank_occupied"
+    },
+    "zoocraft:diving_helmet": {
+      "textures": "textures/items/zoocraft/diving_helmet"
+    },
+    "zoocraft:obsidian_helmet": {
+      "textures": "textures/items/zoocraft/obsidian_helmet"
+    },
+    "zoocraft:obsidian_chestplate": {
+      "textures": "textures/items/zoocraft/obsidian_chestplate"
+    },
+    "zoocraft:obsidian_leggings": {
+      "textures": "textures/items/zoocraft/obsidian_leggings"
+    },
+    "zoocraft:obsidian_boots": {
+      "textures": "textures/items/zoocraft/obsidian_boots"
+    },
+    "zoocraft:yeti_cage": {
+      "textures": "textures/items/zoocraft/yeti_cage"
+    },
+    "zoocraft:yeti_cage_occupied": {
+      "textures": "textures/items/zoocraft/yeti_cage_occupied"
+    },
+    "zoocraft:lava_strider_book": {
+      "textures": "textures/items/zoocraft/lava_strider_book"
+    },
+    "zoocraft:soul_cage": {
+      "textures": "textures/items/zoocraft/soul_cage"
+    },
+    "zoocraft:soul_cage_occupied": {
+      "textures": "textures/items/zoocraft/soul_cage_occupied"
+    },
+    "zoocraft:dragon_crate": {
+      "textures": "textures/items/zoocraft/dragon_crate"
+    },
+    "zoocraft:dragon_crate_occupied": {
+      "textures": "textures/items/zoocraft/dragon_crate_occupied"
+    },
+    "zoocraft:passivity_serum": {
+      "textures": "textures/items/zoocraft/passivity_serum"
+    },
+    "zoocraft:mob_cage": {
+      "textures": "textures/items/zoocraft/mob_cage"
+    },
+    "zoocraft:mob_cage_occupied": {
+      "textures": "textures/items/zoocraft/mob_cage_occupied"
+    },
+    "zoocraft:bone_ration": {
+      "textures": "textures/items/zoocraft/bone_ration"
+    },
+    "zoocraft:spessartine_garnet": {
+      "textures": "textures/items/zoocraft/spessartine_garnet"
+    },
+    "zoocraft:garnet_sword": {
+      "textures": "textures/items/zoocraft/garnet_sword"
+    },
+    "zoocraft:garnet_pickaxe": {
+      "textures": "textures/items/zoocraft/garnet_pickaxe"
+    },
+    "zoocraft:garnet_axe": {
+      "textures": "textures/items/zoocraft/garnet_axe"
+    },
+    "zoocraft:garnet_shovel": {
+      "textures": "textures/items/zoocraft/garnet_shovel"
+    },
+    "zoocraft:garnet_hoe": {
+      "textures": "textures/items/zoocraft/garnet_hoe"
+    },
+    "zoocraft:garnet_helmet": {
+      "textures": "textures/items/zoocraft/garnet_helmet"
+    },
+    "zoocraft:garnet_chestplate": {
+      "textures": "textures/items/zoocraft/garnet_chestplate"
+    },
+    "zoocraft:garnet_leggings": {
+      "textures": "textures/items/zoocraft/garnet_leggings"
+    },
+    "zoocraft:garnet_boots": {
+      "textures": "textures/items/zoocraft/garnet_boots"
+    },
+    "zoocraft:goo_bucket": {
+      "textures": "textures/items/zoocraft/goo_bucket"
+    },
+    "zoocraft:leather_gauntlets": {
+      "textures": "textures/items/zoocraft/leather_gauntlets"
+    },
+    "zoocraft:sticky_gauntlets": {
+      "textures": "textures/items/zoocraft/sticky_gauntlets"
+    },
+    "zoocraft:lesson_notes_enrichment": {
+      "textures": "textures/items/zoocraft/lesson_notes_enrichment"
+    },
+    "zoocraft:lesson_notes_revenue": {
+      "textures": "textures/items/zoocraft/lesson_notes_revenue"
+    },
+    "zoocraft:lesson_notes_visitors": {
+      "textures": "textures/items/zoocraft/lesson_notes_visitors"
+    },
+    "zoocraft:lesson_notes_research": {
+      "textures": "textures/items/zoocraft/lesson_notes_research"
+    },
+    "zoocraft:netherite_garnet_sword": {
+      "textures": "textures/items/zoocraft/netherite_garnet_sword"
+    },
+    "zoocraft:netherite_garnet_pickaxe": {
+      "textures": "textures/items/zoocraft/netherite_garnet_pickaxe"
+    },
+    "zoocraft:netherite_garnet_axe": {
+      "textures": "textures/items/zoocraft/netherite_garnet_axe"
+    },
+    "zoocraft:netherite_garnet_shovel": {
+      "textures": "textures/items/zoocraft/netherite_garnet_shovel"
+    },
+    "zoocraft:netherite_garnet_hoe": {
+      "textures": "textures/items/zoocraft/netherite_garnet_hoe"
+    },
+    "zoocraft:netherite_garnet_helmet": {
+      "textures": "textures/items/zoocraft/netherite_garnet_helmet"
+    },
+    "zoocraft:netherite_garnet_chestplate": {
+      "textures": "textures/items/zoocraft/netherite_garnet_chestplate"
+    },
+    "zoocraft:netherite_garnet_leggings": {
+      "textures": "textures/items/zoocraft/netherite_garnet_leggings"
+    },
+    "zoocraft:netherite_garnet_boots": {
+      "textures": "textures/items/zoocraft/netherite_garnet_boots"
+    },
+    "zoocraft:spotless_chestplate": {
+      "textures": "textures/items/zoocraft/spotless_chestplate"
+    },
+    "zoocraft:spotless_leggings": {
+      "textures": "textures/items/zoocraft/spotless_leggings"
+    },
+    "zoocraft:spotless_boots": {
+      "textures": "textures/items/zoocraft/spotless_boots"
+    },
+    "zoocraft:spotless_armor_pattern": {
+      "textures": "textures/items/zoocraft/spotless_armor_pattern"
+    },
+    "zoocraft:steel_rod": {
+      "textures": "textures/items/zoocraft/steel_rod"
+    },
+    "zoocraft:deep_sea_rod": {
+      "textures": "textures/items/zoocraft/deep_sea_rod"
+    },
+    "zoocraft:spoon": {
+      "textures": "textures/items/zoocraft/spoon"
+    },
+    "zoocraft:spinnerbait": {
+      "textures": "textures/items/zoocraft/spinnerbait"
+    },
+    "zoocraft:artificial_worm": {
+      "textures": "textures/items/zoocraft/artificial_worm"
+    },
+    "zoocraft:jacks_flint_and_steel": {
+      "textures": "textures/items/zoocraft/jacks_flint_and_steel"
+    },
+    "zoocraft:small_red_amethyst_bud": {
+      "textures": "textures/blocks/zoocraft/small_red_amethyst_bud"
+    },
+    "zoocraft:medium_red_amethyst_bud": {
+      "textures": "textures/blocks/zoocraft/medium_red_amethyst_bud"
+    },
+    "zoocraft:large_red_amethyst_bud": {
+      "textures": "textures/blocks/zoocraft/large_red_amethyst_bud"
+    },
+    "zoocraft:red_amethyst_cluster": {
+      "textures": "textures/blocks/zoocraft/red_amethyst_cluster"
+    },
+    "zoocraft:red_amethyst_shard": {
+      "textures": "textures/items/zoocraft/red_amethyst_shard"
+    },
+    "zoocraft:small_blue_amethyst_bud": {
+      "textures": "textures/blocks/zoocraft/small_blue_amethyst_bud"
+    },
+    "zoocraft:medium_blue_amethyst_bud": {
+      "textures": "textures/blocks/zoocraft/medium_blue_amethyst_bud"
+    },
+    "zoocraft:large_blue_amethyst_bud": {
+      "textures": "textures/blocks/zoocraft/large_blue_amethyst_bud"
+    },
+    "zoocraft:blue_amethyst_cluster": {
+      "textures": "textures/blocks/zoocraft/blue_amethyst_cluster"
+    },
+    "zoocraft:blue_amethyst_shard": {
+      "textures": "textures/items/zoocraft/blue_amethyst_shard"
+    },
+    "zoocraft:diamond_shards": {
+      "textures": "textures/blocks/zoocraft/diamond_shards"
+    },
+    "zoocraft:diamond_shard": {
+      "textures": "textures/items/zoocraft/diamond_shard"
+    }
+  }
+}

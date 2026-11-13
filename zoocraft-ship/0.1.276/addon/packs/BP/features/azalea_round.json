@@ -1,0 +1,102 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:tree_feature": {
+    "description": {
+      "identifier": "zoocraft:azalea_round"
+    },
+    "acacia_trunk": {
+      "trunk_width": 1,
+      "trunk_height": {
+        "base": 4,
+        "intervals": [
+          1,
+          1
+        ]
+      },
+      "trunk_block": {
+        "name": "minecraft:oak_log"
+      },
+      "trunk_lean": {
+        "allow_diagonal_growth": true,
+        "lean_height": {
+          "range_min": 1,
+          "range_max": 2
+        },
+        "lean_steps": {
+          "range_min": 0,
+          "range_max": 1
+        },
+        "lean_length": {
+          "range_min": 0,
+          "range_max": 1
+        }
+      }
+    },
+    "cherry_canopy": {
+      "leaf_block": {
+        "name": "minecraft:azalea_leaves"
+      },
+      "height": 4,
+      "radius": {
+        "range_min": 3,
+        "range_max": 3
+      },
+      "wide_bottom_layer_hole_chance": 50,
+      "corner_hole_chance": 100,
+      "hanging_leaves_chance": 0,
+      "hanging_leaves_extension_chance": 0
+    },
+    "may_grow_on": [
+      {
+        "tags": "query.any_tag('dirt')"
+      },
+      "minecraft:moss_block"
+    ],
+    "base_block": [
+      "minecraft:dirt"
+    ],
+    "may_grow_through": [
+      {
+        "tags": "query.any_tag('dirt')"
+      },
+      "minecraft:moss_block"
+    ],
+    "may_replace": [
+      "minecraft:air",
+      {
+        "tags": "query.any_tag('minecraft:leaves')"
+      },
+      "zoocraft:weeping_willow_strands",
+      "minecraft:short_grass",
+      "minecraft:tall_grass",
+      "minecraft:fern",
+      "minecraft:large_fern",
+      "minecraft:pink_petals",
+      "minecraft:moss_carpet",
+      "minecraft:wildflowers",
+      "minecraft:leaf_litter",
+      "minecraft:snow_layer",
+      "minecraft:allium",
+      "minecraft:azure_bluet",
+      "minecraft:blue_orchid",
+      "minecraft:cornflower",
+      "minecraft:lily_of_the_valley",
+      "minecraft:oxeye_daisy",
+      "minecraft:pink_tulip",
+      "minecraft:red_tulip",
+      "minecraft:white_tulip",
+      "minecraft:orange_tulip",
+      "minecraft:poppy",
+      "minecraft:dandelion",
+      "minecraft:peony",
+      "minecraft:rose_bush",
+      "minecraft:lilac",
+      "minecraft:azalea",
+      "minecraft:flowering_azalea",
+      "minecraft:firefly_bush",
+      "minecraft:bush",
+      "minecraft:reeds",
+      "minecraft:spore_blossom"
+    ]
+  }
+}

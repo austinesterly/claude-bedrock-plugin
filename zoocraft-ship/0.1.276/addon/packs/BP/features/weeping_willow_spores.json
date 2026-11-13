@@ -1,0 +1,27 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:scatter_feature": {
+    "description": {
+      "identifier": "zoocraft:weeping_willow_spores"
+    },
+    "places_feature": "zoocraft:weeping_willow_spore_snap",
+    "iterations": 3,
+    "scatter_chance": 100.0,
+    "x": {
+      "extent": [
+        -5,
+        5
+      ],
+      "distribution": "uniform"
+    },
+    "z": {
+      "extent": [
+        -5,
+        5
+      ],
+      "distribution": "uniform"
+    },
+    "y": 0,
+    "project_input_to_floor": false
+  }
+}
