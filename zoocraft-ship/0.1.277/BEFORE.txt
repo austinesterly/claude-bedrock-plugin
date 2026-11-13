@@ -1,0 +1,6 @@
+a5428a8e42139e7f18fcadf0d53f086c501bad6344291a7b443cefbfab31c566  addon\docs\Residents_test_plan.md
+5677917cd32375d9a161c51231eadb5a7aa4547ce5079d94732d0eb5e8f3f591  addon\docs\status.md
+4511f5adf72bd2dce024216153c3129559642d794369921a0f69429a226e14fe  addon\packs\BP\scripts\commands.js
+032cf8046b33023bcb2c4a8f595c8be25b78761830700a3da9603c267f54a325  addon\packs\BP\scripts\fishing\islandRules.js
+22bc98995274741daba0fa76ed7c914fc374d5d851f57c029c7d4535cbf300b1  addon\packs\BP\scripts\fishing\islands.js
+88a61ac475914bc0f37a5f5f1899b8c4510e0ef1cb711db491805fd5789b639a  addon\tests\logic.test.mjs
