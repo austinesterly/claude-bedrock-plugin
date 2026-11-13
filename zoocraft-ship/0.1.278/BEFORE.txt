@@ -1,0 +1,7 @@
+00d2a6e72ca6cea58cc51e78bb46bf0a2a0e3a3fda6b17fa9b06d132a19d9ac0  addon\docs\Residents_test_plan.md
+47f7b489bcfccf440c85840f4c1e6110b4168cad4fa901b7733bdf47ac86713f  addon\docs\status.md
+116fff7b767274c4759b2728fd1832da80d2db2c7b5ce2dd4fe7e86c2ca7540e  addon\packs\BP\scripts\data\items.js
+2b5727d42c79eb3aafa96c1b87e4de3714b9d8a49cd7f396f08eef493acf862c  addon\packs\BP\scripts\main.js
+c336657bf9b252bbf403557db35127697e407a399fef8983c3c797cf40a92585  addon\packs\RP\sounds.json
+7bc44edb9362ddc94b4e147cc2860c85373b0778f1a1a3a133686d43bf2c37b4  addon\packs\RP\texts\en_US.lang
+82d21ee13e0d7b38c990dfedaa1e5c73dbc4376d4c0894be4d4312b4d3f35018  addon\tests\logic.test.mjs

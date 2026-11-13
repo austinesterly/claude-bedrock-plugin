@@ -1,0 +1,26 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.zoocraft.shark_folk": {
+      "arrays": {
+        "textures": {
+          "Array.looks": [
+            "Texture.resident",
+            "Texture.fisher",
+            "Texture.guard",
+            "Texture.elder"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Array.looks[query.property('zoocraft:role')]"
+      ]
+    }
+  }
+}

@@ -1,0 +1,211 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "zoocraft:shark_folk",
+      "spawn_category": "creature",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "properties": {
+        "zoocraft:role": {
+          "type": "int",
+          "range": [
+            0,
+            3
+          ],
+          "default": 0,
+          "client_sync": true
+        }
+      }
+    },
+    "component_groups": {
+      "zoocraft:folk_day": {
+        "minecraft:behavior.random_stroll": {
+          "priority": 6,
+          "speed_multiplier": 0.6,
+          "interval": 80
+        },
+        "minecraft:behavior.random_look_around": {
+          "priority": 9
+        },
+        "minecraft:environment_sensor": {
+          "triggers": [
+            {
+              "filters": {
+                "test": "is_daytime",
+                "value": false
+              },
+              "event": "zoocraft:folk_dusk"
+            }
+          ]
+        }
+      },
+      "zoocraft:folk_night": {
+        "minecraft:behavior.go_home": {
+          "priority": 4,
+          "speed_multiplier": 0.6,
+          "interval": 1,
+          "goal_radius": 1.2
+        },
+        "minecraft:behavior.random_look_around": {
+          "priority": 9
+        },
+        "minecraft:environment_sensor": {
+          "triggers": [
+            {
+              "filters": {
+                "test": "is_daytime",
+                "value": true
+              },
+              "event": "zoocraft:folk_dawn"
+            }
+          ]
+        }
+      },
+      "zoocraft:folk_post": {
+        "minecraft:behavior.go_home": {
+          "priority": 4,
+          "speed_multiplier": 0.6,
+          "interval": 20,
+          "goal_radius": 0.6
+        }
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": [
+          "shark_folk",
+          "mob"
+        ]
+      },
+      "minecraft:collision_box": {
+        "width": 0.7,
+        "height": 1.95
+      },
+      "minecraft:health": {
+        "value": 30,
+        "max": 30
+      },
+      "minecraft:movement": {
+        "value": 0.25
+      },
+      "minecraft:knockback_resistance": {
+        "value": 0.2
+      },
+      "minecraft:breathable": {
+        "total_supply": 15,
+        "suffocate_time": 0,
+        "breathes_air": true,
+        "breathes_water": true
+      },
+      "minecraft:home": {
+        "restriction_radius": 8,
+        "restriction_type": "random_movement"
+      },
+      "minecraft:physics": {},
+      "minecraft:jump.static": {},
+      "minecraft:movement.basic": {},
+      "minecraft:navigation.walk": {
+        "can_path_over_water": true,
+        "avoid_water": true,
+        "can_swim": true,
+        "avoid_damage_blocks": true
+      },
+      "minecraft:behavior.float": {
+        "priority": 0
+      },
+      "minecraft:behavior.panic": {
+        "priority": 1,
+        "speed_multiplier": 1.25
+      },
+      "minecraft:behavior.look_at_player": {
+        "priority": 7,
+        "look_distance": 8,
+        "probability": 0.06
+      },
+      "minecraft:interact": {
+        "interactions": [
+          {
+            "on_interact": {
+              "filters": {
+                "test": "is_family",
+                "subject": "other",
+                "value": "player"
+              }
+            },
+            "interact_text": "action.interact.zoocraft.talk"
+          }
+        ]
+      },
+      "minecraft:pushable_by_entity": {},
+      "minecraft:pushable_by_block": {},
+      "minecraft:conditional_bandwidth_optimization": {}
+    },
+    "events": {
+      "zoocraft:as_resident": {
+        "add": {
+          "component_groups": [
+            "zoocraft:folk_day"
+          ]
+        },
+        "set_property": {
+          "zoocraft:role": 0
+        }
+      },
+      "zoocraft:as_fisher": {
+        "add": {
+          "component_groups": [
+            "zoocraft:folk_post"
+          ]
+        },
+        "set_property": {
+          "zoocraft:role": 1
+        }
+      },
+      "zoocraft:as_guard": {
+        "add": {
+          "component_groups": [
+            "zoocraft:folk_post"
+          ]
+        },
+        "set_property": {
+          "zoocraft:role": 2
+        }
+      },
+      "zoocraft:as_elder": {
+        "add": {
+          "component_groups": [
+            "zoocraft:folk_post"
+          ]
+        },
+        "set_property": {
+          "zoocraft:role": 3
+        }
+      },
+      "zoocraft:folk_dusk": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:folk_day"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:folk_night"
+          ]
+        }
+      },
+      "zoocraft:folk_dawn": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:folk_night"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "zoocraft:folk_day"
+          ]
+        }
+      }
+    }
+  }
+}

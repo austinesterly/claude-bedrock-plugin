@@ -1,0 +1,42 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:shark_folk",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "resident": "textures/entity/zoocraft/shark_folk_resident",
+        "fisher": "textures/entity/zoocraft/shark_folk_fisher",
+        "guard": "textures/entity/zoocraft/shark_folk_guard",
+        "elder": "textures/entity/zoocraft/shark_folk_elder"
+      },
+      "geometry": {
+        "default": "geometry.zoocraft.shark_person"
+      },
+      "animations": {
+        "idle": "animation.zoocraft.shark_folk.idle",
+        "walk": "animation.zoocraft.shark_person.walk",
+        "look_at_target": "animation.zoocraft.shark_person.look_at_target",
+        "wave": "animation.zoocraft.shark_folk.wave",
+        "move": "controller.animation.zoocraft.shark_person.move"
+      },
+      "render_controllers": [
+        "controller.render.zoocraft.shark_folk"
+      ],
+      "scripts": {
+        "initialize": [
+          "variable.offset = math.random(0, 20);"
+        ],
+        "animate": [
+          "move",
+          "look_at_target",
+          {
+            "wave": "q.distance_from_camera < 4.5 && q.modified_move_speed < 0.05"
+          }
+        ]
+      }
+    }
+  }
+}

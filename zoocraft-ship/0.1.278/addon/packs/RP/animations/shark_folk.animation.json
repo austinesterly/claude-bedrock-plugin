@@ -1,0 +1,64 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.zoocraft.shark_folk.idle": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "scale": [
+            "1",
+            "1 + math.sin(q.life_time * 70 + v.offset * 20) * 0.012",
+            "1"
+          ]
+        },
+        "tail": {
+          "rotation": [
+            0,
+            "math.sin(q.life_time * 90 + v.offset * 20) * 12",
+            0
+          ]
+        },
+        "jaw": {
+          "rotation": [
+            "math.max(0, math.sin(q.life_time * 50 + v.offset * 10) - 0.85) * 60",
+            0,
+            0
+          ]
+        },
+        "armL": {
+          "rotation": [
+            0,
+            0,
+            "-2 - math.sin(q.life_time * 70 + v.offset * 20) * 2"
+          ]
+        },
+        "armR": {
+          "rotation": [
+            0,
+            0,
+            "2 + math.sin(q.life_time * 70 + v.offset * 20) * 2"
+          ]
+        }
+      }
+    },
+    "animation.zoocraft.shark_folk.wave": {
+      "loop": true,
+      "bones": {
+        "armR": {
+          "rotation": [
+            "-150 * math.clamp(math.sin(q.life_time * 60 + v.offset * 30) * 3 - 2, 0, 1)",
+            0,
+            "(12 + math.sin(q.life_time * 540) * 18) * math.clamp(math.sin(q.life_time * 60 + v.offset * 30) * 3 - 2, 0, 1)"
+          ]
+        },
+        "jaw": {
+          "rotation": [
+            "8 * math.clamp(math.sin(q.life_time * 60 + v.offset * 30) * 3 - 2, 0, 1)",
+            0,
+            0
+          ]
+        }
+      }
+    }
+  }
+}
