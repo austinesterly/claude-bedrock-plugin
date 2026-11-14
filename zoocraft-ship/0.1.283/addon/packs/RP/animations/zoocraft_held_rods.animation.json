@@ -1,0 +1,24 @@
+{
+  "format_version": "1.10.0",
+  "animations": {
+    "animation.zoocraft.held.rod.hold": {
+      "loop": true,
+      "bones": {
+        "weapon": {
+          "rotation": [
+            "c.is_first_person ? 145.0 : 82.0",
+            "c.is_first_person ? 3.0 : 1.0",
+            "c.is_first_person ? 57.0 : 95.0"
+          ]
+        },
+        "rod": {
+          "rotation": [
+            0,
+            0,
+            "(c.is_first_person ? 50.0 : -30.0) + variable.flick"
+          ]
+        }
+      }
+    }
+  }
+}

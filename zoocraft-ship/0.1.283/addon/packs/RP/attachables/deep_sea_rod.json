@@ -1,0 +1,35 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "identifier": "zoocraft:deep_sea_rod",
+      "materials": {
+        "default": "entity_alphatest",
+        "enchanted": "entity_alphatest_glint"
+      },
+      "textures": {
+        "default": "textures/entity/zoocraft/rods/held_deep_sea_rod",
+        "enchanted": "textures/misc/enchanted_item_glint"
+      },
+      "geometry": {
+        "default": "geometry.zoocraft.held.deep_sea_rod"
+      },
+      "animations": {
+        "hold": "animation.zoocraft.held.rod.hold"
+      },
+      "scripts": {
+        "pre_animation": [
+          "variable.cd = query.cooldown_time_remaining('slot.weapon.mainhand', 0);",
+          "variable.p = variable.cd > 0.0 ? math.clamp(1.0 - variable.cd / 0.4, 0.0, 1.0) : 1.0;",
+          "variable.flick = -math.sin(variable.p * 360.0) * (variable.p < 0.5 ? 40.0 : 70.0 * (1.0 - variable.p));"
+        ],
+        "animate": [
+          "hold"
+        ]
+      },
+      "render_controllers": [
+        "controller.render.zoocraft.held_bow"
+      ]
+    }
+  }
+}
