@@ -1,0 +1,6 @@
+f58779d130b65341e6c6ce4882d9d3ea9d70b95d13c495ad87b527aa0af95979  addon\docs\Residents_test_plan.md
+76c732e19715bb7ef426320f9b93b1942a94074d2d32c3fff646c83b7bb7635a  addon\docs\status.md
+46662833e764ce2f056e184f2e897f6e03498a757d8608d46575490fc46d0f8d  addon\packs\BP\scripts\main.js
+061f8d5f700e81be4ae9ab746180ea2f52f01d1e0ba7dfdcde183043535a4c2d  addon\packs\BP\scripts\ui\residentMenu.js
+66a58513620405cbcc78b9c44a51e9c2105c56de7a7f1b3c697b3b37185e15ac  addon\packs\BP\scripts\ui\talkRules.js
+467e9b8532705641abac243565184d302771a2fcbe1db9ec7567f9050ff945b0  addon\tests\logic.test.mjs
