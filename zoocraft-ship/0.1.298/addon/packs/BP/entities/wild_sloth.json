@@ -1,0 +1,91 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "zoocraft:wild_sloth",
+      "spawn_category": "creature",
+      "is_spawnable": true,
+      "is_summonable": true
+    },
+    "component_groups": {
+      "zoocraft:coat_0": {
+        "minecraft:variant": {
+          "value": 0
+        }
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": [
+          "wild_sloth",
+          "sloth",
+          "mob"
+        ]
+      },
+      "minecraft:nameable": {},
+      "minecraft:health": {
+        "value": 10,
+        "max": 10
+      },
+      "minecraft:behavior.tempt": {
+        "priority": 3,
+        "speed_multiplier": 1.1,
+        "within_radius": 8,
+        "items": [
+          "zoocraft:leafy_ration"
+        ]
+      },
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:breathable": {
+        "total_supply": 15,
+        "suffocate_time": 0
+      },
+      "minecraft:collision_box": {
+        "width": 0.6,
+        "height": 0.55
+      },
+      "minecraft:navigation.walk": {
+        "can_path_over_water": true,
+        "avoid_water": true,
+        "avoid_damage_blocks": true
+      },
+      "minecraft:movement.basic": {},
+      "minecraft:movement": {
+        "value": 0.08
+      },
+      "minecraft:jump.static": {},
+      "minecraft:physics": {},
+      "minecraft:pushable_by_entity": {},
+      "minecraft:pushable_by_block": {},
+      "minecraft:conditional_bandwidth_optimization": {},
+      "minecraft:behavior.float": {
+        "priority": 0
+      },
+      "minecraft:behavior.random_stroll": {
+        "priority": 6,
+        "interval": 200,
+        "speed_multiplier": 0.9,
+        "xz_dist": 7,
+        "y_dist": 1
+      },
+      "minecraft:behavior.look_at_player": {
+        "priority": 9,
+        "look_distance": 6,
+        "probability": 0.04
+      },
+      "minecraft:behavior.random_look_around": {
+        "priority": 10
+      },
+      "minecraft:persistent": {}
+    },
+    "events": {
+      "minecraft:entity_spawned": {
+        "add": {
+          "component_groups": [
+            "zoocraft:coat_0"
+          ]
+        }
+      }
+    }
+  }
+}

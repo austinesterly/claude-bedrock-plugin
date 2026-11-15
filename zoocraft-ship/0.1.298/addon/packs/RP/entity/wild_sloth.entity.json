@@ -1,0 +1,35 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:wild_sloth",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/zoocraft/sloth"
+      },
+      "geometry": {
+        "default": "geometry.zoocraft.sloth"
+      },
+      "animations": {
+        "walk": "animation.zoocraft.sloth.walk",
+        "look_at_target": "animation.zoocraft.sloth.look_at_target"
+      },
+      "render_controllers": [
+        "controller.render.zoocraft.sloth"
+      ],
+      "scripts": {
+        "scale": "1.0",
+        "animate": [
+          "walk",
+          "look_at_target"
+        ]
+      },
+      "spawn_egg": {
+        "base_color": "#806c52",
+        "overlay_color": "#decca8"
+      }
+    }
+  }
+}
