@@ -1,0 +1,8 @@
+c2d3b832007b3a56d8ce9f13063ce64a76091045dd6c2c3d6babdf1ddc805801  addon\docs\Residents_test_plan.md
+e466f3e64dddb4042d1bf36420437db5b7c5e1f34fcae2ca423a9a7e7821d1a3  addon\docs\status.md
+871223d4e831cccad6415c76331f6336b51bf5870c3589a2fb975845a66f052b  addon\packs\BP\scripts\data\balance.js
+3f87d2515fa12fb7f2d8f55e00c4bc541536ace01435d1f5dd3c5cacdf738a3c  addon\packs\BP\scripts\fishing\rodRules.js
+2db5496d99db6f13824223acd5f714fe4bbd3d1af392623a16a1dda7ed83c690  addon\packs\BP\scripts\fishing\rods.js
+34920ea8a5ea20701df053ffd2cba0b047476771295febb2b9e53f626a27a597  addon\packs\BP\scripts\main.js
+672d6fae7eaf66ac16bdf51eccb4a6f891b0f2b4f5d3e5c03c9c6d54b5b1ed67  addon\packs\RP\texts\en_US.lang
+5caecab8b814c635ab6b398100411a8b8ac3a01d073a331f1ee2b782777a512e  addon\tests\logic.test.mjs

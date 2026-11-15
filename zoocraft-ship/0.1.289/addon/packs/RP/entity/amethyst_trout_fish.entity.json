@@ -1,0 +1,38 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:amethyst_trout_fish",
+      "materials": {
+        "default": "salmon"
+      },
+      "textures": {
+        "default": "textures/entity/zoocraft/fish/amethyst_trout"
+      },
+      "geometry": {
+        "default": "geometry.salmon"
+      },
+      "scripts": {
+        "pre_animation": [
+          "variable.ZRot = !query.is_in_water ? math.cos((query.time_stamp + query.frame_alpha) * 14.32) * 90 : 0.0;",
+          "variable.AnimationAmountBlend = query.life_time * 8.0 + query.modified_distance_moved * 10.0;"
+        ],
+        "animate": [
+          "general"
+        ]
+      },
+      "animations": {
+        "flop": "animation.salmon.flop",
+        "swim": "animation.salmon.swim",
+        "general": "controller.animation.fish.general"
+      },
+      "render_controllers": [
+        "controller.render.salmon"
+      ],
+      "spawn_egg": {
+        "base_color": "#5e3591",
+        "overlay_color": "#e57ac0"
+      }
+    }
+  }
+}
