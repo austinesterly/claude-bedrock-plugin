@@ -1,0 +1,33 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "zoocraft:volatile_totem_dwelling"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "VVV",
+      "VXV",
+      "VVV"
+    ],
+    "key": {
+      "V": {
+        "item": "zoocraft:volatile_void_essence"
+      },
+      "X": {
+        "item": "minecraft:bed"
+      }
+    },
+    "result": {
+      "item": "zoocraft:volatile_totem_dwelling",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "zoocraft:volatile_void_essence"
+      }
+    ]
+  }
+}

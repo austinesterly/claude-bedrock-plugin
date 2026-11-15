@@ -1,0 +1,26 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "zoocraft:volatile_totem_dwelling",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:icon": {
+        "textures": {
+          "default": "zoocraft:volatile_totem_dwelling"
+        }
+      },
+      "minecraft:display_name": {
+        "value": "item.zoocraft:volatile_totem_dwelling.name"
+      },
+      "minecraft:max_stack_size": {
+        "value": 1
+      },
+      "minecraft:glint": true,
+      "zoocraft:volatile_totem": {}
+    }
+  }
+}

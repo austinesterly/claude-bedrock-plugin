@@ -1,0 +1,33 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "zoocraft:volatile_totem_zoo"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "VVV",
+      "VXV",
+      "VVV"
+    ],
+    "key": {
+      "V": {
+        "item": "zoocraft:volatile_void_essence"
+      },
+      "X": {
+        "item": "minecraft:egg"
+      }
+    },
+    "result": {
+      "item": "zoocraft:volatile_totem_zoo",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "zoocraft:volatile_void_essence"
+      }
+    ]
+  }
+}
