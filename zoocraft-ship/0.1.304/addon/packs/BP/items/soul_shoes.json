@@ -1,0 +1,29 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "zoocraft:soul_shoes",
+      "menu_category": {
+        "category": "equipment",
+        "group": "minecraft:itemGroup.name.boots"
+      }
+    },
+    "components": {
+      "minecraft:icon": {
+        "textures": {
+          "default": "zoocraft:soul_shoes"
+        }
+      },
+      "minecraft:display_name": {
+        "value": "item.zoocraft:soul_shoes.name"
+      },
+      "minecraft:max_stack_size": {
+        "value": 1
+      },
+      "minecraft:wearable": {
+        "slot": "slot.armor.feet",
+        "protection": 0
+      }
+    }
+  }
+}
