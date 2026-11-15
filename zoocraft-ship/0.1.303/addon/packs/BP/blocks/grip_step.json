@@ -1,0 +1,356 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:block": {
+    "description": {
+      "identifier": "zoocraft:grip_step",
+      "menu_category": {
+        "category": "none"
+      },
+      "states": {
+        "zoocraft:h": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ]
+      }
+    },
+    "components": {
+      "minecraft:geometry": "minecraft:geometry.full_block",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "zoocraft_grip_step",
+          "render_method": "alpha_test",
+          "ambient_occlusion": 0.0,
+          "face_dimming": false
+        }
+      },
+      "minecraft:collision_box": [
+        {
+          "origin": [
+            -8,
+            0,
+            -8
+          ],
+          "size": [
+            16,
+            16,
+            16
+          ]
+        }
+      ],
+      "minecraft:selection_box": false,
+      "minecraft:destructible_by_mining": false,
+      "minecraft:destructible_by_explosion": false,
+      "minecraft:light_dampening": 0,
+      "minecraft:loot": "loot_tables/empty.json",
+      "minecraft:tick": {
+        "interval_range": [
+          40,
+          40
+        ],
+        "looping": true
+      },
+      "zoocraft:grip_step": {}
+    },
+    "permutations": [
+      {
+        "condition": "query.block_state('zoocraft:h') == 1",
+        "components": {
+          "minecraft:collision_box": [
+            {
+              "origin": [
+                -8,
+                0,
+                -8
+              ],
+              "size": [
+                16,
+                1,
+                16
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:h') == 2",
+        "components": {
+          "minecraft:collision_box": [
+            {
+              "origin": [
+                -8,
+                0,
+                -8
+              ],
+              "size": [
+                16,
+                2,
+                16
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:h') == 3",
+        "components": {
+          "minecraft:collision_box": [
+            {
+              "origin": [
+                -8,
+                0,
+                -8
+              ],
+              "size": [
+                16,
+                3,
+                16
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:h') == 4",
+        "components": {
+          "minecraft:collision_box": [
+            {
+              "origin": [
+                -8,
+                0,
+                -8
+              ],
+              "size": [
+                16,
+                4,
+                16
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:h') == 5",
+        "components": {
+          "minecraft:collision_box": [
+            {
+              "origin": [
+                -8,
+                0,
+                -8
+              ],
+              "size": [
+                16,
+                5,
+                16
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:h') == 6",
+        "components": {
+          "minecraft:collision_box": [
+            {
+              "origin": [
+                -8,
+                0,
+                -8
+              ],
+              "size": [
+                16,
+                6,
+                16
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:h') == 7",
+        "components": {
+          "minecraft:collision_box": [
+            {
+              "origin": [
+                -8,
+                0,
+                -8
+              ],
+              "size": [
+                16,
+                7,
+                16
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:h') == 8",
+        "components": {
+          "minecraft:collision_box": [
+            {
+              "origin": [
+                -8,
+                0,
+                -8
+              ],
+              "size": [
+                16,
+                8,
+                16
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:h') == 9",
+        "components": {
+          "minecraft:collision_box": [
+            {
+              "origin": [
+                -8,
+                0,
+                -8
+              ],
+              "size": [
+                16,
+                9,
+                16
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:h') == 10",
+        "components": {
+          "minecraft:collision_box": [
+            {
+              "origin": [
+                -8,
+                0,
+                -8
+              ],
+              "size": [
+                16,
+                10,
+                16
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:h') == 11",
+        "components": {
+          "minecraft:collision_box": [
+            {
+              "origin": [
+                -8,
+                0,
+                -8
+              ],
+              "size": [
+                16,
+                11,
+                16
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:h') == 12",
+        "components": {
+          "minecraft:collision_box": [
+            {
+              "origin": [
+                -8,
+                0,
+                -8
+              ],
+              "size": [
+                16,
+                12,
+                16
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:h') == 13",
+        "components": {
+          "minecraft:collision_box": [
+            {
+              "origin": [
+                -8,
+                0,
+                -8
+              ],
+              "size": [
+                16,
+                13,
+                16
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:h') == 14",
+        "components": {
+          "minecraft:collision_box": [
+            {
+              "origin": [
+                -8,
+                0,
+                -8
+              ],
+              "size": [
+                16,
+                14,
+                16
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:h') == 15",
+        "components": {
+          "minecraft:collision_box": [
+            {
+              "origin": [
+                -8,
+                0,
+                -8
+              ],
+              "size": [
+                16,
+                15,
+                16
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
