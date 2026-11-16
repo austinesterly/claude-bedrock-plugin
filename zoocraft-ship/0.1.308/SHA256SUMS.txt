@@ -1,0 +1,5 @@
+26b9e5aee49e3f805d271a3985b1918f6ecd54f56c0f3f0fa7c7657bfe7285e9  addon\docs\Residents_test_plan.md
+d472765cc53e08317ea4666892a5de8f009b7b369ce7705afbefb474432763b0  addon\packs\BP\scripts\data\balance.js
+d6ff40fede06087c0952efcb5892a160a98a56948f726308b48341023469f68d  addon\packs\BP\scripts\world\lab.js
+45a22659b0bd3351f155755066f3713fe772422de104ef7fa654d08f1499b352  addon\packs\BP\scripts\world\labRules.js
+c50f505ecd2cecd5e409304c66a4f15ed7a177e57fed70dfb6857f7ca1a1b9d1  addon\tests\logic.test.mjs
