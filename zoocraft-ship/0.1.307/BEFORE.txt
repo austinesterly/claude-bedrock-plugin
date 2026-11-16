@@ -1,0 +1,8 @@
+4a77eaebbc90322eef6bc9ce3f081d47a1740e106344821c985c04c22a67309d  addon\packs\BP\scripts\data\balance.js
+5f185b84c0199ef562d06ab22252d7423ca4b53dff938afe62ea2f02decb2db2  addon\packs\BP\scripts\data\residents.js
+6fa4b5b4125b4c6555941abd6f40ca18a7c5c8e508ba24e3ac1b1ddf60c40eae  addon\packs\BP\scripts\equipment\ashWear.js
+6ce0d0f621603c9a30c958e691fb32698624497f222b797a34e7b21815e0c350  addon\packs\BP\scripts\equipment\hanvil.js
+8b07255bd5a63323f865c0ecd2e2af062335b211707a71347515a19c71da79a2  addon\packs\BP\scripts\equipment\hanvilRules.js
+ef2575de1679ccbfcb150ff136a03e61471cbb39dfaf7790dcc3b240e1739a52  addon\packs\RP\texts\en_US.lang
+ef2248d32f7f90b4e70f5c95ceb60157829e029bd0e42ea1770a57df8dc92a57  addon\packs\RP\textures\item_texture.json
+ccf8e3d50fbaa04ee9b357218e7bf252f3e6d5993cc3f13f0bd477cc2a2a077d  addon\tests\logic.test.mjs
