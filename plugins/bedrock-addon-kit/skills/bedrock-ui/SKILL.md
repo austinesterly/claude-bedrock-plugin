@@ -24,8 +24,8 @@ Every way an add-on can put UI on screen, checked against the stable `@minecraft
 | Shared leaderboard | Scoreboard sidebar (`setObjectiveAtDisplaySlot`) | Yes | `references/hud-and-text.md` |
 | Story conversation with a character portrait | NPC dialogue scenes + `/dialogue` (+ `/scriptevent` to scripts) | Yes | `references/npc-dialogue.md`, `templates/npc-dialogue` |
 | Real item slots (storage, backpack) | Entity `minecraft:inventory` container | Yes | `references/containers.md` |
-| Custom chest block | `minecraft:block_entity.container` | **Experimental** | `references/containers.md` |
-| "Chest GUI" menu | ActionForm with item icons (default) or community tricks | Form: yes | `references/containers.md` |
+| Custom chest block | `minecraft:block_entity.container` | **Experimental** in 26.60; no toggle in Preview 26.70.23+ | `references/containers.md` |
+| "Chest GUI" menu | ActionForm with item icons (default); `VirtualContainer` is **Beta** (Preview 26.70.24) | Form: yes | `references/containers.md` |
 | Different look for a server form, custom HUD art | JSON UI in the resource pack | **Not a stable creator feature** | `references/json-ui.md`, `templates/json-ui-form-layout` |
 
 Default: script forms. Reach for JSON UI only for looks, and only with a working fallback.

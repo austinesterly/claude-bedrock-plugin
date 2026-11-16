@@ -1,6 +1,57 @@
 # Experimental and upcoming features in recent changelogs (generated)
 
-Generated on **2026-11-09** from feedback.minecraft.net (official Zendesk API). Each release lists its "Experimental ..." sections word for word, then other bullets that mention an experiment or beta (often a feature graduating out of an experiment). Newest first. Toggle names are as Mojang writes them in world settings > Experiments.
+Generated on **2026-11-16** from feedback.minecraft.net (official Zendesk API). Each release lists its "Experimental ..." sections word for word, then other bullets that mention an experiment or beta (often a feature graduating out of an experiment). Newest first. Toggle names are as Mojang writes them in world settings > Experiments.
+
+## Minecraft Beta & Preview - 26.70.24 (2026-11-10)
+
+Source: https://feedback.minecraft.net/hc/en-us/articles/50285693907213-Minecraft-Beta-Preview-26-70-24
+
+### Experimental Technical Updates
+
+#### Actor
+
+- Passenger of block will stop being passenger when the behavior pack is removed from the world
+
+#### API
+
+- Added beta script API access to the `minecraft:climbable` block component, which has the following properties
+  - `canClimb` returns whether a block can be climbed
+  - `canHoldPositionWhileSneaking` returns if a player can hold their position on this block when sneaking
+- Added `class VirtualContainer` to `beta`, a container that only exists in memory and can be shown to players as a chest style screen
+- Added `property VirtualContainer.title` and `method VirtualContainer.getViewers` to `beta`
+- Added `method VirtualContainer.open` and `method VirtualContainer.close` to `beta` for showing a virtual container to a player and closing it again
+- Added `class VirtualContainerOpenError` and `enum VirtualContainerOpenErrorReason` to `beta`, thrown by `VirtualContainer.open` when the screen request can't be sent to a player
+- Added `class VirtualContainerManager` and `property World.virtualContainerManager` to `beta` for creating virtual containers
+- Added `interface VirtualContainerOptions` to `beta`
+- Added `class VirtualContainerItemChangeAfterEvent`, `class VirtualContainerItemChangeAfterEventSignal` and `property WorldAfterEvents.virtualContainerItemChange` to `beta`
+- Added `class VirtualContainerCloseAfterEvent`, `class VirtualContainerCloseAfterEventSignal`, `enum VirtualContainerCloseReason` and `property WorldAfterEvents.virtualContainerClose` to `beta`
+- Added `interface VirtualContainerEventOptions` to `beta` for subscribing to virtual container events of specific containers only
+- Added shulker box support to `ItemInventoryComponent` in `beta`
+- In `beta`, `Dimension.playSound` now attaches sounds to an entity when the entity is passed as the location, making playback follow the entity; entity-attached sounds cannot currently be broadcast
+- Added the beta method `setContext`/`getContexts` in `@minecraft/diagnostics`, which sets a named Sentry context of string, number, and boolean values that is attached to captured events.
+
+#### Blocks
+
+- Added the experimental `minecraft:climbable` block component, which defines the climbable properties of a block. It has two boolean fields
+  - `can_climb` when set to true, allows an entity to climb this block when its feet share the same position as the block
+  - `can_hold_position_while_sneaking` when set to true, allows a player to hold their position on this block if sneaking when their feet share the same position as the block - In the case of `can_climb` set to false and `can_hold_position_while_sneaking` set to true, the block may not be climbed or descended, but a player can stop their fall by sneaking while their feet occupy the same position as the block
+  - Requires format version beta and Upcoming Creator Features experiment
+
+### Other experiment and beta mentions
+
+- Released `class PlayerCursorItemGrabAfterEvent` from `beta` to `v2.12.0`
+- Released `class PlayerCursorItemGrabAfterEventSignal` from `beta` to `v2.12.0`
+- Released `class PlayerCursorItemReleaseAfterEvent` from `beta` to `v2.12.0`
+- Released `class PlayerCursorItemReleaseAfterEventSignal` from `beta` to `v2.12.0`
+- Released `property WorldAfterEvents.playerCursorItemGrab` from `beta` to `v2.12.0`
+- Released `property WorldAfterEvents.playerCursorItemRelease` from `beta` to `v2.12.0`
+- Released `class BlockRecipeProcessingComponent` from `beta` to `V2.12.0`
+- Released `class BlockRecipeCraftingComponent` from `beta` to `V2.12.0`
+- Released `class RecipeCraftingContext` from `beta` to `V2.12.0`
+- Released `class InvalidRecipeError` from `beta` to `V2.12.0`
+- Moved the recipe crafting event APIs from `beta` to `v2.12.0`
+- Added the modifiable Beta-only field to an entity's description field `clear_behaviors_on_component_changes` to opt into clearing a mob's existing AI components when any component changes occur; it defaults to `false` for Beta documents
+- For Mobs using the Beta documents, AI goals no longer rebuild all goals after detecting a Mob has had component changes and instead only remove affected goals that are replaced or added, preserving existing goals
 
 ## Minecraft Beta & Preview - 26.70.23 (2026-11-03)
 
@@ -1065,23 +1116,6 @@ Source: https://feedback.minecraft.net/hc/en-us/articles/48228443785101-Minecraf
 - Releasing `PrimitiveShapesManager.getShapes` from beta to 2.10.0.
 - Releasing `PrimitiveShapeQueryOptions` from beta to 2.10.0.
 - Moved the `cloneBlocks` method from `beta` to `v2.10.0`, allowing regions of blocks to be cloned from one area of a dimension to another with support for clone modes and an optional block filter
-
-## Minecraft Beta & Preview - 26.50.25 (2026-08-11)
-
-Source: https://feedback.minecraft.net/hc/en-us/articles/48053406322829-Minecraft-Beta-Preview-26-50-25
-
-### Experimental Technical Updates
-
-#### API
-
-- Scripting websockets no longer send a ping packet to the socket server every second, this now send every 45 seconds.
-
-### Other experiment and beta mentions
-
-- Released version 1.0.0 of `@minecraft/server-graphics`, promoting the module and all of its APIs out of beta
-- `world.getPackSettings()` now can return an array of strings for multiselect options in `@minecraft/server` beta
-- `PackSettingsChangeAfterEvent.settingValue` now can be an array of strings for multiselect options in `@minecraft/server` beta
-- Released horizontal multi-blocks, these are blocks defined with the `minecraft:multi_block` trait with a `direction` field that is horizontal. Upcoming Creator Features experiment is still required for them if `format_version` is less than 1.26.50
 
 ## Minecraft: Bedrock Edition 26.40 (2026-07-31)
 

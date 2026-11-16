@@ -1,6 +1,6 @@
 # What creators can do (as of 26.60 stable, 26.70 in Preview)
 
-Curated 2026-10-06, updated 2026-11-02. "Stable" = works in a world with no experiments. Check `api-surface.md` for exact Script API names.
+Curated 2026-10-06, updated 2026-11-16. "Stable" = works in a world with no experiments. Check `api-surface.md` for exact Script API names.
 
 ## Works with no experiments
 
@@ -28,6 +28,8 @@ Curated 2026-10-06, updated 2026-11-02. "Stable" = works in a world with no expe
 | `world.beforeEvents.chatSend` (chat parsing) | Beta APIs | Beta only. Use slash commands |
 | Block containers (`block_entity.container`, up to 54 slots, `show_ui_on_interaction`) | Upcoming Creator Features | Experimental in stable 26.60; no toggle from Preview 26.70.23, so stable once 26.70 ships |
 | Block `entity_storage` | Upcoming Creator Features | Experimental through Preview 26.70.23 |
+| Virtual containers (chest-style screens with no block, `VirtualContainer`) | Beta APIs | Beta from Preview 26.70.24 |
+| Block `minecraft:climbable` | Upcoming Creator Features, beta block format | Experimental from Preview 26.70.24 |
 | `neighbor_change`, `vibration_properties`, `enchantment_power_transmitter` block components; named ticks script API | Upcoming Creator Features / Beta APIs | Experimental in stable 26.60; released in Preview 26.70.23 |
 | Points of interest, `/locate poi` | Upcoming Creator Features | Experimental in stable; released in Preview 26.70.20, so stable when 26.70 ships |
 | `collision_box` min/max form | Upcoming Creator Features | Experimental in 26.60; standard with no toggle at format 1.26.70 in Preview 26.70.22 |

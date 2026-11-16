@@ -67,7 +67,11 @@ Per-player storage entity: spawn an `ns:backpack` entity (no model, no collision
 
 ## Block containers (experimental)
 
-`minecraft:block_entity` with `"container": { "slot_count": 1-54 }` (Learn block component page), plus `dynamic_properties`. Requires `format_version` 1.26.20+ and the **Upcoming Creator Features** experiment (1.26.30 notes); vanilla 1.26.50 already ships `ui/data_driven_container_screen.json` to draw it. Scripts reach a block's container through `block.getComponent("minecraft:inventory")` (`BlockInventoryComponent.container`, stable for vanilla containers). Don't ship this in normal worlds until it leaves the experiment; check `../../bedrock-whats-new/references/capabilities.md`.
+`minecraft:block_entity` with `"container": { "slot_count": 1-54 }` (Learn block component page), plus `dynamic_properties`. Requires `format_version` 1.26.20+ and the **Upcoming Creator Features** experiment (1.26.30 notes); vanilla 1.26.50 already ships `ui/data_driven_container_screen.json` to draw it. Scripts reach a block's container through `block.getComponent("minecraft:inventory")` (`BlockInventoryComponent.container`, stable for vanilla containers). Preview 26.70.23 releases `container` from the experiment (format 1.26.20+, with `title` and `show_ui_on_interaction`), so it is stable once 26.70 ships. Until then don't ship it in normal worlds; check `../../bedrock-whats-new/references/capabilities.md`. Mojang asks creators not to edit `ui/data_driven_container_screen.json` or the `data_driven_container` namespace, which has no compatibility guarantee.
+
+## Virtual containers (beta, Preview 26.70.24)
+
+A real "chest GUI" with no block or entity behind it: `world.virtualContainerManager` creates a `VirtualContainer` (`VirtualContainerOptions`) that lives only in memory; `open(player)` shows it as a chest-style screen and `close` hides it; `title` and `getViewers()`; `world.afterEvents.virtualContainerItemChange` and `virtualContainerClose` (with `VirtualContainerEventOptions` to filter by container). `open` throws `VirtualContainerOpenError` when the screen can't be sent. Needs the Beta APIs experiment, so keep using forms or real chests in shipped packs.
 
 ## Vanilla blocks as storage
 

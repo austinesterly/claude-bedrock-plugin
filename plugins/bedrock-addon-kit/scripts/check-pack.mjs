@@ -339,6 +339,7 @@ const EXPERIMENTAL = {
   "minecraft:storage_item": "an experiment (marked [EXPERIMENTAL] in Mojang's definitions)",
   "minecraft:bundle_interaction": "an experiment (marked [EXPERIMENTAL] in Mojang's definitions)",
   "minecraft:time_marker_sensor": "Upcoming Creator Features and the beta entity format version (Preview 26.70.20)",
+  "minecraft:climbable": "Upcoming Creator Features and the beta block format version (Preview 26.70.24)",
   "minecraft:entity_rotation_always_follows_head": "the beta entity format version (Preview 26.70.23)",
   "minecraft:spherical_look_control": "the beta entity format version (Preview 26.70.23)",
 };

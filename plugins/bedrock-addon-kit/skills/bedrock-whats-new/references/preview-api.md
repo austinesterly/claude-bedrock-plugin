@@ -1,10 +1,10 @@
 # Upcoming and beta Script APIs (generated)
 
-Generated on **2026-11-09** from the official `index.d.ts` typings on npm. Labels: **[next stable]** is in the `rc` build (ships in the next game release, works without experiments once it does); **[beta]** needs the Beta APIs experiment and a `-beta` module version in the manifest; **[beta module]** has no stable release at all. Search for `Type.member`.
+Generated on **2026-11-16** from the official `index.d.ts` typings on npm. Labels: **[next stable]** is in the `rc` build (ships in the next game release, works without experiments once it does); **[beta]** needs the Beta APIs experiment and a `-beta` module version in the manifest; **[beta module]** has no stable release at all. Search for `Type.member`.
 
 ## @minecraft/server
 
-Stable 2.11.0, rc 2.12.0-rc.1.26.70-preview.23, beta 2.13.0-beta.1.26.70-preview.23. 64 names coming in the next stable, 258 beta-only.
+Stable 2.11.0, rc 2.12.0-rc.1.26.70-preview.24, beta 2.13.0-beta.1.26.70-preview.24. 114 names coming in the next stable, 252 beta-only.
 
 ### Block [next stable]
 
@@ -29,6 +29,8 @@ Represents a block in a dimension.
 
 The types of block components that are accessible via function Block.getComponent.
 
+- `RecipeCrafting = 'minecraft:recipe_crafting'`
+- `RecipeProcessing = 'minecraft:recipe_processing'`
 - `VibrationProperties = 'minecraft:vibration_properties'`
 
 ### BlockCustomComponent [next stable]
@@ -37,6 +39,22 @@ Contains a set of events that will be raised for a block.
 
 - `onNamedTick?: (arg0: BlockComponentNamedTickEvent, arg1: CustomComponentParameters) => void`
 - `onNeighborChanged?: (arg0: BlockComponentNeighborChangedAfterEvent, arg1: CustomComponentParameters) => void`
+
+### BlockRecipeCraftingComponent [next stable] (new type)
+
+- `static readonly componentId = 'minecraft:recipe_crafting'`
+- `getCraftingContext(player: Player): RecipeCraftingContext | undefined` Gets the recipe crafting context for a player interacting with this block.
+- `readonly players: Player[]` Returns an array of all players currently interacting with this block.
+
+### BlockRecipeProcessingComponent [next stable] (new type)
+
+- `static readonly componentId = 'minecraft:recipe_processing'`
+- `getInputItem(slot: number): ItemStack | undefined` Gets the item in the provided input slot.
+- `getInputSlotEnabled(slot: number): boolean` Gets whether an input slot is enabled for recipe processing.
+- `getOutputItem(): ItemStack | undefined` Gets the item produced by the current recipe processing inputs.
+- `readonly inputSlotCount: number` The number of addressable input slots for getInputItem, setInputItem, setInputSlotEnabled, and getInputSlotEnabled.
+- `setInputItem(slot: number, item?: ItemStack): void` Sets or clears an item in an input slot.
+- `setInputSlotEnabled(slot: number, enabled: boolean): void`
 
 ### BlockSearchOptions [next stable] (new type)
 
@@ -64,11 +82,52 @@ Describes the type of input of a device.
 
 - `GamepadAndMouse = 'GamepadAndMouse'`
 
+### InvalidRecipeError [next stable] (new type)
+
+- `readonly recipeId: string` The identifier of the invalid recipe.
+
 ### NeighborChange [next stable] (new type)
 
 - `blockPermutation: BlockPermutation` The permutation of the neighboring block after its last change during the tick.
 - `direction: Direction` Direction from the block receiving the event to the neighboring block that changed.
 - `previousPermutation: BlockPermutation` The permutation of the neighboring block before its first change during the tick.
+
+### PlayerCraftRecipeAfterEvent [next stable] (new type)
+
+- `readonly block?: Block` The block where the recipe was crafted, if applicable.
+- `readonly itemStack?: ItemStack` The item stack crafted by the player.
+- `readonly player: Player` The player who crafted the recipe.
+
+### PlayerCraftRecipeAfterEventSignal [next stable] (new type)
+
+- `subscribe(callback: (arg0: PlayerCraftRecipeAfterEvent) => void, options?: PlayerCraftRecipeEventOptions): (arg0: PlayerCraftRecipeAfterEvent) => void` Adds a callback that will be called when a player crafts a recipe.
+- `unsubscribe(callback: (arg0: PlayerCraftRecipeAfterEvent) => void): void` Removes a callback from being called when a player crafts a recipe.
+
+### PlayerCraftRecipeEventOptions [next stable] (new type)
+
+- `blockFilter?: BlockFilter` Filter for the block where the recipe is crafted.
+- `itemFilter?: ItemFilter` Filter for the item crafted by the player.
+- `playerFilter?: EntityFilter` Filter for the player crafting the recipe.
+
+### PlayerCursorItemGrabAfterEvent [next stable] (new type)
+
+- `readonly item: ItemStack` The item stack moved to the player's cursor.
+- `readonly player: Player` The player whose cursor item changed.
+
+### PlayerCursorItemGrabAfterEventSignal [next stable] (new type)
+
+- `subscribe(callback: (arg0: PlayerCursorItemGrabAfterEvent) => void): (arg0: PlayerCursorItemGrabAfterEvent) => void` Adds a callback that is called when a player grabs an item from a container to their cursor.
+- `unsubscribe(callback: (arg0: PlayerCursorItemGrabAfterEvent) => void): void` Removes a previously registered event callback.
+
+### PlayerCursorItemReleaseAfterEvent [next stable] (new type)
+
+- `readonly item: ItemStack` The item stack from the player's cursor.
+- `readonly player: Player` The player whose cursor item changed.
+
+### PlayerCursorItemReleaseAfterEventSignal [next stable] (new type)
+
+- `subscribe(callback: (arg0: PlayerCursorItemReleaseAfterEvent) => void): (arg0: PlayerCursorItemReleaseAfterEvent) => void` Adds a callback that is called when a player releases an item from their cursor to a container.
+- `unsubscribe(callback: (arg0: PlayerCursorItemReleaseAfterEvent) => void): void` Removes a previously registered event callback.
 
 ### PoiBlockInstance [next stable] (new type)
 
@@ -125,10 +184,28 @@ The base class for a text primitive.
 - `defaultVisibleToAll: boolean`
 - `hiddenFrom: Player[]`
 
+### RecipeCraftingContext [next stable] (new type)
+
+- `getInputItem(slot: number): ItemStack | undefined` Gets the item in the provided input slot.
+- `getOutputItem(): ItemStack | undefined` Gets the item produced by the currently selected recipe.
+- `readonly inputSlotCount: number` The amount of addressable input slots for getInputItem and setInputItem.
+- `readonly isValid: boolean` Whether this recipe crafting context is valid.
+- `setInputItem(slot: number, item?: ItemStack): void` Sets or clears an item in an input slot.
+- `setSelectedRecipe(recipeId: string): void` Selects a recipe for the current crafting operation.
+- `readonly validRecipes: string[]` The identifiers of the recipes that are valid for the current input items.
+
 ### ScheduledNamedTick [next stable] (new type)
 
 - `eventName: string`
 - `tickDelay: number`
+
+### WorldAfterEvents [next stable]
+
+Contains a set of events that are available across the scope of the World.
+
+- `readonly playerCraftRecipe: PlayerCraftRecipeAfterEventSignal`
+- `readonly playerCursorItemGrab: PlayerCursorItemGrabAfterEventSignal`
+- `readonly playerCursorItemRelease: PlayerCursorItemReleaseAfterEventSignal`
 
 ### BannerPattern [beta] (new type)
 
@@ -165,6 +242,12 @@ Represents a block in a dimension.
 - `static isValid(box: BlockBoundingBox): boolean` Check to see if a BlockBoundingBox is valid (i.e.
 - `static translate(box: BlockBoundingBox, delta: Vector3): BlockBoundingBox` Move a BlockBoundingBox by a given amount
 
+### BlockClimbablePropertiesComponent [beta] (new type)
+
+- `readonly canClimb: boolean` Returns whether an entity can climb this block when its feet are sharing the same position as the block.
+- `readonly canHoldPositionWhileSneaking: boolean` Returns whether a player on this block can stop descending and hold their position when sneaking.
+- `static readonly componentId = 'minecraft:climbable'`
+
 ### BlockComponentRedstoneUpdateEvent [beta]
 
 Contains information regarding a specific block redstone update event.
@@ -175,10 +258,9 @@ Contains information regarding a specific block redstone update event.
 
 The types of block components that are accessible via function Block.getComponent.
 
+- `ClimbableProperties = 'minecraft:climbable'`
 - `EntityStorage = 'minecraft:entity_storage'`
 - `ItemFrame = 'minecraft:item_frame'`
-- `RecipeCrafting = 'minecraft:recipe_crafting'`
-- `RecipeProcessing = 'minecraft:recipe_processing'`
 
 ### BlockEntityStorageComponent [beta] (new type)
 
@@ -223,22 +305,6 @@ A BlockLocationIterator returns the next block location of the block volume acro
 Contains additional options for configuring a block raycast query.
 
 - `usePreciseRaycast?: boolean`
-
-### BlockRecipeCraftingComponent [beta] (new type)
-
-- `static readonly componentId = 'minecraft:recipe_crafting'`
-- `getCraftingContext(player: Player): RecipeCraftingContext | undefined` Gets the recipe crafting context for a player interacting with this block.
-- `readonly players: Player[]` Returns an array of all players currently interacting with this block.
-
-### BlockRecipeProcessingComponent [beta] (new type)
-
-- `static readonly componentId = 'minecraft:recipe_processing'`
-- `getInputItem(slot: number): ItemStack | undefined` Gets the item in the provided input slot.
-- `getInputSlotEnabled(slot: number): boolean` Gets whether an input slot is enabled for recipe processing.
-- `getOutputItem(): ItemStack | undefined` Gets the item produced by the current recipe processing inputs.
-- `readonly inputSlotCount: number` The number of addressable input slots for getInputItem, setInputItem, setInputSlotEnabled, and getInputSlotEnabled.
-- `setInputItem(slot: number, item?: ItemStack): void` Sets or clears an item in an input slot.
-- `setInputSlotEnabled(slot: number, enabled: boolean): void`
 
 ### BlockVolumeBase [beta]
 
@@ -367,10 +433,6 @@ Represents the game rules for a world experience.
 
 - `playerWaypoints: PlayerWaypointsMode`
 
-### InvalidRecipeError [beta] (new type)
-
-- `readonly recipeId: string` The identifier of the invalid recipe.
-
 ### ItemBlockEntityStorageComponent [beta] (new type)
 
 - `static readonly componentId = 'minecraft:block_entity_storage'`
@@ -449,43 +511,6 @@ Represents a player within the world.
 - `stopAllSounds(): void`
 - `stopSound(soundId: string): void`
 
-### PlayerCraftRecipeAfterEvent [beta] (new type)
-
-- `readonly block?: Block` The block where the recipe was crafted, if applicable.
-- `readonly itemStack?: ItemStack` The item stack crafted by the player.
-- `readonly player: Player` The player who crafted the recipe.
-
-### PlayerCraftRecipeAfterEventSignal [beta] (new type)
-
-- `subscribe(callback: (arg0: PlayerCraftRecipeAfterEvent) => void, options?: PlayerCraftRecipeEventOptions): (arg0: PlayerCraftRecipeAfterEvent) => void` Adds a callback that will be called when a player crafts a recipe.
-- `unsubscribe(callback: (arg0: PlayerCraftRecipeAfterEvent) => void): void` Removes a callback from being called when a player crafts a recipe.
-
-### PlayerCraftRecipeEventOptions [beta] (new type)
-
-- `blockFilter?: BlockFilter` Filter for the block where the recipe is crafted.
-- `itemFilter?: ItemFilter` Filter for the item crafted by the player.
-- `playerFilter?: EntityFilter` Filter for the player crafting the recipe.
-
-### PlayerCursorItemGrabAfterEvent [beta] (new type)
-
-- `readonly item: ItemStack` The item stack moved to the player's cursor.
-- `readonly player: Player` The player whose cursor item changed.
-
-### PlayerCursorItemGrabAfterEventSignal [beta] (new type)
-
-- `subscribe(callback: (arg0: PlayerCursorItemGrabAfterEvent) => void): (arg0: PlayerCursorItemGrabAfterEvent) => void` Adds a callback that is called when a player grabs an item from a container to their cursor.
-- `unsubscribe(callback: (arg0: PlayerCursorItemGrabAfterEvent) => void): void` Removes a previously registered event callback.
-
-### PlayerCursorItemReleaseAfterEvent [beta] (new type)
-
-- `readonly item: ItemStack` The item stack from the player's cursor.
-- `readonly player: Player` The player whose cursor item changed.
-
-### PlayerCursorItemReleaseAfterEventSignal [beta] (new type)
-
-- `subscribe(callback: (arg0: PlayerCursorItemReleaseAfterEvent) => void): (arg0: PlayerCursorItemReleaseAfterEvent) => void` Adds a callback that is called when a player releases an item from their cursor to a container.
-- `unsubscribe(callback: (arg0: PlayerCursorItemReleaseAfterEvent) => void): void` Removes a previously registered event callback.
-
 ### PlayerDimensionChangeAfterEvent [beta]
 
 Contains information related to changes to a player's dimension having been changed.
@@ -498,19 +523,6 @@ Contains information related to changes to a player's dimension having been chan
 - `Portal = 'Portal'` The player changed dimensions through a portal.
 - `TeleportCommand = 'TeleportCommand'` The player was teleported to another dimension by a command, such as /tp or /execute, or by a script teleport.
 - `Unknown = 'Unknown'` The cause of the dimension change is not known.
-
-### PlayerItemAttackEntityBeforeEvent [beta] (new type)
-
-- `readonly aimDirection?: Vector3` The normalized world-space direction used for the attack.
-- `cancel: boolean` If set to true, the attack does not cause damage or other authoritative attack effects.
-- `readonly itemStack?: ItemStack` A snapshot of the item held by the attacking player.
-- `readonly player: Player` The player that initiated the attack.
-- `readonly target: Entity` The entity targeted by the attack.
-
-### PlayerItemAttackEntityBeforeEventSignal [beta] (new type)
-
-- `subscribe(callback: (arg0: PlayerItemAttackEntityBeforeEvent) => void): (arg0: PlayerItemAttackEntityBeforeEvent) => void` Adds a callback that runs before a player attacks an entity through an item interaction.
-- `unsubscribe(callback: (arg0: PlayerItemAttackEntityBeforeEvent) => void): void` Removes a callback from this event signal.
 
 ### PlayerPlaceBlockBeforeEvent [beta] (new type)
 
@@ -553,16 +565,6 @@ Contains information related to changes to a player's dimension having been chan
 - `subscribe(callback: (arg0: PortalActivateAfterEvent) => void): (arg0: PortalActivateAfterEvent) => void`
 - `unsubscribe(callback: (arg0: PortalActivateAfterEvent) => void): void`
 
-### RecipeCraftingContext [beta] (new type)
-
-- `getInputItem(slot: number): ItemStack | undefined` Gets the item in the provided input slot.
-- `getOutputItem(): ItemStack | undefined` Gets the item produced by the currently selected recipe.
-- `readonly inputSlotCount: number` The amount of addressable input slots for getInputItem and setInputItem.
-- `readonly isValid: boolean` Whether this recipe crafting context is valid.
-- `setInputItem(slot: number, item?: ItemStack): void` Sets or clears an item in an input slot.
-- `setSelectedRecipe(recipeId: string): void` Selects a recipe for the current crafting operation.
-- `readonly validRecipes: string[]` The identifiers of the recipes that are valid for the current input items.
-
 ### ServerMessageAfterEventSignal [beta] (new type)
 
 - `subscribe(callback: (arg0: MessageReceiveAfterEvent) => void): (arg0: MessageReceiveAfterEvent) => void` Adds a callback that will be called when an internal message is passed.
@@ -575,11 +577,84 @@ Loot item function that modifies the type of a banner that drops.
 - `readonly baseColor: string`
 - `readonly patterns: BannerPattern[]`
 
+### SoundInstance [beta]
+
+Represents a handle to a sound that has been played.
+
+- `readonly attachedEntity?: Entity`
+
 ### SystemBeforeEvents [beta]
 
 A set of events that fire before an actual action occurs.
 
 - `readonly watchdogTerminate: WatchdogTerminateBeforeEventSignal`
+
+### VirtualContainer [beta] (new type)
+
+- `close(player?: Player): number` Requests closure of the container screen of a player, or of every player viewing this container when no player is given.
+- `getViewers(): Player[]` Gets the players currently viewing this container.
+- `open(player: Player): void` Shows a chest style screen onto this container to a player.
+- `readonly title: string` The heading shown on the container screen.
+
+### VirtualContainerCloseAfterEvent [beta] (new type)
+
+- `readonly container: VirtualContainer` The container whose screen closed.
+- `readonly items: (ItemStack | undefined)[]` The contents of every slot of the container when the screen closed.
+- `readonly player: Player` The player whose screen closed.
+- `readonly reason: VirtualContainerCloseReason` Why the screen closed.
+
+### VirtualContainerCloseAfterEventSignal [beta] (new type)
+
+- `subscribe(callback: (arg0: VirtualContainerCloseAfterEvent) => void, options?: VirtualContainerEventOptions): (arg0: VirtualContainerCloseAfterEvent) => void` Adds a callback that will be called when a player's virtual container screen closes.
+- `unsubscribe(callback: (arg0: VirtualContainerCloseAfterEvent) => void): void` Removes a callback from being called when a player's virtual container screen closes.
+
+### VirtualContainerCloseReason [beta] (new type)
+
+- `PlayerClosed = 'PlayerClosed'` The player closed the screen, or their device failed to show it.
+- `PlayerDied = 'PlayerDied'` The player died while the screen was open.
+- `PlayerLeft = 'PlayerLeft'` The player left the game while the screen was open.
+- `PlayerSpectating = 'PlayerSpectating'` The player switched to spectator mode while the screen was open.
+- `ServerClosed = 'ServerClosed'` The screen was closed by the server, for example by VirtualContainer.close, or because the player changed dimension.
+- `UserBusy = 'UserBusy'` The player's device did not show the screen because the player was busy, for example with another menu, or was not ready to show it.
+
+### VirtualContainerEventOptions [beta] (new type)
+
+- `containers?: VirtualContainer[]` If this value is set, this event will only fire for the virtual containers within this collection.
+
+### VirtualContainerItemChangeAfterEvent [beta] (new type)
+
+- `readonly beforeItemStack?: ItemStack` The item that was in the slot before the change, if any.
+- `readonly container: VirtualContainer` The container that changed.
+- `readonly itemStack?: ItemStack` The item in the slot after the change, if any.
+- `readonly player: Player` The player who made the change.
+- `readonly slot: number` The slot that changed.
+
+### VirtualContainerItemChangeAfterEventSignal [beta] (new type)
+
+- `subscribe(callback: (arg0: VirtualContainerItemChangeAfterEvent) => void, options?: VirtualContainerEventOptions): (arg0: VirtualContainerItemChangeAfterEvent) => void` Adds a callback that will be called when a player changes a slot of a virtual container.
+- `unsubscribe(callback: (arg0: VirtualContainerItemChangeAfterEvent) => void): void` Removes a callback from being called when a player changes a slot of a virtual container.
+
+### VirtualContainerManager [beta] (new type)
+
+- `create(options: VirtualContainerOptions): VirtualContainer` Creates a new, empty virtual container.
+
+### VirtualContainerOpenError [beta] (new type)
+
+- `readonly reason: VirtualContainerOpenErrorReason` The VirtualContainerOpenErrorReason code that indicates why the screen request was not sent.
+
+### VirtualContainerOpenErrorReason [beta] (new type)
+
+- `ContainerScreenOpen = 'ContainerScreenOpen'` The player already has a container screen open, such as their inventory, a chest or another virtual container.
+- `PlayerDead = 'PlayerDead'` The player is dead.
+- `PlayerNotReady = 'PlayerNotReady'` The player is still loading into the world, is changing dimension, or is standing in a portal.
+- `PlayerSleeping = 'PlayerSleeping'` The player is sleeping.
+- `PlayerSpectating = 'PlayerSpectating'` The player is in spectator mode.
+- `PreviousScreenClosing = 'PreviousScreenClosing'` The player's previous container screen is still closing.
+
+### VirtualContainerOptions [beta] (new type)
+
+- `size: number` The number of slots in the container, from 1 to 54.
+- `title?: string` The heading shown on the container screen, up to 256 bytes.
 
 ### WatchdogTerminateBeforeEvent [beta] (new type)
 
@@ -602,6 +677,7 @@ A class that wraps the state of a world - a set of dimensions and the environmen
 
 - `allowCheats: boolean`
 - `broadcastClientMessage(id: string, value: string): void`
+- `readonly virtualContainerManager: VirtualContainerManager`
 
 ### WorldAfterEvents [beta]
 
@@ -610,23 +686,21 @@ Contains a set of events that are available across the scope of the World.
 - `readonly chatSend: ChatSendAfterEventSignal`
 - `readonly messageReceive: ServerMessageAfterEventSignal`
 - `readonly packSettingChange: PackSettingChangeAfterEventSignal`
-- `readonly playerCraftRecipe: PlayerCraftRecipeAfterEventSignal`
-- `readonly playerCursorItemGrab: PlayerCursorItemGrabAfterEventSignal`
-- `readonly playerCursorItemRelease: PlayerCursorItemReleaseAfterEventSignal`
 - `readonly playerUseNameTag: PlayerUseNameTagAfterEventSignal`
 - `readonly portalActivate: PortalActivateAfterEventSignal`
+- `readonly virtualContainerClose: VirtualContainerCloseAfterEventSignal`
+- `readonly virtualContainerItemChange: VirtualContainerItemChangeAfterEventSignal`
 
 ### WorldBeforeEvents [beta]
 
 A set of events that fire before an actual action occurs.
 
 - `readonly chatSend: ChatSendBeforeEventSignal`
-- `readonly playerItemAttackEntity: PlayerItemAttackEntityBeforeEventSignal`
 - `readonly playerPlaceBlock: PlayerPlaceBlockBeforeEventSignal`
 
 ## @minecraft/server-ui
 
-Stable 2.3.0, rc 2.4.0-rc.1.26.70-preview.23, beta 2.5.0-beta.1.26.70-preview.23. 10 names coming in the next stable, 4 beta-only.
+Stable 2.3.0, rc 2.4.0-rc.1.26.70-preview.24, beta 2.5.0-beta.1.26.70-preview.24. 10 names coming in the next stable, 4 beta-only.
 
 ### ButtonData [next stable] (new type)
 
@@ -670,11 +744,11 @@ Options for configuring a slider component.
 
 ## @minecraft/server-graphics
 
-Stable 1.0.0, rc 1.0.0-rc.1.26.60-preview.23, beta 1.1.0-beta.1.26.70-preview.23. 0 names coming in the next stable, 0 beta-only.
+Stable 1.0.0, rc 1.0.0-rc.1.26.60-preview.23, beta 1.1.0-beta.1.26.70-preview.24. 0 names coming in the next stable, 0 beta-only.
 
 ## @minecraft/server-gametest
 
-No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.70-preview.23). For automated tests in test worlds.
+No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.70-preview.24). For automated tests in test worlds.
 
 ### FenceConnectivity [beta module] (new type)
 
@@ -985,7 +1059,7 @@ Main class for GameTest functions, with helpers and data for manipulating the re
 
 ## @minecraft/server-admin
 
-No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.70-preview.23). Bedrock Dedicated Server only.
+No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.70-preview.24). Bedrock Dedicated Server only.
 
 ### AdminBeforeEvents [beta module] (new type)
 
@@ -1166,7 +1240,7 @@ A globally available object that returns a list of dedicated-server configured v
 
 ## @minecraft/server-net
 
-No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.70-preview.23). Bedrock Dedicated Server only.
+No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.70-preview.24). Bedrock Dedicated Server only.
 
 ### beforeEvents [beta module] (new type)
 
@@ -1577,6 +1651,8 @@ Represents the unique type of network packet.
 - `UpdateSoftEnumPacket = 'UpdateSoftEnumPacket'`
 - `UpdateSubChunkBlocksPacket = 'UpdateSubChunkBlocksPacket'`
 - `UpdateTradePacket = 'UpdateTradePacket'`
+- `VirtualContainerClosePacket = 'VirtualContainerClosePacket'`
+- `VirtualContainerOpenPacket = 'VirtualContainerOpenPacket'`
 - `VoxelShapesPacket = 'VoxelShapesPacket'`
 
 ### PacketReceiveBeforeEventSignal [beta module] (new type)
@@ -1685,7 +1761,7 @@ An error thrown when attempting to use a WebSocket while the socket is not conne
 
 ## @minecraft/debug-utilities
 
-No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.70-preview.23). 
+No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.70-preview.24). 
 
 ### collectPluginStats [beta module] (new type)
 
