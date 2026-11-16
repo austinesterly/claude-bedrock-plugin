@@ -1,0 +1,4 @@
+44affb57adc533d088c3289e3b0d60215b289866b8aa28bc8e57c81008450e2e  addon\docs\Residents_test_plan.md
+659223c76aed7781bc48e8e2a14860f6f97abc182fd800731a32cb16df9bdf87  addon\packs\BP\scripts\equipment\ashWear.js
+08eb4faf992099d8b7067d2f72a66926814cb086ebc7380a7d199db0bd055b01  addon\packs\BP\scripts\residents\ashRules.js
+1a606ebd7214e7d22ba0b83cc654cb6521f6d48f5087ee9b43af7be362afedc0  addon\tests\logic.test.mjs
