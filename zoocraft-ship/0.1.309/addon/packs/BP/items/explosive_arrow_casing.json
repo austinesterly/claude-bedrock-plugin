@@ -1,0 +1,28 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "zoocraft:explosive_arrow_casing",
+      "menu_category": {
+        "category": "equipment",
+        "group": "minecraft:itemGroup.name.arrow"
+      }
+    },
+    "components": {
+      "minecraft:icon": {
+        "textures": {
+          "default": "zoocraft:explosive_arrow_casing"
+        }
+      },
+      "minecraft:display_name": {
+        "value": "item.zoocraft:explosive_arrow_casing.name"
+      },
+      "minecraft:max_stack_size": {
+        "value": 64
+      },
+      "minecraft:allow_off_hand": {
+        "value": true
+      }
+    }
+  }
+}

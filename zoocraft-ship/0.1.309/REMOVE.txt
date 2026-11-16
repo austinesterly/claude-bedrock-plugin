@@ -1,0 +1,2 @@
+87acec1fb97e882be09308b62dada63f2b69e2e613aa56fd5d4ea673ea834a55  addon\packs\BP\items\explosive_arrow.json
+aea744b809e1acc33ad3950816cb401a5ad8756d948944c6ca46d1541cad93ac  addon\packs\RP\textures\items\zoocraft\explosive_arrow.png
