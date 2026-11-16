@@ -1,0 +1,9 @@
+44affb57adc533d088c3289e3b0d60215b289866b8aa28bc8e57c81008450e2e  addon\docs\Residents_test_plan.md
+d3b1cd39e6782b076ff91640f7f2de749ad6873ba4801c0de303386f4bce23e5  addon\packs\BP\entities\hanvil_store.json
+6d70ec1b2cb19bf88c2abfd991e62ffb6ac262321bd38f58f8475c5d6ca0c2a5  addon\packs\BP\scripts\equipment\hanvil.js
+c6d92a8777e69f6aa55fbfe2fdea54b57a1a4dac7091bf9848216a88b4243453  addon\packs\RP\textures\ui\zoocraft\hanvil\cell.png
+4877fed36d2239937b2ac741fb2032ec5b90c84b568c5760bcd270f342e76383  addon\packs\RP\textures\ui\zoocraft\hanvil\dialog.json
+20406fa0767e40979d1052bf08785ee941abe96aaa71e30dcb327cb356fdfe24  addon\packs\RP\textures\ui\zoocraft\hanvil\dialog.png
+929e2d96798f2275384f2b10159e386b11d33f1303ab40d926cb2cfba66bbbdd  addon\packs\RP\textures\ui\zoocraft\hanvil\hammer.png
+a1f7e4847ce521272fb3f2941344a1ed263f6206e162844614c978667606a323  addon\packs\RP\ui\redstone_screen.json
+1a606ebd7214e7d22ba0b83cc654cb6521f6d48f5087ee9b43af7be362afedc0  addon\tests\logic.test.mjs

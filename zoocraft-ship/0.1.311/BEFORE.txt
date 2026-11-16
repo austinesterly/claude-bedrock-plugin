@@ -1,0 +1,4 @@
+76c7e3fa724385d9b4fdf1eaf26989ce89c2ea4a4e67d2e0e4699d1e8ef9c665  addon\docs\Residents_test_plan.md
+f96da65087d6c9bdca0584c28ba51d9cb300405d8920b95fd1c3a793f422aca3  addon\packs\BP\entities\hanvil_store.json
+90a488d021e348660c9f82d0d28ab4c069ac7e8f29df6c70fbe1025f00b8ba11  addon\packs\BP\scripts\equipment\hanvil.js
+9f6edf41b48068f764e5d1d0316c3eb5403b3bc55587f30eb4a470a8a2a8f470  addon\tests\logic.test.mjs
