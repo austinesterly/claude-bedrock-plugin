@@ -1,0 +1,7 @@
+f38a504e0d13ccdbc4496067ec33e83e3863c6e906cf12f7b92fc9ead90ddb30  addon\docs\Residents_test_plan.md
+b83c15fa53ebfa7f7ad5658f7b5d002bf06bb2c0e3ba83c1360fdc9243362187  addon\packs\BP\scripts\bench\streetPlan.js
+27b3f3aeafb0b350de2dda2c55adc099c396f0782b6d8cd29c0aa4e9574b0f5a  addon\packs\BP\scripts\data\residents.js
+55aafb183035fc36537bc9489a0c8b1cdcad3813fe468f20985d2622dd708d2c  addon\packs\BP\scripts\residents\rewards.js
+ef6fcdf8df03c4cf28b3a0b3f97f24523221c95e847508cf3bcef394effc0459  addon\packs\BP\scripts\residents\workRules.js
+4df7ff9a7d0db16d84d72b5fe6a3f0eb4035b0e9735ea63e8b46c76e5c3a8e98  addon\packs\BP\scripts\ui\workMenu.js
+f28bd1752fb955cf339751086e1b0d9cb91667e4003610faf61927dc7a5ebaef  addon\tests\logic.test.mjs
