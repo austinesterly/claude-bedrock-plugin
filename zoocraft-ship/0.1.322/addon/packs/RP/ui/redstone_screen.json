@@ -1,0 +1,459 @@
+{
+  "namespace": "redstone",
+  "zoocraft_hanvil_background@common.dialog_background_opaque": {
+    "texture": "textures/ui/zoocraft/hanvil/dialog"
+  },
+  "zoocraft_hanvil_cell": {
+    "type": "image",
+    "texture": "textures/ui/zoocraft/hanvil/cell",
+    "layer": 1
+  },
+  "zoocraft_hanvil_slot@common.container_item": {
+    "$background_images": "redstone.zoocraft_hanvil_cell"
+  },
+  "zoocraft_hanvil_grid@redstone.redstone_input_grid": {
+    "grid_item_template": "redstone.zoocraft_hanvil_slot"
+  },
+  "zoocraft_hanvil_top_half": {
+    "type": "panel",
+    "size": [
+      "100%",
+      "50% - 12px"
+    ],
+    "offset": [
+      0,
+      7
+    ],
+    "anchor_to": "top_left",
+    "anchor_from": "top_left",
+    "controls": [
+      {
+        "zoocraft_hanvil_grid@redstone.zoocraft_hanvil_grid": {}
+      },
+      {
+        "zoocraft_hanvil_hammer": {
+          "type": "image",
+          "texture": "textures/ui/zoocraft/hanvil/hammer",
+          "size": [
+            36,
+            18
+          ],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "offset": [
+            9,
+            -7
+          ],
+          "layer": 12
+        }
+      }
+    ]
+  },
+  "zoocraft_hanvil_panel": {
+    "type": "panel",
+    "controls": [
+      {
+        "container_gamepad_helpers@common.container_gamepad_helpers": {}
+      },
+      {
+        "selected_item_details_factory@common.selected_item_details_factory": {}
+      },
+      {
+        "item_lock_notification_factory@common.item_lock_notification_factory": {}
+      },
+      {
+        "root_panel@common.root_panel": {
+          "layer": 1,
+          "size": "$screen_dimensions",
+          "controls": [
+            {
+              "common_panel@common.common_panel": {
+                "$dialog_background": "redstone.zoocraft_hanvil_background"
+              }
+            },
+            {
+              "redstone_screen_inventory": {
+                "type": "panel",
+                "layer": 5,
+                "controls": [
+                  {
+                    "red_panel@redstone.zoocraft_hanvil_top_half": {}
+                  },
+                  {
+                    "red_bottom_half@common.inventory_panel_bottom_half_with_label": {}
+                  },
+                  {
+                    "hotbar_grid@common.hotbar_grid_template": {}
+                  },
+                  {
+                    "red_hold_icon@common.inventory_take_progress_icon_button": {}
+                  }
+                ]
+              }
+            },
+            {
+              "red_icon@common.inventory_selected_icon_button": {}
+            },
+            {
+              "gamepad_cursor@common.gamepad_cursor_button": {}
+            },
+            {
+              "$screen_label@$screen_label": {}
+            }
+          ]
+        }
+      },
+      {
+        "flying_item_renderer@common.flying_item_renderer": {
+          "layer": 21
+        }
+      }
+    ]
+  },
+  "zoocraft_melder_background@common.dialog_background_opaque": {
+    "texture": "textures/ui/zoocraft/melder/dialog"
+  },
+  "zoocraft_melder_cell": {
+    "type": "image",
+    "texture": "textures/ui/zoocraft/melder/cell",
+    "layer": 1
+  },
+  "zoocraft_melder_top_half": {
+    "type": "panel",
+    "size": [
+      "100%",
+      "50% - 12px"
+    ],
+    "offset": [
+      0,
+      7
+    ],
+    "anchor_to": "top_left",
+    "anchor_from": "top_left",
+    "controls": [
+      {
+        "zoocraft_melder_title": {
+          "type": "label",
+          "text": "entity.zoocraft:melder_store.name",
+          "localize": true,
+          "color": [
+            0.06,
+            0.17,
+            0.2
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [
+            8,
+            1
+          ],
+          "layer": 12
+        }
+      },
+      {
+        "zoocraft_melder_banner": {
+          "type": "image",
+          "texture": "textures/ui/zoocraft/melder/banner",
+          "size": [
+            84,
+            26
+          ],
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "offset": [
+            8,
+            2
+          ],
+          "layer": 12
+        }
+      },
+      {
+        "zoocraft_melder_slots@redstone.zoocraft_melder_slots": {}
+      }
+    ]
+  },
+  "zoocraft_melder_panel": {
+    "type": "panel",
+    "controls": [
+      {
+        "container_gamepad_helpers@common.container_gamepad_helpers": {}
+      },
+      {
+        "selected_item_details_factory@common.selected_item_details_factory": {}
+      },
+      {
+        "item_lock_notification_factory@common.item_lock_notification_factory": {}
+      },
+      {
+        "root_panel@common.root_panel": {
+          "layer": 1,
+          "size": "$screen_dimensions",
+          "controls": [
+            {
+              "common_panel@common.common_panel": {
+                "$dialog_background": "redstone.zoocraft_melder_background"
+              }
+            },
+            {
+              "redstone_screen_inventory": {
+                "type": "panel",
+                "layer": 5,
+                "controls": [
+                  {
+                    "red_panel@redstone.zoocraft_melder_top_half": {}
+                  },
+                  {
+                    "red_bottom_half@common.inventory_panel_bottom_half_with_label": {}
+                  },
+                  {
+                    "hotbar_grid@common.hotbar_grid_template": {}
+                  },
+                  {
+                    "red_hold_icon@common.inventory_take_progress_icon_button": {}
+                  }
+                ]
+              }
+            },
+            {
+              "red_icon@common.inventory_selected_icon_button": {}
+            },
+            {
+              "gamepad_cursor@common.gamepad_cursor_button": {}
+            },
+            {
+              "$screen_label@$screen_label": {}
+            }
+          ]
+        }
+      },
+      {
+        "flying_item_renderer@common.flying_item_renderer": {
+          "layer": 21
+        }
+      }
+    ]
+  },
+  "hopper_screen": {
+    "$zoocraft_title|default": "$container_title",
+    "modifications": [
+      {
+        "array_name": "variables",
+        "operation": "insert_back",
+        "value": [
+          {
+            "requires": "(($zoocraft_title = 'entity.zoocraft:hanvil_store.name') and $desktop_screen)",
+            "$screen_content": "redstone.zoocraft_hanvil_panel"
+          },
+          {
+            "requires": "(($zoocraft_title = 'entity.zoocraft:melder_store.name') and $desktop_screen)",
+            "$screen_content": "redstone.zoocraft_melder_panel"
+          }
+        ]
+      }
+    ]
+  },
+  "zoocraft_melder_cell_in": {
+    "type": "image",
+    "texture": "textures/ui/zoocraft/melder/cell_in",
+    "size": [
+      18,
+      18
+    ],
+    "layer": 1
+  },
+  "zoocraft_melder_cell_solute": {
+    "type": "image",
+    "texture": "textures/ui/zoocraft/melder/cell_solute",
+    "size": [
+      18,
+      18
+    ],
+    "layer": 1
+  },
+  "zoocraft_melder_cell_out": {
+    "type": "image",
+    "texture": "textures/ui/zoocraft/melder/cell_out",
+    "size": [
+      18,
+      18
+    ],
+    "layer": 1
+  },
+  "zoocraft_melder_emblem_in": {
+    "type": "image",
+    "texture": "textures/ui/zoocraft/melder/emblem_in",
+    "size": [
+      16,
+      16
+    ],
+    "layer": 1
+  },
+  "zoocraft_melder_emblem_solute": {
+    "type": "image",
+    "texture": "textures/ui/zoocraft/melder/emblem_solute",
+    "size": [
+      16,
+      16
+    ],
+    "layer": 1
+  },
+  "zoocraft_melder_emblem_out": {
+    "type": "image",
+    "texture": "textures/ui/zoocraft/melder/emblem_out",
+    "size": [
+      16,
+      16
+    ],
+    "layer": 1
+  },
+  "zoocraft_melder_gauge_bg": {
+    "type": "image",
+    "texture": "textures/ui/zoocraft/melder/gauge_bg",
+    "size": [
+      16,
+      16
+    ],
+    "layer": 1
+  },
+  "zoocraft_melder_nobutton": {
+    "type": "panel"
+  },
+  "zoocraft_melder_slot_in@common.container_item": {
+    "$background_images": "redstone.zoocraft_melder_cell_in",
+    "$cell_overlay_ref": "redstone.zoocraft_melder_emblem_in",
+    "$item_collection_name": "container_items"
+  },
+  "zoocraft_melder_slot_solute@common.container_item": {
+    "$background_images": "redstone.zoocraft_melder_cell_solute",
+    "$cell_overlay_ref": "redstone.zoocraft_melder_emblem_solute",
+    "$item_collection_name": "container_items"
+  },
+  "zoocraft_melder_slot_out@common.container_item": {
+    "$background_images": "redstone.zoocraft_melder_cell_out",
+    "$cell_overlay_ref": "redstone.zoocraft_melder_emblem_out",
+    "$item_collection_name": "container_items"
+  },
+  "zoocraft_melder_slot_gauge@common.container_item": {
+    "$background_images": "redstone.zoocraft_melder_gauge_bg",
+    "$button_ref": "redstone.zoocraft_melder_nobutton",
+    "$item_collection_name": "container_items",
+    "$stack_count_required": false,
+    "$durability_bar_required": false
+  },
+  "zoocraft_melder_slots": {
+    "type": "grid",
+    "size": [
+      90,
+      18
+    ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [
+      0,
+      0
+    ],
+    "grid_dimensions": [
+      5,
+      1
+    ],
+    "collection_name": "container_items",
+    "$item_collection_name": "container_items",
+    "controls": [
+      {
+        "cell_in_a": {
+          "type": "panel",
+          "grid_position": [
+            0,
+            0
+          ],
+          "controls": [
+            {
+              "in_a@redstone.zoocraft_melder_slot_in": {
+                "offset": [
+                  28,
+                  12
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "cell_in_b": {
+          "type": "panel",
+          "grid_position": [
+            1,
+            0
+          ],
+          "controls": [
+            {
+              "in_b@redstone.zoocraft_melder_slot_in": {
+                "offset": [
+                  10,
+                  50
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "cell_solute": {
+          "type": "panel",
+          "grid_position": [
+            2,
+            0
+          ],
+          "controls": [
+            {
+              "solute@redstone.zoocraft_melder_slot_solute": {
+                "offset": [
+                  -27,
+                  31
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "cell_gauge": {
+          "type": "panel",
+          "grid_position": [
+            3,
+            0
+          ],
+          "controls": [
+            {
+              "gauge@redstone.zoocraft_melder_slot_gauge": {
+                "offset": [
+                  25,
+                  34
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "cell_out": {
+          "type": "panel",
+          "grid_position": [
+            4,
+            0
+          ],
+          "controls": [
+            {
+              "out@redstone.zoocraft_melder_slot_out": {
+                "offset": [
+                  66,
+                  31
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:block": {
+    "description": {
+      "identifier": "zoocraft:milk_cauldron",
+      "menu_category": {
+        "category": "none"
+      }
+    },
+    "components": {
+      "minecraft:geometry": {
+        "identifier": "geometry.zoocraft.goo_cauldron",
+        "bone_visibility": {
+          "goo1": false,
+          "goo2": false,
+          "goo3": true
+        }
+      },
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "zoocraft_cauldron_side",
+          "render_method": "alpha_test"
+        },
+        "side": {
+          "texture": "zoocraft_cauldron_side",
+          "render_method": "alpha_test"
+        },
+        "inner": {
+          "texture": "zoocraft_cauldron_inner",
+          "render_method": "alpha_test"
+        },
+        "top": {
+          "texture": "zoocraft_cauldron_top",
+          "render_method": "alpha_test"
+        },
+        "bottom": {
+          "texture": "zoocraft_cauldron_bottom",
+          "render_method": "alpha_test"
+        },
+        "goo": {
+          "texture": "zoocraft_milk",
+          "render_method": "alpha_test",
+          "ambient_occlusion": 0.0,
+          "face_dimming": false
+        }
+      },
+      "minecraft:collision_box": {
+        "origin": [
+          -8,
+          0,
+          -8
+        ],
+        "size": [
+          16,
+          16,
+          16
+        ]
+      },
+      "minecraft:selection_box": {
+        "origin": [
+          -8,
+          0,
+          -8
+        ],
+        "size": [
+          16,
+          16,
+          16
+        ]
+      },
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 2.0,
+        "item_specific_speeds": [
+          {
+            "item": {
+              "tags": "q.any_tag('minecraft:is_pickaxe')"
+            },
+            "destroy_speed": 0.4
+          }
+        ]
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 2
+      },
+      "minecraft:light_emission": 0,
+      "minecraft:light_dampening": 0,
+      "minecraft:map_color": "#f6f6f0",
+      "minecraft:loot": "loot_tables/blocks/zoocraft_goo_cauldron.json",
+      "zoocraft:solute_cauldron": {}
+    }
+  }
+}
