@@ -1,0 +1,22 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.zoocraft.damien": {
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Texture.default"
+      ],
+      "overlay_color": {
+        "r": 0.62,
+        "g": 0.86,
+        "b": 1.0,
+        "a": "query.property('zoocraft:frozen') ? 0.4 : 0.0"
+      }
+    }
+  }
+}

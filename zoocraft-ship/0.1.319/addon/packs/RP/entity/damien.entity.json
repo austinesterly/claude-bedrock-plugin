@@ -1,0 +1,30 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:damien",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/zoocraft/resident_28"
+      },
+      "geometry": {
+        "default": "geometry.zoocraft.resident"
+      },
+      "animations": {
+        "look_at_target": "animation.zoocraft.guest.look_at_target"
+      },
+      "scripts": {
+        "animate": [
+          {
+            "look_at_target": "!query.property('zoocraft:frozen')"
+          }
+        ]
+      },
+      "render_controllers": [
+        "controller.render.zoocraft.damien"
+      ]
+    }
+  }
+}
