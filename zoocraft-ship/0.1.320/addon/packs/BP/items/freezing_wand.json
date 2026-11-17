@@ -1,0 +1,32 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "zoocraft:freezing_wand",
+      "menu_category": {
+        "category": "none"
+      }
+    },
+    "components": {
+      "minecraft:icon": {
+        "textures": {
+          "default": "zoocraft:freezing_wand"
+        }
+      },
+      "minecraft:display_name": {
+        "value": "item.zoocraft:freezing_wand.name"
+      },
+      "minecraft:max_stack_size": {
+        "value": 1
+      },
+      "minecraft:hand_equipped": {
+        "value": true
+      },
+      "minecraft:cooldown": {
+        "category": "zoocraft_wand",
+        "duration": 10.0
+      },
+      "zoocraft:freezing_wand": {}
+    }
+  }
+}
