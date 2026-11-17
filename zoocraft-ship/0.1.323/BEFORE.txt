@@ -1,0 +1,3 @@
+cebd0dd3863223d23b539f72da5ddf15b2e5b52e19bb80c6380e2ef86e0f2262  addon\docs\Residents_test_plan.md
+2474cd4d30e9bf2ffc814fd74e56074087428a93cb81f18c37dba240fe987515  addon\packs\RP\ui\redstone_screen.json
+b23eb684c316d07943395affe018981568cd0db157b7a58e1ef1915f4a9a656e  addon\tests\logic.test.mjs
