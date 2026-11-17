@@ -1,0 +1,71 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:block": {
+    "description": {
+      "identifier": "zoocraft:melder",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:geometry": "geometry.zoocraft.melder",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "zoocraft_melder_side",
+          "render_method": "opaque"
+        },
+        "side": {
+          "texture": "zoocraft_melder_side",
+          "render_method": "opaque"
+        },
+        "top": {
+          "texture": "zoocraft_melder_top",
+          "render_method": "opaque"
+        },
+        "inside": {
+          "texture": "zoocraft_melder_inside",
+          "render_method": "opaque"
+        },
+        "liquid": {
+          "texture": "zoocraft_melder_liquid",
+          "render_method": "opaque",
+          "face_dimming": false
+        }
+      },
+      "minecraft:collision_box": {
+        "origin": [
+          -8,
+          0,
+          -8
+        ],
+        "size": [
+          16,
+          16,
+          16
+        ]
+      },
+      "minecraft:selection_box": {
+        "origin": [
+          -8,
+          0,
+          -8
+        ],
+        "size": [
+          16,
+          16,
+          16
+        ]
+      },
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 2
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 6
+      },
+      "minecraft:light_emission": 10,
+      "minecraft:light_dampening": 0,
+      "minecraft:map_color": "#3fd6d0",
+      "zoocraft:melder": {}
+    }
+  }
+}
