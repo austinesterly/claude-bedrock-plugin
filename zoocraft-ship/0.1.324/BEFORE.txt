@@ -1,0 +1,4 @@
+72ce03c1414666a9a4acade992d73f4c36292a32c6906d324a8dabf560ab1f96  addon\docs\Residents_test_plan.md
+c3aff2ad2caf83db59ad8addf3e42fb5e699502947fe95bf253bba075af6e716  addon\packs\RP\textures\ui\zoocraft\melder\banner.png
+3a38ec3712922b35b63556458a2011581b230da04b55f2bf83de1458106a805b  addon\packs\RP\ui\redstone_screen.json
+83bc6b6f979b6ab81e60852ad41cf5bead09c2284eb239f939f94c08778db8b8  addon\tests\logic.test.mjs
