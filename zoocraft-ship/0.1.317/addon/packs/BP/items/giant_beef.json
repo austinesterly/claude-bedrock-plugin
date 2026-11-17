@@ -1,0 +1,25 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "zoocraft:giant_beef",
+      "menu_category": {
+        "category": "none"
+      }
+    },
+    "components": {
+      "minecraft:icon": {
+        "textures": {
+          "default": "zoocraft:giant_beef"
+        }
+      },
+      "minecraft:display_name": {
+        "value": "item.zoocraft:giant_beef.name"
+      },
+      "minecraft:max_stack_size": {
+        "value": 1
+      },
+      "zoocraft:giant_beef": {}
+    }
+  }
+}

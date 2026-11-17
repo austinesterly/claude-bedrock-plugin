@@ -1,0 +1,17 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.zoocraft.beef_piece.spin": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "rotation": [
+            "20 * math.sin(q.life_time * 200)",
+            "q.life_time * 260",
+            0
+          ]
+        }
+      }
+    }
+  }
+}

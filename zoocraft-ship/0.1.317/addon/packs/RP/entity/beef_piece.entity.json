@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:beef_piece",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/zoocraft/beef_piece"
+      },
+      "geometry": {
+        "default": "geometry.zoocraft.beef_piece"
+      },
+      "animations": {
+        "spin": "animation.zoocraft.beef_piece.spin"
+      },
+      "scripts": {
+        "animate": [
+          "spin"
+        ]
+      },
+      "render_controllers": [
+        "controller.render.zoocraft.beef_piece"
+      ]
+    }
+  }
+}

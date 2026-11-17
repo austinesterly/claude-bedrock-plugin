@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:giant_beef_show",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/zoocraft/giant_beef"
+      },
+      "geometry": {
+        "default": "geometry.zoocraft.giant_beef_show"
+      },
+      "animations": {
+        "spin": "animation.zoocraft.giant_beef_show.spin"
+      },
+      "scripts": {
+        "animate": [
+          "spin"
+        ]
+      },
+      "render_controllers": [
+        "controller.render.zoocraft.giant_beef_show"
+      ]
+    }
+  }
+}
