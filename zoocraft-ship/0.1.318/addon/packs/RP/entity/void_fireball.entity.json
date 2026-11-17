@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:void_fireball",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/zoocraft/void_fireball"
+      },
+      "geometry": {
+        "default": "geometry.zoocraft.void_fireball"
+      },
+      "animations": {
+        "spin": "animation.zoocraft.void_fireball.spin"
+      },
+      "scripts": {
+        "animate": [
+          "spin"
+        ]
+      },
+      "render_controllers": [
+        "controller.render.zoocraft.void_fireball"
+      ]
+    }
+  }
+}
