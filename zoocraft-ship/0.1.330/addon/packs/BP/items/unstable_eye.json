@@ -1,0 +1,24 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "zoocraft:unstable_eye",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:icon": {
+        "textures": {
+          "default": "zoocraft:unstable_eye"
+        }
+      },
+      "minecraft:display_name": {
+        "value": "item.zoocraft:unstable_eye.name"
+      },
+      "minecraft:max_stack_size": {
+        "value": 64
+      }
+    }
+  }
+}

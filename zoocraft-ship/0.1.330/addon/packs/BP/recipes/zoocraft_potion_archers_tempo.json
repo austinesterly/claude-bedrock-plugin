@@ -1,0 +1,14 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_brewing_mix": {
+    "description": {
+      "identifier": "zoocraft:potion_archers_tempo"
+    },
+    "tags": [
+      "brewing_stand"
+    ],
+    "input": "minecraft:potion_type:awkward",
+    "reagent": "zoocraft:gold_fruit",
+    "output": "zoocraft:potion_archers_tempo"
+  }
+}

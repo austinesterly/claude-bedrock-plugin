@@ -1,0 +1,24 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "zoocraft:apple_of_growth",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:icon": {
+        "textures": {
+          "default": "zoocraft:apple_of_growth"
+        }
+      },
+      "minecraft:display_name": {
+        "value": "item.zoocraft:apple_of_growth.name"
+      },
+      "minecraft:max_stack_size": {
+        "value": 64
+      }
+    }
+  }
+}
