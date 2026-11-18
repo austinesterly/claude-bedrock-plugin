@@ -1,0 +1,239 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.zoocraft.void_dragon.fly": {
+      "loop": true,
+      "bones": {
+        "dragon": {
+          "rotation": [
+            "v.pitch * v.fly",
+            0,
+            "v.bank * v.fly"
+          ],
+          "position": [
+            0,
+            "v.perch * 16 + v.fly * math.sin(v.w - 90) * 1.5",
+            0
+          ]
+        },
+        "body": {
+          "rotation": [
+            "math.sin(v.w - 60) * 1.5 * v.fly - v.perch * 6 + v.sit * 4",
+            0,
+            0
+          ]
+        },
+        "wingL": {
+          "rotation": [
+            "math.cos(v.w) * 7 * v.fly",
+            "-1 * (v.perch * 58 + v.fly * math.cos(v.w) * 5) + 1 * v.storm * 22",
+            "-1 * ((math.sin(v.w) * 30 + 6) * v.fly + v.perch * 45 - v.storm * 26)"
+          ]
+        },
+        "wingMidL": {
+          "rotation": [
+            0,
+            "-1 * v.perch * 20",
+            "-1 * ((math.sin(v.w - 55) * 30 - 10) * v.fly - v.perch * 150 + v.storm * 50)"
+          ]
+        },
+        "wingTipL": {
+          "rotation": [
+            0,
+            "-1 * v.perch * 10",
+            "-1 * ((math.sin(v.w - 110) * 26 - 8) * v.fly + v.perch * 130 - v.storm * 44)"
+          ]
+        },
+        "legL": {
+          "rotation": [
+            "v.fly * 44 - v.perch * 8",
+            0,
+            0
+          ]
+        },
+        "shinL": {
+          "rotation": [
+            "v.fly * 30 + v.perch * 14",
+            0,
+            0
+          ]
+        },
+        "footL": {
+          "rotation": [
+            "v.fly * 36 - v.perch * 6",
+            0,
+            0
+          ]
+        },
+        "armL": {
+          "rotation": [
+            "v.fly * 50",
+            0,
+            0
+          ]
+        },
+        "foreL": {
+          "rotation": [
+            "v.fly * -70",
+            0,
+            0
+          ]
+        },
+        "handL": {
+          "rotation": [
+            "v.fly * 44",
+            0,
+            0
+          ]
+        },
+        "wingR": {
+          "rotation": [
+            "math.cos(v.w) * 7 * v.fly",
+            "1 * (v.perch * 58 + v.fly * math.cos(v.w) * 5) + -1 * v.storm * 22",
+            "1 * ((math.sin(v.w) * 30 + 6) * v.fly + v.perch * 45 - v.storm * 26)"
+          ]
+        },
+        "wingMidR": {
+          "rotation": [
+            0,
+            "1 * v.perch * 20",
+            "1 * ((math.sin(v.w - 55) * 30 - 10) * v.fly - v.perch * 150 + v.storm * 50)"
+          ]
+        },
+        "wingTipR": {
+          "rotation": [
+            0,
+            "1 * v.perch * 10",
+            "1 * ((math.sin(v.w - 110) * 26 - 8) * v.fly + v.perch * 130 - v.storm * 44)"
+          ]
+        },
+        "legR": {
+          "rotation": [
+            "v.fly * 44 - v.perch * 8",
+            0,
+            0
+          ]
+        },
+        "shinR": {
+          "rotation": [
+            "v.fly * 30 + v.perch * 14",
+            0,
+            0
+          ]
+        },
+        "footR": {
+          "rotation": [
+            "v.fly * 36 - v.perch * 6",
+            0,
+            0
+          ]
+        },
+        "armR": {
+          "rotation": [
+            "v.fly * 50",
+            0,
+            0
+          ]
+        },
+        "foreR": {
+          "rotation": [
+            "v.fly * -70",
+            0,
+            0
+          ]
+        },
+        "handR": {
+          "rotation": [
+            "v.fly * 44",
+            0,
+            0
+          ]
+        },
+        "neck1": {
+          "rotation": [
+            "-20 + math.sin(v.w - 90) * 1.5 * v.fly + v.sit * 13 + v.fire * 8 + v.charge * -14",
+            "math.sin(v.t * 40 - 0) * 3 + v.storm * math.sin(v.t * 70 - 0) * 9 + v.sit * math.sin(v.t * 45 - 0) * 4",
+            0
+          ]
+        },
+        "neck2": {
+          "rotation": [
+            "-12 + math.sin(v.w - 115) * 1.5 * v.fly + v.sit * 9 + v.fire * 6 + v.charge * -10",
+            "math.sin(v.t * 40 - 32) * 3 + v.storm * math.sin(v.t * 70 - 20) * 9 + v.sit * math.sin(v.t * 45 - 20) * 4",
+            0
+          ]
+        },
+        "neck3": {
+          "rotation": [
+            "8 + math.sin(v.w - 140) * 1.5 * v.fly + v.sit * 5 + v.fire * -6 + v.charge * 6",
+            "math.sin(v.t * 40 - 64) * 3 + v.storm * math.sin(v.t * 70 - 40) * 9 + v.sit * math.sin(v.t * 45 - 40) * 4",
+            0
+          ]
+        },
+        "neck4": {
+          "rotation": [
+            "14 + math.sin(v.w - 165) * 1.5 * v.fly + v.sit * 2 + v.fire * -8 + v.charge * 10",
+            "math.sin(v.t * 40 - 96) * 3 + v.storm * math.sin(v.t * 70 - 60) * 9 + v.sit * math.sin(v.t * 45 - 60) * 4",
+            0
+          ]
+        },
+        "head": {
+          "rotation": [
+            "10 + v.sit * 3 - v.fire * 6 + v.charge * 12 + v.storm * 8",
+            "-math.sin(v.t * 40 - 100) * 5 + v.storm * math.sin(v.t * 70 - 80) * 10 + v.sit * math.sin(v.t * 45 - 80) * 8",
+            "v.sit * math.sin(v.t * 30) * 6"
+          ]
+        },
+        "jaw": {
+          "rotation": [
+            "v.open * 32 + v.sit * math.max(0, math.sin(v.t * 110)) * 9 + (1 - v.open) * math.max(0, math.sin(v.t * 25)) * 3",
+            0,
+            0
+          ]
+        },
+        "tail1": {
+          "rotation": [
+            "math.sin(v.w - 120) * 2.0 * v.fly + v.perch * 5",
+            "math.sin(v.t * 55 - 38) * 3.5 - v.bank * 0.1 * v.fly + v.perch * 5",
+            0
+          ]
+        },
+        "tail2": {
+          "rotation": [
+            "math.sin(v.w - 150) * 2.5 * v.fly + v.perch * 5",
+            "math.sin(v.t * 55 - 76) * 5.0 - v.bank * 0.2 * v.fly + v.perch * 6",
+            0
+          ]
+        },
+        "tail3": {
+          "rotation": [
+            "math.sin(v.w - 180) * 3.0 * v.fly + v.perch * -3",
+            "math.sin(v.t * 55 - 114) * 6.5 - v.bank * 0.3 * v.fly + v.perch * 7",
+            0
+          ]
+        },
+        "tail4": {
+          "rotation": [
+            "math.sin(v.w - 210) * 3.5 * v.fly + v.perch * -3",
+            "math.sin(v.t * 55 - 152) * 8.0 - v.bank * 0.4 * v.fly + v.perch * 8",
+            0
+          ]
+        },
+        "tail5": {
+          "rotation": [
+            "math.sin(v.w - 240) * 4.0 * v.fly + v.perch * -3",
+            "math.sin(v.t * 55 - 190) * 9.5 - v.bank * 0.5 * v.fly + v.perch * 9",
+            0
+          ]
+        },
+        "tail6": {
+          "rotation": [
+            "math.sin(v.w - 270) * 4.5 * v.fly + v.perch * -3",
+            "math.sin(v.t * 55 - 228) * 11.0 - v.bank * 0.6 * v.fly + v.perch * 10",
+            0
+          ]
+        }
+      }
+    }
+  }
+}
