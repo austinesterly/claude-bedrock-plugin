@@ -1,0 +1,219 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "zoocraft:void_dragon_part",
+      "spawn_category": "misc",
+      "is_spawnable": false,
+      "is_summonable": true
+    },
+    "components": {
+      "minecraft:collision_box": {
+        "width": 1.0,
+        "height": 1.0
+      },
+      "minecraft:physics": {
+        "has_gravity": false,
+        "has_collision": false
+      },
+      "minecraft:dimension_bound": {},
+      "minecraft:transient": {},
+      "minecraft:knockback_resistance": {
+        "value": 1.0
+      },
+      "minecraft:type_family": {
+        "family": [
+          "void_dragon_part",
+          "zoocraft_boss"
+        ]
+      },
+      "minecraft:health": {
+        "value": 2000,
+        "max": 2000
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "cause": "fall",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "void",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "suffocation",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "fire",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "fire_tick",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "lava",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "drowning",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "magma",
+            "deals_damage": "no"
+          }
+        ]
+      }
+    },
+    "component_groups": {
+      "zoocraft:size_0": {
+        "minecraft:collision_box": {
+          "width": 2.0,
+          "height": 1.0
+        }
+      },
+      "zoocraft:size_1": {
+        "minecraft:collision_box": {
+          "width": 2.0,
+          "height": 3.2
+        }
+      },
+      "zoocraft:size_2": {
+        "minecraft:collision_box": {
+          "width": 2.2,
+          "height": 2.0
+        }
+      },
+      "zoocraft:size_3": {
+        "minecraft:collision_box": {
+          "width": 2.2,
+          "height": 2.4
+        }
+      },
+      "zoocraft:size_4": {
+        "minecraft:collision_box": {
+          "width": 2.3,
+          "height": 1.6
+        }
+      },
+      "zoocraft:size_5": {
+        "minecraft:collision_box": {
+          "width": 2.3,
+          "height": 2.8
+        }
+      },
+      "zoocraft:size_6": {
+        "minecraft:collision_box": {
+          "width": 2.4,
+          "height": 3.2
+        }
+      },
+      "zoocraft:size_7": {
+        "minecraft:collision_box": {
+          "width": 2.4,
+          "height": 3.6
+        }
+      },
+      "zoocraft:size_8": {
+        "minecraft:collision_box": {
+          "width": 2.8,
+          "height": 3.6
+        }
+      },
+      "zoocraft:size_9": {
+        "minecraft:collision_box": {
+          "width": 4.4,
+          "height": 5.0
+        }
+      },
+      "zoocraft:size_10": {
+        "minecraft:collision_box": {
+          "width": 7.0,
+          "height": 1.2
+        }
+      }
+    },
+    "events": {
+      "zoocraft:size_0": {
+        "add": {
+          "component_groups": [
+            "zoocraft:size_0"
+          ]
+        }
+      },
+      "zoocraft:size_1": {
+        "add": {
+          "component_groups": [
+            "zoocraft:size_1"
+          ]
+        }
+      },
+      "zoocraft:size_2": {
+        "add": {
+          "component_groups": [
+            "zoocraft:size_2"
+          ]
+        }
+      },
+      "zoocraft:size_3": {
+        "add": {
+          "component_groups": [
+            "zoocraft:size_3"
+          ]
+        }
+      },
+      "zoocraft:size_4": {
+        "add": {
+          "component_groups": [
+            "zoocraft:size_4"
+          ]
+        }
+      },
+      "zoocraft:size_5": {
+        "add": {
+          "component_groups": [
+            "zoocraft:size_5"
+          ]
+        }
+      },
+      "zoocraft:size_6": {
+        "add": {
+          "component_groups": [
+            "zoocraft:size_6"
+          ]
+        }
+      },
+      "zoocraft:size_7": {
+        "add": {
+          "component_groups": [
+            "zoocraft:size_7"
+          ]
+        }
+      },
+      "zoocraft:size_8": {
+        "add": {
+          "component_groups": [
+            "zoocraft:size_8"
+          ]
+        }
+      },
+      "zoocraft:size_9": {
+        "add": {
+          "component_groups": [
+            "zoocraft:size_9"
+          ]
+        }
+      },
+      "zoocraft:size_10": {
+        "add": {
+          "component_groups": [
+            "zoocraft:size_10"
+          ]
+        }
+      }
+    }
+  }
+}
