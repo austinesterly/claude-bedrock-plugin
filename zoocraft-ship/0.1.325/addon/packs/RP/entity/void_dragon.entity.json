@@ -1,0 +1,36 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:void_dragon",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/zoocraft/void_dragon",
+        "white": "textures/entity/zoocraft/void_dragon_white"
+      },
+      "geometry": {
+        "default": "geometry.zoocraft.void_dragon"
+      },
+      "animations": {
+        "fly": "animation.zoocraft.void_dragon.fly"
+      },
+      "scripts": {
+        "pre_animation": [
+          "v.act = q.property('zoocraft:act');",
+          "v.perch = (v.act == 2 || v.act == 4 || v.act == 5) ? 1 : 0;",
+          "v.sit = (v.act == 5) ? 1 : 0;",
+          "v.open = (v.act == 1 || v.act == 3 || v.act == 4) ? 1 : 0;",
+          "v.beat = math.sin(q.life_time * 130) * (1 - v.perch);"
+        ],
+        "animate": [
+          "fly"
+        ]
+      },
+      "render_controllers": [
+        "controller.render.zoocraft.void_dragon"
+      ]
+    }
+  }
+}

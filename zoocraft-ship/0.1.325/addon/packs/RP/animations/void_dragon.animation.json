@@ -1,0 +1,115 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.zoocraft.void_dragon.fly": {
+      "loop": true,
+      "bones": {
+        "wingL": {
+          "rotation": [
+            0,
+            0,
+            "v.beat * 26 - v.perch * 55"
+          ]
+        },
+        "wingR": {
+          "rotation": [
+            0,
+            0,
+            "-v.beat * 26 + v.perch * 55"
+          ]
+        },
+        "wingTipL": {
+          "rotation": [
+            0,
+            0,
+            "math.sin(q.life_time * 130 - 60) * 30 * (1 - v.perch) + v.perch * 95"
+          ]
+        },
+        "wingTipR": {
+          "rotation": [
+            0,
+            0,
+            "-math.sin(q.life_time * 130 - 60) * 30 * (1 - v.perch) - v.perch * 95"
+          ]
+        },
+        "jaw": {
+          "rotation": [
+            "v.open * 28 + v.sit * math.max(0, math.sin(q.life_time * 110)) * 10",
+            0,
+            0
+          ]
+        },
+        "neck": {
+          "rotation": [
+            "math.sin(q.life_time * 60) * 3 - v.open * 6 + v.sit * (16 + math.sin(q.life_time * 80) * 4)",
+            0,
+            0
+          ]
+        },
+        "tail1": {
+          "rotation": [
+            0,
+            "math.sin(q.life_time * 70) * 6",
+            0
+          ]
+        },
+        "tail2": {
+          "rotation": [
+            0,
+            "math.sin(q.life_time * 70 - 40) * 8",
+            0
+          ]
+        },
+        "tail3": {
+          "rotation": [
+            0,
+            "math.sin(q.life_time * 70 - 80) * 10",
+            0
+          ]
+        },
+        "tail4": {
+          "rotation": [
+            0,
+            "math.sin(q.life_time * 70 - 120) * 12",
+            0
+          ]
+        },
+        "legL": {
+          "rotation": [
+            "30 * (1 - v.perch)",
+            0,
+            0
+          ]
+        },
+        "legR": {
+          "rotation": [
+            "30 * (1 - v.perch)",
+            0,
+            0
+          ]
+        },
+        "armL": {
+          "rotation": [
+            "35 * (1 - v.perch)",
+            0,
+            0
+          ]
+        },
+        "armR": {
+          "rotation": [
+            "35 * (1 - v.perch)",
+            0,
+            0
+          ]
+        },
+        "head": {
+          "rotation": [
+            "v.sit * 8",
+            "v.sit * math.sin(q.life_time * 50) * 7",
+            0
+          ]
+        }
+      }
+    }
+  }
+}
