@@ -1,0 +1,1 @@
+b38345c96d8fcfa0bf8b942a187838b8206e022a7cf43353094f36fa487a1662  addon\packs\RP\render_controllers\armor.render_controllers.json
