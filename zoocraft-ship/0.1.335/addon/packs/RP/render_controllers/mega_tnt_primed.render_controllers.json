@@ -1,0 +1,22 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.zoocraft.mega_tnt_primed": {
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Texture.default"
+      ],
+      "overlay_color": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": "query.property('zoocraft:late') ? math.mod(math.floor(query.life_time * 8), 2) * 0.65 : math.mod(math.floor(query.life_time * 2), 2) * 0.5"
+      }
+    }
+  }
+}

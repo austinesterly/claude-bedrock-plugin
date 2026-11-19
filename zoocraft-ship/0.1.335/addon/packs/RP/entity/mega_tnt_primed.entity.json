@@ -1,0 +1,20 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:mega_tnt_primed",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/zoocraft/mega_tnt_primed"
+      },
+      "geometry": {
+        "default": "geometry.zoocraft.mega_tnt_primed"
+      },
+      "render_controllers": [
+        "controller.render.zoocraft.mega_tnt_primed"
+      ]
+    }
+  }
+}

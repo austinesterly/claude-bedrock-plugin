@@ -1,0 +1,53 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:block": {
+    "description": {
+      "identifier": "zoocraft:mega_tnt",
+      "menu_category": {
+        "category": "none"
+      }
+    },
+    "components": {
+      "minecraft:geometry": "minecraft:geometry.full_block",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "zoocraft_mega_tnt_side",
+          "render_method": "opaque",
+          "ambient_occlusion": 0.0,
+          "face_dimming": false
+        },
+        "up": {
+          "texture": "zoocraft_mega_tnt_top",
+          "render_method": "opaque",
+          "ambient_occlusion": 0.0,
+          "face_dimming": false
+        },
+        "down": {
+          "texture": "zoocraft_mega_tnt_bottom",
+          "render_method": "opaque",
+          "ambient_occlusion": 0.0,
+          "face_dimming": false
+        }
+      },
+      "minecraft:light_emission": 10,
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 0
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 0
+      },
+      "minecraft:map_color": "#62f02a",
+      "minecraft:redstone_consumer": {
+        "min_power": 1
+      },
+      "minecraft:tick": {
+        "interval_range": [
+          10,
+          10
+        ],
+        "looping": true
+      },
+      "zoocraft:mega_tnt": {}
+    }
+  }
+}
