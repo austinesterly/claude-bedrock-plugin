@@ -1,0 +1,35 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "identifier": "zoocraft:damien_wand",
+      "materials": {
+        "default": "entity_alphatest",
+        "enchanted": "entity_alphatest_glint"
+      },
+      "textures": {
+        "default": "textures/entity/zoocraft/held_damien_wand",
+        "enchanted": "textures/misc/enchanted_item_glint"
+      },
+      "geometry": {
+        "default": "geometry.zoocraft.held.freezing_wand"
+      },
+      "animations": {
+        "hold": "animation.zoocraft.held.wand.hold"
+      },
+      "scripts": {
+        "pre_animation": [
+          "variable.cd = query.cooldown_time_remaining('slot.weapon.mainhand', 0);",
+          "variable.p = variable.cd > 0.5 ? math.clamp((1.0 - variable.cd) / 0.5, 0.0, 1.0) : 1.0;",
+          "variable.flick = math.sin(variable.p * 180.0) * 55.0;"
+        ],
+        "animate": [
+          "hold"
+        ]
+      },
+      "render_controllers": [
+        "controller.render.zoocraft.held_bow"
+      ]
+    }
+  }
+}

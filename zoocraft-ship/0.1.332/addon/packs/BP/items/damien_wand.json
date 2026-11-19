@@ -1,0 +1,32 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "zoocraft:damien_wand",
+      "menu_category": {
+        "category": "none"
+      }
+    },
+    "components": {
+      "minecraft:icon": {
+        "textures": {
+          "default": "zoocraft:damien_wand"
+        }
+      },
+      "minecraft:display_name": {
+        "value": "item.zoocraft:damien_wand.name"
+      },
+      "minecraft:max_stack_size": {
+        "value": 1
+      },
+      "minecraft:hand_equipped": {
+        "value": true
+      },
+      "minecraft:cooldown": {
+        "category": "zoocraft_damien_wand",
+        "duration": 1.0
+      },
+      "zoocraft:damien_wand": {}
+    }
+  }
+}
