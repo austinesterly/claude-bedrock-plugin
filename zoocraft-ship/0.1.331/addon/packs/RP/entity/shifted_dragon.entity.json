@@ -1,0 +1,51 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:shifted_dragon",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/zoocraft/void_dragon",
+        "white": "textures/entity/zoocraft/void_dragon_white"
+      },
+      "geometry": {
+        "default": "geometry.zoocraft.void_dragon"
+      },
+      "animations": {
+        "fly": "animation.zoocraft.void_dragon.fly"
+      },
+      "scripts": {
+        "scale": "0.24",
+        "pre_animation": [
+          "v.act = q.property('zoocraft:act');",
+          "v.tp = (v.act == 2 || v.act == 4 || v.act == 5) ? 1 : 0;",
+          "v.to = (v.act == 1 || v.act == 3 || v.act == 4) ? 1 : 0;",
+          "v.ts = (v.act == 5) ? 1 : 0;",
+          "v.tc = (v.act == 3) ? 1 : 0;",
+          "v.tf = (v.act == 1) ? 1 : 0;",
+          "v.tm = (v.act == 4) ? 1 : 0;",
+          "v.k = math.min(1, q.delta_time * 3.5);",
+          "v.perch = (v.perch ?? v.tp) + (v.tp - (v.perch ?? v.tp)) * v.k;",
+          "v.open = (v.open ?? v.to) + (v.to - (v.open ?? v.to)) * v.k;",
+          "v.sit = (v.sit ?? v.ts) + (v.ts - (v.sit ?? v.ts)) * v.k;",
+          "v.charge = (v.charge ?? v.tc) + (v.tc - (v.charge ?? v.tc)) * v.k;",
+          "v.fire = (v.fire ?? v.tf) + (v.tf - (v.fire ?? v.tf)) * v.k;",
+          "v.storm = (v.storm ?? v.tm) + (v.tm - (v.storm ?? v.tm)) * v.k;",
+          "v.bank = (v.bank ?? 0) + (q.property('zoocraft:bank') - (v.bank ?? 0)) * math.min(1, q.delta_time * 2.5);",
+          "v.pitch = (v.pitch ?? 0) + (q.property('zoocraft:pitch') - (v.pitch ?? 0)) * math.min(1, q.delta_time * 2.5);",
+          "v.fly = 1 - v.perch;",
+          "v.w = q.life_time * 150;",
+          "v.t = q.life_time;"
+        ],
+        "animate": [
+          "fly"
+        ]
+      },
+      "render_controllers": [
+        "controller.render.zoocraft.void_dragon"
+      ]
+    }
+  }
+}

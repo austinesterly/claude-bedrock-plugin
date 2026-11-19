@@ -1,0 +1,193 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "zoocraft:shifted_dragon",
+      "spawn_category": "misc",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "properties": {
+        "zoocraft:act": {
+          "type": "int",
+          "range": [
+            0,
+            5
+          ],
+          "default": 0,
+          "client_sync": true
+        },
+        "zoocraft:white": {
+          "type": "bool",
+          "default": false,
+          "client_sync": true
+        },
+        "zoocraft:bank": {
+          "type": "int",
+          "range": [
+            -35,
+            35
+          ],
+          "default": 0,
+          "client_sync": true
+        },
+        "zoocraft:pitch": {
+          "type": "int",
+          "range": [
+            -35,
+            35
+          ],
+          "default": 0,
+          "client_sync": true
+        }
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": [
+          "shifted_dragon"
+        ]
+      },
+      "minecraft:collision_box": {
+        "width": 1.4,
+        "height": 1.0
+      },
+      "minecraft:health": {
+        "value": 20,
+        "max": 20
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "cause": "all",
+            "deals_damage": "no"
+          }
+        ]
+      },
+      "minecraft:fire_immune": {},
+      "minecraft:knockback_resistance": {
+        "value": 1.0
+      },
+      "minecraft:physics": {
+        "has_gravity": false
+      },
+      "minecraft:can_fly": {},
+      "minecraft:movement": {
+        "value": 0.065
+      },
+      "minecraft:flying_speed": {
+        "value": 0.065
+      },
+      "minecraft:navigation.float": {
+        "can_path_over_water": true
+      },
+      "minecraft:jump.static": {},
+      "minecraft:is_tamed": {},
+      "minecraft:rideable": {
+        "seat_count": 1,
+        "family_types": [
+          "player"
+        ],
+        "interact_text": "action.interact.ride.horse",
+        "seats": [
+          {
+            "position": [
+              0.0,
+              0.55,
+              0.0
+            ],
+            "third_person_camera_radius": 6.0,
+            "camera_relax_distance_smoothing": 6.0
+          }
+        ],
+        "on_rider_enter_event": "zoocraft:rider_on",
+        "on_rider_exit_event": "zoocraft:rider_off"
+      },
+      "minecraft:free_camera_controlled": {
+        "strafe_speed_modifier": 0.8,
+        "backwards_movement_modifier": 0.5
+      },
+      "minecraft:vertical_movement_action": {
+        "vertical_velocity": 0.5
+      },
+      "minecraft:behavior.player_ride_tamed": {
+        "priority": 1
+      },
+      "minecraft:body_rotation_always_follows_head": {},
+      "minecraft:breathable": {
+        "breathes_air": true,
+        "breathes_water": true,
+        "total_supply": 15,
+        "suffocate_time": 0
+      },
+      "minecraft:conditional_bandwidth_optimization": {}
+    },
+    "component_groups": {
+      "zoocraft:vanishing": {
+        "minecraft:timer": {
+          "time": 2.0,
+          "looping": false,
+          "time_down_event": {
+            "event": "zoocraft:vanish",
+            "target": "self"
+          }
+        }
+      },
+      "zoocraft:gone": {
+        "minecraft:instant_despawn": {}
+      }
+    },
+    "events": {
+      "minecraft:entity_spawned": {
+        "add": {
+          "component_groups": [
+            "zoocraft:vanishing"
+          ]
+        }
+      },
+      "zoocraft:rider_on": {
+        "remove": {
+          "component_groups": [
+            "zoocraft:vanishing"
+          ]
+        }
+      },
+      "zoocraft:rider_off": {
+        "add": {
+          "component_groups": [
+            "zoocraft:vanishing"
+          ]
+        }
+      },
+      "zoocraft:vanish": {
+        "sequence": [
+          {
+            "filters": {
+              "test": "rider_count",
+              "subject": "self",
+              "operator": "equals",
+              "value": 0
+            },
+            "add": {
+              "component_groups": [
+                "zoocraft:gone"
+              ]
+            }
+          },
+          {
+            "filters": {
+              "test": "rider_count",
+              "subject": "self",
+              "operator": ">",
+              "value": 0
+            },
+            "remove": {
+              "component_groups": [
+                "zoocraft:vanishing"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}
