@@ -1,0 +1,23 @@
+{
+  "format_version": "1.26.30",
+  "minecraft:biome": {
+    "description": {
+      "identifier": "zoocraft:acufend_wastes"
+    },
+    "components": {
+      "minecraft:climate": {
+        "downfall": 0.0,
+        "snow_accumulation": [
+          0.0,
+          0.125
+        ],
+        "temperature": 1.6
+      },
+      "minecraft:tags": {
+        "tags": [
+          "zoocraft_acufend"
+        ]
+      }
+    }
+  }
+}
