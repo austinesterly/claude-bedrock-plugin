@@ -1,0 +1,28 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:block": {
+    "description": {
+      "identifier": "zoocraft:relic_emerald",
+      "menu_category": {
+        "category": "none"
+      }
+    },
+    "components": {
+      "minecraft:geometry": "minecraft:geometry.full_block",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "zoocraft_relic_emerald",
+          "render_method": "opaque"
+        }
+      },
+      "minecraft:destructible_by_mining": false,
+      "minecraft:destructible_by_explosion": false,
+      "minecraft:movable": {
+        "movement_type": "immovable"
+      },
+      "minecraft:loot": "loot_tables/empty.json",
+      "minecraft:map_color": "#30b868",
+      "minecraft:light_emission": 10
+    }
+  }
+}

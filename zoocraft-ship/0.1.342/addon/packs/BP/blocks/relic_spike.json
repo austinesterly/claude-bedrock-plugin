@@ -1,0 +1,53 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:block": {
+    "description": {
+      "identifier": "zoocraft:relic_spike",
+      "menu_category": {
+        "category": "none"
+      }
+    },
+    "components": {
+      "minecraft:geometry": "geometry.zoocraft.relic_spike",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "zoocraft_relic_spike",
+          "render_method": "alpha_test"
+        }
+      },
+      "minecraft:destructible_by_mining": false,
+      "minecraft:destructible_by_explosion": false,
+      "minecraft:movable": {
+        "movement_type": "immovable"
+      },
+      "minecraft:loot": "loot_tables/empty.json",
+      "minecraft:map_color": "#b8a040",
+      "minecraft:light_emission": 6,
+      "minecraft:collision_box": {
+        "origin": [
+          -6,
+          0,
+          -6
+        ],
+        "size": [
+          12,
+          16,
+          12
+        ]
+      },
+      "minecraft:selection_box": {
+        "origin": [
+          -6,
+          0,
+          -6
+        ],
+        "size": [
+          12,
+          16,
+          12
+        ]
+      },
+      "minecraft:light_dampening": 0
+    }
+  }
+}
