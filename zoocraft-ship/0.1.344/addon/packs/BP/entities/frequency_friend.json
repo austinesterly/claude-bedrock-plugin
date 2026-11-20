@@ -1,0 +1,166 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "zoocraft:frequency_friend",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "properties": {
+        "zoocraft:seen": {
+          "type": "bool",
+          "default": false,
+          "client_sync": true
+        }
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": [
+          "frequency_friend",
+          "zoocraft_frequency_friend"
+        ]
+      },
+      "minecraft:collision_box": {
+        "width": 0.01,
+        "height": 1.5
+      },
+      "minecraft:custom_hit_test": {
+        "hitboxes": [
+          {
+            "pivot": [
+              0,
+              0.75,
+              0
+            ],
+            "width": 0.6,
+            "height": 1.5
+          }
+        ]
+      },
+      "minecraft:health": {
+        "value": 20,
+        "max": 20
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "cause": "all",
+            "deals_damage": "no"
+          }
+        ]
+      },
+      "minecraft:physics": {},
+      "minecraft:knockback_resistance": {
+        "value": 1.0
+      },
+      "minecraft:breathable": {
+        "total_supply": 15,
+        "suffocate_time": 0
+      },
+      "minecraft:movement": {
+        "value": 0
+      },
+      "minecraft:persistent": {},
+      "minecraft:conditional_bandwidth_optimization": {},
+      "minecraft:behavior.look_at_player": {
+        "priority": 7,
+        "look_distance": 8,
+        "probability": 0.05
+      },
+      "minecraft:interact": {
+        "interactions": [
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "test": "has_tag",
+                    "subject": "other",
+                    "value": "zoocraft_vision"
+                  }
+                ]
+              }
+            },
+            "interact_text": "action.interact.zoocraft.talk"
+          }
+        ]
+      }
+    },
+    "component_groups": {
+      "zoocraft:ambush": {
+        "minecraft:collision_box": {
+          "width": 0.6,
+          "height": 1.5
+        },
+        "minecraft:movement": {
+          "value": 0.26
+        },
+        "minecraft:navigation.walk": {
+          "can_path_over_water": true,
+          "avoid_water": true,
+          "avoid_damage_blocks": true
+        },
+        "minecraft:movement.basic": {},
+        "minecraft:jump.static": {},
+        "minecraft:can_climb": {},
+        "minecraft:follow_range": {
+          "value": 48,
+          "max": 48
+        },
+        "minecraft:attack": {
+          "damage": 3
+        },
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 1,
+          "within_radius": 48,
+          "reselect_targets": true,
+          "must_see": false,
+          "persist_time": 2,
+          "entity_types": [
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "test": "has_ability",
+                    "subject": "other",
+                    "operator": "!=",
+                    "value": "instabuild"
+                  }
+                ]
+              },
+              "max_dist": 48
+            }
+          ]
+        },
+        "minecraft:behavior.melee_box_attack": {
+          "priority": 2,
+          "speed_multiplier": 1.2,
+          "track_target": true
+        },
+        "minecraft:behavior.random_stroll": {
+          "priority": 6,
+          "speed_multiplier": 0.8
+        }
+      }
+    },
+    "events": {
+      "zoocraft:ambush": {
+        "add": {
+          "component_groups": [
+            "zoocraft:ambush"
+          ]
+        }
+      }
+    }
+  }
+}
