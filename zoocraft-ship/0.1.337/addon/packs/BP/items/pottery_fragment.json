@@ -1,0 +1,30 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "zoocraft:pottery_fragment",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:icon": {
+        "textures": {
+          "default": "zoocraft:pottery_fragment"
+        }
+      },
+      "minecraft:display_name": {
+        "value": "item.zoocraft:pottery_fragment.name"
+      },
+      "minecraft:max_stack_size": {
+        "value": 64
+      },
+      "minecraft:rarity": {
+        "value": "uncommon"
+      },
+      "minecraft:allow_off_hand": {
+        "value": true
+      }
+    }
+  }
+}

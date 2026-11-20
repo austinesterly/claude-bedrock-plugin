@@ -1,0 +1,32 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "zoocraft:sifting_pan",
+      "menu_category": {
+        "category": "equipment"
+      }
+    },
+    "components": {
+      "minecraft:icon": {
+        "textures": {
+          "default": "zoocraft:sifting_pan"
+        }
+      },
+      "minecraft:display_name": {
+        "value": "item.zoocraft:sifting_pan.name"
+      },
+      "minecraft:max_stack_size": {
+        "value": 1
+      },
+      "minecraft:durability": {
+        "max_durability": 96
+      },
+      "minecraft:enchantable": {
+        "slot": "shovel",
+        "value": 10
+      },
+      "zoocraft:sifting_pan": {}
+    }
+  }
+}

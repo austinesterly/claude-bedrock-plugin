@@ -1,0 +1,33 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "zoocraft:lost_blade",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:icon": {
+        "textures": {
+          "default": "zoocraft:lost_blade"
+        }
+      },
+      "minecraft:display_name": {
+        "value": "item.zoocraft:lost_blade.name"
+      },
+      "minecraft:max_stack_size": {
+        "value": 1
+      },
+      "minecraft:rarity": {
+        "value": "uncommon"
+      },
+      "minecraft:allow_off_hand": {
+        "value": true
+      },
+      "minecraft:hand_equipped": {
+        "value": true
+      }
+    }
+  }
+}

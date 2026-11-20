@@ -1,0 +1,33 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "zoocraft:ancient_pickaxe",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:icon": {
+        "textures": {
+          "default": "zoocraft:ancient_pickaxe"
+        }
+      },
+      "minecraft:display_name": {
+        "value": "item.zoocraft:ancient_pickaxe.name"
+      },
+      "minecraft:max_stack_size": {
+        "value": 1
+      },
+      "minecraft:rarity": {
+        "value": "uncommon"
+      },
+      "minecraft:allow_off_hand": {
+        "value": true
+      },
+      "minecraft:hand_equipped": {
+        "value": true
+      }
+    }
+  }
+}

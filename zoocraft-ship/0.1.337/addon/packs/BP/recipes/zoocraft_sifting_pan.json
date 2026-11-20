@@ -1,0 +1,33 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "zoocraft:sifting_pan"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "STS",
+      "TST",
+      "STS"
+    ],
+    "key": {
+      "S": {
+        "item": "minecraft:stick"
+      },
+      "T": {
+        "item": "minecraft:string"
+      }
+    },
+    "unlock": [
+      {
+        "item": "minecraft:string"
+      }
+    ],
+    "result": {
+      "item": "zoocraft:sifting_pan",
+      "count": 1
+    }
+  }
+}
