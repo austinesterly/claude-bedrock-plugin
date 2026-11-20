@@ -1,0 +1,46 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:augustus_kong",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/zoocraft/augustus_kong"
+      },
+      "geometry": {
+        "default": "geometry.zoocraft.augustus_kong"
+      },
+      "animations": {
+        "move": "animation.zoocraft.augustus_kong.move"
+      },
+      "scripts": {
+        "scale": "2.0",
+        "pre_animation": [
+          "v.act = q.property('zoocraft:act');",
+          "v.dt = math.min(0.25, q.delta_time);",
+          "v.walk = (v.walk ?? 0) + ((v.act == 1 ? 1 : 0) - (v.walk ?? 0)) * math.min(1, v.dt * 6);",
+          "v.crouch = (v.crouch ?? 0) + ((v.act == 2 ? 1 : 0) - (v.crouch ?? 0)) * math.min(1, v.dt * 4);",
+          "v.leap = (v.leap ?? 0) + ((v.act == 3 ? 1 : 0) - (v.leap ?? 0)) * math.min(1, v.dt * 7);",
+          "v.slam = (v.slam ?? 0) + ((v.act == 4 ? 1 : 0) - (v.slam ?? 0)) * math.min(1, v.dt * 12);",
+          "v.rip = (v.rip ?? 0) + ((v.act == 5 ? 1 : 0) - (v.rip ?? 0)) * math.min(1, v.dt * 6);",
+          "v.aim = (v.aim ?? 0) + ((v.act == 6 ? 1 : 0) - (v.aim ?? 0)) * math.min(1, v.dt * 7);",
+          "v.throw = (v.throw ?? 0) + ((v.act == 7 ? 1 : 0) - (v.throw ?? 0)) * math.min(1, v.dt * 16);",
+          "v.roar = (v.roar ?? 0) + ((v.act == 8 ? 1 : 0) - (v.roar ?? 0)) * math.min(1, v.dt * 6);",
+          "v.sit = (v.sit ?? 0) + ((v.act == 9 ? 1 : 0) - (v.sit ?? 0)) * math.min(1, v.dt * 2.5);",
+          "v.t = q.life_time;",
+          "v.ph = q.life_time * 330;",
+          "v.hold = v.act == 6 ? 1 : 0;",
+          "v.beat = math.sin(q.life_time * 900);"
+        ],
+        "animate": [
+          "move"
+        ]
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ]
+    }
+  }
+}

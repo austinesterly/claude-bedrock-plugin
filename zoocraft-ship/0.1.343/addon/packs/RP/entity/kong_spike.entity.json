@@ -1,0 +1,29 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:kong_spike",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/zoocraft/kong_spike"
+      },
+      "geometry": {
+        "default": "geometry.zoocraft.kong_spike"
+      },
+      "animations": {
+        "tip": "animation.zoocraft.kong_spike.tip"
+      },
+      "scripts": {
+        "scale": "1.5",
+        "animate": [
+          "tip"
+        ]
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ]
+    }
+  }
+}
