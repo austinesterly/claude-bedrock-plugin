@@ -1,0 +1,73 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.zoocraft.resident": {
+      "arrays": {
+        "textures": {
+          "Array.looks": [
+            "Texture.look0",
+            "Texture.look1",
+            "Texture.look2",
+            "Texture.look3",
+            "Texture.look4",
+            "Texture.look5",
+            "Texture.look6",
+            "Texture.look7",
+            "Texture.look8",
+            "Texture.look9",
+            "Texture.look10",
+            "Texture.look11",
+            "Texture.look12",
+            "Texture.look13",
+            "Texture.look14",
+            "Texture.look15",
+            "Texture.look16",
+            "Texture.look17",
+            "Texture.look18",
+            "Texture.look19",
+            "Texture.look20",
+            "Texture.look21",
+            "Texture.look22",
+            "Texture.look23",
+            "Texture.look24",
+            "Texture.look25",
+            "Texture.look26",
+            "Texture.look27",
+            "Texture.look28",
+            "Texture.look29",
+            "Texture.look30"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Array.looks[math.min(query.property('zoocraft:who'), 30)]"
+      ],
+      "part_visibility": [
+        {
+          "*": true
+        },
+        {
+          "rod": "query.property('zoocraft:who') == 20 && query.property('zoocraft:working')"
+        },
+        {
+          "line": "query.property('zoocraft:who') == 20 && query.property('zoocraft:working')"
+        },
+        {
+          "bobber": "query.property('zoocraft:who') == 20 && query.property('zoocraft:working')"
+        },
+        {
+          "brim": "query.property('zoocraft:who') == 30"
+        },
+        {
+          "crown": "query.property('zoocraft:who') == 30"
+        }
+      ]
+    }
+  }
+}
