@@ -1,0 +1,7 @@
+075f633d8ab25112fb2e4a9440b2f816f1d9bc27e17a5146f8af617f13c612f6  addon\docs\Residents_test_plan.md
+5967afeff84f5b137828bd957f3553d519952eab2d6aac8eca963b4df986ab3a  addon\packs\BP\scripts\data\balance.js
+638582749369bf2fc1a3c2fdb3b707c1fb6b441e3555b5ebd589bef95f521b62  addon\packs\BP\scripts\data\residents.js
+b743efdaa6f3495abc2d7055bad38c10aad5e5c9a3eae9970addbdba93af0f1b  addon\packs\BP\scripts\main.js
+568ce1b664970c0a4e8210cc3b2c1f657282a2fad769242be04baa1250f7c7c6  addon\packs\RP\texts\en_US.lang
+26e903a32fcacf9e7d02e9b1f596bad27a75edc67ac489426733a56429ce2889  addon\packs\RP\textures\item_texture.json
+4eb65c284e387a2884b8adea0a1fa1bfa5285c2ca9be83ff101b092bb0d0d757  addon\tests\logic.test.mjs

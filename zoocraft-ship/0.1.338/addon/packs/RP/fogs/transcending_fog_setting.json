@@ -1,0 +1,22 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:fog_settings": {
+    "description": {
+      "identifier": "zoocraft:fog_transcending"
+    },
+    "distance": {
+      "air": {
+        "fog_start": 30.0,
+        "fog_end": 140.0,
+        "fog_color": "#8a6ad6",
+        "render_distance_type": "fixed"
+      },
+      "weather": {
+        "fog_start": 20.0,
+        "fog_end": 110.0,
+        "fog_color": "#8a6ad6",
+        "render_distance_type": "fixed"
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:frequency_stick",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/zoocraft/frequency_stick"
+      },
+      "geometry": {
+        "default": "geometry.zoocraft.frequency_stick"
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ]
+    }
+  }
+}
