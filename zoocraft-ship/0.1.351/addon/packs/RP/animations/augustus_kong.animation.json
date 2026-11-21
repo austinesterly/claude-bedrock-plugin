@@ -1,0 +1,102 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.zoocraft.augustus_kong.move": {
+      "loop": true,
+      "bones": {
+        "root": {
+          "position": [
+            0,
+            0,
+            7
+          ]
+        },
+        "body": {
+          "position": [
+            "math.sin(v.t * 3000) * 0.25 * v.crouch",
+            "math.abs(math.sin(v.ph)) * 0.8 * v.walk + v.crouch * -5.0 + v.leap * 1.0 + v.slam * -4.0 + v.rip * -3.0 + v.roar * 3.0 + v.sit * -9.0 + math.abs(math.sin(v.ph2)) * 1.6 * v.run + v.wind * 2.0",
+            "v.roar * 3.0"
+          ],
+          "rotation": [
+            "math.sin(v.t * 80) * 1.0 + v.crouch * 8.0 + v.leap * -12.0 + v.slam * 14.0 + v.rip * 12.0 + v.throw * 10.0 + v.roar * -26.0 + v.sit * -18.0 + v.run * 18.0 + v.wind * -16.0",
+            "v.aim * 16.0 + v.throw * -14.0",
+            "math.sin(v.ph) * 2 * v.walk + v.rip * -5.0 + math.sin(v.ph2) * 3 * v.run"
+          ]
+        },
+        "head": {
+          "rotation": [
+            "math.sin(v.t * 70) * 2 + v.crouch * -18.0 + v.leap * -10.0 + v.slam * 6.0 + v.rip * 8.0 + v.roar * -18.0 + v.sit * 30.0 + v.run * -14.0 + v.wind * -10.0",
+            "math.sin(v.t * 23) * 12 * (1 - v.walk) * (1 - v.run) * (1 - v.roar) * (1 - v.sit) - v.aim * 12 + v.throw * 10",
+            "v.sit * 6"
+          ]
+        },
+        "jaw": {
+          "rotation": [
+            "math.max(0, math.sin(v.t * 40)) * 2 + v.crouch * 12.0 + v.slam * 18.0 + v.rip * 6.0 + v.aim * 4.0 + v.throw * 14.0 + v.roar * 30.0 + v.run * 6.0 + v.wind * 20.0",
+            0,
+            0
+          ]
+        },
+        "armL": {
+          "rotation": [
+            "1 * math.sin(v.ph) * 20 * v.walk + v.crouch * 42.0 + v.leap * -168.0 + v.slam * -48.0 + v.rip * 24.0 + v.aim * -30.0 + v.throw * 22.0 + v.roar * -78.0 + v.sit * -18.0 - v.roar * 1 * v.beat * 16 + math.sin(v.ph2) * 42 * v.run + v.run * -14.0 + v.wind * -172.0",
+            "0",
+            "1 * (v.crouch * 6.0 + v.leap * 10.0 + v.roar * -18.0 + v.sit * 8.0) + v.wind * 8.0"
+          ]
+        },
+        "foreL": {
+          "rotation": [
+            "math.max(0, -1 * math.sin(v.ph)) * -12 * v.walk + v.crouch * -10.0 + v.slam * -10.0 + v.rip * 4.0 + v.roar * -62.0 + v.sit * -10.0 + math.max(0, -1 * math.sin(v.ph2)) * -20 * v.run + v.wind * -24.0",
+            "0",
+            "1 * v.roar * -14"
+          ]
+        },
+        "legL": {
+          "rotation": [
+            "-1 * math.sin(v.ph) * 18 * v.walk + v.crouch * -58.0 + v.leap * -42.0 + v.slam * -50.0 + v.rip * -46.0 + v.roar * 10.0 + v.sit * -84.0 + -1 * math.sin(v.ph2) * 34 * v.run + v.run * -10.0 + v.wind * -18.0",
+            "0",
+            "1 * v.sit * -10"
+          ]
+        },
+        "shinL": {
+          "rotation": [
+            "math.max(0, 1 * math.sin(v.ph)) * 18 * v.walk + v.crouch * 46.0 + v.leap * 56.0 + v.slam * 30.0 + v.rip * 12.0 + v.sit * 66.0 + math.max(0, math.sin(v.ph2)) * 34 * v.run + v.wind * 14.0",
+            "0",
+            "0"
+          ]
+        },
+        "armR": {
+          "rotation": [
+            "-1 * math.sin(v.ph) * 20 * v.walk + v.crouch * 42.0 + v.leap * -168.0 + v.slam * -48.0 + v.rip * -34.0 + v.aim * -196.0 + v.throw * -35.0 + v.roar * -78.0 + v.sit * -18.0 - v.roar * -1 * v.beat * 16 + -1 * math.sin(v.ph2) * 42 * v.run + v.run * -14.0 + v.wind * -172.0",
+            "0",
+            "-1 * (v.crouch * 6.0 + v.leap * 10.0 + v.roar * -18.0 + v.sit * 8.0) + v.aim * 10 + v.wind * -8.0"
+          ]
+        },
+        "foreR": {
+          "rotation": [
+            "math.max(0, 1 * math.sin(v.ph)) * -12 * v.walk + v.crouch * -10.0 + v.slam * -10.0 + v.rip * -18.0 + v.aim * -36.0 + v.roar * -62.0 + v.sit * -10.0 + math.max(0, math.sin(v.ph2)) * -20 * v.run + v.wind * -24.0",
+            "0",
+            "-1 * v.roar * -14"
+          ]
+        },
+        "legR": {
+          "rotation": [
+            "1 * math.sin(v.ph) * 18 * v.walk + v.crouch * -58.0 + v.leap * -42.0 + v.slam * -50.0 + v.rip * -46.0 + v.roar * 10.0 + v.sit * -84.0 + math.sin(v.ph2) * 34 * v.run + v.run * -10.0 + v.wind * -18.0",
+            "0",
+            "-1 * v.sit * -10"
+          ]
+        },
+        "shinR": {
+          "rotation": [
+            "math.max(0, -1 * math.sin(v.ph)) * 18 * v.walk + v.crouch * 46.0 + v.leap * 56.0 + v.slam * 30.0 + v.rip * 12.0 + v.sit * 66.0 + math.max(0, -1 * math.sin(v.ph2)) * 34 * v.run + v.wind * 14.0",
+            "0",
+            "0"
+          ]
+        },
+        "held": {
+          "scale": "v.hold"
+        }
+      }
+    }
+  }
+}

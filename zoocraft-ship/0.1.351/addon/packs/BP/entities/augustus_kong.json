@@ -1,0 +1,98 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "zoocraft:augustus_kong",
+      "spawn_category": "misc",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "properties": {
+        "zoocraft:act": {
+          "type": "int",
+          "range": [
+            0,
+            11
+          ],
+          "default": 0,
+          "client_sync": true
+        }
+      }
+    },
+    "components": {
+      "minecraft:collision_box": {
+        "width": 4.4,
+        "height": 6.0
+      },
+      "minecraft:physics": {
+        "has_gravity": false,
+        "has_collision": false
+      },
+      "minecraft:dimension_bound": {},
+      "minecraft:transient": {},
+      "minecraft:knockback_resistance": {
+        "value": 1.0
+      },
+      "minecraft:type_family": {
+        "family": [
+          "augustus_kong",
+          "zoocraft_guardian"
+        ]
+      },
+      "minecraft:health": {
+        "value": 900,
+        "max": 900
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "cause": "fall",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "suffocation",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "drowning",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "fly_into_wall",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "void",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "magma",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "lava",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "fire",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "fire_tick",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "freezing",
+            "deals_damage": "no"
+          }
+        ]
+      },
+      "minecraft:conditional_bandwidth_optimization": {
+        "default_values": {
+          "max_dropped_ticks": 0,
+          "max_optimized_distance": 160.0,
+          "use_motion_prediction_hints": true
+        }
+      }
+    }
+  }
+}
