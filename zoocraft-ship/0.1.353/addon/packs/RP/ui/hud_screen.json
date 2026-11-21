@@ -1,0 +1,398 @@
+{
+  "namespace": "hud",
+  "zoocraft_boss_vanilla": {
+    "type": "panel",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "controls": [
+      {
+        "boss_name@hud.boss_name_panel": {}
+      },
+      {
+        "progress_bar_for_collections@common.progress_bar_for_collections": {
+          "offset": [
+            0,
+            10
+          ]
+        }
+      }
+    ],
+    "bindings": [
+      {
+        "binding_name": "#bossName",
+        "binding_type": "collection",
+        "binding_collection_name": "boss_bars"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(((#bossName - 'Crimson Dragon') = #bossName) and ((#bossName - 'Augustus Kong') = #bossName))",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+  "zoocraft_boss_bar": {
+    "type": "panel",
+    "size": [
+      208,
+      27
+    ],
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "controls": [
+      {
+        "title": {
+          "type": "label",
+          "text": "#bossName",
+          "color": [
+            1.0,
+            0.36,
+            0.32
+          ],
+          "shadow": true,
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "layer": 4,
+          "bindings": [
+            {
+              "binding_name": "#bossName",
+              "binding_type": "collection",
+              "binding_collection_name": "boss_bars"
+            }
+          ]
+        }
+      },
+      {
+        "frame": {
+          "type": "image",
+          "texture": "textures/ui/zoocraft/boss/frame",
+          "size": [
+            208,
+            16
+          ],
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "offset": [
+            0,
+            11
+          ],
+          "layer": 1
+        }
+      },
+      {
+        "red": {
+          "type": "panel",
+          "size": [
+            182,
+            6
+          ],
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "offset": [
+            0,
+            16
+          ],
+          "controls": [
+            {
+              "bar": {
+                "type": "image",
+                "texture": "textures/ui/zoocraft/boss/bar_1",
+                "size": [
+                  182,
+                  6
+                ],
+                "layer": 2,
+                "clip_direction": "left",
+                "clip_pixelperfect": false,
+                "bindings": [
+                  {
+                    "binding_name": "#progress_percentage",
+                    "binding_type": "collection",
+                    "binding_collection_name": "boss_bars",
+                    "binding_name_override": "#clip_ratio"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "void": {
+          "type": "panel",
+          "size": [
+            182,
+            6
+          ],
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "offset": [
+            0,
+            16
+          ],
+          "controls": [
+            {
+              "bar": {
+                "type": "image",
+                "texture": "textures/ui/zoocraft/boss/bar_2",
+                "size": [
+                  182,
+                  6
+                ],
+                "layer": 3,
+                "clip_direction": "left",
+                "clip_pixelperfect": false,
+                "bindings": [
+                  {
+                    "binding_name": "#progress_percentage",
+                    "binding_type": "collection",
+                    "binding_collection_name": "boss_bars",
+                    "binding_name_override": "#clip_ratio"
+                  }
+                ]
+              }
+            }
+          ],
+          "bindings": [
+            {
+              "binding_name": "#progress_percentage",
+              "binding_type": "collection",
+              "binding_collection_name": "boss_bars"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((#progress_percentage * 2) < 1)",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "white": {
+          "type": "panel",
+          "size": [
+            182,
+            6
+          ],
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "offset": [
+            0,
+            16
+          ],
+          "controls": [
+            {
+              "bar": {
+                "type": "image",
+                "texture": "textures/ui/zoocraft/boss/bar_3",
+                "size": [
+                  182,
+                  6
+                ],
+                "layer": 4,
+                "clip_direction": "left",
+                "clip_pixelperfect": false,
+                "bindings": [
+                  {
+                    "binding_name": "#progress_percentage",
+                    "binding_type": "collection",
+                    "binding_collection_name": "boss_bars",
+                    "binding_name_override": "#clip_ratio"
+                  }
+                ]
+              }
+            }
+          ],
+          "bindings": [
+            {
+              "binding_name": "#progress_percentage",
+              "binding_type": "collection",
+              "binding_collection_name": "boss_bars"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((#progress_percentage * 4) < 1)",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      }
+    ],
+    "bindings": [
+      {
+        "binding_name": "#bossName",
+        "binding_type": "collection",
+        "binding_collection_name": "boss_bars"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(not ((#bossName - 'Crimson Dragon') = #bossName))",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+  "zoocraft_kong_bar": {
+    "type": "panel",
+    "size": [
+      208,
+      35
+    ],
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "controls": [
+      {
+        "title": {
+          "type": "label",
+          "text": "#bossName",
+          "color": [
+            0.56,
+            0.9,
+            0.36
+          ],
+          "shadow": true,
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "layer": 4,
+          "bindings": [
+            {
+              "binding_name": "#bossName",
+              "binding_type": "collection",
+              "binding_collection_name": "boss_bars"
+            }
+          ]
+        }
+      },
+      {
+        "frame": {
+          "type": "image",
+          "texture": "textures/ui/zoocraft/boss/kong/frame",
+          "size": [
+            208,
+            24
+          ],
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "offset": [
+            0,
+            11
+          ],
+          "layer": 1
+        }
+      },
+      {
+        "green": {
+          "type": "panel",
+          "size": [
+            182,
+            6
+          ],
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "offset": [
+            0,
+            16
+          ],
+          "controls": [
+            {
+              "bar": {
+                "type": "image",
+                "texture": "textures/ui/zoocraft/boss/kong/bar_1",
+                "size": [
+                  182,
+                  6
+                ],
+                "layer": 2,
+                "clip_direction": "left",
+                "clip_pixelperfect": false,
+                "bindings": [
+                  {
+                    "binding_name": "#progress_percentage",
+                    "binding_type": "collection",
+                    "binding_collection_name": "boss_bars",
+                    "binding_name_override": "#clip_ratio"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "orange": {
+          "type": "panel",
+          "size": [
+            182,
+            6
+          ],
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "offset": [
+            0,
+            16
+          ],
+          "controls": [
+            {
+              "bar": {
+                "type": "image",
+                "texture": "textures/ui/zoocraft/boss/kong/bar_2",
+                "size": [
+                  182,
+                  6
+                ],
+                "layer": 3,
+                "clip_direction": "left",
+                "clip_pixelperfect": false,
+                "bindings": [
+                  {
+                    "binding_name": "#progress_percentage",
+                    "binding_type": "collection",
+                    "binding_collection_name": "boss_bars",
+                    "binding_name_override": "#clip_ratio"
+                  }
+                ]
+              }
+            }
+          ],
+          "bindings": [
+            {
+              "binding_name": "#progress_percentage",
+              "binding_type": "collection",
+              "binding_collection_name": "boss_bars"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((#progress_percentage * 2) < 1)",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      }
+    ],
+    "bindings": [
+      {
+        "binding_name": "#bossName",
+        "binding_type": "collection",
+        "binding_collection_name": "boss_bars"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(not ((#bossName - 'Augustus Kong') = #bossName))",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+  "boss_health_panel": {
+    "controls": [
+      {
+        "zoocraft_boss_vanilla@hud.zoocraft_boss_vanilla": {}
+      },
+      {
+        "zoocraft_boss_bar@hud.zoocraft_boss_bar": {}
+      },
+      {
+        "zoocraft_kong_bar@hud.zoocraft_kong_bar": {}
+      }
+    ]
+  }
+}

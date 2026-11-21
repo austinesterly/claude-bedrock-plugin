@@ -1,0 +1,5 @@
+7c1ef040d2da6096ddce6adee0bf740e9a3a0c05c7d5d48bcc2b2999cc612db5  addon\docs\Residents_test_plan.md
+9b105739fc0f2321180d0e464c9f2fad7fd7a1bc870d02a8d313f8e02a209808  addon\packs\BP\entities\augustus_kong.json
+ada176dfd7ad5a62e6b6a9f4fafb7da8a5850a2579d24866e290ec02f9be5def  addon\packs\BP\scripts\world\augustusKong.js
+f900c2803d58db8af2c9166bfb97094a996ebb8db6b70b9d45a607a39846e89c  addon\packs\RP\ui\hud_screen.json
+c9a04521fab2828d471d9925f56d8fa1c0ce6fcbb45017c0214271e702a2f0ad  addon\tests\logic.test.mjs

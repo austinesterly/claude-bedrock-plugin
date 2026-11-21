@@ -1,0 +1,8 @@
+b8e62698a2e4821f9ab815a4ec68ce5645022b8fce6d29ee078f16c06e1014fc  addon\docs\Residents_test_plan.md
+de6acf774788f8cc6a22d18432effb0389ce36ab69b978ab4b198fd3c78a98e5  addon\packs\BP\entities\augustus_kong.json
+2ccf15b75f25c7e8bcdeae3ea199f509f6b492cbb0ab4b7f3795c39fe8c82a22  addon\packs\BP\scripts\world\augustusKong.js
+0a407483eb39c32d03bdfb1fd651188c71894354ecb01357e6a95543ccd8d79a  addon\packs\RP\textures\ui\zoocraft\boss\kong\bar_1.png
+2ccf0d4dda134e3a78b8677470cce0e1d59ba4e6303b498b64e8f4b3e61c7d11  addon\packs\RP\textures\ui\zoocraft\boss\kong\bar_2.png
+ca8a35e91ae1f6fe5d20ff80e3e3f1c32658d8d719792a56f3f9b14ec53ac38c  addon\packs\RP\textures\ui\zoocraft\boss\kong\frame.png
+5d42d6b7cd1838a01fad97f6a4e6b078ad58d15839700a7305c7b4810fcf895e  addon\packs\RP\ui\hud_screen.json
+93d00f0c73dbc5796495095614b074cddcab5e741647ac495036925a742950c5  addon\tests\logic.test.mjs
