@@ -1,0 +1,6 @@
+67268c5fda3d055090c3ec2269b4f10144263b3eb110471bb2547595858d3d2e  addon\docs\Residents_test_plan.md
+17cd372183b8faffb458e8eb789ae65e43994f35ea0ddc10637ef60c9e1e2d95  addon\packs\BP\scripts\data\balance.js
+62cc2c32ec559316e9d703256f31fb1ae5453fd4afbf35d14f28eca71eb7108a  addon\packs\BP\scripts\main.js
+b4c67940a4f9b64abb37e3c7c06aa74ef01cefc81d4c20625d1f976c77109a53  addon\packs\BP\scripts\world\jungleVillage.js
+253ee7ea817bec2a938926400254de88e3753964ba0ecdede0d868fb12065b55  addon\packs\BP\scripts\world\treeVillagePlan.js
+0de8c46ceb1fec08dede5a763f78047a0cd2856d27fbd08caf2c935fdcca4d5f  addon\tests\logic.test.mjs
