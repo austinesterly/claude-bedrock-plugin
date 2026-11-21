@@ -1,0 +1,3 @@
+8bddeba52dd12b7e0f8433593f3fd4153757df4bf00ba0ae6d35559ab20bdaf0  addon\docs\Residents_test_plan.md
+378eca476343664679c75c5b080ba332e6d26c7f7cfddeabb87833eda8024593  addon\packs\BP\scripts\data\residents.js
+1f1b001d800570b8cfdfed0509c3855e35b7f01841613b00d1363d576faae04e  addon\tests\logic.test.mjs
