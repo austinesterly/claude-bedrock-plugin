@@ -1,0 +1,4 @@
+0ceddf88f56f771b46d23fd05c7b282848c5e94699150a5c25ddfdf71f75f81c  addon\docs\Content_log_test_plan.md
+be5b55fc19e22653b4832c70a2c8462070b1c78c50866a597b4510eec7d2e8f9  addon\packs\BP\scripts\platform\mc.js
+5b8d960e0411f9b5de910b376836e3397507b0be444a9ba0ee3f09f1e1b37e88  addon\packs\BP\scripts\world\vision.js
+c4793f71b213138a48a63b5992b8fa9e2f22b961e91009156450da98595f49f6  addon\tests\logic.test.mjs
