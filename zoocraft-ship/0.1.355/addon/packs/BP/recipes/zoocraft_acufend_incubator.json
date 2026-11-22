@@ -1,0 +1,33 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "zoocraft:acufend_incubator"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "AAA",
+      "ATA",
+      "AAA"
+    ],
+    "key": {
+      "A": {
+        "item": "zoocraft:acurite"
+      },
+      "T": {
+        "item": "minecraft:torch"
+      }
+    },
+    "unlock": [
+      {
+        "item": "zoocraft:acurite"
+      }
+    ],
+    "result": {
+      "item": "zoocraft:acufend_incubator",
+      "count": 1
+    }
+  }
+}

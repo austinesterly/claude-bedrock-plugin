@@ -1,0 +1,117 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:block": {
+    "description": {
+      "identifier": "zoocraft:acufend_incubator",
+      "menu_category": {
+        "category": "items"
+      },
+      "states": {
+        "zoocraft:stage": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    },
+    "components": {
+      "minecraft:geometry": "minecraft:geometry.full_block",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "zoocraft_incubator_top_0",
+          "render_method": "opaque"
+        },
+        "up": {
+          "texture": "zoocraft_incubator_top_0",
+          "render_method": "opaque"
+        },
+        "side": {
+          "texture": "zoocraft_incubator_side_0",
+          "render_method": "opaque"
+        },
+        "north": "side",
+        "south": "side",
+        "east": "side",
+        "west": "side"
+      },
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 3,
+        "item_specific_speeds": [
+          {
+            "item": {
+              "tags": "q.any_tag('minecraft:is_pickaxe')"
+            },
+            "destroy_speed": 1.0
+          }
+        ]
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 6
+      },
+      "minecraft:tick": {
+        "interval_range": [
+          1100,
+          1300
+        ],
+        "looping": true
+      },
+      "minecraft:loot": "loot_tables/blocks/zoocraft_acufend_incubator.json",
+      "minecraft:map_color": "#463068",
+      "minecraft:light_emission": 3,
+      "zoocraft:incubator": {}
+    },
+    "permutations": [
+      {
+        "condition": "query.block_state('zoocraft:stage') >= 1 && query.block_state('zoocraft:stage') <= 4",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "zoocraft_incubator_top_0",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "zoocraft_incubator_top_1",
+              "render_method": "opaque"
+            },
+            "side": {
+              "texture": "zoocraft_incubator_side_1",
+              "render_method": "opaque"
+            },
+            "north": "side",
+            "south": "side",
+            "east": "side",
+            "west": "side"
+          },
+          "minecraft:light_emission": 8
+        }
+      },
+      {
+        "condition": "query.block_state('zoocraft:stage') == 5",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "zoocraft_incubator_top_0",
+              "render_method": "opaque"
+            },
+            "up": {
+              "texture": "zoocraft_incubator_top_2",
+              "render_method": "opaque"
+            },
+            "side": {
+              "texture": "zoocraft_incubator_side_2",
+              "render_method": "opaque"
+            },
+            "north": "side",
+            "south": "side",
+            "east": "side",
+            "west": "side"
+          },
+          "minecraft:light_emission": 13
+        }
+      }
+    ]
+  }
+}

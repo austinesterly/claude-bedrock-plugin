@@ -1,0 +1,58 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:block": {
+    "description": {
+      "identifier": "zoocraft:acurite_ore",
+      "menu_category": {
+        "category": "none"
+      },
+      "states": {
+        "zoocraft:was": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ]
+      }
+    },
+    "components": {
+      "minecraft:geometry": "minecraft:geometry.full_block",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "zoocraft_acurite_ore",
+          "render_method": "opaque"
+        }
+      },
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 4.5,
+        "item_specific_speeds": [
+          {
+            "item": {
+              "tags": "q.any_tag('minecraft:is_pickaxe')"
+            },
+            "destroy_speed": 1.0
+          }
+        ]
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 3
+      },
+      "minecraft:tick": {
+        "interval_range": [
+          100,
+          160
+        ],
+        "looping": true
+      },
+      "minecraft:loot": "loot_tables/blocks/zoocraft_acurite_ore.json",
+      "minecraft:map_color": "#a050c8",
+      "minecraft:light_emission": 7,
+      "zoocraft:acurite": {}
+    }
+  }
+}
