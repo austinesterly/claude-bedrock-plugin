@@ -1,0 +1,3 @@
+e4f7c8ff9368c98e0c6ad685842af7bbca9ad99ad54e8f9f8e3cdc581caff081  addon\docs\Residents_test_plan.md
+a2d6daa98fd9522955af587e6b0428fbb6a6648dc0542e74b712fdc1f19a5e0b  addon\packs\BP\scripts\data\miriumPool.js
+c397afd1ae6b81788250b79d624da687293306563e2fce9e16290d4ec1364711  addon\tests\logic.test.mjs
