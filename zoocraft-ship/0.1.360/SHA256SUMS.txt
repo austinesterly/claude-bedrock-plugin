@@ -1,0 +1,3 @@
+330b4e9a618e9cec0a8de91acd8249db61118596e21074aaf4bc28bc787011e9  addon\docs\Residents_test_plan.md
+a55f7fa3bed35a813cba92a4a523ed07aab15e30d7d332831f01c0237cb6b453  addon\packs\RP\textures\entity\zoocraft\resident_31.png
+380d7ac38f6904e3f8d5af57b0f04f1e6cb33526db25071063f28b38bdbb1095  addon\tests\logic.test.mjs
