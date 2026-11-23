@@ -1,0 +1,180 @@
+// What a resident says, creeped out, when a player they hardly know asks them to follow (0.1.233, Austin: "I want
+// there to be a creeped out face if you ask someone to follow you if you dont have enough friendship, and they should
+// also say, something like \"thats weird\""). Three each, in their own voice. Plain text, short enough for the talk box.
+export const CREEPED = {
+  austin: [
+    "Uh, that's weird, mate. Fans usually ask for a photo first.",
+    "Follow you? We just met. That's a bit weird, even for my comments section.",
+    "Whoa. Weird. I don't follow people. People follow me. That's the whole job.",
+  ],
+  zach: [
+    "Uh, that's weird, man. We haven't even shared a song yet.",
+    "Follow you where? I barely know you. That's a little weird.",
+    "Easy there. Weird thing to ask a fella you just met.",
+  ],
+  sheila: [
+    "Follow you? Oh, that's a bit weird, dear. I don't even know your mother.",
+    "Goodness, how odd! We've hardly had one cup of tea together, dear.",
+    "That's weird, dear. In my day you were introduced properly first.",
+  ],
+  carrot: [
+    "Um! That's weird! I only follow bunnies! And friends! You're not a bunny!",
+    "Follow you? But I don't know you yet! That's weird! My ears went all funny!",
+    "Eep! Weird! Stranger danger! That's what the bunnies taught me!",
+  ],
+  ron: [
+    "Well now. That's a weird thing to ask a man you just met.",
+    "Follow you? Hm. That's weird. Even the crows get to know me first.",
+    "That's weird, friend. I don't wander off with folk I hardly know.",
+  ],
+  jared: [
+    "Uh. That's weird. We just met, like, a minute ago.",
+    "Follow you? Nah, that's kinda weird. Let's hang out first.",
+    "Whoa, weird vibe. I don't even know your name yet.",
+  ],
+  amanda: [
+    "That's weird. We've had no time to establish any trust at all.",
+    "Follow you? Based on what evidence? That's a weird request.",
+    "Hm. Weird. I don't follow strangers. I barely follow maps.",
+  ],
+  paola: [
+    "No. That's weird. I don't know you.",
+    "Follow you? Weird. Back up a step.",
+    "That's weird. I'm holding an axe, you know.",
+  ],
+  dave: [
+    "Oh. Um. That's weird. And I live in a hole, so I'd know.",
+    "Follow you? We just met. That's weird, that is. Sorry.",
+    "Er. Weird. Even the bats give me a week before they ask.",
+  ],
+  teddy: [
+    "I beg your pardon? That's weird. One does not simply summon the mayor.",
+    "Follow you? How very weird. We have not even been formally introduced.",
+    "Most irregular. Weird, in fact. Kindly make an appointment to befriend me first.",
+  ],
+  ailing_bot: [
+    "Follow you? That's WEIRD. We just met! Even my cat took a month.",
+    "Whoa. That's weird, right? I think that's weird. Yes. It's weird.",
+    "That's weird, pal. I fall for a lot of things, but not this one.",
+  ],
+  terra: [
+    "Oh! Follow you? That's weird. Even seeds take a while to trust new soil.",
+    "That's weird, I think? We've only just met. Let's grow into it slowly.",
+    "Oh my. How weird! I don't even know your favourite tree yet.",
+  ],
+  jaylen: [
+    "Whoa, that's weird, champ. You need a ticket to roll with me.",
+    "Follow you? Nah. That's weird. We haven't even had a warm-up yet.",
+    "That's weird. I lead, I don't follow. And I don't know you like that.",
+  ],
+  sophia: [
+    "That's weird. I don't know you. No.",
+    "Follow a stranger? That's weird, and I'm honest enough to say so.",
+    "Weird request. We've barely spoken, which I liked, by the way.",
+  ],
+  dr_pollo: [
+    "Follow you? That's weird, young one. I don't trail after strangers.",
+    "That's weird. I've known stray dogs with better manners. Let's talk first.",
+    "Now that's a weird thing to ask a man you've only just met.",
+  ],
+  clian: [
+    "Follow you? That's weird. I don't even know where your shoes have been.",
+    "That's weird. We've only just met, and you want me trailing after you?",
+    "No. That's weird. Let's talk first, from a hygienic distance.",
+  ],
+  carrie: [
+    "Follow you? That's weird. I don't follow strangers. Or anybody, really.",
+    "That's weird. I've only just met you, and I'm the one who leads.",
+    "No, that's weird. Talk with me a while first. Then we'll see who's leading who.",
+  ],
+  desilva: [
+    "Follow you? That's weird. Creepy, even. I like creepy, but not from you.",
+    "That's weird. I don't even like you yet. I don't like anyone, but still.",
+    "No. That's weird. Go and be strange somewhere else.",
+  ],
+  aloof: [
+    "Follow you? That's weird! Even I think that's weird!",
+    "Hee hee, that's weird! I don't even know your name! Do I? No!",
+    "That's weird! Strangers don't follow strangers! I think! Talk first!",
+  ],
+  guido: [
+    "Follow you? That's weird. I don't follow anybody I don't know.",
+    "That's weird, pal. I've only just met you.",
+    "No. That's weird. People follow me, not the other way round.",
+  ],
+  jack: [
+    "Follow you? We've only just met. That's odd. A bit fishy, even.",
+    "Whoa, slow down. Weird ask. I don't even know if you can tie a knot.",
+    "That's weird. Let's start with a joke first, and work up to the following.",
+  ],
+  chasm: [
+    "That's weird. I do not follow strangers. Step back.",
+    "An odd request from someone I do not know. Poor judgement.",
+    "Irregular. I am not going anywhere with you. Not yet.",
+  ],
+  subject_10: [
+    "That's weird. We've only just met and you want me to follow you? No thanks!",
+    "An odd thing to ask a stranger. I've followed one of those before. Never again.",
+    "Irregular! Friendly, but irregular. Ask me when we're friends.",
+  ],
+  don_l: [
+    "That's weird. I don't follow strangers. I lead them. Back up.",
+    "Weird play, rookie. We just met.",
+    "Odd call. You've got to make the team first.",
+  ],
+  ash: [
+    "That's weird, friend. We just met. Let's take it slow.",
+    "A little odd to ask that so soon. Not yet.",
+    "Hm. Weird timing. Get to know me first.",
+  ],
+  han_lock: [
+    "That's weird. I do not follow people I have not tested. Step back.",
+    "Odd thing to ask a man you just met.",
+    "Weird. Lift something heavy first. Then we talk.",
+  ],
+  darian: [
+    "That's weird. I do not walk off with strangers. Give it time.",
+    "An odd thing to ask of a man you have only just met.",
+    "Weird. Trust is brewed slowly. Come back another day.",
+  ],
+  damien: [
+    "That's weird. You are asking that of me so soon? Not yet.",
+    "Weird. You hardly know me, and what you know is not good.",
+    "An odd request. Give me time first.",
+  ],
+  tim: [
+    "That's weird. We just met and you want me to follow you? I've read books about people like you.",
+    "Weird ask. I don't follow strangers. I barely follow plots.",
+    "Odd request. Get to know me first. Or at least bring a vegetable.",
+  ],
+  dr_foss: [
+    "That's weird. We've barely met, and I've walked into enough traps to know one when I see it.",
+    "Odd request. I don't follow strangers. Not since the incident with the map.",
+    "A weird thing to ask a man you hardly know. Let's get acquainted first. I'm a careful scholar.",
+  ],
+  mirium: [
+    "That's weird. We've only just met! Let's start with a hello.",
+    "What an odd thing to ask your banker. Let's get to know each other first.",
+    "A bit irregular, isn't it? Ask me again when we're friends.",
+  ],
+  stevie: [
+    "That's weird, mate! We've only just met. Start with a g'day.",
+    "Bit of an odd one to ask a keeper, eh? Let's get to know each other first.",
+    "Odd question! Even a friendly animal needs time to trust. Ask me later.",
+  ],
+  the_boulder: [
+    "That's weird. We just met at the trailhead. Start with a hello!",
+    "A bold and odd question. The Boulder admires boldness. Still, no.",
+    "Weird trail to take, stranger. Come back when we are friends.",
+  ],
+  dory: [
+    "Um, that's weird. We only just met! Try hello first.",
+    "Oh! That's an odd one. I don't know you well enough yet. Ask me about animals.",
+    "That's a weird question, and I'm the expert on those. Maybe when we're friends.",
+  ],
+  ping: [
+    "That's weird to ask someone you've only just met. Let's begin with hello.",
+    "An odd request, boss. Trust is earned. Ask me again later.",
+    "An odd thing to ask your zookeeper. I'll put it down to nerves and move on.",
+  ],
+};

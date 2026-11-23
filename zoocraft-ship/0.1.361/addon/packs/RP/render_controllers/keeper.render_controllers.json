@@ -1,0 +1,11 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.zoocraft.keeper": {
+      "arrays": {"textures": {"Array.looks": ["Texture.look0", "Texture.look1", "Texture.look2", "Texture.look3", "Texture.look4", "Texture.look5"]}},
+      "geometry": "Geometry.default",
+      "materials": [{"*": "Material.default"}],
+      "textures": ["Array.looks[query.property('zoocraft:look')]"]
+    }
+  }
+}
