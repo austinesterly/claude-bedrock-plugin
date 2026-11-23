@@ -1,10 +1,10 @@
 # Script API surface by channel (generated)
 
-Generated on **2026-11-16** from the official `index.d.ts` typings on npm. "Stable" = the `latest` tag. Use this to check whether an API a tutorial uses is stable before shipping it.
+Generated on **2026-11-23** from the official `index.d.ts` typings on npm. "Stable" = the `latest` tag. Use this to check whether an API a tutorial uses is stable before shipping it.
 
 ## @minecraft/server
 
-Stable 2.11.0 (3080 names), rc 2.12.0-rc.1.26.70-preview.24, beta 2.13.0-beta.1.26.70-preview.24.
+Stable 2.11.0 (3080 names), rc 2.12.0-rc.1.26.70-preview.26, beta 2.13.0-beta.1.26.70-preview.26.
 
 ### Coming in the next stable (in rc, not in latest): 114
 
@@ -20,7 +20,7 @@ Stable 2.11.0 (3080 names), rc 2.12.0-rc.1.26.70-preview.24, beta 2.13.0-beta.1.
 
 ## @minecraft/server-ui
 
-Stable 2.3.0 (183 names), rc 2.4.0-rc.1.26.70-preview.24, beta 2.5.0-beta.1.26.70-preview.24.
+Stable 2.3.0 (183 names), rc 2.4.0-rc.1.26.70-preview.26, beta 2.5.0-beta.1.26.70-preview.26.
 
 ### Coming in the next stable (in rc, not in latest): 10
 

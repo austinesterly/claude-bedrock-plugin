@@ -12,7 +12,7 @@ Curated 2026-10-06 against official changelogs through Minecraft Preview 26.60.3
 
 ## Beta APIs
 
-Unlocks beta versions of the script modules. What's in beta now (as of `@minecraft/server` 2.13.0-beta and `server-ui` 2.5.0-beta, Preview 26.70.24; the stable 26.60 game has its own 2.12.0-beta):
+Unlocks beta versions of the script modules. What's in beta now (as of `@minecraft/server` 2.13.0-beta and `server-ui` 2.5.0-beta, Preview 26.70.26; the stable 26.60 game has its own 2.12.0-beta):
 
 - **Blocks:** named ticks (`Block.scheduleNamedTick`, `hasScheduledNamedTick`, `removeScheduledNamedTicks`, `getScheduledNamedTickCount`, `getAllScheduledNamedTicks`, the `onNamedTick` custom component event; up to 4 per block, names up to 31 characters; **released to stable 2.12.0 in Preview 26.70.23**, so stable when 26.70 ships). **26.70.20 broke this beta API:** `removeScheduledNamedTick` became `removeScheduledNamedTicks`, and the event's `isName` was split into a `name` string and an `isMine()` method; `onNeighborChanged` with `BlockComponentNeighborChangedAfterEvent.getChanges` (needs the `minecraft:neighbor_change` component for direction filtering; also released to 2.12.0 in 26.70.23, with `BlockVibrationPropertiesComponent`); `Block.canPlace`, `isSolid`, `getMapColor`, `trySetPermutation`; `BlockBoundingBoxUtils`.
 - **Block storage and crafting:** `BlockEntityStorageComponent` (`store`, `transfer`, `release`, `getEntities`, `size`; up to 4 entities per block); `ItemBlockEntityStorageComponent` on item stacks (same methods, `release` takes a position; filled by the `carry_over_block_entity_data` loot function with `entity_storage: true`); `BlockInventoryComponent` now covers the vanilla chiseled bookshelf; `BlockRecipeCraftingComponent` (stonecutter), `BlockRecipeProcessingComponent` (crafter), `BlockVibrationPropertiesComponent` (these three and `RecipeCraftingContext` released to 2.12.0 in 26.70.23/24); `ItemInventoryComponent` on shulker box items and `BlockClimbableComponent` (`canClimb`, `canHoldPositionWhileSneaking`) (26.70.24).
@@ -55,6 +55,10 @@ Unlocks `culling_shape` and voxel-shape culling for custom blocks. From Preview 
 ## Game drop previews
 
 Each upcoming game drop has its own toggle. "Drop 4 of 2026" (Preview 26.60.29 onward) adds the Ice Cave biome, ice crystals, icicles, the Freezing effect, the Frostbite zombie variant and the ice ball. Vanilla ids from a drop preview may change before release, so don't reference them from shipped packs. "Villager Trade Rebalancing" changes villager trades. Preview 26.70.20 adds brittle ice and crevasses to Drop 4, plus a "Nether Spawning Rebalancing" toggle (lower Nether mob density, fortress spawning closer to Java Edition) that changes gameplay, not creator content.
+
+## Off-hand Parity
+
+New toggle in Preview 26.70.26, aimed at a release next year: any block or item can be held and used from the off hand (place blocks, strip logs), a swap key (F on keyboard; the left face button on controller now swaps instead of opening the inventory), and a touch Shield button. Gameplay only for now, with no new creator fields. Custom items still opt in with `minecraft:allow_off_hand` in stable; test them with the toggle on, since items that never expected the off hand may now be used from it.
 
 ## Custom dimensions and biomes
 

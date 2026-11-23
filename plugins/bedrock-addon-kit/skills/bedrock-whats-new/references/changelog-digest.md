@@ -2,9 +2,9 @@
 
 Curated from the official changelogs on feedback.minecraft.net (links in `current-versions.md`). Newest first. Each entry keeps only what changes how add-ons are built: new stable APIs and components, things that left experiments, and stricter parsing that can break existing files. The refresh routine appends new releases here.
 
-Last curated: 2026-11-16 (through stable 26.63 and Preview 26.70.24).
+Last curated: 2026-11-23 (through stable 26.63 and Preview 26.70.26).
 
-## 26.70 (in Preview since 2026-10-13; latest Preview 26.70.24)
+## 26.70 (in Preview since 2026-10-13; latest Preview 26.70.26)
 
 Script API: `@minecraft/server` 2.12.0 released in Preview (stable when 26.70 ships); 2.13.0-beta added. Stable is 2.11.0 since 26.60 shipped on 2026-10-23.
 - **Points of interest leave experiments:** POI types with hierarchical tags in behavior packs and `/locate poi`. POI definitions follow behavior pack stacking order.
@@ -24,6 +24,7 @@ Script API: `@minecraft/server` 2.12.0 released in Preview (stable when 26.70 sh
 - 26.70.24: script 2.12.0 also gains `playerCursorItemGrab` / `playerCursorItemRelease`, `playerCraftRecipe`, `BlockRecipeCraftingComponent`, `BlockRecipeProcessingComponent`, `RecipeCraftingContext`, `InvalidRecipeError`. Timer flag goals get `trigger_on_end_when_interrupted`. New Invisible Armor world setting and `invisibleArmor` game rule. Packs with an explicit `@minecraft/common` or `server-graphics` dependency now load on Realms and dedicated servers.
 - **Changes at format 1.26.70 (26.70.24):** item `minecraft:projectile` `minimum_critical_power` defaults to `-1` (no critical hits) instead of `0`; tridents no longer set `variable.is_brandishing_spear` for non-player mobs other than drowned, and the trident throw pose reads the holder's `variable.is_brandishing_spear`, which the holder's client entity must declare `public`.
 - Experimental in 26.70.24: `VirtualContainer` (chest-style screens with no block), block `minecraft:climbable` (beta format, Upcoming Creator Features), shulker boxes in `ItemInventoryComponent`, entity-attached `playSound`.
+- 26.70.26: new **Off-hand Parity** experiment (hold, use and place any item or block from the off hand, swap key F). No technical or script changes in this build.
 - `minecraft:crevasse_feature` appears in the notes but is internal only; creators can't use it.
 - Experimental (beta API or Upcoming Creator Features): `Entity.startPassengerOfBlock` / `stopPassengerOfBlock` / `isPassengerOfBlock` with Standing, Riding or Laying poses and `query.is_laying`; `ItemBlockEntityStorageComponent`; `carry_over_block_entity_data` `entity_storage`; `block_entity.container.show_ui_on_interaction`; entity `minecraft:time_marker_sensor`; `playMusic` returns a `SoundInstance`; `CustomFormOptions.topCloseButtonVisible`; `usePreciseRaycast` (26.70.21); experimental entity filters `speed`, `horizontal_speed`, `vertical_speed` (26.70.21); GameTest `runset` takes multiple tags and `withoutTags`, and `rotationSteps` must now be named; `BlockItemFrameComponent` with `getRotation`/`setRotation` (26.70.22); namespace filters on biome, block and entity queries, `portalActivate`, `PlayerDimensionChangeAfterEvent.source`, `ItemCustomComponent.onReleaseUse`, entity storage `remove`/`totalSize`, beta-format entity components `entity_rotation_always_follows_head` and `spherical_look_control` (26.70.23). **Breaking for beta users:** `removeScheduledNamedTick` renamed to `removeScheduledNamedTicks` and the named-tick event's `isName` split into `name` and `isMine()`.
 - Gameplay (Drop 4 toggle): brittle ice, crevasses in Ice Caves, jukebox playlists, new sound events `convert_to_frostbite` / `convert_to_zombie`. New "Nether Spawning Rebalancing" experiment.

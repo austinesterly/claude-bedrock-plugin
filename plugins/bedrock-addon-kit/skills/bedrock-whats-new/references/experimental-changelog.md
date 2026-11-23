@@ -1,6 +1,22 @@
 # Experimental and upcoming features in recent changelogs (generated)
 
-Generated on **2026-11-16** from feedback.minecraft.net (official Zendesk API). Each release lists its "Experimental ..." sections word for word, then other bullets that mention an experiment or beta (often a feature graduating out of an experiment). Newest first. Toggle names are as Mojang writes them in world settings > Experiments.
+Generated on **2026-11-23** from feedback.minecraft.net (official Zendesk API). Each release lists its "Experimental ..." sections word for word, then other bullets that mention an experiment or beta (often a feature graduating out of an experiment). Newest first. Toggle names are as Mojang writes them in world settings > Experiments.
+
+## Minecraft Beta & Preview - 26.70.26 (2026-11-17)
+
+Source: https://feedback.minecraft.net/hc/en-us/articles/50449951148429-Minecraft-Beta-Preview-26-70-26
+
+### Experimental Features
+
+#### Off-hand Parity
+
+- Available with the Off-hand Parity experiment enabled:
+  - You can now hold any block in your off-hand and place blocks directly from it.
+  - You can now use items from your off-hand, including interactions such as stripping Logs with an Axe.
+  - You can swap items between your main hand and off-hand.
+    - On keyboard and mouse, press F by default.
+    - On controller, the left face button now swaps items instead of opening your inventory.
+  - You may use the new Shield button on touch controls to raise your Shield in off-hand.
 
 ## Minecraft Beta & Preview - 26.70.24 (2026-11-10)
 
@@ -1015,107 +1031,6 @@ Source: https://feedback.minecraft.net/hc/en-us/articles/48602411551629-Minecraf
 - Added `@minecraft/server` version 2.12.0-beta
 - Releasing `TextPrimitive.lineGapHeight` from beta to 2.11.0.
 - Released `Dimension.spawnXp` from beta to scripts version `2.11.0`
-
-## Minecraft Beta & Preview - 26.50.26/27 (2026-08-18)
-
-Source: https://feedback.minecraft.net/hc/en-us/articles/48228443785101-Minecraft-Beta-Preview-26-50-26-27
-
-### Experimental Technical Updates
-
-#### API
-
-- Added `TimeMarker` class to `@minecraft/server` in beta
-  - Has properties for `name`, `time`, and `period`
-- Added `WorldClockRegistrationOptions` interface to `@minecraft/server` in beta
-- Added `TimeMarkerOptions` interface to `@minecraft/server` in beta
-- Added `WorldClockReloadTimeMarkerError` class to `@minecraft/server` in beta. This is thrown when an existing world clock has an invalid time marker after reloading scripts
-- Added `WorldClockAddTimeMarkerError` class to `@minecraft/server` in beta. This is thrown by a `WorldClock.addTimeMarker` when adding a time marker fails
-- Added `WorldClockRemoveMinecraftTimeMarkerError` class to `@minecraft/server` in beta. This is thrown by `WorldClock.removeTimeMarker` when trying to remove a time marker with the `minecraft:` namespace
-- Added `WorldClockInvalidTimeMarkerError` class to `@minecraft/server` in beta. This is thrown when trying to access data on an invalid time marker `minecraft:` namespace
-- Added `WorldClockTimeMarkerNotFoundError` class to `@minecraft/server` in beta. This is thrown by a `WorldClock` when a time marker does not exist
-- Added `WorldClockRewindError` class to `@minecraft/server` in beta. This is thrown by `WorldClock.rewindTo` when the world clock's current time is behind the time marker's first occurrence
-- Added `WorldClockOnTimeModifiedAfterEvent` class to `@minecraft/server` in beta
-  - This event is fired when a world clock's time is directly changed through scripting or commands
-- Added `WorldClockOnTimeModifiedAfterEventSignal` class to `@minecraft/server` in beta
-- Added `WorldClockOnPausedAfterEvent` class to `@minecraft/server` in beta
-  - This event is fired when a world clock is paused
-- Added `WorldClockOnPausedAfterEventSignal` class to `@minecraft/server` in beta
-- Added `WorldClockOnResumedAfterEvent` class to `@minecraft/server` in beta
-  - This event is fired when a world clock is resumed
-- Added `WorldClockOnResumedAfterEventSignal` class to `@minecraft/server` in beta
-- Added `WorldClockOnTimeMarkerAfterEvent` class to `@minecraft/server` in beta
-  - This event is fired when a world clock's time hits a time marker
-- Added `WorldClockOnTimeMarkerAfterEventSignal` class to `@minecraft/server` in beta
-- Added `WorldClockOnRestartBeforeEvent` class to `@minecraft/server` in beta
-  - This event is fired when a world clock ticks at the maximum time and is about to restart
-  - the `newTime` property on the event can be optionally set to set a custom restart time for the world clock
-- Added `WorldClockOnRestartBeforeEventSignal` class to `@minecraft/server` in beta
-- Added `WorldClockEventOptions` interface to `@minecraft/server` in beta
-  - Has a `clock` property to filter out which clock the event should fire for
-- Added `WorldClockTimeMarkerEventOptions` interface to `@minecraft/server` in beta
-  - Has a `clock` property to filter out which clock the event should fire for
-  - Has an optional `timeMarker` property to filter out which time marker the event should fire for
-
-##### DDUI
-
-- Fixed wrapping for labels and headers when using large texts with no spaces between. (MCPE-241081) Fix for players when leaving world while having a DDUI screen is open, becoming soft-locked when re-joining.
-
-##### EntityIsTamedComponent
-
-- Added read-only `tamedToPlayer` and `tamedToPlayerId` properties to `beta` that return the player and player id that tamed the entity
-
-##### WorldAfterEvents
-
-- Added the `worldClockOnTimeModified` event signal to `@minecraft/server` in beta. This is used to subscribe to world clock time modified events
-- Added the `worldClockOnPaused` event signal to `@minecraft/server` in beta. This is used to subscribe to world clock paused events
-- Added the `worldClockOnResumed` event signal to `@minecraft/server` in beta. This is used to subscribe to world clock resumed events
-- Added the `worldClockOnTimeMarker` event signal to `@minecraft/server` in beta. This is used to subscribe to world clock time marker events
-
-##### WorldBeforeEvents
-
-- Added the `worldClockOnRestart` event signal to `@minecraft/server` in beta. This is used to subscribe to world clock restart events
-
-##### WorldClock
-
-- Added `timeMarkers` property in beta
-- Added `addTimeMarker` function in beta
-- Added `removeTimeMarker` function in beta
-- Added `set` function in beta
-- Added `skipTo` function in beta
-- Added `rewindTo` function in beta
-
-##### WorldClockRegistry
-
-- Added `registrationOptions` parameter to `registerClock` function to optionally create time markers during registration in beta
-
-#### Blocks
-
-- Added the `container` field to the `minecraft:block_entity` block component, which gives a custom block a container that holds up to 54 item stacks, persists with the world, drops its contents when the block is broken, and opens a container screen when the block is used
-- Replacing a custom block whose `minecraft:block_entity` declares a `container` with a different block definition rebuilds its block entity, so the outgoing block drops its container contents rather than handing them to the new block
-- Added scripting access to custom block inventories provided by `minecraft:block_entity` containers
-
-#### Commands
-
-- Add new `/time of` sub-command for modifying world clocks under the Creator World Clocks Features experiment
-  - `/time of <clock> add <time>` - Adds time to the clock. Cannot result in a negative time
-  - `/time of <clock> set <time>` - Sets the clock to the specified time. Cannot be set to negative.
-  - `/time of <clock> set <timemarker> (next|previous|stay)` - Sets the clock to the occurrence of the time marker. Cannot result in a negative time
-  - `/time of <clock> pause` - Pauses the clock
-  - `/time of <clock> resume` - Resumes the clock
-  - `/time of <clock> query time` - Outputs the clock's current time
-
-#### Gameplay
-
-- Custom dimension heights defined in a dimension JSON file can once again span the full -512 to 512 block range instead of being capped to the default Overworld heights of -64 to 320 (MCPE-241528)
-- Added experimental support for defining point-of-interest types and hierarchical tags in behavior packs
-- Added a beta Script API for querying and managing registered points in the current dimension
-- Added `/locate poi` for locating registered points by type or tag
-
-### Other experiment and beta mentions
-
-- Releasing `PrimitiveShapesManager.getShapes` from beta to 2.10.0.
-- Releasing `PrimitiveShapeQueryOptions` from beta to 2.10.0.
-- Moved the `cloneBlocks` method from `beta` to `v2.10.0`, allowing regions of blocks to be cloned from one area of a dimension to another with support for clone modes and an optional block filter
 
 ## Minecraft: Bedrock Edition 26.40 (2026-07-31)
 

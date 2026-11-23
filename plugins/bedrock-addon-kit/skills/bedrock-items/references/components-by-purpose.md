@@ -59,7 +59,7 @@ The lang file lives in the RP (`RP/texts/en_US.lang`), is UTF-8 without a BOM, a
 |---|---|
 | Stack size | `"minecraft:max_stack_size": {"value": 16}` (1-64) |
 | Different aux values don't stack | `"minecraft:stacked_by_data": {"value": true}` |
-| Allowed in the off hand | `"minecraft:allow_off_hand": {"value": true}` |
+| Allowed in the off hand | `"minecraft:allow_off_hand": {"value": true}`. With the Off-hand Parity experiment (Preview 26.70.26) any item can go in the off hand, so test off-hand use too |
 | Survives fire/lava as a dropped item | `"minecraft:fire_resistant": {"value": true}` |
 | Never despawns when dropped | `"minecraft:should_despawn": {"value": false}` |
 | Can't break blocks in creative | `"minecraft:can_destroy_in_creative": {"value": false}` (swords) |

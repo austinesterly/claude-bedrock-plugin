@@ -1,10 +1,10 @@
 # Upcoming and beta Script APIs (generated)
 
-Generated on **2026-11-16** from the official `index.d.ts` typings on npm. Labels: **[next stable]** is in the `rc` build (ships in the next game release, works without experiments once it does); **[beta]** needs the Beta APIs experiment and a `-beta` module version in the manifest; **[beta module]** has no stable release at all. Search for `Type.member`.
+Generated on **2026-11-23** from the official `index.d.ts` typings on npm. Labels: **[next stable]** is in the `rc` build (ships in the next game release, works without experiments once it does); **[beta]** needs the Beta APIs experiment and a `-beta` module version in the manifest; **[beta module]** has no stable release at all. Search for `Type.member`.
 
 ## @minecraft/server
 
-Stable 2.11.0, rc 2.12.0-rc.1.26.70-preview.24, beta 2.13.0-beta.1.26.70-preview.24. 114 names coming in the next stable, 252 beta-only.
+Stable 2.11.0, rc 2.12.0-rc.1.26.70-preview.26, beta 2.13.0-beta.1.26.70-preview.26. 114 names coming in the next stable, 252 beta-only.
 
 ### Block [next stable]
 
@@ -700,7 +700,7 @@ A set of events that fire before an actual action occurs.
 
 ## @minecraft/server-ui
 
-Stable 2.3.0, rc 2.4.0-rc.1.26.70-preview.24, beta 2.5.0-beta.1.26.70-preview.24. 10 names coming in the next stable, 4 beta-only.
+Stable 2.3.0, rc 2.4.0-rc.1.26.70-preview.26, beta 2.5.0-beta.1.26.70-preview.26. 10 names coming in the next stable, 4 beta-only.
 
 ### ButtonData [next stable] (new type)
 
@@ -744,11 +744,11 @@ Options for configuring a slider component.
 
 ## @minecraft/server-graphics
 
-Stable 1.0.0, rc 1.0.0-rc.1.26.60-preview.23, beta 1.1.0-beta.1.26.70-preview.24. 0 names coming in the next stable, 0 beta-only.
+Stable 1.0.0, rc 1.0.0-rc.1.26.60-preview.23, beta 1.1.0-beta.1.26.70-preview.26. 0 names coming in the next stable, 0 beta-only.
 
 ## @minecraft/server-gametest
 
-No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.70-preview.24). For automated tests in test worlds.
+No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.70-preview.26). For automated tests in test worlds.
 
 ### FenceConnectivity [beta module] (new type)
 
@@ -1059,7 +1059,7 @@ Main class for GameTest functions, with helpers and data for manipulating the re
 
 ## @minecraft/server-admin
 
-No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.70-preview.24). Bedrock Dedicated Server only.
+No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.70-preview.26). Bedrock Dedicated Server only.
 
 ### AdminBeforeEvents [beta module] (new type)
 
@@ -1240,7 +1240,7 @@ A globally available object that returns a list of dedicated-server configured v
 
 ## @minecraft/server-net
 
-No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.70-preview.24). Bedrock Dedicated Server only.
+No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.70-preview.26). Bedrock Dedicated Server only.
 
 ### beforeEvents [beta module] (new type)
 
@@ -1761,7 +1761,7 @@ An error thrown when attempting to use a WebSocket while the socket is not conne
 
 ## @minecraft/debug-utilities
 
-No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.70-preview.24). 
+No stable release: everything here is **[beta module]** (1.0.0-beta.1.26.70-preview.26). 
 
 ### collectPluginStats [beta module] (new type)
 
