@@ -1,0 +1,7 @@
+97f08fe43b33ca9efbf10b02e2091cabb156da398fb31ea1200494b846f8f1c1  addon\docs\Residents_test_plan.md
+b838fb821569f9abd96e8955204b772896c7f679a5e153857d22d1c0d6edf32c  addon\packs\BP\scripts\data\balance.js
+e124ab9244cad7c737511ebf07b6d57104d8dd1c02af12a77f802c1cdcfa70b7  addon\packs\BP\scripts\residents\residents.js
+8da93b71466e7e10a5f621883638d7b77353c7491ef891b713d1d6a18bfa9271  addon\packs\BP\scripts\staff\rules.js
+0ab3c9830410c80f772f8ee69c3908e6bb2a1658aacc3ab72a853dbeb9c8fc32  addon\packs\BP\scripts\staff\staff.js
+d6624f0fd759190f157ce08f64099b54c4e4d7f03f38167dced53bb27eddbd5f  addon\packs\BP\scripts\staff\zookeepers.js
+b75cd44e1bcb128795d9b63687570d44db206f9069fb2d25c2eb9dfab9879d0c  addon\tests\logic.test.mjs
