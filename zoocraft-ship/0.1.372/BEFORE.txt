@@ -1,0 +1,6 @@
+8cf181d4699ec256b3434381d9a8adbd87134785e0388a6bc38bb4161400feed  addon\docs\Residents_test_plan.md
+16db5679d6c79e0da3580bc70388abac80f95328dca00d536a58186526d0a459  addon\packs\BP\scripts\data\balance.js
+9d87b34bb0b4be633212a2ebb592acb8f35f18f8ac7cf2555d125a801c32bc72  addon\packs\BP\scripts\data\residents.js
+d7a5378e248964709a7bdb080011b9ebe013061271590b1d5529f9c5724cadb9  addon\packs\BP\scripts\main.js
+2fba6e1e36e0bb7fd86d383621bebbf6965256a45058879e856581693144d3cc  addon\packs\RP\sounds\sound_definitions.json
+ee6efaa69f105b4463b7a6779f04411da60402be9ce3199f9689b05cf602fa84  addon\tests\logic.test.mjs

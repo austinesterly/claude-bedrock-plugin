@@ -1,0 +1,27 @@
+{
+  "format_version": "1.14.0",
+  "sound_definitions": {
+    "zoocraft.zach.song": {
+      "category": "record",
+      "max_distance": 28,
+      "sounds": [
+        {
+          "name": "sounds/zoocraft/zach_song",
+          "volume": 1.0,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "zoocraft.warden.song": {
+      "category": "record",
+      "max_distance": 48,
+      "sounds": [
+        {
+          "name": "sounds/music/game/calm3",
+          "stream": true,
+          "volume": 1.0
+        }
+      ]
+    }
+  }
+}
