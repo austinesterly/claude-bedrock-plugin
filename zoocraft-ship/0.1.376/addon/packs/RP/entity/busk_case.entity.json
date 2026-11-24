@@ -1,0 +1,20 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:busk_case",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/zoocraft/busk_stand"
+      },
+      "geometry": {
+        "default": "geometry.zoocraft.busk_case"
+      },
+      "render_controllers": [
+        "controller.render.zoocraft.busk_case"
+      ]
+    }
+  }
+}
