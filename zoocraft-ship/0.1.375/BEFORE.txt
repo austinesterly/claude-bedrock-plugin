@@ -1,0 +1,5 @@
+35cd4500beb3a02313a322cceb69d07e7176a6bcf4be05179214a1b33d4736c0  addon\packs\BP\scripts\equipment\guitar.js
+d37479592667656f567cc1069f5df801e371cefa662b0099aeccd6212c814774  addon\packs\BP\scripts\equipment\noiseMaker.js
+be5b55fc19e22653b4832c70a2c8462070b1c78c50866a597b4510eec7d2e8f9  addon\packs\BP\scripts\platform\mc.js
+6ca72e933e2118dfb540807eaa19d379717fa99fd995b936e9ab793f6ac804e9  addon\packs\BP\scripts\residents\hugs.js
+1a8a4481646245204c04b84385688d5e62178cbbaceb741b3fb78ed069f54e18  addon\tests\logic.test.mjs
