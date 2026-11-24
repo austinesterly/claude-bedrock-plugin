@@ -1,0 +1,25 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "zoocraft:streamer_pro",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:icon": {
+        "textures": {
+          "default": "zoocraft:streamer_pro"
+        }
+      },
+      "minecraft:display_name": {
+        "value": "item.zoocraft:streamer_pro.name"
+      },
+      "minecraft:max_stack_size": {
+        "value": 1
+      },
+      "zoocraft:streamer_pro": {}
+    }
+  }
+}
