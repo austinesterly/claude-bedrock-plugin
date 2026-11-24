@@ -1,0 +1,95 @@
+{
+ "format_version": "1.26.50",
+ "minecraft:block": {
+  "description": {
+   "identifier": "zoocraft:austin_portrait",
+   "menu_category": {
+    "category": "items"
+   },
+   "traits": {
+    "minecraft:placement_direction": {
+     "enabled_states": [
+      "minecraft:cardinal_direction"
+     ]
+    }
+   }
+  },
+  "components": {
+   "minecraft:geometry": "geometry.zoocraft.austin_portrait",
+   "minecraft:material_instances": {
+    "*": {
+     "texture": "zoocraft_austin_portrait_back",
+     "render_method": "opaque"
+    },
+    "back": {
+     "texture": "zoocraft_austin_portrait_back",
+     "render_method": "opaque"
+    },
+    "front": {
+     "texture": "zoocraft_austin_portrait",
+     "render_method": "opaque"
+    }
+   },
+   "minecraft:collision_box": false,
+   "minecraft:selection_box": {
+    "origin": [
+     -8,
+     0,
+     -8
+    ],
+    "size": [
+     16,
+     16,
+     1
+    ]
+   },
+   "minecraft:destructible_by_mining": {
+    "seconds_to_destroy": 0.5
+   },
+   "minecraft:destructible_by_explosion": {
+    "explosion_resistance": 1
+   },
+   "minecraft:map_color": "#c4963e",
+   "minecraft:loot": "loot_tables/blocks/zoocraft_austin_portrait.json",
+   "minecraft:light_dampening": 0
+  },
+  "permutations": [
+   {
+    "condition": "query.block_state('minecraft:cardinal_direction') == 'south'",
+    "components": {
+     "minecraft:transformation": {
+      "rotation": [
+       0,
+       180,
+       0
+      ]
+     }
+    }
+   },
+   {
+    "condition": "query.block_state('minecraft:cardinal_direction') == 'west'",
+    "components": {
+     "minecraft:transformation": {
+      "rotation": [
+       0,
+       90,
+       0
+      ]
+     }
+    }
+   },
+   {
+    "condition": "query.block_state('minecraft:cardinal_direction') == 'east'",
+    "components": {
+     "minecraft:transformation": {
+      "rotation": [
+       0,
+       270,
+       0
+      ]
+     }
+    }
+   }
+  ]
+ }
+}
