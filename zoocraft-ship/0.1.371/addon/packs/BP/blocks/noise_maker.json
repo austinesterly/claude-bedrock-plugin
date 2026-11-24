@@ -1,0 +1,40 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:block": {
+    "description": {
+      "identifier": "zoocraft:noise_maker",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:geometry": "minecraft:geometry.full_block",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "zoocraft_noise_maker_side",
+          "render_method": "opaque"
+        },
+        "up": {
+          "texture": "zoocraft_noise_maker_top",
+          "render_method": "opaque"
+        },
+        "down": {
+          "texture": "zoocraft_noise_maker_bottom",
+          "render_method": "opaque"
+        }
+      },
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 0.8
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 1
+      },
+      "minecraft:map_color": "#603e28",
+      "minecraft:loot": "loot_tables/blocks/zoocraft_noise_maker.json",
+      "minecraft:redstone_consumer": {
+        "min_power": 1
+      },
+      "zoocraft:noise_maker": {}
+    }
+  }
+}
