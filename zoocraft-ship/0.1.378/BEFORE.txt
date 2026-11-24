@@ -1,0 +1,6 @@
+f287e7501b2af6f89130a7218919bafef9dfcff2fe59d8eaf7b096771623ca63  addon\docs\Residents_test_plan.md
+8b12b205eb147a95bab055076c06e930959f051cdc9b258f0d43f30a0482533c  addon\packs\BP\scripts\data\residents.js
+7e2c2b67954a1bc81a0ad31aa965212cb0e81f5abd5007cd7f212fc2bd645447  addon\packs\BP\scripts\main.js
+d03834c5a1d7280feb45ed7752979f1bc93e3c015ffa686587023bfd06d588fa  addon\packs\BP\scripts\residents\residents.js
+9651de0ae6f3d65ebbbb471cdfee7025b639e54e56afd87a8fa1af0ec6956249  addon\packs\BP\scripts\residents\rewardRules.js
+72022e53ab3fddf8ed8783215747ce63bf64ac882c00f892cf32eb322755fe1e  addon\tests\logic.test.mjs
