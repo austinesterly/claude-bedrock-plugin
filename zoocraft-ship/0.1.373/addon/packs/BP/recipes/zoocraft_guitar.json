@@ -1,0 +1,33 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "zoocraft:guitar"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "S S",
+      "S S",
+      "SBS"
+    ],
+    "key": {
+      "S": {
+        "item": "minecraft:string"
+      },
+      "B": {
+        "item": "zoocraft:guitar_body"
+      }
+    },
+    "result": {
+      "item": "zoocraft:guitar",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "zoocraft:guitar_body"
+      }
+    ]
+  }
+}
