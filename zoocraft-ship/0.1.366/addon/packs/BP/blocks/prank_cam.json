@@ -1,0 +1,108 @@
+{
+ "format_version": "1.26.50",
+ "minecraft:block": {
+  "description": {
+   "identifier": "zoocraft:prank_cam",
+   "menu_category": {
+    "category": "items"
+   },
+   "traits": {
+    "minecraft:placement_direction": {
+     "enabled_states": [
+      "minecraft:cardinal_direction"
+     ],
+     "y_rotation_offset": 180.0
+    }
+   }
+  },
+  "components": {
+   "minecraft:geometry": "geometry.zoocraft.prank_cam",
+   "minecraft:material_instances": {
+    "*": {
+     "texture": "zoocraft_prank_cam_body",
+     "render_method": "opaque"
+    },
+    "body": {
+     "texture": "zoocraft_prank_cam_body",
+     "render_method": "opaque"
+    },
+    "lens": {
+     "texture": "zoocraft_prank_cam_lens",
+     "render_method": "opaque"
+    }
+   },
+   "minecraft:collision_box": {
+    "origin": [
+     -3,
+     0,
+     -3
+    ],
+    "size": [
+     6,
+     13,
+     6
+    ]
+   },
+   "minecraft:selection_box": {
+    "origin": [
+     -3,
+     0,
+     -4
+    ],
+    "size": [
+     6,
+     13,
+     8
+    ]
+   },
+   "minecraft:destructible_by_mining": {
+    "seconds_to_destroy": 0.5
+   },
+   "minecraft:destructible_by_explosion": {
+    "explosion_resistance": 1
+   },
+   "minecraft:map_color": "#34363c",
+   "minecraft:loot": "loot_tables/blocks/zoocraft_prank_cam.json",
+   "minecraft:light_dampening": 0,
+   "zoocraft:prank_cam": {}
+  },
+  "permutations": [
+   {
+    "condition": "query.block_state('minecraft:cardinal_direction') == 'south'",
+    "components": {
+     "minecraft:transformation": {
+      "rotation": [
+       0,
+       180,
+       0
+      ]
+     }
+    }
+   },
+   {
+    "condition": "query.block_state('minecraft:cardinal_direction') == 'west'",
+    "components": {
+     "minecraft:transformation": {
+      "rotation": [
+       0,
+       90,
+       0
+      ]
+     }
+    }
+   },
+   {
+    "condition": "query.block_state('minecraft:cardinal_direction') == 'east'",
+    "components": {
+     "minecraft:transformation": {
+      "rotation": [
+       0,
+       270,
+       0
+      ]
+     }
+    }
+   }
+  ]
+ }
+}
