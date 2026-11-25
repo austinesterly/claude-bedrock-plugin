@@ -1,0 +1,45 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:contest_rabbit",
+      "materials": {
+        "default": "rabbit"
+      },
+      "textures": {
+        "brown": "textures/entity/rabbit/rabbit_brown",
+        "white": "textures/entity/rabbit/rabbit_white",
+        "black": "textures/entity/rabbit/rabbit_black",
+        "white_splotched": "textures/entity/rabbit/rabbit_white_splotched",
+        "gold": "textures/entity/rabbit/rabbit_gold",
+        "salt": "textures/entity/rabbit/rabbit_salt"
+      },
+      "geometry": {
+        "default": "geometry.rabbit.v2"
+      },
+      "animations": {
+        "move": "animation.rabbit.move.v2",
+        "look_at_target": "animation.common.look_at_target",
+        "idle_head_tilt": "animation.rabbit.idle_head_tilt",
+        "general": "controller.animation.zoocraft.zoo_rabbit.general"
+      },
+      "render_controllers": [
+        "controller.render.zoocraft.zoo_rabbit"
+      ],
+      "scripts": {
+        "scale": "1 / 0.6",
+        "animate": [
+          "general"
+        ],
+        "pre_animation": [
+          "variable.was_moving = (variable.moving ?? false);",
+          "variable.moving = query.modified_move_speed > 0.05 || query.vertical_speed > 0.05;",
+          "variable.random_cooldown = math.random(9, 11);",
+          "variable.idle_cooldown = ((!variable.moving && variable.was_moving) || (variable.idle_cooldown ?? 0) <= 0) ? variable.random_cooldown : (variable.idle_cooldown ?? variable.random_cooldown);",
+          "variable.idle_cooldown = math.max(0, variable.idle_cooldown - query.delta_time);",
+          "variable.should_idle = variable.idle_cooldown <= 0;"
+        ]
+      }
+    }
+  }
+}
