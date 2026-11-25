@@ -1,0 +1,8 @@
+898657ad27fcfbf881eb2df2fd43927dc41118d02ee8385776ee8fb5176ba212  addon\docs\Residents_test_plan.md
+8fa1297343b4d039d2717c5e9a77e7bd0367819fcef9e5db73d576873bbfc3db  addon\packs\BP\scripts\contest\realm.js
+c056a008fdd2ee6789dfe32a3f9633dce60efef106fe62573794f52d5249dd3d  addon\packs\BP\scripts\contest\realmRules.js
+3056142912d8952703fbfc514f2ee574d2d84d40790571ae835d76f3b7874029  addon\packs\BP\scripts\data\balance.js
+d552f427e075bc400fe6b43b7eb7bf81329a7de25a933f3cd689113b41da6304  addon\packs\BP\scripts\data\residents.js
+59dc08374667173bbb7dc57ffc049ed3418ef727f7c08518d453cbc1d4be0c9b  addon\packs\BP\scripts\main.js
+1b02f5294cfe32ea1a9b2365cd8209a536b193a8c98f5e9917398f7f35dc1c47  addon\packs\BP\scripts\ui\residentMenu.js
+a00af4f5d0f5a2b1c77ac4e0606cffec2fb089d0579668104eecfcdda9d792cd  addon\tests\logic.test.mjs
