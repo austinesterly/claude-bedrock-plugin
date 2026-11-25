@@ -1,0 +1,33 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "zoocraft:diamond_carrot",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:icon": {
+        "textures": {
+          "default": "zoocraft:diamond_carrot"
+        }
+      },
+      "minecraft:display_name": {
+        "value": "item.zoocraft:diamond_carrot.name"
+      },
+      "minecraft:max_stack_size": {
+        "value": 64
+      },
+      "minecraft:food": {
+        "nutrition": 10,
+        "saturation_modifier": 1.2
+      },
+      "minecraft:use_animation": "eat",
+      "minecraft:use_modifiers": {
+        "use_duration": 1.6,
+        "movement_modifier": 0.35
+      }
+    }
+  }
+}
