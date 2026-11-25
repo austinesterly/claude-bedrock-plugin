@@ -1,0 +1,35 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "zoocraft:rabbit_person",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "fur0": "textures/entity/zoocraft/rabbit_person_0",
+        "fur1": "textures/entity/zoocraft/rabbit_person_1",
+        "fur2": "textures/entity/zoocraft/rabbit_person_2",
+        "fur3": "textures/entity/zoocraft/rabbit_person_3",
+        "fur4": "textures/entity/zoocraft/rabbit_person_4",
+        "fur5": "textures/entity/zoocraft/rabbit_person_5"
+      },
+      "geometry": {
+        "default": "geometry.zoocraft.resident"
+      },
+      "animations": {
+        "walk": "animation.zoocraft.guest.walk",
+        "look_at_target": "animation.zoocraft.guest.look_at_target"
+      },
+      "scripts": {
+        "animate": [
+          "walk",
+          "look_at_target"
+        ]
+      },
+      "render_controllers": [
+        "controller.render.zoocraft.rabbit_person"
+      ]
+    }
+  }
+}

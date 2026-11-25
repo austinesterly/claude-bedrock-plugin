@@ -1,0 +1,60 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.zoocraft.rabbit_person": {
+      "arrays": {
+        "textures": {
+          "Array.furs": [
+            "Texture.fur0",
+            "Texture.fur1",
+            "Texture.fur2",
+            "Texture.fur3",
+            "Texture.fur4",
+            "Texture.fur5"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Array.furs[query.property('zoocraft:fur')]"
+      ],
+      "part_visibility": [
+        {
+          "*": true
+        },
+        {
+          "rod": false
+        },
+        {
+          "line": false
+        },
+        {
+          "bobber": false
+        },
+        {
+          "brim": false
+        },
+        {
+          "updo": false
+        },
+        {
+          "selfie": false
+        },
+        {
+          "phone": false
+        },
+        {
+          "steak": false
+        },
+        {
+          "crown": "query.property('zoocraft:king')"
+        }
+      ]
+    }
+  }
+}
