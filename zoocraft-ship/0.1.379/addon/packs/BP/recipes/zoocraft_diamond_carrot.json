@@ -1,0 +1,28 @@
+{
+  "format_version": "1.26.50",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "zoocraft:diamond_carrot"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "minecraft:carrot"
+      },
+      {
+        "item": "minecraft:diamond"
+      }
+    ],
+    "result": {
+      "item": "zoocraft:diamond_carrot",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "zoocraft:diamond_carrot"
+      }
+    ]
+  }
+}
