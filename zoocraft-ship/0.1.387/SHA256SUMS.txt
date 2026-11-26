@@ -1,0 +1,4 @@
+d7da04c16a82389e2a42f2a4e9ef46cbb1fd35821f917ccb6d0a31c0f4d06d5a  addon\docs\Size_budget.md
+938ef8d3beec376e7f0a0a14fab0660ee83e30b7dba2a8e8e9acfb10e75f850b  addon\tests\logic.test.mjs
+13867ef2028075ba86e9885da0cd99fbc82100fe6c195d4cbe7c9ead00081a5c  addon\tools\bundle\main.js
+8476d1dec27deca462de2fa0c180b0c8366b6fb966938ee9377079f3a928e9c9  addon\tools\slim.mjs
