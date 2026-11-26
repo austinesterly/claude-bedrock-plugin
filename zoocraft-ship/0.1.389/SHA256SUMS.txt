@@ -1,0 +1,7 @@
+fdcd6cfe3d81a3aaf88a1effbc0cfd2df6ad9deae50b522e186167e9faeb7d78  addon\docs\Residents_test_plan.md
+ec13d4ede3936c54c906a0e6a4f1df893becfb7d712146530d45950c93bf4c33  addon\packs\BP\scripts\contest\huntRules.js
+bf03ee73bf4c0698c0bd3178c72dc33b7c8f5f710cb40da8f7b0cda9f522aeb8  addon\packs\BP\scripts\contest\raceRules.js
+edb56348916e4730b3735c4b1aa17d7556883c395e625b99b4387093e70c3cba  addon\packs\BP\scripts\contest\realmRules.js
+6fa2e761d8ae938df5c20abd77b8693856bd80d782ca9776acca9c17bf9a2197  addon\packs\BP\scripts\data\balance.js
+2ef77fb41f26c058ae0b042f2da374d8948af4f1d46166a37f2630f80822dec0  addon\tests\logic.test.mjs
+dc58640eba9246b9d972ae8afba94d9dc81a1de2488edab576ab62d00b0baa4a  addon\tools\bundle\main.js
